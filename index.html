@@ -533,8 +533,8 @@
 
   <div class="cta" id="watch">
     <div class="label">Watch the 5-minute video<br/>to get your dream body before summer</div>
-    <a class="btn-img" id="cta-watch" href="./slimtide-vsl/index.html"><img src="images/CLICK-TO-WATCH-6.webp" alt="Click to watch"/></a>
-    <a class="btn" id="cta-watch-btn" href="./slimtide-vsl/index.html">Click to watch</a>
+    <a class="btn-img" id="cta-watch" href="/slimtide-vsl/index.html"><img src="images/CLICK-TO-WATCH-6.webp" alt="Click to watch"/></a>
+    <a class="btn" id="cta-watch-btn" href="/slimtide-vsl/index.html">Click to watch</a>
   </div>
 
   <div class="reviews">
@@ -588,7 +588,7 @@
 (function(){
   function buildVslUrl(){
     var utms = (window.imptrack && window.imptrack.getUtms) ? window.imptrack.getUtms() : {};
-    var url = "./slimtide-vsl/index.html";
+    var url = "/slimtide-vsl/index.html";
     var parts = [];
     ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
       if(utms[k]) parts.push(k + "=" + encodeURIComponent(utms[k]));
