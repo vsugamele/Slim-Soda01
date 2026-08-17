@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="imp-pixel-id" content="1619587959397761"/>
+<title>SlimSoda — TODAY/NBC News (Oprah Drop 43 lbs)</title>
+<script>
+(function(){
+  var SB_URL = "https://tkbivipqiewkfnhktmqq.supabase.co";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrYml2aXBxaWV3a2ZuaGt0bXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NzY4NDgsImV4cCI6MjA1NDA1Mjg0OH0.2TnLj4lriG7eoPQWDo0mV8u8YHor6bd5ItZCHYhkym0";
+
+  var visitorId = localStorage.getItem("imp_visitor_id");
+  if(!visitorId){ visitorId = crypto.randomUUID(); localStorage.setItem("imp_visitor_id", visitorId); }
+
+  var sessionId = sessionStorage.getItem("imp_session_id");
+  var lastActivity = parseInt(sessionStorage.getItem("imp_last_activity") || "0");
+  var now = Date.now();
+  if(!sessionId || (now - lastActivity) > 1800000){
+    sessionId = crypto.randomUUID();
+    sessionStorage.setItem("imp_session_id", sessionId);
+  }
+  sessionStorage.setItem("imp_last_activity", String(now));
+
+  var params = new URLSearchParams(window.location.search);
+  var utms = {};
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+    var v = params.get(k);
+    if(v){ utms[k] = v; localStorage.setItem("imp_"+k, v); }
+    else { var s = localStorage.getItem("imp_"+k); if(s) utms[k] = s; }
+  });
+
+  var linkId = params.get("imp_link_id") || localStorage.getItem("imp_link_id") || null;
+  if(params.get("imp_link_id")){ localStorage.setItem("imp_link_id", params.get("imp_link_id")); }
+
+  if(!localStorage.getItem("imp_landing")) localStorage.setItem("imp_landing", window.location.href);
+
+  function genEventId(){ return crypto.randomUUID(); }
+
+  function sbPost(table, data){
+    return fetch(SB_URL + "/rest/v1/" + table, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SB_KEY,
+        "Authorization": "Bearer " + SB_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(data)
+    }).catch(function(){});
+  }
+
+  if(Object.keys(utms).length > 0 || linkId){
+    sbPost("imphq_clicks", {
+      id: crypto.randomUUID(),
+      link_id: linkId,
+      utm_source: utms.utm_source || null,
+      utm_medium: utms.utm_medium || null,
+      utm_campaign: utms.utm_campaign || null,
+      utm_content: utms.utm_content || null,
+      utm_term: utms.utm_term || null,
+      referrer: document.referrer || null,
+      page_url: window.location.href,
+      user_agent: navigator.userAgent
+    });
+  }
+
+  function trackEvent(eventName, eventData, eventId){
+    var eid = eventId || genEventId();
+    if(window.fbq){
+      try { window.fbq("trackCustom", eventName, eventData || {}, { eventID: eid }); } catch(e){}
+    }
+    return sbPost("imphq_events", {
+      id: eid,
+      visitor_id: visitorId,
+      session_id: sessionId,
+      event_name: eventName,
+      event_data: eventData || {},
+      page_url: window.location.href,
+      referrer: document.referrer || null,
+      utm_source: utms.utm_source || null,
+      utm_medium: utms.utm_medium || null,
+      utm_campaign: utms.utm_campaign || null,
+      utm_content: utms.utm_content || null,
+      utm_term: utms.utm_term || null,
+      user_agent: navigator.userAgent
+    });
+  }
+
+  var pixelId = document.querySelector('meta[name="imp-pixel-id"]');
+  if(pixelId){ pixelId = pixelId.getAttribute("content"); }
+  if(pixelId){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,"script","https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", pixelId);
+    fbq("track", "PageView", {}, { eventID: genEventId() });
+  }
+
+  trackEvent("PageView", { title: document.title });
+
+  window.imptrack = {
+    getUtms: function(){ return utms; },
+    getVisitorId: function(){ return visitorId; },
+    getSessionId: function(){ return sessionId; },
+    trackEvent: trackEvent,
+    trackViewContent: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "ViewContent", data || {}, { eventID: eid });
+      return trackEvent("ViewContent", data, eid);
+    },
+    trackAddToCart: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "AddToCart", data || {}, { eventID: eid });
+      return trackEvent("AddToCart", data, eid);
+    },
+    trackLead: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "Lead", { email: data.email }, { eventID: eid });
+      trackEvent("LeadCapture", { email: data.email, nome: data.nome }, eid);
+      return sbPost("imphq_leads", Object.assign({
+        id: crypto.randomUUID(),
+        plataforma: utms.utm_source || null,
+        data: { utms: utms, landing: localStorage.getItem("imp_landing"), visitor_id: visitorId }
+      }, data));
+    }
+  };
+})();
+</script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #fff;
+    color: #1c1e21;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === TOP NAV (TODAY style) === */
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    background: #fff;
+    border-bottom: 1px solid #e4e6eb;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .nav-logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #f37b21 0%, #ec1e79 50%, #1d8fe1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .nav-links { display: flex; gap: 22px; }
+  .nav-links a {
+    color: #1c1e21;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .nav-signin {
+    border: 1px solid #c7c9cc;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1c1e21;
+    text-decoration: none;
+  }
+
+  /* === MAIN === */
+  .container { max-width: 720px; margin: 0 auto; padding: 24px 20px 60px; }
+  .post-headline {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1c1e21;
+    margin-bottom: 20px;
+    letter-spacing: -0.2px;
+  }
+
+  /* === VSL PLAYER (Vturb embed) === */
+  .vsl-wrap {
+    margin: 0 auto 20px;
+    max-width: 400px;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .vsl-cover {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    display: block;
+  }
+  .vsl-cta {
+    background: linear-gradient(180deg, #521987 0%, #3a0e6b 100%);
+    color: #fff;
+    text-align: center;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+
+  .post-image {
+    background: #f0f2f5;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .post-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .post-image-caption {
+    font-size: 12px;
+    color: #65676b;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .brand-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+    margin-bottom: 24px;
+  }
+  .brand-today {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 36px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #f37b21 0%, #ec1e79 50%, #1d8fe1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+  .brand-nbc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #1c1e21;
+  }
+  .nbc-peacock {
+    display: inline-block;
+    width: 22px;
+    height: 18px;
+    background: linear-gradient(135deg, #f37b21 0%, #f37b21 33%, #c71f1f 33%, #c71f1f 66%, #6b3aa0 66%, #6b3aa0 100%);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  .comments-header {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1c1e21;
+    margin: 24px 0 16px;
+  }
+
+  /* === COMMENT (FB-style with REAL photo) === */
+  .comment {
+    display: flex;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: #e4e6eb;
+  }
+  .comment-body { flex: 1; }
+  .comment-name {
+    font-size: 13px;
+    color: #1877f2;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .comment-text {
+    background: #f0f2f5;
+    border-radius: 16px;
+    padding: 9px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #1c1e21;
+    display: inline-block;
+  }
+  .comment-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 4px;
+    font-size: 12px;
+    color: #65676b;
+  }
+  .comment-meta a { color: #65676b; text-decoration: none; font-weight: 600; }
+  .comment-reactions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #65676b;
+  }
+  .reactions-strip {
+    display: flex;
+  }
+  .reactions-strip span {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #fff;
+    border: 2px solid #fff;
+    margin-left: -4px;
+  }
+  .rx-like { background: #1877f2; }
+  .rx-love { background: #f33e58; }
+  .rx-wow { background: #f7b125; }
+
+  .no-more {
+    text-align: center;
+    font-size: 13px;
+    color: #65676b;
+    padding: 24px 0;
+    font-style: italic;
+  }
+
+  /* === FOOTER === */
+  .footer {
+    background: #000;
+    color: #fff;
+    padding: 32px 20px;
+    text-align: center;
+    font-size: 13px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer p { margin: 6px 0; color: #aaa; }
+  .footer .copyright { color: #777; font-size: 12px; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-logo">TODAY</div>
+  <div class="nav-links">
+    <a href="#">On the Show</a>
+    <a href="https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377" id="nav-shop">Shop</a>
+    <a href="#">Health</a>
+    <a href="#">Food</a>
+    <a href="#">Life</a>
+  </div>
+  <a href="#" class="nav-signin">Sign In</a>
+</div>
+
+<div class="container">
+
+  <h1 class="post-headline">Yale Doctor Reveals the $1 Baking Soda Recipe That Helped Oprah Drop 43 lbs — Without Injections</h1>
+
+  <!-- VSL PLAYER (real Vturb embed + cover image + CTA) -->
+  <vturb-smartplayer id="vid-6a80da7d450d2262ec5ce4c5" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;"></vturb-smartplayer>
+  <script type="text/javascript">
+    var s=document.createElement("script");
+    s.src="https://scripts.converteai.net/40842bbe-bbd8-4eb5-aac6-ee6da1d154b6/players/6a80da7d450d2262ec5ce4c5/v4/player.js";
+    s.async=!0;
+    document.head.appendChild(s);
+  </script>
+  <noscript>
+    <div class="vsl-wrap">
+      <img class="vsl-cover" src="vsl-assets/cover.jpg" alt="SlimSoda VSL cover"/>
+      <a class="vsl-cta" id="cta-checkout" href="https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377">▶ Watch The Free Video Now</a>
+    </div>
+  </noscript>
+
+  <div class="brand-logos">
+    <div class="brand-today">TODAY</div>
+    <div class="brand-nbc">
+      <span class="nbc-peacock"></span>
+      <span>NBC NEWS</span>
+    </div>
+  </div>
+
+  <div class="comments-header">36,158 Comments</div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sophie Robinson"/>
+    <div class="comment-body">
+      <div class="comment-name">Sophie Robinson</div>
+      <div class="comment-text">Wait what's the actual recipe? Do I need to watch the whole thing?</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>2h</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-love">❤</span>
+          </div>
+          <span>21</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Victoria Carter"/>
+    <div class="comment-body">
+      <div class="comment-name">Victoria Carter</div>
+      <div class="comment-text">yeah she breaks it down early on. Worth watching tbh</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>1h</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>18</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/79.jpg" alt="Lisa G."/>
+    <div class="comment-body">
+      <div class="comment-name">Lisa G.</div>
+      <div class="comment-text">Ngl I only watched cause of Oprah but the baking soda recipe actually makes sense when she breaks down the science. Def gonna try it 🙌</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>1h</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-love">❤</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>36</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Madison Scott"/>
+    <div class="comment-body">
+      <div class="comment-name">Madison Scott</div>
+      <div class="comment-text">3 weeks in and my coworker asked if I got work done 😂 nope just baking soda apparently</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>55 min</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-love">❤</span>
+          </div>
+          <span>63</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/56.jpg" alt="Charlotte Williams"/>
+    <div class="comment-body">
+      <div class="comment-name">Charlotte Williams</div>
+      <div class="comment-text">Ok I almost scrolled past this but I'm glad I didn't. Started the baking soda shot 2 weeks ago and my jeans are already looser. Not saying it's magic but something is definitely working</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>40 min</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>58</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/12.jpg" alt="Daisy Collins"/>
+    <div class="comment-body">
+      <div class="comment-name">Daisy Collins</div>
+      <div class="comment-text">Is this actually legit or just another internet thing??</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>32 min</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+          </div>
+          <span>14</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/91.jpg" alt="Emily Lewis"/>
+    <div class="comment-body">
+      <div class="comment-name">Emily Lewis</div>
+      <div class="comment-text">I literally said the same thing lol. Try it for a week and see. My bloating went down first and now I'm back in my size 6 jeans that were sitting in my closet for like 2 years</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>28 min</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>35</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/23.jpg" alt="Olivia Martinez"/>
+    <div class="comment-body">
+      <div class="comment-name">Olivia Martinez</div>
+      <div class="comment-text">I've done keto, IF, ozempic... this is the first time I'm not white-knuckling it. The cravings just kinda stopped? Idk how to explain</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>20 min</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-love">❤</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>49</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <img class="comment-avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma Clark"/>
+    <div class="comment-body">
+      <div class="comment-name">Emma Clark</div>
+      <div class="comment-text">2 months in. down 29 lbs. i'm honestly confused how this isn't bigger news 🤯</div>
+      <div class="comment-meta">
+        <span>Like</span><span>Reply</span><span>just now</span>
+        <div class="comment-reactions">
+          <div class="reactions-strip">
+            <span class="rx-like">👍</span>
+            <span class="rx-love">❤</span>
+            <span class="rx-wow">😮</span>
+          </div>
+          <span>72</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-more">This post is no longer receiving comments!</div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Return Policy</a>
+    <a href="#">Contact Us</a>
+  </div>
+  <p>For Product Support, please contact the vendor <a href="#" style="color:#fff;text-decoration:underline">HERE</a>.</p>
+  <div class="copyright">© SlimTide Research 2026. All Rights Reserved.</div>
+</div>
+
+<script>
+// UTM passthrough + AddToCart/InitiateCheckout event tracking on CTA click
+(function(){
+  var BASE_CHECKOUT = "https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377";
+
+  function buildCheckoutUrl(){
+    var utms = (window.imptrack && window.imptrack.getUtms) ? window.imptrack.getUtms() : {};
+    var url = BASE_CHECKOUT;
+    var parts = [];
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+      if(utms[k]) parts.push(k + "=" + encodeURIComponent(utms[k]));
+    });
+    if(parts.length) url += (url.indexOf("?") >= 0 ? "&" : "?") + parts.join("&");
+    return url;
+  }
+
+  // Populate the href dynamically (so UTMs from current visit flow through)
+  ["cta-checkout","nav-shop"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.href = buildCheckoutUrl(); el.setAttribute("data-checkout", "1"); }
+  });
+
+  // Fire AddToCart + InitiateCheckout when user clicks any checkout link
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest("a[data-checkout='1']");
+    if(!a) return;
+    try {
+      if(window.imptrack){
+        window.imptrack.trackAddToCart({
+          content_name: "SlimSoda B1G1",
+          value: 29.99,
+          currency: "USD"
+        });
+        window.imptrack.trackEvent("InitiateCheckout", {
+          content_name: "SlimSoda B1G1",
+          value: 29.99,
+          currency: "USD"
+        });
+      }
+    } catch(err){}
+  });
+})();
+</script>
+
+</body>
+</html>

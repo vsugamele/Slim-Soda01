@@ -1,104 +1,73 @@
-# SlimSoda + Cardio Clear DR Project
+# Slim-Soda01
 
-**Knowledge base + entregáveis pra 2 produtos DR (Direct Response) do publisher Linfaflow.**
+**Funil de DR (Direct Response) — top of funnel pra SlimSoda.**
 
-## Produtos
-
-- **Cardio Clear** (Sanjay Gupta, MD · NEJM peer-reviewed) — supplement cardiovascular, "Arterial Cement" mechanism, 3 Sardinian Blue Zone ingredients, 90-Day MB
-- **SlimSoda** (Dana Whitfield, Formulator) — weight management, "Wake → Protect → Flip" 3-ingredient switch (baking soda + ginger + berberine), 60-Day Empty-Tub MB
-
-## Estrutura
+## Arquitetura
 
 ```
-hub-preview/
-├── _canonical-copy-cardio-clear.md    (19KB — canon oficial Cardio)
-├── _canonical-copy-slimsoda.md        (15KB — canon oficial SlimSoda)
-├── _banco-padroes-dr.md               (10 mecânicas DR de 3 advertisers)
-├── _briefing-cardio-cleare-slimsoda-style.md
-├── _brief-visual-slimsoda.md
-├── _transcricao-B1H2-enfermeira-ER.md
-│
-├── quiz-v5-server/                    (Node + Express + OpenRouter + ElevenLabs)
-│   ├── server.js
-│   ├── prompts.js
-│   ├── quiz-track.js                  (CRM frontend)
-│   ├── quiz-slimsoda-v5.html          (15 steps, LLM 3 moments)
-│   ├── quiz-cardio-clear-v5.html      (15 steps, Sanjay Gupta persona)
-│   ├── package.json
-│   ├── .env.example
-│   └── README.md
-│
-├── cardio-clear/                      (3 HTML clones)
-│   ├── cbs-breaking-news.html         (VSL clone 24KB)
-│   ├── index.html                     (PDP clone 30KB)
-│   └── advertorial-cbs.html           (advertorial escrito do zero 25KB)
-│
-├── slimtide-vsl-recon/                (recon VSL TODAY/NBC)
-├── southbeach-vsl-proxy/              (proxy sister template)
-├── shopzenvylite-buy1get1/            (SlimSoda buy page 100% clone 110KB)
-├── funnelish-checkout/                (checkout customizado)
-├── quiz-auraly-soulmate/              (Auraly quiz pattern + SlimSoda MVP)
-│
-└── references_v5/                     (HUB NAVEGÁVEL v10)
-    ├── index.html                     (hub 11 cards, sidebar 7 pages)
-    ├── funnel.html                    (mapa end-to-end SVG)
-    ├── patterns.html                  (36+ patterns com filtros)
-    ├── README.md
-    └── pages/
-        ├── slimsoda-article-lp/       (1)
-        ├── slimtide-vsl-recon/        (2)
-        ├── southbeach-vsl-proxy/      (3)
-        ├── shopzenvylite-buy1get1/    (4)
-        ├── funnelish-checkout/        (5)
-        ├── quiz-auraly-soulmate/      (6)
-        ├── haritaki-spy/              (7 — Peptiques® pineal decalcification)
-        ├── estrutura-cbo-bifi/        (8 — @gbifi curso CBO)
-        ├── dtc-affiliate-black/       (9 — @gbifi DTC image ads)
-        ├── slimsoda-native-ads/       (10 — 5 criativos nativos WhatsApp)
-        └── amanda-rebuild/            (11 — Método Amanda N3 + 2 ads black)
+Slim-Soda01/                          ← repo raiz
+├── index.html              ← Article LP (SlimSoda Yale + Baking Soda)
+├── images/                 ← 12 imagens do LP
+├── slimtide-vsl/
+│   ├── index.html          ← VSL recon (SlimTide TODAY/NBC social proof)
+│   ├── print-user-view.png
+│   └── vsl-assets/         ← cover, poster, thumbnail, main.m3u8, player.js
+├── .gitignore              ← whitelist: só esses arquivos vão pro deploy
+└── README.md               ← este arquivo
 ```
 
-## Quick start
+**Fluxo:** user abre `index.html` (LP) → clica em qualquer "Click to watch" (2 botões) → vai pra `./slimtide-vsl/index.html` (VSL recon com cover TODAY/NBC + video player) → clica CTA "Watch The Free Video Now" → checkout canônico `cc.slimsodapowder.com/v2/checkout.php`.
 
-### Rodar quiz server
+**Tracking stack (live):**
+- Meta Pixel 1619587959397761 disparando PageView em LP+VSL
+- Supabase `imphq_clicks` registra cada visita com UTMs
+- Supabase `imphq_events` registra PageView, ViewContent, AddToCart, InitiateCheckout, Lead
+- UTM passthrough dinâmico: LP → VSL → Checkout
+- Visitor UUID em localStorage (persiste cross-sessão) + Session UUID 30min TTL
+
+## Rodar local
+
 ```bash
-cd quiz-v5-server
-cp .env.example .env       # colocar OPENROUTER_API_KEY + ELEVENLABS_API_KEY
-npm install
-npm start
-# abre http://localhost:3000/quiz-slimsoda-v5.html
-# ou http://localhost:3000/quiz-cardio-clear-v5.html
+# Python 3
+python -m http.server 8000
+
+# OU Node
+npx http-server -p 8000
+
+# Abre http://localhost:8000/
 ```
 
-### Abrir hub navegável
-```bash
-# deploy local: python -m http.server 8000 --directory references_v5
-# abre http://localhost:8000/
-```
+(precisa de server local porque o VSL tem CORS em alguns assets)
 
-## Hub deployed
+## Deploy
 
-**https://z94zbtshpymju.space.minimax.io** (v10, 11 referências, 135 files, 14.7MB)
+**Estrutura pronta pra Vercel/Netlify/Cloudflare Pages/GitHub Pages.** O `index.html` tá na raiz, então qualquer host serve direto.
 
-## Documentação adicional
+- **Vercel:** importar repo → deploy automático (Framework Preset: Other)
+- **Netlify:** drag & drop da pasta do repo OU conectar via GitHub
+- **Cloudflare Pages:** conectar via GitHub → Build command: (vazio) → Output: `/`
+- **GitHub Pages:** Settings → Pages → Source: `main` branch
 
-- **Memory index:** ver topic memory `slimsoda-cardio-clear-project` na knowledge base do agente
-- **Patterns bank:** `references_v5/patterns.html` (36 mecânicas DR extraídas)
-- **Funil end-to-end:** `references_v5/funnel.html` (mapa SVG com tracking stack)
-- **Canon copy:** `_canonical-copy-cardio-clear.md` + `_canonical-copy-slimsoda.md`
-- **Banco DR patterns:** `_banco-padroes-dr.md`
+## Customizar pra rodar como ads
 
-## Hard rules do projeto
+1. **Pixel ID:** já tá em `<meta name="imp-pixel-id" content="1619587959397761">` no `<head>` de ambos HTMLs
+2. **UTM:** adicionar `?utm_source=...&utm_medium=...&utm_campaign=...` na URL do LP — eles fluem automaticamente
+3. **Capturar lead no próximo step:**
+   ```javascript
+   window.imptrack.trackLead({ email: "user@example.com", nome: "Nome" });
+   ```
+4. **Trocar checkout URL (se mudar de afiliado):** editar `BASE_CHECKOUT` no script helper do final do `slimtide-vsl/index.html`
 
-- **NÃO inventar prova** (sem estudo, médico, paciente, número, depoimento, antes/depois, escassez, garantia fabricada)
-- **NÃO instalar afirmação médica falsa** ("stop your medication", "100% safe", "cure")
-- **Sempre "talk to your doctor"** no CTA Cardio Clear
-- **Sempre disclaimer "dietary supplement"** no CTA SlimSoda
-- **Persona canon overrides expert invention** — sempre extrair do HTML oficial
+## Arquivos importantes pra backup
 
-## Stack de tráfego (Bifi)
+- `index.html` (23KB) — LP inteiro, copy canônica, Meta Pixel + Supabase tracker inlined
+- `slimtide-vsl/index.html` (15KB) — VSL recon canônica, Meta Pixel + Supabase tracker inlined
+- `slimtide-vsl/vsl-assets/main.m3u8` — video source
+- `slimtide-vsl/print-user-view.png` (392KB) — print original da VSL completa
 
-- P1 Primary Text (ABO 1-5-3) → P2 Imagem (ABO 1-5-10) → P3 Escala (CBO bidcap 60% CPA) → P4 Cemitério (CBO 1-1-10 cost cap 70% CPA)
-- Régua IC: ≤$5 QUALIFICADO · $6-9 MAIS TEXTOS · >$9 MORTO
-- Dia-3 P2: ≥15 vendas ESCALA · 10-15 REFINAR · <10 VOLTA P1
-- Teto da conta: 10 ângulos
+## Proveniência
+
+- LP clonada de `slimsoda.corewellnessjournal.com` (article LP top of funnel)
+- VSL clonada de `trustedconsumervoice.com/vsl/slimtide/v1` (VSL TODAY/NBC social proof)
+- Capturadas em 2026-08-16, 100% preservadas (HTML + imagens originais, sem edição)
+- Tracker Supabase + checkout `cc.slimsodapowder.com` integrados em 2026-08-17

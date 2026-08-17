@@ -1,22 +1,24 @@
 # ============================================================
-# SLIM-SODA01 — APENAS O QUE VAI PRO GITHUB
-# Estratégia: WHITELIST (só o que importa, resto ignorado)
+# SLIM-SODA01 REPO — APENAS O QUE VAI PRO DEPLOY
+# Estratégia: WHITELIST (tudo é ignorado, exceto o deployable)
 # ============================================================
 
-# Ignora TUDO por padrão
+# Ignora TUDO por padrão (mantém o repo-mãe intacto, só o Slim-Soda01-deployable vai)
 *
 
-# Libera apenas o que vai pro repo
+# Libera APENAS o que vai pro deploy em produção
 !/.gitignore
 !/README.md
-!/Slim-Soda01/
-!/Slim-Soda01/**
+!/index.html
+!/images/
+!/images/**
+!/slimtide-vsl/
+!/slimtide-vsl/**
 
-# Mas mesmo dentro de Slim-Soda01, ignora lixo
-Slim-Soda01/node_modules/
-Slim-Soda01/.env
-Slim-Soda01/.DS_Store
-Slim-Soda01/Thumbs.db
-Slim-Soda01/*.log
+# Mas ignora lixo mesmo dentro dos diretórios permitidos
+index.html.bak
+images/*.tmp
+images/*.bak
+slimtide-vsl/*.log
 
-# Mantém o resto do projeto-mãe INTACTO (não commita nada além do Slim-Soda01)
+# Mantém o resto do projeto-mãe INTACTO (não commita nada além do Slim-Soda01-deployable)
