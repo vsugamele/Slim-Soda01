@@ -3,7 +3,132 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="imp-pixel-id" content="1619587959397761"/>
 <title>SlimSoda — TODAY/NBC News (Oprah Drop 43 lbs)</title>
+<script>
+(function(){
+  var SB_URL = "https://tkbivipqiewkfnhktmqq.supabase.co";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrYml2aXBxaWV3a2ZuaGt0bXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NzY4NDgsImV4cCI6MjA1NDA1Mjg0OH0.2TnLj4lriG7eoPQWDo0mV8u8YHor6bd5ItZCHYhkym0";
+
+  var visitorId = localStorage.getItem("imp_visitor_id");
+  if(!visitorId){ visitorId = crypto.randomUUID(); localStorage.setItem("imp_visitor_id", visitorId); }
+
+  var sessionId = sessionStorage.getItem("imp_session_id");
+  var lastActivity = parseInt(sessionStorage.getItem("imp_last_activity") || "0");
+  var now = Date.now();
+  if(!sessionId || (now - lastActivity) > 1800000){
+    sessionId = crypto.randomUUID();
+    sessionStorage.setItem("imp_session_id", sessionId);
+  }
+  sessionStorage.setItem("imp_last_activity", String(now));
+
+  var params = new URLSearchParams(window.location.search);
+  var utms = {};
+  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+    var v = params.get(k);
+    if(v){ utms[k] = v; localStorage.setItem("imp_"+k, v); }
+    else { var s = localStorage.getItem("imp_"+k); if(s) utms[k] = s; }
+  });
+
+  var linkId = params.get("imp_link_id") || localStorage.getItem("imp_link_id") || null;
+  if(params.get("imp_link_id")){ localStorage.setItem("imp_link_id", params.get("imp_link_id")); }
+
+  if(!localStorage.getItem("imp_landing")) localStorage.setItem("imp_landing", window.location.href);
+
+  function genEventId(){ return crypto.randomUUID(); }
+
+  function sbPost(table, data){
+    return fetch(SB_URL + "/rest/v1/" + table, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SB_KEY,
+        "Authorization": "Bearer " + SB_KEY,
+        "Prefer": "return=minimal"
+      },
+      body: JSON.stringify(data)
+    }).catch(function(){});
+  }
+
+  if(Object.keys(utms).length > 0 || linkId){
+    sbPost("imphq_clicks", {
+      id: crypto.randomUUID(),
+      link_id: linkId,
+      utm_source: utms.utm_source || null,
+      utm_medium: utms.utm_medium || null,
+      utm_campaign: utms.utm_campaign || null,
+      utm_content: utms.utm_content || null,
+      utm_term: utms.utm_term || null,
+      referrer: document.referrer || null,
+      page_url: window.location.href,
+      user_agent: navigator.userAgent
+    });
+  }
+
+  function trackEvent(eventName, eventData, eventId){
+    var eid = eventId || genEventId();
+    if(window.fbq){
+      try { window.fbq("trackCustom", eventName, eventData || {}, { eventID: eid }); } catch(e){}
+    }
+    return sbPost("imphq_events", {
+      id: eid,
+      visitor_id: visitorId,
+      session_id: sessionId,
+      event_name: eventName,
+      event_data: eventData || {},
+      page_url: window.location.href,
+      referrer: document.referrer || null,
+      utm_source: utms.utm_source || null,
+      utm_medium: utms.utm_medium || null,
+      utm_campaign: utms.utm_campaign || null,
+      utm_content: utms.utm_content || null,
+      utm_term: utms.utm_term || null,
+      user_agent: navigator.userAgent
+    });
+  }
+
+  var pixelId = document.querySelector('meta[name="imp-pixel-id"]');
+  if(pixelId){ pixelId = pixelId.getAttribute("content"); }
+  if(pixelId){
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,"script","https://connect.facebook.net/en_US/fbevents.js");
+    fbq("init", pixelId);
+    fbq("track", "PageView", {}, { eventID: genEventId() });
+  }
+
+  trackEvent("PageView", { title: document.title });
+
+  window.imptrack = {
+    getUtms: function(){ return utms; },
+    getVisitorId: function(){ return visitorId; },
+    getSessionId: function(){ return sessionId; },
+    trackEvent: trackEvent,
+    trackViewContent: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "ViewContent", data || {}, { eventID: eid });
+      return trackEvent("ViewContent", data, eid);
+    },
+    trackAddToCart: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "AddToCart", data || {}, { eventID: eid });
+      return trackEvent("AddToCart", data, eid);
+    },
+    trackLead: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "Lead", { email: data.email }, { eventID: eid });
+      trackEvent("LeadCapture", { email: data.email, nome: data.nome }, eid);
+      return sbPost("imphq_leads", Object.assign({
+        id: crypto.randomUUID(),
+        plataforma: utms.utm_source || null,
+        data: { utms: utms, landing: localStorage.getItem("imp_landing"), visitor_id: visitorId }
+      }, data));
+    }
+  };
+})();
+</script>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -260,7 +385,7 @@
   <div class="nav-logo">TODAY</div>
   <div class="nav-links">
     <a href="#">On the Show</a>
-    <a href="#">Shop</a>
+    <a href="https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377" id="nav-shop">Shop</a>
     <a href="#">Health</a>
     <a href="#">Food</a>
     <a href="#">Life</a>
@@ -283,7 +408,7 @@
   <noscript>
     <div class="vsl-wrap">
       <img class="vsl-cover" src="vsl-assets/cover.jpg" alt="SlimSoda VSL cover"/>
-      <a class="vsl-cta" href="#cta">▶ Watch The Free Video Now</a>
+      <a class="vsl-cta" id="cta-checkout" href="https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377">▶ Watch The Free Video Now</a>
     </div>
   </noscript>
 
@@ -475,6 +600,50 @@
   <p>For Product Support, please contact the vendor <a href="#" style="color:#fff;text-decoration:underline">HERE</a>.</p>
   <div class="copyright">© SlimTide Research 2026. All Rights Reserved.</div>
 </div>
+
+<script>
+// UTM passthrough + AddToCart/InitiateCheckout event tracking on CTA click
+(function(){
+  var BASE_CHECKOUT = "https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377";
+
+  function buildCheckoutUrl(){
+    var utms = (window.imptrack && window.imptrack.getUtms) ? window.imptrack.getUtms() : {};
+    var url = BASE_CHECKOUT;
+    var parts = [];
+    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+      if(utms[k]) parts.push(k + "=" + encodeURIComponent(utms[k]));
+    });
+    if(parts.length) url += (url.indexOf("?") >= 0 ? "&" : "?") + parts.join("&");
+    return url;
+  }
+
+  // Populate the href dynamically (so UTMs from current visit flow through)
+  ["cta-checkout","nav-shop"].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el){ el.href = buildCheckoutUrl(); el.setAttribute("data-checkout", "1"); }
+  });
+
+  // Fire AddToCart + InitiateCheckout when user clicks any checkout link
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest("a[data-checkout='1']");
+    if(!a) return;
+    try {
+      if(window.imptrack){
+        window.imptrack.trackAddToCart({
+          content_name: "SlimSoda B1G1",
+          value: 29.99,
+          currency: "USD"
+        });
+        window.imptrack.trackEvent("InitiateCheckout", {
+          content_name: "SlimSoda B1G1",
+          value: 29.99,
+          currency: "USD"
+        });
+      }
+    } catch(err){}
+  });
+})();
+</script>
 
 </body>
 </html>
