@@ -643,7 +643,7 @@ async function chatLlm(userText) {
         body: JSON.stringify({
           state: state,
           user_text: userText,
-          system: "You are Dana Whitfield, a warm sister-figure formulator in her late 50s. Reply briefly (1-3 sentences), matching the user's emotion. Reference their pain. Then suggest continuing to the offer. Do not invent claims beyond SlimSoda's existing copy (baking soda + ginger + berberine, burn/store switch, 60-day guarantee, $29.99 B1G1)."
+          system: "You are Dana Whitfield, a warm sister-figure formulator in her late 50s. Reply briefly (1-3 sentences), matching the user's emotion. Reference their pain. Then suggest continuing to the offer. Do not invent claims beyond SlimSoda's existing copy (baking soda + ginger + berberine, burn/store switch, 60-day guarantee, $24.99 B1G1)."
         })
       });
       const j = await r.json();
@@ -856,7 +856,7 @@ function getOfferCardHtml(){
     <div class="offer-card">
       <div class="offer-card-callback">${callback}${ageNote}</div>
       <div class="offer-card-img">
-        <img src="images/slimsoda_adv2_16_price_compare.webp" alt="Price comparison: $1000/month for injections vs $29.99 for two tubs of SlimSoda">
+        <img src="images/slimsoda_adv2_16_price_compare.webp" alt="Price comparison: $1000/month for injections vs $24.99 for two tubs of SlimSoda">
       </div>
       <div class="offer-card-title">Two tubs of SlimSoda — Buy 1, Get 1 FREE</div>
       <div class="offer-card-sub">The original formula, in the correct dose, in the right order. Two months to feel it work. Sixty-day empty-tub money-back — use the whole tub, no questions.</div>
@@ -864,15 +864,15 @@ function getOfferCardHtml(){
         <div class="offer-card-stack-row"><span>2 tubs (60-84 day supply)</span><span>$119.98</span></div>
         <div class="offer-card-stack-row"><span>Free shipping</span><span>$9.99</span></div>
         <div class="offer-card-stack-row"><span>60-day empty-tub guarantee</span><span>Included</span></div>
-        <div class="offer-card-stack-row offer-card-stack-total"><span>Today</span><span>$29.99</span></div>
+        <div class="offer-card-stack-row offer-card-stack-total"><span>Today</span><span>$24.99</span></div>
       </div>
       <div class="offer-card-price">
         <span class="offer-card-price-old">$129.97</span>
-        <span class="offer-card-price-new">$29.99</span>
+        <span class="offer-card-price-new">$24.99</span>
         <span class="offer-card-price-badge">B1G1 FREE</span>
       </div>
-      <a href="${CHECKOUT_URL}" class="offer-card-cta" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source: 'chat-x1', step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 29.99, currency: 'USD', content_ids: ['slimsoda-3bottles'], callback: callback}, true); return true;">
-        YES — SEND MY 2 TUBS ($29.99) →
+      <a href="${CHECKOUT_URL}" class="offer-card-cta" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source: 'chat-x1', step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 24.99, currency: 'USD', content_ids: ['slimsoda-3bottles'], callback: callback}, true); return true;">
+        YES — SEND MY 2 TUBS ($24.99) →
       </a>
       <div class="offer-card-urgency">⏰ Launch price — when the free-tub run is gone, it goes to $59.99/tub.</div>
       <div class="offer-card-meta">Sixty-day empty-tub money-back guarantee · Free shipping · Ships in 24h</div>
@@ -1209,7 +1209,7 @@ function runNode(nodeId){
       scrollToBottom();
       // Track offer view
       if(window.imptrack){
-        window.imptrack.trackEvent("OfferView", { step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 29.99 });
+        window.imptrack.trackEvent("OfferView", { step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 24.99 });
       }
     }
     scrollToBottom();
