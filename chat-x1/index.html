@@ -798,8 +798,9 @@ const SCRIPT = {
   },
 
   mechanism: {
-    audio: "dana-mechanism",
-    text: "It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The first morning, you can <strong>feel the bloat release.</strong> The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much. <em>Sound about right?</em>",
+    // Branched by frustration (audio = hook, text = complementary expansion)
+    audio: null, // set dynamically
+    text: null, // set dynamically
     image: { src: "images/slimsoda_adv2_06_four_ways.webp", caption: "Three of the four ways fail. One works." },
     delay: 1200,
     next: "reciprocity"
@@ -831,8 +832,9 @@ const SCRIPT = {
   },
 
   loss_aversion: {
-    audio: "dana-loss-aversion",
-    text: "Six months from now, you'll either be free of this — or still looking for the answer. <em>Most women I hear from wish they had started sooner.</em> You know what I mean?",
+    // Branched by frustration (audio = hook, text = complementary expansion)
+    audio: null, // set dynamically
+    text: null, // set dynamically
     delay: 1500,
     quickReplies: [
       { label: "I don't want to wait", next: "future_pace", primary: true }
@@ -913,6 +915,64 @@ function getTestimonialForAge(){
       image: { src: "images/slimsoda_new_testimonial_2.webp", caption: "Marlene, 67 — Dublin, GA · the jeans buttoned" }
     };
   }
+}
+
+/* Branched mechanism (4 variants by frustration)
+   Audio = HOOK (8-10s, references their specific pain)
+   Text = COMPLEMENTARY EXPANSION (adds context, mechanism detail, callback) */
+function getMechanismForFrustration(){
+  const f = state.frustration;
+  const variants = {
+    "eat_less_gain": {
+      audio: "dana-mechanism-eatless",
+      text: "It's not about eating less. <strong>It's about the order.</strong> Baking soda wakes dormant gut cells. Ginger protects the hormone that tells your body it's full. Berberine flips the switch from STORE to BURN. <em>That's why eating less never worked.</em> The order is the secret. Sound about right?"
+    },
+    "food_noise": {
+      audio: "dana-mechanism-foodnoise",
+      text: "The noise quiets when the switch flips. <strong>Three ingredients — in the right order.</strong> Baking soda wakes the cells that respond to your fullness hormone. Ginger blocks the enzyme that's stealing it — by ninety-three percent. Berberine flips the switch from STORE to BURN. <em>The first morning, you feel it.</em>"
+    },
+    "hormones": {
+      audio: "dana-mechanism-hormones",
+      text: "Your hormone isn't broken. <strong>It's being destroyed.</strong> An enzyme called DPP-4 is eating it before your body can use it. <em>Ginger blocks that enzyme — by ninety-three percent.</em> Baking soda wakes the cells. Berberine flips the switch. Three ingredients, in order, every morning. Sound fair?"
+    },
+    "after_kids": {
+      audio: "dana-mechanism-kids",
+      text: "Your body remembers the version of you that was thinner. <strong>It's still in there.</strong> Wake the cells with baking soda. Protect the hormone with ginger. Flip the switch with berberine. <em>Three ingredients, in the right order, in the right amounts.</em> The first week, the noise quiets. By week three, you're back."
+    }
+  };
+  return variants[f] || {
+    audio: "dana-mechanism",
+    text: "It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The first morning, you can <strong>feel the bloat release.</strong> The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much. <em>Sound about right?</em>"
+  };
+}
+
+/* Branched loss_aversion (4 variants by frustration)
+   Audio = HOOK (references what they already said)
+   Text = COMPLEMENTARY EXPANSION (emotional weight, future cost) */
+function getLossAversionForFrustration(){
+  const f = state.frustration;
+  const variants = {
+    "eat_less_gain": {
+      audio: "dana-loss-aversion-eatless",
+      text: "You've done the work. You cut the calories. You watched what you ate. <strong>And the number still went up.</strong> That's not a willpower problem — that's the switch stuck on STORE. <em>Six months from now, you could be free of that — or still wondering why nothing works.</em> I don't want that for you."
+    },
+    "food_noise": {
+      audio: "dana-loss-aversion-foodnoise",
+      text: "That constant pull — the one that never turns off, even when you're full. <strong>I know.</strong> It's not hunger. It's the switch. <em>Six months from now, you could have it quiet — or you could still be fighting it every hour.</em> I know which one I want for you."
+    },
+    "hormones": {
+      audio: "dana-loss-aversion-hormones",
+      text: "After 40, after menopause, after the kids — your doctor said it's just age. <strong>It isn't.</strong> The switch is stuck on STORE, not broken. <em>Six months from now, you could have it back — or still blaming your age.</em> You know that's not what it is."
+    },
+    "after_kids": {
+      audio: "dana-loss-aversion-kids",
+      text: "Three kids in. Body you don't recognize. Photos you avoid. <strong>I made this for the version of you that was before.</strong> <em>Six months from now, you could be back in the photo with them — or still hiding from the camera.</em> You decide."
+    }
+  };
+  return variants[f] || {
+    audio: "dana-loss-aversion",
+    text: "Six months from now, you'll either be free of this — or still looking for the answer. <em>Most women I hear from wish they had started sooner.</em> You know what I mean?"
+  };
 }
 
 function getOfferCardHtml(){
@@ -1297,7 +1357,19 @@ function runNode(nodeId){
   if(nodeId === "personalized_hook"){
     SCRIPT.personalized_hook.text = getPersonalizedHook();
   }
-  // Special: testimonial
+  // Special: mechanism (branched by frustration)
+  if(nodeId === "mechanism"){
+    const m = getMechanismForFrustration();
+    SCRIPT.mechanism.audio = m.audio;
+    SCRIPT.mechanism.text = m.text;
+  }
+  // Special: loss_aversion (branched by frustration)
+  if(nodeId === "loss_aversion"){
+    const l = getLossAversionForFrustration();
+    SCRIPT.loss_aversion.audio = l.audio;
+    SCRIPT.loss_aversion.text = l.text;
+  }
+  // Special: testimonial (branched by age)
   if(nodeId === "testimonial"){
     const t = getTestimonialForAge();
     SCRIPT.testimonial.audio = t.audio;
