@@ -535,7 +535,7 @@ async function chatLlm(userText) {
 const SCRIPT = {
   start: {
     audio: "dana-intro",
-    text: "Hi, I'm Dana. I created the formula that's in all those viral baking soda videos. But before I tell you how it works, I need to understand <em>you</em>. Take sixty seconds — I'll listen.",
+    text: "I created the formula that's in all those viral baking soda videos. But before I tell you how it works, I need to understand <em>you</em>. After the questions, I'll show you the recipe nobody else is sharing — and why the order matters.",
     delay: 600,
     quickReplies: [
       { label: "Okay, let's go →", next: "q1_age", primary: true }
@@ -593,7 +593,7 @@ const SCRIPT = {
 
   confession: {
     audio: "dana-confession",
-    text: "I'm going to tell you something I've never said publicly. <strong>I was wrong about something for twenty years.</strong> I was the skinny sister. I told Rachel to eat less. I was completely, shamefully wrong. What I found out that night changed everything.",
+    text: "I'm going to tell you something I've never said publicly. I was wrong about something for <strong>twenty years</strong>. What I found out that night changed everything — and made the formula that ended up in all those videos.",
     image: { src: "images/slimsoda_adv2_02_sisters.webp", caption: "Me and Rachel, before I understood" },
     delay: 1500,
     next: "mechanism"
@@ -601,7 +601,7 @@ const SCRIPT = {
 
   mechanism: {
     audio: "dana-mechanism",
-    text: "It's not a diet. It's not a pill. It's <strong>three ingredients, in the right order, in the right amounts.</strong> Baking soda. Ginger. Berberine. <em>Wake the cells. Protect the hormone. Flip the switch.</em> That's the whole secret. The viral videos never explain the order. That's why DIY fails.",
+    text: "It's not a diet. It's not a pill. It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much.",
     image: { src: "images/slimsoda_adv2_06_four_ways.webp", caption: "Three of the four ways fail. One works." },
     delay: 1200,
     next: "testimonial"
@@ -625,7 +625,7 @@ const SCRIPT = {
 
   offer: {
     audio: "dana-cta",
-    text: null, // filled dynamically with offer card
+    text: "I made this for women like you. No risk on you. Just the change you've been waiting for. Here's the offer:",
     delay: 1500,
     next: "end"
   },
@@ -667,27 +667,27 @@ function getTestimonialForAge(){
   if(state.age === "55-70"){
     return {
       audio: "testimonial-linda",
-      text: "Hear it from Linda. <strong>63, retired teacher, Asheville.</strong> She didn't change one thing about how she eats.",
-      image: { src: "images/slimsoda_new_testimonial_1.webp", caption: "Linda — 22 pounds down" }
+      text: "Hear it from Linda in her own voice.",
+      image: { src: "images/slimsoda_new_testimonial_1.webp", caption: "Linda, 63 — Asheville, NC · 22 pounds down" }
     };
   } else if(state.age === "70+"){
     return {
       audio: "testimonial-diane",
-      text: "Hear it from Diane. <strong>71, retired, Mesa.</strong> She tried the shots, gained it all back. This is the first thing that worked and stayed.",
-      image: { src: "images/slimsoda_new_testimonial_3.webp", caption: "Diane — first thing that stayed" }
+      text: "Hear it from Diane in her own voice.",
+      image: { src: "images/slimsoda_new_testimonial_3.webp", caption: "Diane, 71 — Mesa, AZ · tried the shots, gained it all back" }
     };
   } else if(state.age === "45-55"){
     return {
       audio: "testimonial-marlene",
-      text: "Hear it from Marlene. <strong>67, grandmother of four.</strong> Four years she kept her old jeans in a drawer. Last week they buttoned.",
-      image: { src: "images/slimsoda_new_testimonial_2.webp", caption: "Marlene — the jeans buttoned" }
+      text: "Hear it from Marlene in her own voice.",
+      image: { src: "images/slimsoda_new_testimonial_2.webp", caption: "Marlene, 67 — Dublin, GA · the jeans buttoned" }
     };
   } else {
     // 30-45 — closest to 45-55 testimonial or use Linda
     return {
       audio: "testimonial-marlene",
-      text: "Hear it from Marlene. <strong>67, grandmother of four.</strong> Four years she kept her old jeans in a drawer. Last week they buttoned.",
-      image: { src: "images/slimsoda_new_testimonial_2.webp", caption: "Marlene — the jeans buttoned" }
+      text: "Hear it from Marlene in her own voice.",
+      image: { src: "images/slimsoda_new_testimonial_2.webp", caption: "Marlene, 67 — Dublin, GA · the jeans buttoned" }
     };
   }
 }
@@ -893,10 +893,7 @@ function runNode(nodeId){
     SCRIPT.testimonial.text = t.text;
     SCRIPT.testimonial.image = t.image;
   }
-  // Special: offer
-  if(nodeId === "offer"){
-    SCRIPT.offer.text = "I made this for women like you. <strong>Two tubs. Twenty-nine ninety-nine. The second one's free.</strong> Try it for 60 days — empty tub, money back. No risk on you. Just the change you've been waiting for.";
-  }
+  // Special: offer — text is already set in SCRIPT, no dynamic override needed
   const node = SCRIPT[nodeId];
   if(!node){ console.error("Unknown node:", nodeId); return; }
 
