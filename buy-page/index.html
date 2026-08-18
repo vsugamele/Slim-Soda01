@@ -45,7 +45,8 @@
 
   function genEventId(){ return crypto.randomUUID(); }
 
-  function sbPost(table, data){
+  function sbPost(table, data, opts){
+    opts = opts || {};
     return fetch(SB_URL + "/rest/v1/" + table, {
       method: "POST",
       headers: {
@@ -54,7 +55,8 @@
         "Authorization": "Bearer " + SB_KEY,
         "Prefer": "return=minimal"
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      keepalive: !!opts.keepalive
     }).catch(function(){});
   }
 
@@ -127,6 +129,40 @@
       var eid = genEventId();
       if(window.fbq) fbq("track", "AddToCart", data || {}, { eventID: eid });
       return trackEvent("AddToCart", data, eid);
+    },
+    trackInitiateCheckout: function(data){
+      var eid = genEventId();
+      if(window.fbq) fbq("track", "InitiateCheckout", data || {}, { eventID: eid });
+      return trackEvent("InitiateCheckout", data, eid);
+    },
+    trackCtaClick: function(data){
+      // Fires on every CTA click. Meta: InitiateCheckout (highest-intent for cold traffic opt).
+      // Supabase: cta_click event with position info, keepalive=true so it survives outbound nav.
+      var eid = genEventId();
+      var metaPayload = Object.assign({
+        content_ids: ['slimsoda-3bottles'],
+        content_name: 'SlimSoda 2 Tubs (B1G1)',
+        content_type: 'product',
+        value: 29.99,
+        currency: 'USD',
+        num_items: 2
+      }, data || {});
+      if(window.fbq) fbq("track", "InitiateCheckout", metaPayload, { eventID: eid });
+      return sbPost("imphq_events", {
+        id: eid,
+        visitor_id: visitorId,
+        session_id: sessionId,
+        event_name: "InitiateCheckout",
+        event_data: Object.assign({ event_source: "cta_click" }, metaPayload),
+        page_url: window.location.href,
+        referrer: document.referrer || null,
+        utm_source: utms.utm_source || null,
+        utm_medium: utms.utm_medium || null,
+        utm_campaign: utms.utm_campaign || null,
+        utm_content: utms.utm_content || null,
+        utm_term: utms.utm_term || null,
+        user_agent: navigator.userAgent
+      }, { keepalive: true });
     },
     trackLead: function(data){
       var eid = genEventId();
@@ -865,7 +901,7 @@
       <p>Because this is the launch and I’m producing it in small correct-dose batches, <strong>I can’t promise this offer holds.</strong> When the free-tub run is gone, it’s gone.</p>
 
       <div class="cta-wrap">
-        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green">YES — SEND MY 2 TUBS ($29.99, 2ND FREE) →</a>
+        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green" onclick="window.imptrack && window.imptrack.trackCtaClick({cta_id: 'pricing', cta_label: 'YES SEND MY 2 TUBS', cta_position: 'mid-article-pricing', package: '3bottles', value: 29.99, currency: 'USD'})">YES — SEND MY 2 TUBS ($29.99, 2ND FREE) →</a>
         <div class="cta-subtext"><strong>60-Day Empty-Tub Money-Back Guarantee</strong></div>
       </div>
 
@@ -897,7 +933,7 @@
       </div>
 
       <div class="cta-wrap">
-        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green">TRY SLIMSODA RISK-FREE FOR 60 DAYS →</a>
+        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green" onclick="window.imptrack && window.imptrack.trackCtaClick({cta_id: 'guarantee', cta_label: 'TRY SLIMSODA RISK-FREE', cta_position: 'mid-article-guarantee', package: '3bottles', value: 29.99, currency: 'USD'})">TRY SLIMSODA RISK-FREE FOR 60 DAYS →</a>
       </div>
 
       <hr>
@@ -921,7 +957,7 @@
       <p>Then get on with your day and let your body do what it forgot how to do.</p>
 
       <div class="cta-wrap">
-        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green">SEND ME MY SLIMSODA →</a>
+        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green" onclick="window.imptrack && window.imptrack.trackCtaClick({cta_id: 'howto', cta_label: 'SEND ME MY SLIMSODA', cta_position: 'how-to-start', package: '3bottles', value: 29.99, currency: 'USD'})">SEND ME MY SLIMSODA →</a>
       </div>
 
       <hr>
@@ -953,7 +989,7 @@
       <p><strong>This is the recipe that gives it to you. The real one, done right, from the woman who created it.</strong></p>
 
       <div class="cta-wrap">
-        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green">SEND MY 2 TUBS OF SLIMSODA ($29.99) →</a>
+        <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green" onclick="window.imptrack && window.imptrack.trackCtaClick({cta_id: 'final', cta_label: 'SEND MY 2 TUBS OF SLIMSODA', cta_position: 'six-months-final', package: '3bottles', value: 29.99, currency: 'USD'})">SEND MY 2 TUBS OF SLIMSODA ($29.99) →</a>
         <div class="cta-subtext"><strong>Buy 1, Get 1 FREE · 60-Day Empty-Tub Guarantee</strong></div>
       </div>
 
@@ -1338,7 +1374,7 @@
 </div>
 
 <div class="sticky-cta" id="stickyCta">
-  <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green">Get 2 SlimSoda Tubs — $29.99 →</a>
+  <a href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377" class="cta-btn cta-green" onclick="window.imptrack && window.imptrack.trackCtaClick({cta_id: 'sticky', cta_label: 'Get 2 SlimSoda Tubs', cta_position: 'sticky-bottom', package: '3bottles', value: 29.99, currency: 'USD'})">Get 2 SlimSoda Tubs — $29.99 →</a>
 </div>
 <script>
 (function(){
