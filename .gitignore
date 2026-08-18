@@ -14,11 +14,14 @@
 !/images/**
 !/slimtide-vsl/
 !/slimtide-vsl/**
+!/buy-page/
+!/buy-page/**
 
 # Mas ignora lixo mesmo dentro dos diretórios permitidos
 index.html.bak
 images/*.tmp
 images/*.bak
 slimtide-vsl/*.log
+buy-page/*.log
 
 # Mantém o resto do projeto-mãe INTACTO (não commita nada além do Slim-Soda01-deployable)
