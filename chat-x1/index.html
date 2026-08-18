@@ -466,6 +466,39 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border: 2px solid #479C1A;
   }
+  .offer-card-callback {
+    font-size: 14px;
+    font-style: italic;
+    color: #00465A;
+    background: rgba(0, 70, 90, 0.06);
+    border-left: 3px solid #00465A;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+    border-radius: 0 6px 6px 0;
+    line-height: 1.45;
+  }
+  .offer-card-stack {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin: 12px 0;
+    font-size: 13px;
+  }
+  .offer-card-stack-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    color: #555;
+  }
+  .offer-card-stack-row:not(:last-child) {
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .offer-card-stack-total {
+    font-weight: 800;
+    color: #00465A;
+    font-size: 14px;
+    padding-top: 6px;
+  }
   .offer-card-img {
     border-radius: 10px;
     overflow: hidden;
@@ -700,12 +733,20 @@ const SCRIPT = {
     text: "I gave my sister Rachel the same formula. <strong>She lost 41 pounds.</strong> No diet. No gym. Just one scoop a day. She texted me the photo above and said: <em>\"Dana, the noise is gone.\"</em>",
     image: { src: "images/slimsoda_adv2_09_rachel_ba_kitchen.webp", caption: "Rachel — 41 pounds down" },
     delay: 1200,
-    next: "ask_anything"
+    next: "future_pace"
+  },
+
+  future_pace: {
+    text: "Picture yourself 90 days from now. The food noise is gone. You wake up lighter. Your husband notices first. <em>You're in the photo with your kids again.</em> That's what this is — not just a tub. A return to yourself.",
+    delay: 1500,
+    quickReplies: [
+      { label: "I'm ready", next: "ask_anything", primary: true }
+    ]
   },
 
   offer: {
     audio: "dana-cta",
-    text: "I made this for women like you. No risk on you. Just the change you've been waiting for. Here's the offer:",
+    text: "I made this for women like you. <strong>You're the kind of woman who takes action when she sees something real.</strong> No risk on you. Here's the offer:",
     delay: 1500,
     next: "end"
   },
@@ -772,19 +813,36 @@ function getTestimonialForAge(){
 }
 
 function getOfferCardHtml(){
+  // State-based callback (uses collected state)
+  const callbackMap = {
+    "eat_less_gain": "For you — eating like a bird and still gaining — this is the recipe.",
+    "food_noise": "For the food noise that never quiets — this is what finally turns it off.",
+    "hormones": "For the post-40, post-menopause switch that's stuck on STORE — this flips it back.",
+    "after_kids": "For the body you don't recognize after kids — this is what works."
+  };
+  const callback = callbackMap[state.frustration] || "For women like you — this is the recipe.";
+  const ageNote = state.age ? ` (at ${state.age}, this works even faster)` : "";
+
   return `
     <div class="offer-card">
+      <div class="offer-card-callback">${callback}${ageNote}</div>
       <div class="offer-card-img">
         <img src="images/slimsoda_adv2_16_price_compare.webp" alt="Price comparison: $1000/month for injections vs $29.99 for two tubs of SlimSoda">
       </div>
       <div class="offer-card-title">Two tubs of SlimSoda — Buy 1, Get 1 FREE</div>
-      <div class="offer-card-sub">The original formula, in the correct dose, in the right order. Sixty-day empty-tub money-back guarantee.</div>
+      <div class="offer-card-sub">The original formula, in the correct dose, in the right order. Two months to feel it work. Sixty-day empty-tub money-back — use the whole tub, no questions.</div>
+      <div class="offer-card-stack">
+        <div class="offer-card-stack-row"><span>2 tubs (60-84 day supply)</span><span>$119.98</span></div>
+        <div class="offer-card-stack-row"><span>Free shipping</span><span>$9.99</span></div>
+        <div class="offer-card-stack-row"><span>60-day empty-tub guarantee</span><span>Included</span></div>
+        <div class="offer-card-stack-row offer-card-stack-total"><span>Today</span><span>$29.99</span></div>
+      </div>
       <div class="offer-card-price">
-        <span class="offer-card-price-old">$119.98</span>
+        <span class="offer-card-price-old">$129.97</span>
         <span class="offer-card-price-new">$29.99</span>
         <span class="offer-card-price-badge">B1G1 FREE</span>
       </div>
-      <a href="${CHECKOUT_URL}" class="offer-card-cta" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source: 'chat-x1', step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 29.99, currency: 'USD', content_ids: ['slimsoda-3bottles']}, true); return true;">
+      <a href="${CHECKOUT_URL}" class="offer-card-cta" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source: 'chat-x1', step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 29.99, currency: 'USD', content_ids: ['slimsoda-3bottles'], callback: callback}, true); return true;">
         YES — SEND MY 2 TUBS ($29.99) →
       </a>
       <div class="offer-card-meta">Sixty-day empty-tub money-back guarantee · Free shipping · Ships in 24h</div>
