@@ -510,7 +510,9 @@ const state = {
 };
 
 /* Hook for LLM intervention. To enable, set window.CHAT_LLM_ENDPOINT
-   to your Supabase Edge Function URL. Default falls back to scripted. */
+   to your endpoint URL. Default falls back to scripted.
+   For Vercel: set OPENAI_API_KEY in project env, then this auto-resolves. */
+window.CHAT_LLM_ENDPOINT = window.CHAT_LLM_ENDPOINT || "/api/chat-llm";
 async function chatLlm(userText) {
   if(window.CHAT_LLM_ENDPOINT){
     try {

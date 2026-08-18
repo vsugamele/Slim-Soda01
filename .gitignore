@@ -18,6 +18,8 @@
 !/buy-page/**
 !/chat-x1/
 !/chat-x1/**
+!/api/
+!/api/**
 
 # Mas ignora lixo mesmo dentro dos diretórios permitidos
 index.html.bak
