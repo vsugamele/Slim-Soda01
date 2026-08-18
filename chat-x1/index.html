@@ -400,6 +400,17 @@
   .quick-replies {
     display: none !important;
   }
+  /* Qualifying questions (those that save state) MUST show their buttons
+     so the user can actually answer. Cinema-mode hiding only applies to
+     narrative nodes (continue/next-only quick replies). */
+  .quick-replies.qualifying {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    margin-bottom: 6px;
+    padding: 0 8px;
+  }
   .quick-reply {
     background: #fff;
     color: #00465A;
@@ -701,7 +712,8 @@ const state = {
   glp1: null,
   weight: null,
   branch: null,
-  step: 0
+  step: 0,
+  nodeId: ""  // current node ID (so we can look up SCRIPT[nodeId].next reliably)
 };
 
 /* Hook for LLM intervention. To enable, set window.CHAT_LLM_ENDPOINT
@@ -1179,7 +1191,7 @@ async function sendFreeText(text){
   $userInput.value = "";
   $sendBtn.disabled = true;
   if(window.imptrack){
-    window.imptrack.trackEvent("ChatFreeText", { text: message.substring(0, 100), step: state.step });
+    window.imptrack.trackEvent("ChatFreeText", { text: message.substring(0, 100), step: state.step, node: state.nodeId });
   }
   // Rate limit free text turns
   if(lastFreeTextTurn >= MAX_FREE_TEXT_PER_SESSION){
@@ -1196,31 +1208,29 @@ async function sendFreeText(text){
   const llmReply = await chatLlm(message);
   setTimeout(() => {
     hideTyping();
+    const currentNode = state.nodeId; // string node ID, e.g. "mechanism"
     if(llmReply){
       addBotMessage(llmReply);
       $sendBtn.disabled = false;
-      // If LLM reply ends with next-step prompt, no auto-advance (LLM already handled it)
-      // Otherwise continue from current step
-      const currentStep = state.step;
-      const next = SCRIPT[currentStep] && SCRIPT[currentStep].next;
+      // Continue from current step after LLM reply (5s grace)
+      const next = SCRIPT[currentNode] && SCRIPT[currentNode].next;
       if(next) scheduleAutoAdvance(next, 5000);
       return;
     }
     // LLM failed — smart fallback (don't always jump to offer)
-    const currentStep = state.step;
     const isGreeting = /^(hi|hello|hey|oi|olá|yo|hiya|howdy)\b/i.test(message);
-    if(OFFER_OR_NEAR.has(currentStep)){
+    if(OFFER_OR_NEAR.has(currentNode)){
       // We're already at/near the offer — show it
       addBotMessage("I hear you. Let me show you the offer — that's the part that matters most.");
       setTimeout(() => runNode("offer"), 1500);
     } else if(isGreeting){
       // User just said hi — acknowledge warmly, then re-run the current step
       addBotMessage("Hey! I'm so glad you're here. Let me show you what I was about to say.");
-      setTimeout(() => runNode(currentStep), 1200);
+      setTimeout(() => runNode(currentNode), 1200);
     } else {
       // Substantive input but LLM failed — continue the script from current step
       addBotMessage("I hear you. Let me keep going — I want to show you everything.");
-      setTimeout(() => runNode(currentStep), 1200);
+      setTimeout(() => runNode(currentNode), 1200);
     }
   }, 900);
 }
@@ -1290,7 +1300,9 @@ function renderQuickReplies(replies, onClick){
     return;
   }
   const wrap = document.createElement("div");
-  wrap.className = "quick-replies";
+  // Mark as "qualifying" if ANY reply has a `save` field — those need user input
+  const isQualifying = replies.some(r => r.save);
+  wrap.className = isQualifying ? "quick-replies qualifying" : "quick-replies";
   replies.forEach(r => {
     const btn = document.createElement("button");
     btn.className = "quick-reply" + (r.primary ? " primary" : "");
@@ -1353,6 +1365,7 @@ function renderFreeInput(onSubmit){
 
 function runNode(nodeId){
   state.step++;
+  state.nodeId = nodeId;
   // Special: personalized_hook
   if(nodeId === "personalized_hook"){
     SCRIPT.personalized_hook.text = getPersonalizedHook();
@@ -1408,15 +1421,18 @@ function runNode(nodeId){
       }
     }
     scrollToBottom();
-    // Quick replies are hidden via CSS. Auto-advance the script if user doesn't type.
+    // Quick replies: QUALIFYING (have `save` field) MUST show buttons + wait for user.
+    // NARRATIVE (continue-only) are hidden + auto-advance (cinema mode).
     if(node.quickReplies && node.quickReplies.length > 0){
-      // First quick reply is the default "happy path" advance
-      const firstReply = node.quickReplies[0];
-      if(firstReply.next){
-        // Slightly longer delay for qualifying questions (let user read options mentally)
-        const advanceDelay = firstReply.save ? 10000 : AUTO_ADVANCE_MS;
-        scheduleAutoAdvance(firstReply.next, advanceDelay);
+      const hasSave = node.quickReplies.some(r => r.save);
+      if(!hasSave){
+        // Narrative node with a "Continue →" button — auto-advance (button is hidden)
+        const firstReply = node.quickReplies[0];
+        if(firstReply.next){
+          scheduleAutoAdvance(firstReply.next, AUTO_ADVANCE_MS);
+        }
       }
+      // Qualifying Q: do NOT auto-advance, user MUST click a button
     } else if(node.next){
       // Narrative nodes with no quickReplies — auto-advance after delay
       scheduleAutoAdvance(node.next);
