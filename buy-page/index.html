@@ -108,8 +108,66 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,"script","https://connect.facebook.net/en_US/fbevents.js");
     fbq("init", pixelId);
-    fbq("track", "PageView", {}, { eventID: genEventId() });
+    // PageView + ViewContent (product)
+    var pvEid = genEventId();
+    fbq("track", "PageView", {}, { eventID: pvEid });
+    sendCapi("PageView", { title: document.title, source: "buy-page" }, pvEid);
+    var vcEid = genEventId();
+    fbq("track", "ViewContent", {
+      content_ids: ["slimsoda-3bottles"],
+      content_name: "SlimSoda Buy Page",
+      content_type: "product",
+      value: 15.00,
+      currency: "USD"
+    }, { eventID: vcEid });
+    sendCapi("ViewContent", { content_ids: ["slimsoda-3bottles"], value: 15.00, currency: "USD" }, vcEid);
   }
+
+  // Server-side CAPI helper (sends same eventID as fbq for dedup)
+  function sendCapi(eventName, eventData, eventId){
+    if(!eventId) return;
+    var meta = document.querySelector('meta[name="imp-pixel-id"]');
+    var pid = meta ? meta.getAttribute("content") : null;
+    if(!pid) return;
+    try {
+      fetch("/api/track-capi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pixel_id: pid,
+          event_name: eventName,
+          event_id: eventId,
+          event_data: eventData || {},
+          event_source_url: window.location.href
+        }),
+        keepalive: true
+      }).catch(function(){});
+    } catch(e){}
+  }
+
+  // Scroll depth: fire AddToCart when user reaches pricing section
+  var addToCartFired = false;
+  function checkAddToCartScroll(){
+    if(addToCartFired) return;
+    var pricingEl = document.getElementById("price-section");
+    if(!pricingEl) return;
+    var rect = pricingEl.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.7){
+      addToCartFired = true;
+      if(window.imptrack){
+        window.imptrack.trackAddToCart({
+          content_ids: ["slimsoda-3bottles"],
+          content_name: "SlimSoda 2 Tubs (B1G1)",
+          content_type: "product",
+          value: 24.99,
+          currency: "USD"
+        });
+        sendCapi("AddToCart", { content_ids: ["slimsoda-3bottles"], value: 24.99, currency: "USD" }, window._lastATCEventId);
+      }
+    }
+  }
+  window.addEventListener("scroll", checkAddToCartScroll, { passive: true });
+  setTimeout(checkAddToCartScroll, 1000);
 
   // Auto-track PageView
   trackEvent("PageView", { title: document.title });
@@ -123,16 +181,19 @@
     trackViewContent: function(data){
       var eid = genEventId();
       if(window.fbq) fbq("track", "ViewContent", data || {}, { eventID: eid });
+      sendCapi("ViewContent", data, eid);
       return trackEvent("ViewContent", data, eid);
     },
     trackAddToCart: function(data){
       var eid = genEventId();
+      window._lastATCEventId = eid;
       if(window.fbq) fbq("track", "AddToCart", data || {}, { eventID: eid });
       return trackEvent("AddToCart", data, eid);
     },
     trackInitiateCheckout: function(data){
       var eid = genEventId();
       if(window.fbq) fbq("track", "InitiateCheckout", data || {}, { eventID: eid });
+      sendCapi("InitiateCheckout", data, eid);
       return trackEvent("InitiateCheckout", data, eid);
     },
     trackCtaClick: function(data){
@@ -148,6 +209,7 @@
         num_items: 2
       }, data || {});
       if(window.fbq) fbq("track", "InitiateCheckout", metaPayload, { eventID: eid });
+      sendCapi("InitiateCheckout", metaPayload, eid);
       return sbPost("imphq_events", {
         id: eid,
         visitor_id: visitorId,
@@ -167,6 +229,7 @@
     trackLead: function(data){
       var eid = genEventId();
       if(window.fbq) fbq("track", "Lead", { email: data.email }, { eventID: eid });
+      sendCapi("Lead", { email: data.email }, eid);
       trackEvent("LeadCapture", { email: data.email, nome: data.nome }, eid);
       return sbPost("imphq_leads", Object.assign({
         id: crypto.randomUUID(),

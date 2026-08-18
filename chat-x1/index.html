@@ -72,7 +72,24 @@
   function trackEvent(eventName, eventData, eventId, opts){
     var eid = eventId || genEventId();
     if(window.fbq){
-      try { window.fbq("trackCustom", eventName, eventData || {}, { eventID: eid }); } catch(e){}
+      try {
+        // Map custom events to Meta standard events
+        var mapping = META_EVENT_MAP[eventName];
+        var payload = Object.assign({
+          content_ids: ["slimsoda-3bottles"],
+          content_name: "SlimSoda 2 Tubs (B1G1)",
+          content_type: "product",
+          currency: "USD"
+        }, eventData || {});
+        if(mapping && mapping.type !== "custom"){
+          payload.value = (eventData && eventData.value) || mapping.value;
+          window.fbq("track", mapping.type, payload, { eventID: eid });
+        } else {
+          // Pass value if provided in eventData
+          if(mapping && eventData && !eventData.value) payload.value = mapping.value;
+          window.fbq("trackCustom", eventName, payload, { eventID: eid });
+        }
+      } catch(e){}
     }
     return sbPost("imphq_events", {
       id: eid,
@@ -91,6 +108,48 @@
     }, opts);
   }
 
+  // Map custom events to Meta standard events + values
+  var META_EVENT_MAP = {
+    "PageView":       { type: "PageView",       value: 0 },
+    "ChatView":       { type: "ViewContent",    value: 5.00 },
+    "AudioPlay":      { type: "custom",         value: 2.00 },
+    "ChatReply":      { type: "custom",         value: 10.00 },
+    "ChatFreeText":   { type: "custom",         value: 8.00 },
+    "OfferView":      { type: "AddToCart",      value: 24.99 },
+    "InitiateCheckout":{ type: "InitiateCheckout", value: 24.99 }
+  };
+
+  // Server-side CAPI: send same event with same eventID (Meta dedups)
+  function sendCapi(eventName, eventData, eventId){
+    if(!eventId) return;
+    var meta = document.querySelector('meta[name="imp-pixel-id"]');
+    var pixelId = meta ? meta.getAttribute("content") : null;
+    if(!pixelId) return;
+    var mapping = META_EVENT_MAP[eventName];
+    var capiPayload = Object.assign({}, eventData || {}, {
+      content_ids: ["slimsoda-3bottles"],
+      content_name: "SlimSoda 2 Tubs (B1G1)",
+      content_type: "product",
+      currency: "USD"
+    });
+    if(mapping && !capiPayload.value) capiPayload.value = mapping.value;
+    var capiEventName = (mapping && mapping.type !== "custom") ? mapping.type : eventName;
+    try {
+      fetch("/api/track-capi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pixel_id: pixelId,
+          event_name: capiEventName,
+          event_id: eventId,
+          event_data: capiPayload,
+          event_source_url: window.location.href
+        }),
+        keepalive: true
+      }).catch(function(){});
+    } catch(e){}
+  }
+
   // Meta Pixel
   var pixelId = document.querySelector('meta[name="imp-pixel-id"]');
   if(pixelId){ pixelId = pixelId.getAttribute("content"); }
@@ -101,7 +160,20 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,"script","https://connect.facebook.net/en_US/fbevents.js");
     fbq("init", pixelId);
-    fbq("track", "PageView", {}, { eventID: genEventId() });
+    // PageView + ViewContent (product-level view)
+    var pvEid = genEventId();
+    fbq("track", "PageView", {}, { eventID: pvEid });
+    sendCapi("PageView", { title: document.title, source: "chat-x1" }, pvEid);
+    // ViewContent as the deeper "saw the product" signal
+    var vcEid = genEventId();
+    fbq("track", "ViewContent", {
+      content_ids: ["slimsoda-3bottles"],
+      content_name: "SlimSoda Chat LP",
+      content_type: "product_group",
+      value: 5.00,
+      currency: "USD"
+    }, { eventID: vcEid });
+    sendCapi("ViewContent", { content_ids: ["slimsoda-3bottles"], value: 5.00, currency: "USD" }, vcEid);
   }
 
   trackEvent("ChatView", { title: document.title, source: "chat-x1" });
@@ -113,7 +185,16 @@
     trackEvent: trackEvent,
     trackInitiateCheckout: function(data, keepalive){
       var eid = genEventId();
-      if(window.fbq) fbq("track", "InitiateCheckout", data || {}, { eventID: eid });
+      var payload = Object.assign({
+        content_ids: ["slimsoda-3bottles"],
+        content_name: "SlimSoda 2 Tubs (B1G1)",
+        content_type: "product",
+        value: 24.99,
+        currency: "USD",
+        num_items: 2
+      }, data || {});
+      if(window.fbq) fbq("track", "InitiateCheckout", payload, { eventID: eid });
+      sendCapi("InitiateCheckout", payload, eid);
       return trackEvent("InitiateCheckout", data, eid, { keepalive: !!keepalive });
     }
   };

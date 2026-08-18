@@ -38,6 +38,28 @@
 
   function genEventId(){ return crypto.randomUUID(); }
 
+  // Server-side CAPI helper (dedup by eventID with client fbq)
+  function sendCapi(eventName, eventData, eventId){
+    if(!eventId) return;
+    var meta = document.querySelector('meta[name="imp-pixel-id"]');
+    var pid = meta ? meta.getAttribute("content") : null;
+    if(!pid) return;
+    try {
+      fetch("/api/track-capi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          pixel_id: pid,
+          event_name: eventName,
+          event_id: eventId,
+          event_data: eventData || {},
+          event_source_url: window.location.href
+        }),
+        keepalive: true
+      }).catch(function(){});
+    } catch(e){}
+  }
+
   function sbPost(table, data){
     return fetch(SB_URL + "/rest/v1/" + table, {
       method: "POST",
@@ -97,7 +119,20 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
     document,"script","https://connect.facebook.net/en_US/fbevents.js");
     fbq("init", pixelId);
-    fbq("track", "PageView", {}, { eventID: genEventId() });
+    // PageView
+    var pvEid = genEventId();
+    fbq("track", "PageView", {}, { eventID: pvEid });
+    sendCapi("PageView", { title: document.title, source: "vsl" }, pvEid);
+    // ViewContent (product)
+    var vcEid = genEventId();
+    fbq("track", "ViewContent", {
+      content_ids: ["slimsoda-3bottles"],
+      content_name: "SlimSoda VSL (Yale + Oprah)",
+      content_type: "product",
+      value: 10.00,
+      currency: "USD"
+    }, { eventID: vcEid });
+    sendCapi("ViewContent", { content_ids: ["slimsoda-3bottles"], value: 10.00, currency: "USD" }, vcEid);
   }
 
   trackEvent("PageView", { title: document.title });
