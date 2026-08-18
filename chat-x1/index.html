@@ -390,6 +390,74 @@
   }
   .free-input button:disabled { opacity: 0.5; cursor: not-allowed; }
 
+  .chat-footer {
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    flex-shrink: 0;
+  }
+  #chat-input { min-height: 0; }
+  #chat-input:not(:empty) { padding: 10px 14px 0; }
+
+  .input-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px 10px;
+    background: #fff;
+  }
+  .input-bar .mic-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f0f2f5;
+    border: none;
+    color: #479C1A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .input-bar .mic-btn:hover { background: #e4e6eb; }
+  .input-bar .mic-btn.recording {
+    background: #d32f2f;
+    color: #fff;
+    animation: pulse-mic 1s ease-in-out infinite;
+  }
+  .input-bar .mic-btn.recording svg { transform: scale(1.05); }
+  @keyframes pulse-mic {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(211,47,47,0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(211,47,47,0); }
+  }
+  .input-bar input {
+    flex: 1;
+    border: none;
+    background: #f0f2f5;
+    border-radius: 22px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    min-width: 0;
+  }
+  .input-bar input:focus { background: #e8eaed; }
+  .input-bar .send-btn {
+    background: #479C1A;
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 9px 16px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .input-bar .send-btn:hover:not(:disabled) { background: #019E3F; }
+  .input-bar .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
   .offer-card {
     background: #fff;
     border-radius: 16px;
@@ -489,7 +557,16 @@
     <div class="welcome-mark">🔒 This conversation is private · end-to-end with Dana</div>
   </main>
 
-  <footer id="chat-input"></footer>
+  <footer class="chat-footer">
+    <div id="chat-input"></div>
+    <div class="input-bar">
+      <button class="mic-btn" id="mic-btn" title="Voice message" aria-label="Voice message">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 14a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 006 6.92V21h2v-3.08A7 7 0 0019 11h-2z"/></svg>
+      </button>
+      <input type="text" id="user-input" placeholder="Type a message..." maxlength="500" autocomplete="off">
+      <button class="send-btn" id="send-btn" disabled>Send</button>
+    </div>
+  </footer>
 </div>
 
 <script>
@@ -537,10 +614,11 @@ async function chatLlm(userText) {
 const SCRIPT = {
   start: {
     audio: "dana-intro",
-    text: "I created the formula that's in all those viral baking soda videos. But before I tell you how it works, I need to understand <em>you</em>. After the questions, I'll show you the recipe nobody else is sharing — and why the order matters.",
+    text: "I'm the formulator behind all those viral baking soda videos — the original recipe, not the copycat. Before I tell you how it works, I want to understand <em>you</em> first. A few quick questions, then I'll show you the recipe nobody else is sharing.",
     delay: 600,
     quickReplies: [
-      { label: "Okay, let's go →", next: "q1_age", primary: true }
+      { label: "Let's go", next: "q1_age", primary: true },
+      { label: "What's your story?", next: "confession" }
     ]
   },
 
@@ -595,7 +673,7 @@ const SCRIPT = {
 
   confession: {
     audio: "dana-confession",
-    text: "I'm going to tell you something I've never said publicly. I was wrong about something for <strong>twenty years</strong>. What I found out that night changed everything — and made the formula that ended up in all those videos.",
+    text: "I'm going to tell you something I've never said publicly. I was wrong about something for <strong>twenty years</strong>. What I found out that night changed everything — and ended up in the formula that's in all those videos you keep seeing.",
     image: { src: "images/slimsoda_adv2_02_sisters.webp", caption: "Me and Rachel, before I understood" },
     delay: 1500,
     next: "mechanism"
@@ -603,7 +681,7 @@ const SCRIPT = {
 
   mechanism: {
     audio: "dana-mechanism",
-    text: "It's not a diet. It's not a pill. It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much.",
+    text: "It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much.",
     image: { src: "images/slimsoda_adv2_06_four_ways.webp", caption: "Three of the four ways fail. One works." },
     delay: 1200,
     next: "testimonial"
@@ -633,9 +711,8 @@ const SCRIPT = {
   },
 
   ask_anything: {
-    text: "If you have any other question before I show you the offer, type it below. Otherwise, tap below to see what I made for you.",
+    text: "Anything else you want to ask? I'm here. Otherwise, let me show you the offer.",
     delay: 900,
-    showFreeInput: true,
     quickReplies: [
       { label: "Show me the offer →", next: "offer", primary: true }
     ]
@@ -721,7 +798,12 @@ function getOfferCardHtml(){
 
 const $messages = document.getElementById("chat-messages");
 const $input = document.getElementById("chat-input");
+const $userInput = document.getElementById("user-input");
+const $sendBtn = document.getElementById("send-btn");
+const $micBtn = document.getElementById("mic-btn");
 let currentAudio = null;
+let recognition = null;
+let isRecording = false;
 
 function scrollToBottom(){
   setTimeout(() => { $messages.scrollTop = $messages.scrollHeight; }, 50);
@@ -812,7 +894,123 @@ function addAudioPlayer(src, label){
 }
 
 function clearInput(){
+  // Only clears the quick-replies area, NOT the persistent input bar
   $input.innerHTML = "";
+}
+
+/* ============================================================
+   PERSISTENT INPUT BAR (text + voice)
+   ============================================================ */
+
+function setupInputBar(){
+  $sendBtn.addEventListener("click", () => sendFreeText());
+  $userInput.addEventListener("keydown", e => {
+    if(e.key === "Enter" && !e.shiftKey){
+      e.preventDefault();
+      sendFreeText();
+    }
+  });
+  $userInput.addEventListener("input", () => {
+    $sendBtn.disabled = $userInput.value.trim().length === 0;
+  });
+  $micBtn.addEventListener("click", toggleRecording);
+}
+
+let lastFreeTextTurn = 0;
+const MAX_FREE_TEXT_PER_SESSION = 2;
+
+async function sendFreeText(text){
+  const message = (text || $userInput.value).trim();
+  if(!message) return;
+  addUserMessage(message);
+  $userInput.value = "";
+  $sendBtn.disabled = true;
+  if(window.imptrack){
+    window.imptrack.trackEvent("ChatFreeText", { text: message.substring(0, 100), step: state.step });
+  }
+  // Rate limit free text turns
+  if(lastFreeTextTurn >= MAX_FREE_TEXT_PER_SESSION){
+    showTyping();
+    setTimeout(() => {
+      hideTyping();
+      addBotMessage("I want to make sure I get this right. Let me show you the offer so you have all the details, then we can keep talking.");
+      setTimeout(() => runNode("offer"), 1500);
+    }, 900);
+    return;
+  }
+  lastFreeTextTurn++;
+  showTyping();
+  const llmReply = await chatLlm(message);
+  setTimeout(() => {
+    hideTyping();
+    if(llmReply){
+      addBotMessage(llmReply);
+      $sendBtn.disabled = false;
+    } else {
+      // Fallback: route to offer
+      addBotMessage("I hear you. Let me show you the offer — that's the part that matters most.");
+      setTimeout(() => runNode("offer"), 1500);
+    }
+  }, 900);
+}
+
+function toggleRecording(){
+  if(isRecording){
+    stopRecording();
+  } else {
+    startRecording();
+  }
+}
+
+function startRecording(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    alert("Voice input not supported in this browser. Try Chrome or Edge.");
+    return;
+  }
+  recognition = new SR();
+  recognition.continuous = false;
+  recognition.interimResults = true;
+  recognition.lang = "en-US";
+  let finalTranscript = "";
+  recognition.onresult = (event) => {
+    let interim = "";
+    finalTranscript = "";
+    for(let i = event.resultIndex; i < event.results.length; i++){
+      const transcript = event.results[i][0].transcript;
+      if(event.results[i].isFinal){
+        finalTranscript += transcript;
+      } else {
+        interim += transcript;
+      }
+    }
+    $userInput.value = finalTranscript + interim;
+    $sendBtn.disabled = $userInput.value.trim().length === 0;
+  };
+  recognition.onend = () => {
+    isRecording = false;
+    $micBtn.classList.remove("recording");
+    if(finalTranscript.trim()){
+      sendFreeText(finalTranscript);
+    }
+  };
+  recognition.onerror = (e) => {
+    console.error("Speech error:", e.error);
+    isRecording = false;
+    $micBtn.classList.remove("recording");
+    if(e.error === "not-allowed"){
+      alert("Microphone access denied. Please allow microphone access and try again.");
+    }
+  };
+  recognition.start();
+  isRecording = true;
+  $micBtn.classList.add("recording");
+}
+
+function stopRecording(){
+  if(recognition){
+    recognition.stop();
+  }
 }
 
 function renderQuickReplies(replies, onClick){
@@ -927,41 +1125,8 @@ function runNode(nodeId){
       }
     }
     scrollToBottom();
-    // Render input options
-    if(node.showFreeInput){
-      renderFreeInput(async (text) => {
-        showTyping();
-        const llmReply = await chatLlm(text);
-        setTimeout(() => {
-          hideTyping();
-          if(llmReply){
-            addBotMessage(llmReply);
-          } else {
-            addBotMessage("I hear you. Let me show you the offer — that's the part that matters most.");
-          }
-          scrollToBottom();
-          setTimeout(() => runNode("offer"), 1200);
-        }, 900);
-      });
-      // Also add quick reply below
-      if(node.quickReplies){
-        // Append quick replies to input area as second row
-        const wrap = document.createElement("div");
-        wrap.className = "quick-replies";
-        node.quickReplies.forEach(r => {
-          const btn = document.createElement("button");
-          btn.className = "quick-reply" + (r.primary ? " primary" : "");
-          btn.textContent = r.label;
-          btn.addEventListener("click", () => {
-            wrap.querySelectorAll("button").forEach(b => b.disabled = true);
-            addUserMessage(r.label);
-            setTimeout(() => runNode(r.next), 800);
-          });
-          wrap.appendChild(btn);
-        });
-        $input.appendChild(wrap);
-      }
-    } else if(node.quickReplies){
+    // Render quick replies (input bar is always present)
+    if(node.quickReplies){
       renderQuickReplies(node.quickReplies, runNode);
     } else if(node.next){
       // No quickReplies but has a `next` — show "Continue" button
@@ -994,6 +1159,7 @@ const PRELOAD = [
 PRELOAD.forEach(src => { const i = new Image(); i.src = src; });
 
 // Start the flow
+setupInputBar();
 setTimeout(() => runNode("start"), 600);
 </script>
 </body>
