@@ -587,21 +587,24 @@ const SCRIPT = {
 
   personalized_hook: {
     text: null, // filled dynamically
-    delay: 1100
+    delay: 1100,
+    next: "confession"
   },
 
   confession: {
     audio: "dana-confession",
     text: "I'm going to tell you something I've never said publicly. <strong>I was wrong about something for twenty years.</strong> I was the skinny sister. I told Rachel to eat less. I was completely, shamefully wrong. What I found out that night changed everything.",
     image: { src: "images/slimsoda_adv2_02_sisters.webp", caption: "Me and Rachel, before I understood" },
-    delay: 1500
+    delay: 1500,
+    next: "mechanism"
   },
 
   mechanism: {
     audio: "dana-mechanism",
     text: "It's not a diet. It's not a pill. It's <strong>three ingredients, in the right order, in the right amounts.</strong> Baking soda. Ginger. Berberine. <em>Wake the cells. Protect the hormone. Flip the switch.</em> That's the whole secret. The viral videos never explain the order. That's why DIY fails.",
     image: { src: "images/slimsoda_adv2_06_four_ways.webp", caption: "Three of the four ways fail. One works." },
-    delay: 1200
+    delay: 1200,
+    next: "testimonial"
   },
 
   testimonial: {
@@ -609,19 +612,22 @@ const SCRIPT = {
     audio: null, // set dynamically
     text: null, // set dynamically
     image: null, // set dynamically
-    delay: 1300
+    delay: 1300,
+    next: "proof_sisters"
   },
 
   proof_sisters: {
     text: "I gave my sister Rachel the same formula. <strong>She lost 41 pounds.</strong> No diet. No gym. Just one scoop a day. She texted me the photo above and said: <em>\"Dana, the noise is gone.\"</em>",
     image: { src: "images/slimsoda_adv2_09_rachel_ba_kitchen.webp", caption: "Rachel — 41 pounds down" },
-    delay: 1200
+    delay: 1200,
+    next: "ask_anything"
   },
 
   offer: {
     audio: "dana-cta",
     text: null, // filled dynamically with offer card
-    delay: 1500
+    delay: 1500,
+    next: "end"
   },
 
   ask_anything: {
@@ -958,6 +964,9 @@ function runNode(nodeId){
       }
     } else if(node.quickReplies){
       renderQuickReplies(node.quickReplies, runNode);
+    } else if(node.next){
+      // No quickReplies but has a `next` — show "Continue" button
+      renderQuickReplies([{ label: "Continue →", next: node.next, primary: true }], runNode);
     } else if(nodeId === "end"){
       clearInput();
     } else {
