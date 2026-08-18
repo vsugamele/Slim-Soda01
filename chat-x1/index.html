@@ -552,6 +552,17 @@
     margin-top: 8px;
     line-height: 1.5;
   }
+  .offer-card-urgency {
+    font-size: 12px;
+    color: #d32f2f;
+    text-align: center;
+    margin-top: 8px;
+    font-weight: 700;
+    background: #fff5f5;
+    padding: 6px 10px;
+    border-radius: 6px;
+    line-height: 1.4;
+  }
 
   .welcome-mark {
     text-align: center;
@@ -651,7 +662,7 @@ const SCRIPT = {
     delay: 600,
     quickReplies: [
       { label: "Let's go", next: "q1_age", primary: true },
-      { label: "What's your story?", next: "confession" }
+      { label: "Tell me your story first", next: "confession" }
     ]
   },
 
@@ -714,10 +725,19 @@ const SCRIPT = {
 
   mechanism: {
     audio: "dana-mechanism",
-    text: "It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much.",
+    text: "It's <em>baking soda, ginger, berberine</em> — three ingredients, in the right order, in the right amounts. The first morning, you can <strong>feel the bloat release.</strong> The viral videos never explain the order. That's why the DIY version does nothing, and why the celebrity capsule costs four times as much. <em>Sound about right?</em>",
     image: { src: "images/slimsoda_adv2_06_four_ways.webp", caption: "Three of the four ways fail. One works." },
     delay: 1200,
-    next: "testimonial"
+    next: "reciprocity"
+  },
+
+  reciprocity: {
+    audio: "dana-reciprocity",
+    text: "Look, I gave away the recipe for free. The celebrities made billions. I'm not asking you to pay for the secret. <strong>I'm asking you to try the version that's done right.</strong> That's it.",
+    delay: 1500,
+    quickReplies: [
+      { label: "Continue →", next: "testimonial", primary: true }
+    ]
   },
 
   testimonial: {
@@ -730,17 +750,26 @@ const SCRIPT = {
   },
 
   proof_sisters: {
-    text: "I gave my sister Rachel the same formula. <strong>She lost 41 pounds.</strong> No diet. No gym. Just one scoop a day. She texted me the photo above and said: <em>\"Dana, the noise is gone.\"</em>",
+    text: "I gave my sister Rachel the same formula. <strong>She lost 41 pounds.</strong> No diet. No gym. Just one scoop a day. She texted me the photo above and said: <em>\"Dana, the noise is gone.\"</em> <br><br><strong>If you're still reading this, you're not ready to give up. You're just ready to do it right.</strong>",
     image: { src: "images/slimsoda_adv2_09_rachel_ba_kitchen.webp", caption: "Rachel — 41 pounds down" },
     delay: 1200,
-    next: "future_pace"
+    next: "loss_aversion"
+  },
+
+  loss_aversion: {
+    audio: "dana-loss-aversion",
+    text: "Six months from now, you'll either be free of this — or still looking for the answer. <em>Most women I hear from wish they had started sooner.</em> You know what I mean?",
+    delay: 1500,
+    quickReplies: [
+      { label: "I don't want to wait", next: "future_pace", primary: true }
+    ]
   },
 
   future_pace: {
-    text: "Picture yourself 90 days from now. The food noise is gone. You wake up lighter. Your husband notices first. <em>You're in the photo with your kids again.</em> That's what this is — not just a tub. A return to yourself.",
+    text: "Picture yourself 90 days from now. The food noise is gone. You wake up lighter. Your husband notices first. <em>You're in the photo with your kids again.</em> That's what this is — not just a tub. A return to yourself. <em>Sound fair so far?</em>",
     delay: 1500,
     quickReplies: [
-      { label: "I'm ready", next: "ask_anything", primary: true }
+      { label: "I'm in — show me", next: "ask_anything", primary: true }
     ]
   },
 
@@ -775,10 +804,10 @@ const SCRIPT = {
 function getPersonalizedHook(){
   const f = state.frustration;
   const hooks = {
-    "eat_less_gain": "That is the <strong>number one thing I hear from women who eat like a bird and still gain.</strong> I made this for exactly you. Take a breath. Let me show you why eating less was never going to work.",
-    "food_noise": "The food noise is the worst part. I know. <strong>It is not willpower. It is a switch in your gut.</strong> Let me show you how I flipped mine.",
-    "hormones": "After 40, after babies, after menopause — the switch gets stuck. <strong>It is not your hormones being broken. It is one specific signal that stopped.</strong> Let me show you how to restart it.",
-    "after_kids": "I made this for the sister version of you. <strong>Three kids in, body you don't recognize, doctors telling you to eat less.</strong> Same story Rachel lived. Let me show you what worked."
+    "eat_less_gain": "That is the <strong>number one thing I hear from women who eat like a bird and still gain.</strong> I know — you've probably tried cutting calories, even tried the celebrity capsule. <em>None of it worked because of the order.</em> Let me show you why eating less was never going to fix this.",
+    "food_noise": "The food noise is the worst part. I know. <strong>It is not willpower. It is a switch in your gut.</strong> You've probably tried everything short of this. Let me show you how I flipped mine — and how Rachel's did too.",
+    "hormones": "After 40, after babies, after menopause — the switch gets stuck. <strong>It is not your hormones being broken. It is one specific signal that stopped.</strong> You've probably been told it's 'just age.' It isn't. Let me show you how to restart it.",
+    "after_kids": "I made this for the sister version of you. <strong>Three kids in, body you don't recognize, doctors telling you to eat less.</strong> You've probably tried the gym, the shakes, even the injections. Same story Rachel lived. Let me show you what actually worked."
   };
   return hooks[f] || "I know exactly what you're going through. <strong>I made this for you.</strong> Take a breath. Let me show you.";
 }
@@ -845,6 +874,7 @@ function getOfferCardHtml(){
       <a href="${CHECKOUT_URL}" class="offer-card-cta" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source: 'chat-x1', step: state.step, age: state.age, frustration: state.frustration, glp1: state.glp1, weight: state.weight, value: 29.99, currency: 'USD', content_ids: ['slimsoda-3bottles'], callback: callback}, true); return true;">
         YES — SEND MY 2 TUBS ($29.99) →
       </a>
+      <div class="offer-card-urgency">⏰ Launch price — when the free-tub run is gone, it goes to $59.99/tub.</div>
       <div class="offer-card-meta">Sixty-day empty-tub money-back guarantee · Free shipping · Ships in 24h</div>
     </div>
   `;
