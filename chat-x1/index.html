@@ -1108,6 +1108,9 @@ function scheduleAutoAdvance(nextNodeId, delay){
 let lastFreeTextTurn = 0;
 const MAX_FREE_TEXT_PER_SESSION = 2;
 
+// Steps where the offer is imminent — only here do we fall back TO offer
+const OFFER_OR_NEAR = new Set(["offer", "ask_anything", "end"]);
+
 async function sendFreeText(text){
   const message = (text || $userInput.value).trim();
   if(!message) return;
@@ -1136,10 +1139,28 @@ async function sendFreeText(text){
     if(llmReply){
       addBotMessage(llmReply);
       $sendBtn.disabled = false;
-    } else {
-      // Fallback: route to offer
+      // If LLM reply ends with next-step prompt, no auto-advance (LLM already handled it)
+      // Otherwise continue from current step
+      const currentStep = state.step;
+      const next = SCRIPT[currentStep] && SCRIPT[currentStep].next;
+      if(next) scheduleAutoAdvance(next, 5000);
+      return;
+    }
+    // LLM failed — smart fallback (don't always jump to offer)
+    const currentStep = state.step;
+    const isGreeting = /^(hi|hello|hey|oi|olá|yo|hiya|howdy)\b/i.test(message);
+    if(OFFER_OR_NEAR.has(currentStep)){
+      // We're already at/near the offer — show it
       addBotMessage("I hear you. Let me show you the offer — that's the part that matters most.");
       setTimeout(() => runNode("offer"), 1500);
+    } else if(isGreeting){
+      // User just said hi — acknowledge warmly, then re-run the current step
+      addBotMessage("Hey! I'm so glad you're here. Let me show you what I was about to say.");
+      setTimeout(() => runNode(currentStep), 1200);
+    } else {
+      // Substantive input but LLM failed — continue the script from current step
+      addBotMessage("I hear you. Let me keep going — I want to show you everything.");
+      setTimeout(() => runNode(currentStep), 1200);
     }
   }, 900);
 }
