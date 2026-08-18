@@ -398,14 +398,7 @@
   }
 
   .quick-replies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 12px 14px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(0,0,0,0.06);
-    justify-content: flex-end;
+    display: none !important;
   }
   .quick-reply {
     background: #fff;
@@ -1081,8 +1074,35 @@ function setupInputBar(){
   });
   $userInput.addEventListener("input", () => {
     $sendBtn.disabled = $userInput.value.trim().length === 0;
+    clearAutoAdvance();
+  });
+  $userInput.addEventListener("focus", () => {
+    clearAutoAdvance();
   });
   $micBtn.addEventListener("click", toggleRecording);
+}
+
+/* ============================================================
+   AUTO-ADVANCE (cinema mode: script runs if user doesn't type)
+   ============================================================ */
+
+let autoAdvanceTimer = null;
+const AUTO_ADVANCE_MS = 9000; // 9 seconds of no input → advance
+
+function clearAutoAdvance(){
+  if(autoAdvanceTimer){
+    clearTimeout(autoAdvanceTimer);
+    autoAdvanceTimer = null;
+  }
+}
+
+function scheduleAutoAdvance(nextNodeId, delay){
+  clearAutoAdvance();
+  if(!nextNodeId) return;
+  autoAdvanceTimer = setTimeout(() => {
+    autoAdvanceTimer = null;
+    runNode(nextNodeId);
+  }, delay || AUTO_ADVANCE_MS);
 }
 
 let lastFreeTextTurn = 0;
@@ -1091,6 +1111,7 @@ const MAX_FREE_TEXT_PER_SESSION = 2;
 async function sendFreeText(text){
   const message = (text || $userInput.value).trim();
   if(!message) return;
+  clearAutoAdvance(); // Cancel cinema mode if user types
   addUserMessage(message);
   $userInput.value = "";
   $sendBtn.disabled = true;
@@ -1294,15 +1315,23 @@ function runNode(nodeId){
       }
     }
     scrollToBottom();
-    // Render quick replies (input bar is always present)
-    if(node.quickReplies){
-      renderQuickReplies(node.quickReplies, runNode);
+    // Quick replies are hidden via CSS. Auto-advance the script if user doesn't type.
+    if(node.quickReplies && node.quickReplies.length > 0){
+      // First quick reply is the default "happy path" advance
+      const firstReply = node.quickReplies[0];
+      if(firstReply.next){
+        // Slightly longer delay for qualifying questions (let user read options mentally)
+        const advanceDelay = firstReply.save ? 10000 : AUTO_ADVANCE_MS;
+        scheduleAutoAdvance(firstReply.next, advanceDelay);
+      }
     } else if(node.next){
-      // No quickReplies but has a `next` — show "Continue" button
-      renderQuickReplies([{ label: "Continue →", next: node.next, primary: true }], runNode);
+      // Narrative nodes with no quickReplies — auto-advance after delay
+      scheduleAutoAdvance(node.next);
     } else if(nodeId === "end"){
+      clearAutoAdvance();
       clearInput();
     } else {
+      clearAutoAdvance();
       clearInput();
     }
   }, delay);
