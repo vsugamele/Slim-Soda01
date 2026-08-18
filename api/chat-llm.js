@@ -118,7 +118,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ reply: null });
   }
 
-  const model = process.env.OPENROUTER_MODEL || "nvidia/nemotron-3.5-lightning:free";
+  const model = process.env.OPENROUTER_MODEL || "nvidia/nemotron-3-super-120b-a12b:free";
 
   try {
     const r = await fetch("https://openrouter.ai/api/v1/chat/completions", {
