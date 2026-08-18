@@ -16,6 +16,8 @@
 !/slimtide-vsl/**
 !/buy-page/
 !/buy-page/**
+!/chat-x1/
+!/chat-x1/**
 
 # Mas ignora lixo mesmo dentro dos diretórios permitidos
 index.html.bak
