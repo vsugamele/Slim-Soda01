@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Real-time Dashboard · DR Tracking (SlimSoda · Linfaflow · Cardio Clear · Linfozen)</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#1877F2; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --orange:#fdcb6e; --blue:#4ea1ff; --purple:#A78BFA; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1280px; margin:0 auto; padding:32px 24px 80px; }
+  header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:16px; }
+  .brand h1 { font-size:32px; font-weight:800; letter-spacing:-0.5px; margin:0; }
+  .brand h1 .accent { color:var(--accent); }
+  .brand p { color:var(--muted); font-size:13px; margin-top:4px; }
+  .brand a { color:var(--muted); text-decoration:none; margin-left:12px; }
+  .brand a:hover { color:var(--accent); }
+  .live-pill { display:inline-flex; align-items:center; gap:6px; background:var(--green); color:#fff; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+  .live-pill::before { content:""; width:7px; height:7px; background:#fff; border-radius:50%; box-shadow:0 0 0 3px rgba(255,255,255,0.3); animation:pulse 1.8s infinite; }
+  .demo-pill { display:inline-flex; align-items:center; gap:6px; background:var(--orange); color:#000; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+  .kpi-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-bottom:32px; }
+  .kpi { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px 22px; position:relative; overflow:hidden; }
+  .kpi::before { content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--accent); }
+  .kpi .label { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .kpi .value { font-size:32px; font-weight:800; margin-top:4px; line-height:1; font-variant-numeric:tabular-nums; }
+  .kpi .delta { font-size:11px; color:var(--muted); margin-top:6px; }
+  .kpi.spend { --accent:#c0392b; }
+  .kpi.revenue { --accent:#06a77d; }
+  .kpi.roas { --accent:#ffd166; }
+  .kpi.ic { --accent:#4ea1ff; }
+  .kpi.cpa { --accent:#A78BFA; }
+  .kpi.hook { --accent:#1877F2; }
+  .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:24px; margin-bottom:24px; }
+  .panel h2 { font-size:18px; font-weight:800; margin:0 0 4px; color:var(--text); }
+  .panel .sub { color:var(--muted); font-size:12px; margin-bottom:18px; }
+  .filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; align-items:center; }
+  .filter-bar .label { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-right:6px; }
+  .filter-bar select, .filter-bar input { padding:6px 10px; border:1px solid var(--border); border-radius:6px; font-family:inherit; font-size:12px; background:var(--panel-2); color:var(--text); }
+  .filter-bar select { min-width:160px; }
+  .filter-bar input { min-width:200px; }
+  .filter-bar input::placeholder { color:var(--muted); }
+  .table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  .table th { text-align:left; padding:10px 12px; background:var(--panel-2); color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; font-weight:700; border-bottom:1px solid var(--border); }
+  .table td { padding:10px 12px; border-bottom:1px solid var(--border); color:var(--text); font-variant-numeric:tabular-nums; }
+  .table tr:hover td { background:var(--panel-2); }
+  .table .num { font-weight:700; }
+  .table .pos { color:var(--green); }
+  .table .neg { color:var(--red); }
+  .table .mut { color:var(--muted); }
+  .table .badge { display:inline-block; padding:2px 7px; border-radius:4px; font-size:10px; font-weight:700; }
+  .badge.active { background:rgba(6,167,125,0.2); color:var(--green); border:1px solid var(--green); }
+  .badge.paused { background:rgba(192,57,43,0.2); color:var(--red); border:1px solid var(--red); }
+  .badge.completed { background:rgba(255,209,102,0.2); color:var(--gold); border:1px solid var(--gold); }
+  .skeleton { padding:40px; text-align:center; color:var(--muted); font-size:13px; }
+  .skeleton .spin { display:inline-block; width:24px; height:24px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin-right:8px; vertical-align:middle; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .error-box { background:rgba(192,57,43,0.1); border:1px solid var(--red); border-radius:8px; padding:18px; margin:18px 0; color:var(--text); }
+  .error-box h3 { color:var(--red); margin:0 0 8px; }
+  .error-box code { background:var(--bg); padding:2px 6px; border-radius:3px; color:var(--gold); font-size:12px; }
+  .status-line { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:11.5px; color:var(--muted); padding:12px 0; border-top:1px solid var(--border); margin-top:32px; }
+  .refresh-btn { background:var(--accent); color:#fff; border:none; padding:8px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; }
+  .refresh-btn:hover { background:#1565c0; }
+  .refresh-btn:disabled { opacity:0.5; cursor:not-allowed; }
+  .chart-wrap { position:relative; height:220px; margin-top:14px; }
+  .back { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back:hover { color:var(--accent); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width:800px) { .grid-2 { grid-template-columns:1fr; } }
+  code { font-family:"JetBrains Mono",monospace; font-size:11.5px; background:var(--panel-2); padding:1px 6px; border-radius:3px; color:var(--gold); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← HUB principal</a>
+  <a class="back" href="../tracking/index.html">← Tracking Dashboard (Supabase)</a>
+
+  <header>
+    <div class="brand">
+      <h1>Meta <span class="accent">Real-time</span> Dashboard</h1>
+      <p>KPIs direto do <code>/api/meta-campaigns</code> · Marketing API v19.0 · auto-refresh 5 min</p>
+    </div>
+    <div>
+      <span class="live-pill" id="source-pill" style="display:none">LIVE</span>
+      <span class="demo-pill" id="demo-pill" style="display:none">DEMO</span>
+      <button class="refresh-btn" id="refresh-btn">🔄 Atualizar agora</button>
+    </div>
+  </header>
+
+  <!-- SETUP WARNING -->
+  <div class="error-box" id="setup-box" style="display:none">
+    <h3>⚠️ Setup pendente — variáveis de ambiente do Vercel</h3>
+    <p>Para ativar dados <strong>reais do Meta</strong> (em vez do demo), adicione estas 2 env vars no Vercel:</p>
+    <ol style="margin:8px 0 0 18px; font-size:13px;">
+      <li><code>META_ACCESS_TOKEN</code> — token de longa duração do Meta Graph API (Marketing API)</li>
+      <li><code>META_AD_ACCOUNT_ID</code> — ID da conta de anúncios (formato: <code>act_1234567890</code>)</li>
+    </ol>
+    <p style="margin-top:10px; font-size:12px; color:var(--muted);">Acesse: <a href="https://vercel.com/dashboard" target="_blank" style="color:var(--accent)">vercel.com/dashboard</a> → <code>vsugamele/Slim-Soda01</code> → <strong>Settings</strong> → <strong>Environment Variables</strong>. Adicione as 2 vars e re-deploy.</p>
+  </div>
+
+  <!-- KPI ROW -->
+  <div class="kpi-row" id="kpi-row">
+    <div class="kpi spend"><div class="label">Spend 7d</div><div class="value" id="kpi-spend">$0</div><div class="delta" id="kpi-spend-delta">— carregando</div></div>
+    <div class="kpi revenue"><div class="label">Revenue 7d</div><div class="value" id="kpi-revenue">$0</div><div class="delta" id="kpi-revenue-delta">— campanhas ativas</div></div>
+    <div class="kpi roas"><div class="label">ROAS Blended</div><div class="value" id="kpi-roas">0.00</div><div class="delta" id="kpi-roas-delta">—</div></div>
+    <div class="kpi ic"><div class="label">ICs 7d</div><div class="value" id="kpi-ic">0</div><div class="delta" id="kpi-ic-delta">—</div></div>
+    <div class="kpi cpa"><div class="label">CPA Médio</div><div class="value" id="kpi-cpa">$0</div><div class="delta" id="kpi-cpa-delta">—</div></div>
+    <div class="kpi hook"><div class="label">Hook Rate Médio</div><div class="value" id="kpi-hook">0%</div><div class="delta" id="kpi-hook-delta">—</div></div>
+  </div>
+
+  <!-- FILTERS + CHART -->
+  <div class="panel">
+    <h2>📊 Campanhas ativas (Meta real-time)</h2>
+    <p class="sub">Filtros abaixo afetam a tabela + agregados acima. Auto-refresh: 5 min.</p>
+    <div class="filter-bar">
+      <span class="label">Range:</span>
+      <select id="filter-range">
+        <option value="today">Hoje</option>
+        <option value="1d">Último dia</option>
+        <option value="7d" selected>7 dias</option>
+        <option value="14d">14 dias</option>
+        <option value="30d">30 dias</option>
+      </select>
+      <span class="label">Status:</span>
+      <select id="filter-status">
+        <option value="">Todos</option>
+        <option value="ACTIVE">Ativas</option>
+        <option value="PAUSED">Pausadas</option>
+      </select>
+      <span class="label">Buscar:</span>
+      <input type="text" id="filter-search" placeholder="nome da campanha...">
+    </div>
+    <div class="chart-wrap"><canvas id="spend-chart"></canvas></div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="panel">
+    <h2>📋 Top campanhas (spend 7d)</h2>
+    <p class="sub">Clique em uma campanha pra ver breakdown. Ordenado por spend desc.</p>
+    <div id="table-wrap" class="skeleton"><span class="spin"></span>Carregando campanhas...</div>
+  </div>
+
+  <!-- META INFO -->
+  <div class="status-line">
+    <span>📡 Source: <span id="meta-source">—</span></span>
+    <span>⏱️ Fetched: <span id="meta-fetched">—</span></span>
+    <span>📊 Count: <span id="meta-count">—</span></span>
+    <span>🔄 Next auto-refresh: <span id="meta-next-refresh">5:00</span></span>
+  </div>
+
+</div>
+
+<script>
+const API_BASE = 'https://slim-soda01.vercel.app/api/meta-campaigns';
+let allCampaigns = [];
+let currentRange = '7d';
+let currentStatus = '';
+let currentSearch = '';
+let chart = null;
+let countdown = 300; // 5 min
+
+// Fetch
+async function fetchData() {
+  const params = new URLSearchParams();
+  if (currentRange) params.set('range', currentRange);
+  if (currentStatus) params.set('status', currentStatus);
+  if (currentSearch) params.set('q', currentSearch);
+  try {
+    const res = await fetch(API_BASE + '?' + params);
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || err.error || `HTTP ${res.status}`);
+    }
+    return await res.json();
+  } catch (e) {
+    console.error('Fetch error:', e);
+    throw e;
+  }
+}
+
+// Render KPIs
+function renderKPIs(data) {
+  const s = data.summary;
+  document.getElementById('kpi-spend').textContent = '$' + s.spend.toFixed(0);
+  document.getElementById('kpi-spend-delta').textContent = data.count + ' campanha(s)';
+  document.getElementById('kpi-revenue').textContent = '$' + s.revenue.toFixed(0);
+  document.getElementById('kpi-revenue-delta').textContent = s.purchases + ' vendas · 7d';
+  document.getElementById('kpi-roas').textContent = s.avg_roas.toFixed(2);
+  document.getElementById('kpi-roas-delta').textContent = s.spend > 0 ? `$${s.spend.toFixed(0)} spend` : '—';
+  document.getElementById('kpi-ic').textContent = s.ic;
+  document.getElementById('kpi-ic-delta').textContent = s.avg_cost_per_ic > 0 ? `$${s.avg_cost_per_ic.toFixed(2)}/IC` : '—';
+  document.getElementById('kpi-cpa').textContent = '$' + s.avg_cpa.toFixed(0);
+  document.getElementById('kpi-cpa-delta').textContent = s.purchases > 0 ? `${s.purchases} vendas` : 'sem vendas';
+  document.getElementById('kpi-hook').textContent = s.avg_hook_rate ? s.avg_hook_rate.toFixed(1) + '%' : '—';
+  document.getElementById('kpi-hook-delta').textContent = s.avg_ctr > 0 ? `CTR ${s.avg_ctr.toFixed(2)}%` : '—';
+}
+
+// Render table
+function renderTable(campaigns) {
+  const wrap = document.getElementById('table-wrap');
+  if (!campaigns.length) {
+    wrap.innerHTML = '<div class="skeleton">Nenhuma campanha encontrada com esses filtros.</div>';
+    return;
+  }
+  const rows = campaigns.map(c => {
+    const roasClass = c.roas_7d >= 1 ? 'pos' : c.roas_7d >= 0.5 ? 'mut' : 'neg';
+    const statusBadge = c.status === 'ACTIVE' ? 'active' : 'paused';
+    return `<tr>
+      <td>${escapeHtml(c.name)}<br><span class="mut" style="font-size:10px">${c.id} · ${c.objective}</span></td>
+      <td><span class="badge ${statusBadge}">${c.status}</span></td>
+      <td class="num">$${c.spend_7d.toFixed(0)}</td>
+      <td class="num">$${c.revenue_7d.toFixed(0)}</td>
+      <td class="num ${roasClass}">${c.roas_7d.toFixed(2)}</td>
+      <td class="num">${c.purchases_7d}</td>
+      <td class="num">$${c.cpa_7d > 0 ? c.cpa_7d.toFixed(0) : '—'}</td>
+      <td class="num">${c.ic_7d}</td>
+      <td class="num">$${c.cost_per_ic > 0 ? c.cost_per_ic.toFixed(2) : '—'}</td>
+      <td class="num">${c.hook_rate_7d.toFixed(1)}%</td>
+      <td class="num">${c.ctr_7d.toFixed(2)}%</td>
+      <td class="num">$${c.cpm_7d.toFixed(2)}</td>
+      <td class="num">${c.frequency_7d.toFixed(2)}</td>
+    </tr>`;
+  }).join('');
+
+  wrap.innerHTML = `<table class="table">
+    <thead>
+      <tr>
+        <th>Campanha</th>
+        <th>Status</th>
+        <th>Spend 7d</th>
+        <th>Revenue</th>
+        <th>ROAS</th>
+        <th>Compras</th>
+        <th>CPA</th>
+        <th>ICs</th>
+        <th>$ IC</th>
+        <th>Hook</th>
+        <th>CTR</th>
+        <th>CPM</th>
+        <th>Freq</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Render chart
+function renderChart(campaigns) {
+  const ctx = document.getElementById('spend-chart');
+  if (!ctx) return;
+  const top10 = campaigns.slice(0, 8);
+  if (chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: top10.map(c => c.name.length > 35 ? c.name.slice(0, 32) + '...' : c.name),
+      datasets: [
+        { label: 'Spend', data: top10.map(c => c.spend_7d), backgroundColor: '#c0392b' },
+        { label: 'Revenue', data: top10.map(c => c.revenue_7d), backgroundColor: '#06a77d' }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#9aa3b2', font: { size: 11 } } },
+        tooltip: { backgroundColor: '#1c2128', titleColor: '#fff', bodyColor: '#9aa3b2' }
+      },
+      scales: {
+        x: { ticks: { color: '#9aa3b2' }, grid: { color: 'rgba(255,255,255,0.05)' } },
+        y: { ticks: { color: '#9aa3b2', font: { size: 11 } }, grid: { display: false } }
+      }
+    }
+  });
+}
+
+// Render source pill
+function renderSource(data) {
+  document.getElementById('meta-source').textContent = data.source === 'live' ? '🟢 LIVE (Meta API)' : '🟡 DEMO (configure env vars)';
+  document.getElementById('meta-fetched').textContent = new Date(data.meta.fetched_at).toLocaleTimeString();
+  document.getElementById('meta-count').textContent = data.count;
+  document.getElementById('source-pill').style.display = data.source === 'live' ? 'inline-flex' : 'none';
+  document.getElementById('demo-pill').style.display = data.source === 'demo' ? 'inline-flex' : 'none';
+  if (data.source === 'demo') {
+    document.getElementById('setup-box').style.display = 'block';
+  } else {
+    document.getElementById('setup-box').style.display = 'none';
+  }
+}
+
+// Main load
+async function load() {
+  const btn = document.getElementById('refresh-btn');
+  btn.disabled = true;
+  btn.textContent = '⏳ Carregando...';
+  try {
+    const data = await fetchData();
+    allCampaigns = data.campaigns;
+    renderSource(data);
+    renderKPIs(data);
+    renderTable(data.campaigns);
+    renderChart(data.campaigns);
+    countdown = 300;
+  } catch (e) {
+    document.getElementById('table-wrap').innerHTML = `<div class="error-box"><h3>Erro ao carregar</h3><p>${e.message}</p></div>`;
+  }
+  btn.disabled = false;
+  btn.textContent = '🔄 Atualizar agora';
+}
+
+// Countdown + auto-refresh
+function tick() {
+  countdown--;
+  if (countdown <= 0) load();
+  const m = Math.floor(countdown / 60);
+  const s = countdown % 60;
+  document.getElementById('meta-next-refresh').textContent = `${m}:${String(s).padStart(2,'0')}`;
+}
+
+// Filters
+document.getElementById('filter-range').addEventListener('change', e => { currentRange = e.target.value; load(); });
+document.getElementById('filter-status').addEventListener('change', e => { currentStatus = e.target.value; load(); });
+let searchTimer;
+document.getElementById('filter-search').addEventListener('input', e => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(() => { currentSearch = e.target.value; load(); }, 500);
+});
+document.getElementById('refresh-btn').addEventListener('click', () => { countdown = 0; load(); });
+
+// Init
+load();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
