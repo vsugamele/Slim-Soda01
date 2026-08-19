@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reverse Engineering — SlimSoda Competitive Gap · DR HUB</title>
+<meta name="description" content="Engenharia reversa dos concorrentes SlimSoda/Linfaflow/Linfozen. Mapa de saturação e brechas inexploradas.">
+<style>
+  :root[data-theme="dark"] {
+    --bg: #0a0a0a; --surface: #141414; --surface-2: #1c1c1c; --border: #2a2a2a;
+    --text: #e8e8e8; --text-dim: #999; --text-mute: #666;
+    --accent: #ff5722; --accent-2: #ff8a50;
+    --slim: #06a77d; --cardio: #ef4444; --lipo: #8b5cf6;
+    --green: #06a77d; --yellow: #ffc107; --red: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "Inter", sans-serif; padding: 32px 20px 80px; line-height: 1.55; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .subtitle { color: var(--text-dim); font-size: 16px; max-width: 760px; }
+  .exec-box { background: linear-gradient(135deg, #1a0a0a 0%, #2a1a1a 100%); border: 1px solid var(--red); border-radius: 12px; padding: 24px 28px; margin: 24px 0 32px; }
+  .exec-box h2 { font-size: 20px; color: var(--red); margin-bottom: 12px; }
+  .exec-list { padding-left: 20px; }
+  .exec-list li { margin-bottom: 6px; color: var(--text); }
+  .exec-list strong { color: var(--yellow); }
+
+  .section-title { font-size: 22px; font-weight: 800; margin: 40px 0 16px; letter-spacing: -0.01em; }
+  .section-sub { color: var(--text-dim); font-size: 13px; margin-top: -8px; margin-bottom: 20px; }
+
+  /* SATURATION TABLE */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+  th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); font-size: 14px; }
+  th { background: var(--surface); color: var(--text-mute); text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; font-weight: 700; }
+  .sat-high { color: var(--red); font-weight: 700; }
+  .sat-med { color: var(--yellow); font-weight: 700; }
+  .sat-low { color: var(--green); font-weight: 700; }
+  .sat-zero { color: var(--accent); font-weight: 700; }
+  .check-yes { color: var(--green); }
+  .check-no { color: var(--red); }
+  .check-partial { color: var(--yellow); }
+
+  /* GAP BRIEFS */
+  .gap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 18px; margin-bottom: 32px; }
+  .gap-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px 22px; transition: border-color 0.15s, transform 0.15s; }
+  .gap-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .gap-rank { display: inline-block; background: var(--accent); color: #fff; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px; letter-spacing: 0.08em; margin-bottom: 10px; }
+  .gap-title { font-size: 17px; font-weight: 800; margin-bottom: 4px; line-height: 1.3; }
+  .gap-angle { display: inline-block; color: var(--accent-2); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .gap-desc { color: var(--text-dim); font-size: 13px; margin-bottom: 12px; }
+  .gap-section { margin-bottom: 10px; font-size: 13px; }
+  .gap-section strong { color: var(--text); display: block; margin-bottom: 2px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .gap-section p { color: var(--text-dim); }
+  .gap-hook { background: var(--bg); border-left: 3px solid var(--accent); padding: 10px 12px; border-radius: 4px; font-style: italic; color: var(--text); margin-top: 10px; font-size: 13px; }
+  .gap-meta { display: flex; gap: 6px; margin-top: 12px; flex-wrap: wrap; }
+  .gap-tag { font-size: 10px; padding: 2px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--text-mute); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">DR HUB · REVERSE ENGINEERING</div>
+    <h1>Competitive Gap — SlimSoda 2026-08</h1>
+    <p class="subtitle">Cruzei 28 criativos seus + 30+ criativos dos concorrentes do Meta Ad Library. Objetivo: achar o ângulo que TODO MUNDO faz (commoditizado) vs o que NINGUÉM faz (brecha = escala sem subir CPM).</p>
+  </header>
+
+  <div class="exec-box">
+    <h2>🎯 Sumário executivo</h2>
+    <ul class="exec-list">
+      <li><strong>3 ângulos SUPER saturados</strong> (todo mundo fazendo): "3 ingredients / 2 missing", "baking soda hack everyone getting wrong", anti-Ozempic genérico</li>
+      <li><strong>2 ângulos em alta mas poucos players</strong>: shock story (Margaret sister died), nurse autoridade 30 anos (Sandra K)</li>
+      <li><strong>5 BRECHAS ninguém tá explorando</strong>: specific result promise com número exato, time-based hook ("Day 14 photo"), cultural/exotic angle, in-real-life documentation, doctor autoridade específica</li>
+      <li><strong>Seu arsenal atual (28 criativos) é FORTE mas commodity</strong>. Top 8 (Tier 1) vão escalar 2-3x antes de saturar. Pra próxima rodada, tem que pivotar pra brechas</li>
+      <li><strong>Recomendação:</strong> Pare de produzir variações do "3 ingredients / 2 missing". Produz os 5 ângulos DIFERENCIADOS abaixo (curto, simples, com foto real)</li>
+    </ul>
+  </div>
+
+  <h2 class="section-title">📊 Mapa de saturação (ângulo × players × você)</h2>
+  <p class="section-sub">Ordenado por quantos anunciantes no Meta Ad Library usam. Vermelho = saturado. Verde = brecha.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ângulo</th>
+        <th>Players</th>
+        <th>Saturação</th>
+        <th>Você tem?</th>
+        <th>Recomendação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>"3 ingredients / 2 missing"</strong></td>
+        <td>5+ (Joe Yeugen, Anne Jassmim, etc)</td>
+        <td class="sat-high">🔴 ALTA</td>
+        <td class="check-yes">✓ Tier 1 (chatgpt-021649 + inline-002)</td>
+        <td>Pare de produzir. Tem 2 fortes, deixe rodar até saturar</td>
+      </tr>
+      <tr>
+        <td><strong>"Baking soda shot alone is wrong"</strong></td>
+        <td>4+ (Mike Harrington variantes, Onevitta)</td>
+        <td class="sat-high">🔴 ALTA</td>
+        <td class="check-yes">✓ Tier 1 (draft-001 + inline-001 + inline-003)</td>
+        <td>3 criativos seus. Saturando. Não produza mais</td>
+      </tr>
+      <tr>
+        <td><strong>Anti-Ozempic / "No needle"</strong></td>
+        <td>2 (Consumer Money Watch, Mike Harrington 1 var)</td>
+        <td class="sat-med">🟡 MÉDIA</td>
+        <td class="check-yes">✓ Tier 2 (slim-002 + slim-005 + wa-061158-2)</td>
+        <td>Tem 3, 1 vai escalar. Não produza mais</td>
+      </tr>
+      <tr>
+        <td><strong>"Skinny sister / friend" FSS</strong></td>
+        <td>3+ (Mike Harrington, Yeugen, RY)</td>
+        <td class="sat-high">🔴 ALTA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>NÃO produza.</strong> Saturado. Você perderia dinheiro</td>
+      </tr>
+      <tr>
+        <td><strong>News/Health Today/Breaking Story</strong></td>
+        <td>2-3 (seus drafts + Dr. Carol Greene avatar)</td>
+        <td class="sat-med">🟡 MÉDIA</td>
+        <td class="check-yes">✓ Tier 1 (4 criativos)</td>
+        <td>Seu formato é o melhor. Escala, não produz mais</td>
+      </tr>
+      <tr>
+        <td><strong>Investigation/Corkboard</strong></td>
+        <td>0 (nenhum SlimSoda faz isso)</td>
+        <td class="sat-zero">⚡ BRECHA</td>
+        <td class="check-yes">✓ Tier 1 (health-today-article-v2.png)</td>
+        <td>Único no mercado. <strong>Escala já.</strong></td>
+      </tr>
+      <tr>
+        <td><strong>"Nurse/Doctor autoridade 30 anos"</strong></td>
+        <td>1 (Olivia Smith "Sandra K" no Linfaflow)</td>
+        <td class="sat-low">🟢 BAIXA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>BRECHA #1.</strong> Produza 2-3 com avatar "Dr. Whitfield" ou "Nurse Maria 28 anos"</td>
+      </tr>
+      <tr>
+        <td><strong>"Shocking real story" (sister died, etc)</strong></td>
+        <td>1 (Linfaflow Margaret died, 3 variantes)</td>
+        <td class="sat-low">🟢 BAIXA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>BRECHA #2.</strong> Story de "minha amiga tentou baking soda, quase foi parar no hospital"</td>
+      </tr>
+      <tr>
+        <td><strong>"Specific result" (X lbs em Y dias)</strong></td>
+        <td>1 (Better Flow "3 weeks", Mike Harrington 38 lbs)</td>
+        <td class="sat-low">🟢 BAIXA</td>
+        <td class="check-partial">~ Parcial (slim-005 "Real Results" sem número)</td>
+        <td><strong>BRECHA #3.</strong> Foto real + "23 lbs em 21 dias, sem mudar dieta"</td>
+      </tr>
+      <tr>
+        <td><strong>Time-based hook ("Day 14 photo")</strong></td>
+        <td>0</td>
+        <td class="sat-zero">⚡ BRECHA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>BRECHA #4.</strong> Série de 4 fotos Day 1/7/14/30 com texto corrido</td>
+      </tr>
+      <tr>
+        <td><strong>Cultural/Exotic ("why Sardinian women...")</strong></td>
+        <td>0 (nenhum usa ângulo exótico atemporal)</td>
+        <td class="sat-zero">⚡ BRECHA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>BRECHA #5.</strong> "Why women in Sardinia drink this every morning at 60"</td>
+      </tr>
+      <tr>
+        <td><strong>"Sister/friend story" (não skinny, real life)</strong></td>
+        <td>1 (Rafael Yugen "my friend Dana")</td>
+        <td class="sat-low">🟢 BAIXA</td>
+        <td class="check-no">✗ Zero</td>
+        <td><strong>BRECHA #6.</strong> Story de "minha mãe tinha inchaço, médico disse X, descobri Y"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 class="section-title">🚀 6 brechas inexploradas — brief pra produzir AGORA</h2>
+  <p class="section-sub">Cada brief é pra um criativo novo. Foco: ângulo que ninguém cobre, formato simples (smartphone photo + bold text), hook em first-person.</p>
+
+  <div class="gap-grid">
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #1</div>
+      <div class="gap-title">Nurse Maria — 28 anos na UTI</div>
+      <div class="gap-angle">Authority + First-person</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Só Olivia Smith "Sandra K" usa nurse 30 anos, e é no Linfaflow (Cardio Clear). Ninguém no SlimSoda. Authority angle + heavy/aggressive.</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"I've watched 3 women die from dehydration complications in 28 years as an ICU nurse. Each of them was on a water pill for bloating. None of them were told there was a 3-ingredient morning drink that costs $0.30."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>Foto silhueta mulher 50+ com scrubs (NÃO rosto pra evitar publicity). Fundo: hospital. Bold text "28 YEARS IN THE ICU. I'VE SEEN TOO MANY DIE FROM THE PILL." Disclaimer: "EDUCATIONAL • NOT MEDICAL ADVICE"</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE FULL ARTICLE (article funnel)</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">Heavy/aggressive ✓</span>
+        <span class="gap-tag">Meta-safe ✓</span>
+        <span class="gap-tag">Differentiated ✓</span>
+      </div>
+      <div class="gap-hook">"3 women. 28 years. One morning ritual they should have been told about."</div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #2</div>
+      <div class="gap-title">Real photo — 23 lbs em 21 dias</div>
+      <div class="gap-angle">Specific result + UGC real</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Concorrentes prometem "lose weight" sem número. Você promete número EXATO + foto real. Heavy proof.</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"23 lbs. 21 days. I didn't change my diet. I didn't start working out. I added one thing to my morning water. Here's the exact 3 ingredients — and the order I was doing wrong for 4 months."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>Smartphone photo (UGC feel, slightly grainy). Mulher 40+ com bloat visivelmente reduzido (pose before/after mesmo frame, look-down). Bottom: 3 ingredient labels (baking soda, ACV, salt) com check. Disclaimer.</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE 3-STEP METHOD</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">Specific ✓</span>
+        <span class="gap-tag">UGC real ✓</span>
+        <span class="gap-tag">Heavy proof ✓</span>
+      </div>
+      <div class="gap-hook">"23 pounds gone in 21 days. I didn't change anything but one thing."</div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #3</div>
+      <div class="gap-title">My friend Carol — almost died</div>
+      <div class="gap-angle">Shocking real story + sister</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Só Linfaflow Margaret sister died. Transferir pattern pra SlimSoda: amiga/mãe com problema de bloat que quase foi hospitalizada por causa de água com baking soda errado.</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"My friend Carol drank baking soda water every morning for 6 months. Her bloat got worse. Then she went to the ER with stomach cramps so bad they kept her overnight. The doctor told her one thing she had been doing wrong — and it's the one thing every TikTok video leaves out."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>Smartphone photo Carol + texto bold. Fundo liso (clean, sem kitchen). Disclaimer grande no bottom: "EDUCATIONAL ONLY • NOT MEDICAL ADVICE". Headline tipo news: "My friend Carol almost lost her stomach to baking soda water."</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE WARNING (article)</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">Shock story ✓</span>
+        <span class="gap-tag">First-person ✓</span>
+        <span class="gap-tag">Meta-safe ✓</span>
+      </div>
+      <div class="gap-hook">"My friend Carol almost lost her stomach to baking soda water. Here's what the ER doctor told her."</div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #4</div>
+      <div class="gap-title">Why Sardinian women 60+ don't bloat</div>
+      <div class="gap-angle">Cultural/exotic + atemporal</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Nenhum SlimSoda usa ângulo exótico atemporal. Sardinia (per user memory: avoid '1958' vintage, use atemporal exotic) é a Blue Zone mais famosa. Combina com "60+ don't bloat" = avatar do user.</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"I'm 47. My grandmother is from Sardinia. She is 79. She drinks one glass of water every morning before coffee. She has never had a 'water pill' in her life. Her stomach is flatter than mine. I asked her what was in the glass. Three ingredients. No brand. No MLM. Here's the recipe."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>Smartphone photo de avó mediterrânea com glass (use ilustração ou stock pra evitar publicity). Side: 3 ingredient list (baking soda, ACV, lemon). Bottom: "LIVING PROOF SINCE 1947 — TRY THE RECIPE".</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE SARDINIAN RECIPE</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">Exotic ✓</span>
+        <span class="gap-tag">First-person ✓</span>
+        <span class="gap-tag">Avoids 1958 trap ✓</span>
+      </div>
+      <div class="gap-hook">"My grandmother is 79, from Sardinia, and has never had a water pill in her life."</div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #5</div>
+      <div class="gap-title">Day 1 / Day 7 / Day 14 / Day 30 — Real photos</div>
+      <div class="gap-angle">Time-based UGC + documentation</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Ninguém faz série temporal real. Todo mundo promete "Day 30 result" mas não mostra os 29 dias anteriores. Mostrar progressão = prova de que NÃO É instantâneo (que é o que avatar quer).</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"Day 1: bloated, embarrassed, hiding in loose shirts. Day 7: woke up with sock marks gone. Day 14: I bent over and my stomach didn't fold. Day 30: my husband asked if I lost weight. I didn't. I just added the missing step. 4 real photos. 30 days. Same dress."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>4-panel grid (1:1, 4 fotos selfie sequence). Smart grain, UGC feel. Bold caption: "30 days. Same dress. Different bloat." Disclaimer.</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE 30-DAY TIMELINE</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">UGC real ✓</span>
+        <span class="gap-tag">Documentation ✓</span>
+        <span class="gap-tag">Unfalsifiable proof ✓</span>
+      </div>
+      <div class="gap-hook">"Day 1 vs Day 30. Same dress. Different bloat."</div>
+    </div>
+
+    <div class="gap-card">
+      <div class="gap-rank">BRECHA #6</div>
+      <div class="gap-title">Dr. Whitfield — 1,200 women tested</div>
+      <div class="gap-angle">Doctor autoridade + sample size</div>
+      <div class="gap-desc"><strong>Por que brecha:</strong> Concorrentes usam "expert" genérico. Você usa doctor + sample size específico = credibilidade matemática. Combina com avatar-médico autorizado (per user memory: "Dr. Whitfield formadora" já mapeado).</div>
+      <div class="gap-section"><strong>Hook (em inglês):</strong><p>"I ran a 12-week trial with 1,200 women aged 40-65. Same morning drink. Same protocol. 91% reported visible reduction in abdominal bloat within 14 days. 7% saw no change. 2% had to stop due to acid sensitivity. Here is the full study — and the one reason the 7% didn't respond."</p></div>
+      <div class="gap-section"><strong>Visual brief:</strong><p>Silhueta médica (per user memory: use silhueta pra evitar publicity, "Dr. Whitfield formadora"). Headline: "I TESTED 1,200 WOMEN. 91% SAW RESULTS IN 14 DAYS." Subhead: "Dr. Whitfield, Internal Medicine". Bottom: link pro study (white paper simulado).</p></div>
+      <div class="gap-section"><strong>CTA:</strong><p>READ THE 12-WEEK STUDY (article)</p></div>
+      <div class="gap-meta">
+        <span class="gap-tag">Authority ✓</span>
+        <span class="gap-tag">Specific ✓</span>
+        <span class="gap-tag">Differentiated ✓</span>
+      </div>
+      <div class="gap-hook">"1,200 women. 12 weeks. One morning ritual. Here's what happened."</div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">📋 Resumo executivo — ação recomendada</h2>
+  <p class="section-sub">3 ações pra próxima rodada de produção de criativos.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ação</th>
+        <th>Brecha</th>
+        <th>Budget sugerido</th>
+        <th>Por que</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Produzir 1 criativo de CADA uma das 6 brechas</td>
+        <td>Todas</td>
+        <td>$300 total ($50/criativo)</td>
+        <td>Cada um é angle novo, sem concorrência direta. CPM mais baixo = escala mais barata</td>
+      </tr>
+      <tr>
+        <td>Pausar variação de "3 ingredients" depois de 30 dias</td>
+        <td>Saturado</td>
+        <td>—</td>
+        <td>Saturação detectada. Move budget pra brechas antes do CPM subir</td>
+      </tr>
+      <tr>
+        <td>Testar 1 "Day 1 vs Day 30" com foto real (UGC smartphone)</td>
+        <td>Documentação</td>
+        <td>$75-100</td>
+        <td>Maior potencial de viralidade no nicho. Se performar bem, virar série de 4-5 criativos</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <footer>
+    <p>DR HUB · Reverse Engineering · 2026-08-19</p>
+    <p style="margin-top: 8px;">Source: <code>references_v5/methodology/competitive-spy/index.html</code> (30+ cards) + <code>assets/slimsoda-creatives/2026-08-19/</code> (28 criativos) + análise manual</p>
+  </footer>
+
+</div>
+</body>
+</html>
