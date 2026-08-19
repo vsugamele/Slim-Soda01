@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khayat Niche Research — Template de Análise (Hooks & Bodys)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#d68910; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(214,137,16,0.12); color:var(--accent); border:1px solid rgba(214,137,16,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.red { border-left-color:var(--red); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout strong { color:var(--accent); }
+  .callout.green strong { color:var(--green); }
+  .callout.red strong { color:var(--red); }
+  .callout.blue strong { color:var(--blue); }
+  .callout.gold strong { color:var(--gold); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .step { background:var(--panel); border:1px solid var(--border); border-radius:10px; margin-bottom:14px; overflow:hidden; }
+  .step-header { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:14px; background:linear-gradient(90deg, rgba(214,137,16,0.08), transparent); }
+  .step-num { width:38px; height:38px; background:linear-gradient(135deg, var(--accent), #ffb74d); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:16px; color:#fff; flex-shrink:0; }
+  .step-header h3 { font-size:15px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .step-body { padding:14px 18px 18px; }
+  .step-body p { margin:6px 0; font-size:13.5px; }
+  .template-block { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 18px; margin:10px 0; border-radius:0 6px 6px 0; font-size:13.5px; line-height:1.7; }
+  .template-block .label { font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:6px; }
+  .template-block ul { margin:6px 0 0 18px; }
+  .template-block li { padding:3px 0; font-size:13.5px; color:var(--text); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  @media (max-width:720px) { .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Template · Khayat Niche Research · Hooks & Bodys</span>
+    <h1>Khayat Niche Research <span class="accent">· Template de Análise</span></h1>
+    <p class="lede">Template/worksheet pra analisar performance de ads do seu nicho. <strong>Cole seus próprios dados</strong> (top 5 hooks por hook rate, top 5 bodys por CPC) e responda as 4 perguntas. Use semanalmente pra encontrar padrões que viram novos ângulos.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Pra que serve:</strong> você roda 20+ ads por mês, tem planilha cheia de hook rate, CPC, CTR. Esse template te ajuda a <strong>encontrar o que diferencia winners de losers</strong> — sem achismo, só pattern matching.
+  </div>
+
+  <div class="callout blue">
+    <strong>🔁 Workflow:</strong> roda o spy → preenche os 4 blocos → cataloga padrões → aplica no próximo ad. <strong>Frequência:</strong> 1x por semana, ou a cada 10 ads novos. Não tem pressa — qualidade > velocidade.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Bloco 1 — Hooks com MAIOR hook rate</h2>
+
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">1</div>
+      <h3>Cole abaixo 5 hooks com o MAIOR hook rate:</h3>
+    </div>
+    <div class="step-body">
+      <div class="template-block">
+        <div class="label">📝 Seu template (preencher):</div>
+        <p style="font-style:italic; color:var(--muted);">[Hook #1 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #2 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #3 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #4 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #5 + hook rate]</p>
+      </div>
+
+      <h3>🇧🇷 PT-BR · O que extrair</h3>
+      <p>Cite o MÁXIMO de elementos possíveis que os hooks com MAIOR hook rate têm:</p>
+      <ul>
+        <li><strong>Ângulo</strong> — qual framework de copy? (luto, autoridade, mecanismo, problema, futuro, etc.)</li>
+        <li><strong>Avatar</strong> — quem tá falando? mulher 60+? sister? médica? especialista?</li>
+        <li><strong>Estrutura de copy</strong> — pergunta, afirmação, história, número, citação, exclamação?</li>
+        <li><strong>Nome chiclete</strong> — tem branded term? (V.I.P.E.R, Flow Reset, etc.)</li>
+        <li><strong>Duração do hook</strong> — vídeo de 3s, 8s, 15s, 30s? Texto de 5 palavras, 15 palavras, 30 palavras?</li>
+        <li><strong>Palavras-chave</strong> — "I", "you", "they", número específico, pergunta, "secret", "truth", "stop"?</li>
+        <li><strong>Padrão emocional</strong> — medo, raiva, esperança, curiosidade, vergonha, nostalgia?</li>
+        <li><strong>Frame temporal</strong> — "20 years ago", "yesterday", "next week", "in 90 days"?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Bloco 2 — Hooks com MENOR hook rate</h2>
+
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">2</div>
+      <h3>Cole abaixo 5 hooks com o MENOR hook rate:</h3>
+    </div>
+    <div class="step-body">
+      <div class="template-block">
+        <div class="label">📝 Seu template (preencher):</div>
+        <p style="font-style:italic; color:var(--muted);">[Hook #1 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #2 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #3 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #4 + hook rate]</p>
+        <p style="font-style:italic; color:var(--muted);">[Hook #5 + hook rate]</p>
+      </div>
+
+      <h3>🇧🇷 PT-BR · O que extrair</h3>
+      <p>Cite o MÁXIMO de elementos possíveis que os hooks com MENOR hook rate têm (mesma checklist do bloco 1):</p>
+      <ul>
+        <li>Ângulo, avatar, estrutura, nome chiclete, duração, palavras, frame emocional, frame temporal.</li>
+        <li><strong>Compare com o Bloco 1:</strong> qual a ÚNICA diferença mais significativa entre winners e losers?</li>
+        <li>Se a diferença é só 1 elemento (ex: duração), você sabe o que testar no próximo ad.</li>
+        <li>Se a diferença é múltipla (ângulo + avatar + estrutura), você tem um combo novo pra explorar.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Bloco 3 — Bodys com MENOR CPC</h2>
+
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">3</div>
+      <h3>Cole abaixo os bodys com menor CPC:</h3>
+    </div>
+    <div class="step-body">
+      <div class="template-block">
+        <div class="label">📝 Seu template (preencher):</div>
+        <p style="font-style:italic; color:var(--muted);">[Body #1 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #2 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #3 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #4 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #5 + CPC + hook que usou]</p>
+      </div>
+
+      <h3>🇧🇷 PT-BR · O que extrair</h3>
+      <p>Cite o MÁXIMO de elementos possíveis que os bodys com MENOR CPC têm:</p>
+      <ul>
+        <li><strong>Ângulo</strong> — mesmo do hook, ou vira no body?</li>
+        <li><strong>Avatar</strong> — vira mais específico no body (ex: "women 50-60 who tried Ozempic and quit")?</li>
+        <li><strong>Estrutura de copy</strong> — AIDA? PAS? BAB? SPIN? Storytelling? Direct mechanism? Objection-then-answer?</li>
+        <li><strong>Nome chiclete</strong> — repete o do hook, ou novo?</li>
+        <li><strong>Fatia de público</strong> — broad (50+ women) ou narrow (women 55-70 with mom + cancer history)?</li>
+        <li><strong>Fechamento do ad</strong> — "Saiba mais" / "Try free" / "Reserve your spot" / "Order now"?</li>
+        <li><strong>Provas</strong> — quantas? que tipo? visuais, demonstrativas, sociais, autoridade?</li>
+        <li><strong>Mecanismo</strong> — único? multi-step? branded?</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Bloco 4 — Bodys com MAIOR CPC</h2>
+
+  <div class="step">
+    <div class="step-header">
+      <div class="step-num">4</div>
+      <h3>Cole abaixo os bodys com maior CPC:</h3>
+    </div>
+    <div class="step-body">
+      <div class="template-block">
+        <div class="label">📝 Seu template (preencher):</div>
+        <p style="font-style:italic; color:var(--muted);">[Body #1 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #2 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #3 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #4 + CPC + hook que usou]</p>
+        <p style="font-style:italic; color:var(--muted);">[Body #5 + CPC + hook que usou]</p>
+      </div>
+
+      <h3>🇧🇷 PT-BR · O que extrair</h3>
+      <p>Cite o MÁXIMO de elementos possíveis que os bodys com MAIOR CPC têm (mesma checklist do Bloco 3):</p>
+      <ul>
+        <li>Ângulo, avatar, estrutura, nome chiclete, fatia, fechamento, provas, mecanismo.</li>
+        <li><strong>Compare com o Bloco 3:</strong> qual a ÚNICA diferença mais significativa entre winners e losers?</li>
+        <li>Se a diferença é só 1 elemento, você sabe o que testar no próximo ad.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Como aplicar o resultado</h2>
+
+  <div class="callout green">
+    <h3>Após preencher os 4 blocos</h3>
+    <p style="margin:6px 0; font-size:13.5px;">Você vai ter:</p>
+    <ol style="font-size:13.5px; margin:6px 0 0 18px;">
+      <li><strong>Lista de padrões que winners têm</strong> (Ângulo, avatar, estrutura, palavras, frame emocional, etc).</li>
+      <li><strong>Lista de padrões que losers têm</strong> (mesma checklist).</li>
+      <li><strong>Comparação direta</strong> — qual a ÚNICA diferença mais significativa?</li>
+      <li><strong>Hipótese testável</strong> — "se eu mudar X no próximo ad, hook rate / CPC vai mudar em Y%".</li>
+      <li><strong>Próximo teste</strong> — 1 hipótese, 1 variável, 1 semana de rodagem, 1 lição aprendida.</li>
+    </ol>
+  </div>
+
+  <div class="callout red">
+    <strong>🚫 Anti-pattern:</strong> rodar spy todo dia, mudar copy todo dia, sem catalogar nada. Você acaba com 30 ads diferentes, 0 padrões identificados, 0 aprendizado. <strong>CATALOGUE primeiro, otimize depois.</strong>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 Exemplo aplicado (SlimSoda — hipotético)</h2>
+
+  <div class="card" style="background:var(--panel-2); padding:18px; border-radius:8px; margin:18px 0;">
+    <h3>🟢 Bloco 1 (top 5 hooks por hook rate)</h3>
+    <ol style="font-size:13px; line-height:1.7;">
+      <li><em>"I was wrong about baking soda for 20 years."</em> — hook rate 4.2% (woman 50-60, kitchen)</li>
+      <li><em>"My sister lost 41 pounds. She didn't diet."</em> — 3.8% (woman 50-60, kitchen)</li>
+      <li><em>"Three ingredients. In that order. That's the recipe."</em> — 3.5% (man 50-60, office)</li>
+      <li><em>"If you eat less than your skinny friend and still gain — read this."</em> — 3.2% (woman 50-60, kitchen)</li>
+      <li><em>"The celebrity capsule is $100. The powder is $24.99."</em> — 2.9% (woman 50-60, comparison split)</li>
+    </ol>
+    <h3 style="margin-top:18px;">📊 Padrões identificados</h3>
+    <ul style="font-size:13px; line-height:1.7;">
+      <li><strong>Ângulo:</strong> vulnerability/luto (4 de 5) — sister/regret</li>
+      <li><strong>Avatar:</strong> woman 50-60 (4 de 5)</li>
+      <li><strong>Estrutura:</strong> declaração curta (5-12 palavras), sem pergunta</li>
+      <li><strong>Nome chiclete:</strong> nenhum (mas "baking soda" funciona como âncora)</li>
+      <li><strong>Duração:</strong> vídeo 6-8s, texto 7-12 palavras</li>
+      <li><strong>Palavras:</strong> "I", "sister", "20 years", "41 pounds", número específico</li>
+      <li><strong>Frame emocional:</strong> vulnerabilidade + revelação</li>
+    </ul>
+
+    <h3 style="margin-top:18px;">🔴 Bloco 2 (bottom 5 hooks por hook rate)</h3>
+    <ol style="font-size:13px; line-height:1.7;">
+      <li><em>"Try SlimSoda today and feel the difference."</em> — 0.4% (man 30-40, gym)</li>
+      <li><em>"SlimSoda is a revolutionary weight loss powder."</em> — 0.6% (woman 30-40, generic)</li>
+      <li><em>"Click here to learn more about SlimSoda."</em> — 0.5% (broad 30+)</li>
+      <li><em>"Looking to lose weight? We have a solution."</em> — 0.7% (broad 30+)</li>
+      <li><em>"SlimSoda is a powder that helps with weight."</em> — 0.8% (woman 30-40)</li>
+    </ol>
+
+    <h3 style="margin-top:18px;">📊 Padrões negativos</h3>
+    <ul style="font-size:13px; line-height:1.7;">
+      <li><strong>Avatar errado:</strong> 30-40 (vs 50-60 que ganha)</li>
+      <li><strong>Estrutura genérica:</strong> "Try", "Click here", "Looking to" — sem specificity</li>
+      <li><strong>Palavras vazias:</strong> "revolutionary", "solution", "helps with" — sem prova</li>
+      <li><strong>Frame temporal ausente:</strong> sem "20 years", "41 pounds", "today" — sem urgência/relevância</li>
+    </ul>
+
+    <h3 style="margin-top:18px;">✅ Hipótese testável</h3>
+    <p style="font-size:13.5px;"><strong>"Se eu trocar o avatar de 30-40 pra 50-60 (mantendo a copy canônica), o hook rate sobe de 0.5% pra 2.5%+."</strong></p>
+    <p style="font-size:13.5px; margin-top:6px;">Test setup: 1 variável (avatar), 1 semana, 5 ads concorrentes. Se hook rate subir, escala. Se não, tenta próxima hipótese (estrutura → duração → palavras).</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card"><h4>📅 Cadência recomendada</h4><p>1x por semana, ou a cada 10 ads novos. Mínimo 4 semanas de dados pra ter confiança estatística.</p></div>
+    <div class="card"><h4>🗂️ Onde guardar</h4><p>Google Sheet com 4 abas (uma por bloco). Cada ad ganha ID único. Adiciona link do Meta Ad Library + data de início + métricas. <em>Não confie em planilha do Meta — exporta semanalmente.</em></p></div>
+  </div>
+
+  <div class="footer">
+    Khayat Niche Research Template · transcrito em 19/ago/2026 · complemento do <a href="../ad-library-spy/" style="color:#d68910;">ad-library-spy/</a> e <a href="../dtc-control/" style="color:#7c3aed;">dtc-control/</a>. <br>
+    Próximo passo: <strong>criar Planilha DR Research com 4 abas + 1 aba de calendário</strong> (a fazer) — me peça se quiser.<br>
+    <strong>Skill correspondente:</strong> <code>C:\Users\vsuga\.claude\skills\niche-research\SKILL.md</code> (124 linhas, 12KB) — workflow acionável + checklist de saída.<br>
+    <strong>Cross-ref arsenal:</strong> <a href="../dtc-control/" style="color:#7c3aed;">dtc-control/</a> (qual alavanca testar) · <a href="../skills-index/" style="color:#7c3aed;">skills-index/</a> (índice completo) · <a href="../../tracking/" style="color:#06a77d;">tracking/</a> (data real).
+  </div>
+
+</div>
+</body>
+</html>

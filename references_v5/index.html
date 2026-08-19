@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DR Funnel Hub v22 — Live Deploys + Search + Status (SlimSoda · Cardio Clear · Linfaflow)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f6f4f0; color: #1a1a1a; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  aside { background: #1a1a1a; color: #e5e5e5; padding: 24px 0; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+  @media (max-width: 900px) { aside { position: static; height: auto; } }
+  aside .brand { padding: 0 20px 20px; border-bottom: 1px solid #2a2a2a; }
+  aside .brand h1 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: #fff; line-height: 1.2; }
+  aside .brand .sub { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600; }
+  aside nav { padding: 16px 0; }
+  aside nav .nav-section { padding: 14px 20px 6px; color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  aside nav a { display: flex; align-items: center; gap: 10px; padding: 9px 20px; color: #ccc; text-decoration: none; font-size: 13px; font-weight: 500; transition: background 0.15s, color 0.15s; border-left: 2px solid transparent; }
+  aside nav a:hover { background: #242424; color: #fff; }
+  aside nav a.active { background: #242424; color: #fff; border-left-color: #c0392b; }
+  aside nav a .badge-sm { margin-left: auto; font-size: 9px; background: #c0392b; color: #fff; padding: 1px 6px; border-radius: 8px; font-weight: 700; }
+  aside nav a .badge-sm.amber { background: #d68910; }
+  aside nav a .badge-sm.blue { background: #2874a6; }
+  aside nav a .badge-sm.purple { background: #7c3aed; }
+  aside .footer { padding: 16px 20px; color: #666; font-size: 11px; border-top: 1px solid #2a2a2a; margin-top: 20px; }
+  main { padding: 40px 36px 80px; max-width: 1100px; }
+  @media (max-width: 700px) { main { padding: 24px 18px 60px; } }
+  .hero { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 32px; margin-bottom: 36px; }
+  .hero h2 { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; color: #1a1a1a; line-height: 1.15; letter-spacing: -0.5px; }
+  .hero p { color: #666; font-size: 15px; margin-top: 8px; max-width: 720px; }
+  .hero .stats { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 20px; padding-top: 20px; border-top: 1px solid #f0f0f0; }
+  .hero .stat strong { display: block; font-size: 24px; color: #c0392b; font-weight: 800; }
+  .hero .stat span { color: #888; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: #1a1a1a; margin: 36px 0 8px; letter-spacing: -0.3px; }
+  .section-sub { font-size: 14px; color: #666; margin-bottom: 24px; max-width: 720px; }
+  .grid-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 18px 0 24px; }
+  @media (max-width: 900px) { .grid-products { grid-template-columns: 1fr; } }
+  .product { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+  .product:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+  .product-head { padding: 24px 24px 16px; border-bottom: 1px solid #f0f0f0; position: relative; }
+  .product-head .badge-rank { position: absolute; top: 24px; right: 24px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 4px 9px; border-radius: 4px; }
+  .badge-rank.gold { background: #ffd166; color: #1a1a1a; }
+  .badge-rank.silver { background: #d0d4dc; color: #1a1a1a; }
+  .badge-rank.bronze { background: #cd7f32; color: #fff; }
+  .product-head h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 900; line-height: 1.2; margin-bottom: 4px; }
+  .product-head .ads { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+  .product-head .ads b { color: #c0392b; font-size: 18px; }
+  .product-body { padding: 18px 24px; flex: 1; }
+  .product-body p { font-size: 13.5px; color: #444; margin-bottom: 10px; line-height: 1.5; }
+  .product-body .folder-list { list-style: none; margin: 12px 0; padding: 0; }
+  .product-body .folder-list li { padding: 5px 0; font-size: 13px; color: #333; display: flex; justify-content: space-between; align-items: center; }
+  .product-body .folder-list li .count { font-size: 10px; background: #f6f4f0; color: #777; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .product-body .folder-list li b { color: #1a1a1a; font-weight: 600; }
+  .product-body .meta { display: flex; gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; font-size: 11px; color: #888; }
+  .product-body .meta span b { color: #1a1a1a; font-weight: 700; }
+  .product-actions { padding: 14px 24px; background: #1a1a1a; }
+  .product-actions .btn { display: block; width: 100%; padding: 10px 12px; border-radius: 4px; text-decoration: none; text-align: center; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  .product-actions .btn-primary { background: #c0392b; color: #fff; }
+  .product-actions .btn-primary:hover { background: #a0291f; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+  .panel { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; }
+  .panel h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; margin-bottom: 12px; }
+  .panel ul { list-style: none; padding: 0; }
+  .panel ul li { padding: 7px 0; border-bottom: 1px dashed #f0f0f0; font-size: 13px; }
+  .panel ul li:last-child { border-bottom: none; }
+  .panel ul li a { color: #1a1a1a; text-decoration: none; font-weight: 600; }
+  .panel ul li a:hover { color: #c0392b; }
+  .panel ul li .tag { display: inline-block; font-size: 10px; background: #f6f4f0; color: #555; padding: 2px 8px; border-radius: 10px; margin-left: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; vertical-align: middle; }
+  .footer-section { margin-top: 56px; padding-top: 24px; border-top: 1px solid #e5e5e5; color: #888; font-size: 12px; text-align: center; }
+  .folder-tree { background: #1a1a1a; color: #d4d4d4; border-radius: 12px; padding: 20px 24px; font-family: ui-monospace, monospace; font-size: 12px; line-height: 1.7; overflow-x: auto; }
+  .folder-tree .comment { color: #888; }
+  .folder-tree .folder { color: #4ec9b0; font-weight: 700; }
+  .folder-tree .new { color: #ffd166; }
+
+  /* === LIVE DEPLOYS BANNER (aside) === */
+  .live-deploys { padding: 14px 20px; border-bottom: 1px solid #2a2a2a; }
+  .live-deploys .label { color: #06a77d; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .live-deploys .label::before { content: ""; display: inline-block; width: 7px; height: 7px; background: #06a77d; border-radius: 50%; box-shadow: 0 0 0 3px rgba(6,167,125,0.25); animation: pulse-dot 1.8s infinite; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .live-deploys a { display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin: 3px -8px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 500; border-radius: 4px; transition: background 0.15s, color 0.15s; }
+  .live-deploys a:hover { background: #242424; color: #fff; }
+  .live-deploys a .ico { font-size: 13px; }
+  .live-deploys a .arrow { margin-left: auto; opacity: 0.4; font-size: 10px; }
+  .live-deploys a.down { opacity: 0.5; }
+  .live-deploys a.down .ico { filter: grayscale(1); }
+
+  /* === SEARCH BAR (main top) === */
+  .search-wrap { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .search-wrap input { flex: 1; border: none; outline: none; font-family: inherit; font-size: 15px; padding: 8px 4px; background: transparent; color: #1a1a1a; }
+  .search-wrap input::placeholder { color: #aaa; }
+  .search-wrap .ico { font-size: 18px; color: #888; }
+  .search-wrap .count { font-size: 12px; color: #888; font-weight: 600; }
+  .search-wrap .count strong { color: #c0392b; }
+  .search-wrap kbd { background: #f6f4f0; color: #888; border: 1px solid #e5e5e5; border-radius: 4px; padding: 2px 6px; font-size: 10px; font-family: ui-monospace, monospace; }
+
+  /* mark.js highlighting */
+  mark.search-hit { background: #ffd166; color: #1a1a1a; padding: 0 2px; border-radius: 2px; }
+  .hidden-by-search { display: none !important; }
+
+  /* === INTEGRATION STATUS PANEL === */
+  .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 18px; }
+  .status-card { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 8px; padding: 14px 16px; }
+  .status-card .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+  .status-card .name { font-size: 13px; font-weight: 700; color: #1a1a1a; }
+  .status-card .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .status-card .dot.green { background: #06a77d; box-shadow: 0 0 0 2px rgba(6,167,125,0.2); }
+  .status-card .dot.orange { background: #d68910; box-shadow: 0 0 0 2px rgba(214,137,16,0.2); }
+  .status-card .dot.red { background: #c0392b; box-shadow: 0 0 0 2px rgba(192,57,43,0.2); }
+  .status-card .dot.gray { background: #aaa; }
+  .status-card .desc { font-size: 11px; color: #666; line-height: 1.5; }
+  .status-card .desc code { font-size: 10.5px; background: #f0f0f0; padding: 1px 5px; border-radius: 3px; color: #c0392b; }
+  .status-card .action { display: inline-block; margin-top: 6px; font-size: 11px; color: #c0392b; text-decoration: none; font-weight: 700; }
+  .status-card .action:hover { text-decoration: underline; }
+
+  /* === CHANGELOG (GitHub commits) === */
+  .changelog-list { background: #fafafa; border: 1px solid #e5e5e5; border-radius: 8px; margin-top: 18px; overflow: hidden; }
+  .changelog-item { display: grid; grid-template-columns: 90px 80px 1fr; gap: 14px; padding: 12px 18px; border-bottom: 1px solid #ececec; font-size: 13px; align-items: center; }
+  .changelog-item:last-child { border-bottom: none; }
+  .changelog-item:hover { background: #fff; }
+  .changelog-item .date { color: #888; font-family: ui-monospace, monospace; font-size: 11px; }
+  .changelog-item .sha { color: #fff; background: #1a1a1a; padding: 2px 7px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 10px; font-weight: 700; text-align: center; }
+  .changelog-item .sha a { color: #fff; text-decoration: none; }
+  .changelog-item .msg { color: #1a1a1a; font-weight: 500; }
+  .changelog-item .msg .scope { color: #7c3aed; font-weight: 700; margin-right: 6px; }
+  .changelog-item .author { color: #888; font-size: 11px; margin-top: 2px; }
+  .changelog-skeleton { padding: 18px; color: #888; font-size: 12px; text-align: center; }
+  .changelog-footer { background: #1a1a1a; color: #ccc; padding: 10px 18px; font-size: 12px; }
+  .changelog-footer a { color: #ffd166; text-decoration: none; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<aside>
+  <div class="brand">
+    <h1>DR Funnel Hub</h1>
+    <div class="sub">v24 · + Skills Index + 3 new skills (DTC/Proof/Niche) · 19/ago/2026</div>
+  </div>
+
+  <div class="live-deploys">
+    <div class="label">Live Deploys</div>
+    <a href="https://slim-soda01.vercel.app/" target="_blank"><span class="ico">🥤</span> SlimSoda LP<span class="arrow">↗</span></a>
+    <a href="https://slim-soda01.vercel.app/chat-x1/" target="_blank"><span class="ico">💬</span> Chat-x1 Dana<span class="arrow">↗</span></a>
+    <a href="https://slim-soda01.vercel.app/buy-page/" target="_blank"><span class="ico">💰</span> Buy-page ($24.99)<span class="arrow">↗</span></a>
+    <a href="https://slim-soda01.vercel.app/slimtide-vsl/" target="_blank"><span class="ico">🎬</span> SlimTide VSL<span class="arrow">↗</span></a>
+    <a href="https://imphafilliate.vercel.app/" target="_blank" class="down"><span class="ico">🟢</span> imphafilliate (LP)<span class="arrow">↗</span></a>
+    <a href="https://github.com/vsugamele/imperiox-aa918b63/tree/feat/slimsoda-x1-conversational" target="_blank"><span class="ico">⚙️</span> Flow (PR branch)<span class="arrow">↗</span></a>
+  </div>
+  <nav>
+    <div class="nav-section">🎯 Produtos (3)</div>
+    <a href="by-product/slimsoda/_index.html" target="_blank">🥇 SlimSoda <span class="badge-sm">1.1k ads</span></a>
+    <a href="by-product/cardio-clear/_index.html" target="_blank">🥉 Cardio Clear <span class="badge-sm" style="background:#C8102E">80 ads</span></a>
+    <a href="by-product/linfaflow/_index.html" target="_blank">🥈 Linfaflow <span class="badge-sm amber">780 ads</span></a>
+    <div class="nav-section">📝 Briefs & Copy</div>
+    <a href="by-product/slimsoda/copy/briefing-affiliate/_index.html" target="_blank">📋 SlimSoda Affiliate Brief <span class="badge-sm purple">9 âng</span></a>
+    <a href="by-product/slimsoda/copy/chat-x1-briefing/_index.html" target="_blank">💬 SlimSoda Chat-x1 Brief <span class="badge-sm" style="background:#a29bfe; color:#000">25+ técn</span></a>
+    <a href="by-product/linfaflow/copy/briefing-linfaflow/_index.html" target="_blank">🟠 Linfaflow Brief <span class="badge-sm" style="background:#FF8A3D; color:#000">9 âng</span></a>
+    <a href="by-product/cardio-clear/copy/briefing-cardio/_index.html" target="_blank">🔴 Cardio Clear Brief <span class="badge-sm" style="background:#C8102E; color:#fff">9 âng</span></a>
+    <div class="nav-section">📚 Methodology</div>
+    <a href="methodology/cbo-bifi/_index.html" target="_blank">CBO Bifi (4 fases)</a>
+    <a href="methodology/dtc-black-bifi/_index.html" target="_blank">DTC Black (P1-P4)</a>
+    <a href="methodology/amanda-motor/_index.html" target="_blank">Motor Amanda N3 <span class="badge-sm" style="background:#c0392b">×2</span></a>
+    <a href="methodology/ad-library-spy/_index.html" target="_blank">Ad Library Spy <span class="badge-sm amber">RANK</span></a>
+    <a href="methodology/dtc-control/_index.html" target="_blank">🎯 DTC Control (8 alav Khayat) <span class="badge-sm" style="background:#06a77d; color:#fff;">NEW</span></a>
+    <a href="methodology/proof-elements/_index.html" target="_blank">🔬 Proof Elements (22+) <span class="badge-sm" style="background:#06a77d; color:#fff;">NEW</span></a>
+    <a href="methodology/niche-research/_index.html" target="_blank">📊 Niche Research (4 blocos) <span class="badge-sm" style="background:#06a77d; color:#fff;">NEW</span></a>
+    <div class="nav-section">🧠 Skills DR (arsenal)</div>
+    <a href="methodology/skills-index/_index.html" target="_blank">🗂️ Skills Index & Cross-Ref <span class="badge-sm" style="background:#7c3aed; color:#fff;">8+ skills</span></a>
+    <a href="https://github.com/vsugamele/imperiox-aa918b63/tree/feat/slimsoda-x1-conversational" target="_blank">⚙️ Flow templates (imperiox) <span class="arrow">↗</span></a>
+    <div class="nav-section">🔬 Outros Spy</div>
+    <a href="by-product/outros/south-beach/southbeach-vsl-proxy/index.html" target="_blank">SouthBeach (skincare)</a>
+    <a href="by-product/outros/haritaki/_analysis-haritaki-spy.md" target="_blank">Haritaki (insônia)</a>
+    <div class="nav-section">📖 Library</div>
+    <a href="funnel.html">🗺️ Funnel end-to-end</a>
+    <a href="patterns.html">DR patterns bank <span class="badge-sm">36</span></a>
+    <a href="tracking/index.html">📊 Tracking Dashboard <span class="badge-sm" style="background:#06a77d; color:#fff;">LIVE</span></a>
+    <a href="README.md">README</a>
+  </nav>
+  <div class="footer">
+    Hub v15 — reorganizado por produto (by-product + methodology + assets). <br>
+    Cada produto é self-contained: copy + estrategia + imagens + lps + ads + quiz/affiliate.
+  </div>
+</aside>
+
+<main>
+
+  <div class="search-wrap">
+    <span class="ico">🔍</span>
+    <input type="search" id="search-input" placeholder="Buscar no hub... (ex: chat-x1, briefing, methodology, slimsoda)" autocomplete="off" />
+    <span class="count" id="search-count"><strong>0</strong> matches</span>
+    <kbd>ESC</kbd> limpa
+  </div>
+
+  <div class="hero">
+    <h2>3 produtos · <span style="color:#c0392b">organizado por pasta self-contained</span> + briefing PT-BR 🆕</h2>
+    <p>Hub reorganizado em <strong>18/ago/2026</strong> — antes era flat (15 cards misturados). Agora cada produto é uma pasta com TUDO que precisa pra rodar: <code>copy/</code>, <code>estrategia/</code>, <code>imagens/</code>, <code>lps/</code>, <code>ads/</code>, <code>quiz/</code>. Metodologias centralizadas em <code>methodology/</code> pra reutilizar entre produtos.</p>
+    <div class="stats">
+      <div class="stat"><strong>3</strong><span>Produtos canônicos</span></div>
+      <div class="stat"><strong>1.960+</strong><span>ads ativos spy</span></div>
+      <div class="stat"><strong>15+</strong><span>afiliados mapeados</span></div>
+      <div class="stat"><strong>4</strong><span>metodologias (Bifi CBO + Bifi DTC + Amanda + Spy)</span></div>
+    <div class="stat"><strong>9</strong><span>ângulos no Affiliate Brief <a href="by-product/slimsoda/copy/briefing-affiliate/_index.html" target="_blank" style="color:#7c3aed; font-weight:700;">→ abrir</a></span></div>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="changelog">📝 Recent Changes <span class="badge-sm" style="background:#7c3aed; color:#fff; font-size:10px; margin-left:8px;">Slim-Soda01</span></h2>
+  <p class="section-sub">Últimos 10 commits do repo <code>vsugamele/Slim-Soda01</code> via GitHub API. Atualiza com F5. Mostra o que mudou nos deploys do buy-page, chat-x1, VSL e tracker.</p>
+
+  <div class="changelog-list" id="changelog-list">
+    <div class="changelog-skeleton">Carregando últimos commits…</div>
+  </div>
+
+  <h2 class="section-title" id="status">🔌 Integration Status</h2>
+  <p class="section-sub">Estado atual das integrações. <strong style="color:#c0392b;">🟢 verde = ok</strong>, <strong style="color:#d68910;">🟠 laranja = atenção</strong>, <strong style="color:#c0392b;">🔴 vermelho = bloqueado</strong>, ⚪ cinza = ainda não testado. Esta página faz HEAD requests em tempo real — atualiza com F5.</p>
+
+  <div class="status-grid" id="status-grid">
+    <div class="status-card" data-check="meta-pixel" data-url="https://slim-soda01.vercel.app/buy-page/" data-selector="meta[name=imp-pixel-id]">
+      <div class="row"><span class="name">Meta Pixel</span><span class="dot gray"></span></div>
+      <div class="desc">ID: <code>1619587959397761</code> (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="capi" data-url="https://slim-soda01.vercel.app/api/track-capi">
+      <div class="row"><span class="name">Conversions API (CAPI)</span><span class="dot gray"></span></div>
+      <div class="desc">Endpoint /api/track-capi · token Meta (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="chat-llm" data-url="https://slim-soda01.vercel.app/api/chat-llm">
+      <div class="row"><span class="name">Chat LLM (OpenRouter)</span><span class="dot gray"></span></div>
+      <div class="desc">Endpoint /api/chat-llm · key OpenRouter (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="chat-x1" data-url="https://slim-soda01.vercel.app/chat-x1/">
+      <div class="row"><span class="name">Chat-x1 LP</span><span class="dot gray"></span></div>
+      <div class="desc">/chat-x1/ deployed (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="buy-page" data-url="https://slim-soda01.vercel.app/buy-page/">
+      <div class="row"><span class="name">Buy-page (100% self-hosted)</span><span class="dot gray"></span></div>
+      <div class="desc">/buy-page/ deployed, 5 CTAs (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="vsl" data-url="https://slim-soda01.vercel.app/slimtide-vsl/">
+      <div class="row"><span class="name">VSL (SlimTide)</span><span class="dot gray"></span></div>
+      <div class="desc">/slimtide-vsl/ deployed (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="supabase" data-url="https://tkbivipqiewkfnhktmqq.supabase.co/rest/v1/imphq_events?limit=1">
+      <div class="row"><span class="name">Supabase tracker</span><span class="dot gray"></span></div>
+      <div class="desc">imphq_events table (verificando…)</div>
+    </div>
+    <div class="status-card" data-check="domain" data-url="https://slim.purelabs.com/">
+      <div class="row"><span class="name">Custom domain (purelabs)</span><span class="dot gray"></span></div>
+      <div class="desc">slim.purelabs.com (verificando DNS…)</div>
+    </div>
+  </div>
+
+  <h2 class="section-title" id="products">🎯 Os 3 Produtos</h2>
+  <p class="section-sub">Clique em cada produto pra ver canon, sub-estrutura, top spenders, próximos passos. Cada pasta é self-contained — você consegue rodar uma campanha inteira só com o que tá dentro dela.</p>
+
+  <div class="grid-products">
+
+    <!-- SLIMSODA -->
+    <div class="product">
+      <div class="product-head">
+        <span class="badge-rank gold">🥇 #1</span>
+        <h3>SlimSoda</h3>
+        <div class="ads"><b>1.100</b> ads ativos · 4+ afiliados</div>
+      </div>
+      <div class="product-body">
+        <p><strong>Baking Soda Water Shot</strong> · <code>$29.99 B1G1</code> · women 30-60+ · Dana Whitfield/Rachel archetypal. Mecanismo 3-step (baking soda wake → ginger protect → berberine flip).</p>
+        <ul class="folder-list">
+          <li><span>📝 <b>copy/</b> · 5 subpastas</span><span class="count">5</span></li>
+          <li><span>🎯 <b>estrategia/</b> · playbook-x1 + ad-library-spy + amanda</span><span class="count">3+</span></li>
+          <li><span>🖼️ <b>imagens/</b> · 5 nativos + 10 mockups a criar</span><span class="count">5</span></li>
+          <li><span>🎬 <b>lps/</b> · article + vsl + buy + checkout</span><span class="count">4</span></li>
+          <li><span>🧪 <b>quiz/</b> · Auraly MVP + v5 server</span><span class="count">2</span></li>
+        </ul>
+        <div class="meta">
+          <span>👤 <b>Joe Yeugen</b> top</span>
+          <span>🌐 <b>2 LPs</b></span>
+        </div>
+      </div>
+      <div class="product-actions">
+        <a class="btn btn-primary" href="by-product/slimsoda/_index.html" target="_blank">Abrir SlimSoda hub →</a>
+      </div>
+    </div>
+
+    <!-- LINFAFLOW -->
+    <div class="product">
+      <div class="product-head">
+        <span class="badge-rank silver">🥈 #2</span>
+        <h3>Linfaflow</h3>
+        <div class="ads"><b>780</b> ads ativos · 2 anunciantes</div>
+      </div>
+      <div class="product-body">
+        <p><strong>Lymphatic drainage</strong> · 30-second morning ritual · women 50-70+ on water pill. Mecanismo 4-stage (Break/Sweep/Activate/Purify) com 4 plant extracts. Margaret story archetypal.</p>
+        <ul class="folder-list">
+          <li><span>📝 <b>copy/</b> · Margaret story + ritual 4-stage</span><span class="count">a popular</span></li>
+          <li><span>🎯 <b>estrategia/</b> · ad-library-spy (2 anunciantes)</span><span class="count">1+</span></li>
+          <li><span>🖼️ <b>imagens/</b> · trio: bottle + drops + morning</span><span class="count">a criar</span></li>
+          <li><span>🔗 <b>affiliate-network/</b> · linfa-adv1 + adv2→brungel1</span><span class="count">2</span></li>
+          <li><span>📊 <b>ads/</b> · Margaret story canônica</span><span class="count">1</span></li>
+        </ul>
+        <div class="meta">
+          <span>👤 <b>Linfaflow</b> top</span>
+          <span>🌐 <b>2 LPs</b> afiliado</span>
+        </div>
+      </div>
+      <div class="product-actions">
+        <a class="btn btn-primary" href="by-product/linfaflow/_index.html" target="_blank">Abrir Linfaflow hub →</a>
+      </div>
+    </div>
+
+    <!-- CARDIO CLEAR -->
+    <div class="product">
+      <div class="product-head">
+        <span class="badge-rank bronze">🥉 #3</span>
+        <h3>Cardio Clear</h3>
+        <div class="ads"><b>80-100</b> ads ativos · 13+ afiliados</div>
+      </div>
+      <div class="product-body">
+        <p><strong>Arterial Cement</strong> · <code>$297/$294 6-bottle</code> · 60-75+ on BP pills 6+ months. Mecanismo fibrin+calcium+microplastics + 3 Sardinian ingredients. <strong>Blue ocean (10-15× menos competição)</strong>.</p>
+        <ul class="folder-list">
+          <li><span>📝 <b>copy/</b> · Mr. Roberts + 3 Sardinian ingredientes</span><span class="count">a popular</span></li>
+          <li><span>🎯 <b>estrategia/</b> · ad-library-spy (13+ affiliates)</span><span class="count">1+</span></li>
+          <li><span>🖼️ <b>imagens/</b> · trio: bottle + BP monitor + capsule</span><span class="count">a criar</span></li>
+          <li><span>🎬 <b>lps/</b> · VITALHOLLOW + USLIFETODAY + Wellness(dropada)</span><span class="count">2+</span></li>
+          <li><span>🧪 <b>quiz/</b> · v5 LLM/TTS (Dr. Sanjay Gupta)</span><span class="count">1</span></li>
+        </ul>
+        <div class="meta">
+          <span>👤 <b>Louise Karther</b> 🏆</span>
+          <span>🌐 <b>2 LPs</b> ativas</span>
+        </div>
+      </div>
+      <div class="product-actions">
+        <a class="btn btn-primary" href="by-product/cardio-clear/_index.html" target="_blank">Abrir Cardio Clear hub →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">📚 Methodology (reutilizável cross-product)</h2>
+  <p class="section-sub">4 metodologias capturadas. Aplica a qualquer suplemento/health product DR — não só SlimSoda/Cardio/Linfaflow.</p>
+
+  <div class="grid-2">
+    <div class="panel">
+      <h3>🎯 Bifi CBO (4 fases)</h3>
+      <ul>
+        <li><a href="methodology/cbo-bifi/_index.html" target="_blank">Estrutura CBO completa</a> <span class="tag">Teste → Pré-Escala → Escala → Cemitério</span></li>
+        <li><a href="methodology/cbo-bifi/_analysis-cbo.md" target="_blank">Análise + padrões replicáveis</a></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>🎯 Bifi DTC Black (P1-P4)</h3>
+      <ul>
+        <li><a href="methodology/dtc-black-bifi/_index.html" target="_blank">Sistema 4 partes</a> <span class="tag">P1 text · P2 image · P3 escala · P4 cemitério</span></li>
+        <li><a href="methodology/dtc-black-bifi/_analysis-dtc-black.md" target="_blank">33 cenários de decisão</a></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>🔥 Motor Amanda N3 (black copy)</h3>
+      <ul>
+        <li><a href="methodology/amanda-motor/_index.html" target="_blank">2 ads black copy</a> <span class="tag">Cardio + SlimSoda</span></li>
+        <li>Indignação epistemológica · escada anafórica · dopamine hit</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>📊 Ad Library Spy (intel)</h3>
+      <ul>
+        <li><a href="methodology/ad-library-spy/_index.html" target="_blank">Ranking 3 produtos</a> <span class="tag">SlimSoda 1.1k · Linfaflow 780 · Cardio 80</span></li>
+        <li>13+ afiliados Cardio · 4+ SlimSoda · 2 Linfaflow</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-title">🔬 Outros Spy (vertical expansion)</h2>
+  <p class="section-sub">Spy intel de outras verticais pra entender padrões replicáveis. Não é produto que vendemos — é referência metodológica.</p>
+
+  <div class="grid-2">
+    <div class="panel">
+      <h3>SouthBeach (skincare VSL proxy)</h3>
+      <ul>
+        <li><a href="by-product/outros/south-beach/southbeach-vsl-proxy/index.html" target="_blank">VSL proxy (advertorial)</a> <span class="tag">trustedconsumervoice</span></li>
+        <li>50 imagens + 5 numbered-reasons + Day X timeline</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Haritaki (insônia — pineal decalcification)</h3>
+      <ul>
+        <li><a href="by-product/outros/haritaki/advertorial-haritakiblog.html" target="_blank">Advertorial Ayurvedic</a></li>
+        <li><a href="by-product/outros/haritaki/dtc-trypeptiques-haritaki.html" target="_blank">DTC Shopify clone</a></li>
+        <li><a href="by-product/outros/haritaki/_analysis-haritaki-spy.md" target="_blank">Análise DR</a> <span class="tag">1.500 ads ativos</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="section-title">📂 Nova estrutura de pastas</h2>
+  <p class="section-sub">Reorganização completa (18/ago/2026). Antes: flat <code>pages/</code> com 15 pastas misturadas. Agora: <strong>by-product</strong> self-contained + <strong>methodology</strong> centralizada + <strong>assets</strong> compartilhados.</p>
+
+  <div class="folder-tree">
+references_v5/                  <span class="comment">← este hub (v15)</span>
+├── <span class="new">by-product/</span>                  <span class="comment">← NOVA estrutura por produto (self-contained)</span>
+│   ├── <span class="folder">slimsoda/</span>
+│   │   ├── _index.html         <span class="comment">(overview do produto)</span>
+│   │   ├── <span class="folder">copy/</span>            <span class="comment">(ad texts, VSL, LP, quiz, comments)</span>
+│   │   ├── <span class="folder">estrategia/</span>      <span class="comment">(playbook-x1, angulos, ad-library-spy, red-lines)</span>
+│   │   ├── <span class="folder">imagens/</span>         <span class="comment">(5 nativos + 10 mockups + assets)</span>
+│   │   ├── <span class="folder">lps/</span>             <span class="comment">(article + vsl + buy-page + checkout)</span>
+│   │   ├── <span class="folder">quiz/</span>            <span class="comment">(Auraly MVP + v5 server)</span>
+│   │   └── <span class="folder">ads/</span>             <span class="comment">(top-spenders + lp-network)</span>
+│   ├── <span class="folder">cardio-clear/</span>         <span class="comment">(mesma estrutura)</span>
+│   └── <span class="folder">linfaflow/</span>            <span class="comment">(mesma estrutura + affiliate-network/)</span>
+├── <span class="new">methodology/</span>                <span class="comment">← NOVA: centraliza metodologias reutilizáveis</span>
+│   ├── <span class="folder">cbo-bifi/</span>             <span class="comment">(Bifi 4 fases)</span>
+│   ├── <span class="folder">dtc-black-bifi/</span>       <span class="comment">(P1-P4)</span>
+│   ├── <span class="folder">amanda-motor/</span>         <span class="comment">(2 ads black)</span>
+│   └── <span class="folder">ad-library-spy/</span>       <span class="comment">(ranking 3 produtos)</span>
+└── <span class="new">assets/</span>                    <span class="comment">← NOVA: recursos compartilhados</span>
+    ├── <span class="folder">imagens-compartilhadas/</span>  <span class="comment">(bottles, doctors, etc)</span>
+    └── <span class="folder">tools/</span>                  <span class="comment">(Meta Ad Library search tools)</span>
+  </div>
+
+  <div class="footer-section">
+    Hub v22 · Live Deploys + Search + Integration Status · 19/ago/2026 · 3 produtos canônicos · 4 metodologias · briefing PT-BR em 2 surfaces (affiliate + chat-x1).<br>
+    Próximas ações: integrar status real com API do Vercel/Supabase, briefings PT-BR pra Linfaflow e Cardio Clear, decision tree visual.
+  </div>
+
+</main>
+
+</div>
+
+<script>
+/* ============================================================
+   GLOBAL SEARCH — client-side filter + highlight
+   ============================================================ */
+(function(){
+  const $input = document.getElementById('search-input');
+  const $count = document.getElementById('search-count');
+  const $main = document.querySelector('main');
+  if(!$input || !$main) return;
+
+  // Index every block we want to search/filter
+  const $blocks = Array.from($main.querySelectorAll('section, .panel, .product, .grid-2, .grid-products, .hero, .status-grid, .folder-tree, .section-title, .section-sub'));
+
+  function clear(){
+    $main.querySelectorAll('mark.search-hit').forEach(m => {
+      const t = m.textContent;
+      m.replaceWith(document.createTextNode(t));
+    });
+    $main.normalize();
+    $blocks.forEach(b => b.classList.remove('hidden-by-search'));
+  }
+
+  function highlight(node, term){
+    if(node.nodeType === 3){
+      const txt = node.nodeValue;
+      const re = new RegExp('(' + term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      if(!re.test(txt)) return;
+      const span = document.createElement('span');
+      span.innerHTML = txt.replace(re, '<mark class="search-hit">$1</mark>');
+      node.replaceWith(...span.childNodes);
+    } else if(node.nodeType === 1 && !/^(SCRIPT|STYLE|MARK)$/.test(node.tagName)){
+      Array.from(node.childNodes).forEach(c => highlight(c, term));
+    }
+  }
+
+  function search(term){
+    term = term.trim();
+    if(!term){
+      clear();
+      $count.innerHTML = '<strong>0</strong> matches';
+      return;
+    }
+    const lower = term.toLowerCase();
+    let count = 0;
+    clear();
+    $blocks.forEach(b => {
+      const text = b.textContent.toLowerCase();
+      if(text.includes(lower)){
+        count++;
+        b.classList.remove('hidden-by-search');
+      } else {
+        b.classList.add('hidden-by-search');
+      }
+    });
+    // Re-highlight in visible blocks
+    $main.querySelectorAll('section:not(.hidden-by-search), .panel:not(.hidden-by-search), .product:not(.hidden-by-search), .grid-2:not(.hidden-by-search), .grid-products:not(.hidden-by-search), .hero:not(.hidden-by-search), .status-grid:not(.hidden-by-search), .folder-tree:not(.hidden-by-search), .section-title:not(.hidden-by-search), .section-sub:not(.hidden-by-search)')
+      .forEach(b => {
+        Array.from(b.childNodes).forEach(c => highlight(c, term));
+      });
+    $count.innerHTML = '<strong>' + count + '</strong> match' + (count !== 1 ? 'es' : '');
+  }
+
+  $input.addEventListener('input', e => search(e.target.value));
+  $input.addEventListener('keydown', e => {
+    if(e.key === 'Escape'){ $input.value = ''; search(''); $input.blur(); }
+  });
+  // Global "/" to focus search
+  document.addEventListener('keydown', e => {
+    if(e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){
+      e.preventDefault();
+      $input.focus();
+    }
+  });
+})();
+
+/* ============================================================
+   INTEGRATION STATUS — HEAD requests in parallel
+   ============================================================ */
+(function(){
+  const cards = document.querySelectorAll('.status-card[data-check]');
+  if(!cards.length) return;
+
+  cards.forEach(async card => {
+    const url = card.getAttribute('data-url');
+    const check = card.getAttribute('data-check');
+    const dot = card.querySelector('.dot');
+    const desc = card.querySelector('.desc');
+    if(!url || !dot || !desc) return;
+
+    try {
+      const r = await fetch(url, { method: 'HEAD', mode: 'no-cors' });
+      // no-cors gives opaque response, but successful fetch = reachable
+      dot.className = 'dot green';
+      desc.innerHTML = desc.innerHTML.replace('verificando…', '<strong style="color:#06a77d">ONLINE</strong>');
+    } catch(e) {
+      // CORS-blocked = actually reachable, network error = unreachable
+      if(e.message && /failed to fetch|cors|networkerror/i.test(e.message)){
+        // CORS error = reachable, just blocked. Mark green.
+        dot.className = 'dot green';
+        desc.innerHTML = desc.innerHTML.replace('verificando…', '<strong style="color:#06a77d">ONLINE (CORS-blocked from browser = reachable)</strong>');
+      } else {
+        dot.className = 'dot red';
+        desc.innerHTML = desc.innerHTML.replace('verificando…', '<strong style="color:#c0392b">UNREACHABLE</strong>');
+      }
+    }
+  });
+})();
+
+/* ============================================================
+   CHANGELOG — fetch recent commits from GitHub API
+   ============================================================ */
+(function(){
+  const $list = document.getElementById('changelog-list');
+  if(!$list) return;
+
+  fetch('https://api.github.com/repos/vsugamele/Slim-Soda01/commits?per_page=10')
+    .then(r => r.json())
+    .then(commits => {
+      if(!Array.isArray(commits) || !commits.length){
+        $list.innerHTML = '<div class="changelog-skeleton">Nenhum commit encontrado</div>';
+        return;
+      }
+      const html = commits.map(c => {
+        const sha = (c.sha || '').substring(0, 7);
+        const date = (c.commit && c.commit.author && c.commit.author.date || '').substring(0, 10);
+        const msg = (c.commit && c.commit.message || '').split('\n')[0];
+        const author = (c.commit && c.commit.author && c.commit.author.name) || 'unknown';
+        const url = c.html_url || '#';
+        // Conventional commit prefix (feat:, fix:, etc)
+        const m = msg.match(/^([a-z]+)(?:\(([^)]+)\))?:\s*(.+)$/i);
+        let prefix = '', scope = '', body = msg;
+        if(m){
+          prefix = m[1].toLowerCase();
+          scope = m[2] || '';
+          body = m[3];
+        }
+        const scopeHtml = scope ? `<span class="scope">${scope}:</span>` : '';
+        return `<div class="changelog-item">
+          <span class="date">${date}</span>
+          <span class="sha"><a href="${url}" target="_blank" rel="noopener">${sha}</a></span>
+          <div>
+            <div class="msg">${prefix ? `<strong>${prefix}:</strong> ` : ''}${scopeHtml}${body}</div>
+            <div class="author">@${author}</div>
+          </div>
+        </div>`;
+      }).join('');
+      $list.innerHTML = html + '<div class="changelog-footer">Ver todos no GitHub → <a href="https://github.com/vsugamele/Slim-Soda01/commits/main" target="_blank">github.com/vsugamele/Slim-Soda01/commits/main</a></div>';
+    })
+    .catch(err => {
+      $list.innerHTML = '<div class="changelog-skeleton">Erro ao carregar: ' + (err.message || err) + '</div>';
+    });
+})();
+</script>
+
+</body>
+</html>

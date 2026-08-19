@@ -29,3 +29,7 @@ slimtide-vsl/*.log
 buy-page/*.log
 
 # Mantém o resto do projeto-mãe INTACTO (não commita nada além do Slim-Soda01-deployable)
+
+# DR Reference HUB v23+ (briefings, methodology, tracking)
+!/references_v5/
+!/references_v5/**

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof Elements — Library de Provas (Copywriting Reference)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#06a77d; --gold:#ffd166; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(6,167,125,0.12); color:var(--accent); border:1px solid rgba(6,167,125,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout strong { color:var(--accent); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout.red { border-left-color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  .callout.red strong { color:var(--red); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .proof-card { background:var(--panel); border:1px solid var(--border); border-radius:10px; margin-bottom:14px; overflow:hidden; }
+  .proof-head { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:14px; }
+  .proof-emoji { font-size:24px; flex-shrink:0; }
+  .proof-head h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .proof-head .tag { font-size:11px; color:var(--orange); font-style:italic; margin-top:2px; }
+  .proof-body { padding:14px 18px 18px; }
+  .proof-body p { margin:6px 0; font-size:13.5px; }
+  .proof-body ul, .proof-body ol { margin:6px 0 6px 18px; }
+  .proof-body li { padding:2px 0; font-size:13.5px; }
+  .example { background:var(--panel-2); border-left:3px solid var(--gold); padding:10px 14px; margin:8px 0; border-radius:0 4px 4px 0; font-size:13px; }
+  .example .label { font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:4px; }
+  .example em { color:var(--text); font-style:italic; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  @media (max-width:720px) { .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Copywriting Library · Proof Elements · 22+ tipos de prova</span>
+    <h1>Proof Elements <span class="accent">· Library completa</span></h1>
+    <p class="lede">Uma das mais poderosas alavancas de persuasão. <strong>22+ tipos de prova</strong> categorizados, com exemplos canônicos, contra-exemplos, e templates pra aplicar em DR (SlimSoda / Linfaflow / Cardio Clear).</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>📌 Definição:</strong> <em>Proof and Evidence — one of the most powerful elements of persuasion and influence</em>. Cada prova é uma evidência a mais que acredibilidade. Use SEMPRE 2-3 provas por ad (multi-camada).
+  </div>
+
+  <div class="callout blue">
+    <strong>🎯 Princípios gerais (4 absolutos)</strong>
+    <ol style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>Involvement</strong> — let them do it. Free trials, samples, demo, hands-on. Monkey see, monkey do.</li>
+      <li><strong>Instantly verifiable</strong> — clasp hands together, grab tinfoil, vacuum, transparent shield. Quick demos user can do.</li>
+      <li><strong>Understatement</strong> — easy on adjectives. <em>"The greatest hotel in America"</em> vs <em>"One of America's truly great hotels"</em>. Honest = mais credível.</li>
+      <li><strong>Specificity &gt; Vagueness</strong> — "n=240, 96% stabilized, NEJM 2024" vence "many people, studies show".</li>
+    </ol>
+  </div>
+
+  <div class="grid-2">
+    <div class="card"><h4>🔵 Demonstração</h4><p>Single most powerful. Reynolds Wrap, vacuum cleaner, invisible shield, Blendtec iPhones. <strong>Show the proof, don't tell.</strong></p></div>
+    <div class="card"><h4>🟠 Reasons Why</h4><p>Lord & Thomas secret weapon. Built the most profitable ad agency of its era. <em>Why should I believe this?</em></p></div>
+    <div class="card"><h4>🟢 Specificity</h4><p>Precise numbers &gt; vague. Exact names &gt; titles. Specific institutions &gt; generic. Target specific people &gt; "everyone".</p></div>
+    <div class="card"><h4>🟡 Guarantees</h4><p>Personal voice. Signature. Iron-clad (10 years, double money back). Visual evidence (seals, certificates).</p></div>
+    <div class="card"><h4>🔴 Testimonials</h4><p>Specific + clear. Headlines. Variety (different angles). Legitimize (city, phone, face).</p></div>
+    <div class="card"><h4>🟣 Before/After</h4><p>Visually dramatic. Strong, immediate contrast. Track record, time factor.</p></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🏆 22 tipos de prova (biblioteca completa)</h2>
+
+  <!-- 1. Demonstration -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🎬</span>
+      <div><h3>1. Demonstration</h3><div class="tag">Strongest proof · visual</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> Mostrar a prova funcionando, não falando sobre ela. <strong>Exemplos canônicos:</strong></p>
+      <ul>
+        <li><strong>Reynolds Wrap:</strong> chama → papel alumínio não queima → user pega com a mão.</li>
+        <li><strong>Vacuum cleaner:</strong> limpa carpet "impossível" e mostra a sujeira acumulada.</li>
+        <li><strong>Blendtec blender:</strong> tritura iPhones, bolas de gude, tacos de baseball.</li>
+        <li><strong>Dyson window:</strong> pessoa do lado de dentro vs lado de fora, comprovando vedação.</li>
+        <li><strong>Invisible shield:</strong> plexiglass segurando bola de futebol que ia em direção a uma família.</li>
+        <li><strong>Lifelock:</strong> "My social security number is 5839-20-2092. Call me and see."</li>
+        <li><strong>Don Hobbs:</strong> "Clasp your hands together" (instantly verifiable).</li>
+      </ul>
+      <div class="example">
+        <div class="label">🇺🇸 Exemplo aplicado (SlimSoda)</div>
+        <em>"Watch this. 30 seconds. I pour one scoop of SlimSoda into a glass of water. It fizzes. It dissolves. Now I drink it. By morning, my midsection is two inches smaller. That's the demonstration. That's the proof."</em>
+      </div>
+      <p><strong>Onde usar:</strong> buy-page (GIF animados), VSL, demo reels. <strong>Sempre que possível.</strong></p>
+    </div>
+  </div>
+
+  <!-- 2. Reasons Why -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🤔</span>
+      <div><h3>2. Reasons Why</h3><div class="tag">Lord & Thomas secret weapon</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> dar razões POR QUE sua claim é verdadeira. Antes de pedir a venda, justifique por que o que você diz é crível.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Exemplos históricos</div>
+        <ul style="margin:6px 0 0 18px;">
+          <li><em>"Half off sale!"</em> vs <em>"Fire Sale — everything half off"</em> (com história por trás).</li>
+          <li><em>"Slice is a better-tasting soft drink because it contains 10% real fruit juice."</em></li>
+          <li><em>"Kleenex towels absorb 50% more because they're two layers thick."</em></li>
+        </ul>
+      </div>
+      <p><strong>Aplicação moderna (DR):</strong> antes de mostrar o preço, justifique. <em>"It's $24.99 for two tubs because we source direct from the formulator, no retail markup, and we make it on the 30-day empty-tub guarantee."</em> Cada razão = +credibilidade.</p>
+    </div>
+  </div>
+
+  <!-- 3. Specificity -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🔢</span>
+      <div><h3>3. Specificity</h3><div class="tag">Numbers &gt; Vague</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> "Highly specific writing is nearly always preferable to vague or general writing."</p>
+      <p><strong>5 dimensões de specificity:</strong></p>
+      <ol>
+        <li><strong>Precise numbers</strong> — "96% stabilized in 3 months" vence "many people got better".</li>
+        <li><strong>Exact names, positions, titles</strong> — "Dr. Sanjay Gupta, MD, Board-Certified Cardiologist" vence "a doctor".</li>
+        <li><strong>Specific institutions, divisions, companies</strong> — "Harvard Medical School" vence "experts agree".</li>
+        <li><strong>Precise publications</strong> — "New England Journal of Medicine, 2024" vence "studies show".</li>
+        <li><strong>Target specific people, location, problem</strong> — "For mothers only" / "L.A.'s favorite beer" / "Women 50-70 with morning bloating".</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Antes / Depois (Cardio Clear)</div>
+        <em>Antes: "Many cardiologists recommend this protocol."</em><br>
+        <em>Depois: "Dr. Sanjay Gupta, MD, FACC — board-certified cardiologist with 20+ years of practice and 12,000+ patients — formulated this protocol after his New England Journal of Medicine peer-reviewed 2024 study showed arterial microplastics 51× higher than 2003."</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Logical Argument -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🧠</span>
+      <div><h3>4. Logical Argument</h3><div class="tag">Begin with agreement</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> construir um argumento lógico que começa com algo em que o prospect já concorda, e leva à conclusão de que comprar é "no-brainer".</p>
+      <p><strong>Técnica:</strong> <em>"If A, and B, and C are true, then D is true. D is 'you should try this'."</em> Cada step precisa ser verificável e auto-evidente.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Estrutura (Linfaflow)</div>
+        <em>(A) "You've tried compression socks and lymphatic drainage. They help for a few hours."</em><br>
+        <em>(B) "What they don't do is support the flow from the inside."</em><br>
+        <em>(C) "LinfaFlow supports the flow from the inside with 4 plant extracts."</em><br>
+        <em>(D) "If that's the missing piece, this is the protocol."</em>
+      </div>
+      <p><strong>Strong Examples:</strong> "Is this the BEST example of the point I'm trying to make? What would make it stronger? Keep pushing until just about anyone would believe your claim."</p>
+    </div>
+  </div>
+
+  <!-- 5. Problems Motivate -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🔥</span>
+      <div><h3>5. Problems Motivate</h3><div class="tag">Make the pain vivid</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> fazer o prospect SENTIR o problema antes de oferecer a solução. A dor motiva mais que o prazer.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Exemplo (Torn Pants Effect)</div>
+        <em>"You're at a friend's wedding. You're dancing. You feel the air hit your thigh. You look down. Your pants just split. You freeze. You pretend nothing happened. But everyone saw."</em>
+      </div>
+      <p><strong>Aplicação DR:</strong> use detalhes sensoriais (cheiro, toque, visão, som) pra fazer o user SENTIR o problema. Depois, o mecanismo vira a libertação.</p>
+    </div>
+  </div>
+
+  <!-- 6. Guarantees -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🛡️</span>
+      <div><h3>6. Guarantees</h3><div class="tag">Risk reversal · 4 chaves</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>4 chaves de uma guarantee forte:</strong></p>
+      <ol>
+        <li><strong>Personal guarantee</strong> — escrita na voz do autor/spokesperson. <em>"If this doesn't work for you, I want you to email me personally. I'm Dana, and I'll make it right."</em></li>
+        <li><strong>Use signature</strong> — handwritten signature ou foto. Visual cue de pessoa real.</li>
+        <li><strong>Iron-clad, bomb-proof, crazy</strong> — 10 anos, double money back, "I'll send you $50 if it doesn't work". Generosidade desproporcional = crença.</li>
+        <li><strong>Visual evidence</strong> — certificates, seals, badges. Trust signals visuais.</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Como CANÔNICO (SlimSoda)</div>
+        <em>"60-day empty-tub money-back guarantee. Use the whole tub. If your midsection isn't visibly smaller, send the empty tub back. Full refund. No questions. No restocking fee."</em>
+      </div>
+      <p><strong>Compare:</strong> "30-day money-back" (fraco) vs "60-day empty-tub money-back, use the whole tub, no restocking fee" (forte — multiple specifics que eliminam cada objeção).</p>
+    </div>
+  </div>
+
+  <!-- 7. Strong Testimonials -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">💬</span>
+      <div><h3>7. Strong Testimonials</h3><div class="tag">Specific + clear + face</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>5 chaves:</strong></p>
+      <ol>
+        <li><strong>Be specific</strong> — "I lost 22 pounds" vence "it worked".</li>
+        <li><strong>Be clear</strong> — sobre qual aspecto do produto ajudou.</li>
+        <li><strong>Include headlines</strong> — uma frase de impacto acima do quote.</li>
+        <li><strong>Include variety of perspectives</strong> — diferentes idades, diferentes queixas, diferentes resultados.</li>
+        <li><strong>Legitimize them</strong> — nome completo, cidade, estado, telefone, landmark local.</li>
+        <li><strong>Give them a face</strong> — foto real (não stock photo).</li>
+        <li><strong>Spread them out</strong> — não agrupe todos no final. Espalhe pelo LP.</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Formato canônico (Linfaflow)</div>
+        <em>"My older sister had a routine vein procedure for her swollen legs. She died of a blood clot four weeks later. She was 62. — Margaret, age 58, Asheville NC"</em>
+      </div>
+      <p><strong>Quando usar:</strong> depois do mecanismo, antes da offer, no final do ad, no LP. <strong>3-5 testemunhos por LP é o sweet spot.</strong></p>
+    </div>
+  </div>
+
+  <!-- 8. Before/After -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📷</span>
+      <div><h3>8. Before / After</h3><div class="tag">Visually dramatic · strong contrast</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> comparação visual direta. Strong immediate contrast (não gradual).</p>
+      <p><strong>Regras para DR:</strong></p>
+      <ol>
+        <li><strong>Same lighting, same angle, same pose</strong> — única diferença é o resultado.</li>
+        <li><strong>Time stamp visível</strong> — "Before (Day 0)" / "After (Day 47)".</li>
+        <li><strong>Same person, same clothes</strong> — não mude o look, mude só o corpo.</li>
+        <li><strong>Consentimento + waiver</strong> — sempre tenha documentação. FDA não gosta de "unrealistic" expectations.</li>
+      </ol>
+      <p><strong>Risco Meta:</strong> <span style="color:#c0392b;">ALTO</span> para "before/after weight loss". Evitar. Use cadência semanal (Week 1-4) em texto em vez de fotos.</p>
+    </div>
+  </div>
+
+  <!-- 9. Track Record -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📈</span>
+      <div><h3>9. Track Record</h3><div class="tag">Consistent leadership over time</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> "trackable results your product or service has achieved over a specified period of time". Mostra que você é LÍDER, não follower.</p>
+      <p><strong>Técnica — time factor:</strong></p>
+      <ol>
+        <li><strong>"20 years beats 2 years"</strong> — 20 anos no mercado = autoridade.</li>
+        <li><strong>"We've been the #1 lymphatic drops in the US for 8 years"</strong> — leader, não newcomer.</li>
+        <li><strong>"43,029 American women have tried this protocol"</strong> — número grande + específico = prova social.</li>
+        <li><strong>"Featured in [prestigious publication], [date]"</strong> — terceiro valida.</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Cardio Clear track record</div>
+        <em>"43,029 Americans. 412,738 video views. 2,847 comments. One in two adults over 60 has measurable arterial cement — and one in twenty was the number 20 years ago. 51× more microplastic in arteries since 2003. — NEJM, 2024."</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10. Case History / Studies -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📚</span>
+      <div><h3>10. Case History / Studies</h3><div class="tag">Tell a riveting story</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>5 regras:</strong></p>
+      <ol>
+        <li><strong>Go beyond repetition</strong> — conte uma história, não só cite "study shows X".</li>
+        <li><strong>Make it emotional</strong> — case study tem protagonista, dilema, transformação.</li>
+        <li><strong>Make your product the hero</strong> — o produto resolve, não o user.</li>
+        <li><strong>Problem-Solution-Result</strong> — formato clássico.</li>
+        <li><strong>Strong Examples</strong> — keep pushing até "anyone would be willing to believe your claim".</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 SlimSoda (case study real)</div>
+        <em>Problem: "Rachel ate less than her skinny friend and still gained."</em><br>
+        <em>Solution: "Baking soda + ginger + berberine, in that order, twice a day."</em><br>
+        <em>Result: "She lost 41 pounds in 4 months. 'Dana, the noise is gone.' — Rachel, 51, Cleveland OH"</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11. Unique Mechanism -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">⚙️</span>
+      <div><h3>11. Unique Mechanism</h3><div class="tag">New cause = new mechanism</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> "the unique method, technology, system, process, or approach that allows your product/service to deliver the benefits in ways others can't".</p>
+      <p><strong>Exemplos canônicos:</strong></p>
+      <ul>
+        <li><strong>V.I.P.E.R</strong> self defense system.</li>
+        <li><strong>I-T.A.P formula</strong> for outwitting competitors.</li>
+        <li><strong>The Wendy's Walk</strong> (chain founder's process).</li>
+        <li><strong>Flow Reset Method</strong> (Linfaflow X1).</li>
+        <li><strong>30-Second Morning Ritual</strong> (SlimSoda + Linfaflow canon).</li>
+        <li><strong>3 Sardinian ingredients</strong> (Cardio Clear).</li>
+      </ul>
+      <p><strong>Regra:</strong> serviços profissionais vendem PROCESSOS BRANDED. Produtos commoditizados vendem INGREDIENTES BRANDED. <strong>Ambos ganham com "new cause = new mechanism".</strong></p>
+    </div>
+  </div>
+
+  <!-- 12. Vivid Pictures -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🎨</span>
+      <div><h3>12. Vivid Pictures</h3><div class="tag">Picture worth 1000 words</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> paint vivid, detailed pictures and make the experience feel more real. "The more realistic and tangible the better."</p>
+      <p><strong>4 técnicas:</strong></p>
+      <ol>
+        <li><strong>Rich detail and imagery</strong> — específico > vago. "5am, dark room, alarm hasn't gone off yet" vence "morning".</li>
+        <li><strong>Scientific language</strong> — occasionally use a word the prospect doesn't understand.</li>
+        <li><strong>Be careful not to over-do</strong> — don't bury the reader beneath a pile of meaningless buzzwords.</li>
+        <li><strong>Process sidebars / illustrations</strong> — visual imagery of how it works.</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Exemplo (Cardio Clear)</div>
+        <em>"Plaque-filled artery, suddenly exposed to a miracle nutrient, magically becomes clean. Water filter trapping deadly bacteria and toxins. Infrared rays shooting from the heater, penetrating every object in the house."</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13. Clinical Studies -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🔬</span>
+      <div><h3>13. Clinical Studies</h3><div class="tag">4 chaves obrigatórias</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>4 chaves que TORNAM o estudo crível:</strong></p>
+      <ol>
+        <li><strong>Effectiveness</strong> — tell how effectively it performed in the study.</li>
+        <li><strong>Source</strong> — reveal the institution that conducted the study.</li>
+        <li><strong>Publication</strong> — reveal where the study results were published.</li>
+        <li><strong>Date</strong> — for specificity, include exact month, day and year.</li>
+      </ol>
+      <div class="example">
+        <div class="label">🇺🇸 Cardio Clear (4 chaves aplicadas)</div>
+        <em>Effectiveness: "96% stabilized in 3 months."</em><br>
+        <em>Source: "Conducted across 240 patients in 3 medical centers."</em><br>
+        <em>Publication: "New England Journal of Medicine, peer-reviewed."</em><br>
+        <em>Date: "Published 2024."</em>
+      </div>
+      <p><strong>⚠️ NUNCA invente um estudo.</strong> Cardio Clear's 51× microplastic vem de um paper real (NEJM 2024). Tudo fora disso NÃO existe — não invente n=240 se foi n=120.</p>
+    </div>
+  </div>
+
+  <!-- 14. Media Appearances -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📺</span>
+      <div><h3>14. Media Appearances</h3><div class="tag">TV = expertise + accomplishment</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> mention any aspect of your offer/product that has been mentioned on a reputable TV show, channel, podcast, or publication.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Exemplos canônicos (DR)</div>
+        <ul style="margin:6px 0 0 18px;">
+          <li><em>"Featured on Oprah"</em> (SlimSoda — baking soda water shot)</li>
+          <li><em>"As seen on NBC, ABC, CBS morning shows"</em> (Linfaflow)</li>
+          <li><em>"Mentioned in The New York Times, Healthline, WebMD"</em> (SlimSoda)</li>
+          <li><em>"412,738 video views on the 30-second clip"</em> (Cardio Clear)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 15. Expert Endorsements -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">👨‍⚕️</span>
+      <div><h3>15. Expert Endorsements</h3><div class="tag">Credible third-party</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> find credible third-party experts in market — see if they've written books, websites, or anything else that might possibly mention an ingredient in your product or a claim you're making.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Estratégia DR</div>
+        <ul style="margin:6px 0 0 18px;">
+          <li>Cardio Clear: <em>Dr. Sanjay Gupta (MD, FACC, board-certified cardiologist, NEJM peer-reviewed)</em> — brand owner, pode usar nome.</li>
+          <li>SlimSoda: <em>Dana Whitfield (formulator 20+ years, 5,000+ women)</em> — invented character, mas com consistent voice.</li>
+          <li>Linfaflow: <em>Dr. Tiziana Pusceddu (Sardinian researcher, University of Sassari)</em> — fits the origin story.</li>
+        </ul>
+      </div>
+      <p><strong>Regra:</strong> se for brand owner ou authorized, use nome e foto. Se for invenção, use voz consistente e NÃO use foto real.</p>
+    </div>
+  </div>
+
+  <!-- 16. Charts & Graphs -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📊</span>
+      <div><h3>16. Charts & Graphs</h3><div class="tag">Pie / bar > numbers in text</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> "Pie chart or bar graph far more convincing than numbers in a spread sheet."</p>
+      <p><strong>Quando usar:</strong> sempre que tiver comparação de proporções. Use canvas/SVG no LP, GIF no ad.</p>
+      <div class="example">
+        <div class="label">🇺🇸 Comparações que viram gráfico</div>
+        <ul style="margin:6px 0 0 18px;">
+          <li>SlimSoda: $24.99 B1G1 vs $1,000/month Ozempic vs $100 celebrity capsule.</li>
+          <li>Linfaflow: $89 B1G1 vs $80-150 lymphatic drainage session vs $2,000-6,000 pneumatic pump.</li>
+          <li>Cardio Clear: 1 in 2 (2024) vs 1 in 20 (2003) — bar chart horizontal.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17. Prestigious Publications -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">📜</span>
+      <div><h3>17. Prestigious Publications</h3><div class="tag">Small sources weaken</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> include statements that support your points from major publications. Small sources WEAKEN argument. Include dates, include a small photo of the article or publication.</p>
+      <p><strong>Para DR health:</strong> NEJM, JAMA, The Lancet, Healthline, WebMD, Mayo Clinic, Cleveland Clinic, Harvard Health.</p>
+      <p><strong>Para DR fitness:</strong> Men's Health, Women's Health, Runner's World, NYT Well section.</p>
+      <p><strong>Para DR cardio:</strong> American Heart Association (AHA), NEJM, JAMA Cardiology, ACC (American College of Cardiology).</p>
+    </div>
+  </div>
+
+  <!-- 18. Celebrity Endorsements / Fortune 100 -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">⭐</span>
+      <div><h3>18. Celebrity Endorsements / Fortune 100</h3><div class="tag">Photos, logos, headquarters</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>Include photos, logos, pictures of headquarters, etc.</strong></p>
+      <p><strong>Exemplos (SlimSoda):</strong> "Used by celebrities like [name]" + logo de TV. "As seen in 4,200+ pharmacies nationwide" + photo of CVS shelf.</p>
+      <p><strong>⚠️ Risco Meta:</strong> claims de celebrity sem autorização = deepfake/fake endorsement. <strong>SEMPRE use "as seen in" / "mentioned by" (não "endorsed by").</strong></p>
+    </div>
+  </div>
+
+  <!-- 19. Credible Certifications / Awards -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">🏅</span>
+      <div><h3>19. Credible Certifications / Awards</h3><div class="tag">Visual badges · trust signals</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> show credible third-party certifications.</p>
+      <p><strong>Exemplos:</strong> "Harvard Medical Recommended", "Wharton Finance MBA", "Made in FDA-registered facility", "GMP certified", "NSF certified", "USP verified", "Informed Sport", "ConsumerLab approved".</p>
+      <p><strong>⚠️ Risco Meta:</strong> só use se for REAL. "FDA approved" pra suplemento = false claim. Use "made in FDA-registered facility" (regulatory, não medical).</p>
+    </div>
+  </div>
+
+  <!-- 20. Sell Against -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">⚔️</span>
+      <div><h3>20. Sell Against</h3><div class="tag">Frame against competitor</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> "Get rich slowly", "The case against mobile marketing", "Social Media: Why it may not be right for you?" — posiciona seu produto CONTRA o status quo.</p>
+      <p><strong>Para DR:</strong> seu produto é o "diferente" da indústria. Use:</p>
+      <ul>
+        <li><em>"Compression socks don't work for drainage. Here's what does."</em> (Linfaflow)</li>
+        <li><em>"Baking soda alone does nothing. Three in the right order is what works."</em> (SlimSoda)</li>
+        <li><em>"Statins don't address the cement. Three Sardinian ingredients do."</em> (Cardio Clear)</li>
+      </ul>
+      <p><strong>Se o company/speaker é conhecido por ser proponente da SOLUÇÃO</strong> — ganha ainda mais credibilidade. <em>"Dr. Sanjay spent 4 years in Sardinia looking for what the medication didn't do."</em></p>
+    </div>
+  </div>
+
+  <!-- 21. Quotes / Facts / Statistics / Analogies / Metaphors -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">💭</span>
+      <div><h3>21. Quotes / Facts / Statistics / Analogies / Metaphors</h3><div class="tag">5 sub-types</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>5 sub-tipos de prova intelectual:</strong></p>
+      <ol>
+        <li><strong>Quotes</strong> — Confusius, Sun Tzu, Abraham Lincoln. <em>"The best time to plant a tree was 20 years ago. The second best time is now."</em> (Use sparingly — clichê se repete muito.)</li>
+        <li><strong>Facts</strong> — Davinci Code intro, surprising stats. <em>"A bolt of lightning contains enough energy to toast 100,000 slices of bread."</em></li>
+        <li><strong>Statistics</strong> — <em>"4 out of 5 doctors recommend Tylenol for headaches."</em> Specific, social-proofed.</li>
+        <li><strong>Analogies</strong> — <em>"That's like a $7,000 a year raise!"</em> (Translate abstract into concrete.)</li>
+        <li><strong>Metaphors</strong> — <em>"Pour your car a new engine."</em> (Replace one thing with another.)</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- 22. Democratic Reviews -->
+  <div class="proof-card">
+    <div class="proof-head">
+      <span class="proof-emoji">⭐</span>
+      <div><h3>22. Democratic Reviews</h3><div class="tag">Amazon / TripAdvisor / Yelp</div></div>
+    </div>
+    <div class="proof-body">
+      <p><strong>O que é:</strong> mostre reviews de plataformas neutras (Amazon, TripAdvisor, Yelp, Google, TrustPilot). "Democratic" porque vem de USERS, não da marca.</p>
+      <p><strong>Para DR supplement:</strong> mostre Amazon reviews com screenshot + número de reviews + rating. <em>"4.7/5 from 12,847 verified buyers on Amazon."</em></p>
+      <p><strong>⚠️ Risco Meta:</strong> claims de Amazon rating precisam ser REAL. Se você tem 12,847 reviews, ótimo. Se tem 200, não diga 12,847.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🧰 Product Proofs Toolbox (4 categorias)</h2>
+
+  <div class="grid-2">
+    <div class="card"><h4>1. Construction evidence</h4><p>Materials, manufacture, specifications. <em>"Made in FDA-registered facility. GMP certified. Third-party tested for purity."</em></p></div>
+    <div class="card"><h4>2. Reputation & standing</h4><p>How long in business. Size of plant. Laboratory. Finance. Geographic advantages. <em>"In business since 2014. Manufactured in Sardinia, Italy."</em></p></div>
+    <div class="card"><h4>3. Management / personnel</h4><p>Abilities of founder, executives. Long-experienced craftsmen, engineers, researchers, designers. <em>"Founded by Dr. Sanjay Gupta, MD, FACC, 20+ years."</em></p></div>
+    <div class="card"><h4>4. Quality of materials / design</h4><p>Laboratory test facts. Specifications. Strength. Durability. Purity. Trade names of suppliers.</p></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card"><h4>5. Performance evidence</h4><p>Achievements of product in actual use. Endurance runs. Mileage records. Before/after photographs. Discriminating users. <em>"Used by [famous person] for [specific use]."</em></p></div>
+    <div class="card"><h4>6. Test evidence</h4><p>Free trials, samples, demo. <em>"Try it for 60 days. Use the whole tub. If it doesn't work, send it back empty."</em></p></div>
+    <div class="card"><h4>7. Product authorities buy</h4><p>Medicine doctors take. Toothbrush used by dentist. Makeup by movie star beautician. <em>"Recommended by 4,200+ cardiologists nationwide."</em></p></div>
+    <div class="card"><h4>8. Increasing popularity</h4><p>43,029+ Americans. 412,738 views. 2,847 comments. <em>(Show numbers, not adjectives.)</em></p></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Ad copy clássico (referência)</h2>
+
+  <div class="callout gold">
+    <h3>🇺🇸 "Men Wanted for Hazardous Journey" — Ernest Shackleton (1914)</h3>
+    <pre style="background:var(--panel-2); padding:14px 16px; border-radius:6px; font-size:13.5px; line-height:1.7; color:var(--text); white-space:pre-wrap; font-style:italic; margin:8px 0 0;">"Men wanted for hazardous journey. Low wages, bitter cold, long months of complete darkness, constant danger, safe return doubtful, honor and recognition in case of success."</pre>
+    <p style="margin:8px 0 0; font-size:13px;"><strong>Por que funciona:</strong> Understatement + specificity + risk transparency + honor as currency. Recebeu 5,000 applications. 28 sobreviveram.</p>
+  </div>
+
+  <div class="footer">
+    Proof Elements Library · 22+ tipos de prova + 8 categorias de product proofs toolbox · baseado em best practices de copywriting clássico (Robert Collier, Joseph Sugarman, John Carlton, David Ogilvy). <br>
+    Aplicado a DR: <a href="../../by-product/slimsoda/copy/briefing-affiliate/" style="color:#06a77d;">SlimSoda Affiliate Brief</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" style="color:#FF8A3D;">Linfaflow Brief</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" style="color:#C8102E;">Cardio Clear Brief</a> · <a href="../../by-product/slimsoda/copy/chat-x1-briefing/" style="color:#a29bfe;">Chat-x1 Brief</a> · <a href="../dtc-control/" style="color:#7c3aed;">DTC Control Manual</a><br>
+    <strong>Skill correspondente:</strong> <code>C:\Users\vsuga\.claude\skills\proof-elements\SKILL.md</code> (177 linhas, 17KB) — library acionável com 22+ tipos + matriz por produto.<br>
+    <strong>Cross-ref arsenal:</strong> <a href="../dtc-control/" style="color:#7c3aed;">dtc-control/</a> (alavanca 5) · <a href="../skills-index/" style="color:#7c3aed;">skills-index/</a> (índice completo) · <code>weaponized-credibility</code> (regra de ouro).
+  </div>
+
+</div>
+</body>
+</html>

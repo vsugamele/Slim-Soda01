@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTC Control — 8 Alavancas pra Bater Controle (Manual Khayat)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#7c3aed; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(124,58,237,0.12); color:var(--accent); border:1px solid rgba(124,58,237,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .lever { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .lever-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(124,58,237,0.08), transparent); }
+  .lever-num { width:42px; height:42px; background:linear-gradient(135deg, var(--accent), #a78bfa); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .lever-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .lever-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .lever-body { padding:14px 18px 18px; }
+  .lever-body p { margin:6px 0; font-size:13.5px; }
+  .lever-body ol { margin:6px 0 6px 18px; }
+  .lever-body ol li { padding:3px 0; font-size:13.5px; color:var(--text); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  @media (max-width:720px) { .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Methodology · DTC Control · 8 Alavancas · Khayat</span>
+    <h1>DTC Control <span class="accent">· 8 Alavancas</span> — Manual pra Bater Controle</h1>
+    <p class="lede">Process claro e direto pra <strong>bater controle em ADs DTC</strong>: pegar um anúncio já validado e fazê-lo vender mais, mexendo apenas no que importa. <strong>O foco é identificar gargalos, priorizar alavancas que mudam resultado em pouco tempo</strong>, e testar variações que respeitam a essência do vencedor.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Pra quem é:</strong> copywriters, media buyers e qualquer pessoa que queira ter um anúncio validado nas mãos sem precisar perder muito tempo ou depender de criatividade.
+  </div>
+
+  <div class="callout">
+    <h3>🧠 As 8 alavancas (resumo)</h3>
+    <p style="margin:6px 0; font-size:13.5px;">São os pontos de alavancagem que ajusto na copy pra destravar performance. Cada uma ataca um gargalo diferente. <strong>Sempre teste uma alavanca por vez</strong> — pra saber qual moveu a régua.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card"><h4>1. Formato / Avatar</h4><p>Spy → identifica formatos validados. Escolhe UM novo formato OU UM novo avatar. Não os dois juntos.</p></div>
+    <div class="card"><h4>2. Gancho (visual + escrito)</h4><p>Visual: achar padrões no spy e replicar. Escrito: estrutura invisível (preservar) ou do zero (reescrever).</p></div>
+    <div class="card"><h4>3. Nome chiclete</h4><p>Adicionar nome chiclete nos ganchos/início se não tiver. <strong>O que é:</strong> nome próprio que a memória gruda (ex: "The V.I.P.E.R self defense system", "I-T.A.P formula").</p></div>
+    <div class="card"><h4>4. Aterrissagem</h4><p>Pega uma frase da bíblia dos hooks. Sem aterrissagem = gancho desperdiçado.</p></div>
+    <div class="card"><h4>5. Provas (visuais, demonstrativas, sociais, de avatar)</h4><p>Prove MAIS. Cada prova é uma evidência a mais que acredibilidade.</p></div>
+    <div class="card"><h4>6. Mecanismo</h4><p>Adicione ou melhore o mecanismo existente. Mecanismo novo = novelty, mecanismo melhor = credibilidade.</p></div>
+    <div class="card"><h4>7. Disparos de dopamina</h4><p>Cortar palavras de transição: "E então…", "Foi aí que…", "Eu decidi que…", "Assim como…". Adicionar dopamine triggers.</p></div>
+    <div class="card"><h4>8. Fechamento (pós CTA + última frase)</h4><p>Pós CTA: escassez com reason why + provas. Última frase: push-and-pull + autoridade humanizada.</p></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 1 — Formato / Avatar</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">1</div>
+      <div class="lever-info">
+        <h3>Formato / Avatar</h3>
+        <div class="framework">Spy + swap (formato OU avatar, não ambos)</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · Como aplicar</h4>
+      <ol>
+        <li><strong>Spy:</strong> vai no Ad Library do Meta, busca o produto (SlimSoda, Linfaflow, Cardio Clear). Filtra por "all ads" e olha os top 20 com mais tempo de rodagem.</li>
+        <li><strong>Identifica padrões de formato:</strong> UGC com celular? Talking head? Static image? Split screen?</li>
+        <li><strong>Identifica avatares validados:</strong> 50-60 mulher? 65-70 homem? Médica? Sister? Cross-reference com briefings PT-BR.</li>
+        <li><strong>Escolhe UM delta:</strong> ou muda formato (UGC → talking head), OU muda avatar (mulher 60 → homem 60). Não os dois.</li>
+        <li><strong>Mantém a copy canônica intacta</strong> — você está testando SÓ a alavanca 1.</li>
+      </ol>
+      <h4>🇺🇸 Exemplo (SlimSoda)</h4>
+      <p>Controle validado: UGC mulher 50-60, kitchen scene, holding SlimSoda tub. <strong>Test:</strong> trocar pra UGC homem 50-60, escritório, holding SlimSoda tub. <strong>Hipótese:</strong> homem falando sobre esposa aumenta credibilidade masculina (B2C "for her").</p>
+      <h4>Quando usar</h4>
+      <p>Quando o controle já roda há 14+ dias e tem pelo menos 50 link clicks. Você precisa de volume pra ter confiança no teste.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 2 — Gancho (visual + escrito)</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">2</div>
+      <div class="lever-info">
+        <h3>Gancho (visual + escrito)</h3>
+        <div class="framework">Spy de visual + estrutura invisível OU do zero</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · Como aplicar</h4>
+      <ol>
+        <li><strong>Visual:</strong> catalogar todos os padrões de gancho visual que aparecem no spy (3-5 frames do primeiro segundo, thumbnail, opening shot). Anotar: close-up de quê? Texto na tela? Movimento?</li>
+        <li><strong>Replicar o padrão visual</strong> no seu ad — não o conteúdo exato, mas a estrutura (ex: "close-up de pílula" → "close-up de cápsula").</li>
+        <li><strong>Escrito:</strong> tem 2 caminhos — preservar a estrutura invisível do controle (mantém o ritmo, troca palavras) OU reescrever do zero (busca novidade).</li>
+        <li><strong>Hook rate é rei:</strong> se o gancho visual não prende atenção em 1.5s, o body nunca lê.</li>
+      </ol>
+      <h4>🇺🇸 Exemplo (Linfaflow)</h4>
+      <p>Controle: "30-Second Morning Ritual" com close-up de mão pingando gotas. <strong>Test:</strong> mesmo close-up, mas com mulher 60+ aplicando (frame completo de ritual, não só gota). <strong>Hipótese:</strong> rosto humano no gancho +3-5% hook rate.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 3 — Nome chiclete</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">3</div>
+      <div class="lever-info">
+        <h3>Nome chiclete (Chewy Name)</h3>
+        <div class="framework">Mnemônico + branded</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · O que é + como aplicar</h4>
+      <p><strong>Nome chiclete</strong> = nome próprio que a memória gruda. Tem que ser: (1) inventado, (2) fácil de soletrar, (3) fácil de lembrar, (4) implica mecanismo/benefício.</p>
+      <p>Exemplos canônicos: V.I.P.E.R (self defense), I-T.A.P formula, "30-Second Morning Ritual", "Flow Reset Method", "The Wendy Walk".</p>
+      <ol>
+        <li>Se o controle NÃO tem nome chiclete: <strong>ADICIONE</strong> um nos ganchos/início.</li>
+        <li>Se já tem: <strong>NÃO MUDE</strong>. Trocar nome confunde quem já ouviu falar.</li>
+        <li>Posicionamento: aparece no gancho (frases 1-2), no body (reforça 2-3x), na CTA ("try the Flow Reset Method").</li>
+      </ol>
+      <h4>🇺🇸 Como criar um nome chiclete</h4>
+      <ol>
+        <li><strong>Acronym:</strong> 4-5 letras que representam o mecanismo. Ex: V.I.P.E.R, I-T.A.P, S.L.I.M.</li>
+        <li><strong>Action-noun:</strong> "Flow Reset", "Brain Rewire", "Switch Flip".</li>
+        <li><strong>Time-tagged:</strong> "30-Second Morning Ritual", "5-Minute Fix".</li>
+        <li><strong>Origin story:</strong> "The Sardinian Method", "Margaret's Formula".</li>
+      </ol>
+      <h4>Quando NÃO usar</h4>
+      <p>Produto já tem nome forte próprio (SlimSoda, Linfaflow, Cardio Clear). Não confunda a audiência com dois nomes.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 4 — Aterrissagem</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">4</div>
+      <div class="lever-info">
+        <h3>Aterrissagem (Landing transition)</h3>
+        <div class="framework">Bridge do gancho pro corpo</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · O que é + como aplicar</h4>
+      <p><strong>Aterrissagem</strong> = a frase de transição que pega o gancho e leva pro corpo do ad. Sem ela, o gancho "explode" no ar e o user não sabe o que fazer em seguida.</p>
+      <p>Exemplos: "Here's what I found:" / "Stay with me for 30 seconds:" / "Let me explain:" / "Three weeks later:" / "What happened next changed everything:"</p>
+      <ol>
+        <li><strong>Pega uma frase da bíblia dos hooks</strong> que você catalogou (alavanca 2). Reutiliza a estrutura, adapta ao seu ad.</li>
+        <li>Posiciona logo após o gancho (linha 2-3).</li>
+        <li>Tom: "ok, agora eu te explico" — quebra a tensão do gancho sem perder momentum.</li>
+        <li>Promete conteúdo: "3 things" / "the 4 ingredients" / "what I did" / "what happened next".</li>
+      </ol>
+      <h4>🇺🇸 Exemplo (SlimSoda)</h4>
+      <p>Gancho: "I was wrong about baking soda for 20 years." → <strong>Aterrissagem:</strong> "Then one night, her kids asleep, my coffee cold, I found a study that changed everything." → Body.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 5 — Provas</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">5</div>
+      <div class="lever-info">
+        <h3>Provas (visuais, demonstrativas, sociais, avatar)</h3>
+        <div class="framework">Prove MAIS · multi-camada</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · Os 4 tipos de prova (multi-camada sempre)</h4>
+      <ol>
+        <li><strong>Visuais (demonstrativas):</strong> GIF animado, antes/depois, BP caindo, copo de água efervescendo. <strong>Strongest proof</strong> — user pode ver funcionando.</li>
+        <li><strong>Sociais (testemunhas):</strong> Rachel 41 lbs, Linda 22 lbs, Marlene 67 — vozes reais, fotos reais, locais reais (Asheville NC, Mesa AZ, Dublin GA).</li>
+        <li><strong>De autoridade:</strong> Dr. Sanjay Gupta (Cardio Clear — board-certified cardiologist), Dr. Whitfield (SlimSoda — formulator 20+ years), 96% stabilized in 3 months (n=240), NEJM 2024.</li>
+        <li><strong>De avatar:</strong> "other women 50-60 just like you", "Margaret's sister", "your skinny friend".</li>
+      </ol>
+      <h4>🇺🇸 Regra de ouro</h4>
+      <p><strong>Prove MAIS, não menos.</strong> Cada prova adicional custa 1 frase e adiciona 2-5% de conversão. 3 provas bem posicionadas > 1 prova canônica. Crie uma biblioteca de provas (ver <a href="../proof-elements/" style="color:#4ea1ff;">biblioteca completa</a>) e use 2-3 por ad.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 6 — Mecanismo</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">6</div>
+      <div class="lever-info">
+        <h3>Mecanismo (Uniqueness = value)</h3>
+        <div class="framework">"New cause = new mechanism"</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · Como aplicar</h4>
+      <ol>
+        <li><strong>Se o controle tem mecanismo fraco:</strong> reescreva com mais specifics, scientific-sounding, ou branded process.</li>
+        <li><strong>Se não tem mecanismo nenhum:</strong> <strong>ADICIONE UM</strong> — é a alavanca que mais aumenta perceived value.</li>
+        <li><strong>Padrão "new cause = new mechanism":</strong> se você apresenta uma causa nova (microplastics, DPP-4 enzyme, fibrin+calcium), o mecanismo precisa ser a solução pra essa causa nova.</li>
+        <li><strong>Técnica:</strong> use scientific language cuidadosamente (palavras que o prospect não entende totalmente = +credibilidade).</li>
+      </ol>
+      <h4>🇺🇸 Exemplo (Cardio Clear)</h4>
+      <p>Causa nova: "arterial cement (fibrin + calcium + microplastics)". Mecanismo: "3 Sardinian ingredients — Bitter Honey dissolves fibrin, Cagnulari Grape dissolves calcium, Mediterranean Botanical clears microplastics." <strong>Match perfeito.</strong></p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 7 — Disparos de dopamina</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">7</div>
+      <div class="lever-info">
+        <h3>Disparos de dopamina (Dopamine triggers)</h3>
+        <div class="framework">Cortar fillers + adicionar curiosity loops</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · O que cortar + o que adicionar</h4>
+      <p><strong>Cortar palavras de transição / início de frase</strong> (matam o ritmo):</p>
+      <ul style="margin-left:18px;">
+        <li>"E então…"</li>
+        <li>"Foi aí que…"</li>
+        <li>"Eu decidi que…"</li>
+        <li>"Assim como…"</li>
+        <li>"Então eu pensei…"</li>
+        <li>"Foi quando…"</li>
+      </ul>
+      <p><strong>Adicionar dopamine triggers</strong> (curiosity loops que prendem atenção):</p>
+      <ul style="margin-left:18px;">
+        <li>"And the third one — nobody talks about this."</li>
+        <li>"The thing nobody tells you about [X] is..."</li>
+        <li>"What happened next changed everything."</li>
+        <li>"But here's the part [X] doesn't want you to know."</li>
+        <li>"I tested it on 240 people. Here's what happened."</li>
+      </ul>
+      <h4>🇺🇸 Exemplo (Linfaflow)</h4>
+      <p>Antes: "Then I went looking for what actually killed her. And then I found this method. And then I tried it for 30 days." → Depois: "What killed her was the thing the clot was trying to tell us. I went looking. I found a 30-second morning ritual. Week 1 — the tightness eased."</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Alavanca 8 — Fechamento (pós CTA + última frase)</h2>
+  <div class="lever">
+    <div class="lever-header">
+      <div class="lever-num">8</div>
+      <div class="lever-info">
+        <h3>Fechamento (pós CTA + última frase)</h3>
+        <div class="framework">Push-and-pull + autoridade humanizada</div>
+      </div>
+    </div>
+    <div class="lever-body">
+      <h4>🇧🇷 PT-BR · Como aplicar</h4>
+      <ol>
+        <li><strong>Pós CTA</strong> (logo após "Saiba mais", "Try now", etc): adicionar DOIS elementos — <strong>escassez com reason why</strong> + <strong>provas</strong>.</li>
+        <li><strong>Última frase do ad</strong> (a frase que o user lê por último): precisa ter <strong>push-and-pull</strong> + <strong>autoridade humanizada</strong>.</li>
+      </ol>
+      <h4>🇺🇸 Anatomia do pós CTA</h4>
+      <pre style="background:var(--panel-2); padding:12px 14px; border-radius:6px; font-size:13px; line-height:1.55; color:#ffd9b8; white-space:pre-wrap; font-family:'JetBrains Mono',monospace;">[CTA: "Saiba mais →"]
+
+"Esse preço de lançamento fica até [data com reason why]. Depois sobe pra $59.99/bottle."
+
+(escassez com reason why)
+
+"43,029 American women já compraram. 412,738 viram esse vídeo. Você decide."
+
+(provas: social proof + number proof)</pre>
+      <h4>🇺🇸 Anatomia da última frase</h4>
+      <pre style="background:var(--panel-2); padding:12px 14px; border-radius:6px; font-size:13px; line-height:1.55; color:#ffd9b8; white-space:pre-wrap; font-family:'JetBrains Mono',monospace;">"If this isn't for you, that's the answer too. But if you're still reading this 90 seconds in, you're not the kind of person who scrolls past something that might change the rest of your mornings. I'm not desperate for you to click. I'm just saying what worked for me might work for you."
+
+(push: "not the kind who scrolls past" — light pressure sem desespero)
++
+(pull: "if it isn't for you, that's the answer too" — libera o user)
++
+(autoridade humanizada: "I'm not desperate for you to click" — você não é vendedor, é pessoa)</pre>
+      <h4>Regra de ouro</h4>
+      <p>Última frase NÃO pode ser genérica. <strong>NUNCA termine com "Try now", "Buy now", "Click here"</strong> como última palavra. A última frase é a que fica. Se for genérica, todo o ad some junto.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>⚡ Workflow recomendado</h2>
+
+  <div class="callout blue">
+    <h3>Sequência pra aplicar as 8 alavancas num ad validado</h3>
+    <ol style="font-size:13.5px; margin-left:18px;">
+      <li><strong>Semana 1:</strong> alavanca 1 (formato/avatar) + alavanca 3 (nome chiclete) — mudanças estruturais, alto risco/alto retorno.</li>
+      <li><strong>Semana 2:</strong> alavanca 5 (provas) + alavanca 6 (mecanismo) — melhorias de credibility, médio risco/alto retorno.</li>
+      <li><strong>Semana 3:</strong> alavanca 7 (dopamina) + alavanca 8 (fechamento) — copy refinements, baixo risco/médio retorno.</li>
+      <li><strong>Semana 4:</strong> alavanca 2 (gancho visual) + alavanca 4 (aterrissagem) — risco médio, requer produção.</li>
+      <li><strong>Semana 5+:</strong> ranqueamento do que moveu a régua. Escalar winners, kill losers.</li>
+    </ol>
+  </div>
+
+  <div class="callout red">
+    <strong>🚫 Anti-pattern:</strong> mudar 4 alavancas ao mesmo tempo. Se a métrica cai, você não sabe qual alavanca matou o controle. <strong>1 alavanca por vez, sempre.</strong>
+  </div>
+
+  <div class="footer">
+    Manual DTC Control (Khayat) · 8 Alavancas · transcrito em 19/ago/2026 · referência cross-project: <a href="../dtc-black-bifi/" style="color:#7c3aed;">dtc-black-bifi/</a> (Bifi P1-P4) · <a href="../cbo-bifi/" style="color:#7c3aed;">cbo-bifi/</a> (4 fases).<br>
+    <strong>Skill correspondente:</strong> <code>C:\Users\vsuga\.claude\skills\dtc-control\SKILL.md</code> (137 linhas, 14KB) — gatilhos + checklist de saída + quick reference.<br>
+    <strong>Cross-ref arsenal:</strong> <a href="../proof-elements/" style="color:#06a77d;">proof-elements/</a> (alavanca 5) · <a href="../skills-index/" style="color:#7c3aed;">skills-index/</a> (índice completo).
+  </div>
+
+</div>
+</body>
+</html>

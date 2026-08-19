@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills DR — Índice & Cross-Reference (SlimSoda / Linfaflow / Cardio Clear)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#7c3aed; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(124,58,237,0.12); color:var(--accent); border:1px solid rgba(124,58,237,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .skill { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .skill-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(124,58,237,0.08), transparent); }
+  .skill-icon { font-size:28px; flex-shrink:0; }
+  .skill-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .skill-info .when { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .skill-body { padding:14px 18px 18px; }
+  .skill-body p { margin:6px 0; font-size:13.5px; }
+  .skill-body .row { display:flex; gap:18px; margin-top:10px; flex-wrap:wrap; }
+  .skill-body .row > div { flex:1; min-width:240px; }
+  .skill-body ul { margin:6px 0 6px 18px; }
+  .skill-body li { padding:2px 0; font-size:13.5px; }
+  .new-badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:9px; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; background:rgba(6,167,125,0.2); color:var(--green); border:1px solid var(--green); margin-left:8px; vertical-align:middle; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  .external-link { color:var(--blue); text-decoration:none; font-weight:600; }
+  .external-link:hover { text-decoration:underline; }
+  @media (max-width:720px) { .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Methodology · Skills DR · Arsenal Completo · Cross-Reference</span>
+    <h1>Skills DR <span class="accent">· Arsenal Completo</span> & Cross-Reference</h1>
+    <p class="lede">Índice das skills de Direct Response disponíveis no arsenal, com <strong>quando usar, o que entrega, e como compor entre si</strong>. Cada skill aqui é cross-linkada com as methodology pages do HUB e com o briefing PT-BR do produto. <span class="new-badge">3 novas skills (19/ago/2026)</span></p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Como ler este índice:</strong> pra cada skill você vê (1) <strong>quando ativar</strong> (gatilhos), (2) <strong>o que entrega</strong> (output), (3) <strong>compõe com</strong> (skills relacionadas), (4) <strong>cross-reference</strong> (link pro SKILL.md + link pra methodology page).
+  </div>
+
+  <div class="callout blue">
+    <strong>🆕 3 novas skills adicionadas em 19/ago/2026</strong> (destiladas dos manuais Khayat):
+    <ul style="font-size:13.5px; margin:6px 0 0 18px;">
+      <li><strong>dtc-control</strong> — 8 alavancas pra bater controle em ad DTC validado</li>
+      <li><strong>proof-elements</strong> — library de 22+ tipos de prova (Demonstration, Clinical Studies, Vivid Pictures, etc)</li>
+      <li><strong>niche-research</strong> — template de análise top 5/bottom 5 hooks & bodys (Khayat 4 blocos)</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🆕 Skills Khayat (3 novas — 19/ago/2026)</h2>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-info">
+        <h3>dtc-control <span class="new-badge">NEW</span></h3>
+        <div class="when">Quando: ad já validado, quer melhorar performance mexendo só no que importa</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> 8 alavancas iterativas (Formato/Avatar, Gancho, Nome chiclete, Aterrissagem, Provas, Mecanismo, Dopamina, Fechamento). 1 variável por vez.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>proof-elements</code> (alavanca 5)</li>
+            <li><code>mecanismo-unico-v2</code> (alavanca 6)</li>
+            <li><code>rebel-copy</code> (alavancas 2, 4, 7, 8)</li>
+            <li><code>angulos-criativos</code> (alavanca 1)</li>
+            <li><code>niche-research</code> (escolher 1 alavanca)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Cross-reference</h4>
+          <p>📄 <a href="../dtc-control/" class="external-link">methodology/dtc-control/</a> (PT-BR completo)</p>
+          <p>📋 Briefing PT-BR: <a href="../../by-product/slimsoda/copy/briefing-affiliate/" class="external-link">SlimSoda</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" class="external-link">Linfaflow</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" class="external-link">Cardio Clear</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">🔬</div>
+      <div class="skill-info">
+        <h3>proof-elements <span class="new-badge">NEW</span></h3>
+        <div class="when">Quando: claim precisa de prova, ceticismo alto, copy soa exagerada</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> library de 22+ tipos de prova (Demonstration, Reasons Why, Specificity, Clinical Studies, Vivid Pictures, Testimonials, Before/After, Expert Endorsements, Track Record, etc). Matriz de decisão por produto.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>weaponized-credibility</code> (regra de ouro claim = prova)</li>
+            <li><code>mecanismo-unico-v2</code> (proof by reasoning)</li>
+            <li><code>rebel-copy</code> (alavanca 5 do DTC)</li>
+            <li><code>lp-persuasiva-v2</code> (provas na página)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Cross-reference</h4>
+          <p>📄 <a href="../proof-elements/" class="external-link">methodology/proof-elements/</a> (PT-BR completo)</p>
+          <p>📋 Por produto: <a href="../../by-product/slimsoda/copy/chat-x1-briefing/" class="external-link">SlimSoda chat-x1</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" class="external-link">Linfaflow</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" class="external-link">Cardio Clear</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">📊</div>
+      <div class="skill-info">
+        <h3>niche-research <span class="new-badge">NEW</span></h3>
+        <div class="when">Quando: tem planilha de performance, quer achar padrões em winners/losers</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> template de 4 blocos (top 5 hooks, bottom 5 hooks, top 5 bodys, bottom 5 bodys). Catalogação de padrões, hipótese testável, mapeamento pra 1 alavanca do DTC.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>dtc-control</code> (qual alavanca testar)</li>
+            <li><code>angulos-criativos</code> (banco de ângulos)</li>
+            <li><code>hooklab</code> (banco de hooks)</li>
+            <li><code>rebel-copy</code> (escrita com padrão vencedor)</li>
+            <li><code>competitive-ads-extractor</code> (spy externo)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Cross-reference</h4>
+          <p>📄 <a href="../niche-research/" class="external-link">methodology/niche-research/</a> (PT-BR completo)</p>
+          <p>📋 Tracking dashboard: <a href="../../tracking/" class="external-link">HUB/tracking/</a> (real data do Supabase)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎓 Skills DR canônicas (existente)</h2>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">🔥</div>
+      <div class="skill-info">
+        <h3>rebel-copy (Carlton Engine)</h3>
+        <div class="when">Quando: copy agressiva do zero, headline matadora, big idea DR</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> copy de resposta direta implacável no estilo John Carlton. Headline matadora, copy longo com reason why, bullets one-two punch, reversão de risco, CTA com urgência justificada.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>weaponized-credibility</code> (prova claim)</li>
+            <li><code>proof-elements</code> (library de 22+ tipos)</li>
+            <li><code>mecanismo-unico-v2</code> (diferencial)</li>
+            <li><code>avatar-architect</code> + <code>escavador-desejos</code></li>
+            <li><code>devastador-v4</code> (carga emocional extrema)</li>
+            <li><code>lp-persuasiva-v2</code> (montar página)</li>
+            <li><code>vsl-filemon</code> (VSL do pitch)</li>
+            <li><code>dtc-control</code> (bater controle)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aplicação</h4>
+          <p>📄 SKILL.md: <code>C:\Users\vsuga\.claude\skills\rebel-copy\SKILL.md</code> (153 linhas, 12KB)</p>
+          <p>📚 7 fases: Avatar → Gancho + Big Idea → Headline → Corpo (Reason Why) → Bullets → Reversão de Risco → CTA. + 4 leis brutas + Checklist de saída.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">🛡️</div>
+      <div class="skill-info">
+        <h3>weaponized-credibility (Bencivenga Engine)</h3>
+        <div class="when">Quando: claim soa exagerado, ceticismo alto, copy precisa ser crível</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> blindagem de claims com prova, sem hype. Regra de ouro (claim = prova), especificidade > superlativo, "porque" psicológico, extração forense de provas.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>rebel-copy</code> (escreve o claim, esta skill prova)</li>
+            <li><code>proof-elements</code> (22+ tipos de prova)</li>
+            <li><code>devastador-v4</code> (carga emocional + prova)</li>
+            <li><code>mecanismo-unico-v2</code> (proof by reasoning)</li>
+            <li><code>lp-persuasiva-v2</code> (provas na página)</li>
+            <li><code>dtc-control</code> (provar MAIS — alavanca 5)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aplicação</h4>
+          <p>📄 SKILL.md: <code>C:\Users\vsuga\.claude\skills\weaponized-credibility\SKILL.md</code> (135 linhas, 11KB)</p>
+          <p>📚 Regra de ouro Caples-Bencivenga: aumentar volume da prova até claim = prova (mesmo peso). Aumentar volume do claim = hype = morte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">📺</div>
+      <div class="skill-info">
+        <h3>vsl-filemon (Método E3)</h3>
+        <div class="when">Quando: precisa de VSL standalone (60-90 min) ou LP de funil longo</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> framework E3 do Filemon (6 blocos) pra criar VSL do zero. Estrutura validada pra nicho H&W americano ($59-189).</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>rebel-copy</code> (headline do pitch)</li>
+            <li><code>weaponized-credibility</code> (provar claims do pitch)</li>
+            <li><code>proof-elements</code> (NEJM, expert, demonstration)</li>
+            <li><code>mecanismo-unico-v2</code> (mecanismo do produto)</li>
+            <li><code>dtc-control</code> (iterar VSL validada, 1 bloco por vez)</li>
+            <li><code>niche-research</code> (analisar performance)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aplicação</h4>
+          <p>📄 SKILL.md: <code>C:\Users\vsuga\.claude\skills\vsl-filemon\SKILL.md</code> (146 linhas, 7KB)</p>
+          <p>🎬 Aplicado: <a href="../../../../slimtide-vsl/index.html" class="external-link">SlimTide VSL</a> (Vercel) · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" class="external-link">Cardio Clear VSL brief</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">📄</div>
+      <div class="skill-info">
+        <h3>lp-persuasiva-v2 (16 blocos)</h3>
+        <div class="when">Quando: LP de venda, funil de resposta direta, página de produto</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> 16 blocos persuasivos pra LP de venda (headline, problema, mecanismo, prova, oferta, CTA, FAQ, garantia, bônus, autor, etc). Variações por temperatura de tráfego (frio/morno/quente).</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>rebel-copy</code> (headline, copy de blocos)</li>
+            <li><code>weaponized-credibility</code> + <code>proof-elements</code> (blocos de credibilidade)</li>
+            <li><code>mecanismo-unico-v2</code> (bloco mecanismo)</li>
+            <li><code>vsl-filemon</code> (VSL no topo da LP)</li>
+            <li><code>dtc-control</code> (iterar LP validada, 1 bloco por vez)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aplicação</h4>
+          <p>📄 SKILL.md: <code>C:\Users\vsuga\.claude\skills\lp-persuasiva-v2\SKILL.md</code> (267 linhas, 15KB)</p>
+          <p>🎬 Aplicado: <a href="../../../../buy-page/index.html" class="external-link">SlimSoda Buy Page</a> (Vercel) · <a href="../../../../index.html" class="external-link">Slim-Soda01 LP</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill">
+    <div class="skill-header">
+      <div class="skill-icon">⚔️</div>
+      <div class="skill-info">
+        <h3>sala-de-guerra-copy (camada de qualidade)</h3>
+        <div class="when">Quando: copy pronta pra revisar, auditar, melhorar, ou criar do zero</div>
+      </div>
+    </div>
+    <div class="skill-body">
+      <p><strong>O que entrega:</strong> camada de qualidade comercial. 13 sub-skills (S01-S13) cobrindo pesquisa, big idea, modelagem spy, ganchos, corpo, prova, oferta, formatos, métricas, esteira, backend, voz humana. Compliance FDA pra health/wellness.</p>
+      <div class="row">
+        <div>
+          <h4>Compõe com</h4>
+          <ul>
+            <li><code>rebel-copy</code>, <code>weaponized-credibility</code>, <code>vsl-filemon</code>, <code>lp-persuasiva-v2</code> (todas as outras)</li>
+            <li><code>dtc-control</code>, <code>proof-elements</code>, <code>niche-research</code> (3 novas Khayat)</li>
+            <li><code>mecanismo-unico-v2</code>, <code>devastador-v4</code></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Aplicação</h4>
+          <p>📄 SKILL.md: <code>C:\Users\vsuga\.minimax\agents\mavis\skills\sala-de-guerra-copy\SKILL.md</code> (83 linhas, + cross-ref)</p>
+          <p>📂 Acervo: <code>references/acervo-11/</code> (13 skills + 3 debate + templates + modos)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🧠 Skills de Avatar & Mecanismo (apoio)</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🎭 avatar-architect-v7/v8</h4>
+      <p>Dossiê de avatar V7.0 (272 linhas) + V8.0 (607 linhas). Mapeamento psicológico profundo.</p>
+    </div>
+    <div class="card">
+      <h4>💭 escavador-desejos</h4>
+      <p>Análise psicológica profunda dos desejos. 168 linhas. Ativa antes de qualquer copy.</p>
+    </div>
+    <div class="card">
+      <h4>⚙️ mecanismo-unico-v2</h4>
+      <p>Criação de mecanismo único branded. 166 linhas. "New cause = new mechanism".</p>
+    </div>
+    <div class="card">
+      <h4>🌪️ devastador-v4</h4>
+      <p>Carga emocional extrema, manifesto longo. 235 linhas. Compõe com rebel-copy.</p>
+    </div>
+    <div class="card">
+      <h4>🎯 angulos-criativos</h4>
+      <p>Engine de ângulos pra topo de funil. 123 linhas. Hooks, frameworks, padrões.</p>
+    </div>
+    <div class="card">
+      <h4>🪝 hooklab</h4>
+      <p>Banco de 400 hooks. 87 linhas. Swipe file por categoria/framework.</p>
+    </div>
+    <div class class="card">
+      <h4>💰 tripwire-matador-v2</h4>
+      <p>Ofertas de baixo ticket (R$7-97). 180 linhas. Entrada de funil.</p>
+    </div>
+    <div class="card">
+      <h4>🔍 competitive-ads-extractor</h4>
+      <p>Spy de ads competidores. 224 linhas. Meta Ad Library + análise.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 Árvore de decisão — "qual skill aciono?"</h2>
+
+  <div class="callout">
+    <h3>Pra cada objetivo, qual é a skill primária?</h3>
+    <ol style="font-size:13.5px; margin:6px 0 0 18px;">
+      <li><strong>Escrever copy do zero (ad, LP, VSL, email)</strong> → <code>rebel-copy</code> + <code>avatar-architect</code> + <code>mecanismo-unico-v2</code></li>
+      <li><strong>Provar um claim grande</strong> → <code>weaponized-credibility</code> + <code>proof-elements</code></li>
+      <li><strong>Melhorar ad/LP/VSL já validado</strong> → <code>dtc-control</code> (8 alavancas, 1 por vez)</li>
+      <li><strong>Analisar performance e achar padrões</strong> → <code>niche-research</code> (4 blocos)</li>
+      <li><strong>Escrever VSL standalone</strong> → <code>vsl-filemon</code> (Método E3)</li>
+      <li><strong>Montar página de venda</strong> → <code>lp-persuasiva-v2</code> (16 blocos)</li>
+      <li><strong>Auditar copy pronta (camada qualidade)</strong> → <code>sala-de-guerra-copy</code></li>
+      <li><strong>Carga emocional extrema (manifesto)</strong> → <code>devastador-v4</code></li>
+      <li><strong>Oferta de entrada baixo ticket</strong> → <code>tripwire-matador-v2</code></li>
+      <li><strong>Spy de competidores</strong> → <code>competitive-ads-extractor</code> + <code>angulos-criativos</code></li>
+      <li><strong>Mecanismo único branded</strong> → <code>mecanismo-unico-v2</code></li>
+    </ol>
+  </div>
+
+  <div class="callout red">
+    <strong>🚫 Regra de ouro (NUNCA viole):</strong> 1 skill primária por vez. Você pode compor 2-3 skills (ex: <code>rebel-copy</code> + <code>proof-elements</code>), mas nunca 5 ao mesmo tempo — vira Frankenstein. Sequência canônica: <strong>avatar-architect → mecanismo-unico → rebel-copy → weaponized-credibility/proof-elements → dtc-control (iterar) → niche-research (analisar)</strong>.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔗 Cross-reference Methodology pages ↔ Skills</h2>
+
+  <div class="callout blue">
+    <p>Cada methodology page do HUB v24 corresponde a uma skill do arsenal Claude:</p>
+    <ul style="font-size:13.5px; margin:6px 0 0 18px;">
+      <li><a href="../dtc-control/" class="external-link">DTC Control (Khayat 8 Alavancas)</a> ↔ <code>C:\Users\vsuga\.claude\skills\dtc-control\SKILL.md</code> (137 linhas, 14KB)</li>
+      <li><a href="../proof-elements/" class="external-link">Proof Elements Library (22+ tipos)</a> ↔ <code>C:\Users\vsuga\.claude\skills\proof-elements\SKILL.md</code> (177 linhas, 17KB)</li>
+      <li><a href="../niche-research/" class="external-link">Niche Research (4 blocos)</a> ↔ <code>C:\Users\vsuga\.claude\skills\niche-research\SKILL.md</code> (124 linhas, 12KB)</li>
+      <li><a href="../cbo-bifi/" class="external-link">CBO Bifi (4 fases)</a> — page existe, sem skill dedicada</li>
+      <li><a href="../dtc-black-bifi/" class="external-link">DTC Black (P1-P4)</a> — page existe, sem skill dedicada</li>
+      <li><a href="../amanda-motor/" class="external-link">Motor Amanda N3</a> — page existe, sem skill dedicada</li>
+      <li><a href="../ad-library-spy/" class="external-link">Ad Library Spy</a> — page existe, sem skill dedicada</li>
+    </ul>
+    <p style="margin-top:8px;"><strong>Regra de uso:</strong> a <strong>methodology page</strong> é o PT-BR completo (explicação detalhada + exemplos) — pra leitura humana. A <strong>skill</strong> é o acionável compacto (gatilhos + output + checklist) — pra uso por LLM/skill-system.</p>
+  </div>
+
+  <div class="footer">
+    Skills Index v1.0 · atualizado em 19/ago/2026 · 3 novas skills (dtc-control, proof-elements, niche-research) + 5 skills DR canônicas cross-linkadas. <br>
+    Skills em <code>C:\Users\vsuga\.claude\skills\</code> + <code>C:\Users\vsuga\.minimax\agents\mavis\skills\</code>. <br>
+    Próxima revisão: conforme novas skills forem adicionadas.
+  </div>
+
+</div>
+</body>
+</html>
