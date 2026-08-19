@@ -12,7 +12,9 @@
 !/index.html
 !/vercel.json
 !/js/
-!/js/**
+(!/js/**)
+!/assets/
+!/assets/**
 !/images/
 !/images/**
 !/slimtide-vsl/
