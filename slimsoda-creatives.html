@@ -41,6 +41,31 @@
   }
   .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
   h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .download-bar {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+    color: #fff;
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .download-bar-text { font-size: 14px; font-weight: 600; }
+  .download-bar-text span { opacity: 0.85; font-weight: 400; }
+  .download-bar a {
+    background: #fff;
+    color: var(--accent);
+    padding: 10px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    transition: transform 0.15s;
+  }
+  .download-bar a:hover { transform: translateY(-1px); }
   .subtitle { color: var(--text-dim); font-size: 16px; max-width: 720px; }
   .stats {
     display: grid;
@@ -210,6 +235,11 @@
     <div class="eyebrow">DR HUB · ASSET CATALOG</div>
     <h1>SlimSoda Creatives — 2026-08-19</h1>
     <p class="subtitle">Catálogo dos criativos produzidos pra buy-page do SlimSoda. Ranking por score DR (hook + ângulo + estrutura + CTA + Meta-safety). Filtra por tier ou ângulo pra ver o que rodar primeiro.</p>
+    <div class="download-bar">
+      <div class="download-bar-text">📦 Download all 28 creatives as ZIP <span>(22.6 MB · in-ads/ + drafts/ + raw-downloads/)</span></div>
+      <a href="slimsoda-creatives-2026-08-19.zip" download>Download ZIP ↓</a>
+    </div>
+
     <div class="stats">
       <div class="stat"><div class="stat-label">Total</div><div class="stat-value">28</div><div class="stat-sub">criativos analisados</div></div>
       <div class="stat"><div class="stat-label">Tier 1 (rodar)</div><div class="stat-value tier-1-color">8</div><div class="stat-sub">9-10/10 score</div></div>
