@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The One Page — Decisão do dia (DR Hub v26)</title>
+  <link rel="stylesheet" href="../js/hub.css">
+  <style>
+    .one-hero { background: linear-gradient(135deg, rgba(255,138,61,0.12), rgba(125,60,152,0.08)); border: 1px solid var(--c-accent); border-radius: var(--r-lg); padding: var(--sp-6); margin-bottom: var(--sp-5); position: relative; overflow: hidden; }
+    .one-hero::before { content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, var(--c-slim), var(--c-accent), var(--c-linfozen)); }
+    .one-hero h1 { font-size: 32px; margin: 0 0 var(--sp-3); letter-spacing: -0.02em; }
+    .one-hero .lede { font-size: 16px; color: var(--text-muted); margin: 0 0 var(--sp-4); max-width: 800px; }
+    .one-action { display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-4); background: var(--bg-elev); border-radius: var(--r-md); border-left: 4px solid var(--c-accent); }
+    .one-action-icon { font-size: 36px; flex-shrink: 0; }
+    .one-action-content { flex: 1; }
+    .one-action h3 { margin: 0 0 6px; font-size: 20px; letter-spacing: -0.01em; }
+    .one-action p { margin: 0; color: var(--text-muted); font-size: 14px; }
+    .one-action .btn { white-space: nowrap; }
+    .trend-row { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3); border-bottom: 1px solid var(--border); }
+    .trend-row:last-child { border-bottom: none; }
+    .trend-product { font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: var(--r-full); text-transform: uppercase; min-width: 80px; text-align: center; }
+    .trend-product.slimsoda { background: rgba(6,167,125,0.15); color: var(--c-slim); }
+    .trend-product.linfaflow { background: rgba(231,76,60,0.15); color: var(--c-linfaflow); }
+    .trend-product.linfozen { background: rgba(125,60,152,0.15); color: var(--c-linfozen); }
+    .trend-angle { flex: 1; font-size: 13px; }
+    .trend-status { font-size: 11px; padding: 3px 8px; border-radius: var(--r-full); font-weight: 700; text-transform: uppercase; }
+    .trend-status.saturated { background: rgba(192,57,43,0.15); color: var(--c-cardio); }
+    .trend-status.working { background: rgba(6,167,125,0.15); color: var(--c-slim); }
+    .trend-status.dominated { background: rgba(255,138,61,0.15); color: var(--c-accent); }
+    .live-row { display: flex; justify-content: space-between; align-items: center; padding: var(--sp-3); border-bottom: 1px solid var(--border); }
+    .live-row:last-child { border-bottom: none; }
+    .live-label { color: var(--text-muted); font-size: 13px; }
+    .live-value { font-weight: 800; font-size: 16px; font-family: var(--font-mono); }
+    .refresh-stamp { font-size: 11px; color: var(--text-faint); text-align: right; }
+    .loading-pulse { opacity: 0.5; animation: pulse 1.5s infinite; }
+  </style>
+</head>
+<body>
+
+<header class="global-header">
+  <a class="global-logo" href="index.html"><span class="accent">DR</span> Hub v26</a>
+  <nav class="global-nav">
+    <a href="index.html">HUB</a>
+    <a href="one.html" class="active">One Page</a>
+    <a href="tracking/index.html">Tracking</a>
+    <a href="tracking/meta/index.html">Meta</a>
+    <a href="p1p2/index.html">P1P2</a>
+    <a href="methodology/competitive-spy/index.html">Spy</a>
+  </nav>
+  <div class="global-search">
+    <input type="text" placeholder="Buscar no HUB...">
+    <div class="search-results"></div>
+  </div>
+  <button class="theme-toggle" aria-label="Toggle theme">☀️</button>
+</header>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="one-hero">
+    <h1>🎯 The One Page</h1>
+    <p class="lede">Tudo que você precisa saber pra decidir HOJE. Auto-atualizado a cada 5min via <code>/api/decision</code>. Decisão baseada em Supabase + competitive spy + playbook.</p>
+    <div class="refresh-stamp" id="refresh-stamp">Carregando...</div>
+  </div>
+
+  <!-- TODAY'S ACTION -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">🚀 O que fazer hoje</h2>
+        <p class="section-sub">Recomendação única, baseada em volume + CVR + trending angles</p>
+      </div>
+    </div>
+    <div id="today-action" class="one-action loading-pulse">
+      <div class="one-action-icon">⏳</div>
+      <div class="one-action-content">
+        <h3>Carregando decisão...</h3>
+        <p>Analisando dados do Supabase + competitive spy</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE STATUS GRID -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">📊 Live status · últimos 7 dias</h2>
+        <p class="section-sub">Volume + status por produto</p>
+      </div>
+      <a class="btn btn-ghost" href="tracking/index.html">Ver tracking completo →</a>
+    </div>
+    <div class="grid grid-3" id="live-grid">
+      <div class="stat loading-pulse"><div class="stat-label">🥤 SlimSoda</div><div class="stat-value">—</div><div class="stat-trend">carregando...</div></div>
+      <div class="stat loading-pulse"><div class="stat-label">🫀 Linfaflow</div><div class="stat-value">—</div><div class="stat-trend">carregando...</div></div>
+      <div class="stat loading-pulse"><div class="stat-label">💧 Linfozen</div><div class="stat-value">—</div><div class="stat-trend">carregando...</div></div>
+    </div>
+  </div>
+
+  <!-- QUICK WINS -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">⚡ Quick wins · < 1h cada</h2>
+        <p class="section-sub">Ações táticas com impacto comprovado</p>
+      </div>
+    </div>
+    <div class="panel" id="quick-wins">
+      <div class="loading-pulse" style="padding:20px; text-align:center; color:var(--text-faint);">Carregando quick wins...</div>
+    </div>
+  </div>
+
+  <!-- TRENDING ANGLES -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">🔥 Trending angles · competitive spy</h2>
+        <p class="section-sub">Copy hooks ativos agora no Meta Ad Library</p>
+      </div>
+      <a class="btn btn-ghost" href="methodology/competitive-spy/index.html">Ver spy completo →</a>
+    </div>
+    <div class="panel" id="trending-angles">
+      <div class="loading-pulse" style="padding:20px; text-align:center; color:var(--text-faint);">Carregando angles...</div>
+    </div>
+  </div>
+
+  <!-- ALERTS -->
+  <div class="section" id="alerts-section" style="display:none;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">🔔 Alertas</h2>
+        <p class="section-sub">Coisas que precisam de atenção</p>
+      </div>
+    </div>
+    <div id="alerts-container"></div>
+  </div>
+
+  <!-- CROSS-REF PANEL -->
+  <div class="section">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">🔗 Atalhos rápidos</h2>
+        <p class="section-sub">Páginas + endpoints que você abre toda semana</p>
+      </div>
+    </div>
+    <div class="grid grid-2">
+      <a href="methodology/competitive-spy/index.html" class="card card-accent" style="text-decoration:none; color:inherit;">
+        <div class="card-title">📡 Competitive Spy</div>
+        <div class="card-sub">30+ cards de quem está vendendo agora. Refresh semanal recomendado.</div>
+      </a>
+      <a href="tracking/index.html" class="card card-accent" style="text-decoration:none; color:inherit;">
+        <div class="card-title">📊 Tracking Dashboard</div>
+        <div class="card-sub">Live leads + vendas direto do Supabase. 5min auto-refresh.</div>
+      </a>
+      <a href="tracking/meta/index.html" class="card card-accent" style="text-decoration:none; color:inherit;">
+        <div class="card-title">🎯 Meta Real-time</div>
+        <div class="card-sub">Campaigns Meta com KPIs em tempo real. Requer META_ACCESS_TOKEN.</div>
+      </a>
+      <a href="p1p2/index.html" class="card card-accent" style="text-decoration:none; color:inherit;">
+        <div class="card-title">🧪 P1/P2 Test Planner</div>
+        <div class="card-sub">Plano de testes com auto-verdict engine (Bifi).</div>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="global-footer">
+  <p>The One Page · auto-refresh 5min · source <a href="/api/decision">/api/decision</a> + <a href="/api/insights">/api/insights</a> · v26</p>
+</footer>
+
+<script src="../js/hub.js"></script>
+<script>
+(async function(){
+  async function j(url){ try { var r = await fetch(url); return await r.json(); } catch(e){ return null; } }
+
+  // Load decision
+  var dec = await j("/api/decision");
+  var ins = await j("/api/insights?days=7");
+
+  // Render timestamp
+  var ts = document.getElementById("refresh-stamp");
+  ts.textContent = "Atualizado: " + new Date().toLocaleString("pt-BR") + " · auto-refresh 5min";
+
+  // Today action
+  if(dec && dec.today_action){
+    var a = dec.today_action;
+    var ta = document.getElementById("today-action");
+    ta.classList.remove("loading-pulse");
+    ta.innerHTML =
+      '<div class="one-action-icon">🎯</div>' +
+      '<div class="one-action-content">' +
+        '<h3>Produto: '+a.product.toUpperCase()+' → '+a.angle+'</h3>' +
+        '<p><strong>Por que:</strong> '+a.reason+(a.source?' · <em>Fonte: '+a.source+'</em>':'')+(a.estimated_effort?' · <em>Esforço: '+a.estimated_effort+'</em>':'')+'</p>' +
+      '</div>' +
+      '<a class="btn btn-primary" href="methodology/competitive-spy/index.html">Ver spy →</a>';
+  }
+
+  // Live grid
+  if(dec && dec.products){
+    var grid = document.getElementById("live-grid");
+    grid.innerHTML = "";
+    Object.entries(dec.products).forEach(function([k, p]){
+      var color = k === "slimsoda" ? "slim" : (k === "linfaflow" ? "cardio" : "lipo");
+      var emoji = k === "slimsoda" ? "🥤" : (k === "linfaflow" ? "🫀" : "💧");
+      var statusColor = p.status === "active" ? "text-success" : (p.status === "low_volume" ? "text-accent" : "text-danger");
+      grid.insertAdjacentHTML("beforeend",
+        '<div class="stat card-'+color+'">' +
+          '<div class="stat-label">'+emoji+' '+k.toUpperCase()+'</div>' +
+          '<div class="stat-value">'+p.pageviews_7d.toLocaleString("pt-BR")+'</div>' +
+          '<div class="stat-trend '+statusColor+'">'+p.add_to_cart_7d+' ATC · '+p.leads_7d+' leads</div>' +
+        '</div>');
+    });
+  }
+
+  // Quick wins
+  if(dec && dec.quick_wins){
+    var qw = document.getElementById("quick-wins");
+    qw.innerHTML = dec.quick_wins.map(function(w, i){
+      var lvl = w.impact === "Alto" ? "danger" : (w.impact === "Médio" ? "warn" : "info");
+      return '<div class="live-row" style="display:block">' +
+        '<div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">' +
+          '<span class="badge badge-accent">#'+(i+1)+'</span>' +
+          '<strong style="font-size:15px">'+w.title+'</strong>' +
+        '</div>' +
+        '<div style="margin-left:32px;font-size:13px;color:var(--text-muted)">'+w.detail+'</div>' +
+        '<div style="margin-left:32px;margin-top:6px;display:flex;gap:6px">' +
+          '<span class="badge badge-warn">Impacto: '+w.impact+'</span>' +
+          '<span class="badge badge-info">Esforço: '+w.effort+'</span>' +
+          (w.check_url ? '<a class="btn btn-ghost" style="padding:4px 8px;font-size:11px" href="'+w.check_url+'">Verificar →</a>' : '') +
+        '</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  // Trending angles
+  if(dec && dec.trending_angles){
+    var ta = document.getElementById("trending-angles");
+    ta.innerHTML = dec.trending_angles.map(function(a){
+      var stCls = a.status.indexOf("SATURATED") > -1 ? "saturated" : (a.status.indexOf("DOMINATED") > -1 ? "dominated" : "working");
+      return '<div class="trend-row">' +
+        '<div class="trend-product '+a.product+'">'+a.product+'</div>' +
+        '<div class="trend-angle">'+a.angle+'</div>' +
+        '<div class="trend-status '+stCls+'">'+a.status+'</div>' +
+        '<div class="trend-row-meta" style="color:var(--text-faint);font-size:11px">'+a.sources+' src</div>' +
+      '</div>';
+    }).join("");
+  }
+
+  // Alerts
+  if(dec && dec.alerts && dec.alerts.length){
+    var sec = document.getElementById("alerts-section");
+    var cont = document.getElementById("alerts-container");
+    sec.style.display = "block";
+    cont.innerHTML = dec.alerts.map(function(a){
+      return '<div class="alert alert-'+a.level+'">'+a.message+'</div>';
+    }).join("");
+  }
+})();
+</script>
+</body>
+</html>

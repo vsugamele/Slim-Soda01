@@ -11,6 +11,8 @@
 !/README.md
 !/index.html
 !/vercel.json
+!/js/
+!/js/**
 !/images/
 !/images/**
 !/slimtide-vsl/
