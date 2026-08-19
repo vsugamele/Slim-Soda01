@@ -40,3 +40,7 @@ buy-page/*.log
 # DR Reference HUB v23+ (briefings, methodology, tracking)
 !/references_v5/
 !/references_v5/**
+
+# Organico HUB (4 pilares de produção de conteúdo orgânico)
+!/organico/
+!/organico/**
