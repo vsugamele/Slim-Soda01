@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Competitive Spy 2026-08 — Quem está vendendo SlimSoda · Linfaflow · Linfozen (Meta Ad Library)</title>
+  <meta name="description" content="Spy intel visual: cards por produto, criativos ativos, live links pro Meta Ad Library, cross-sell map e action items.">
+  <style>
+    :root {
+      --bg: #0a0c10;
+      --panel: #14181f;
+      --panel-2: #1c2128;
+      --border: #2a313b;
+      --border-hot: #ff6b3d;
+      --text: #e7eaf0;
+      --muted: #9aa3b2;
+      --slim: #06a77d;        /* SlimSoda green */
+      --cardio: #c0392b;      /* Linfaflow/Cardio red */
+      --lipo: #7d3c98;        /* Linfozen purple */
+      --adja: #ff8a3d;        /* Adjacent orange */
+      --blue: #4ea1ff;
+      --gold: #ffd166;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 138, 61, 0.08), transparent),
+        radial-gradient(ellipse 60% 50% at 0% 0%, rgba(6, 167, 125, 0.04), transparent);
+    }
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 24px 96px; }
+
+    /* HERO */
+    header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
+    .breadcrumb { color: var(--muted); font-size: 13px; margin-bottom: 12px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--text); }
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255, 138, 61, 0.12); color: var(--adja); border: 1px solid rgba(255, 138, 61, 0.3); margin-bottom: 12px; }
+    h1 { font-size: 38px; line-height: 1.1; margin: 0 0 14px; letter-spacing: -0.025em; font-weight: 800; }
+    h1 .gradient { background: linear-gradient(90deg, var(--slim) 0%, var(--adja) 50%, var(--lipo) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .lede { font-size: 17px; color: #d3d8e0; max-width: 800px; }
+
+    /* SUMMARY STATS */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 24px 0 36px; }
+    .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .stat .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+    .stat .value { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-top: 4px; }
+    .stat.slim .value { color: var(--slim); }
+    .stat.cardio .value { color: var(--cardio); }
+    .stat.lipo .value { color: var(--lipo); }
+    .stat.adja .value { color: var(--adja); }
+
+    /* PRODUCT SECTIONS */
+    .product-section { margin: 40px 0; padding: 24px 0; border-top: 1px solid var(--border); }
+    .product-header { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+    .product-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+    .product-icon.slim { background: rgba(6, 167, 125, 0.15); border: 2px solid var(--slim); }
+    .product-icon.cardio { background: rgba(192, 57, 43, 0.15); border: 2px solid var(--cardio); }
+    .product-icon.lipo { background: rgba(125, 60, 152, 0.15); border: 2px solid var(--lipo); }
+    .product-icon.adja { background: rgba(255, 138, 61, 0.15); border: 2px solid var(--adja); }
+    .product-title h2 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
+    .product-title .meta { color: var(--muted); font-size: 13px; margin-top: 4px; }
+    .product-title .meta strong { color: var(--text); }
+
+    /* COMPETITOR CARDS */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px; transition: all 0.2s ease; position: relative; overflow: hidden; }
+    .card:hover { border-color: var(--border-hot); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255, 107, 61, 0.12); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .card.slim::before { background: var(--slim); }
+    .card.cardio::before { background: var(--cardio); }
+    .card.lipo::before { background: var(--lipo); }
+    .card.adja::before { background: var(--adja); }
+
+    .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; flex-shrink: 0; }
+    .avatar.slim { background: linear-gradient(135deg, var(--slim), #04c08a); color: white; }
+    .avatar.cardio { background: linear-gradient(135deg, var(--cardio), #e74c3c); color: white; }
+    .avatar.lipo { background: linear-gradient(135deg, var(--lipo), #9b59b6); color: white; }
+    .avatar.adja { background: linear-gradient(135deg, var(--adja), #ffb380); color: white; }
+    .card-name { font-weight: 800; font-size: 15px; }
+    .card-sub { font-size: 12px; color: var(--muted); }
+
+    .card-hook { font-size: 13px; color: #c8ccd3; font-style: italic; padding: 10px 12px; background: var(--panel-2); border-radius: 6px; margin: 10px 0; line-height: 1.4; }
+    .card-hook::before { content: '"'; color: var(--adja); font-weight: 800; }
+    .card-hook::after { content: '"'; color: var(--adja); font-weight: 800; }
+
+    .card-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+    .meta-tag { font-size: 10px; padding: 2px 8px; border-radius: 999px; background: var(--panel-2); color: var(--muted); border: 1px solid var(--border); }
+    .meta-tag.danger { background: rgba(192, 57, 43, 0.12); color: #ff8a7a; border-color: rgba(192, 57, 43, 0.3); }
+    .meta-tag.warn { background: rgba(255, 138, 61, 0.12); color: var(--adja); border-color: rgba(255, 138, 61, 0.3); }
+    .meta-tag.ok { background: rgba(6, 167, 125, 0.12); color: #4dd9a8; border-color: rgba(6, 167, 125, 0.3); }
+
+    .card-actions { display: flex; gap: 6px; margin-top: 12px; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; transition: all 0.15s; flex: 1; justify-content: center; }
+    .btn-primary { background: var(--adja); color: white; }
+    .btn-primary:hover { background: #ff7a2a; }
+    .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--adja); color: var(--adja); }
+    .btn svg { width: 12px; height: 12px; }
+
+    .card-libid { font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace; font-size: 10px; color: var(--muted); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--border); }
+
+    /* VOLUME TIER */
+    .tier { position: absolute; top: 12px; right: 12px; padding: 3px 8px; border-radius: 4px; font-size: 10px; font-weight: 800; letter-spacing: 0.04em; }
+    .tier-1 { background: rgba(255, 209, 102, 0.2); color: var(--gold); }
+    .tier-2 { background: rgba(192, 192, 192, 0.15); color: #d0d4dc; }
+    .tier-3 { background: rgba(205, 127, 50, 0.15); color: #cd7f32; }
+    .tier-4 { background: rgba(78, 161, 255, 0.15); color: var(--blue); }
+
+    /* CROSS-SELL MAP */
+    .xmap { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin: 30px 0; }
+    .xmap h3 { margin: 0 0 20px; font-size: 16px; color: var(--text); letter-spacing: 0.04em; text-transform: uppercase; }
+    .xmap-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-top: 1px solid var(--border); }
+    .xmap-row:first-of-type { border-top: none; }
+    .xmap-source { padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; min-width: 120px; text-align: center; }
+    .xmap-source.lipo { background: rgba(125, 60, 152, 0.2); color: #c39bd3; }
+    .xmap-source.cardio { background: rgba(192, 57, 43, 0.2); color: #ec7063; }
+    .xmap-arrow { color: var(--adja); font-size: 22px; font-weight: 800; }
+    .xmap-dest { padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 13px; min-width: 180px; }
+    .xmap-dest.cardio { background: rgba(192, 57, 43, 0.2); color: #ec7063; }
+    .xmap-dest.adja { background: rgba(255, 138, 61, 0.2); color: var(--adja); }
+    .xmap-note { color: var(--muted); font-size: 12px; }
+
+    /* ACTION ITEMS */
+    .actions { background: linear-gradient(135deg, rgba(255, 138, 61, 0.06), rgba(192, 57, 43, 0.06)); border: 1px solid rgba(255, 138, 61, 0.3); border-radius: 12px; padding: 24px 28px; margin: 32px 0; }
+    .actions h2 { color: var(--adja); border: none; padding: 0; margin: 0 0 16px; font-size: 22px; }
+    .actions ol { padding-left: 20px; }
+    .actions li { margin-bottom: 10px; }
+    .actions li strong { color: var(--gold); }
+
+    .actions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-top: 18px; }
+    .action-card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+    .action-card .num { display: inline-block; width: 24px; height: 24px; line-height: 24px; text-align: center; border-radius: 50%; background: var(--adja); color: white; font-weight: 800; font-size: 12px; margin-right: 8px; }
+    .action-card .title { font-weight: 800; font-size: 14px; }
+    .action-card p { font-size: 13px; color: var(--muted); margin: 6px 0 0 32px; }
+
+    /* META ADS LIVE */
+    .live-search { background: var(--panel-2); border: 1px dashed var(--border); border-radius: 8px; padding: 16px; margin: 18px 0; }
+    .live-search h4 { margin: 0 0 10px; font-size: 13px; color: var(--adja); text-transform: uppercase; letter-spacing: 0.06em; }
+    .live-search .search-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: var(--adja); color: white; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; }
+    .live-search .search-btn:hover { background: #ff7a2a; }
+    .live-search .search-btn.ghost { background: transparent; color: var(--adja); border: 1px solid var(--adja); }
+    .live-search .search-btn.ghost:hover { background: rgba(255, 138, 61, 0.1); }
+
+    /* FOOTER */
+    footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; text-align: center; }
+    footer a { color: var(--adja); text-decoration: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      h1 { font-size: 28px; }
+      .cards { grid-template-columns: 1fr; }
+      .product-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- HERO -->
+    <header>
+      <div class="breadcrumb">
+        <a href="../../../index.html">HUB v25</a> ›
+        <a href="../index.html">Methodology</a> ›
+        <span>Competitive Spy · 2026-08-19</span>
+      </div>
+      <div class="badge">📡 LIVE META AD LIBRARY · Refresh: 2026-08-19</div>
+      <h1>Quem está vendendo <span class="gradient">SlimSoda · Linfaflow · Linfozen</span> agora?</h1>
+      <p class="lede">Spy visual em tempo real via Meta Ad Library. Cada card aponta pro ad ao vivo (com engagement + targeting + creative original). Volume tier = quantas variantes estão rodando simultaneamente. Atualize semanal.</p>
+    </header>
+
+    <!-- SUMMARY STATS -->
+    <div class="stats">
+      <div class="stat slim">
+        <div class="label">🥤 SlimSoda</div>
+        <div class="value">~1.800</div>
+        <div class="muted">ads ativos no Meta</div>
+      </div>
+      <div class="stat cardio">
+        <div class="label">🫀 Linfaflow</div>
+        <div class="value">~640</div>
+        <div class="muted">ads ativos no Meta</div>
+      </div>
+      <div class="stat lipo">
+        <div class="label">💧 Linfozen</div>
+        <div class="value">~230</div>
+        <div class="muted">ads ativos no Meta</div>
+      </div>
+      <div class="stat adja">
+        <div class="label">🩹 Lipedema Adjacente</div>
+        <div class="value">~1.500</div>
+        <div class="muted">ads ativos no Meta</div>
+      </div>
+    </div>
+
+    <!-- CROSS-SELL MAP -->
+    <div class="xmap">
+      <h3>🔁 Cross-sell map · brand oficial</h3>
+      <div class="xmap-row">
+        <div class="xmap-source lipo">Linfozen</div>
+        <div class="xmap-arrow">→</div>
+        <div class="xmap-dest cardio">CardioClear (CARDIOCLEAR.SPACE)</div>
+        <div class="xmap-note">A conta oficial do Linfozen cross-promove Cardio Clear nos próprios ads. Funil único, 2 produtos.</div>
+      </div>
+      <div class="xmap-row">
+        <div class="xmap-source lipo">Linfozen</div>
+        <div class="xmap-arrow">→</div>
+        <div class="xmap-dest adja">PrimeShale Extracts (cognitive)</div>
+        <div class="xmap-note">Outro cross-sell oficial. Mesmo publisher, 3o produto (memory/cognitive).</div>
+      </div>
+      <div class="xmap-row">
+        <div class="xmap-source cardio">Linfaflow (brand)</div>
+        <div class="xmap-arrow">→</div>
+        <div class="xmap-dest cardio">fb.com (page like)</div>
+        <div class="xmap-note">3 dos 5 ads oficiais são page-likes (brand awareness puro, sem venda).</div>
+      </div>
+      <div class="xmap-row">
+        <div class="xmap-source lipo">Jessica Taylor</div>
+        <div class="xmap-arrow">→</div>
+        <div class="xmap-dest lipo">LINFOZEN.COM (afiliada dominante)</div>
+        <div class="xmap-note">7+ criativos VSL simultâneos. Uma única afiliada domina o inventário do Linfozen.</div>
+      </div>
+    </div>
+
+    <!-- SLIMSODA SECTION -->
+    <div class="product-section">
+      <div class="product-header">
+        <div class="product-icon slim">🥤</div>
+        <div class="product-title">
+          <h2 style="color: var(--slim);">SlimSoda · Baking Soda Water Shot</h2>
+          <div class="meta"><strong>8 anunciantes</strong> ativos identificados · 3 deles compartilham o mesmo LP · 1 afiliado "Yeugen" controla SHOPZENVYLITE.COM</div>
+        </div>
+      </div>
+
+      <div class="live-search">
+        <h4>🔍 Live search no Meta Ad Library</h4>
+        <a class="search-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=slimsoda" target="_blank" rel="noopener">Abrir busca "slimsoda" →</a>
+        <span class="muted" style="margin-left: 12px;">~1.800 resultados, ordenados por impressões</span>
+      </div>
+
+      <div class="cards">
+        <!-- Joe Yeugen -->
+        <div class="card slim">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar slim">JY</div>
+            <div>
+              <div class="card-name">Joe Yeugen</div>
+              <div class="card-sub">desde 26/jul/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">This is going to sound insane, but please hear me out. I have to WARN you about the baking soda trick...</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">38 lbs lost</span>
+            <span class="meta-tag warn">5 days/wk warning</span>
+            <span class="meta-tag">"skinny sister"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=2242120756627296" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://shopzenvylite.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 2242120756627296 · LP: SHOPZENVYLITE.COM</div>
+        </div>
+
+        <div class="card slim">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar slim">JY</div>
+            <div>
+              <div class="card-name">Joe Yeugen</div>
+              <div class="card-sub">desde 15/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Baking soda alone? Variation of "skinny sister" with P.S. urgency tactic...</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">"they keep pulling articles"</span>
+            <span class="meta-tag warn">tap before taken down</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=936510279494595" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://shopzenvylite.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 936510279494595</div>
+        </div>
+
+        <!-- Rafael Yugen -->
+        <div class="card slim">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar slim">RY</div>
+            <div>
+              <div class="card-name">Rafael Yugen</div>
+              <div class="card-sub">desde 21/jul/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">I need to tell you what my friend Dana did, because it changed my life. For years she would tell me to "just eat less and move more."</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">34 lbs lost</span>
+            <span class="meta-tag warn">"my friend Dana"</span>
+            <span class="meta-tag">tracked every bite</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1050912623992873" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://shopzenvylite.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1050912623992873 · LP: SHOPZENVYLITE.COM (mesmo!)</div>
+        </div>
+
+        <div class="card slim">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar slim">RY</div>
+            <div>
+              <div class="card-name">Rafael Yugen</div>
+              <div class="card-sub">desde 6/jul/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">I'm 38. Two kids. And for three years I looked five months pregnant in every single photo. "5 months pregnant" anchor visual.</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">30 lbs lost</span>
+            <span class="meta-tag warn">fitted dress wedding</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=993568046837354" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://shopzenvylite.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 993568046837354</div>
+        </div>
+
+        <!-- Mike Harrington -->
+        <div class="card slim">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar slim">MH</div>
+            <div>
+              <div class="card-name">Mike Harrington</div>
+              <div class="card-sub">desde 15/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">I deleted every single family photo where I was caught from the side. The first time I saw it, I literally laughed out loud...</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">BURNHACKMETHOD.COM (LP diferente)</span>
+            <span class="meta-tag">nurse 30 anos</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1576685807237309" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://burnhackmethod.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1576685807237309 · LP: BURNHACKMETHOD.COM (separado)</div>
+        </div>
+
+        <!-- Anne Jassmim -->
+        <div class="card slim">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar slim">AJ</div>
+            <div>
+              <div class="card-name">Anne Jassmim</div>
+              <div class="card-sub">desde 18/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Baking soda alone? That's one ingredient pretending to be a complete solution. Apple cider vinegar? It isn't even part of SlimSoda's original 3-part formula.</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">Invalidar ACV</span>
+            <span class="meta-tag warn">"3 ingredients combo"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=904346078965600" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://ls.bestsoffers.site" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 904346078965600 · LP: LS.BESTSOFFERS.SITE</div>
+        </div>
+
+        <!-- Onevitta Supps -->
+        <div class="card slim">
+          <div class="tier tier-3">TIER 3</div>
+          <div class="card-head">
+            <div class="avatar slim">OS</div>
+            <div>
+              <div class="card-name">Onevitta Supps</div>
+              <div class="card-sub">desde 26/jul/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Ever heard of a baking soda shot? Sounds strange... but there's a reason women 40+ are curious about this simple morning ritual.</div>
+          <div class="card-meta">
+            <span class="meta-tag">women 40+</span>
+            <span class="meta-tag">simple habit</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1370898171807708" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://bakingsodashots.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1370898171807708 · LP: BAKINGSODASHOTS.COM</div>
+        </div>
+
+        <!-- Consumer Money Watch -->
+        <div class="card slim">
+          <div class="tier tier-3">TIER 3</div>
+          <div class="card-head">
+            <div class="avatar slim">CM</div>
+            <div>
+              <div class="card-name">Consumer Money Watch</div>
+              <div class="card-sub">desde 15/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">No Needle. No Rebound. Your own hormones, awake.</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">3 palavras, anti-Ozempic</span>
+            <span class="meta-tag">brand-style headline</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1534166845176101" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://consumermoneywatch.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1534166845176101</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINFAFLOW SECTION -->
+    <div class="product-section">
+      <div class="product-header">
+        <div class="product-icon cardio">🫀</div>
+        <div class="product-title">
+          <h2 style="color: var(--cardio);">Linfaflow · Cardio Clear</h2>
+          <div class="meta"><strong>7+ anunciantes</strong> ativos · Brand oficial é quem mais gasta · 3 copy angles paralelos: <strong style="color: var(--adja);">"Screw it/Vitamin P"</strong> · <strong style="color: var(--adja);">"Margaret sister died"</strong> · <strong style="color: var(--adja);">"Sandra K nurse"</strong></div>
+        </div>
+      </div>
+
+      <div class="live-search">
+        <h4>🔍 Live search no Meta Ad Library</h4>
+        <a class="search-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=linfaflow" target="_blank" rel="noopener">Abrir busca "linfaflow" →</a>
+        <span class="muted" style="margin-left: 12px;">~640 resultados</span>
+      </div>
+
+      <div class="cards">
+        <!-- Linfaflow Official - Screw it -->
+        <div class="card cardio">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar cardio">LF</div>
+            <div>
+              <div class="card-name">Linfaflow (oficial) ⭐</div>
+              <div class="card-sub">desde 10/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Screw it, I'll just say what nobody in a white coat will. The compound was named by a Nobel laureate in 1937. He called it Vitamin P — for permeability.</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">Nobel 1937 autoridade</span>
+            <span class="meta-tag warn">anti-médico</span>
+            <span class="meta-tag">"seals the leaks"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1768045024237943" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfaflow.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1768045024237943 · LP: LINFAFLOW.COM</div>
+        </div>
+
+        <div class="card cardio">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar cardio">LF</div>
+            <div>
+              <div class="card-name">Linfaflow (oficial)</div>
+              <div class="card-sub">desde 17/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Variação do "Screw it" — mesmo Vitamin P angle, copy refresh. Compression squeezes from the outside. Elevation borrows gravity. Water pills flush what is already in the blood. None of them close anything.</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">invalida tudo: pills/compressão/elevação</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=2558872431251038" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://www.linfaflow.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 2558872431251038</div>
+        </div>
+
+        <div class="card cardio">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar cardio">LF</div>
+            <div>
+              <div class="card-name">Linfaflow (oficial)</div>
+              <div class="card-sub">desde 23/jul/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">My older sister Margaret had a routine vein procedure. She died of a blood clot four weeks later. She was 62. I have the same swelling. Same daily water pill. And the same vascular surgeon.</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">SHOCK STORY</span>
+            <span class="meta-tag warn">invalida procedimento cirúrgico</span>
+            <span class="meta-tag">3 variantes ativas</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1005121655636084" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://www.linfaflow.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1005121655636084 · 3 ads usam esse criativo</div>
+        </div>
+
+        <!-- Camila Rodriguez -->
+        <div class="card cardio">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar cardio">CR</div>
+            <div>
+              <div class="card-name">Camila Rodriguez</div>
+              <div class="card-sub">desde 10/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Discover how women are finally waking up with a face they recognize, losing the sock marks at their ankles...</div>
+          <div class="card-meta">
+            <span class="meta-tag">VITALGAIN affiliate</span>
+            <span class="meta-tag warn">"without water pills, salt-free food, $180 massage"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=3395690513935947" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://pv-lfflw.vitalgain.online" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 3395690513935947 · LP: PV-LFFLW.VITALGAIN.ONLINE</div>
+        </div>
+
+        <!-- Olivia Smith / Sandra K -->
+        <div class="card cardio">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar cardio">OS</div>
+            <div>
+              <div class="card-name">Olivia Smith ("Sandra K")</div>
+              <div class="card-sub">desde 10/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">I refused a second water pill for 3 years... I'm a nurse for 30 years. After that day I stopped looking only at the numbers. I started looking at the women standing next to them.</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">30 anos enfermeira</span>
+            <span class="meta-tag warn">4 pacientes: Evelyn/Deborah/Patricia/Margaret</span>
+            <span class="meta-tag">Amish Lancaster County</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1410738287572035" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfaflow.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1410738287572035 · Long-form VSL</div>
+        </div>
+
+        <!-- Better Flow Living -->
+        <div class="card cardio">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar cardio">BF</div>
+            <div>
+              <div class="card-name">Better Flow Living</div>
+              <div class="card-sub">desde 17/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">If your legs are still swollen by the time you go to bed, there's a reason — and it's not what most people think. During the day, fluid builds up. What's supposed to happen is your lymphatic system drains it back out.</div>
+          <div class="card-meta">
+            <span class="meta-tag">nighttime angle</span>
+            <span class="meta-tag warn">"3-week result promise"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=2255152405270925" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfaflow.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 2255152405270925</div>
+        </div>
+
+        <!-- Anuncio Verificado (Brand) -->
+        <div class="card cardio">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar cardio">AV</div>
+            <div>
+              <div class="card-name">Anuncio Verificado (Meta Brand)</div>
+              <div class="card-sub">desde 12/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">"Waking up with a face they recognize, losing the sock marks at their ankles, and getting through the afternoon without heavy legs" — variation com 5 criativos.</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">5 variantes ativas</span>
+            <span class="meta-tag">verified brand</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1952410508709739" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://pv-lfflw.vitalgain.online" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1952410508709739 · 5 variantes</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LINFOZEN SECTION -->
+    <div class="product-section">
+      <div class="product-header">
+        <div class="product-icon lipo">💧</div>
+        <div class="product-title">
+          <h2 style="color: var(--lipo);">Linfozen · Lipedema</h2>
+          <div class="meta"><strong>6+ anunciantes</strong> ativos · <strong style="color: var(--gold);">Jessica Taylor é a "Yeugen do Linfozen"</strong> com 7+ VSLs simultâneos · brand cross-sell ativo pra CardioClear</div>
+        </div>
+      </div>
+
+      <div class="live-search">
+        <h4>🔍 Live search no Meta Ad Library</h4>
+        <a class="search-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=linfozen" target="_blank" rel="noopener">Abrir busca "linfozen" →</a>
+        <span class="muted" style="margin-left: 12px;">~230 resultados</span>
+      </div>
+
+      <div class="cards">
+        <!-- Jessica Taylor - dominante -->
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1 · DOMINANTE</div>
+          <div class="card-head">
+            <div class="avatar lipo">JT</div>
+            <div>
+              <div class="card-name">Jessica Taylor ⭐</div>
+              <div class="card-sub">desde 19/ago/2026 · 4h ativo</div>
+            </div>
+          </div>
+          <div class="card-hook">It takes things in order. First your summer. Shorts, dresses, the beach. You gave that up early and told yourself it was fine. Then your stairs. Then the walk to the park...</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">"It takes your summer first"</span>
+            <span class="meta-tag warn">3:39 VSL</span>
+            <span class="meta-tag">7+ criativos</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=2069888143607083" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 2069888143607083 · 7+ variantes</div>
+        </div>
+
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar lipo">JT</div>
+            <div>
+              <div class="card-name">Jessica Taylor</div>
+              <div class="card-sub">desde 19/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Squeeze your thigh. Hard. Right now. Nodules and pearls under the skin? It doesn't squash? Then stop dieting for the wrong thing.</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">"nodules and pearls"</span>
+            <span class="meta-tag warn">3:39 VSL</span>
+            <span class="meta-tag">"kick the door down"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1749057146312492" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1749057146312492</div>
+        </div>
+
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar lipo">JT</div>
+            <div>
+              <div class="card-name">Jessica Taylor</div>
+              <div class="card-sub">desde 18/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">You turn the bedroom light off to change clothes. You lock the bathroom door. In your own house. With your own husband. And in July you wear black pants in a hundred degrees.</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">"lock the door in your own house"</span>
+            <span class="meta-tag warn">3:39 VSL</span>
+            <span class="meta-tag">invalidação de vaidade</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1057928086729057" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1057928086729057</div>
+        </div>
+
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar lipo">JT</div>
+            <div>
+              <div class="card-name">Jessica Taylor</div>
+              <div class="card-sub">desde 19/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">Your husband put his hand on your thigh and you flinched. Then you smiled, because how do you explain that your fat hurts? Nobody says "don't touch my stomach." Fat doesn't hurt. Yours does.</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">"fat doesn't hurt. yours does."</span>
+            <span class="meta-tag warn">0:28 VSL (curto!)</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1595682065290929" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1595682065290929</div>
+        </div>
+
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar lipo">JT</div>
+            <div>
+              <div class="card-name">Jessica Taylor</div>
+              <div class="card-sub">desde 10/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">"You're just fat." That is what a doctor said to a woman who had already lost 350 pounds. Three hundred and fifty. Gone. And her legs measured exactly the same.</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">"she lost 350 pounds"</span>
+            <span class="meta-tag warn">0:57 VSL</span>
+            <span class="meta-tag">anti-médico</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=4474630719457497" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 4474630719457497</div>
+        </div>
+
+        <!-- Susan Straus -->
+        <div class="card lipo">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar lipo">SS</div>
+            <div>
+              <div class="card-name">Susan Straus</div>
+              <div class="card-sub">desde 7/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">LINFOZEN.LOVABLE.APP — VSL long-form 2:56 (publisher diferente)</div>
+          <div class="card-meta">
+            <span class="meta-tag">Lovable app LP (publisher B)</span>
+            <span class="meta-tag warn">5+ variantes</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=952530454520488" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen.lovable.app" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 952530454520488</div>
+        </div>
+
+        <!-- Sophia Charlotte -->
+        <div class="card lipo">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar lipo">SC</div>
+            <div>
+              <div class="card-name">Sophia Charlotte</div>
+              <div class="card-sub">desde 18/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">LINFOZEN-01.PAGES.DEV — VSL 3:51 (3o publisher)</div>
+          <div class="card-meta">
+            <span class="meta-tag">Pages.dev LP (publisher C)</span>
+            <span class="meta-tag warn">5+ variantes</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1406785381336346" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://linfozen-01.pages.dev" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1406785381336346</div>
+        </div>
+
+        <!-- NorvexaHub -->
+        <div class="card lipo">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar lipo">NH</div>
+            <div>
+              <div class="card-name">NorvexaHub</div>
+              <div class="card-sub">desde 17/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">For years, you may have been told the same thing: "Eat less." "Exercise more." "Try harder." What if what looked like ordinary fat was connected to a condition that requires a completely different conversation?</div>
+          <div class="card-meta">
+            <span class="meta-tag ok">"Dr. Carol Greene" avatar</span>
+            <span class="meta-tag warn">2:48 VSL</span>
+            <span class="meta-tag">⭐⭐⭐⭐⭐ 4.9 14k reviews</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=924371116773786" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+          </div>
+          <div class="card-libid">LIB ID: 924371116773786 · In-VSL</div>
+        </div>
+
+        <!-- Linfozen Brand cross-sell CardioClear -->
+        <div class="card lipo">
+          <div class="tier tier-1">TIER 1</div>
+          <div class="card-head">
+            <div class="avatar lipo">LZ</div>
+            <div>
+              <div class="card-name">Linfozen (oficial) · CROSS-SELL</div>
+              <div class="card-sub">desde 14/ago/2026</div>
+            </div>
+          </div>
+          <div class="card-hook">CardioClear — Click to learn more. (Brand oficial Linfozen cross-promove Cardio Clear nos próprios ads)</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">CROSS-SELL ATIVO</span>
+            <span class="meta-tag">CARDIOCLEAR.SPACE</span>
+            <span class="meta-tag">mesma publisher</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1229608965975154" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://cardioclear.space" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1229608965975154 · Cross-sell oficial</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADJACENT PLAYERS -->
+    <div class="product-section">
+      <div class="product-header">
+        <div class="product-icon adja">🩹</div>
+        <div class="product-title">
+          <h2 style="color: var(--adja);">Lipedema Adjacente · quem compete pelo mesmo avatar</h2>
+          <div class="meta">Players que vendem <strong>solução diferente</strong> (leggings/meias) pro mesmo avatar de "perna inchada / lipedema" — não é nosso produto mas rouba budget</div>
+        </div>
+      </div>
+
+      <div class="live-search">
+        <h4>🔍 Live search no Meta Ad Library</h4>
+        <a class="search-btn" href="https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=US&q=lipedema" target="_blank" rel="noopener">Abrir busca "lipedema" →</a>
+        <span class="muted" style="margin-left: 12px;">~1.500 resultados</span>
+      </div>
+
+      <div class="cards">
+        <div class="card adja">
+          <div class="card-head">
+            <div class="avatar adja">CM</div>
+            <div>
+              <div class="card-name">Cellumove</div>
+              <div class="card-sub">leggings compressão · 4+ ads</div>
+            </div>
+          </div>
+          <div class="card-hook">Designed for women with Lipedema: supports lymphatic flow, reduces pressure and delivers instant comfort. Wear 6h/day and feel the difference.</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">"Buy 1 Legging, Get 1 FREE"</span>
+            <span class="meta-tag">25k women</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1526792508972760" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://cellumove.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1526792508972760</div>
+        </div>
+
+        <div class="card adja">
+          <div class="card-head">
+            <div class="avatar adja">EV</div>
+            <div>
+              <div class="card-name">Everstride (Jess Peavey)</div>
+              <div class="card-sub">meias lipedema</div>
+            </div>
+          </div>
+          <div class="card-hook">2025 was the year I chose better leg health. A full year with Everstride and my lipedema symptoms started to fade… less pain, less heaviness, more energy, more freedom.</div>
+          <div class="card-meta">
+            <span class="meta-tag">influencer partner</span>
+            <span class="meta-tag warn">"1 year testimonial"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=3807627399531783" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://everstridesocks.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 3807627399531783</div>
+        </div>
+
+        <div class="card adja">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar adja">FK</div>
+            <div>
+              <div class="card-name">Fanka</div>
+              <div class="card-sub">leggings XL-friendly</div>
+            </div>
+          </div>
+          <div class="card-hook">An XL tester with lipedema mentioned that wearing these leggings felt like a massage, promoting leg circulation and effectively preventing swelling.</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">"felt like a massage"</span>
+            <span class="meta-tag">"XL tester" prova social</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=597844083113226" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://fanka.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 597844083113226</div>
+        </div>
+
+        <div class="card adja">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar adja">IX</div>
+            <div>
+              <div class="card-name">IONIX 3D (Dr. Michael Harrington)</div>
+              <div class="card-sub">leggings anticelulite</div>
+            </div>
+          </div>
+          <div class="card-hook">Over 150,000 pairs sold worldwide! Introducing the original, award-winning IONIX 3D cellulite-reducing leggings. Doctor-approved 3D leggings and reclaim your time!</div>
+          <div class="card-meta">
+            <span class="meta-tag warn">⚠️ mesmo nome do afiliado SlimSoda (Mike Harrington)</span>
+            <span class="meta-tag">"150k pairs"</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=1635901161088000" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+            <a class="btn btn-ghost" href="https://getionix.com" target="_blank" rel="noopener">LP</a>
+          </div>
+          <div class="card-libid">LIB ID: 1635901161088000</div>
+        </div>
+
+        <div class="card adja">
+          <div class="tier tier-2">TIER 2</div>
+          <div class="card-head">
+            <div class="avatar adja">GC</div>
+            <div>
+              <div class="card-name">Dr. Grace Calder · Vascular</div>
+              <div class="card-sub">conteúdo educativo orgânico</div>
+            </div>
+          </div>
+          <div class="card-hook">4 tips to drain your lymphatic system: Dandelion Root, Cleavers, Stillingia. ⚠️ MESMOS ingredientes do Linfaflow briefing!</div>
+          <div class="card-meta">
+            <span class="meta-tag danger">⚠️ overlap de mecanismo</span>
+            <span class="meta-tag">Dandelion + Cleavers + Stillingia</span>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-primary" href="https://www.facebook.com/ads/library/?id=2254729311726838" target="_blank" rel="noopener">Ver ad ao vivo →</a>
+          </div>
+          <div class="card-libid">LIB ID: 2254729311726838</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION ITEMS -->
+    <div class="actions">
+      <h2>🎯 Action items — o que fazer essa semana</h2>
+      <ol>
+        <li><strong>SlimSoda</strong>: O ângulo "skinny friend / sister" tá saturado (3 afiliados diferentes usando). Você precisa de um ângulo B2H2/B2H3 do brief Linfozen — <strong>testar "Invalidar Ozempic" e "Dr. Whitfield formadora (não celebridade)"</strong> primeiro.</li>
+        <li><strong>Linfaflow</strong>: Brand oficial roda 3 angles paralelos. Você NÃO deve fazer isso (espalha budget). <strong>Escolha 1 angle: "Screw it + Vitamin P" (autoridade) ou "Margaret morreu" (shock story)</strong>. Domine 1 antes de diversificar.</li>
+        <li><strong>Linfozen</strong>: Jessica Taylor é o player dominante (7+ VSLs). <strong>Você não vai ganhar dela em volume. Ganhe em ângulo.</strong> Teste 1 VSL de 3:00 com ângulo "irmã 62 anos" do briefing Linfozen — ninguém está testando isso.</li>
+        <li><strong>Cross-sell intel</strong>: Brand oficial Linfozen → CardioClear está rolando cross-sell oficial. Se você for o publisher, replique. Se for afiliado, <strong>construa LPs próprios que cross-sellam entre produtos</strong> (você controla o funil).</li>
+        <li><strong>Mecanismo overlap</strong>: Dr. Grace Calder está usando Dandelion Root + Cleavers + Stillingia — mesmos ingredientes do Linfaflow. <strong>Seu mecanismo "4 botanicals (Stillingia, Cleavers, Prickly Ash, Red Clover)" não é único</strong>. Reforce a diferenciação no LP.</li>
+      </ol>
+
+      <div class="actions-grid">
+        <div class="action-card">
+          <div class="title"><span class="num">1</span>Esse refresh</div>
+          <p>Re-rodar a busca do Meta Ad Library semanalmente. Volume + criativos mudam rápido. Salvar snapshots mensais pra tracking.</p>
+        </div>
+        <div class="action-card">
+          <div class="title"><span class="num">2</span>Adicionar "ad library"</div>
+          <p>Adicionar a tag <code>ad-library-spy</code> em cada ad novo que você criar. Vincular o LIB ID aqui pra histórico.</p>
+        </div>
+        <div class="action-card">
+          <div class="title"><span class="num">3</span>Spy Lab semanal</div>
+          <p>30min toda segunda: re-rodar a busca "slimsoda", "linfaflow", "linfozen" e atualizar os cards. Identificar novos players rápido.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>📡 <strong>Fonte:</strong> Meta Ad Library (público, refresh 2026-08-19) · 🔗 <a href="https://www.facebook.com/ads/library" target="_blank" rel="noopener">facebook.com/ads/library</a> · 🎯 HUB v25 → Methodology → Competitive Spy</p>
+      <p style="margin-top: 8px;">Atualize esta página semanalmente. <strong>Cross-refs:</strong> <a href="../ad-library-spy/index.html">Ad Library Spy (legacy)</a> · <a href="../analise-criativos/index.html">Análise de Criativos</a> · <a href="../../by-product/slimsoda/index.html">SlimSoda</a> · <a href="../../by-product/linfaflow/index.html">Linfaflow</a> · <a href="../../by-product/linfozen/index.html">Linfozen</a></p>
+    </footer>
+
+  </div>
+</body>
+</html>
