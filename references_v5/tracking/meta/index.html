@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,6 +70,7 @@
   @media (max-width:800px) { .grid-2 { grid-template-columns:1fr; } }
   code { font-family:"JetBrains Mono",monospace; font-size:11.5px; background:var(--panel-2); padding:1px 6px; border-radius:3px; color:var(--gold); }
 </style>
+  <link rel="stylesheet" href="../../../js/hub.css">
 </head>
 <body>
 <div class="wrap">
@@ -338,5 +339,6 @@ document.getElementById('refresh-btn').addEventListener('click', () => { countdo
 load();
 setInterval(tick, 1000);
 </script>
+  <script src="../../../js/hub.js"></script>
 </body>
 </html>

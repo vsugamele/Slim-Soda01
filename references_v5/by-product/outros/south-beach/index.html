@@ -1,6 +1,6 @@
-﻿
+
 <!doctype html>
-<html>
+<html data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -20,6 +20,7 @@
 		}
 </script>
 
+  <link rel="stylesheet" href="js/hub.css">
 </head>
 
 <body>
@@ -620,5 +621,6 @@
 <script>function getUclick(){var e=document.cookie.match(new RegExp("(?:^|; )uclick=([^;]*)"));return e?decodeURIComponent(e[1]):void 0}function fxOfLnks(){var e=getUclick();if(void 0===e)return!1;for(var n=document.getElementsByTagName("a"),t=0;t<n.length;t++){var i=n[t].getAttribute("href");"string"==typeof i&&(-1==i.indexOf("&event")&&-1==i.indexOf("?event")&&-1==i.indexOf("?lp=1")&&-1==i.indexOf("?lp=data_upd")&&-1==i.indexOf("?cnv_id=OPTIONAL")||(n[t].href=i+"&uclick="+e))}}function sendLpPixel(){var e=window.location.search;0===e.indexOf("?")&&(e=e.substr(1,e.length));var n="https://track.gadgetslaboratory.com/click.php?key=gda9s2wny161ktit97vu&lp_type=pixel"+(e?"&"+e:""),t=document.createElement("script");t.async=!1,t.src=n,document.head.appendChild(t),t.onload=function(){window.lp_pixel_wait_flag=!1,"loading"===document.readyState?(document.addEventListener("DOMContentLoaded",fxOfLnks),"function"==typeof window.lp_pixel_callback&&document.addEventListener("DOMContentLoaded",function(){window.lp_pixel_callback(window.tokens)})):(fxOfLnks(),"function"==typeof window.lp_pixel_callback&&window.lp_pixel_callback(window.tokens))}}sendLpPixel();</script>
 
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"fc997c6c4d604485bb2195d9a34f0713","r":1}' crossorigin="anonymous"></script>
+  <script src="js/hub.js"></script>
 </body>
 </html>

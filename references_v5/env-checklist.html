@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Env Vars Checklist · Vercel Slim-Soda01</title>
+  <link rel="stylesheet" href="js/hub.css">
+  <style>
+    .env-row { display: flex; align-items: center; gap: var(--sp-3); padding: var(--sp-3); border-bottom: 1px solid var(--border); }
+    .env-row:last-child { border-bottom: none; }
+    .env-icon { font-size: 24px; }
+    .env-name { font-family: var(--font-mono); font-size: 14px; font-weight: 700; }
+    .env-desc { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .env-status { font-size: 11px; padding: 4px 10px; border-radius: var(--r-full); font-weight: 700; text-transform: uppercase; }
+    .env-status.ok { background: rgba(6,167,125,0.15); color: var(--c-slim); }
+    .env-status.miss { background: rgba(192,57,43,0.15); color: var(--c-cardio); }
+    .env-status.optional { background: rgba(78,161,255,0.15); color: var(--c-blue); }
+    .step-list { counter-reset: step; }
+    .step-list li { counter-increment: step; padding: 12px 0 12px 36px; position: relative; border-bottom: 1px solid var(--border); }
+    .step-list li::before { content: counter(step); position: absolute; left: 0; top: 12px; width: 28px; height: 28px; background: var(--c-accent); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; }
+    .step-list li:last-child { border-bottom: none; }
+    code { background: var(--bg-elev2); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+    pre { background: var(--bg-elev2); padding: 16px; border-radius: var(--r-md); overflow-x: auto; font-size: 12px; }
+  </style>
+</head>
+<body>
+
+<header class="global-header">
+  <a class="global-logo" href="index.html"><span class="accent">DR</span> Hub v26</a>
+  <nav class="global-nav">
+    <a href="index.html">HUB</a>
+    <a href="one.html">One Page</a>
+    <a href="tracking/index.html">Tracking</a>
+    <a href="env-checklist">Env</a>
+  </nav>
+  <div class="global-search">
+    <input type="text" placeholder="Buscar...">
+    <div class="search-results"></div>
+  </div>
+  <button class="theme-toggle">☀️</button>
+</header>
+
+<div class="wrap">
+  <div class="hero" style="padding-top: var(--sp-6);">
+    <h1>🔐 Env Vars Checklist</h1>
+    <p class="lede">Status ao vivo de cada env var que o sistema precisa. Auto-detectado pelos endpoints <code>/api/track-capi</code> e <code>/api/meta-campaigns</code>.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">📊 Status atual</h2>
+    </div>
+    <div class="panel" id="env-status">
+      <div class="env-row">
+        <div class="env-icon">⏳</div>
+        <div style="flex:1">
+          <div class="env-name">Verificando...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">🛠️ Como configurar</h2>
+      <p class="section-sub">3 env vars que destravam 80% do sistema</p>
+    </div>
+
+    <ol class="step-list panel">
+      <li>
+        <strong>Acesse Vercel</strong> → <a href="https://vercel.com/vsugamele/slim-soda01/settings/environment-variables" target="_blank">vercel.com/vsugamele/slim-soda01/settings/environment-variables</a>
+      </li>
+      <li>
+        <strong>Adicione cada env var abaixo</strong> (clique no nome pra ver o que é):
+      </li>
+    </ol>
+
+    <div class="panel mb-4" style="margin-top:24px">
+      <div class="env-row">
+        <div class="env-icon">🔥</div>
+        <div style="flex:1">
+          <div class="env-name">META_ACCESS_TOKEN</div>
+          <div class="env-desc">Token do pixel pra CAPI + Meta dashboard live. <strong>Crítico.</strong></div>
+        </div>
+        <span class="env-status miss">MISSING</span>
+      </div>
+      <div style="padding: 12px; background: var(--bg-elev2); border-radius: var(--r-md); margin-top: 8px;">
+        <strong>Como gerar:</strong>
+        <ol style="margin-top: 8px; padding-left: 20px; font-size: 13px; color: var(--text-muted);">
+          <li>Vá em <a href="https://business.facebook.com/events_manager" target="_blank">business.facebook.com/events_manager</a></li>
+          <li>Selecione o pixel <strong>1619587959397761</strong></li>
+          <li>Configurações → Gerar token de acesso</li>
+          <li>Copie e cole aqui no Vercel</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="panel mb-4">
+      <div class="env-row">
+        <div class="env-icon">🔥</div>
+        <div style="flex:1">
+          <div class="env-name">META_AD_ACCOUNT_ID</div>
+          <div class="env-desc">ID da conta de anúncios (act_XXXXX). Liga o Meta real-time dashboard.</div>
+        </div>
+        <span class="env-status miss">MISSING</span>
+      </div>
+      <div style="padding: 12px; background: var(--bg-elev2); border-radius: var(--r-md); margin-top: 8px;">
+        <strong>Como achar:</strong> <a href="https://business.facebook.com/settings/ad-accounts" target="_blank">business.facebook.com/settings/ad-accounts</a> → o número depois de <code>act=</code>
+      </div>
+    </div>
+
+    <div class="panel mb-4">
+      <div class="env-row">
+        <div class="env-icon">⚙️</div>
+        <div style="flex:1">
+          <div class="env-name">META_TEST_CODE</div>
+          <div class="env-desc">Código de teste pra disparar evento real pelo <code>?test=1</code>. Opcional.</div>
+        </div>
+        <span class="env-status optional">OPTIONAL</span>
+      </div>
+      <div style="padding: 12px; background: var(--bg-elev2); border-radius: var(--r-md); margin-top: 8px;">
+        <strong>Como gerar:</strong> Events Manager → Test Events → Copy code
+      </div>
+    </div>
+
+    <div class="panel mb-4">
+      <div class="env-row">
+        <div class="env-icon">⚙️</div>
+        <div style="flex:1">
+          <div class="env-name">SUPABASE_SERVICE_ROLE_KEY</div>
+          <div class="env-desc">Permite migration automática + admin tasks. Opcional (manual SQL funciona).</div>
+        </div>
+        <span class="env-status optional">OPTIONAL</span>
+      </div>
+      <div style="padding: 12px; background: var(--bg-elev2); border-radius: var(--r-md); margin-top: 8px;">
+        <strong>Como achar:</strong> Supabase Dashboard → Project Settings → API → service_role key
+      </div>
+    </div>
+
+    <div class="panel mb-4">
+      <div class="env-row">
+        <div class="env-icon">⚙️</div>
+        <div style="flex:1">
+          <div class="env-name">CRON_SECRET</div>
+          <div class="env-desc">Protege os cron jobs de serem chamados por qualquer um. Recomendado.</div>
+        </div>
+        <span class="env-status optional">OPTIONAL</span>
+      </div>
+      <div style="padding: 12px; background: var(--bg-elev2); border-radius: var(--r-md); margin-top: 8px;">
+        <strong>Como gerar:</strong> <code>openssl rand -hex 32</code> (qualquer string aleatória de 32 chars)
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <h2 class="section-title">🧪 Testar depois de configurar</h2>
+    </div>
+    <div class="panel">
+      <ol class="step-list" style="border:none">
+        <li>Depois de setar as env vars, faça <strong>Redeploy</strong> (Vercel → Deployments → 3 pontos → Redeploy)</li>
+        <li>Teste os endpoints:
+          <pre>curl https://slim-soda01.vercel.app/api/track-capi
+curl https://slim-soda01.vercel.app/api/meta-campaigns?range=7d</pre>
+        </li>
+        <li>Volte aqui pra ver o status atualizar: <code>GET /api/env-checklist</code></li>
+        <li>Se tudo OK, o dashboard Meta sai de DEMO pra LIVE</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+<footer class="global-footer">
+  <p>Env Vars Checklist · auto-refresh 60s · <a href="env-checklist">JSON</a></p>
+</footer>
+
+<script src="js/hub.js"></script>
+<script>
+(async function(){
+  // Fetch status from each endpoint
+  var capi = await fetch("/api/track-capi/?diag=1").then(r => r.json()).catch(() => null);
+  var meta = await fetch("/api/meta-campaigns/?range=7d").then(r => r.json()).catch(() => null);
+
+  var status = {
+    META_ACCESS_TOKEN: capi?.env_configured ? "ok" : "miss",
+    META_PIXEL_ID: capi?.pixel_id || "?",
+    META_AD_ACCOUNT_ID: meta?.source === "live" ? "ok" : "miss",
+    META_API_VERSION: capi?.api_version || "?"
+  };
+
+  var html = "";
+  html += '<div class="env-row"><div class="env-icon">🔑</div><div style="flex:1"><div class="env-name">META_ACCESS_TOKEN</div><div class="env-desc">Token CAPI</div></div><span class="env-status '+status.META_ACCESS_TOKEN+'">'+status.META_ACCESS_TOKEN.toUpperCase()+'</span></div>';
+  html += '<div class="env-row"><div class="env-icon">📊</div><div style="flex:1"><div class="env-name">META_AD_ACCOUNT_ID</div><div class="env-desc">Liga Meta dashboard live</div></div><span class="env-status '+status.META_AD_ACCOUNT_ID+'">'+status.META_AD_ACCOUNT_ID.toUpperCase()+'</span></div>';
+  html += '<div class="env-row"><div class="env-icon">🎯</div><div style="flex:1"><div class="env-name">META_PIXEL_ID</div><div class="env-desc">'+status.META_PIXEL_ID+'</div></div><span class="env-status ok">SET</span></div>';
+  html += '<div class="env-row"><div class="env-icon">⚙️</div><div style="flex:1"><div class="env-name">META_API_VERSION</div><div class="env-desc">'+status.META_API_VERSION+'</div></div><span class="env-status ok">'+status.META_API_VERSION.toUpperCase()+'</span></div>';
+  document.getElementById("env-status").innerHTML = html;
+})();
+</script>
+</body>
+</html>
