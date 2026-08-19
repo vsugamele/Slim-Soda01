@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CORTEX ADS — Masterclass (do Briefing a 30 Anúncios) · Bifi/Gbifi</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#7c3aed; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(124,58,237,0.12); color:var(--accent); border:1px solid rgba(124,58,237,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; font-size:13px; line-height:1.7; color:var(--text); overflow-x:auto; }
+  pre .label { font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:6px; }
+  .stage { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .stage-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(124,58,237,0.08), transparent); }
+  .stage-num { width:54px; height:54px; background:linear-gradient(135deg, var(--accent), #a78bfa); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .stage-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .stage-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .stage-body { padding:14px 18px 18px; }
+  .stage-body p { margin:6px 0; font-size:13.5px; }
+  .stage-body ol, .stage-body ul { margin:6px 0 6px 18px; }
+  .stage-body li { padding:3px 0; font-size:13.5px; }
+  .emotion { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin:12px 0; }
+  .emotion h4 { margin:0 0 8px; color:var(--gold); font-size:15px; text-transform:uppercase; letter-spacing:0.04em; }
+  .emotion p { margin:4px 0; font-size:13.5px; }
+  .piece-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+  .piece { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .piece .name { font-size:11px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .piece .what { font-size:13px; color:var(--text); margin-bottom:4px; }
+  .piece .ex { font-size:12px; color:var(--muted); font-style:italic; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  @media (max-width:720px) { .piece-grid, .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Methodology · CORTEX ADS · 9 Steps · Bifi/Gbifi</span>
+    <h1>CORTEX ADS <span class="accent">· Masterclass</span> (Briefing → 30 Anúncios)</h1>
+    <p class="lede">Sistema de <strong>9 etapas + 9 prompts</strong> que externaliza o raciocínio de um estrategista criativo e o transforma num processo repetível, auditável e escalável. <strong>"Os prompts são a interface. A arquitetura de decisões é o software."</strong> — Bifi / @gbifi.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Para quem é:</strong>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>Iniciante:</strong> vai enxergar o processo inteiro pela primeira vez — por que cada decisão existe, em que ordem acontece, o que cada prompt entrega.</li>
+      <li><strong>Já roda tráfego:</strong> vai ver a semana criativa inteira (pesquisa → ângulos → hooks → histórias → 30 scripts + briefing de edição) acelerada em 100x.</li>
+    </ul>
+  </div>
+
+  <div class="callout">
+    <h3>🧠 A tese central: o anúncio não é peça isolada</h3>
+    <p style="margin:6px 0; font-size:13.5px;">"Um criativo é uma <strong>estrutura de comunicação construída para transformar atenção em uma ação específica</strong>". Conteúdo pode terminar em consumo, comentário, entretenimento. Um criativo comercial usa esses elementos como meios — mas precisa <strong>mover a pessoa: parar → assistir → acreditar → clicar → comprar</strong>.</p>
+    <p style="margin:6px 0; font-size:13.5px;">A jornada: <strong>ATENÇÃO → RETENÇÃO → CRENÇA → CLIQUE → CONTINUIDADE → VENDA</strong></p>
+    <p style="margin:6px 0; font-size:13.5px;">A estratégia só fica completa quando <strong>oferta, mente, linguagem, ângulo, hook, narrativa, referência e destino operam como um único sistema</strong>.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎬 Como se monta um Video Ad — o esqueleto de 4 partes</h2>
+
+  <div class="callout">
+    <p style="font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--gold); text-align:center;">
+      <strong>HOOK</strong> ~5% &nbsp;→&nbsp; <strong>BRIDGE</strong> ~10% &nbsp;→&nbsp; <strong>HOLD</strong> ~70% &nbsp;→&nbsp; <strong>CTA</strong> ~15%
+    </p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🪝 Hook (0–3s)</h4>
+      <p>Um trabalho só: <strong>parar o scroll e qualificar a pessoa certa</strong>. Você tem 1–2 segundos.</p>
+    </div>
+    <div class="card">
+      <h4>🌉 Bridge (3–8s)</h4>
+      <p>Intensifica a dor do hook e conecta com a promessa — <strong>a razão para continuar assistindo</strong>.</p>
+    </div>
+    <div class="card">
+      <h4>🧠 Hold (miolo)</h4>
+      <p>A maior parte do vídeo: <strong>problema real → quebra de crença → mecanismo → solução</strong>. É onde a conversão acontece.</p>
+    </div>
+    <div class="card">
+      <h4>👆 CTA (final)</h4>
+      <p>A transição natural para o clique — <strong>entregando a pergunta que a página vai continuar</strong>.</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <h3>🧩 Testa-se hook, não vídeo inteiro</h3>
+    <p style="font-size:13.5px;">O modelo modular: <strong>3 hooks × 3 bridges</strong> sobre o mesmo hold e o mesmo CTA. Trocando só a abertura, o resultado varia <strong>5 a 10×</strong> — por isso o mercado inteiro roda 3 hooks por body. <strong>Testar vídeo inteiro é queimar dinheiro testando o que não muda o jogo.</strong></p>
+    <p style="font-size:13.5px;">"O P4 provou: <strong>28 de 28 criativos</strong>." (Estudo de caso de P4 da @gbifi.)</p>
+  </div>
+
+  <div class="callout red">
+    <h3>🛝 Slippery slope — a escada escorregadia</h3>
+    <p style="font-size:13.5px;">Cada frase existe para tornar a próxima <strong>inevitável</strong>: termina abrindo uma micro-curiosidade, nunca fechando o assunto.</p>
+    <pre style="margin-top:10px; font-size:12.5px; color:var(--muted);"><span style="color:var(--red);">❌</span> "Our product has three ingredients. They work together to help you." — <em style="color:var(--text);">dá onde parar.</em>
+<span style="color:var(--green);">✅</span> "This product has three ingredients. <strong>The first one does something no other supplement can do</strong>." — <em style="color:var(--text);">o que ele faz? Continua assistindo.</em></pre>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔥 Big 4 Emotions — o que todo hold precisa comunicar (sem dizer)</h2>
+
+  <div class="callout">
+    <p style="font-size:13.5px;">A regra: <strong>comunicar 2–3 com força vale mais que forçar as 4</strong> — "não é o que você diz, é o que você comunica."</p>
+  </div>
+
+  <div class="emotion">
+    <h4>🆕 NEW / ONLY</h4>
+    <p><strong>Isso é novo — e só existe aqui.</strong> Ninguém quer a solução velha que já falhou.</p>
+    <p style="color:var(--muted);">Como: ingrediente exclusivo, mecanismo recém-publicado, método nunca usado antes.</p>
+  </div>
+
+  <div class="emotion">
+    <h4>🙋 EASY / ANYBODY</h4>
+    <p><strong>É simples e funciona para alguém como eu</strong> — sem força de vontade sobre-humana.</p>
+    <p style="color:var(--muted);">Como: 10 segundos por dia, 3 ingredientes, sem academia, sem dieta restritiva.</p>
+  </div>
+
+  <div class="emotion">
+    <h4>🛡️ SAFE / PREDICTABLE</h4>
+    <p><strong>É seguro e o resultado é previsível</strong>: prova, mecanismo, reason-why.</p>
+    <p style="color:var(--muted);">Como: NEJM 2024, Dr. Sanjay Gupta, estudos publicados, mecanismo científico.</p>
+  </div>
+
+  <div class="emotion">
+    <h4>🚀 BIG / FAST</h4>
+    <p><strong>A mudança é significativa — e não demora uma eternidade.</strong></p>
+    <p style="color:var(--muted);">Como: "em 7 dias", "em 30 segundos de manhã", resultado mensurável em 90 dias.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 As 7 peças do vocabulário (sempre que ouvir esses termos)</h2>
+
+  <div class="piece-grid">
+    <div class="piece">
+      <div class="name">👤 Avatar</div>
+      <div class="what">A pessoa específica para quem o anúncio será escrito.</div>
+      <div class="ex">Ex: Mulher de 54 anos que acorda com o rosto inchado e termina o dia com os sapatos apertados.</div>
+    </div>
+    <div class="piece">
+      <div class="name">🧱 Crença atual</div>
+      <div class="what">A explicação que ela dá hoje para o problema.</div>
+      <div class="ex">Ex: "Isso é apenas idade, sal ou ganho de peso."</div>
+    </div>
+    <div class="piece">
+      <div class="name">💡 Nova crença</div>
+      <div class="what">O que ela precisa acreditar para a solução fazer sentido.</div>
+      <div class="ex">Ex: "Esses sintomas podem estar conectados a um sistema interno de fluxo lento."</div>
+    </div>
+    <div class="piece">
+      <div class="name">📐 Ângulo</div>
+      <div class="what">A interpretação estratégica que move da crença atual para a nova.</div>
+      <div class="ex">Ex: "Se o seu rosto muda em 4 horas, talvez nem tudo o que você vê seja gordura."</div>
+    </div>
+    <div class="piece">
+      <div class="name">🪝 Tipo de hook</div>
+      <div class="what">A maneira dramática de introduzir o ângulo.</div>
+      <div class="ex">Ex: Confissão · descoberta · conflito com autoridade · segredo · exposição.</div>
+    </div>
+    <div class="piece">
+      <div class="name">📖 História</div>
+      <div class="what">O acontecimento humano que carrega o ângulo.</div>
+      <div class="ex">Ex: Ela troca de sapatos escondida no banheiro do trabalho às 14h14.</div>
+    </div>
+    <div class="piece">
+      <div class="name">🧭 Framework</div>
+      <div class="what">A ordem em que a persuasão é apresentada.</div>
+      <div class="ex">Ex: Problema → Mecanismo → Solução.</div>
+    </div>
+    <div class="piece">
+      <div class="name">🎬 Sequência canônica</div>
+      <div class="what">Ângulo → Hook → História → Framework.</div>
+      <div class="ex">Cada peça puxa a próxima.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🏗️ A arquitetura CORTEX ADS — 4 camadas · 9 etapas · 9 prompts</h2>
+
+  <div class="callout gold">
+    <p style="font-family:'JetBrains Mono',monospace; font-size:13px; text-align:center;">
+      <span style="color:var(--blue);">🔷 Inteligência da Oferta</span> (01-03) &nbsp;→&nbsp; <span style="color:var(--orange);">🟡 Inteligência de Mercado</span> (04) &nbsp;→&nbsp; <span style="color:var(--gold);">🌀 Engenharia Criativa</span> (05-07) &nbsp;→&nbsp; <span style="color:var(--green);">🟢 Timing & Execução</span> (08-09)
+    </p>
+  </div>
+
+  <div class="callout">
+    <p style="font-size:13.5px;"><strong>Briefing → 🧠 Offer Brain → 🎯 Concept → 🗣️ Language → 🧬 Creative DNA → 📐 Ângulos → 🪝 Hooks → 📖 Stories → 🔥 Formatos → 🎬 30 Ads</strong></p>
+    <p style="font-size:13.5px;">"A ideia que muda o jogo: <strong>não comece pedindo pra IA criar um anúncio. Comece ensinando a IA a pensar como a oferta</strong>."</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📦 ETAPA 0 — O Briefing: a caixa de peças criativas</h2>
+
+  <div class="callout">
+    <p style="font-size:13.5px;">"O briefing é a <strong>feira</strong>. Você traz os ingredientes que só você tem — a máquina não inventa ingrediente nenhum; ela cozinha o que você trouxe. <strong>Feira ruim, jantar ruim.</strong>"</p>
+    <p style="font-size:13.5px;">Dentro de um briefing completo existem: diferentes pessoas, diferentes dores, diferentes crenças, diferentes histórias, mecanismos, desejos — e diferentes formas de levar tudo até o produto.</p>
+    <p style="font-size:13.5px;">A metodologia apenas <strong>ensina a IA a separar essas peças em gavetas</strong>. Depois, os prompts combinam as peças de maneiras praticamente infinitas.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🏷️ Os 5 campos que abrem a máquina</h4>
+      <p>1. <strong>PRODUTO</strong> (nome + categoria)</p>
+      <p>2. <strong>MERCADO</strong> (país/idioma)</p>
+      <p>3. <strong>IDIOMA DOS ADS</strong></p>
+      <p>4. <strong>IDIOMA DA ESTRATÉGIA</strong></p>
+      <p>5. <strong>RESTRIÇÕES CRIATIVAS</strong> (ex: não usar celebridades)</p>
+    </div>
+    <div class="card">
+      <h4>📦 O que tem dentro do briefing Linfaflow (exemplo)</h4>
+      <p>47 páginas de intelligence: 14 avatares, Big Idea, mecanismos, 4 ingredientes, VOC real, Won't Tell/Can't Tell, código emocional, estruturas invisíveis, 10 long text ads de exemplo, persona.</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <h3>🏷️ Avatar canônico (exemplo Linfaflow)</h3>
+    <p style="font-size:13.5px;">"Ela acorda com o rosto inchado e termina o dia trocando de sapatos no estacionamento. Já pagou US$ 120 numa sessão de drenagem, sentiu alívio à noite — e acordou inchada de novo. Já tentou compressão, Gua Sha, dry brushing, elevação: tudo funciona por horas, nada sustenta. <strong>Ela não precisa ser educada sobre inchaço; precisa ser REDIRECIONADA para a causa.</strong> É consciente do problema (Schwartz 3-4), num mercado sofisticado (estágio 4-5) onde promessa pura não converte mais."</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔷 ETAPA 01 — Offer Brain Compiler</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">01</div>
+      <div class="stage-info">
+        <h3>Offer Brain Compiler</h3>
+        <div class="framework">Do briefing bruto ao cérebro estruturado da oferta</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Pergunta que responde:</strong> O que existe nesta oferta — e o que realmente pode sustentar comunicação?</p>
+      <p><strong>Output:</strong> OFFER BRAIN MASTER (YAML compacto).</p>
+      <p><strong>As 5 camadas que precisam ser compiladas:</strong></p>
+      <ol>
+        <li><strong>📦 Produto</strong> — formato, ingredientes, modo de uso, preço, garantia, experiência.</li>
+        <li><strong>🌅 Resultado</strong> — funcional, emocional, identitário; imediato vs. acumulado.</li>
+        <li><strong>⚙️ Mecanismo</strong> — por que o problema acontece, por que tentativas falham, por que a solução funciona.</li>
+        <li><strong>🌎 Mercado</strong> — avatares, dores, desejos, alternativas tentadas, objeções, consciência.</li>
+        <li><strong>🧾 Prova</strong> — dados, demonstrações, testemunhos, autoridade, comparações.</li>
+      </ol>
+      <div class="callout gold" style="margin-top:12px;">
+        <p style="font-size:13.5px;"><strong>🚨 Regra de ouro:</strong> Fato, prova, hipótese e interpretação recebem etiquetas separadas. A IA <strong>não preenche em silêncio</strong> o que o briefing não informa.</p>
+        <p style="font-size:13.5px;"><strong>Etiquetas canônicas:</strong> <code>[EXTRAÍDO]</code> · <code>[ADAPTADO]</code> · <code>[INFERIDO]</code> · <code>[REFERÊNCIA CRIATIVA]</code> · <code>[AUSENTE]</code> · <code>[DECISÃO NECESSÁRIA]</code></p>
+      </div>
+      <p style="margin-top:10px;"><strong>Entrega mínima esperada:</strong> 1 cérebro da oferta · 5-7 cartões de avatar · 12+ ângulos estratégicos · 15+ sementes de história · 1 banco de linguagem do cliente · mapas de consciência, frameworks e tipos de hook.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 ETAPA 02 — Concept Selector</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">02</div>
+      <div class="stage-info">
+        <h3>Concept Selector</h3>
+        <div class="framework">Seleciona a mente e a hipótese → Dossiê de Conceito</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> Dossiê de Conceito (1 avatar + 1 hipótese + 1 framework).</p>
+      <p><strong>Três decisões que trava:</strong></p>
+      <ol>
+        <li><strong>Avatar</strong> — qual dos 5-7 cards do Offer Brain vai ser foco (primário).</li>
+        <li><strong>Hipótese persuasiva</strong> — qual crença atual vai ser quebrada (a mais frágil / a mais lucrativa).</li>
+        <li><strong>Framework</strong> — Problema → Mecanismo → Solução (PMS) ou PAS (Problem-Agitate-Solution) ou outra.</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🗣️ ETAPA 03 — Customer Language Miner</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">03</div>
+      <div class="stage-info">
+        <h3>Customer Language Miner</h3>
+        <div class="framework">Aprende o idioma real da mente → Language Bank</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> Language Bank (VOC + objeções + alternativas falhadas + Won't Tell/Can't Tell).</p>
+      <p><strong>Por que existe:</strong> "Linfaflow drenagem" soa corporativo. <strong>"Estou cansada de tirar o anel todo dia"</strong> soa como uma mulher de verdade. O Language Bank cataloga o jeito que a pessoa REAL fala — para o copy soar como conversa, não como panfleto.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🧬 ETAPA 04 — Master Creative DNA</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">04</div>
+      <div class="stage-info">
+        <h3>Master Creative DNA</h3>
+        <div class="framework">Extrai a engenharia dos criativos escalados → Creative DNA</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> Creative DNA (bibliotecas com ID de estrutura invisível por categoria).</p>
+      <p>Esta etapa é o <strong>spy estruturado</strong>: pega os 5-10 ads que estão rodando no nicho e extrai o que FUNCIONA por trás (não o que aparece na superfície).</p>
+      <p><strong>Bibliotecas construídas:</strong></p>
+      <ul>
+        <li><strong>Hook DNA</strong> — padrões de gancho por ângulo (confissão, descoberta, conflito, segredo).</li>
+        <li><strong>Body DNA</strong> — frameworks invisíveis (story-first, mechanism-first, before/after, listicle).</li>
+        <li><strong>Format DNA</strong> — talking head, UGC, animação 3D, slideshow, demo visual.</li>
+        <li><strong>CTA DNA</strong> — pergunta, declaração, desafio, provocação.</li>
+      </ul>
+      <div class="callout blue">
+        <p style="font-size:13.5px;"><strong>Princípio:</strong> "Como roubar a engenharia de um criativo vencedor <strong>sem copiar sua superfície</strong>."</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 ETAPA 05 — Master Angle Lab</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">05</div>
+      <div class="stage-info">
+        <h3>Master Angle Lab</h3>
+        <div class="framework">Master Angle + Angle DNA → razões de compra maduras</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> 12-30 ângulos estratégicos derivados do Creative DNA + avatar + hipótese.</p>
+      <p><strong>Estrutura canônica de um ângulo (Angle DNA):</strong></p>
+      <ol>
+        <li><strong>Nome</strong> (3-5 palavras, memorável)</li>
+        <li><strong>Crença atual quebrada</strong></li>
+        <li><strong>Nova crença instalada</strong></li>
+        <li><strong>Promessa central</strong> (1 frase)</li>
+        <li><strong>Mecanismo ancorado</strong> (por que funciona)</li>
+        <li><strong>Avatar-alvo</strong> (qual card do Offer Brain)</li>
+        <li><strong>Tipo de hook candidato</strong></li>
+        <li><strong>Tipo de história candidato</strong></li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🪝 ETAPA 06 — Hook Lab</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">06</div>
+      <div class="stage-info">
+        <h3>Hook Lab</h3>
+        <div class="framework">Hook DNA + Variation Logic → portas de entrada</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> 3-10 hooks por ângulo (cada hook = porta de entrada pro mesmo ângulo).</p>
+      <p><strong>Os 6 tipos canônicos de hook:</strong></p>
+      <ol>
+        <li><strong>Confissão</strong> — "I was wrong about X for 20 years."</li>
+        <li><strong>Descoberta</strong> — "Three weeks ago, I found a study that changed everything."</li>
+        <li><strong>Conflito com autoridade</strong> — "My doctor said this would never work. He was wrong."</li>
+        <li><strong>Segredo</strong> — "The thing nobody tells you about X..."</li>
+        <li><strong>Exposição</strong> — "Big Pharma has been hiding this for 30 years."</li>
+        <li><strong>Dado chocante</strong> — "89% of women over 50 are missing this one enzyme."</li>
+      </ol>
+      <div class="callout gold">
+        <p style="font-size:13.5px;"><strong>Regra prática:</strong> <strong>3 hooks por body é o mínimo</strong>. Testa-se HOOK, não vídeo. P4 provou: 28 de 28 criativos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📖 ETAPA 07 — Story Engine</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">07</div>
+      <div class="stage-info">
+        <h3>Story Engine</h3>
+        <div class="framework">Story DNA + Amplifiers + Body Spine → narrativas</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> Narrativas completas (7 beats canônicos).</p>
+      <p><strong>Os 7 beats da história (Story Spine):</strong></p>
+      <ol>
+        <li><strong>Estabelecer o mundo</strong> — quem é a pessoa, onde está, o que é normal pra ela.</li>
+        <li><strong>Incidente incitante</strong> — algo muda (sintoma aparece, diagnóstico, descoberta).</li>
+        <li><strong>Tentativas falhas</strong> — o que ela já tentou (compras, médicos, apps).</li>
+        <li><strong>Ponto de virada</strong> — descobre o mecanismo / método / produto.</li>
+        <li><strong>Transformação inicial</strong> — primeira evidência ("in 7 days, the morning puffiness was 50% gone").</li>
+        <li><strong>Transformação completa</strong> — estado final aspiracional (com data, número, local).</li>
+        <li><strong>Callback / prova social</strong> — outra pessoa confirma (sister, friend, doctor).</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔥 ETAPA 08 — Radar de Formatos Virais</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">08</div>
+      <div class="stage-info">
+        <h3>Radar de Formatos Virais</h3>
+        <div class="framework">As embalagens que escalam AGORA → Format Radar semanal</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> Format Radar semanal — os 5-10 formatos que estão escalando AGORA no nicho/plataforma.</p>
+      <p><strong>Os 8 formatos dominantes em 2026 (TikTok Shop / Meta):</strong></p>
+      <ol>
+        <li><strong>Talking head com texto na tela</strong> (UGC, confissão)</li>
+        <li><strong>Glow-up montage</strong> (antes/depois com % de progresso)</li>
+        <li><strong>Character VSL 3D</strong> (vilão + heróis em animação estilo Pixar)</li>
+        <li><strong>Receitinha + talking head</strong> ("vai na sua cozinha, pega 3 ingredientes")</li>
+        <li><strong>Demo visual repetida</strong> (ciclo de transformação, 30s loop)</li>
+        <li><strong>Split screen confronto</strong> ("o que eles dizem vs. o que é")</li>
+        <li><strong>Trend hijack</strong> (áudio viral + tema do produto)</li>
+        <li><strong>POV narrado</strong> (1ª pessoa, cotidiano, vulnerabilidade)</li>
+      </ol>
+      <div class="callout blue">
+        <p style="font-size:13.5px;"><strong>Por que esta etapa existe:</strong> O mercado inteiro roda 3 hooks por body, mas <strong>o FORMATO envelhece rápido</strong>. O que escalou em Jan/2026 já é planície em Mar/2026. Radar semanal mantém você surfando o timing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎬 ETAPA 09 — 30 Video Ads Copy Engine</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">09</div>
+      <div class="stage-info">
+        <h3>30 Video Ads Copy Engine</h3>
+        <div class="framework">Cruza tudo e entrega 30 ads nos formatos do timing</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Output:</strong> 30 anúncios completos com copy + cenas + B-roll + briefing de edição.</p>
+      <p><strong>Cada anúncio entregue contém:</strong></p>
+      <ol>
+        <li><strong>Ângulo</strong> (referência ao Master Angle Lab)</li>
+        <li><strong>Hook</strong> (verbatim, 1-2 frases, 0-3s)</li>
+        <li><strong>Bridge</strong> (verbatim, 3-8s)</li>
+        <li><strong>Hold completo</strong> (verbatim, com marcações de cena)</li>
+        <li><strong>CTA</strong> (verbatim, 1 frase)</li>
+        <li><strong>Decupagem cena-a-cena</strong> (visual, áudio, texto na tela)</li>
+        <li><strong>B-roll sugerido</strong> (o que filmar / onde achar stock)</li>
+        <li><strong>Briefing de edição</strong> (cortes, transições, música, tempo de cada cena)</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎓 Por que o sistema inteiro existe</h2>
+
+  <div class="callout red">
+    <p style="font-size:13.5px;"><strong>❌ O que NÃO é:</strong></p>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li>"Me dê 30 hooks para este produto."</li>
+      <li>Um gerador de copies aleatórias.</li>
+      <li>Uma biblioteca para copiar anúncios vencedores.</li>
+      <li>Uma execução que recomeça do zero toda semana.</li>
+      <li>IA substituindo estratégia.</li>
+    </ul>
+  </div>
+
+  <div class="callout green">
+    <p style="font-size:13.5px;"><strong>✓ O que É:</strong></p>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li>Uma <strong>fonte única de verdade</strong> sobre a oferta.</li>
+      <li>Um <strong>sistema de escolhas psicológicas e estratégicas</strong>.</li>
+      <li>Uma <strong>biblioteca viva de engenharia criativa</strong>.</li>
+      <li>Uma <strong>linha de produção que acumula inteligência</strong>.</li>
+      <li><strong>Estratégia humana codificada e executada com IA</strong>.</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🧭 Workflow resumido (9 prompts)</h2>
+
+  <div class="callout">
+    <ol style="font-size:13.5px;">
+      <li>Abra uma conversa exclusiva do produto. <strong>Anexe o briefing completo</strong> (ele é a fonte da verdade).</li>
+      <li>Cole a <strong>Configuração do Projeto</strong> e depois o <strong>Prompt 1</strong>.</li>
+      <li>Revise primeiro o que trava tudo: <strong>Product Truth, ingredientes, dose, oferta, decisões pendentes</strong>.</li>
+      <li>Salve o resultado: <strong>OFFER BRAIN MASTER — [PRODUTO] — V1</strong>.</li>
+      <li>Cada etapa no seu tempo — <strong>não peça hooks antes do Offer Brain estar sólido</strong>.</li>
+    </ol>
+  </div>
+
+  <div class="callout gold">
+    <p style="font-size:13.5px;"><strong>Como saber que funcionou:</strong> "Um iniciante consegue responder: <strong>quem compra, qual dor cada pessoa vive, o que ela acredita hoje, o que precisa acreditar, mecanismos, o que já tentou, quais momentos viram hooks e quais conflitos viram histórias.</strong>"</p>
+  </div>
+
+  <div class="footer">
+    CORTEX ADS Masterclass · 9 steps + 9 prompts · transcrito em 19/ago/2026 do material de @gbifi. <br>
+    <strong>Cross-reference arsenal:</strong> <a href="../dtc-videos/" style="color:#06a77d;">dtc-videos/</a> (DTC Affiliate PRO — operação) · <a href="../dtc-black-bifi/" style="color:#06a77d;">dtc-black-bifi/</a> (DTC Affiliate BLACK — estático) · <a href="../cbo-bifi/" style="color:#06a77d;">cbo-bifi/</a> (4 fases CBO) · <a href="../proof-elements/" style="color:#06a77d;">proof-elements/</a> (22+ tipos de prova) · <a href="../niche-research/" style="color:#06a77d;">niche-research/</a> (análise 4 blocos).<br>
+    <strong>Cross-reference briefings:</strong> <a href="../../by-product/slimsoda/copy/briefing-affiliate/" style="color:#a29bfe;">SlimSoda</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" style="color:#FF8A3D;">Linfaflow</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" style="color:#C8102E;">Cardio Clear</a>.
+  </div>
+
+</div>
+</body>
+</html>

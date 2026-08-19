@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise de Criativos — Index de Spy Validados (Primal Queen / LinfaFlow / Linfozen)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#4D9FFF; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(77,159,255,0.12); color:var(--accent); border:1px solid rgba(77,159,255,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.red { border-left-color:var(--red); }
+  .callout strong { color:var(--accent); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.green strong { color:var(--green); }
+  .callout.red strong { color:var(--red); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; font-size:13px; line-height:1.7; color:var(--text); overflow-x:auto; white-space:pre-wrap; }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; margin:14px 0; }
+  th { font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#9aa3b2; text-align:left; padding:11px 14px; border-bottom:1px solid var(--border); background:rgba(255,255,255,.02); }
+  td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top; color:#D7DFEE; }
+  .ad { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px; margin-bottom:18px; }
+  .ad-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:12px; }
+  .ad-title { font-size:16px; font-weight:800; color:var(--text); margin:0; }
+  .ad-tag { display:inline-block; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.04em; }
+  .tag-formato { background:rgba(77,159,255,0.15); color:#4D9FFF; border:1px solid rgba(77,159,255,0.4); }
+  .tag-angulo { background:rgba(255,176,32,0.15); color:#FFB020; border:1px solid rgba(255,176,32,0.4); }
+  .tag-avatar { background:rgba(167,139,250,0.15); color:#A78BFA; border:1px solid rgba(167,139,250,0.4); }
+  .ad-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+  .ad-grid .col { background:var(--panel-2); border-radius:6px; padding:10px 12px; }
+  .ad-grid .col h5 { margin:0 0 6px; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:800; }
+  .ad-grid .col p { font-size:12.5px; line-height:1.55; margin:0; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  .metodologia { background:rgba(77,159,255,0.08); border:1px dashed rgba(77,159,255,0.4); border-radius:8px; padding:14px 18px; margin:18px 0; }
+  .metodologia h3 { margin-top:0; }
+  .padroes { background:var(--panel-2); border-radius:8px; padding:16px; margin:14px 0; }
+  .padroes h4 { color:var(--gold); margin:0 0 8px; }
+  @media (max-width:720px) { .ad-grid, .grid-3 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Methodology · Análise de Criativos · 3 spy catalogados · 45+ ads</span>
+    <h1>Análise de Criativos <span class="accent">· Spy Index</span></h1>
+    <p class="lede">Catálogo das <strong>análises técnicas + editoriais</strong> de criativos validados em 3 produtos DR (Primal Queen, LinfaFlow, Linfozen). Cada análise tem <strong>QA técnico automático + ficha técnica + mapa de fluxo persuasivo + pontos de atenção</strong>. Use como banco de inteligência pra novos briefings.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 O que tem aqui:</strong> 3 spy catalogados, 45+ criativos analisados, padrões vencedores (formato + ângulo + avatar + framework), padrões a EVITAR (mecanismos errados, claims sem prova, claims médicos).
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>📦 Spy 1 — Primal Queen (Formatos Escalados)</h4>
+      <p><strong>26 criativos</strong> · UGC glow-up + diary montage + talking head. <strong>Marca-âncora</strong> do portfólio (12 dos 26 ads).</p>
+    </div>
+    <div class="card">
+      <h4>💧 Spy 2 — LinfaFlow (criativos)</h4>
+      <p><strong>18 criativos</strong> · Character VSL 3D + talking head + demo visual. Ângulo principal: tireoide ↔ lymphatic.</p>
+    </div>
+    <div class="card">
+      <h4>🩺 Spy 3 — Linfozen (VSL Validado)</h4>
+      <p><strong>2 hooks validados</strong> (B2H2 + B2H3) · receitinha + talking head + conspiração. Lipedema niche.</p>
+    </div>
+  </div>
+
+  <div class="metodologia">
+    <h3>📐 Metodologia de cada análise (o que cada spy cobre)</h3>
+    <table>
+      <thead><tr><th>Seção</th><th>O que responde</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Resumo da edição</strong></td><td>O criativo faz o quê? Que ângulo? Em que formato?</td></tr>
+        <tr><td><strong>QA técnico automático</strong></td><td>Frame preto, congelamento, áudio, duração, resolução, FPS</td></tr>
+        <tr><td><strong>Transcrição palavra-por-palavra</strong></td><td>O texto EXATO falado (sem interpretação)</td></tr>
+        <tr><td><strong>Pontos de atenção</strong></td><td>Erro de mecanismo? Claim sem prova? Frames pretos? Foto não autorizada?</td></tr>
+        <tr><td><strong>Ficha técnica</strong></td><td>Tipo, plataforma, nicho, formato, tom, awareness (Schwartz), sofisticação, ângulo, framework, MUP (vilão), MUS (solução), avatar, deeper core</td></tr>
+        <tr><td><strong>Mapa de Fluxo Persuasivo</strong></td><td>Hook → Corpo → CTA, decupado por função</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📦 Spy 1 — Primal Queen (Formatos Escalados) · 26 criativos</h2>
+
+  <div class="callout">
+    <p style="font-size:13.5px;"><strong>Fonte:</strong> <code>Analise Criativos - Formatos Escalados.html</code> (18MB — análise detalhada AD por AD).</p>
+    <p style="font-size:13.5px;"><strong>Produto:</strong> Primal Queen — cápsulas de 6 órgãos bovinos liofilizados para mulheres. <strong>Nutra EN/UK.</strong> Marca-âncora do portfólio (12 dos 26 criativos).</p>
+  </div>
+
+  <div class="ad">
+    <div class="ad-head">
+      <h3 class="ad-title">AD01 — UGC glow-up "dumped on NYE"</h3>
+      <div>
+        <span class="ad-tag tag-formato">Glow-up montage</span>
+        <span class="ad-tag tag-angulo">Vingança silenciosa</span>
+        <span class="ad-tag tag-avatar">Mulher 20-35 pós-término</span>
+      </div>
+    </div>
+    <p style="font-size:13px;">📐 <strong>Estrutura:</strong> arquivo pessoal (selfie de choro na cama datada 31/12/2023) → academia → caderno de metas → viagem de barco → treino de luta → corpo/piscina. <strong>Sem talking-head.</strong> Tudo em cartela de texto e áudio de trend.</p>
+    <div class="ad-grid">
+      <div class="col">
+        <h5>🪝 Hook</h5>
+        <p>"POV: You got dumped on NYE because you gained weight…" sobre selfie de choro na cama, com data carimbada.</p>
+      </div>
+      <div class="col">
+        <h5>🧠 Corpo</h5>
+        <p>Montagem ritmada por 3 cartelas: <strong>10% Took PrimalQueen → 50% Got motivated again → 100% Balanced hormones</strong>. O produto aparece SÓ como palavra na cartela de 10%.</p>
+      </div>
+      <div class="col">
+        <h5>👆 CTA</h5>
+        <p>Estado aspiracional (bolsa de grife, piscina). <strong>SEM CTA, SEM oferta, SEM endcard de marca.</strong></p>
+      </div>
+      <div class="col">
+        <h5>⚠️ Pontos de atenção</h5>
+        <p>Produto quase invisível. Claim "100% Balanced hormones" encadeado ao gancho de peso. <strong>Congelamento real no fim (48,7s).</strong> Fala é áudio de trend — transcrição sai truncada.</p>
+      </div>
+    </div>
+    <div class="padroes">
+      <h4>📊 Padrões identificados (Primal Queen)</h4>
+      <ul>
+        <li><strong>Awareness dominante:</strong> Problem-Aware (sabe do peso, não conhece mecanismo hormonal)</li>
+        <li><strong>Sofisticação:</strong> Nível 2 (promessa direta ampliada) — não explica mecanismo, só "hormônio equilibrado = corpo de volta"</li>
+        <li><strong>MUP (vilão):</strong> Desequilíbrio hormonal que trava peso e energia</li>
+        <li><strong>MUS (solução):</strong> Primal Queen — cápsulas de órgãos bovinos (afirmada, nunca explicada)</li>
+        <li><strong>Deeper core:</strong> Provar a quem a dispensou (e a si mesma) que é capaz de virar o jogo</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad">
+    <div class="ad-head">
+      <h3 class="ad-title">AD [do spy 1] — Padrão Glow-up + barra de progresso</h3>
+      <div>
+        <span class="ad-tag tag-formato">UGC in-house</span>
+        <span class="ad-tag tag-angulo">Virada + ritual</span>
+      </div>
+    </div>
+    <p style="font-size:13px;"><strong>Aprendizado replicável:</strong> o formato glow-up com barra de progresso (% de jornada) + arquivo pessoal REAL funciona porque o avatar se reconhece no frame inicial de humilhação datada. <strong>3 cartelas de progresso costuram a narrativa sem locução.</strong></p>
+    <div class="callout green">
+      <p style="font-size:13px;"><strong>✅ Replicar pra Linfaflow/SlimSoda/Cardio:</strong> cartela "10% → 50% → 100%" com a marca entrando na primeira cartela, mesmo que pequena. Estado aspiracional no final. Sem CTA explícito (a página faz isso).</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>💧 Spy 2 — LinfaFlow (criativos) · 18 criativos</h2>
+
+  <div class="callout">
+    <p style="font-size:13.5px;"><strong>Fonte:</strong> <code>Analise Criativos - LinfaFlow (criativos).html</code> (13MB — análise detalhada AD por AD).</p>
+    <p style="font-size:13.5px;"><strong>Produto:</strong> LinfaFlow — drops sublinguais de drenagem linfática (4 ervas: Stillingia Root, Cleavers, Red Clover, Prickly Ash). <strong>Nutra EN/US.</strong> Ângulo principal: tireoide ↔ lymphatic.</p>
+  </div>
+
+  <div class="ad">
+    <div class="ad-head">
+      <h3 class="ad-title">AD01 — H1 Queda de cabelo (Character VSL 3D)</h3>
+      <div>
+        <span class="ad-tag tag-formato">Character VSL 3D</span>
+        <span class="ad-tag tag-angulo">Tireoide waste bloqueia T4</span>
+        <span class="ad-tag tag-avatar">Mulher com Hashimoto / queda de cabelo</span>
+      </div>
+    </div>
+    <p style="font-size:13px;">📐 <strong>Estrutura:</strong> animação 3D estilo Pixar dentro do corpo. O vilão é uma <strong>bolha âmbar antropomórfica</strong> ("thyroid waste"). As 4 ervas viram personagens fofos. Fecha em live-action com mulher segurando o frasco.</p>
+    <div class="ad-grid">
+      <div class="col">
+        <h5>🪝 Hook</h5>
+        <p>"Hi, I'm thyroid waste. I'm why your hair is falling out in clumps every shower. Clogging the drain every morning." — 1ª pessoa do VILÃO.</p>
+      </div>
+      <div class="col">
+        <h5>🧠 Corpo</h5>
+        <p>Origem: <strong>"começou quando a tireoide desacelerou, engrossou, endureceu, fechou o sistema linfático"</strong>. Mecanismo de invalidação: a pílula inunda sangue de T4 mas não converte (vilão bloqueia via). Imagem forte: <strong>"o remédio está no sangue, mas está morrendo de fome nas células"</strong>. Desfile de heróis: cada erva em 1ª pessoa. Justifica formato líquido (bypassa intestino lento). Fecha em <strong>"your thyroid doesn't need a higher dose — it just needs an exit"</strong>.</p>
+      </div>
+      <div class="col">
+        <h5>👆 CTA</h5>
+        <p><strong>SEM oferta, SEM preço, SEM CTA explícito.</strong> Reformulação de identidade.</p>
+      </div>
+      <div class="col">
+        <h5>⚠️ ERRO DE MECANISMO</h5>
+        <p>Aos 15,6s: <strong>"it can't convert to active T4"</strong>. ❌ ERRADO — hormônio ativo é T3, T4 converte em T3. <strong>Queimado no frame em alta + legenda karaokê.</strong> Público-alvo (mulher com Hashimoto) VAI pegar esse erro.</p>
+      </div>
+    </div>
+    <div class="padroes">
+      <h4>📊 Padrões identificados (LinfaFlow)</h4>
+      <ul>
+        <li><strong>Formato dominante:</strong> Character VSL 3D (vilão antropomórfico + 4 heróis em 1ª pessoa) — formato caro mas hipnótico</li>
+        <li><strong>Ângulo forte:</strong> tireoide está OK, mas a lixeira linfática bloqueia — invalida a medicação existente</li>
+        <li><strong>MUP (vilão):</strong> "thyroid waste" — visualizável, antropomórfico, 1ª pessoa</li>
+        <li><strong>MUS (solução):</strong> 4 ervas (cada uma com função distinta, justificada em 1 frase)</li>
+        <li><strong>Deeper core:</strong> "você não precisa de mais remédio — precisa de uma saída"</li>
+        <li><strong>🚨 ERRO SISTÊMICO:</strong> claim de T3/T4 errado em vários criativos. <strong>SEMPRE checar mecanismo com profissional de saúde antes de gravar.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🩺 Spy 3 — Linfozen (VSL Validado) · 2 hooks</h2>
+
+  <div class="callout">
+    <p style="font-size:13.5px;"><strong>Fonte:</strong> <code>LINFOZEN ADS VALIDADOS (VSL).docx</code> — 2 hooks validados (B2H2 + B2H3) com body completo.</p>
+    <p style="font-size:13.5px;"><strong>Produto:</strong> Linfozen — suplemento pra lipedema (inchaço crônico nas pernas). <strong>Nutra EN/US.</strong> Nicho: mulher 35+ com sintomas de lipedema.</p>
+  </div>
+
+  <div class="ad">
+    <div class="ad-head">
+      <h3 class="ad-title">Linfozen B2H2 — 40 anos de saúde, controla lipedema em 17s</h3>
+      <div>
+        <span class="ad-tag tag-formato">Receitinha + Talking Head</span>
+        <span class="ad-tag tag-angulo">Conspiração / doctors don't know</span>
+        <span class="ad-tag tag-avatar">Médica sênior (Dr. Mary Claire)</span>
+      </div>
+    </div>
+    <pre><strong>HOOK (H2):</strong> "I have spent forty years studying health, and I will tell you one thing: lipedema can be easily controlled if you follow what I'm going to tell you in the next 17 seconds."</pre>
+    <p style="font-size:13px;"><strong>Por que funciona:</strong> autoridade (40 anos) + especificidade temporal (17 segundos) + promessa específica (lipedema controlada). <strong>Avatar-médica autorizado</strong> (Dr. Mary Claire — referência visual via TikTok).</p>
+    <div class="ad-grid">
+      <div class="col">
+        <h5>🪝 Hook (H3 variante)</h5>
+        <p><em>"If your leg looks like this. Or this. Or this. Dieting is not for you. Exercising and walking aren't for you either... And definitely not Ozempic, honey. So pay attention to this video..."</em></p>
+        <p style="margin-top:6px;">Pattern: <strong>3 exemplos visuais + invalidação de 3 soluções comuns + "Ozempic" como bode expiatório + provocação direta ("honey")</strong>.</p>
+      </div>
+      <div class="col">
+        <h5>🧠 Body — estrutura</h5>
+        <p>1. "Go to your kitchen, grab 3 ingredients, all under $3 at Walmart" — <strong>facilidade + preço</strong></p>
+        <p>2. "20 million women in the US have lipedema. 90% experience pain" — <strong>escala + dor</strong></p>
+        <p>3. Sintomas: cold legs, hard nodules like peas/grains of rice, bruises without bumping — <strong>especificidade visual</strong></p>
+        <p>4. "What laziness makes bruises appear on their own?" — <strong>provocação ao médico</strong></p>
+        <p>5. "I'm going to spit in the face of all these incompetent doctors" — <strong>conspiração declarada</strong></p>
+        <p>6. "Lipedema isn't obesity. It's fat trapped inside a fibrous wall" — <strong>quebra de crença</strong></p>
+        <p>7. "Studies from the Lipedema World Alliance" — <strong>prova institucional</strong></p>
+        <p>8. bacterium spongiforma + fibrous wall + vascular asphyxiation — <strong>mecanismo técnico</strong></p>
+        <p>9. "The Brazilian pineapple trick" — <strong>ingrediente exótico</strong></p>
+        <p>10. "10 seconds every morning. Fibrotic Solvent Ritual" — <strong>ritual nomeado</strong></p>
+      </div>
+      <div class="col">
+        <h5>👆 CTA</h5>
+        <p>"I recorded a short free video explaining the step-by-step. The 3 exact measurements..." — <strong>entrega gratuita + escassez ("toda vez que vai ao ar, é tirado do ar")</strong> + reason why oculto (indústria perdendo bilhões).</p>
+      </div>
+      <div class="col">
+        <h5>⚠️ Pontos de atenção</h5>
+        <p>Claims médicos fortes: "lipedema can be easily controlled", "the only clinically proven trick", "spit in the face of incompetent doctors" — <strong>Meta pode reprovar</strong>. Adaptar pra soft: "many women report", "researchers found", "doctors often miss this".</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad">
+    <div class="ad-head">
+      <h3 class="ad-title">Linfozen B2H3 — A especialista que finalmente explica</h3>
+      <div>
+        <span class="ad-tag tag-formato">Receitinha + Talking Head</span>
+        <span class="ad-tag tag-angulo">Doctors push drugs, you need a recipe</span>
+        <span class="ad-tag tag-avatar">Médica sênior</span>
+      </div>
+    </div>
+    <p style="font-size:13px;">📐 <strong>Mesma estrutura do B2H2</strong> com pequenas variações. Pattern de "exposed by the system" + "essa verdade foi suprimida" + "seu médico está errado mas tem uma solução caseira de 3 ingredientes".</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 Padrões vencedores (cruzando os 3 spy)</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>🏆 Formatos que escalam</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>Glow-up montage</strong> (Primal Queen) — cartela de progresso, arquivo pessoal</li>
+        <li><strong>Character VSL 3D</strong> (LinfaFlow) — vilão antropomórfico + heróis</li>
+        <li><strong>Receitinha + talking head</strong> (Linfozen) — "vai na cozinha, 3 ingredientes"</li>
+        <li><strong>POV narrado</strong> (todos) — 1ª pessoa, cotidiano, vulnerabilidade</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🎯 Ângulos que convertem</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>Invalidação da medicação existente</strong> (LinfaFlow: "your pill isn't working")</li>
+        <li><strong>Vingança silenciosa</strong> (Primal Queen: "dumped on NYE")</li>
+        <li><strong>Conspiração / doctors wrong</strong> (Linfozen: "incompetent doctors")</li>
+        <li><strong>3 ingredientes + 1 ritual</strong> (Linfozen: "Fibrotic Solvent Ritual")</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>👤 Avatares validados</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>Médica sênior 60+</strong> (Linfozen: Dr. Mary Claire) — autoridade + warm</li>
+        <li><strong>Mulher 20-35 pós-término</strong> (Primal Queen: KATIA ZAKARIAN)</li>
+        <li><strong>Mulher 40-60 com tireoide</strong> (LinfaFlow: Hashimoto)</li>
+        <li><strong>Mulher 50-60 rejeitada pelo corpo</strong> (Primal Queen: glow-up)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🪝 Tipos de hook dominantes</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>1ª pessoa do vilão</strong> (LinfaFlow: "Hi, I'm thyroid waste")</li>
+        <li><strong>Confissão datada</strong> (Primal Queen: "dumped on NYE 2023")</li>
+        <li><strong>Autoridade + tempo</strong> (Linfozen: "40 anos, 17 segundos")</li>
+        <li><strong>3 exemplos visuais + invalidação</strong> (Linfozen H3)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>📐 Frameworks invisíveis</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>Glow-up + barra de progresso</strong> (10/50/100%)</li>
+        <li><strong>Desfile de heróis</strong> (cada erva em 1ª pessoa)</li>
+        <li><strong>Receitinha + conspiração</strong> (3 ingredientes + indústria perdendo)</li>
+        <li><strong>Vilão que se apresenta</strong> (Character VSL 3D)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>🎙️ Voz/tom dominante</h4>
+      <ul style="font-size:13px; margin:6px 0 0 18px;">
+        <li><strong>Sister-figura séria</strong> (Linfozen: "honey", "darling")</li>
+        <li><strong>Vingança motivacional</strong> (Primal Queen: sem fala, só imagem)</li>
+        <li><strong>Vilão confesso</strong> (LinfaFlow: 1ª pessoa sarcástica)</li>
+        <li><strong>Anti-establishment com reason why</strong> (todos)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚨 Anti-patterns a EVITAR (cross-spy)</h2>
+
+  <div class="callout red">
+    <p style="font-size:13.5px;"><strong>❌ 5 anti-patterns identificados:</strong></p>
+    <ol style="font-size:13.5px;">
+      <li><strong>Erro de mecanismo queima credibilidade</strong> (LinfaFlow: T3 vs T4 errado). <strong>SEMPRE checar com profissional de saúde.</strong></li>
+      <li><strong>Claim médico absoluto</strong> (Linfozen: "easily controlled", "clinically proven"). <strong>Adaptar pra soft:</strong> "many women report", "researchers found".</li>
+      <li><strong>Produto invisível</strong> (Primal Queen: palavra na tela, nunca o frasco). <strong>Reconhecimento de marca precisa de 1 frame claro do produto.</strong></li>
+      <li><strong>Congelamento técnico no fim</strong> (Primal Queen: 48,7s). <strong>Sempre checar o último frame antes de upar.</strong></li>
+      <li><strong>Foto não autorizada de médico real</strong> (Linfozen usa Dr. Mary Claire via TikTok — verificar autorização pra uso pago). <strong>Para Meta-safe: usar ilustração/silhueta.</strong></li>
+    </ol>
+  </div>
+
+  <div class="callout gold">
+    <p style="font-size:13.5px;"><strong>🎯 Como usar este spy na prática (5 passos):</strong></p>
+    <ol style="font-size:13.5px;">
+      <li>Antes de produzir um criativo pra SlimSoda/Linfaflow/Cardio/Linfozen, <strong>procure 2-3 ads do spy que tenham o mesmo ângulo ou avatar</strong>.</li>
+      <li>Identifique o <strong>padrão vencedor</strong> (formato + framework + tipo de hook).</li>
+      <li>Adapte ao seu produto: <strong>troque o vilão, o mecanismo e o produto</strong>. Mantenha a estrutura.</li>
+      <li>Valide com briefing PT-BR: o claim tem prova? Avatar é o mesmo? Mecanismo está correto?</li>
+      <li>Produza 3-5 variações (diferentes hooks sobre mesmo body) e teste no P1.</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    Spy Index v1.0 · 3 análises catalogadas · 19/ago/2026. <br>
+    <strong>Fontes originais:</strong>
+    <ul style="font-size:11.5px; margin:6px 0 0 18px;">
+      <li><code>Analise Criativos - Formatos Escalados.html</code> (18MB, 26 ads Primal Queen)</li>
+      <li><code>Analise Criativos - LinfaFlow (criativos).html</code> (13MB, 18 ads LinfaFlow)</li>
+      <li><code>LINFOZEN ADS VALIDADOS (VSL).docx</code> (B2H2 + B2H3 hooks validados)</li>
+    </ul>
+    <strong>Cross-reference arsenal:</strong> <a href="../cortex-ads/" style="color:#7c3aed;">cortex-ads/</a> (9 steps) · <a href="../dtc-videos/" style="color:#06a77d;">dtc-videos/</a> (P1-P4) · <a href="../niche-research/" style="color:#d68910;">niche-research/</a> (4 blocos) · <a href="../proof-elements/" style="color:#06a77d;">proof-elements/</a> (22+ tipos).<br>
+    <strong>Cross-reference briefings:</strong> <a href="../../by-product/slimsoda/copy/briefing-affiliate/" style="color:#a29bfe;">SlimSoda</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" style="color:#FF8A3D;">Linfaflow</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" style="color:#C8102E;">Cardio Clear</a>.
+  </div>
+
+</div>
+</body>
+</html>

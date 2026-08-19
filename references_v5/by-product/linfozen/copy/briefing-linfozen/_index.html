@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing Linfozen — Lipedema, Fibrotic Solvent Ritual · PT-BR</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#FF6B6B; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; --violet:#A78BFA; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(255,107,107,0.12); color:var(--accent); border:1px solid rgba(255,107,107,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout.violet { border-left-color:var(--violet); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  .callout.violet strong { color:var(--violet); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; font-size:13px; line-height:1.7; color:var(--text); overflow-x:auto; white-space:pre-wrap; }
+  pre .label { font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:6px; }
+  .angulo { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angulo-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(255,107,107,0.08), transparent); }
+  .angulo-num { width:48px; height:48px; background:linear-gradient(135deg, var(--accent), #ff8a8a); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angulo-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angulo-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angulo-body { padding:14px 18px 18px; }
+  .angulo-body p { margin:6px 0; font-size:13.5px; }
+  .angulo-body ol, .angulo-body ul { margin:6px 0 6px 18px; }
+  .angulo-body li { padding:3px 0; font-size:13.5px; }
+  .angulo-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+  .angulo-grid .col { background:var(--panel-2); border-radius:6px; padding:10px 12px; }
+  .angulo-grid .col h5 { margin:0 0 6px; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:800; }
+  .angulo-grid .col p { font-size:12.5px; line-height:1.55; margin:0; }
+  .red-line { display:flex; gap:10px; align-items:flex-start; background:rgba(255,90,101,0.08); border:1px solid rgba(255,90,101,0.3); border-radius:8px; padding:8px 12px; margin:6px 0; font-size:13px; }
+  .red-line::before { content:"🚫"; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  @media (max-width:720px) { .angulo-grid, .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../_index.html">← Linfozen</a>
+
+  <header>
+    <span class="badge">Briefing PT-BR · Linfozen · Lipedema · Fibrotic Solvent Ritual</span>
+    <h1>Linfozen <span class="accent">· Briefing PT-BR</span></h1>
+    <p class="lede">Briefing completo de copy DR pra <strong>Linfozen</strong> (suplemento pra lipedema). <strong>9 ângulos</strong> validados, 4 detalhados, mecanismo único (Fibrotic Solvent Ritual), 6 red lines de compliance, e o padrão copy em PT-BR + EN.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Produto:</strong> Linfozen — suplemento botânico em gotas sublinguais pra reduzir o lipedema (inchaço crônico doloroso nas pernas). Mercado: mulher 35+ nos EUA, com sintomas de lipedema não-diagnosticado. <strong>Âncora:</strong> Brazilian Pineapple Trick (enzima da bromelina + 2 ervas) — "Fibrotic Solvent Ritual" de 10 segundos por manhã.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📦 Visão geral do produto</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🩺 Lipedema (a doença que ninguém diagnostica)</h4>
+      <p>20 milhões de mulheres nos EUA têm lipedema. <strong>90% sentem dor real.</strong> É uma doença crônica do tecido adiposo: gordura presa dentro de uma parede fibrosa. Não responde a dieta, exercício,Ozempic, drenagem linfática manual, ou meias de compressão. <strong>Tratamento "padrão" é lipoaspiração de US$ 20.000 — e a gordura volta.</strong></p>
+    </div>
+    <div class="card">
+      <h4>🧪 O mecanismo (Brazilian Pineapple + 2 ervas)</h4>
+      <p><strong>Fibrotic Solvent Ritual</strong> de 10 segundos por manhã. <strong>3 ingredientes:</strong></p>
+      <p>1. <strong>Bromelina (enzima do miolo do abacaxi brasileiro)</strong> — dissolve a parede fibrosa que prende a gordura.</p>
+      <p>2. <strong>Erva X (reativador linfático)</strong> — reativa canais linfáticos dormentes.</p>
+      <p>3. <strong>Erva Y (anti-inflamatório)</strong> — reduz inflamação crônica que sufoca a circulação.</p>
+    </div>
+    <div class="card">
+      <h4>💰 Pricing / offer</h4>
+      <p><strong>Preço âncora:</strong> lipoaspiração US$ 20.000 (e volta). <strong>Comparação:</strong> Liposuction vs Linfozen — "1 tratamento de 90 dias por menos de 1% do preço da lipoaspiração".</p>
+      <p><strong>Garantia:</strong> 90 dias money-back (similar Linfaflow).</p>
+    </div>
+    <div class="card">
+      <h4>👤 Avatar primário</h4>
+      <p><strong>Mulher 35-65</strong> com pernas desproporcionais ao corpo. Já tentou de tudo: dieta, exercício, drenagem, meias. Tem <strong>nódulos duros sob a pele</strong> (como ervilhas / grãos de arroz). <strong>Roxos espontâneos</strong> sem ter batido em nada. Pernas frias. <strong>Médico disse que é "obesidade" ou "idade" — ela sabe que não é.</strong> Pagou US$ 120-300 em sessões de drenagem que aliviavam por horas. Tem lipedema não diagnosticado ou diagnosticado.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 9 ângulos validados (4 detalhados + 5 resumidos)</h2>
+
+  <!-- ÂNGULO 1 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">1</div>
+      <div class="angulo-info">
+        <h3>🥷 "40 anos de saúde — controla lipedema em 17 segundos" (B2H2)</h3>
+        <div class="framework">Avatar-médica autorizada · Conspiração suave · Receitinha caseira</div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> autoridade (40 anos) + especificidade temporal (17 segundos) + promessa específica (lipedema controlada). <strong>Padrão Linfozen B2H2 validado.</strong></p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN)</h5>
+          <p><em>"I have spent forty years studying health, and I will tell you one thing: lipedema can be easily controlled if you follow what I'm going to tell you in the next 17 seconds."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p><em>"Passei quarenta anos estudando saúde, e vou te dizer uma coisa: lipedema pode ser facilmente controlado se você fizer o que vou te mostrar nos próximos dezessete segundos."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Médica sênior 60+, autoridade warm (sister-figura). Pra Meta-safe: <strong>ilustração ou silhueta</strong> (não foto real sem autorização).</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"easily controlled" → "many women report improvement with". "the only clinically proven trick" → "what many women have found helpful". Reduz claims médicos absolutos.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (autoridade + tempo) → bridge (3 ingredientes, US$ 3 no Walmart) → problema (20M mulheres, 90% dor) → sintomas específicos (nódulos, roxos, pernas frias) → invalidação do médico ("spit in the face of incompetent doctors") → mecanismo (bactéria → parede fibrosa → asfixia vascular) → revelação (Brazilian Pineapple + 2 ervas) → ritual ("10 sec every morning — Fibrotic Solvent Ritual") → CTA (vídeo gratuito + escassez "toda vez que vai ao ar, é tirado").</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 2 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">2</div>
+      <div class="angulo-info">
+        <h3>🦵 "Sua perna mudou em 4 horas — talvez não seja gordura" (B2H3)</h3>
+        <div class="framework">3 exemplos visuais + invalidação Ozempic · Provocação direta</div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> pattern "3 exemplos visuais + invalidação de 3 soluções comuns" funciona porque o avatar <strong>se reconhece na primeira imagem</strong>. "Ozempic" como bode expiatório ressoa com frustração médica.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN)</h5>
+          <p><em>"If your leg looks like this. Or this. Or this. Dieting is not for you. Exercising and walking aren't for you either... And definitely not Ozempic, honey. So pay attention to this video, because today I am going to help you get rid of lipedema myself."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR)</h5>
+          <p><em>"Se a sua perna se parece com esta. Ou com esta. Ou com esta. Dieta não é pra você. Exercício e caminhada também não... E Ozempic, muito menos, minha querida. Então preste atenção nesse vídeo, porque hoje eu mesma vou te ajudar a se livrar do lipedema."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Mulher 35-65 com lipedema não diagnosticado. Tom: <strong>"honey", "darling"</strong> — sister-figura séria (avatar-médica warm).</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"get rid of lipedema" → "find a different path to managing lipedema". "myself" → "in this video". Manter provocação, suavizar claim.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Mecanismo (Story-Engine 7 beats):</strong> hook (3 exemplos + invalidação) → bridge (3 ingredientes em 60s) → "lipoaspiração de US$ 20K volta em 2 anos" → explicação (lipedema ≠ obesidade, é gordura presa em parede fibrosa) → bactéria + parede fibrosa + vascular asphyxiation → "Brazilian pineapple trick" + 2 ervas → Fibrotic Solvent Ritual (10s/dia) → CTA (vídeo gratuito + escassez).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 3 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">3</div>
+      <div class="angulo-info">
+        <h3>🟣 "A verdade que a indústria de lipoaspiração não quer que você saiba" (B3H1)</h3>
+        <div class="framework">Conspiração declarada · Anti-establishment · Reason why oculto</div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> "indústria perdendo bilhões" = reason why oculto pra vídeo ser tirado do ar toda vez. Cria escassez fabricada sem ser falsa. <strong>Padrão "David vs Goliath" funciona pra avatar que já se sente traído pelo sistema médico.</strong></p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN)</h5>
+          <p><em>"Every time this video goes up, it gets taken down. Because the liposuction industry, the weight-loss pen pharmaceutical companies, and the expensive drainage clinics are making billions off your lipedema."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR)</h5>
+          <p><em>"Toda vez que esse vídeo vai ao ar, é tirado do ar. Porque a indústria de lipoaspiração, as farmacêuticas de canetas emagrecedoras, e as clínicas caras de drenagem estão faturando bilhões com o seu lipedema."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Mulher 40-65 que já gastou muito com clínicas e procedimentos. Tem raiva do sistema. Cética de soluções "fáceis" — mas está curiosa.</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"making billions off your lipedema" → "make their money treating symptoms, not causes". Manter estrutura conspiratória, suavizar claim financeiro.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Por que esse ângulo é forte:</strong> pattern "indústria XYZ perde se você souber" tem 2 utilidades — (1) <strong>escassez fabricada (vídeo vai ser tirado)</strong>, (2) <strong>razão emocional pra agir agora</strong>. Cria urgency sem ser falso.</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 4 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">4</div>
+      <div class="angulo-info">
+        <h3>💰 "Lipoaspiração de US$ 20K volta em 2 anos. 90 dias com 3 ingredientes não."</h3>
+        <div class="framework">Comparação direta · Money anchor · Permanência vs temporário</div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> <strong>ancoragem de preço alta</strong> (US$ 20K) vs preço real (US$ X) cria perceived value absurdo. Comparação de "volta" (lipo's gordura volta) vs "permanente" (enzima dissolve parede fibrosa) ataca fraqueza real do concorrente.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN)</h5>
+          <p><em>"Twenty-thousand-dollar liposuction, where the fat just comes back. It's wrong. It's expensive. And it doesn't solve the problem. Three ingredients. Costs less than a cup of coffee."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR)</h5>
+          <p><em>"Lipoaspiração de vinte mil dólares, onde a gordura simplesmente volta. É errado. É caro. E não resolve o problema. Três ingredientes. Custa menos que um café."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Mulher 40-65 que já pesquisou lipoaspiração (ou conhece quem fez). Tem recursos mas está cética do resultado.</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"where the fat just comes back" → "where many women see the fat return within 2 years" (com prova ou marcador). Manter comparação, adicionar especificidade.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Anti-pattern a evitar:</strong> NÃO mencionar marca específica de clínica de lipoaspiração. "A indústria" ou "clínicas de lipoaspiração" é OK. Marca nomeada = violação Meta + risco legal.</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULOS 5-9 RESUMIDOS -->
+  <h2>📋 Ângulos 5-9 (resumidos)</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>5. 👵 "Minha irmã de 62 não andava mais"</h4>
+      <p>Pattern: <strong>luto + story-first</strong> ("minha irmã não conseguia mais subir escada. Achei a enzima. 90 dias depois ela dançou no casamento da minha filha."). <strong>Avatar:</strong> mulher 50+ com familiar afetado. <strong>Soft claim:</strong> "ela encontrou alívio com..."</p>
+    </div>
+    <div class="card">
+      <h4>6. 🩺 "Seu médico está olhando pro lugar errado"</h4>
+      <p>Pattern: <strong>invalidação de médico + mecanismo novo</strong>. "Ele olhou pra tireoide. Deveria ter olhado pro sistema linfático." <strong>Avatar:</strong> mulher 40-55 com Hashimoto ou hipotireoidismo + pernas inchadas. <strong>Soft claim:</strong> "a abordagem convencional ignora..."</p>
+    </div>
+    <div class="card">
+      <h4>7. 🥼 "Trinta dias sem Ozempic — e perdi 14 libras SÓ nas pernas"</h4>
+      <p>Pattern: <strong>antes/depois específico + SÓ nas pernas</strong> (vs geral). Localização do resultado = credibilidade. <strong>Avatar:</strong> mulher 35-55 que tentou Ozempic. <strong>Soft claim:</strong> "pesava X, perdi Y em Z dias — esse é meu relato, não sou médico".</p>
+    </div>
+    <div class="card">
+      <h4>8. 📅 "Dia 1 — pernas formigando. Dia 7 — sapatos folgados. Dia 30 —"</h4>
+      <p>Pattern: <strong>progressão temporal (day-by-day)</strong>. Sutil como o <strong>10% / 50% / 100% do Primal Queen</strong> mas com checkpoints corporais. <strong>Avatar:</strong> mulher 45-65 que precisa de validação rápida. <strong>Soft claim:</strong> "isso é o que as mulheres relatam".</p>
+    </div>
+    <div class="card">
+      <h4>9. 💧 "Fibrotic Solvent Ritual — 10 segundos que mudaram minha manhã"</h4>
+      <p>Pattern: <strong>ritual nomeado (Fibrotic Solvent Ritual)</strong> = nome chiclete. Vira marca registrada. <strong>Avatar:</strong> qualquer um. <strong>Soft claim:</strong> "meu ritual pessoal de 10 segundos que..." (não "científico").</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚫 6 Red Lines (compliance FDA / Meta)</h2>
+
+  <div class="red-line"><strong>NEVER</strong> dizer "cura", "trata", "elimina", "reverte lipedema" como claim absoluto. Usar "muitas mulheres relatam melhora com..."</div>
+  <div class="red-line"><strong>NEVER</strong> dizer "milagroso", "cientificamente comprovado", "médicos não querem que você saiba" como claim de produto. Manter tom conspiratório no VILÃO (indústria), não no produto.</div>
+  <div class="red-line"><strong>NEVER</strong> mencionar marca específica de lipoaspiração, clínica ou farmácia. "Indústria de lipoaspiração" é OK; "Lipo Clinic" não é.</div>
+  <div class="red-line"><strong>NEVER</strong> mostrar foto não autorizada de médico real. <strong>Usar ilustração, silhueta, ou atriz similar</strong> pra evitar right of publicity.</div>
+  <div class="red-line"><strong>NEVER</strong> claim de resultado absoluto ("perdi 14 lbs"). <strong>Sempre "meu relato" ou "muitas mulheres relatam"</strong> + disclaimer "não sou médica / consulte seu médico".</div>
+  <div class="red-line"><strong>NEVER</strong> dizer que lipedema é "fácil de controlar" ou "controlada em 17 segundos". Usar "você pode encontrar alívio" / "muitas mulheres melhoraram em X tempo".</div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 Sample primary text (SlimSoda-style)</h2>
+
+  <pre><span class="label">🇺🇸 EN · Ângulo 1 (avatar-médica) · 90s primary text</span>
+
+"I have spent forty years studying health, and I will tell you one thing: lipedema can be
+easily controlled if you follow what I'm going to tell you in the next 17 seconds.
+
+Go to your kitchen and grab three ingredients. I guarantee you already have all of them —
+and whatever you're missing, you can find at any Walmart for under three dollars.
+
+Because I'm going to show you what many women have found helpful for managing lipedema
+at the root. And I'm going to do it in sixty seconds, because I'm sick and tired of explaining this.
+
+There are over twenty million women in the United States alone with lipedema. Almost
+ninety percent of them experience pain. Real pain.
+
+And they wake up with dark bruises without having bumped into anything. The leg feels cold
+to the touch. You squeeze it and feel hard nodules under the skin, like peas, like grains
+of rice.
+
+What kind of laziness makes bruises appear on their own? Because that's basically what
+most women hear from their physicians: that painful fat on your legs is lack of exercise.
+
+So today I'm going to speak up about doctors who treat lipedema like it's obesity. Who
+tell women to just exercise more. Or who push these expensive drainage treatments, which
+squeeze from the outside and change nothing.
+
+If you're over thirty-five and you have any of these symptoms, stay with me. Because in
+the next sixty seconds I'm going to show you how many women have softened that hardened
+fat in their own kitchen, with three ingredients that cost less than a cup of coffee.
+
+And twenty-thousand-dollar liposuction, where many women see the fat return within two
+years. It's wrong. It's expensive. And it doesn't solve the problem.
+
+Lipedema isn't obesity. It's fat trapped inside a fibrous wall. Studies suggest exposure
+to certain environmental factors can worsen this buildup — and not even Ozempic
+dissolves it.
+
+So how do you dissolve this wall of fat? The answer is simpler than it seems, and that's
+where the Brazilian pineapple trick comes in.
+
+It has an enzyme concentrated in the core — not the flesh, the core — that has been
+studied for its fibrotic properties. Combined with two other herbs, it reactivates dormant
+lymphatic channels and restores natural drainage.
+
+Three ingredients. Costs less than a cup of coffee. Ten seconds every morning. I call it
+the Fibrotic Solvent Ritual.
+
+I recorded a short free video explaining the step-by-step. The three exact measurements
+— because the proportion changes everything — and the right time of day to take it.
+
+Click below and watch it before it gets taken down."</pre>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🌳 Árvore de decisão (qual ângulo usar)</h2>
+
+  <div class="callout">
+    <ol style="font-size:13.5px;">
+      <li><strong>Avatar com lipedema diagnosticado ouvisível?</strong> → Ângulo 1, 2 ou 9 (ritual nomeado).</li>
+      <li><strong>Avatar com lipedema não-diagnosticado, cética do médico?</strong> → Ângulo 3 (conspiração) ou 6 (médico olha errado).</li>
+      <li><strong>Avatar que tentou Ozempic, frustrada?</strong> → Ângulo 2 (invalidação Ozempic) ou 7 (sem Ozempic).</li>
+      <li><strong>Avatar que pesquisou lipoaspiração?</strong> → Ângulo 4 (comparação preço + volta em 2 anos).</li>
+      <li><strong>Avatar que viu familiar afetado?</strong> → Ângulo 5 (luto + irmã).</li>
+      <li><strong>Avatar com Hashimoto + pernas inchadas?</strong> → Ângulo 6 (médico olha tireoide, ignora linfo).</li>
+      <li><strong>Avatar que precisa de validação rápida (progressão)?</strong> → Ângulo 8 (day-by-day).</li>
+      <li><strong>Default / safebet:</strong> Ângulo 1 (B2H2) — pattern mais validado.</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    Briefing Linfozen v1.0 · 9 ângulos validados · 19/ago/2026 · PT-BR + EN. <br>
+    <strong>Cross-reference arsenal:</strong> <a href="../../../methodology/cortex-ads/" style="color:#7c3aed;">cortex-ads/</a> (9 steps) · <a href="../../../methodology/analise-criativos/" style="color:#4D9FFF;">analise-criativos/</a> (Linfozen B2H2 + B2H3 spy) · <a href="../../../methodology/proof-elements/" style="color:#06a77d;">proof-elements/</a> (22+ tipos) · <a href="../../../methodology/dtc-videos/" style="color:#06a77d;">dtc-videos/</a> (P1-P4) · <a href="../../../methodology/dtc-control/" style="color:#06a77d;">dtc-control/</a> (8 alavancas).<br>
+    <strong>Cross-reference briefings irmãos:</strong> <a href="../../slimsoda/copy/briefing-affiliate/" style="color:#a29bfe;">SlimSoda</a> · <a href="../../linfaflow/copy/briefing-linfaflow/" style="color:#FF8A3D;">Linfaflow</a> · <a href="../../cardio-clear/copy/briefing-cardio/" style="color:#C8102E;">Cardio Clear</a>.
+  </div>
+
+</div>
+</body>
+</html>

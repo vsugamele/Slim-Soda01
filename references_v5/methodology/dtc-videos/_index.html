@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DTC Affiliate PRO — Criativos em Vídeo — P1 Teste → P4 Cemitério</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#2BD576; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(43,213,118,0.12); color:var(--accent); border:1px solid rgba(43,213,118,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  table { width:100%; border-collapse:collapse; font-size:14.5px; margin:14px 0; }
+  th { font-family:"JetBrains Mono",monospace; font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:#7E8AA0; text-align:left; padding:11px 14px; border-bottom:1px solid var(--border); background:rgba(255,255,255,.02); }
+  td { padding:11px 14px; border-bottom:1px solid var(--border); vertical-align:top; color:#D7DFEE; }
+  .stage { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:14px; overflow:hidden; }
+  .stage-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(43,213,118,0.08), transparent); }
+  .stage-num { width:54px; height:54px; background:linear-gradient(135deg, var(--accent), #06a77d); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .stage-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .stage-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .stage-body { padding:14px 18px 18px; }
+  .stage-body p { margin:6px 0; font-size:13.5px; }
+  .stage-body ol, .stage-body ul { margin:6px 0 6px 18px; }
+  .stage-body li { padding:3px 0; font-size:13.5px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  .metric { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; margin:2px 4px; }
+  .metric.hook { background:rgba(255,176,32,0.15); color:#FFB020; border:1px solid rgba(255,176,32,0.4); }
+  .metric.hold { background:rgba(77,159,255,0.15); color:#4D9FFF; border:1px solid rgba(77,159,255,0.4); }
+  .metric.ret { background:rgba(167,139,250,0.15); color:#A78BFA; border:1px solid rgba(167,139,250,0.4); }
+  .zone { padding:10px 14px; border-radius:8px; font-weight:700; font-size:13px; }
+  .zone.escala { background:rgba(43,213,118,0.2); color:#6BF0A6; border:1px solid #2BD576; }
+  .zone.lucrativa { background:rgba(154,222,75,0.2); color:#C8F286; border:1px solid #9ADE4B; }
+  .zone.magra { background:rgba(255,197,61,0.2); color:#FFD86B; border:1px solid #FFC53D; }
+  .zone.prej { background:rgba(255,90,101,0.2); color:#FF8B94; border:1px solid #FF5A65; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  @media (max-width:720px) { .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../index.html">← Methodology</a>
+
+  <header>
+    <span class="badge">Methodology · DTC Affiliate PRO · Vídeo · P1-P4 · Bifi/Gbifi</span>
+    <h1>DTC Affiliate PRO <span class="accent">· Vídeo</span> — Esteira de 3 Partes + Cemitério</h1>
+    <p class="lede">A esteira completa de teste e escala pra criativo em vídeo, com o Cemitério que ressuscita o que já provou valor. <strong>Fonte oficial:</strong> <a href="https://www.affiliatedtc.com/videos/" style="color:#4D9FFF;" target="_blank">affiliatedtc.com/videos/</a> (Bifi / @gbifi).</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 O mapa da esteira (3 partes + Cemitério):</strong>
+    <p style="font-family:'JetBrains Mono',monospace; font-size:14px; text-align:center; margin:8px 0;">
+      <span style="color:#FFB020;">🎯 P1 Teste</span> (alguém quer isso?) → <span style="color:#4D9FFF;">🏋️ P2 Validação</span> (aguenta dinheiro?) → <span style="color:var(--accent);">🚀 P3 Escala</span> (quanto dá pra tirar?) <br>
+      🪦 P4 Cemitério (escalou na P3 + $0 há 7+ dias)
+    </p>
+    <p style="font-size:13.5px;"><strong>Notação:</strong> <code>ABO 1-5-3</code> = 1 campanha · 5 conjuntos · 3 anúncios (verba no conjunto). <code>CBO bidcap</code> = 1 campanha, verba na campanha, estratégia de limite de lance.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>⚙️ Setup do gerenciador — 3 métricas personalizadas (CRUCIAL pra vídeo)</h2>
+
+  <div class="callout blue">
+    <h3>📐 As 3 métricas que você PRECISA criar</h3>
+    <p style="font-size:13.5px;">Em <strong>Colunas → Personalizar colunas → Métricas personalizadas → Criar métrica personalizada</strong>:</p>
+    <table>
+      <thead><tr><th>Nome</th><th>Fórmula</th><th>Formato</th></tr></thead>
+      <tbody>
+        <tr><td><span class="metric hook">🪝 Hook Rate</span></td><td><code>Reproduções de vídeo de 3s ÷ Impressões</code></td><td>Porcentagem</td></tr>
+        <tr><td><span class="metric hold">✊ Hold Rate</span></td><td><code>ThruPlays ÷ Reproduções de 3s</code></td><td>Porcentagem</td></tr>
+        <tr><td><span class="metric ret">🎬 Retenção 25%</span></td><td><code>Reproduções em 25% ÷ Reproduções de 3s</code></td><td>Porcentagem</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>📊 Referências de performance</h4>
+      <table>
+        <thead><tr><th>Métrica</th><th>Fraco</th><th>Normal</th><th>Forte</th></tr></thead>
+        <tbody>
+          <tr><td><span class="metric hook">Hook Rate</span></td><td style="color:var(--red);">&lt; 40%</td><td>50%</td><td style="color:var(--green);">&gt; 60%</td></tr>
+          <tr><td><span class="metric hold">Hold Rate</span></td><td style="color:var(--red);">&lt; 35%</td><td>45%</td><td style="color:var(--green);">&gt; 60%</td></tr>
+          <tr><td><span class="metric ret">Retenção 25%</span></td><td style="color:var(--red);">&lt; 20%</td><td>30%</td><td style="color:var(--green);">&gt; 40%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h4>🔍 O que cada uma responde</h4>
+      <table>
+        <thead><tr><th>Métrica</th><th>Responde</th><th>Se está baixa…</th></tr></thead>
+        <tbody>
+          <tr><td><span class="metric hook">Hook Rate</span></td><td>quantos pararam?</td><td>os 3 primeiros segundos</td></tr>
+          <tr><td><span class="metric hold">Hold Rate</span></td><td>quantos ficaram 15s?</td><td>a abertura</td></tr>
+          <tr><td><span class="metric ret">Retenção 25%</span></td><td>quantos chegaram na tese?</td><td>o corpo do vídeo</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <p style="font-size:13.5px;"><strong>🧠 Por que a terceira métrica existe:</strong> ThruPlay = 15 segundos. Como o vídeo tem 2-4 min, o Hold Rate só mede a abertura. Num vídeo de 3 min, <strong>25% = 45 segundos</strong> — onde a tese termina de ser apresentada. <strong>Hook alto + Hold alto + Retenção 25% baixa = a abertura promete o que o corpo não entrega. Isso é copy, não tráfego.</strong></p>
+  </div>
+
+  <h3>🧱 As 15 colunas nativas (na ordem)</h3>
+  <div style="overflow-x:auto;">
+  <table>
+    <thead><tr><th>#</th><th>Coluna</th><th>Usada em</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Valor gasto</td><td>tudo</td></tr>
+      <tr style="background:rgba(255,255,255,0.03);"><td><strong>2</strong></td><td><strong>Orçamento</strong></td><td><strong>P3 — diagnóstico do freio</strong></td></tr>
+      <tr><td>3</td><td>Impressões</td><td>base do Hook Rate</td></tr>
+      <tr><td>4</td><td>CPM</td><td>fadiga / leilão</td></tr>
+      <tr><td>5</td><td>Frequência</td><td>fadiga do público</td></tr>
+      <tr><td>6</td><td><span class="metric hook">Hook Rate</span></td><td>P1</td></tr>
+      <tr><td>7</td><td><span class="metric hold">Hold Rate</span></td><td>P1</td></tr>
+      <tr><td>8</td><td><span class="metric ret">Retenção 25%</span></td><td>fadiga do criativo</td></tr>
+      <tr><td>9</td><td>CTR (link)</td><td>P1</td></tr>
+      <tr><td>10</td><td>CPC (link)</td><td>P1</td></tr>
+      <tr style="background:rgba(255,255,255,0.03);"><td><strong>11</strong></td><td><strong>Custo por visualização da página</strong></td><td><strong>P1 — sinal do dia 1</strong></td></tr>
+      <tr style="background:rgba(255,255,255,0.03);"><td><strong>11b</strong></td><td><strong>Finalizações de compra iniciadas</strong></td><td><strong>P1</strong></td></tr>
+      <tr style="background:rgba(255,255,255,0.03);"><td><strong>12</strong></td><td><strong>Custo por finalização iniciada</strong></td><td><strong>P1 — o veredito</strong></td></tr>
+      <tr><td>13</td><td>Compras</td><td>P2 e P3</td></tr>
+      <tr><td>14</td><td>Custo por compra</td><td>P2 e P3</td></tr>
+      <tr><td>15</td><td>ROAS da compra</td><td>P3</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="callout green">
+    <p style="font-size:13.5px;"><strong>💾 Salvar como novo conjunto de colunas → nome: <code>ESTEIRA</code></strong>. Feito uma vez, serve para sempre.</p>
+  </div>
+
+  <h3>🛠️ Configuração padrão de conjunto (igual nas 3 partes)</h3>
+  <table>
+    <tbody>
+      <tr><td>🌎 País</td><td>US</td></tr>
+      <tr><td>🎂 Idade</td><td>45+</td></tr>
+      <tr><td>🚻 Gênero</td><td>Todos</td></tr>
+      <tr><td>🎯 Interesses</td><td><strong>Nenhum</strong> (o criativo faz a segmentação)</td></tr>
+      <tr><td>👥 Públicos personalizados</td><td>Nenhum</td></tr>
+      <tr><td>📱 Posicionamentos</td><td>Automáticos</td></tr>
+      <tr><td>✨ Melhorias de criativo</td><td><strong>TODAS DESLIGADAS</strong></td></tr>
+      <tr><td>🛒 Otimizar para</td><td>Compra</td></tr>
+      <tr><td>🕰️ Janela de atribuição</td><td>7 dias clique / 1 dia visualização</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🚦 As 4 zonas de CPA</h3>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; margin:14px 0;">
+    <div class="zone escala">🟢 ESCALA<br>CPA ≤ $40</div>
+    <div class="zone lucrativa">🟩 LUCRATIVA<br>$40 – $56</div>
+    <div class="zone magra">🟡 MAGRA<br>$56 – $70</div>
+    <div class="zone prej">🔴 PREJUÍZO<br>&gt; $70</div>
+  </div>
+  <table>
+    <thead><tr><th>CPA</th><th>Margem / venda</th><th>Zona</th><th>Ação</th></tr></thead>
+    <tbody>
+      <tr><td>≤ $40</td><td>$30+</td><td><span class="zone escala" style="padding:2px 8px; font-size:11px;">ESCALA</span></td><td>Duplica, sobe lance, põe dinheiro</td></tr>
+      <tr><td>$40 – $56</td><td>$14 – $30</td><td><span class="zone lucrativa" style="padding:2px 8px; font-size:11px;">LUCRATIVA</span></td><td>Mantém rodando, <strong>não duplica</strong></td></tr>
+      <tr><td>$56 – $70</td><td>$0 – $14</td><td><span class="zone magra" style="padding:2px 8px; font-size:11px;">MAGRA</span></td><td>Só mantém se o volume for grande</td></tr>
+      <tr><td>&gt; $70</td><td>negativa</td><td><span class="zone prej" style="padding:2px 8px; font-size:11px;">PREJUÍZO</span></td><td><strong>Mata</strong></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 P1 — Teste (alguém quer isso?)</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">P1</div>
+      <div class="stage-info">
+        <h3>P1 Teste</h3>
+        <div class="framework">ABO 1-5-3 · $40/conjunto · 2 dias</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>O que está em jogo:</strong> 5 ângulos (concept = ângulo + avatar) com 3 hooks em cada. 2 dias e $400 você sabe <strong>qual hook o mercado quer</strong>. A imagem/vídeo full ainda não está em jogo.</p>
+      <p><strong>Montagem:</strong></p>
+      <ol>
+        <li>Criar → objetivo <strong>Vendas</strong> → orçamento <strong>do conjunto</strong></li>
+        <li>Nomear: <code>P1 · [OFERTA] · S[semana]</code></li>
+        <li>Verba: <strong>$40/conjunto = $200/dia</strong></li>
+        <li>Duração: 2 dias = $400</li>
+        <li>1 conjunto = 1 concept (ângulo + avatar)</li>
+        <li>3 anúncios = 3 hooks diferentes pro mesmo concept</li>
+        <li>Vídeo: <strong>mesmo body pros 3</strong> (só hook muda)</li>
+        <li>Budget maior? Pode começar no <strong>1-10-3</strong> em vez de 1-5-3 ($400/dia)</li>
+      </ol>
+      <div class="callout green">
+        <p style="font-size:13.5px;"><strong>💡 Por que vídeo mesmo nos 3:</strong> o hook varia 5-10× em performance. O body inteiro custa caro produzir — testar vídeo completo é queimar dinheiro. <strong>3 hooks × 1 body é o mínimo pra isolar a variável que mais muda o jogo.</strong></p>
+      </div>
+      <p><strong>Veredito do P1 (Custo por IC):</strong></p>
+      <table>
+        <thead><tr><th>Resultado</th><th>Veredito</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td>1 venda a qualquer CPA</td><td><span class="zone escala" style="padding:2px 8px; font-size:11px;">QUALIFICADO</span></td><td>Vai pra P2</td></tr>
+          <tr><td>ICs ≤ $5 (sem venda)</td><td><span class="zone escala" style="padding:2px 8px; font-size:11px;">QUALIFICADO</span></td><td>Vai pra P2</td></tr>
+          <tr><td>ICs $6-$9</td><td><span class="zone magra" style="padding:2px 8px; font-size:11px;">MAIS HOOKS</span></td><td>Produzir mais hooks pro mesmo ângulo, testar de novo</td></tr>
+          <tr><td>ICs &gt; $9</td><td><span class="zone prej" style="padding:2px 8px; font-size:11px;">MORTO</span></td><td>Mata o ângulo</td></tr>
+          <tr><td>0 ICs / $80 gastos</td><td><span class="zone prej" style="padding:2px 8px; font-size:11px;">MORTO</span></td><td>Zero IC mata o ângulo</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Sinal vermelho do dia 1:</strong> <strong>custo por visualização de página &gt; $2,33</strong> (= acima do breakeven só pra levar gente na página). Não substitui o veredito, mas 24h antes você já sabe quem está obviamente fora.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🏋️ P2 — Validação (aguenta dinheiro?)</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">P2</div>
+      <div class="stage-info">
+        <h3>P2 Validação</h3>
+        <div class="framework">ABO 1-5-1 · $40/conjunto · 3 dias</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>O que está em jogo:</strong> o hook vencedor do P1 (fixo) entra com 5 conjuntos idênticos pra ver se aguenta dinheiro. <strong>A régua do dia 3 decide uma vez só.</strong></p>
+      <p><strong>Montagem:</strong></p>
+      <ol>
+        <li>Criar → <strong>Vendas</strong> → orçamento do conjunto</li>
+        <li>Nomear: <code>P2 · [OFERTA] · [HOOK]</code></li>
+        <li>Verba: <strong>$40/conjunto × 5 = $200/dia</strong></li>
+        <li>Duração: 3 dias = $600</li>
+        <li>5 conjuntos idênticos com o MESMO vídeo (mesmo hook vencedor)</li>
+        <li>Budget maior? <code>ABO 1-10-1</code> (10 conjuntos, $400/dia)</li>
+      </ol>
+      <p><strong>A régua do dia 3 (decide uma vez só):</strong></p>
+      <table>
+        <thead><tr><th>Vendas no dia 3</th><th>CPA</th><th>Veredito</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td><strong>15+</strong></td><td>≤ $40</td><td><span class="zone escala" style="padding:2px 8px; font-size:11px;">VAI PRA P3</span></td><td>🚀 15+ vendas = zona de escala</td></tr>
+          <tr><td><strong>10-15</strong></td><td>$40-$60</td><td><span class="zone lucrativa" style="padding:2px 8px; font-size:11px;">REFINA</span></td><td>Desliga os ruins, duplica os bons, +3 dias</td></tr>
+          <tr><td><strong>&lt; 10</strong></td><td>&gt; $60</td><td><span class="zone magra" style="padding:2px 8px; font-size:11px;">VOLTA PRA P1</span></td><td>Trocando o hook — 1 tentativa extra</td></tr>
+          <tr><td>Já usou a tentativa extra</td><td>&lt; 10 de novo</td><td><span class="zone prej" style="padding:2px 8px; font-size:11px;">MORTO</span></td><td>1 tentativa só, não volta mais</td></tr>
+        </tbody>
+      </table>
+      <div class="callout red">
+        <p style="font-size:13.5px;"><strong>🔒 Não mexe no dia 2.</strong> "Já tem 11 vendas" — não adianta. O dia 2 é <strong>checkpoint de leitura</strong> (custo por IC e custo por visualização de página). <strong>A régua decide uma vez só, no fim do dia 3.</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚀 P3 — Escala (quanto dá pra tirar?)</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num">P3</div>
+      <div class="stage-info">
+        <h3>P3 Escala</h3>
+        <div class="framework">CBO bidcap · 1 conjunto por ângulo · permanente</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>Objetivo único:</strong> "Foco 100% em descobrir qual o maior investimento com o menor lance."</p>
+      <p><strong>Configuração:</strong></p>
+      <ul>
+        <li>Verba: <strong>na campanha (CBO)</strong> · mínimo $200/dia · +$100 por winner validado</li>
+        <li>Estratégia de lance: <strong>limite de lance (bid cap)</strong></li>
+        <li>Lance inicial: <strong>60% do CPA alvo = $24</strong> (CPA $40)</li>
+        <li>1 conjunto = 1 ângulo (winners do ângulo empilhados via PostID)</li>
+        <li>Teto: <strong>10 ângulos por conta</strong> (acima disso, escala contas)</li>
+        <li>Vida útil: <strong>permanente</strong> — 1 por oferta, dura meses</li>
+      </ul>
+      <div class="callout red">
+        <p style="font-size:13.5px;"><strong>⚠️ Limite de lance NÃO é limite de CPA.</strong> Ele faz o Meta comprar só o que estiver abaixo do seu preço. Se não achar nada barato, não gasta nada. A entrega vai ser <strong>irregular — dia de $0 e dia de $800. Isso é o certo, não é defeito.</strong></p>
+      </div>
+      <h3>🪜 Escada do lance — CPA alvo $40</h3>
+      <table>
+        <thead><tr><th>Dia</th><th>Lance</th><th>Ação</th></tr></thead>
+        <tbody>
+          <tr><td>1-2</td><td>$24,00</td><td>🔒 não mexe</td></tr>
+          <tr><td>3</td><td><strong>$28,00</strong></td><td>⬆️ sobe 17%</td></tr>
+          <tr><td>4-5</td><td>$28,00</td><td>📈 subiu → continua</td></tr>
+          <tr><td>6</td><td><strong>$33,00</strong></td><td>⬆️ sobe 17%</td></tr>
+          <tr><td>7-8</td><td>$33,00</td><td>📈 subiu → continua</td></tr>
+          <tr><td>9</td><td><strong>$38,50</strong></td><td>⬆️ sobe 17%</td></tr>
+          <tr style="background:rgba(255,255,255,0.03);"><td>10-11</td><td>$38,50</td><td>🧱 <strong>não subiu → volta pra $33 e para</strong></td></tr>
+        </tbody>
+      </table>
+      <h3>🕹️ Rotina diária — qual freio mexer</h3>
+      <p>Todo dia de manhã: compare <strong>Valor gasto com Orçamento</strong>.</p>
+      <div class="grid-2">
+        <div class="card" style="border-top:3px solid #FFC53D;">
+          <h4>💸 Gastou toda a verba</h4>
+          <p>Quem freia é <strong>A VERBA</strong> → sobe a verba.</p>
+        </div>
+        <div class="card" style="border-top:3px solid var(--accent);">
+          <h4>🎚️ Gastou menos que a verba</h4>
+          <p>Quem freia é <strong>O LANCE</strong> → sobe o lance. Mexer na verba não faz nada.</p>
+        </div>
+      </div>
+      <div class="callout red">
+        <p style="font-size:13.5px;"><strong>🚫 Nunca mexa nos dois no mesmo dia.</strong> Você não vai saber qual dos dois causou a mudança.</p>
+      </div>
+      <h3>🧢 Os dois tetos da P3</h3>
+      <div class="grid-2">
+        <div class="card">
+          <h4>🔩 Teto mecânico</h4>
+          <p>Onde o gasto para de subir. Como identificar: subiu o lance, gasto igual. <strong>Volta pro lance anterior e para.</strong></p>
+        </div>
+        <div class="card">
+          <h4>💼 Teto econômico</h4>
+          <p>CPA de <strong>$56</strong>. Acima disso você entra na faixa magra. <strong>Para de subir o lance.</strong></p>
+        </div>
+      </div>
+      <h3>💸 Escada da verba — por tamanho da campanha</h3>
+      <table>
+        <thead><tr><th>Gasto atual</th><th>Mexidas por dia</th><th>Como</th></tr></thead>
+        <tbody>
+          <tr><td>Até $1.000/dia</td><td>1×</td><td>Sobe <strong>20%</strong> e espera o dia inteiro</td></tr>
+          <tr><td>$1.000 a $10.000/dia</td><td>1×</td><td>Sobe até o <strong>teto que o Meta mostra</strong></td></tr>
+          <tr><td>Acima de $10.000/dia</td><td>até 2×</td><td>Mesma escada, duas mexidas no dia</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🪦 P4 — Cemitério</h2>
+
+  <div class="stage">
+    <div class="stage-header">
+      <div class="stage-num" style="background:linear-gradient(135deg, #A78BFA, #c4b5fd);">P4</div>
+      <div class="stage-info">
+        <h3>P4 Cemitério</h3>
+        <div class="framework">CBO cost cap 1-1-10 · $500/dia · perpétuo</div>
+      </div>
+    </div>
+    <div class="stage-body">
+      <p><strong>O estoque que volta a vender.</strong> Winner que escalou não morre de graça. Uma campanha perpétua com <strong>custo por resultado apertado</strong> compra de volta, de graça quase, o que um dia já vendeu.</p>
+      <p><strong>Quem entra:</strong></p>
+      <ul>
+        <li>✅ Já escalou na P3</li>
+        <li>✅ Está com gasto <strong>$0 há 7 dias ou mais</strong></li>
+      </ul>
+      <p><strong>Configuração:</strong></p>
+      <ul>
+        <li>Verba: <strong>na campanha (CBO)</strong> · $500/dia</li>
+        <li>Lance: <strong>custo por resultado desejado (cost cap)</strong> · 70% do CPA alvo = $28 (apertado de propósito)</li>
+        <li>1 conjunto + 10 anúncios mortos (via PostID, publicação existente)</li>
+        <li>Vida útil: <strong>perpétua</strong></li>
+      </ul>
+      <p><strong>Regras:</strong></p>
+      <ul>
+        <li><strong>NUNCA</strong> mexer no valor do custo por resultado</li>
+        <li>Gastou 3 dias seguidos dentro do CPA → <strong>SAI → VOLTA PRA P3</strong> em conjunto novo</li>
+        <li>Chegou anúncio novo e já tem 10 dentro → tira o mais velho</li>
+      </ul>
+      <div class="callout blue">
+        <p style="font-size:13.5px;"><strong>😴 Na maioria dos dias essa campanha vai gastar $0. Isso é o funcionamento correto.</strong> O padrão normal é: nada, nada, nada… e de repente um dia gasta $2.000 com CPA ótimo. O teto de custo só compra quando o leilão baixa até o seu preço.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 A Planilha (4 abas)</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>1 · ⚙️ Parametros</h4>
+      <p>Uma vez por oferta. Você preenche: payout, CPA alvo, ICs por venda, verbas e tetos. <strong>Sai sozinho:</strong> breakeven, margem, ROAS, 4 zonas, lance inicial, valor do cemitério.</p>
+    </div>
+    <div class="card">
+      <h4>2 · 🎯 Rodada P1</h4>
+      <p>Uma cópia por semana. Você preenche: ângulo, gasto, IC e vendas. <strong>Sai sozinho:</strong> custo por IC, veredito (QUALIFICADO/MAIS HOOKS/MORTO), ação de cada ângulo.</p>
+    </div>
+    <div class="card">
+      <h4>3 · 🏋️ Rodada P2</h4>
+      <p>Uma cópia por criativo. Você preenche: gasto e vendas dos 5 conjuntos, dia a dia. <strong>Sai sozinho:</strong> total de vendas, CPA, lucro, veredito do dia 3 (15+→P3, 10-15→refina, &lt;10→volta P1).</p>
+    </div>
+    <div class="card">
+      <h4>4 · 🚀 Painel P3</h4>
+      <p>Uma por oferta, permanente. Você preenche: verba, gasto de ontem, lance, winners. <strong>Sai sozinho:</strong> qual freio apertado + o que fazer hoje, próximo lance, status por winner, CPA blended e lucro.</p>
+    </div>
+  </div>
+
+  <div class="callout red">
+    <p style="font-size:13.5px;"><strong>📏 Regra da planilha:</strong> 🟡 amarelo você preenche, ⬜ cinza não toca. Digitar por cima de fórmula quebra a aba — e você só descobre quando o veredito para de pintar.</p>
+  </div>
+
+  <div class="footer">
+    DTC Affiliate PRO (Vídeo) · Bifi / @gbifi · transcrito em 19/ago/2026 de <a href="https://www.affiliatedtc.com/videos/" style="color:#4D9FFF;" target="_blank">affiliatedtc.com/videos/</a>.<br>
+    <strong>Cross-reference arsenal:</strong> <a href="../cortex-ads/" style="color:#7c3aed;">cortex-ads/</a> (sistema completo 9 steps) · <a href="../dtc-black-bifi/" style="color:#7c3aed;">dtc-black-bifi/</a> (estático, irmã da P1-P4) · <a href="../cbo-bifi/" style="color:#7c3aed;">cbo-bifi/</a> (4 fases CBO) · <a href="../dtc-control/" style="color:#7c3aed;">dtc-control/</a> (8 alavancas) · <a href="../proof-elements/" style="color:#06a77d;">proof-elements/</a> (22+ tipos) · <a href="../niche-research/" style="color:#d68910;">niche-research/</a> (4 blocos).<br>
+    <strong>Cross-reference briefings:</strong> <a href="../../by-product/slimsoda/copy/briefing-affiliate/" style="color:#a29bfe;">SlimSoda</a> · <a href="../../by-product/linfaflow/copy/briefing-linfaflow/" style="color:#FF8A3D;">Linfaflow</a> · <a href="../../by-product/cardio-clear/copy/briefing-cardio/" style="color:#C8102E;">Cardio Clear</a>.
+  </div>
+
+</div>
+</body>
+</html>
