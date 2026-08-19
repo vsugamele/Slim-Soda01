@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlimSoda Creatives Catalog — DR HUB</title>
+<meta name="description" content="Catálogo de criativos SlimSoda — ranking, ângulos, scores e recomendação de teste.">
+<style>
+  /* === DESIGN SYSTEM (matches hub v26) === */
+  :root[data-theme="dark"] {
+    --bg: #0a0a0a;
+    --surface: #141414;
+    --surface-2: #1c1c1c;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --text-dim: #999;
+    --text-mute: #666;
+    --accent: #ff5722;
+    --accent-2: #ff8a50;
+    --green: #06a77d;
+    --yellow: #ffc107;
+    --red: #ef4444;
+    --tier-1: #06a77d;
+    --tier-2: #ffc107;
+    --tier-3: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    padding: 32px 20px 80px;
+  }
+  .container { max-width: 1400px; margin: 0 auto; }
+  header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 24px;
+    margin-bottom: 32px;
+  }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 36px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .subtitle { color: var(--text-dim); font-size: 16px; max-width: 720px; }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .stat-label { color: var(--text-mute); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .stat-value { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .stat-sub { color: var(--text-dim); font-size: 12px; margin-top: 2px; }
+  .tier-1-color { color: var(--tier-1); }
+  .tier-2-color { color: var(--tier-2); }
+  .tier-3-color { color: var(--tier-3); }
+
+  /* === FILTERS === */
+  .filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .filter {
+    background: var(--surface-2);
+    color: var(--text-dim);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s;
+  }
+  .filter:hover { color: var(--text); }
+  .filter.active { background: var(--accent); color: white; border-color: var(--accent); }
+
+  /* === TIER SECTIONS === */
+  .tier-section { margin-bottom: 48px; }
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+  }
+  .tier-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+  }
+  .tier-1-badge { background: var(--tier-1); color: #fff; }
+  .tier-2-badge { background: var(--tier-2); color: #000; }
+  .tier-3-badge { background: var(--tier-3); color: #fff; }
+  .tier-title { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+  .tier-sub { color: var(--text-dim); font-size: 13px; }
+
+  /* === CARDS GRID === */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.15s, transform 0.15s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    background: var(--surface-2);
+    display: block;
+  }
+  .card-body { padding: 14px 16px 16px; }
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .card-score {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .card-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; line-height: 1.3; }
+  .card-angle {
+    display: inline-block;
+    color: var(--accent-2);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .card-notes {
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .card-notes ul { padding-left: 16px; margin-top: 4px; }
+  .card-notes li { margin-bottom: 2px; }
+  .card-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    font-size: 12px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .card-link:hover { text-decoration: underline; }
+
+  /* === RECOMMENDATION BOX === */
+  .rec-box {
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .rec-box h2 { font-size: 18px; margin-bottom: 12px; color: var(--accent); }
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .rec-item {
+    padding: 12px 14px;
+    background: var(--bg);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .rec-item strong { color: var(--text); display: block; margin-bottom: 4px; }
+  .rec-item span { color: var(--text-dim); font-size: 13px; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    color: var(--text-mute);
+    font-size: 12px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">DR HUB · ASSET CATALOG</div>
+    <h1>SlimSoda Creatives — 2026-08-19</h1>
+    <p class="subtitle">Catálogo dos criativos produzidos pra buy-page do SlimSoda. Ranking por score DR (hook + ângulo + estrutura + CTA + Meta-safety). Filtra por tier ou ângulo pra ver o que rodar primeiro.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">Total</div><div class="stat-value">28</div><div class="stat-sub">criativos analisados</div></div>
+      <div class="stat"><div class="stat-label">Tier 1 (rodar)</div><div class="stat-value tier-1-color">8</div><div class="stat-sub">9-10/10 score</div></div>
+      <div class="stat"><div class="stat-label">Tier 2 (testar)</div><div class="stat-value tier-2-color">13</div><div class="stat-sub">7-8.5/10 score</div></div>
+      <div class="stat"><div class="stat-label">Tier 3 (refazer)</div><div class="stat-value tier-3-color">7</div><div class="stat-sub">&lt; 7/10 score</div></div>
+      <div class="stat"><div class="stat-label">Ângulos únicos</div><div class="stat-value">6</div><div class="stat-sub">invalidation, comparison, news, etc</div></div>
+    </div>
+  </header>
+
+  <div class="rec-box">
+    <h2>🎯 Recomendação de teste — sequência de $200</h2>
+    <div class="rec-grid">
+      <div class="rec-item"><strong>1. Investigation Report (corkboard)</strong><span>$50 — formato único, curiosity gap alto, comparison lado a lado</span></div>
+      <div class="rec-item"><strong>2. Investigative Health Report (dark blue)</strong><span>$50 — formato news, autoridade forte, 4-quadrant proof</span></div>
+      <div class="rec-item"><strong>3. WAIT. Don't mix it yet.</strong><span>$50 — pattern interrupt puro, dark visual, conflict direto</span></div>
+      <div class="rec-item"><strong>4. Breaking Health Story</strong><span>$50 — formato news editorial, quote + 3 colunas + social proof</span></div>
+    </div>
+  </div>
+
+  <div class="filters">
+    <div class="filter active" data-filter="all">Todos (28)</div>
+    <div class="filter" data-filter="tier-1">Tier 1 (8)</div>
+    <div class="filter" data-filter="tier-2">Tier 2 (13)</div>
+    <div class="filter" data-filter="tier-3">Tier 3 (7)</div>
+    <div class="filter" data-filter="invalidation">Invalidation</div>
+    <div class="filter" data-filter="comparison">Comparison</div>
+    <div class="filter" data-filter="news">News Editorial</div>
+    <div class="filter" data-filter="product">Product Only</div>
+    <div class="filter" data-filter="lifestyle">Lifestyle</div>
+  </div>
+
+  <!-- TIER 1 -->
+  <section class="tier-section" data-tier="tier-1">
+    <div class="tier-header">
+      <span class="tier-badge tier-1-badge">TIER 1</span>
+      <h2 class="tier-title">Rodar primeiro ($200 budget)</h2>
+      <span class="tier-sub">Score 9-10/10 — hook forte + estrutura completa + Meta-safe</span>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/health-today-article-v2.png" alt="Investigation Report corkboard" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">10/10</span><span class="card-angle">Invalidation · corkboard</span></div>
+          <div class="card-name">Investigation Report — viral vs original</div>
+          <div class="card-notes">
+            Formato corkboard único. Polaroids fake de TikToks virais como prova. Comparison WRONG vs RIGHT (X vs ✓). Post-it amarelo "internet only shows part".
+            <ul>
+              <li><strong>Hook:</strong> "THE BAKING SODA HACK EVERYONE'S GETTING WRONG"</li>
+              <li><strong>Ângulo:</strong> viral video debunking + 3-step method revealed</li>
+              <li><strong>CTA:</strong> "SEE THE ORIGINAL 3-STEP RECIPE"</li>
+              <li><strong>Por que rodar:</strong> formato nunca visto, alto curiosity gap, comparação visual forte</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/inline-001-tiktok-shows-vs-leavesout.png" alt="TikTok shows vs leaves out" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">Invalidation · split</span></div>
+          <div class="card-name">What TikTok shows vs What it leaves out</div>
+          <div class="card-notes">
+            Split vertical com "WHAT TIKTOK SHOWS" (light) vs "WHAT IT LEAVES OUT" (dark, 3 steps). TikTok logo + "millions of views" anchor.
+            <ul>
+              <li><strong>Hook:</strong> "WHAT TIKTOK SHOWS / WHAT IT LEAVES OUT"</li>
+              <li><strong>Ângulo:</strong> FOMO + authority correction</li>
+              <li><strong>CTA:</strong> "READ THE ORIGINAL 3-STEP RECIPE"</li>
+              <li><strong>Risco:</strong> texto denso (Meta 20% rule), testar primeiro</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/draft-001.png" alt="Breaking Health Story" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">News · editorial</span></div>
+          <div class="card-name">Breaking Health Story — why everyone adding this</div>
+          <div class="card-notes">
+            Formato news editorial completo: header "BREAKING HEALTH STORY", headline curiosity gap gigante, side circle "the detail most videos leave out", 3 colunas, quote com social proof.
+            <ul>
+              <li><strong>Hook:</strong> "WHY IS EVERYONE ADDING THIS TO THEIR WATER?"</li>
+              <li><strong>Ângulo:</strong> curiosity + social proof + investigation</li>
+              <li><strong>CTA:</strong> "READ THE FULL STORY: THE ORIGINAL RECIPE REVEALED"</li>
+              <li><strong>Por que rodar:</strong> curiosity gap gigante, formato news converte bem 35+F</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/chatgpt-baking-soda-015442.png" alt="Investigative Health Report" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">News · investigative</span></div>
+          <div class="card-name">Special Report — baking soda recipe that went viral</div>
+          <div class="card-notes">
+            Formato "INVESTIGATIVE HEALTH REPORT" + "NEW FINDINGS". 4-quadrant com X / scoop / chart / shield (mistake / original / results / safety). Visual dark blue diferencia dos outros clean.
+            <ul>
+              <li><strong>Hook:</strong> "THE BAKING SODA RECIPE THAT WENT VIRAL — EXPLAINED"</li>
+              <li><strong>Ângulo:</strong> authority (investigative) + safety framing</li>
+              <li><strong>CTA:</strong> "READ THE FULL REPORT"</li>
+              <li><strong>Por que rodar:</strong> dark visual stop scroll, authority strong</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/draft-002.png" alt="Health Discovery kitchen" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">Discovery · kitchen</span></div>
+          <div class="card-name">It was right in your kitchen. This whole time.</div>
+          <div class="card-notes">
+            Formato "HEALTH DISCOVERY" + realization headline. Mão feminina com spoon, baking soda + glass + jar com "Baking Soda" label. Post-it "the full recipe is finally here". 4 checks + 5 avatares + 5 stars + "Trending in the U.S.".
+            <ul>
+              <li><strong>Hook:</strong> "IT WAS RIGHT IN YOUR KITCHEN. THIS WHOLE TIME."</li>
+              <li><strong>Ângulo:</strong> realization + kitchen familiar + social proof</li>
+              <li><strong>CTA:</strong> "GET THE ORIGINAL RECIPE"</li>
+              <li><strong>Por que rodar:</strong> realization emotional, prova social forte, story visual</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/health-today-article.png" alt="Wait don't mix it yet" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">Pattern interrupt · dark</span></div>
+          <div class="card-name">WAIT. Don't mix it yet.</div>
+          <div class="card-notes">
+            Pattern interrupt puro. "WAIT." em red brush stroke gigante. "DON'T MIX IT YET." com "YET" em vermelho. "THE ORDER MAY BE THE PART YOU'RE MISSING." 3 ícones (skip / 3 steps / timing). Visual dark com glass bubbling.
+            <ul>
+              <li><strong>Hook:</strong> "WAIT. DON'T MIX IT YET."</li>
+              <li><strong>Ângulo:</strong> pattern interrupt + "you're missing something"</li>
+              <li><strong>CTA:</strong> "UNCOVER THE ORIGINAL 3-STEP RECIPE"</li>
+              <li><strong>Por que rodar:</strong> stop scroll, dark visual, conflict direto</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/chatgpt-baking-soda-021649.png" alt="3 Ingredients trend alert" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9.5/10</span><span class="card-angle">Invalidation · trend</span></div>
+          <div class="card-name">3 Ingredients — the internet only talks about one</div>
+          <div class="card-notes">
+            Versão expandida do "3 INGREDIENTS". Adiciona: "TREND ALERT" tag, post-it "Millions searching for the missing steps", 4 checks (correct order / right timing / days that count / details most skip), visual com dropper bottle + baking soda box.
+            <ul>
+              <li><strong>Hook:</strong> "3 INGREDIENTS. THE INTERNET ONLY TALKS ABOUT ONE."</li>
+              <li><strong>Ângulo:</strong> missing 2/3 + original method revealed</li>
+              <li><strong>CTA:</strong> "READ THE FULL GUIDE"</li>
+              <li><strong>Por que rodar:</strong> structure completa, 4-proof points, lock icon</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/inline-002-3-ingredients-internet-talks.png" alt="3 Ingredients basic" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-1-color">9/10</span><span class="card-angle">Invalidation · clean</span></div>
+          <div class="card-name">3 Ingredients (versão clean)</div>
+          <div class="card-notes">
+            Versão clean do "3 INGREDIENTS". 1. BAKING SODA / 2. ??? / 3. ??? com labels e "?" nos missing. "THE ORIGINAL METHOD. FINALLY REVEALED." com lock icon.
+            <ul>
+              <li><strong>Hook:</strong> "3 INGREDIENTS. THE INTERNET ONLY TALKS ABOUT ONE."</li>
+              <li><strong>Ângulo:</strong> missing 2 + reveal</li>
+              <li><strong>CTA:</strong> "READ THE FULL ARTICLE"</li>
+              <li><strong>Versus:</strong> mais clean que a versão expandida, testar as duas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIER 2 -->
+  <section class="tier-section" data-tier="tier-2">
+    <div class="tier-header">
+      <span class="tier-badge tier-2-badge">TIER 2</span>
+      <h2 class="tier-title">Testar em paralelo (após Tier 1 validar)</h2>
+      <span class="tier-sub">Score 7-8.5/10 — funciona mas tem ajuste fino a fazer</span>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-angle="comparison">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/draft-002.jpeg" alt="Comparison wrong vs right" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">9/10</span><span class="card-angle">Comparison · WRONG vs RIGHT</span></div>
+          <div class="card-name">Comparison — WRONG vs RIGHT baking soda shot</div>
+          <div class="card-notes">
+            Split vertical: WRONG (X) = clumpy, weak fizz, inconsistent / RIGHT (✓) = properly mixed, high effervescence, complete dissolution. "Experts warn about this common mistake".
+            <ul>
+              <li><strong>Hook:</strong> "COMPARISON: THE BAKING SODA SHOT"</li>
+              <li><strong>Ângulo:</strong> visual proof + expert warning</li>
+              <li><strong>CTA:</strong> "READ THE FULL ARTICLE FOR THE EXPERTS' ADVICE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-006.jpeg" alt="Health Today Karen Ellis" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">8.5/10</span><span class="card-angle">News · byline</span></div>
+          <div class="card-name">Health Today — STOP! You're doing the baking soda shot wrong</div>
+          <div class="card-notes">
+            Formato "HEALTH TODAY" clássico. Byline "Karen Ellis, Health Desk". Subhead "Experts say one missing step changes everything." <strong>⚠️ Falta CTA — adicionar botão "READ THE ORIGINAL RECIPE"</strong>.
+            <ul>
+              <li><strong>Hook:</strong> "STOP! YOU'RE DOING THE BAKING SODA SHOT WRONG"</li>
+              <li><strong>Ângulo:</strong> news correction + expert anchor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/inline-003-stop-copying-viral.png" alt="Stop copying the viral" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">8.5/10</span><span class="card-angle">Invalidation · viral</span></div>
+          <div class="card-name">Stop copying the viral baking soda hack</div>
+          <div class="card-notes">
+            Headline: "STOP COPYING THE VIRAL BAKING SODA HACK". Subhead: "The internet version leaves out an important detail. Here's what most people miss." Brush stroke tag "THE FULL STORY CHANGES EVERYTHING".
+            <ul>
+              <li><strong>Hook:</strong> "STOP COPYING THE VIRAL BAKING SODA HACK"</li>
+              <li><strong>Ângulo:</strong> invalidate virals + authority</li>
+              <li><strong>CTA:</strong> "READ THE ORIGINAL RECIPE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/draft-001.png" alt="Breaking Health Story duplicate card" loading="lazy" width="640" height="640" style="display:none">
+        <div class="card-body" style="display:none"></div>
+      </div>
+
+      <div class="card" data-angle="lifestyle">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061157.jpeg" alt="Your morning has enough steps" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">8/10</span><span class="card-angle">Lifestyle · before/after</span></div>
+          <div class="card-name">Your morning has enough steps. Keep the routine simple.</div>
+          <div class="card-notes">
+            Visual split lifestyle: left = messy supplements + notebook caótico / right = clean SlimSoda + glass simples. "One scoop. One glass." badge. "DISCOVER THE ROUTINE" CTA.
+            <ul>
+              <li><strong>Hook:</strong> "YOUR MORNING HAS ENOUGH STEPS."</li>
+              <li><strong>Ângulo:</strong> simplicity vs complexity lifestyle</li>
+              <li><strong>CTA:</strong> "DISCOVER THE ROUTINE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-005.png" alt="Real Results without needles" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7.5/10</span><span class="card-angle">Product · Ozempic invalidation</span></div>
+          <div class="card-name">Real Results. Without the Needles.</div>
+          <div class="card-notes">
+            Headline forte anti-Ozempic. 3 ícones benefício (metabolism / bloating / appetite). Foto do produto + glass com limão. <strong>⚠️ Falta mais agitação — adicionar "Why pay $1000/month when..." no subhead.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "Real Results. Without the Needles."</li>
+              <li><strong>Ângulo:</strong> anti-Ozempic + simple daily</li>
+              <li><strong>CTA:</strong> "READ THE ARTICLE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="lifestyle">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061158-2.jpeg" alt="No needles just a scoop" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7.5/10</span><span class="card-angle">Product · dark + scoop</span></div>
+          <div class="card-name">No needles. Just a scoop.</div>
+          <div class="card-notes">
+            Headline: "NO NEEDLES. JUST A SCOOP." Dark visual com jar + glass + scoop de pó. Multi-jar embaixo como social proof. "A powder-and-water routine. No injections involved."
+            <ul>
+              <li><strong>Hook:</strong> "NO NEEDLES. JUST A SCOOP."</li>
+              <li><strong>Ângulo:</strong> anti-Ozempic powder alternative</li>
+              <li><strong>CTA:</strong> "SEE HOW IT WORKS"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-002-stop-copying-viral-hack.png" alt="No needle needed" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7.5/10</span><span class="card-angle">Product · Ozempic</span></div>
+          <div class="card-name">No Needle Needed — support your goals the simple way</div>
+          <div class="card-notes">
+            Headline: "NO NEEDLE NEEDED". "Support your goals, the simple way." 4 ícones benefício. Foto produto + glass. <strong>⚠️ Reforçar ângulo Ozempic invalidation no subhead.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "NO NEEDLE NEEDED"</li>
+              <li><strong>Ângulo:</strong> anti-Ozempic + simple</li>
+              <li><strong>CTA:</strong> "READ THE ARTICLE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061926-3.jpeg" alt="Sponsored Wellness Article" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7.5/10</span><span class="card-angle">News · editorial</span></div>
+          <div class="card-name">Sponsored Wellness Article — morning ritual people keep clicking on</div>
+          <div class="card-notes">
+            Formato editorial honest. Body copy: "A simple scoop. A glass of water. A habit some say helps start the day feeling lighter." Drop cap M. Quote: "It's not about perfection. It's about small, consistent choices."
+            <ul>
+              <li><strong>Hook:</strong> "The baking soda morning ritual people keep clicking on"</li>
+              <li><strong>Ângulo:</strong> editorial + FSS pattern</li>
+              <li><strong>CTA:</strong> "OPEN THE STORY"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061926-2.jpeg" alt="Morning Wellness Report" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7/10</span><span class="card-angle">News · editorial</span></div>
+          <div class="card-name">Morning Wellness Report — simple morning routine</div>
+          <div class="card-notes">
+            Formato "MORNING WELLNESS REPORT". "A small habit. A big shift." 3 parágrafos de body, "What's behind the buzz?". <strong>⚠️ Copy longo dilui hook — encurtar pra 1 ideia central.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "Why this simple morning routine is getting so much attention"</li>
+              <li><strong>CTA:</strong> "READ THE ARTICLE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061926-5.jpeg" alt="Wellness News Update" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7/10</span><span class="card-angle">News · trending</span></div>
+          <div class="card-name">Wellness News Update — morning routine driving article clicks</div>
+          <div class="card-notes">
+            Formato "WELLNESS NEWS UPDATE" com headline "A simple morning routine is driving article clicks again". TRENDING TOPIC tag. <strong>⚠️ Headline soft — falta conflict/curiosity gap forte.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "A simple morning routine is driving article clicks again"</li>
+              <li><strong>CTA:</strong> "READ THE ARTICLE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="news">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061926-1.jpeg" alt="Editor's Pick" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7.5/10</span><span class="card-angle">Editorial · pick</span></div>
+          <div class="card-name">Editor's Pick — simple morning setup keeps appearing</div>
+          <div class="card-notes">
+            "EDITOR'S PICK" tag. Headline: "This simple morning setup keeps appearing in sponsored wellness content." 3 bullets (easy / daily habit / clean). <strong>⚠️ Tom honest demais — falta agitação pra DR heavy/aggressive.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "This simple morning setup keeps appearing in sponsored wellness content"</li>
+              <li><strong>CTA:</strong> "READ NOW"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="lifestyle">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-061158-1.jpeg" alt="Mix Sip Move On" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7/10</span><span class="card-angle">Lifestyle · routine</span></div>
+          <div class="card-name">Mix. Sip. Move on.</div>
+          <div class="card-notes">
+            Headline: "MIX. SIP. MOVE ON." "For mornings that are already busy enough." Imagem: mão feminina com glass + jar. <strong>⚠️ Lifestyle sem hook forte — bom pra remarketing, fraco pra topo.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "MIX. SIP. MOVE ON."</li>
+              <li><strong>CTA:</strong> "DISCOVER SLIMSODA"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="invalidation">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-052704.jpeg" alt="Recipe in 3 seconds" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-2-color">7/10</span><span class="card-angle">Bold text · simplicity</span></div>
+          <div class="card-name">The baking soda recipe in 3 seconds</div>
+          <div class="card-notes">
+            Headline gigante: "THE BAKING SODA RECIPE IN 3 SECONDS". "ONE SCOOP. ONE GLASS OF WATER." <strong>⚠️ Bold text funciona mas copy é genérico — adicionar ângulo conflict.</strong>
+            <ul>
+              <li><strong>Hook:</strong> "THE BAKING SODA RECIPE IN 3 SECONDS"</li>
+              <li><strong>CTA:</strong> "READ THE ARTICLE"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TIER 3 -->
+  <section class="tier-section" data-tier="tier-3">
+    <div class="tier-header">
+      <span class="tier-badge tier-3-badge">TIER 3</span>
+      <h2 class="tier-title">Não rodar — refazer com hook + ângulo</h2>
+      <span class="tier-sub">Score &lt; 7/10 — sem hook forte, formato genérico, vai queimar budget</span>
+    </div>
+    <div class="grid">
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-001-3ingredients-baking-soda.png" alt="The real recipe" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">4/10</span><span class="card-angle">Product only · art deco</span></div>
+          <div class="card-name">The Real Recipe — SlimSoda product hero</div>
+          <div class="card-notes">
+            ❌ <strong>Sem hook — só produto + "READ THE ARTICLE"</strong>. Visual art deco bonito mas não gera stop. Refazer com headline forte (ex: "THE RECIPE 3 MILLION WOMEN KEEP MESSING UP") e usar como secondary/carousel.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-003.png" alt="Real recipe oil" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">3.5/10</span><span class="card-angle">Product · oil paint</span></div>
+          <div class="card-name">The Real Recipe (oil paint style)</div>
+          <div class="card-notes">
+            ❌ Versão artística do produto. Sem hook. Formato bonito mas não converte. Usar só como reference visual, não como ad.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/in-ads/slim-004.png" alt="Real recipe spotlight" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">3.5/10</span><span class="card-angle">Product · spotlight</span></div>
+          <div class="card-name">The Real Recipe (premium spotlight)</div>
+          <div class="card-notes">
+            ❌ Versão "premium" do produto. Sem hook. Sem claim específico. Refazer com headline de conflict.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/drafts/inline-007-008.png" alt="Baking soda powered" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">5.5/10</span><span class="card-angle">Product · dark</span></div>
+          <div class="card-name">Baking Soda Powered — dark variant</div>
+          <div class="card-notes">
+            ❌ "BAKING SODA POWERED" + 4 ícones. Genérico, sem hook. Visual dark bonito mas copy fraco. Refazer com ângulo conflict (ex: "Ozempic charged $1000. This costs $0.50/day.").
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/wa-045646.jpeg" alt="Transform your body" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">5.5/10</span><span class="card-angle">Product · transform</span></div>
+          <div class="card-name">Transform Your Body & Life</div>
+          <div class="card-notes">
+            ❌ <strong>Claim "TRANSFORM YOUR BODY & LIFE" viola Meta policy</strong> (weight loss / body transformation). Vai flaggar. Refazer com claim neutro (ex: "support your morning routine") + visual de produto.
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-angle="product">
+        <img class="card-img" src="assets/slimsoda-creatives/2026-08-19/raw-downloads/fb-001-n.jpg" alt="No needle needed simple" loading="lazy" width="640" height="640">
+        <div class="card-body">
+          <div class="card-top"><span class="card-score tier-3-color">6/10</span><span class="card-angle">Product · Ozempic</span></div>
+          <div class="card-name">No Needle Needed (versão simples)</div>
+          <div class="card-notes">
+            Versão sem subhead do slim-002. Mesma estrutura mas menos copy. OK como ad secundário, mas slim-002 (versão completa) é superior.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>DR HUB · SlimSoda creatives catalog · 2026-08-19 · 28 criativos analisados · fonte: <code>assets/slimsoda-creatives/2026-08-19/</code></p>
+  </footer>
+
+</div>
+
+<script>
+  // Filtro simples
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.card').forEach(card => {
+        const tier = card.closest('.tier-section')?.dataset.tier;
+        const angle = card.dataset.angle;
+        let show = false;
+        if (f === 'all') show = true;
+        else if (f.startsWith('tier-')) show = tier === f;
+        else show = angle === f;
+        card.style.display = show ? '' : 'none';
+      });
+      // Hide sections with no visible cards
+      document.querySelectorAll('.tier-section').forEach(sec => {
+        const anyVisible = Array.from(sec.querySelectorAll('.card')).some(c => c.style.display !== 'none');
+        sec.style.display = anyVisible ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
