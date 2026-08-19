@@ -159,25 +159,32 @@
   }
 
   // Scroll depth: fire AddToCart when user reaches pricing section
+  // Throttled with rAF to avoid forcing layout on every scroll event
   var addToCartFired = false;
+  var addToCartTicking = false;
   function checkAddToCartScroll(){
-    if(addToCartFired) return;
-    var pricingEl = document.getElementById("price-section");
-    if(!pricingEl) return;
-    var rect = pricingEl.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.7){
-      addToCartFired = true;
-      if(window.imptrack){
-        window.imptrack.trackAddToCart({
-          content_ids: ["slimsoda-3bottles"],
-          content_name: "SlimSoda 2 Tubs (B1G1)",
-          content_type: "product",
-          value: 27.49,
-          currency: "USD"
-        });
-        sendCapi("AddToCart", { content_ids: ["slimsoda-3bottles"], value: 27.49, currency: "USD" }, window._lastATCEventId);
+    if(addToCartFired || addToCartTicking) return;
+    addToCartTicking = true;
+    requestAnimationFrame(function(){
+      addToCartTicking = false;
+      if(addToCartFired) return;
+      var pricingEl = document.getElementById("price-section");
+      if(!pricingEl) return;
+      var rect = pricingEl.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.7){
+        addToCartFired = true;
+        if(window.imptrack){
+          window.imptrack.trackAddToCart({
+            content_ids: ["slimsoda-3bottles"],
+            content_name: "SlimSoda 2 Tubs (B1G1)",
+            content_type: "product",
+            value: 27.49,
+            currency: "USD"
+          });
+          sendCapi("AddToCart", { content_ids: ["slimsoda-3bottles"], value: 27.49, currency: "USD" }, window._lastATCEventId);
+        }
       }
-    }
+    });
   }
   window.addEventListener("scroll", checkAddToCartScroll, { passive: true });
   setTimeout(checkAddToCartScroll, 1000);
@@ -446,7 +453,7 @@
       <mark>You’ve seen the videos. Famous faces, talk-show couches, all suddenly whispering about a baking soda shot that melts fat without dieting or exercise. Here’s the part none of them will tell you: the recipe only works if you do it in the right order. This is the original.</mark>
 
       <div class="body-img gif-img">
-        <video width="400" height="200" fetchpriority="high" preload="metadata" playsinline autoplay muted loop poster="images/gif_celeb_oprah_bakingsoda-poster.webp" aria-label="Animated: Oprah Winfrey interview clip on a talk show couch paired with the iconic Arm &amp; Hammer baking soda box, with a glass of water fizzing next to it — the credibility anchor that the 'baking soda water shot' is everywhere."><source src="images/gif_celeb_oprah_bakingsoda.webm" type="video/webm"><source src="images/gif_celeb_oprah_bakingsoda.mp4" type="video/mp4"></video>
+        <video width="400" height="200" fetchpriority="high" importance="high" preload="metadata" playsinline autoplay muted loop poster="images/gif_celeb_oprah_bakingsoda-poster.webp" aria-label="Animated: Oprah Winfrey interview clip on a talk show couch paired with the iconic Arm &amp; Hammer baking soda box, with a glass of water fizzing next to it — the credibility anchor that the 'baking soda water shot' is everywhere."><source src="images/gif_celeb_oprah_bakingsoda.webm" type="video/webm" fetchpriority="high"><source src="images/gif_celeb_oprah_bakingsoda.mp4" type="video/mp4" fetchpriority="high"></video>
       </div>
     </p>
 
@@ -1454,9 +1461,24 @@
 </div>
 <script>
 (function(){
-  var shown=false;
-  function c(){if(shown)return;var e=document.getElementById("price-section");if(!e)return;if(e.getBoundingClientRect().top<window.innerHeight){document.getElementById("stickyCta").style.display="block";shown=true;window.removeEventListener("scroll",c)}}
-  window.addEventListener("scroll",c);c();
+  var shown=false, ticking=false;
+  function c(){
+    if(shown || ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      if(shown) return;
+      var e = document.getElementById("price-section");
+      if(!e) return;
+      if(e.getBoundingClientRect().top < window.innerHeight){
+        document.getElementById("stickyCta").style.display = "block";
+        shown = true;
+        window.removeEventListener("scroll", c);
+      }
+    });
+  }
+  window.addEventListener("scroll", c, { passive: true });
+  c();
 })();
 </script>
 </body>
