@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P1/P2 Test Planner + Live Tracker · DR Reference</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#2BD576; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --orange:#fdcb6e; --blue:#4ea1ff; --purple:#A78BFA; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1280px; margin:0 auto; padding:32px 24px 80px; }
+  header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:16px; }
+  .brand h1 { font-size:32px; font-weight:800; letter-spacing:-0.5px; margin:0; }
+  .brand h1 .accent { color:var(--accent); }
+  .brand p { color:var(--muted); font-size:13px; margin-top:4px; }
+  .brand a { color:var(--muted); text-decoration:none; margin-left:12px; }
+  .brand a:hover { color:var(--accent); }
+  .stage-legend { display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px; font-size:12px; }
+  .stage-chip { padding:6px 14px; border-radius:8px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+  .stage-chip.p1 { background:rgba(77,159,255,0.15); color:var(--blue); border:1px solid var(--blue); }
+  .stage-chip.p2 { background:rgba(167,139,250,0.15); color:var(--purple); border:1px solid var(--purple); }
+  .stage-chip.p3 { background:rgba(43,213,118,0.15); color:var(--accent); border:1px solid var(--accent); }
+  .stage-chip.p4 { background:rgba(192,57,43,0.15); color:var(--red); border:1px solid var(--red); }
+  .summary { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:12px; margin-bottom:32px; }
+  .summary-card { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px 18px; }
+  .summary-card .label { color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:700; }
+  .summary-card .value { font-size:24px; font-weight:800; margin-top:2px; font-variant-numeric:tabular-nums; }
+  .summary-card .sub { font-size:10.5px; color:var(--muted); margin-top:2px; }
+  .summary-card.p1 { border-left:3px solid var(--blue); }
+  .summary-card.p2 { border-left:3px solid var(--purple); }
+  .summary-card.p3 { border-left:3px solid var(--accent); }
+  .summary-card.p4 { border-left:3px solid var(--red); }
+  .summary-card.kill { border-left:3px solid var(--red); }
+  .summary-card.esc { border-left:3px solid var(--gold); }
+  .panel { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:18px; }
+  .panel h2 { font-size:18px; font-weight:800; margin:0 0 4px; }
+  .panel .sub { color:var(--muted); font-size:12px; margin-bottom:18px; }
+  .filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; align-items:center; }
+  .filter-bar .label { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:1px; font-weight:700; margin-right:6px; }
+  .filter-bar select, .filter-bar input, .filter-bar button { padding:6px 12px; border:1px solid var(--border); border-radius:6px; font-family:inherit; font-size:12px; background:var(--panel-2); color:var(--text); cursor:pointer; }
+  .filter-bar button.primary { background:var(--accent); color:#000; font-weight:700; border-color:var(--accent); }
+  .plan-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin-bottom:14px; }
+  .plan-card.p1 { border-left:4px solid var(--blue); }
+  .plan-card.p2 { border-left:4px solid var(--purple); }
+  .plan-card.p3 { border-left:4px solid var(--accent); }
+  .plan-card.p4 { border-left:4px solid var(--red); }
+  .plan-head { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:14px; }
+  .plan-title { font-size:15px; font-weight:800; margin:0; }
+  .plan-meta { font-size:11px; color:var(--muted); margin-top:3px; }
+  .plan-stage { padding:5px 12px; border-radius:8px; font-size:10px; font-weight:800; letter-spacing:0.04em; }
+  .verdict { display:inline-block; padding:5px 12px; border-radius:6px; font-size:10.5px; font-weight:800; letter-spacing:0.04em; }
+  .verdict.proceed { background:rgba(6,167,125,0.2); color:var(--green); border:1px solid var(--green); }
+  .verdict.kill { background:rgba(192,57,43,0.2); color:var(--red); border:1px solid var(--red); }
+  .verdict.refine { background:rgba(255,209,102,0.2); color:var(--gold); border:1px solid var(--gold); }
+  .verdict.escalate { background:rgba(43,213,118,0.25); color:var(--accent); border:1px solid var(--accent); }
+  .verdict.downscale { background:rgba(192,57,43,0.15); color:var(--orange); border:1px solid var(--orange); }
+  .verdict.continue { background:rgba(77,159,255,0.15); color:var(--blue); border:1px solid var(--blue); }
+  .verdict.cemetery { background:rgba(192,57,43,0.15); color:var(--red); border:1px dashed var(--red); }
+  .angles-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-top:10px; }
+  .angle-card { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:12px; }
+  .angle-name { font-size:12px; font-weight:700; color:var(--text); margin-bottom:6px; }
+  .angle-hooks { display:flex; flex-direction:column; gap:4px; }
+  .hook { font-size:10.5px; padding:3px 7px; border-radius:4px; }
+  .hook.qualified { background:rgba(6,167,125,0.18); color:var(--green); }
+  .hook.morto { background:rgba(192,57,43,0.18); color:var(--red); text-decoration:line-through; }
+  .hook.more { background:rgba(255,209,102,0.18); color:var(--gold); }
+  .hook.pending { background:rgba(154,160,178,0.15); color:var(--muted); }
+  .metrics-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(110px,1fr)); gap:10px; margin-top:12px; padding-top:12px; border-top:1px solid var(--border); }
+  .metric { font-size:11px; }
+  .metric .label { color:var(--muted); font-size:9.5px; text-transform:uppercase; letter-spacing:0.5px; }
+  .metric .value { font-size:14px; font-weight:800; color:var(--text); font-variant-numeric:tabular-nums; }
+  .metric .value.pos { color:var(--green); }
+  .metric .value.neg { color:var(--red); }
+  .metric .value.warn { color:var(--gold); }
+  .ruler { background:var(--panel-2); border:1px solid var(--accent); border-radius:8px; padding:12px 16px; margin:10px 0; }
+  .ruler h4 { margin:0 0 4px; color:var(--accent); font-size:12px; text-transform:uppercase; letter-spacing:0.08em; }
+  .ruler p { margin:0; font-size:12.5px; }
+  .ruler strong { color:var(--accent); }
+  .form-row { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px; }
+  .form-row.cols-2 { grid-template-columns:1fr 1fr; }
+  .form-row.cols-4 { grid-template-columns:1fr 1fr 1fr 1fr; }
+  label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; font-weight:700; display:block; margin-bottom:4px; }
+  input, select, textarea { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:6px; font-family:inherit; font-size:13px; background:var(--panel-2); color:var(--text); }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  .skeleton { padding:32px; text-align:center; color:var(--muted); font-size:13px; }
+  .skeleton .spin { display:inline-block; width:24px; height:24px; border:2px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; margin-right:8px; vertical-align:middle; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .back { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back:hover { color:var(--accent); }
+  .empty { padding:32px; text-align:center; color:var(--muted); font-size:13px; }
+  code { font-family:"JetBrains Mono",monospace; font-size:11.5px; background:var(--panel-2); padding:1px 6px; border-radius:3px; color:var(--gold); }
+  details { margin-top:12px; }
+  details summary { cursor:pointer; font-size:12px; color:var(--accent); font-weight:700; }
+  details[open] summary { margin-bottom:8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← HUB principal</a>
+  <a class="back" href="../methodology/dtc-black-bifi/_index.html">← DTC Black Bifi (fonte do método)</a>
+  <a class="back" href="../methodology/dtc-videos/_index.html">← DTC Vídeo (P1/P2 com métricas vídeo)</a>
+
+  <header>
+    <div class="brand">
+      <h1>🧪 P1/P2 Test <span class="accent">Planner</span> + Live Tracker</h1>
+      <p>Operacionalize o <code>methodology Bifi (DTC Black + DTC Vídeo)</code>. Crie plano, rode teste, decida régua (qualificado/refine/morto), escale ou mate. <strong>Mecânica:</strong> 1 ângulo × 3 hooks × N dias → decisão automatizada.</p>
+    </div>
+    <div>
+      <span class="stage-chip p1">P1 teste</span>
+      <span class="stage-chip p2">P2 validação</span>
+      <span class="stage-chip p3">P3 escala</span>
+      <span class="stage-chip p4">P4 cemitério</span>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <div class="summary" id="summary">
+    <div class="summary-card p1"><div class="label">Em P1 (teste)</div><div class="value" id="c-p1">0</div><div class="sub">ângulos testando</div></div>
+    <div class="summary-card p2"><div class="label">Em P2 (validação)</div><div class="value" id="c-p2">0</div><div class="sub">criativos validando</div></div>
+    <div class="summary-card p3"><div class="label">Em P3 (escala)</div><div class="value" id="c-p3">0</div><div class="sub">campanhas escalando</div></div>
+    <div class="summary-card p4"><div class="label">Em P4 (cemitério)</div><div class="value" id="c-p4">0</div><div class="sub">estoque</div></div>
+    <div class="summary-card esc"><div class="label">Pronto pra escalar</div><div class="value" id="c-esc">0</div><div class="sub">decisão ESCALA pendente</div></div>
+    <div class="summary-card kill"><div class="label">Pra matar</div><div class="value" id="c-kill">0</div><div class="sub">decisão KILL pendente</div></div>
+  </div>
+
+  <!-- RULER (always visible) -->
+  <div class="ruler">
+    <h4>📏 Régua automática Bifi</h4>
+    <p><strong>P1</strong> ≥3 hooks qualificados → <span class="verdict proceed">PROCEED_TO_P2</span>. ≥5 mortos → <span class="verdict kill">KILL_ANGLE</span> · <strong>P2</strong> ≥15 vendas + CPA ≤ alvo → <span class="verdict escalate">P3_ESCALATE</span>. 10-15 vendas → <span class="verdict refine">REFINE</span> · <10 vendas (após 1 tentativa extra) → <span class="verdict kill">KILL_ANGLE</span> · <strong>P3</strong> CPA &gt; 1.4× alvo → <span class="verdict downscale">DOWNSCALE</span> · <strong>P4</strong> entra só quem escalou + $0 há 7+ dias. <a href="../methodology/dtc-black-bifi/_index.html" style="color:var(--accent)">Detalhes completos →</a></p>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="panel">
+    <h2>📋 Filtros</h2>
+    <div class="filter-bar">
+      <span class="label">Produto:</span>
+      <select id="f-product">
+        <option value="">Todos</option>
+        <option value="SlimSoda">SlimSoda</option>
+        <option value="Linfaflow">Linfaflow</option>
+        <option value="Cardio Clear">Cardio Clear</option>
+        <option value="Linfozen">Linfozen</option>
+      </select>
+      <span class="label">Stage:</span>
+      <select id="f-stage">
+        <option value="">Todos</option>
+        <option value="P1">P1</option>
+        <option value="P2">P2</option>
+        <option value="P3">P3</option>
+        <option value="P4">P4</option>
+      </select>
+      <button class="primary" id="btn-new">+ Novo plano</button>
+    </div>
+  </div>
+
+  <!-- NEW PLAN FORM (collapsible) -->
+  <div class="panel" id="form-panel" style="display:none">
+    <h2>📝 Novo plano de teste</h2>
+    <p class="sub">Preencha os básicos. Você pode editar ângulos/hooks depois de criar.</p>
+    <div class="form-row cols-4">
+      <div>
+        <label>Produto</label>
+        <select id="nf-product">
+          <option value="SlimSoda">SlimSoda</option>
+          <option value="Linfaflow">Linfaflow</option>
+          <option value="Cardio Clear">Cardio Clear</option>
+          <option value="Linfozen">Linfozen</option>
+        </select>
+      </div>
+      <div>
+        <label>Stage inicial</label>
+        <select id="nf-stage">
+          <option value="P1">P1 (teste)</option>
+          <option value="P2">P2 (validação)</option>
+          <option value="P3">P3 (escala)</option>
+          <option value="P4">P4 (cemitério)</option>
+        </select>
+      </div>
+      <div>
+        <label>CPA target ($)</label>
+        <input type="number" id="nf-cpa" value="40" min="1" step="1">
+      </div>
+      <div>
+        <label>Data início</label>
+        <input type="date" id="nf-start" value="">
+      </div>
+    </div>
+    <label>Notas iniciais</label>
+    <textarea id="nf-notes" rows="2" placeholder="ex: foco em hooks 1ª pessoa do vilão, copiar da briefing-linfozen"></textarea>
+    <div style="display:flex; gap:8px; margin-top:14px;">
+      <button class="primary" id="btn-create" style="background:var(--accent); color:#000; font-weight:700; padding:8px 18px; border:none; border-radius:6px; cursor:pointer;">Criar plano</button>
+      <button id="btn-cancel" style="background:transparent; color:var(--muted); padding:8px 18px; border:1px solid var(--border); border-radius:6px; cursor:pointer;">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- PLANS LIST -->
+  <div id="plans-wrap" class="skeleton"><span class="spin"></span>Carregando planos...</div>
+
+</div>
+
+<script>
+const API_BASE = 'https://slim-soda01.vercel.app/api/test-plans';
+
+// Load
+async function load() {
+  const wrap = document.getElementById('plans-wrap');
+  wrap.innerHTML = '<div class="skeleton"><span class="spin"></span>Carregando planos...</div>';
+  const product = document.getElementById('f-product').value;
+  const stage = document.getElementById('f-stage').value;
+  const params = new URLSearchParams();
+  if (product) params.set('product', product);
+  if (stage) params.set('stage', stage);
+  try {
+    const res = await fetch(API_BASE + (params.toString() ? '?' + params : ''));
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    renderSummary(data.plans);
+    renderPlans(data.plans);
+  } catch (e) {
+    wrap.innerHTML = `<div class="skeleton">Erro: ${e.message}</div>`;
+  }
+}
+
+function renderSummary(plans) {
+  const c = { p1: 0, p2: 0, p3: 0, p4: 0, esc: 0, kill: 0 };
+  plans.forEach(p => {
+    if (p.stage === 'P1') c.p1++;
+    if (p.stage === 'P2') c.p2++;
+    if (p.stage === 'P3') c.p3++;
+    if (p.stage === 'P4') c.p4++;
+    if (['PROCEED_TO_P2', 'P3_ESCALATE'].includes(p.verdict)) c.esc++;
+    if (['KILL_ANGLE', 'DOWNSCALE'].includes(p.verdict)) c.kill++;
+  });
+  document.getElementById('c-p1').textContent = c.p1;
+  document.getElementById('c-p2').textContent = c.p2;
+  document.getElementById('c-p3').textContent = c.p3;
+  document.getElementById('c-p4').textContent = c.p4;
+  document.getElementById('c-esc').textContent = c.esc;
+  document.getElementById('c-kill').textContent = c.kill;
+}
+
+function verdictClass(v) {
+  if (['PROCEED_TO_P2','P3_ESCALATE','P3_CONTINUE'].includes(v)) return 'escalate';
+  if (['KILL_ANGLE','DOWNSCALE'].includes(v)) return 'kill';
+  if (['REFINE'].includes(v)) return 'refine';
+  if (v === 'P4_CEMETERY') return 'cemetery';
+  return 'continue';
+}
+
+function verdictLabel(v) {
+  return {
+    'PROCEED_TO_P2': '🟢 Avançar pra P2',
+    'P3_ESCALATE': '🚀 Escalar (P3)',
+    'P3_CONTINUE': '⏫ Continuar P3',
+    'REFINE': '🔧 Refinar + 3 dias',
+    'KILL_ANGLE': '💀 Matar ângulo',
+    'DOWNSCALE': '⬇️ Reduzir budget',
+    'CONTINUE_P1': '⏳ Continuar P1',
+    'P4_CEMETERY': '🪦 Cemitério'
+  }[v] || v;
+}
+
+function stageClass(s) { return s.toLowerCase(); }
+
+function hookClass(status) {
+  if (status === 'QUALIFICADO') return 'qualified';
+  if (status === 'MORTO') return 'morto';
+  if (status === 'MAIS TEXTOS' || status === 'MAIS HOOKS') return 'more';
+  return 'pending';
+}
+
+function fmtDate(d) { return d ? new Date(d).toLocaleDateString('pt-BR') : '—'; }
+function fmtMoney(v) { return v ? '$' + v.toFixed(2) : '—'; }
+function fmtPct(v) { return v ? v.toFixed(1) + '%' : '—'; }
+function fmtNum(v) { return v ? v.toLocaleString() : '—'; }
+
+function renderPlans(plans) {
+  const wrap = document.getElementById('plans-wrap');
+  if (!plans.length) {
+    wrap.innerHTML = '<div class="empty">Nenhum plano. <button class="primary" onclick="document.getElementById(\'btn-new\').click()" style="background:var(--accent); color:#000; font-weight:700; padding:6px 14px; border:none; border-radius:6px; cursor:pointer; margin-left:8px;">+ Criar primeiro</button></div>';
+    return;
+  }
+  wrap.innerHTML = plans.map(p => {
+    const dayInStage = p.dates?.day_in_stage || 0;
+    const m = p.metrics || {};
+    return `<div class="plan-card ${stageClass(p.stage)}">
+      <div class="plan-head">
+        <div>
+          <h3 class="plan-title">${p.product} · <span class="stage-chip ${stageClass(p.stage)}">${p.stage}</span></h3>
+          <div class="plan-meta">${p.id} · ${fmtDate(p.dates?.start)} → ${fmtDate(p.dates?.end)} · dia ${dayInStage} em ${p.stage}</div>
+        </div>
+        <div>
+          <span class="verdict ${verdictClass(p.verdict)}">${verdictLabel(p.verdict)}</span>
+        </div>
+      </div>
+      <p style="font-size:13px; color:var(--text); margin:6px 0 0;">${p.notes || '<em style="color:var(--muted)">Sem notas</em>'}</p>
+      <div class="angles-grid">
+        ${(p.angles || []).map(a => `
+          <div class="angle-card">
+            <div class="angle-name">${a.name} <span style="color:var(--muted); font-size:10px">(${a.winner_count || 0} winner${a.winner_count === 1 ? '' : 's'})</span></div>
+            <div class="angle-hooks">
+              ${(a.hooks || []).map(h => `<span class="hook ${hookClass(h.status)}" title="${h.text || ''}">${h.name}</span>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="metrics-row">
+        <div class="metric"><div class="label">Spend 7d</div><div class="value">${fmtMoney(m.spend)}</div></div>
+        <div class="metric"><div class="label">ICs</div><div class="value">${fmtNum(m.ic)}</div></div>
+        <div class="metric"><div class="label">Compras</div><div class="value pos">${fmtNum(m.purchases)}</div></div>
+        <div class="metric"><div class="label">CPA</div><div class="value ${m.cpa <= m.cpa_target ? 'pos' : m.cpa > m.cpa_target * 1.4 ? 'neg' : 'warn'}">${fmtMoney(m.cpa)}</div></div>
+        <div class="metric"><div class="label">Target</div><div class="value">$${m.cpa_target || 40}</div></div>
+        <div class="metric"><div class="label">ROAS</div><div class="value ${m.roas >= 1 ? 'pos' : m.roas >= 0.7 ? 'warn' : 'neg'}">${m.roas ? m.roas.toFixed(2) : '—'}</div></div>
+        <div class="metric"><div class="label">Hook</div><div class="value">${fmtPct(m.hook_rate)}</div></div>
+        <div class="metric"><div class="label">Hold</div><div class="value">${fmtPct(m.hold_rate)}</div></div>
+        <div class="metric"><div class="label">CTR</div><div class="value">${m.ctr ? m.ctr.toFixed(2) + '%' : '—'}</div></div>
+        <div class="metric"><div class="label">Freq</div><div class="value">${m.frequency ? m.frequency.toFixed(2) : '—'}</div></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// Form handling
+document.getElementById('btn-new').addEventListener('click', () => {
+  document.getElementById('form-panel').style.display = 'block';
+  document.getElementById('nf-start').value = new Date().toISOString().split('T')[0];
+  window.scrollTo({ top: document.getElementById('form-panel').offsetTop - 20, behavior: 'smooth' });
+});
+document.getElementById('btn-cancel').addEventListener('click', () => {
+  document.getElementById('form-panel').style.display = 'none';
+});
+document.getElementById('btn-create').addEventListener('click', async () => {
+  const plan = {
+    product: document.getElementById('nf-product').value,
+    stage: document.getElementById('nf-stage').value,
+    metrics: {
+      spend: 0, ic: 0, purchases: 0, cpa: 0, cpa_target: parseInt(document.getElementById('nf-cpa').value),
+      roas: 0, hook_rate: 0, hold_rate: 0, ctr: 0, cpm: 0, frequency: 0
+    },
+    dates: { start: document.getElementById('nf-start').value, end: null, day_in_stage: 0 },
+    angles: [],
+    notes: document.getElementById('nf-notes').value
+  };
+  try {
+    const res = await fetch(API_BASE, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(plan)
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    document.getElementById('form-panel').style.display = 'none';
+    load();
+  } catch (e) {
+    alert('Erro ao criar: ' + e.message);
+  }
+});
+
+// Filters
+document.getElementById('f-product').addEventListener('change', load);
+document.getElementById('f-stage').addEventListener('change', load);
+
+load();
+</script>
+</body>
+</html>
