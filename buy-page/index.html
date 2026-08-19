@@ -81,11 +81,10 @@
     });
   }
 
+  // trackEvent: Supabase only. fbq is handled separately for standard events
+  // (PageView, ViewContent, AddToCart, InitiateCheckout, Lead) to avoid duplicate PageView firing.
   function trackEvent(eventName, eventData, eventId){
     var eid = eventId || genEventId();
-    if(window.fbq){
-      try { window.fbq("trackCustom", eventName, eventData || {}, { eventID: eid }); } catch(e){}
-    }
     return sbPost("imphq_events", {
       id: eid,
       visitor_id: visitorId,
@@ -129,11 +128,18 @@
   }
 
   // Server-side CAPI helper (sends same eventID as fbq for dedup)
+  // Passes external_id (visitor_id) + fbp cookie for advanced matching
   function sendCapi(eventName, eventData, eventId){
     if(!eventId) return;
     var meta = document.querySelector('meta[name="imp-pixel-id"]');
     var pid = meta ? meta.getAttribute("content") : null;
     if(!pid) return;
+    // Read fbp cookie set by Meta pixel (improves match quality)
+    var fbp = null;
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/);
+      if(m) fbp = m[1];
+    } catch(e){}
     try {
       fetch("/api/track-capi", {
         method: "POST",
@@ -143,7 +149,9 @@
           event_name: eventName,
           event_id: eventId,
           event_data: eventData || {},
-          event_source_url: window.location.href
+          event_source_url: window.location.href,
+          external_id: visitorId,
+          fbp: fbp
         }),
         keepalive: true
       }).catch(function(){});

@@ -134,6 +134,12 @@
     });
     if(mapping && !capiPayload.value) capiPayload.value = mapping.value;
     var capiEventName = (mapping && mapping.type !== "custom") ? mapping.type : eventName;
+    // Read fbp cookie (Meta sets it client-side) for advanced matching
+    var fbp = null;
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/);
+      if(m) fbp = m[1];
+    } catch(e){}
     try {
       fetch("/api/track-capi", {
         method: "POST",
@@ -143,7 +149,9 @@
           event_name: capiEventName,
           event_id: eventId,
           event_data: capiPayload,
-          event_source_url: window.location.href
+          event_source_url: window.location.href,
+          external_id: visitorId,
+          fbp: fbp
         }),
         keepalive: true
       }).catch(function(){});
