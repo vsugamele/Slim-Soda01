@@ -1,0 +1,171 @@
+-- ============================================================
+-- MIGRATION 002: Add project_slug + 14 attribution columns
+-- Project: SlimSoda / Cardio Clear tracking
+-- Database: tkbivipqiewkfnhktmqq (DB1)
+-- Author: Mavis (MiniMax Code)
+-- Date: 2026-08-19
+--
+-- Objetivo: Habilitar tracking completo do SlimSoda/Cardio Clear
+--           dentro do mesmo DB do JP Freitas (imphq_*),
+--           separado via coluna `project_slug` (jp_freitas | slimsoda | cardio_clear).
+--
+-- Idempotente: usa IF NOT EXISTS / IF EXISTS em todas as ops.
+-- Pode rodar múltiplas vezes sem erro.
+--
+-- Como rodar:
+--   1. Supabase Dashboard > SQL Editor
+--   2. Cola todo este arquivo
+--   3. Click "Run" (ou Ctrl+Enter)
+--   4. Espera ~5 segundos
+-- ============================================================
+
+-- ============================================================
+-- PARTE 1: Adicionar coluna project_slug (filtro multi-projeto)
+-- ============================================================
+ALTER TABLE public.imphq_vendas ADD COLUMN IF NOT EXISTS project_slug text DEFAULT 'jp_freitas';
+ALTER TABLE public.imphq_leads  ADD COLUMN IF NOT EXISTS project_slug text;
+ALTER TABLE public.imphq_events ADD COLUMN IF NOT EXISTS project_slug text;
+ALTER TABLE public.imphq_clicks ADD COLUMN IF NOT EXISTS project_slug text;
+
+COMMENT ON COLUMN public.imphq_vendas.project_slug IS 'jp_freitas | slimsoda | cardio_clear | haritaki | linfozen | lymph | auraly | other';
+COMMENT ON COLUMN public.imphq_leads.project_slug  IS 'jp_freitas | slimsoda | cardio_clear | haritaki | linfozen | lymph | auraly | other';
+COMMENT ON COLUMN public.imphq_events.project_slug IS 'jp_freitas | slimsoda | cardio_clear | haritaki | linfozen | lymph | auraly | other';
+COMMENT ON COLUMN public.imphq_clicks.project_slug IS 'jp_freitas | slimsoda | cardio_clear | haritaki | linfozen | lymph | auraly | other';
+
+-- ============================================================
+-- PARTE 2: 14 colunas de attribution chain (Manual.com.br style)
+-- ============================================================
+-- imphq_events (full chain)
+ALTER TABLE public.imphq_events
+  ADD COLUMN IF NOT EXISTS utm_id        text,
+  ADD COLUMN IF NOT EXISTS fbclid        text,
+  ADD COLUMN IF NOT EXISTS fbc           text,
+  ADD COLUMN IF NOT EXISTS fbp           text,
+  ADD COLUMN IF NOT EXISTS gclid         text,
+  ADD COLUMN IF NOT EXISTS gbraid        text,
+  ADD COLUMN IF NOT EXISTS wbraid        text,
+  ADD COLUMN IF NOT EXISTS nbt           text,
+  ADD COLUMN IF NOT EXISTS nb_placement  text,
+  ADD COLUMN IF NOT EXISTS nb_expid_meta text,
+  ADD COLUMN IF NOT EXISTS coupon        text,
+  ADD COLUMN IF NOT EXISTS link_id       text;
+
+-- imphq_clicks (full chain)
+ALTER TABLE public.imphq_clicks
+  ADD COLUMN IF NOT EXISTS utm_id        text,
+  ADD COLUMN IF NOT EXISTS fbclid        text,
+  ADD COLUMN IF NOT EXISTS fbc           text,
+  ADD COLUMN IF NOT EXISTS fbp           text,
+  ADD COLUMN IF NOT EXISTS gclid         text,
+  ADD COLUMN IF NOT EXISTS gbraid        text,
+  ADD COLUMN IF NOT EXISTS wbraid        text,
+  ADD COLUMN IF NOT EXISTS nbt           text,
+  ADD COLUMN IF NOT EXISTS nb_placement  text,
+  ADD COLUMN IF NOT EXISTS nb_expid_meta text,
+  ADD COLUMN IF NOT EXISTS coupon        text,
+  ADD COLUMN IF NOT EXISTS link_id       text;
+
+-- imphq_leads (subset: sem nb_* porque leads vem de forms, não de ads)
+ALTER TABLE public.imphq_leads
+  ADD COLUMN IF NOT EXISTS utm_id        text,
+  ADD COLUMN IF NOT EXISTS fbclid        text,
+  ADD COLUMN IF NOT EXISTS fbc           text,
+  ADD COLUMN IF NOT EXISTS fbp           text,
+  ADD COLUMN IF NOT EXISTS gclid         text,
+  ADD COLUMN IF NOT EXISTS gbraid        text,
+  ADD COLUMN IF NOT EXISTS wbraid        text,
+  ADD COLUMN IF NOT EXISTS nbt           text,
+  ADD COLUMN IF NOT EXISTS coupon        text;
+
+-- imphq_vendas (subset: o que importa pra sale attribution)
+ALTER TABLE public.imphq_vendas
+  ADD COLUMN IF NOT EXISTS utm_id        text,
+  ADD COLUMN IF NOT EXISTS fbclid        text,
+  ADD COLUMN IF NOT EXISTS fbc           text,
+  ADD COLUMN IF NOT EXISTS fbp           text,
+  ADD COLUMN IF NOT EXISTS gclid         text,
+  ADD COLUMN IF NOT EXISTS coupon        text;
+
+-- ============================================================
+-- PARTE 3: Indices para query performance
+-- ============================================================
+-- Events (mais consultado)
+CREATE INDEX IF NOT EXISTS idx_imphq_events_project_slug  ON public.imphq_events(project_slug);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_utm_id        ON public.imphq_events(utm_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_fbclid        ON public.imphq_events(fbclid);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_visitor_id    ON public.imphq_events(visitor_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_session_id    ON public.imphq_events(session_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_coupon        ON public.imphq_events(coupon);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_created_at    ON public.imphq_events(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_imphq_events_event_name    ON public.imphq_events(event_name);
+
+-- Clicks
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_project_slug  ON public.imphq_clicks(project_slug);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_utm_id        ON public.imphq_clicks(utm_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_fbclid        ON public.imphq_clicks(fbclid);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_visitor_id    ON public.imphq_clicks(visitor_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_session_id    ON public.imphq_clicks(session_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_coupon        ON public.imphq_clicks(coupon);
+CREATE INDEX IF NOT EXISTS idx_imphq_clicks_created_at    ON public.imphq_clicks(created_at DESC);
+
+-- Vendas
+CREATE INDEX IF NOT EXISTS idx_imphq_vendas_project_slug  ON public.imphq_vendas(project_slug);
+CREATE INDEX IF NOT EXISTS idx_imphq_vendas_data_venda    ON public.imphq_vendas(data_venda DESC);
+CREATE INDEX IF NOT EXISTS idx_imphq_vendas_status        ON public.imphq_vendas(status);
+CREATE INDEX IF NOT EXISTS idx_imphq_vendas_plataforma    ON public.imphq_vendas(plataforma);
+CREATE INDEX IF NOT EXISTS idx_imphq_vendas_fbclid        ON public.imphq_vendas(fbclid);
+
+-- Leads
+CREATE INDEX IF NOT EXISTS idx_imphq_leads_project_slug   ON public.imphq_leads(project_slug);
+CREATE INDEX IF NOT EXISTS idx_imphq_leads_visitor_id     ON public.imphq_leads(visitor_id);
+CREATE INDEX IF NOT EXISTS idx_imphq_leads_created_at     ON public.imphq_leads(created_at DESC);
+
+-- ============================================================
+-- PARTE 4: Backfill project_slug das vendas JP Freitas existentes
+-- ============================================================
+UPDATE public.imphq_vendas
+SET project_slug = COALESCE(project_id, 'jp_freitas')
+WHERE project_slug IS NULL OR project_slug = '';
+
+-- Set default (pra novos INSERTs sem project_slug serem jp_freitas por retro-compat)
+ALTER TABLE public.imphq_vendas ALTER COLUMN project_slug SET DEFAULT 'jp_freitas';
+
+-- ============================================================
+-- PARTE 5: Verificação final
+-- ============================================================
+-- Conta quantas colunas foram adicionadas em cada tabela
+DO $$
+DECLARE
+  events_cols int;
+  clicks_cols int;
+  leads_cols int;
+  vendas_cols int;
+BEGIN
+  SELECT count(*) INTO events_cols FROM information_schema.columns
+    WHERE table_schema='public' AND table_name='imphq_events' AND column_name IN
+      ('utm_id','fbclid','fbc','fbp','gclid','gbraid','wbraid','nbt','nb_placement','nb_expid_meta','coupon','link_id','project_slug');
+  SELECT count(*) INTO clicks_cols FROM information_schema.columns
+    WHERE table_schema='public' AND table_name='imphq_clicks' AND column_name IN
+      ('utm_id','fbclid','fbc','fbp','gclid','gbraid','wbraid','nbt','nb_placement','nb_expid_meta','coupon','link_id','project_slug');
+  SELECT count(*) INTO leads_cols FROM information_schema.columns
+    WHERE table_schema='public' AND table_name='imphq_leads' AND column_name IN
+      ('utm_id','fbclid','fbc','fbp','gclid','gbraid','wbraid','nbt','coupon','project_slug');
+  SELECT count(*) INTO vendas_cols FROM information_schema.columns
+    WHERE table_schema='public' AND table_name='imphq_vendas' AND column_name IN
+      ('utm_id','fbclid','fbc','fbp','gclid','coupon','project_slug');
+
+  RAISE NOTICE 'Migration 002 result:';
+  RAISE NOTICE '  imphq_events: % attribution cols (expected 13)', events_cols;
+  RAISE NOTICE '  imphq_clicks: % attribution cols (expected 13)', clicks_cols;
+  RAISE NOTICE '  imphq_leads:  % attribution cols (expected 10)', leads_cols;
+  RAISE NOTICE '  imphq_vendas: % attribution cols (expected 7)',  vendas_cols;
+  RAISE NOTICE 'Existing vendas with project_slug: %',
+    (SELECT count(*) FROM public.imphq_vendas WHERE project_slug IS NOT NULL);
+END $$;
+
+-- ============================================================
+-- FIM Migration 002
+-- Próximo passo: API endpoints (/api/track-capi, /api/insights)
+-- precisam ser atualizados pra popular project_slug='slimsoda'
+-- quando META_PIXEL_ID=SLIMSODA ou quando URL tem slimsoda no host
+-- ============================================================
