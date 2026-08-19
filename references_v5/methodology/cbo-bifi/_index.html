@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Estrutura CBO — Guilherme Bifi (DTC Affiliate Pro) — Salvo 2026-08-17</title>
+<style>
+body { font-family: 'Inter', system-ui, sans-serif; max-width: 1100px; margin: 0 auto; padding: 32px 24px; line-height: 1.7; color: #14100E; background: #FCFBF9; }
+h1 { font-family: 'Anton', sans-serif; font-size: 56px; text-transform: uppercase; letter-spacing: -1.2px; line-height: 1; margin: 0 0 16px; }
+h1 .fire { color: #D9310B; }
+h2 { font-family: 'Anton', sans-serif; font-size: 32px; text-transform: uppercase; letter-spacing: -0.5px; margin: 48px 0 12px; border-bottom: 3px solid #14100E; padding-bottom: 8px; }
+h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 19px; margin: 28px 0 8px; }
+p { max-width: 78ch; }
+.eyebrow { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #D9310B; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.eyebrow::before { content: ""; width: 34px; height: 3px; background: #D9310B; }
+.sub { color: #6B6560; font-size: 16.5px; max-width: 78ch; }
+.spec { border: 2px solid #14100E; box-shadow: 4px 4px 0 #14100E; background: #fff; margin: 18px 0; }
+.spec-head { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; background: #14100E; color: #FCFBF9; padding: 10px 16px; }
+.spec dl { display: grid; grid-template-columns: 200px 1fr; margin: 0; }
+.spec dt { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; padding: 10px 16px; border-bottom: 1px solid #E8E3DC; background: #FFF4DE; }
+.spec dd { padding: 10px 16px; border-bottom: 1px solid #E8E3DC; font-size: 14.5px; margin: 0; }
+.rule { border: 2px solid #14100E; border-left-width: 8px; background: #fff; padding: 16px 18px; margin: 14px 0; max-width: 78ch; }
+.rule .rlabel { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; display: inline-block; margin-bottom: 8px; }
+.rule.idea { border-left-color: #FFB020; background: #FFF4DE; } .rule.idea .rlabel { color: #B87500; }
+.rule.cut { border-left-color: #D9310B; } .rule.cut .rlabel { color: #D9310B; }
+.rule.tip { border-left-color: #FFB020; background: #FFF4DE; } .rule.tip .rlabel { color: #B87500; }
+.rule.warn { border-left-color: #D9310B; background: #FBE9E3; } .rule.warn .rlabel { color: #D9310B; }
+.flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 22px 0 14px; }
+.flow .fstep { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; border: 2px solid #14100E; background: #fff; box-shadow: 3px 3px 0 #14100E; padding: 8px 13px; border-radius: 2px; }
+.flow .fstep.hot { background: #D9310B; color: #fff; border-color: #D9310B; }
+.flow .fstep.grave { background: #14100E; color: #FCFBF9; }
+.flow .farrow { font-family: 'Anton', sans-serif; color: #D9310B; font-size: 17px; }
+ul.steps { list-style: none; margin: 8px 0 4px; padding: 0; max-width: 78ch; }
+ul.steps li { position: relative; padding: 9px 0 9px 30px; border-bottom: 1px dashed #E8E3DC; font-size: 15px; }
+ul.steps li:last-child { border-bottom: none; }
+ul.steps li::before { content: "→"; position: absolute; left: 4px; top: 8px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #D9310B; }
+.tag { display: inline-block; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; background: #14100E; color: #FCFBF9; padding: 4px 10px; border-radius: 2px; margin-right: 6px; }
+.tag.fire { background: #D9310B; }
+.tag.amber { background: #FFB020; color: #14100E; }
+table { width: 100%; border-collapse: collapse; font-size: 14.5px; max-width: 78ch; margin: 14px 0; }
+th { font-family: 'Space Grotesk', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #14100E; text-align: left; padding: 10px 12px; border-bottom: 2px solid #14100E; }
+td { padding: 9px 12px; border-bottom: 1px solid #E8E3DC; }
+</style>
+</head>
+<body>
+
+<div class="eyebrow">DTC Affiliate Pro · Manual da estratégia de tráfego</div>
+<h1>Estrutura <span class="fire">CBO</span> 📈</h1>
+<p class="sub"><strong>O caminho completo do criativo, fase por fase:</strong> teste enxuto em CBO lateralizada, pré-escala com decisão por horário e escala estável no Bidcap — o sistema que as maiores operações usam para chegar a 1.000 vendas por dia.</p>
+
+<div class="flow">
+  <span class="fstep">🧪 Teste</span><span class="farrow">→</span>
+  <span class="fstep">🌡️ Pré-Escala</span><span class="farrow">→</span>
+  <span class="fstep hot">🚀 Escala Bidcap</span><span class="farrow">→</span>
+  <span class="fstep grave">⚰️ Cemitério</span>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>01 · Teste de Criativo 🧪</h2>
+
+<p class="sub">Cada criativo novo entra na máquina por aqui: uma campanha CBO enxuta, público aberto e uma régua de corte que te deixa testar muitos criativos <strong>sem queimar orçamento com o que não funciona.</strong></p>
+
+<h3>1.1 · Ficha da campanha</h3>
+<div class="spec">
+  <div class="spec-head">📋 Campanha de teste</div>
+  <dl>
+    <dt>Estrutura</dt><dd><strong>CBO 1-50-1</strong> por criativo (1 campanha · 50 conjuntos · 1 anúncio)</dd>
+    <dt>Orçamento</dt><dd><strong>60% do valor do CPA</strong> (o ticket de teste). CPA de $80 → <strong>~$50</strong> · CPA de $150 → <strong>~$90</strong></dd>
+    <dt>Público</dt><dd>100% aberto — segmentar apenas <strong>idade e gênero</strong></dd>
+    <dt>Tempo</dt><dd>Rodar por <strong>1 dia e meio</strong></dd>
+    <dt>Início</dt><dd>Programar para as <strong>04:00</strong> (nunca 00:00: a CBO gasta rápido na virada; começando às 04:00, chega melhor no pico)</dd>
+  </dl>
+</div>
+
+<div class="rule idea">
+  <span class="rlabel">💡 Por que funciona</span>
+  <p>Os 50 conjuntos criam uma <strong>lateralização de fatias de público</strong> usando o mesmo ad. Você força a Meta a encontrar o público comprador pra você — e com muitas fatias rodando ao mesmo tempo, a chance de vender <strong>já no teste</strong> aumenta.</p>
+</div>
+
+<h3>1.3 · Régua de corte — custo por IC</h3>
+<div class="rule cut">
+  <span class="rlabel">✂️ Regra de corte (P1)</span>
+  <ul class="steps">
+    <li><b>Gastou METADE do orçamento de teste sem gerar 1 IC?</b> Pode desativar. CPA $80 (orçamento ~$50) → corte em <strong>~$25</strong>; CPA $150 (orçamento $90) → corte em <strong>~$45</strong>. A Meta precisa gastar essa base pra algoritmo trabalhar.</li>
+    <li><b>Gerou o IC?</b> Deixa gastar mais <strong>~20% do orçamento</strong> e observa — <strong>~$10</strong> no CPA $80, <strong>~$18</strong> no CPA $150.</li>
+    <li><b>A margem extra não virou um novo IC?</b> Desativa também. Você vai sentindo o criativo junto com o algoritmo desde o 1º dia.</li>
+  </ul>
+  <p style="margin:12px 0 0;font-size:14px;color:#6B6560">Por que a régua acompanha o ticket: num funil de CPA maior, o IC custa proporcionalmente mais. Cortar nos $25 fixos com CPA $150 mataria criativo antes do algoritmo ter verba.</p>
+</div>
+
+<h3>1.4 · Quanto custa testar</h3>
+<div class="rule tip">
+  <span class="rlabel">💰 Custo</span>
+  <p>Se testar 5 criativos e <strong>nenhum</strong> validar no primeiro corte, máximo de gasto = <strong>5 × metade do orçamento de teste</strong>: <strong>~$125</strong> no CPA $80, <strong>~$225</strong> no CPA $150. Você testa vários criativos sem deixar todos gastarem o orçamento inteiro pra descobrir que não funcionam. Por isso: <strong>suba pelo menos 5 testes de criativo por semana.</strong></p>
+</div>
+
+<h3>1.6 · Dica que vale ouro</h3>
+<div class="rule tip">
+  <span class="rlabel">⭐ Dica que vale ouro</span>
+  <p>Se você está começando, teste os seus criativos <strong>apenas no final de semana, subindo de sexta pra sábado.</strong> O sábado é o dia com melhor chance de venda. Pra ter o máximo de eficiência com pouco caixa, concentre os testes nele. Já está avançado, com o fluxo otimizado? Pode testar todos os dias.</p>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>02 · Pré-Escala 🌡️</h2>
+
+<p class="sub">O criativo passou no teste? Agora prova que aguenta orçamento. A pré-escala usa <strong>o período da manhã para identificar rápido quais campanhas estão respondendo</strong> — e concentra o dinheiro nas que venderam dentro do CPA alvo.</p>
+
+<h3>2.1 · Ficha da pré-escala</h3>
+<div class="spec">
+  <div class="spec-head">📋 Estrutura da fase</div>
+  <dl>
+    <dt>Campanha</dt><dd>Usar a <strong>mesma campanha</strong> que foi subida no teste</dd>
+    <dt>Quantidade</dt><dd><strong>4 campanhas</strong> dessa estrutura</dd>
+    <dt>Orçamento inicial</dt><dd><strong>1 ticket de CPA = $80</strong> por campanha ($320 no total)</dd>
+    <dt>Início</dt><dd>Programar as campanhas para as <strong>04:00</strong></dd>
+  </dl>
+</div>
+
+<h3>2.2 · Decisões — Funil de VSL 🎬</h3>
+<table>
+  <thead><tr><th>Hora</th><th>Decisão</th></tr></thead>
+  <tbody>
+    <tr><td><b>12h</b></td><td>Sem <b>2 ICs</b> → desativar. Vendeu no CPA desejado → <b>aumentar o orçamento em 5×</b>. Tem 2+ ICs mas não vendeu → manter até 15h.</td></tr>
+    <tr><td><b>15h</b></td><td>As que tinham ICs sem venda: vendeu → <b>manter</b>. Não vendeu → <b>desativar</b>.</td></tr>
+    <tr><td><b>16h</b></td><td>As que <b>aumentadas em 5×</b> e não venderam de novo → diminuir para <b>$100</b> (sinaliza algoritmo).</td></tr>
+    <tr><td><b>Fim</b></td><td>Saiu no lucro → <b>criativo pra escala</b>. Empatou → repete por mais um dia.</td></tr>
+  </tbody>
+</table>
+
+<h3>2.3 · Decisões — Funil de Advertorial 📰</h3>
+<table>
+  <thead><tr><th>Hora</th><th>Decisão</th></tr></thead>
+  <tbody>
+    <tr><td><b>12h</b></td><td>Sem <b>5 ICs</b> → desativar. Vendeu → <b>aumentar em 3×</b>. ICs sem venda → manter até 15h.</td></tr>
+    <tr><td><b>15h</b></td><td>ICs sem venda: vendeu → <b>manter</b>. Não vendeu → <b>desativar</b>.</td></tr>
+    <tr><td><b>16h</b></td><td>As que <b>aumentadas em 3×</b> e não venderam → diminuir para <b>$100</b>.</td></tr>
+    <tr><td><b>Fim</b></td><td>Saiu no lucro → <b>criativo pra escala</b>.</td></tr>
+  </tbody>
+</table>
+<p style="color:#6B6560;font-size:14px">O advertorial gera IC mais barato por natureza — régua mais alta (5 ICs) e aumento mais conservador (3× contra 5× da VSL).</p>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>03 · Escala — CBO Bidcap 🚀</h2>
+
+<p class="sub">Criativo validado entra aqui. É a estrutura da Bahiana aplicada à escala: <strong>muitos conjuntos com o orçamento dividido entre todos, e a inteligência da Meta jogando a teu favor dentro do Bidcap.</strong> A escala permanece mais estável — e é esse o sistema que as maiores operações usam pra alcançar <strong>1.000 vendas/dia nas VSLs</strong> e <strong>100+ vendas/dia nos advertoriais.</strong></p>
+
+<h3>3.1 · Ficha da escala</h3>
+<div class="spec">
+  <div class="spec-head">📋 Estrutura da fase</div>
+  <dl>
+    <dt>Estrutura</dt><dd><strong>1-100-1</strong> (1 campanha · 100 conjuntos · 1 anúncio)</dd>
+    <dt>Orçamento</dt><dd><strong>10 tickets</strong> de CPA</dd>
+    <dt>Bid</dt><dd><strong>83% do CPA</strong></dd>
+  </dl>
+</div>
+
+<div class="rule warn">
+  <span class="rlabel">⚠️ Importante</span>
+  <p>A conta precisa ter <strong>histórico de gasto</strong> para o Bid Cap funcionar. Por isso a ordem das fases não é opcional: <strong>Teste → Pré-Escala → Escala.</strong></p>
+</div>
+
+<h3>3.2 · O processo de escala</h3>
+<ul class="steps">
+  <li><b>Deixe rodando por 2 dias.</b> Está gastando bem? A cada 2 dias, <strong>aumente o orçamento em 5×</strong>.</li>
+  <li><b>Campanha travada, mas com CPA bom?</b> Aumenta o Bid aos poucos. <strong>Nunca aumente mais de 30% de Bid no mesmo dia.</strong></li>
+  <li><b>Campanha não está gastando?</b> Aumente o Bid em <strong>10% por dia</strong> até <strong>1,5× o CPA</strong>. Vá devagar: pode começar a gastar muito rápido de uma vez.</li>
+</ul>
+
+<div class="rule warn">
+  <span class="rlabel">🚫 As duas regras invioláveis da Bidcap</span>
+  <p><strong>1. Nunca ultrapasse os 100 conjuntos</strong> — passou de 5 criativos validados, abre nova campanha.<br>
+  <strong>2. Nunca pause nenhum conjunto</strong> — pausar conjunto atrapalha a inteligência do CBO, que precisa de todas as fatias livres pra redistribuir o orçamento.</p>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>04 · Otimização Pós-Validação 🧬</h2>
+
+<p class="sub">Validou um criativo? O trabalho não acabou — começou a parte mais lucrativa dele. <strong>Explorar ao máximo o ângulo validado é a maior alavanca de lucratividade que você pode ter.</strong> A otimização acontece em duas linhas: <strong>formato</strong> e <strong>congruência.</strong></p>
+
+<h3>4.1 · Otimização de Formato</h3>
+<p><strong>📹 Criativo em VÍDEO — 3 variações:</strong></p>
+<ol style="list-style: none; padding-left: 0; max-width: 78ch;">
+  <li style="padding: 6px 0;">1️⃣ <b>Headline</b> — troca a promessa de abertura mantendo o resto</li>
+  <li style="padding: 6px 0;">2️⃣ <b>Avatar</b> — o mesmo roteiro na boca de outro perfil</li>
+  <li style="padding: 6px 0;">3️⃣ <b>Hook</b> — outra porta de entrada pro mesmo ângulo</li>
+</ol>
+
+<p style="margin-top:18px"><strong>🖼️ Criativo em IMAGEM — 2 variações:</strong></p>
+<ol style="list-style: none; padding-left: 0; max-width: 78ch;">
+  <li style="padding: 6px 0;">1️⃣ <b>Variação de imagem</b> — o mesmo ângulo vestindo outro formato visual</li>
+  <li style="padding: 6px 0;">2️⃣ <b>Variação das 3 primeiras linhas do texto</b> — a entrada do primary text</li>
+</ol>
+
+<div class="rule tip">
+  <span class="rlabel">🤫 O segredo</span>
+  <p><strong>Manter o HOOK e alterar o INÍCIO DO BODY.</strong> O hook validado continua comprando a atenção — e o começo novo do corpo entrega leitura completamente diferente. Pra Meta e pro público, isso <strong>muda totalmente o anúncio</strong>. Está funcionando demais: usa e abusa dessa variação.</p>
+</div>
+
+<h3>4.2 · Congruência</h3>
+<ul class="steps">
+  <li><b>🎬 Funil de VSL:</b> criar maior congruência na <b>microlead</b>.</li>
+  <li><b>📰 Funil de Advertorial:</b> aumentar a congruência entre o criativo e a <b>headline + imagem da página</b>.</li>
+  <li><b>Como é um funil novo, o caminho se repete por completo:</b> Teste → Pré-Escala → Bidcap.</li>
+</ul>
+
+<!-- ════════════════════════════════════════════ -->
+<h2>05 · Cemitério — CBO Cost Cap ⚰️</h2>
+
+<p class="sub">Winner que escalou e parou de gastar não vai pro lixo — vai pro cemitério: uma <strong>pescaria de conversão barata</strong>, com lance apertado de propósito, esperando o leilão devolver o criativo pro jogo.</p>
+
+<h3>5.1 · Ficha do cemitério</h3>
+<div class="spec">
+  <div class="spec-head">📋 Estrutura da fase</div>
+  <dl>
+    <dt>Estrutura</dt><dd><strong>1-100-1</strong></dd>
+    <dt>Orçamento</dt><dd><strong>10 tickets</strong></dd>
+    <dt>Cost Cap</dt><dd><strong>50% do CPA</strong> — lance na metade, apertado de propósito</dd>
+  </dl>
+</div>
+
+<h3>5.2 · Regras</h3>
+<ul class="steps">
+  <li><b>Quem entra:</b> só criativo que <b>já escalou</b> mas está com gasto <b>$0 há 7 dias ou mais.</b></li>
+  <li><b>Regra de ouro:</b> nunca mexer no valor do custo por resultado.</li>
+  <li><b>Quem sai:</b> gastou <b>3 dias seguidos dentro do CPA</b> → sai do cemitério e volta pra Escala.</li>
+  <li><b>Na maioria dos dias essa campanha vai gastar $0.</b> Isso é o funcionamento correto — ela só compra quando a conversão aparece pela metade do preço.</li>
+</ul>
+
+<footer style="margin-top: 48px; padding: 26px 0; border-top: 3px solid #14100E; text-align: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #6B6560;">
+  Estrutura CBO · <em style="color:#D9310B">É um jogo de teste.</em> · @gbifi — DTC Affiliate Pro · Salvo 2026-08-17
+</footer>
+
+</body>
+</html>

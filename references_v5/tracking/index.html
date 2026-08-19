@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DR Tracking Dashboard — Live · SlimSoda / Cardio Clear / Linfaflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f6f4f0; color: #1a1a1a; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+  .layout { max-width: 1280px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+  .brand h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; letter-spacing: -0.5px; }
+  .brand h1 .accent { color: #c0392b; }
+  .brand p { color: #888; font-size: 13px; margin-top: 4px; }
+  .brand a { color: #888; text-decoration: none; margin-left: 12px; }
+  .brand a:hover { color: #c0392b; }
+  .live-pill { display: inline-flex; align-items: center; gap: 6px; background: #06a77d; color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  .live-pill::before { content: ""; width: 7px; height: 7px; background: #fff; border-radius: 50%; box-shadow: 0 0 0 3px rgba(255,255,255,0.3); animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .kpi { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 20px 22px; position: relative; overflow: hidden; }
+  .kpi::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--accent, #c0392b); }
+  .kpi.revenue { --accent: #06a77d; }
+  .kpi.leads { --accent: #4ea1ff; }
+  .kpi.clientes { --accent: #ffd166; }
+  .kpi.cr { --accent: #a29bfe; }
+  .kpi.ticket { --accent: #d68910; }
+  .kpi.churn { --accent: #c0392b; }
+  .kpi .label { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+  .kpi .value { font-family: 'Playfair Display', serif; font-size: 36px; font-weight: 900; margin-top: 4px; line-height: 1; }
+  .kpi .delta { font-size: 11px; color: #888; margin-top: 6px; }
+  .kpi .delta strong { color: #06a77d; }
+
+  .panel { background: #fff; border: 1px solid #e5e5e5; border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+  .panel h2 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 900; margin-bottom: 4px; }
+  .panel .sub { color: #888; font-size: 12px; margin-bottom: 18px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .chart-wrap { position: relative; height: 260px; }
+
+  .table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table th { text-align: left; padding: 10px 12px; background: #f6f4f0; color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; border-bottom: 1px solid #e5e5e5; }
+  .table td { padding: 10px 12px; border-bottom: 1px solid #f0f0f0; }
+  .table tr:last-child td { border-bottom: none; }
+  .table tr:hover td { background: #fafafa; }
+  .table .bar { display: inline-block; height: 6px; background: linear-gradient(90deg, #c0392b, #a29bfe); border-radius: 3px; vertical-align: middle; margin-right: 8px; }
+  .table .num { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+  .table .pos { color: #06a77d; font-weight: 700; }
+  .table .neg { color: #c0392b; font-weight: 700; }
+
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
+  .filter-bar .label { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-right: 6px; }
+  .filter-bar select, .filter-bar input { padding: 6px 10px; border: 1px solid #e5e5e5; border-radius: 6px; font-family: inherit; font-size: 12px; background: #fff; color: #1a1a1a; }
+  .filter-bar select { min-width: 180px; }
+
+  .skeleton { padding: 32px; text-align: center; color: #888; font-size: 13px; }
+  .skeleton .spin { display: inline-block; width: 24px; height: 24px; border: 2px solid #e5e5e5; border-top-color: #c0392b; border-radius: 50%; animation: spin 0.8s linear infinite; margin-right: 8px; vertical-align: middle; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .status-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; font-size: 12px; color: #666; }
+  .status-row .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+  .status-row .dot.green { background: #06a77d; }
+  .status-row .dot.red { background: #c0392b; }
+
+  .footer { margin-top: 40px; padding-top: 18px; border-top: 1px solid #e5e5e5; color: #888; font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header>
+    <div class="brand">
+      <h1>DR <span class="accent">Tracking</span> Dashboard</h1>
+      <p>Live attribution from Supabase · <a href="../">← Hub</a> · <a href="../index.html">Briefings</a> · <a href="https://github.com/vsugamele/Slim-Soda01" target="_blank">Slim-Soda01 repo</a></p>
+    </div>
+    <div>
+      <span class="live-pill" id="live-pill">Live · refreshes on F5</span>
+    </div>
+  </header>
+
+  <!-- KPIs -->
+  <div class="kpi-row" id="kpi-row">
+    <div class="kpi leads"><div class="label">Total leads</div><div class="value" id="kpi-leads">—</div><div class="delta">carregando…</div></div>
+    <div class="kpi clientes"><div class="label">Clientes</div><div class="value" id="kpi-clientes">—</div><div class="delta">carregando…</div></div>
+    <div class="kpi cr"><div class="label">Lead → Client</div><div class="value" id="kpi-cr">—</div><div class="delta">carregando…</div></div>
+    <div class="kpi revenue"><div class="label">Revenue aprovado</div><div class="value" id="kpi-revenue">—</div><div class="delta">carregando…</div></div>
+    <div class="kpi ticket"><div class="label">Ticket médio</div><div class="value" id="kpi-ticket">—</div><div class="delta">carregando…</div></div>
+    <div class="kpi churn"><div class="label">Refund rate</div><div class="value" id="kpi-churn">—</div><div class="delta">carregando…</div></div>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    <span class="label">Filtros:</span>
+    <select id="filter-project">
+      <option value="">Todos os projetos</option>
+    </select>
+    <select id="filter-plataforma">
+      <option value="">Todas plataformas</option>
+    </select>
+    <select id="filter-period">
+      <option value="all">Todo o período</option>
+      <option value="30d">Últimos 30 dias</option>
+      <option value="7d">Últimos 7 dias</option>
+    </select>
+    <span id="filter-status" class="status-row" style="margin-left:auto;"></span>
+  </div>
+
+  <!-- Funnel + Platform chart -->
+  <div class="grid-2">
+    <div class="panel">
+      <h2>📊 Funil de conversão</h2>
+      <p class="sub">Lead → Cliente por plataforma (apenas aprovadas)</p>
+      <div class="chart-wrap"><canvas id="chart-funnel"></canvas></div>
+    </div>
+    <div class="panel">
+      <h2>🍰 Leads por plataforma</h2>
+      <p class="sub">Origem de captação (todos os leads)</p>
+      <div class="chart-wrap"><canvas id="chart-platform"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Revenue chart + Top leads -->
+  <div class="grid-2">
+    <div class="panel">
+      <h2>💰 Receita por mês</h2>
+      <p class="sub">Apenas vendas aprovadas (R$)</p>
+      <div class="chart-wrap"><canvas id="chart-revenue"></canvas></div>
+    </div>
+    <div class="panel">
+      <h2>🏆 Top clientes por gasto</h2>
+      <p class="sub">Lifetime value no projeto (top 10)</p>
+      <div id="top-clients-table" class="skeleton"><span class="spin"></span>Carregando…</div>
+    </div>
+  </div>
+
+  <!-- Recent activity -->
+  <div class="panel">
+    <h2>🕐 Atividade recente</h2>
+    <p class="sub">Últimos 20 leads criados</p>
+    <div id="recent-table" class="skeleton"><span class="spin"></span>Carregando…</div>
+  </div>
+
+  <div class="footer">
+    DR Tracking Dashboard v1 · <span id="footer-time"></span> · data: Supabase <code>imphq_leads</code> + <code>imphq_vendas</code> · access: anon key (read-only)
+  </div>
+
+</div>
+
+<script>
+/* ============================================================
+   SUPABASE CLIENT (anon key, read-only)
+   ============================================================ */
+const SUPA_URL = 'https://tkbivipqiewkfnhktmqq.supabase.co';
+const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrYml2aXBxaWV3a2ZuaGt0bXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NzY4NDgsImV4cCI6MjA1NDA1Mjg0OH0.2TnLj4lriG7eoPQWDo0mV8u8YHor6bd5ItZCHYhkym0';
+const HDR = {
+  'apikey': SUPA_KEY,
+  'Authorization': 'Bearer ' + SUPA_KEY,
+  'Content-Type': 'application/json'
+};
+
+async function supaGet(table, query = ''){
+  const url = `${SUPA_URL}/rest/v1/${table}?${query}`;
+  const r = await fetch(url, { headers: HDR });
+  if(!r.ok) throw new Error(`${table}: ${r.status}`);
+  return r.json();
+}
+
+const fmtBRL = v => 'R$' + (v||0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const fmtNum = v => (v||0).toLocaleString('pt-BR');
+const fmtPct = v => ((v||0) * 100).toFixed(1) + '%';
+const fmtDate = s => s ? new Date(s).toLocaleDateString('pt-BR', { day:'2-digit', month:'short', year:'numeric'}) : '—';
+const fmtDateTime = s => s ? new Date(s).toLocaleString('pt-BR', { day:'2-digit', month:'short', hour:'2-digit', minute:'2-digit'}) : '—';
+const truncate = (s, n) => s && s.length > n ? s.substring(0, n) + '…' : s || '';
+
+/* ============================================================
+   STATE + FILTERS
+   ============================================================ */
+const state = {
+  leads: [],
+  vendas: [],
+  filtered: { leads: [], vendas: [] },
+  projects: [],
+  plataformas: [],
+};
+
+function applyFilters(){
+  const proj = document.getElementById('filter-project').value;
+  const plat = document.getElementById('filter-plataforma').value;
+  const per = document.getElementById('filter-period').value;
+  const now = Date.now();
+  const cutoff = per === '7d' ? now - 7*86400e3 : per === '30d' ? now - 30*86400e3 : 0;
+
+  state.filtered.leads = state.leads.filter(l => {
+    if(proj && l.project_id !== proj) return false;
+    if(plat && l.plataforma !== plat) return false;
+    if(cutoff && new Date(l.criado_em || l.created_at || 0).getTime() < cutoff) return false;
+    return true;
+  });
+  state.filtered.vendas = state.vendas.filter(v => {
+    if(proj && v.project_id !== proj) return false;
+    if(plat && v.plataforma !== plat) return false;
+    if(cutoff && new Date(v.data_venda || v.created_at || 0).getTime() < cutoff) return false;
+    return true;
+  });
+  render();
+}
+
+/* ============================================================
+   CHARTS
+   ============================================================ */
+const charts = {};
+function destroyChart(id){
+  if(charts[id]){ charts[id].destroy(); delete charts[id]; }
+}
+
+function renderFunnel(){
+  destroyChart('funnel');
+  const aprovados = state.filtered.vendas.filter(v => v.status === 'aprovado' || v.status === 'approved' || v.status === 'reembolsado' ? false : true);
+  // group by plataforma
+  const byPlat = {};
+  state.filtered.leads.forEach(l => {
+    const p = l.plataforma || 'desconhecido';
+    byPlat[p] = byPlat[p] || { leads: 0, vendas: 0 };
+    byPlat[p].leads++;
+  });
+  // count clientes (leads with status cliente)
+  const clientesByLeadId = new Set(state.filtered.leads.filter(l => (l.status||'').toLowerCase() === 'cliente').map(l => l.id));
+  state.filtered.vendas.filter(v => (v.status||'').toLowerCase() === 'aprovado').forEach(v => {
+    const p = v.plataforma || 'desconhecido';
+    byPlat[p] = byPlat[p] || { leads: 0, vendas: 0 };
+    byPlat[p].vendas++;
+  });
+  // Sort by leads desc, take top 8
+  const platforms = Object.entries(byPlat).sort((a,b) => b[1].leads - a[1].leads).slice(0, 8);
+  const ctx = document.getElementById('chart-funnel').getContext('2d');
+  charts.funnel = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: platforms.map(p => truncate(p[0], 18)),
+      datasets: [
+        { label: 'Leads', data: platforms.map(p => p[1].leads), backgroundColor: '#4ea1ff' },
+        { label: 'Vendas aprovadas', data: platforms.map(p => p[1].vendas), backgroundColor: '#06a77d' }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { font: { size: 11 } } } },
+      scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+    }
+  });
+}
+
+function renderPlatform(){
+  destroyChart('platform');
+  const byPlat = {};
+  state.filtered.leads.forEach(l => {
+    const p = l.plataforma || 'desconhecido';
+    byPlat[p] = (byPlat[p]||0) + 1;
+  });
+  const sorted = Object.entries(byPlat).sort((a,b) => b[1]-a[1]).slice(0, 8);
+  const total = sorted.reduce((a, [_, n]) => a+n, 0) || 1;
+  const ctx = document.getElementById('chart-platform').getContext('2d');
+  charts.platform = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: sorted.map(p => truncate(p[0], 22)),
+      datasets: [{
+        data: sorted.map(p => p[1]),
+        backgroundColor: ['#c0392b', '#4ea1ff', '#06a77d', '#ffd166', '#a29bfe', '#d68910', '#7c3aed', '#5d6d7e'],
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { position: 'right', labels: { font: { size: 11 }, boxWidth: 12 } },
+        tooltip: { callbacks: { label: ctx => `${ctx.label}: ${ctx.raw} (${(ctx.raw*100/total).toFixed(1)}%)` } }
+      }
+    }
+  });
+}
+
+function renderRevenue(){
+  destroyChart('revenue');
+  // group vendas aprovadas by year-month
+  const byMonth = {};
+  state.filtered.vendas.filter(v => (v.status||'').toLowerCase() === 'aprovado').forEach(v => {
+    const d = new Date(v.data_venda || v.created_at || 0);
+    if(isNaN(d)) return;
+    const k = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2, '0');
+    byMonth[k] = (byMonth[k]||0) + (parseFloat(v.valor)||0);
+  });
+  const sorted = Object.entries(byMonth).sort((a,b) => a[0].localeCompare(b[0])).slice(-12);
+  const ctx = document.getElementById('chart-revenue').getContext('2d');
+  charts.revenue = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: sorted.map(p => p[0]),
+      datasets: [{
+        label: 'R$ aprovado',
+        data: sorted.map(p => p[1]),
+        borderColor: '#06a77d',
+        backgroundColor: 'rgba(6,167,125,0.12)',
+        fill: true, tension: 0.3,
+        pointRadius: 4, pointBackgroundColor: '#06a77d',
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true, ticks: { callback: v => 'R$' + v.toLocaleString('pt-BR') } }
+      }
+    }
+  });
+}
+
+/* ============================================================
+   RENDER TABLES
+   ============================================================ */
+function renderTopClients(){
+  const byLead = {};
+  state.filtered.vendas.filter(v => (v.status||'').toLowerCase() === 'aprovado').forEach(v => {
+    const k = v.lead_id;
+    if(!k) return;
+    byLead[k] = (byLead[k] || 0) + (parseFloat(v.valor)||0);
+  });
+  // Cross-reference with lead nome + email
+  const leadMap = {};
+  state.filtered.leads.forEach(l => { if(l.id) leadMap[l.id] = l; });
+  const rows = Object.entries(byLead)
+    .map(([id, total]) => ({ lead: leadMap[id] || {}, total, count: state.filtered.vendas.filter(v => v.lead_id === id && (v.status||'').toLowerCase() === 'aprovado').length }))
+    .sort((a,b) => b.total - a.total).slice(0, 10);
+  if(!rows.length){ document.getElementById('top-clients-table').innerHTML = '<div class="skeleton">Sem vendas no filtro</div>'; return; }
+  const max = Math.max(...rows.map(r => r.total));
+  let html = '<table class="table"><thead><tr><th>Cliente</th><th>Email</th><th>Compras</th><th>LTV</th><th></th></tr></thead><tbody>';
+  rows.forEach(r => {
+    const bar = '<span class="bar" style="width:' + (r.total*100/max) + '%"></span>';
+    html += `<tr>
+      <td><strong>${truncate(r.lead.nome || '(sem nome)', 22)}</strong></td>
+      <td>${truncate(r.lead.email || '—', 28)}</td>
+      <td class="num">${r.count}</td>
+      <td class="num pos">${fmtBRL(r.total)}</td>
+      <td>${bar}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('top-clients-table').innerHTML = html;
+  document.getElementById('top-clients-table').classList.remove('skeleton');
+}
+
+function renderRecent(){
+  const recent = [...state.filtered.leads].sort((a,b) => new Date(b.criado_em || b.created_at || 0) - new Date(a.criado_em || a.created_at || 0)).slice(0, 20);
+  if(!recent.length){ document.getElementById('recent-table').innerHTML = '<div class="skeleton">Sem leads no filtro</div>'; return; }
+  let html = '<table class="table"><thead><tr><th>Quando</th><th>Nome</th><th>Email</th><th>Plataforma</th><th>Status</th></tr></thead><tbody>';
+  recent.forEach(l => {
+    const isCli = (l.status||'').toLowerCase() === 'cliente';
+    html += `<tr>
+      <td>${fmtDateTime(l.criado_em || l.created_at)}</td>
+      <td><strong>${truncate(l.nome || '(sem nome)', 22)}</strong></td>
+      <td>${truncate(l.email || '—', 28)}</td>
+      <td>${truncate(l.plataforma || '—', 22)}</td>
+      <td class="${isCli ? 'pos' : ''}">${l.status || 'lead'}</td>
+    </tr>`;
+  });
+  html += '</tbody></table>';
+  document.getElementById('recent-table').innerHTML = html;
+  document.getElementById('recent-table').classList.remove('skeleton');
+}
+
+/* ============================================================
+   KPIs
+   ============================================================ */
+function renderKPIs(){
+  const total = state.filtered.leads.length;
+  const clientes = state.filtered.leads.filter(l => (l.status||'').toLowerCase() === 'cliente').length;
+  const cr = total ? clientes / total : 0;
+  const aprovados = state.filtered.vendas.filter(v => (v.status||'').toLowerCase() === 'aprovado');
+  const receita = aprovados.reduce((a, v) => a + (parseFloat(v.valor)||0), 0);
+  const ticket = aprovados.length ? receita / aprovados.length : 0;
+  const refunds = state.filtered.vendas.filter(v => ['reembolsado','refunded','chargeback','recusado','cancelado'].includes((v.status||'').toLowerCase())).length;
+  const churnRate = aprovados.length ? refunds / aprovados.length : 0;
+  document.getElementById('kpi-leads').textContent = fmtNum(total);
+  document.getElementById('kpi-clientes').textContent = fmtNum(clientes);
+  document.getElementById('kpi-cr').textContent = fmtPct(cr);
+  document.getElementById('kpi-revenue').textContent = fmtBRL(receita);
+  document.getElementById('kpi-ticket').textContent = fmtBRL(ticket);
+  document.getElementById('kpi-churn').textContent = fmtPct(churnRate);
+  // Delta text
+  const deltas = document.querySelectorAll('.kpi .delta');
+  if(deltas[0]) deltas[0].innerHTML = `${fmtNum(state.filtered.leads.length)} no filtro`;
+  if(deltas[1]) deltas[1].innerHTML = `<strong>${fmtPct(cr)}</strong> lead → client`;
+  if(deltas[2]) deltas[2].innerHTML = `industry avg 2-3%`;
+  if(deltas[3]) deltas[3].innerHTML = `${aprovados.length} vendas aprovadas`;
+  if(deltas[4]) deltas[4].innerHTML = `${aprovados.length} vendas`;
+  if(deltas[5]) deltas[5].innerHTML = `${refunds} refunds + chargebacks`;
+}
+
+function render(){
+  renderKPIs();
+  renderFunnel();
+  renderPlatform();
+  renderRevenue();
+  renderTopClients();
+  renderRecent();
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+async function boot(){
+  const status = document.getElementById('filter-status');
+  try {
+    status.innerHTML = '<span class="dot green"></span>Fetching from Supabase…';
+    const [leads, vendas] = await Promise.all([
+      supaGet('imphq_leads', 'select=id,nome,email,phone,project_id,plataforma,status,score,tags,total_gasto,criado_em,created_at,updated_at&limit=2000'),
+      supaGet('imphq_vendas', 'select=id,lead_id,project_id,produto_nome,produto_id_ext,valor,plataforma,status,data_venda,created_at&limit=2000')
+    ]);
+    state.leads = leads || [];
+    state.vendas = vendas || [];
+    state.projects = [...new Set(state.leads.map(l => l.project_id).filter(Boolean))].sort();
+    state.plataformas = [...new Set(state.leads.map(l => l.plataforma).filter(Boolean))].sort();
+    // populate filters
+    const fproj = document.getElementById('filter-project');
+    state.projects.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; fproj.appendChild(o); });
+    const fplat = document.getElementById('filter-plataforma');
+    state.plataformas.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = truncate(p, 30); fplat.appendChild(o); });
+    document.getElementById('filter-project').addEventListener('change', applyFilters);
+    document.getElementById('filter-plataforma').addEventListener('change', applyFilters);
+    document.getElementById('filter-period').addEventListener('change', applyFilters);
+    status.innerHTML = `<span class="dot green"></span>${fmtNum(state.leads.length)} leads · ${fmtNum(state.vendas.length)} vendas carregadas`;
+    applyFilters();
+  } catch(e){
+    console.error(e);
+    status.innerHTML = `<span class="dot red"></span>Erro: ${e.message}`;
+    document.querySelectorAll('.kpi .value').forEach(el => el.textContent = '!');
+  }
+  document.getElementById('footer-time').textContent = new Date().toLocaleString('pt-BR');
+}
+
+boot();
+</script>
+
+</body>
+</html>

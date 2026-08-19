@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook SlimSoda X1 — Primary Test Sequence (Bifi methodology)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#ff8a3d; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --purple:#7c3aed; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(124,58,237,0.12); color:var(--purple); border:1px solid rgba(124,58,237,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h2 { font-size:22px; margin:36px 0 14px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:17px; margin:22px 0 10px; color:var(--accent); }
+  h4 { font-size:14px; margin:18px 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  p, li { color:var(--text); }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.purple { border-left-color:var(--purple); }
+  .callout strong { color:var(--accent); }
+  .callout.purple strong { color:var(--purple); }
+  .pill { display:inline-block; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:rgba(255,138,61,0.15); color:var(--accent); border:1px solid rgba(255,138,61,0.3); }
+  .pill-p1 { background:rgba(255,138,61,0.15); color:var(--accent); }
+  .pill-p2 { background:rgba(78,161,255,0.15); color:var(--blue); }
+  .pill-p3 { background:rgba(6,167,125,0.15); color:var(--green); }
+  .pill-p4 { background:rgba(192,57,43,0.15); color:var(--red); }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:14px; }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; overflow-x:auto; font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.6; color:#e7eaf0; }
+  pre .c { color:var(--muted); }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .card .value { font-size:18px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .num-big { font-size:32px; font-weight:800; letter-spacing:-0.02em; color:var(--gold); }
+  .flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:18px 0 14px; }
+  .flow .step { font-size:11.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border:1.5px solid var(--border); background:var(--panel); padding:7px 11px; border-radius:4px; }
+  .flow .step.hot { background:var(--accent); color:#0b0d10; border-color:var(--accent); }
+  .flow .arrow { color:var(--accent); font-weight:800; }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  @media (max-width:720px) { .grid-2, .grid-3 { grid-template-columns:1fr; } h1 { font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Playbook · SlimSoda X1 · Bifi methodology aplicado</span>
+    <h1>SlimSoda X1 — Primary Test Sequence 🧪</h1>
+    <p class="lede">Sequência concreta de teste primário do SlimSoda, baseada na metodologia <strong>P1 → P2 → P3 → P4</strong> do @gbifi (Estrutura CBO + DTC Affiliate Black). Cada fase tem budget, tempo, métrica de corte e output. O SlimSoda tem CPA estimado de <strong>$80</strong> e ticket de <strong>$29.99 B1G1</strong> (oferta) ou <strong>$59.98</strong> (B2G2 BEST VALUE).</p>
+    <p class="muted">Aplicação: <strong>X1 = Phase 1 sequence</strong> (primary text + image testing). Próximas: <strong>X2 = Phase 2 (escala)</strong>, <strong>X3 = Phase 3 (otimização/variação)</strong>, <strong>X4 = Phase 4 (cemitério)</strong>.</p>
+  </header>
+
+  <div class="callout purple">
+    <strong>🧠 Lógica por trás do "X1":</strong> o usuário pediu "sequência de X1 pro Slim Soda". Interpreto como <strong>Phase 1 do sistema Bifi</strong> (Teste de Primary Text + Imagem antes de escalar). O nome "X1" é uma forma abreviada de falar "primeira sequência de teste" — vou aplicar as duas peças canônicas (P1 + P2) e mostrar o output pronto pra rodar.
+  </div>
+
+  <h2>📊 Resumo rápido (X1 = 2 fases = ~5 dias)</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="label">P1 — Primary Text</div>
+      <div class="value">ABO 1-5-3</div>
+      <p class="muted" style="margin-top:6px">5 concepts × 3 primary texts = <strong>15 ads</strong> · $40/conjunto · <strong>2 dias</strong> · $400 total</p>
+    </div>
+    <div class="card">
+      <div class="label">P2 — Imagem/Adformat</div>
+      <div class="value">ABO 1-5-10</div>
+      <p class="muted" style="margin-top:6px">5 conjuntos × 10 adformats = <strong>50 ads</strong> · $40/conjunto · <strong>3 dias</strong> · $600 total</p>
+    </div>
+    <div class="card">
+      <div class="label">Output (winner)</div>
+      <div class="value">1 angle + 1 image</div>
+      <p class="muted" style="margin-top:6px">O criativo validado vai pra <strong>P3 (escala)</strong> com CBO bidcap · 1-100-1 · Bid 83% CPA</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <span class="step">P1 (2d · $400)</span><span class="arrow">→</span>
+    <span class="step">P2 (3d · $600)</span><span class="arrow">→</span>
+    <span class="step hot">P3 ESCALA (1+)</span><span class="arrow">→</span>
+    <span class="step">P4 CEMITÉRIO</span>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p1">P1</span> Primary Text — qual copy vende?</h2>
+
+  <p><strong>Objetivo:</strong> descobrir qual <em>primary text</em> (não qual imagem ainda) o avatar do SlimSoda quer ler. A imagem é genérica, neutra — só pra parar o scroll.</p>
+
+  <h3>📋 Ficha técnica P1 — SlimSoda</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-3 (1 campanha · 5 conjuntos · 3 anúncios por conjunto = <strong>15 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td><strong>$40/dia</strong> × 2 dias = $80 por conjunto · <strong>$400 total</strong></td></tr>
+      <tr><td><strong>Imagem</strong></td><td>Mesma imagem genérica em todos os 15 (bottle SlimSoda neutro, fundo claro, sem texto)</td></tr>
+      <tr><td><strong>Headline</strong></td><td>Mesma nos 3 anúncios de cada conjunto (testando copy, não headline)</td></tr>
+      <tr><td><strong>Público</strong></td><td>100% aberto · só <strong>idade (35-65) + gênero (mulher)</strong> — avatar canonical</td></tr>
+      <tr><td><strong>CTA</strong></td><td>"READ THE ARTICLE →" (soft, frame editorial)</td></tr>
+      <tr><td><strong>Link</strong></td><td>LP canonical SlimSoda (Shopzenvy Lite B1G1) com UTM <code>utm_source=meta&utm_medium=cpc&utm_campaign=x1_p1_&lt;adset&gt;</code></td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>2 dias</strong> (programar pra começar 04:00)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎯 Os 5 concepts (ângulo + avatar) — SlimSoda canônico</h3>
+  <p>Cada concept = <strong>1 ângulo + 1 avatar específico</strong>. Os 3 primary texts por conjunto são variações de copy pra MESMO concept (mesma estrutura, mesmo gancho emocional, palavras diferentes).</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Concept (ângulo + avatar)</th>
+        <th>Hook emocional</th>
+        <th>Primary texts (3 variantes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>C1</strong></td>
+        <td><strong>"Food noise + closet" (Dana Rachel 41 anos)</strong></td>
+        <td>Solidão alimentar + vergonha corporal + foto-evitação</td>
+        <td>
+          (1a) "I got dressed in the closet so my husband wouldn't see me."<br>
+          (1b) "The food noise was so loud I couldn't hear my kids."<br>
+          (1c) "I haven't been in a family photo in three years."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C2</strong></td>
+        <td><strong>"Yale + baking soda scandal" (M, 50+)</strong></td>
+        <td>Traição da indústria + celebrity secret + barato vs caro</td>
+        <td>
+          (2a) "Yale doctor reveals the $1 celebrity secret..."<br>
+          (2b) "The $1 recipe Big Soda doesn't want you to know."<br>
+          (2c) "Oprah lost 43 lbs. The recipe? Baking soda + ginger + berberine."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C3</strong></td>
+        <td><strong>"After 40, after babies" (Mom, 38-50)</strong></td>
+        <td>Metabolismo mudou + body betrayal + "I'm eating less than my skinny friends"</td>
+        <td>
+          (3a) "I ate less than my skinny friends and gained. Then I found this."<br>
+          (3b) "After my second, the scale wouldn't move. This 3-second ritual broke it."<br>
+          (3c) "My body stopped listening. The fix was 3 ingredients I already had."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C4</strong></td>
+        <td><strong>"Doctor betrayal" (60+, on diet pills)</strong></td>
+        <td>Pílulas não funcionam + sem energia + banheiro 24/7</td>
+        <td>
+          (4a) "Three diet pills a day and the scale didn't move. Then I stopped taking them."<br>
+          (4b) "My doctor shrugged. 'Eat less.' I had been eating less for years."<br>
+          (4c) "The pills made me gain weight. The fix was in my kitchen."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C5</strong></td>
+        <td><strong>"Bargain bin celebrity capsules" (price-sensitive)</strong></td>
+        <td>Anti-celebrity + "$100/month não é pra mim" + barato + caseiro</td>
+        <td>
+          (5a) "The celebrity capsule is $100 a month. The injection is $1,000. My fix is $30."<br>
+          (5b) "I don't have a celebrity budget. I have a $30 budget. So I found this."<br>
+          (5c) "$100 celebrity capsule? No thanks. $30 with the same 3 ingredients? Yes."
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P1 (SlimSoda)</h3>
+  <p>Após 24-36h, analisa os 15 ads:</p>
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte (mata)</th><th>Watch (observa)</th><th>Winner (avança)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Custo por IC (Initiate Checkout)</strong></td><td>&gt; $40 (50% do budget sem 1 IC)</td><td>$20-40</td><td>&lt; $20 (CPA target atingido)</td></tr>
+      <tr><td><strong>CTR (link)</strong></td><td>&lt; 0.8%</td><td>0.8-1.5%</td><td>&gt; 1.5%</td></tr>
+      <tr><td><strong>CPC (link)</strong></td><td>&gt; $1.50</td><td>$0.50-1.50</td><td>&lt; $0.50</td></tr>
+      <tr><td><strong>Custo por page view</strong></td><td>&gt; $5</td><td>$2-5</td><td>&lt; $2 (sinal forte de hook)</td></tr>
+      <tr><td><strong>Finalizações de compra iniciadas (IC)</strong></td><td>0</td><td>1-2</td><td>3+</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P1 (pra levar pra P2)</h3>
+  <p>Você vai ter 1-2 concepts vencedores. Cada concept vencedor = 1 primary text. Leva esses 1-2 winners pra P2 (testar qual IMAGEM funciona com o texto vencedor).</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p2">P2</span> Imagem / Adformat — qual formato aguenta?</h2>
+
+  <p><strong>Objetivo:</strong> agora que você sabe qual <em>texto</em> vende, descobre qual <em>imagem/adformat</em> entrega mais IC com esse texto. Mesma copy, 10 imagens/formatos diferentes.</p>
+
+  <h3>📋 Ficha técnica P2 — SlimSoda</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-10 (1 campanha · 5 conjuntos · 10 ads por conjunto = <strong>50 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td><strong>$40/dia</strong> × 3 dias = $120 por conjunto · <strong>$600 total</strong></td></tr>
+      <tr><td><strong>Primary text</strong></td><td>O 1-2 winners da P1 (mesmo texto nos 10 ads de cada conjunto)</td></tr>
+      <tr><td><strong>Headline</strong></td><td>Mesma nos 10</td></tr>
+      <tr><td><strong>Público</strong></td><td>100% aberto · só <strong>idade (35-65) + gênero (mulher)</strong></td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>3 dias</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🖼️ Os 10 adformats a testar (com o winner text da P1)</h3>
+  <p>O SlimSoda já tem <strong>5 criativos nativos (sponsored article)</strong> salvos — esses são a base. Falta criar mais 5 pra ter 10. Distribuição sugerida:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Adformat</th>
+        <th>Descrição</th>
+        <th>Trio visual</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A1</strong></td>
+        <td>Native sponsored (split clutter vs simple)</td>
+        <td>Ad #1 salvo: lado a lado caos/clean</td>
+        <td>bottle + scoop + glass (clean side)</td>
+      </tr>
+      <tr>
+        <td><strong>A2</strong></td>
+        <td>Native sponsored (MORNING ROUTINE EXPLAINED)</td>
+        <td>Ad #2 salvo: editorial "MORNING ROUTINE EXPLAINED"</td>
+        <td>bottle + scoop + glass + drop cap</td>
+      </tr>
+      <tr>
+        <td><strong>A3</strong></td>
+        <td>Native sponsored (SPONSORED WELLNESS ARTICLE)</td>
+        <td>Ad #3 salvo: drop cap + pull-quote</td>
+        <td>bottle + spoon close-up + glass</td>
+      </tr>
+      <tr>
+        <td><strong>A4</strong></td>
+        <td>Native sponsored (MORNING WELLNESS REPORT)</td>
+        <td>Ad #4 salvo: report style</td>
+        <td>bottle + glass + steam rising</td>
+      </tr>
+      <tr>
+        <td><strong>A5</strong></td>
+        <td>Native sponsored (HEALTH DESK)</td>
+        <td>Ad #5 salvo: news desk style</td>
+        <td>bottle + scoop mid-air + glass</td>
+      </tr>
+      <tr>
+        <td><strong>A6</strong></td>
+        <td>UGC video (woman drinking)</td>
+        <td><em>A criar</em>: iPhone footage, woman 40s, morning kitchen, taking the shot</td>
+        <td>UGC real-life</td>
+      </tr>
+      <tr>
+        <td><strong>A7</strong></td>
+        <td>UGC video (before/after)</td>
+        <td><em>A criar</em>: split screen, weight loss visible, 8 weeks</td>
+        <td>before/after</td>
+      </tr>
+      <tr>
+        <td><strong>A8</strong></td>
+        <td>Carousel (3 cards: hook → mechanism → proof)</td>
+        <td><em>A criar</em>: 3 slides, mobile-first</td>
+        <td>bottle + mechanism diagram + testimonial</td>
+      </tr>
+      <tr>
+        <td><strong>A9</strong></td>
+        <td>Static lifestyle (woman + bottle in morning light)</td>
+        <td><em>A criar</em>: high-end photo, kitchen morning, golden hour</td>
+        <td>lifestyle premium</td>
+      </tr>
+      <tr>
+        <td><strong>A10</strong></td>
+        <td>Static price-anchored ($100 capsule → $30 SlimSoda)</td>
+        <td><em>A criar</em>: 2-product compare, strikethrough</td>
+        <td>price anchor visual</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P2</h3>
+  <p>Após 3 dias, analisa os 50 ads (ou pelo menos top 15 com mais gasto). Foca em <strong>IC + ROAS</strong> (não hook — isso já foi validado na P1).</p>
+
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte (mata)</th><th>Watch</th><th>Winner (vai pra P3)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Compras (não só IC)</strong></td><td>0 após 3 dias</td><td>1-3</td><td>4+ (ou IC consistente)</td></tr>
+      <tr><td><strong>ROAS</strong></td><td>&lt; 0.5</td><td>0.5-1.5</td><td>&gt; 1.5 (break-even ou melhor)</td></tr>
+      <tr><td><strong>CPA</strong></td><td>&gt; $120 (1.5× target)</td><td>$80-120</td><td>&lt; $80 (target atingido)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P2 (pra levar pra P3)</h3>
+  <p>Você vai ter <strong>1-3 combinações vencedoras (text + image)</strong>. Cada combo vira <strong>1 conjunto na P3</strong> (escala).</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p3">P3</span> Escala (CBO bidcap) — qual o teto desse criativo?</h2>
+
+  <p>Você tem 1-3 winners da P2. Agora testa até onde cada um aguenta escalar.</p>
+
+  <h3>📋 Ficha P3 — SlimSoda (1 winner exemplo)</h3>
+  <pre><span class="c"># Campanha P3 — SlimSoda
+# Estrutura: 1 campanha · 1 conjunto por criativo validado (1-3 conjuntos)
+# Verba inicial: 10 tickets de CPA = 10 × $80 = $800 por conjunto
+# Bid inicial: 83% do CPA = $66
+
+Campanha: "P3 — SlimSoda — Scale-Winners"
+  Conjunto 1: "Winner-A2-MORNING-ROUTINE"
+    Anúncio: text-P1-winner-C1 (Dana Rachel 41) + image-A2 (MORNING ROUTINE)
+    Budget: $800
+    Bid: $66 (83% CPA)
+    Bidcap: ON
+    Otimização: CONVERSÕES (Purchase)
+    Attribution: 7-day click
+
+<span class="c"># Regras de ouro (Bifi):</span>
+<span class="c"># - A cada 2-3 dias, sobe lance 17% (até 1.5× CPA = $120)</span>
+<span class="c"># - Aumenta budget em 5× se CPA estável (não trava)</span>
+<span class="c"># - NUNCA pause conjunto (prejudica inteligência do CBO)</span>
+<span class="c"># - NUNCA ultrapasse 100 conjuntos na campanha</span></pre>
+
+  <h3>📈 Sequência de escala</h3>
+  <table>
+    <thead><tr><th>Dia</th><th>Ação</th><th>Condição</th></tr></thead>
+    <tbody>
+      <tr><td><strong>D0</strong></td><td>Sobe campanha P3 com $800/conjunto, bid $66</td><td>—</td></tr>
+      <tr><td><strong>D2-3</strong></td><td>Verifica: tá gastando? CPA dentro do target?</td><td>Se SIM: aumenta budget em 5× (=$4000)</td></tr>
+      <tr><td><strong>D5-6</strong></td><td>Verifica: ainda escalando? CPA estável?</td><td>Se SIM: repete. Se NÃO: ajusta bid +17% (=$77)</td></tr>
+      <tr><td><strong>D8-9</strong></td><td>Verifica: encontrou teto?</td><td>Se gasto travou: sobe bid mais (até $120). Se CPA explodiu: volta pra $800</td></tr>
+      <tr><td><strong>Continua</strong></td><td>Permanente — 1 por oferta, bid oscilando 17% cada 2-3 dias</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p4">P4</span> Cemitério — perpetua os que escalaram e morreram</h2>
+
+  <p>Winner que escalou na P3 e parou de performar (gasto $0 há 7+ dias)? Não joga fora. Move pra P4: CBO cost cap 1-1-10, $500/dia, sem mexer no custo por resultado.</p>
+
+  <h3>📋 Ficha P4 — SlimSoda</h3>
+  <pre><span class="c"># P4 — Cemitério do SlimSoda
+# Estrutura: 1 campanha · 1 conjunto · até 10 ads (todos winners antigos)
+# Verba: $500/dia
+# Cost cap: o último CPA validado na P3
+# NUNCA mexer no cost cap
+
+Campanha: "P4 — SlimSoda — Cemetery-Winners"
+  Conjunto: "cemetery-pool"
+    Anúncios (até 10): winners antigos que morreram
+    Budget: $500/dia
+    Cost cap: $80 (último CPA validado)
+
+<span class="c"># Regras:</span>
+<span class="c"># - Se gastou 3 dias seguidos dentro do CPA → volta pra P3 (em conjunto novo)</span>
+<span class="c"># - Chegou ad novo na fila de 10 → tira o mais velho</span>
+<span class="c"># - É permanente, 1 por oferta</span></pre>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2>💰 Budget total do X1 (P1 + P2)</h2>
+  <table>
+    <thead><tr><th>Fase</th><th>Dias</th><th>Budget</th><th>Output</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P1 (Primary text)</strong></td><td>2</td><td><strong>$400</strong></td><td>1-2 winners de copy</td></tr>
+      <tr><td><strong>P2 (Image/Adformat)</strong></td><td>3</td><td><strong>$600</strong></td><td>1-3 winners de text+image</td></tr>
+      <tr><td><strong>TOTAL X1</strong></td><td><strong>5 dias</strong></td><td><strong>$1,000</strong></td><td>1-3 criativos prontos pra P3</td></tr>
+    </tbody>
+  </table>
+
+  <p>Se nenhum winner aparecer em X1, você gastou $1,000 e sabe que precisa voltar pra P1 com <strong>5 concepts diferentes</strong> (não os mesmos 5). É a régua: <strong>cada semana, 5 testes de criativo</strong> (Bifi). Em 2-3 semanas você tem o(s) winner(s).</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2>🛠️ Setup técnico (Meta Ads Manager)</h2>
+  <h3>P1 — Campanha ABO 1-5-3</h3>
+  <pre><span class="c"># 1. Create Campaign</span>
+Campaign name: "X1-P1-SlimSoda-PrimaryText-2026-08-18"
+Objective: Sales (Purchase)
+Buying type: Auction
+Special ad category: NONE
+
+<span class="c"># 2. Ad Set 1 (C1 — "Food noise + closet")</span>
+Ad set name: "P1-C1-FoodNoiseCloset"
+Budget: $40/day
+Schedule: starts at 04:00, runs 2 days
+Audience: 
+  - Location: United States
+  - Age: 35-65
+  - Gender: Women
+  - Detailed targeting: NONE (broad/open)
+Placements: Automatic placements (or only Facebook feed)
+Optimization: Conversions → Purchase event
+Attribution: 7-day click
+
+<span class="c"># 3. Ads dentro do Ad Set 1 (3 primary texts × 1 image)</span>
+Ad 1: primary_text = "I got dressed in the closet so my husband wouldn't see me."
+Ad 2: primary_text = "The food noise was so loud I couldn't hear my kids."
+Ad 3: primary_text = "I haven't been in a family photo in three years."
+<span class="c"># Todos com mesma imagem genérica, mesma headline, mesmo CTA, mesmo LP</span></pre>
+
+  <h3>P2 — Campanha ABO 1-5-10</h3>
+  <pre><span class="c"># 1. Create Campaign (após P1 finalizar, com o winning primary text)</span>
+Campaign name: "X1-P2-SlimSoda-Adformat-2026-08-20"
+Objective: Sales (Purchase)
+<span class="c"># Mesmo setup, mas com 5 conjuntos (1 por formato de copy winner) × 10 ads (1 por image)</span>
+
+<span class="c"># 2. Ad Set 1 (text winner C1 + 10 images)</span>
+Ad set name: "P2-C1-10Images"
+Budget: $40/day
+Audience: mesmo P1 (broad, 35-65, women)
+Optimization: Conversions → Purchase
+
+<span class="c"># 3. 10 Ads (mesmo text C1 winner, 10 images diferentes)</span>
+Ad 1: text = winner C1 + image = A1 (sponsored split)
+Ad 2: text = winner C1 + image = A2 (MORNING ROUTINE)
+... até A10 (price-anchored)</pre>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2>📋 Métricas pra olhar todo dia (5min/dia)</h2>
+  <table>
+    <thead><tr><th>Onde</th><th>O que olhar</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P1 — dia 1, 12h</strong></td><td>CTR, page views, ICs</td><td>Se CTR &lt; 0.8% em todos os 15 → mata a campanha, refaz concepts</td></tr>
+      <tr><td><strong>P1 — dia 2, 12h</strong></td><td>Custo por IC, ICs por conjunto</td><td>Se 5 conjuntos gastaram $20 cada sem 1 IC → mata esses 5 concepts</td></tr>
+      <tr><td><strong>P1 — dia 2, fim</strong></td><td>Top 2-3 concepts</td><td>Esses vão pra P2</td></tr>
+      <tr><td><strong>P2 — dia 1, 18h</strong></td><td>Gasto total, CTR, page views</td><td>Se tudo &lt; 0.5% CTR → mata e refaz com images diferentes</td></tr>
+      <tr><td><strong>P2 — dia 3, 12h</strong></td><td>Compras (não só IC), ROAS por conjunto</td><td>1-2 winners aparecem → P3</td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    Baseado em: estrutura CBO + DTC Affiliate Black do @gbifi (cards #8 e #9 do hub) · Aplicação concreta pra SlimSoda (avatar 35-65 mulheres, CPA $80, ticket $29.99 B1G1) · Salvo em <code>references_v5/pages/playbook-slimsoda-x1/</code>
+  </div>
+
+</div>
+</body>
+</html>

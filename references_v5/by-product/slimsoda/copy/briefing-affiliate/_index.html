@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlimSoda — Affiliate Marketing Brief (9 ângulos · 48 hooks · PT-BR)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#6c5ce7; --accent-light:#a29bfe; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: 'Inter',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1120px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(108,92,231,0.12); color:var(--accent-light); border:1px solid rgba(108,92,231,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent-light); }
+  h2 { font-size:24px; margin:40px 0 14px; padding-top:14px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent-light); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:820px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent-light); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .angle-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angle-header { padding:16px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(108,92,231,0.08), transparent); }
+  .angle-num { width:44px; height:44px; background:linear-gradient(135deg, var(--accent), #a29bfe); border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angle-info { flex:1; }
+  .angle-info h3 { font-size:17px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angle-info .framework { font-size:13px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angle-body { padding:14px 20px 20px; }
+  .angle-ptbr { background:rgba(78,161,255,0.06); border:1px solid rgba(78,161,255,0.2); border-radius:8px; padding:12px 16px; margin-bottom:12px; }
+  .angle-ptbr .ptbr-title { font-size:11px; font-weight:800; color:var(--blue); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .angle-ptbr p { margin:5px 0; font-size:13.5px; line-height:1.55; }
+  .angle-ptbr p strong { color:var(--blue); font-weight:700; }
+  .risk-row { display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .risk-dot { display:inline-block; width:8px; height:8px; border-radius:50%; }
+  .risk-dot.green { background:var(--green); }
+  .risk-dot.orange { background:var(--orange); }
+  .risk-dot.red { background:var(--red); }
+  .hooks-title { font-size:11px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; margin:10px 0 4px; }
+  .hook-list { }
+  .hook { display:flex; align-items:flex-start; gap:10px; padding:7px 0; border-bottom:1px dashed var(--border); font-size:13.5px; line-height:1.55; }
+  .hook:last-child { border-bottom:none; }
+  .hook::before { content: "→"; color:var(--accent); font-weight:700; flex-shrink:0; }
+  .primary-sample { background:rgba(6,167,125,0.06); border:1px solid rgba(6,167,125,0.25); border-radius:8px; padding:12px 16px; margin-top:10px; }
+  .primary-sample .sample-title { font-size:11px; font-weight:800; color:var(--green); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+  .primary-sample .sample-text { font-size:13px; line-height:1.65; color:var(--text); white-space:pre-wrap; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 18px; }
+  .stat { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .stat .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .stat .value { font-size:24px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent-light); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0 18px; font-size:13px; }
+  th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  td .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  td .dot.green { background:var(--green); }
+  td .dot.orange { background:var(--orange); }
+  td .dot.red { background:var(--red); }
+  @media (max-width:820px) { .grid-3 { grid-template-columns:1fr 1fr; } }
+  @media (max-width:720px) { .grid-2, .grid-3 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../_index.html">← SlimSoda hub</a>
+
+  <header>
+    <span class="badge">Affiliate Marketing Brief · 9 ângulos · 48 hooks · PT-BR completo</span>
+    <h1>SlimSoda <span class="accent">Affiliate Brief</span> — ângulos, hooks e primary text examples</h1>
+    <p class="lede">Brief completo (2MB original) destrinchado em <strong>9 ângulos com 48 hooks prontos</strong>. <strong>Cada ângulo vem com:</strong> explicação em PT-BR do framework, quando usar, avatar ideal, risco de review do Meta, todos os hooks verbatim e um <strong>primary text completo de exemplo</strong> pronto pra colar no Meta Ads.</p>
+  </header>
+
+  <div class="callout red">
+    <strong>⚠️ Resposta honesta sobre esse brief:</strong> <strong>NÃO, não aplicamos</strong> no playbook X1 SlimSoda atual (que tem 5 concepts diferentes: Dana Rachel 41, Yale scandal, After 40, Doctor betrayal, Bargain bin). <strong>Esse brief tem ângulos NOVOS</strong> — CAUSA RAIZ, CONTRADIÇÃO, REVELAÇÃO — que ainda não testamos. <strong>Ação recomendada:</strong> incorporar 3-5 hooks na próxima rodada P1, especialmente ângulos 4-7 (mais visceral/black).
+  </div>
+
+  <div class="grid-3">
+    <div class="stat">
+      <div class="label">Ângulos</div>
+      <div class="value">9</div>
+    </div>
+    <div class="stat">
+      <div class="label">Hooks prontos</div>
+      <div class="value">48</div>
+    </div>
+    <div class="stat">
+      <div class="label">Avatares</div>
+      <div class="value">14</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Referência rápida (PT-BR) — qual ângulo usar?</h2>
+  <p class="muted">Tabela com todos os 9 ângulos, framework, melhor uso e risco. Use como índice rápido pra escolher antes de testar.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Ângulo</th>
+        <th>Framework</th>
+        <th>Quando usar</th>
+        <th>Risco Meta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>CAUSA RAIZ</strong></td>
+        <td>"Você não tem X. Você tem Y."</td>
+        <td>Avatar que já tentou tudo e não sabe POR QUE não funciona</td>
+        <td><span class="dot red"></span>Alto (f-bombs)</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>QUALIFICAÇÃO</strong></td>
+        <td>"Se você [sintoma], então [revelação]"</td>
+        <td>Avatar que tem sintoma específico (FUPA, GLP-1 user, +50)</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>HISTÓRIA EMOCIONAL</strong></td>
+        <td>Story-first. Identificação antes do mecanismo.</td>
+        <td>Avatar emocional, quer se identificar com a história</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>CONTRADIÇÃO</strong></td>
+        <td>"O que você faz certo é o que te sabota."</td>
+        <td>Avatar que já tá fazendo dieta/exercício e não entende por que não funciona</td>
+        <td><span class="dot red"></span>Alto (f-bombs)</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>URGÊNCIA</strong></td>
+        <td>"Agora ou nunca + escassez informacional"</td>
+        <td>Avatar que viu muita coisa igual e precisa de razão pra agir HOJE</td>
+        <td><span class="dot orange"></span>Médio</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>CURIOSIDADE</strong></td>
+        <td>"Open loop + informação retida"</td>
+        <td>Avatar curioso, quer entender a ciência por trás</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>REVELAÇÃO</strong></td>
+        <td>"Insider que quebra o silêncio da indústria"</td>
+        <td>Avatar que desconfia da indústria e quer um "verdadeiro" contar</td>
+        <td><span class="dot red"></span>Alto (agressão)</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>DESCOBERTA</strong></td>
+        <td>"Eu descobri isso por acidente"</td>
+        <td>Avatar cético que precisa de prova lógica, não emocional</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td><strong>DEPOIMENTO</strong></td>
+        <td>"Prova social em primeira pessoa"</td>
+        <td>Avatar que precisa ver OUTRA pessoa real tendo resultado</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 Os 9 ângulos (com PT-BR + sample primary text)</h2>
+
+  <!-- ANGLE 1 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">1</div>
+      <div class="angle-info">
+        <h3>CAUSA RAIZ</h3>
+        <div class="framework">"You're not X. You have Y." — "Você não tem X. Você tem Y."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você explica que o problema do avatar NÃO é o que ela pensa que é. Ela acha que é "falta de disciplina" ou "genética" — você mostra que é outra coisa (no caso do SlimSoda: pH do intestino, células L dormentes, etc).</p>
+        <p><strong>Quando usar:</strong> Avatar que já tentou TUDO (dieta, exercício, shakes, gummies) e tá frustrada. Não quer ouvir "coma menos" — quer entender POR QUE nada funciona.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 40-65, com histórico de múltiplas tentativas frustradas. Já ouviu "eat less" do médico e ficou com raiva.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Você não tem [X = o que ela pensa]" → (2) "Você tem [Y = causa raiz real]" → (3) "E a solução custa menos de $1".</p>
+        <div class="risk-row"><span class="risk-dot red"></span><strong>Risco Meta review:</strong> ALTO — tem f-bombs ("What the fuck?", "Fuck the diet"). Usar versão light em campanha aberta, versão heavy só em dark post ou native.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (6) verbatim do brief original</div>
+      <div class="hook-list">
+        <div class="hook">What the fuck? This is why people regain after GLP-1. Not because the medication "stops working". Not because hunger comes back. It's because…</div>
+        <div class="hook">My belly took over my body. No matter how clean I ate or how much I walked, NOTHING worked.</div>
+        <div class="hook">No doctor dares to say this, but the real reason you can't lose weight after 40 has NOTHING to do with what you eat. It's something lying dormant in your gut that is sabotaging everything.</div>
+        <div class="hook">Fuck the diet. Fuck the fasting. The reason nothing works after 40 is that there's a biological switch in your body that has turned off, and no one told you about this...</div>
+        <div class="hook">Want to know the root cause of stubborn fat? It's not laziness. It's not genetics. It's a pH imbalance in your gut that caused your satiety hormones to shut down. And the solution costs less than $1.</div>
+        <div class="hook">No doctor tells you this... after age 40, the soil of your gut becomes too acidic, and the seeds that produce your weight-loss hormones simply stop sprouting.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (versão SAFE, sem f-bombs)</div>
+        <div class="sample-text">I ate less than my skinny friends and STILL gained weight.
+
+For 12 years I thought I was broken. Three diets. Two trainers. A $1,500/month Ozempic prescription. Nothing worked.
+
+Then a gastroenterologist explained something I had never heard:
+
+After 40, the cells in your gut that produce your natural weight-loss hormones (GLP-1, GIP) can go dormant. Not "broken" — dormant. They need a specific pH environment to wake up.
+
+Your kitchen already has the key ingredient. It's been there for years. It costs less than $1.
+
+The recipe is 3 ingredients. The order matters. The dosage matters. And almost everyone is doing it wrong.
+
+I made a free 5-minute video explaining exactly how it works. 👇
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 2 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">2</div>
+      <div class="angle-info">
+        <h3>QUALIFICAÇÃO</h3>
+        <div class="framework">"If you [symptom], then [reveal]." — "Se você [sintoma], então [revelação]"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você descreve um sintoma ESPECÍFICO do avatar e diz "se você tem isso, então [revelação]". Funciona porque filtra — só quem se reconhece clica.</p>
+        <p><strong>Quando usar:</strong> Avatar que tem sintoma físico claro (FUPA, barriga que não sai, GLP-1 user, insônia, etc). Auto-qualifica antes mesmo de ler o resto.</p>
+        <p><strong>Avatar ideal:</strong> Mulher que está em fase ativa de tentar resolver — ou seja, não desistiu mas ainda não encontrou. Tem sintoma específico visível no espelho.</p>
+        <p><strong>Estrutura que funciona:</strong> "Se você [sintoma específico]…" → "…então você PRECISA ver isso antes de [tomar X / comprar Y]" → CTA "Watch before you do anything".</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — copy descritivo, sem agressão. Funciona bem em qualquer campanha.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (6) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">If your FUPA is showing below your T-shirt, watch this…</div>
+        <div class="hook">If your FUPA is spilling over the top of your pants, don't take baking soda without seeing this…</div>
+        <div class="hook">If you're on GLP-1, please do this, trust me…</div>
+        <div class="hook">9 out of 10 people who take baking soda to reduce their FUPA are doing it completely wrong because no one told them about this rule.</div>
+        <div class="hook">See what happens if someone taking a GLP-1 started taking sodium bicarbonate with these ingredients for two weeks…</div>
+        <div class="hook">Anyone over 50 who is on a GLP-1 and stops for 3 months has this strange habit before going to sleep...</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">If your FUPA is still showing under fitted dresses, read this before you buy anything else.
+
+I've been there. Size 12 jeans that fit everywhere except the lower belly. The part no diet touches.
+
+A gastroenterologist I work with explained why: there's a pocket of fat on the lower abdomen that responds to a completely different hormone than the rest of your body. Most "baking soda recipes" online ignore this hormone entirely.
+
+If you want to lose the FUPA — and only the FUPA — you need to activate that one specific hormone. There's a 3-ingredient protocol that does it. Costs less than $3 a day.
+
+I made a free video walking through the exact recipe. Watch it BEFORE you buy another supplement.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 3 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">3</div>
+      <div class="angle-info">
+        <h3>HISTÓRIA EMOCIONAL</h3>
+        <div class="framework">Story-first. Identificação antes do mecanismo.</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você conta uma história EMOCIONAL primeiro. A leitora se identifica ANTES de você mostrar o mecanismo. Não é "como X funciona" — é "como eu vivia X".</p>
+        <p><strong>Quando usar:</strong> Avatar que tá em fase emocional, não lógica. Já tá cansada de "científico". Quer se ver no espelho da história.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 35-65 com momento emocional claro — marido não olha mais, choro em provador, foto que evita, maratona noturna na geladeira.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) Momento de dor específico e visual (choro, geladeira, foto evitada) → (2) Tentativas anteriores (GLP-1, shakes, etc) → (3) "E então minha irmã me deu [X]" → (4) Mecanismo vem SÓ depois da identificação.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — copy emocional, sem agressão. Passa review tranquilo. É o ângulo MAIS SEGURO pra Meta.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (7) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">My husband installed a siren on the fridge for the night... If you, like me, used to raid the fridge at night, take a look at what's happening…</div>
+        <div class="hook">The last time I cried in a Ross fitting room was in March. Nothing fit. Nothing looked good. I looked in the mirror and thought, "It's over for me."</div>
+        <div class="hook">After he left, I thought I was going to die alone. I was 52 and thought no man would want me again. But then my sister gave me something…</div>
+        <div class="hook">These are the warning signs that women over 50 taking GLP-1 tragically ignore. And one day, they realize that something might have gone wrong.</div>
+        <div class="hook">"You need GLP-1." That's what my doctor told me. I left the appointment devastated and terrified of needles, until I discovered a baking soda recipe that reset my gut hormones.</div>
+        <div class="hook">My mother broke the mobility scooter in the supermarket, now it's my turn…</div>
+        <div class="hook">My neighbor cried in a fitting room after losing 19 pounds: 'I hadn't worn shorts since I was a child'</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">The last time I cried in a fitting room, my daughter was 8.
+
+She's 14 now. I haven't been in a fitting room since.
+
+For six years I ordered everything online and prayed it would fit. I stopped going to my friend's birthday dinners because I didn't want to be seen. I took photos of my kids but never one with me in it.
+
+I tried everything. Keto. Intermittent fasting. A $1,500/month Ozempic prescription that made me nauseous and stopped working after 8 months. A personal trainer who counted my calories like a prison warden.
+
+Nothing worked. I thought it was me.
+
+Then my sister (the skinny one) sent me an article about a 3-ingredient baking soda recipe that "wakes up dormant GLP-1 cells." I almost deleted it. But I read it.
+
+That was 5 months ago. I'm down 32 pounds. The food noise — the one I didn't even know was a thing until it stopped — is gone. My jeans from before kids button again.
+
+I made a free video explaining what I did. It's not magic. It's just a recipe. But it changed my life.
+[WATCH MY FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 4 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">4</div>
+      <div class="angle-info">
+        <h3>CONTRADIÇÃO</h3>
+        <div class="framework">"O que você faz certo é o que te sabota."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você vira a narrativa de cabeça pra baixo. A leitora faz "X" achando que é certo — você mostra que X é o que tá sabotando. Funciona porque quebra padrão mental.</p>
+        <p><strong>Quando usar:</strong> Avatar que JÁ tá fazendo dieta/exercício/counting calories e não entende por que não funciona. Tá no modo "fazendo tudo certo".</p>
+        <p><strong>Avatar ideal:</strong> Mulher 30-55 que se orgulha de "comer limpo" ou "fazer jejum" e não entende por que a balança não mexe. Vai ter INSATISFAÇÃO ao perceber que tá fazendo errado.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Parece loucura, mas [coisa certa] pode estar te fazendo GANHAR peso" → (2) "E eu vou provar com ciência" → (3) "[X] é a causa real" → (4) "Solução: [produto]".</p>
+        <div class="risk-row"><span class="risk-dot red"></span><strong>Risco Meta review:</strong> ALTO — tem f-bombs explícitos ("Fuck themselves if they tell you..."). Funciona muito bem em native/taboola/outbrain, mas em Meta vai tomar flag. Usar com cuidado.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">It might sound crazy, but eating healthy could actually be making you GAIN WEIGHT. And I'm going to prove it to you with science. When your gut pH is acidic, even a salad turns into stored fat.</div>
+        <div class="hook">To hell with intermittent fasting. What actually works is rebalancing your gut pH, and you can do that with something you might already have in your cupboard.</div>
+        <div class="hook">Fuck themselves if they tell you that you need more discipline to lose weight. Discipline doesn't wake up a dormant L-cell in the gut.</div>
+        <div class="hook">Stop eating gelatin to burn your FUPA... Here is what happens if you don't know your intestinal pH. Why is no one talking about this?</div>
+        <div class="hook">Stop using the pen if you want to keep losing weight... Trust me, your body doesn't need GLP-1 anymore, and here is the secret.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (versão SAFE pra Meta)</div>
+        <div class="sample-text">The healthy habits that are actually making you GAIN weight.
+
+I know how that sounds. Believe me, I didn't want to believe it either.
+
+For three years I ate "clean." Organic everything. No sugar. No processed food. I did intermittent fasting 16:8. I walked 12,000 steps a day.
+
+I gained 22 pounds.
+
+A gastroenterologist at Yale explained why: my gut pH had become so acidic from years of "clean eating" (lots of salad, vinegar dressings, lemon water) that the cells producing my natural GLP-1 hormone had gone dormant. My body was literally unable to release the hormone that says "you're full."
+
+The fix was a 3-ingredient baking soda protocol that re-alkalizes the gut. 30 days in, the food noise stopped. By day 60, I was down 14 pounds without changing my diet or exercise.
+
+I made a free 5-minute video explaining the science and the exact recipe.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 5 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">5</div>
+      <div class="angle-info">
+        <h3>URGÊNCIA</h3>
+        <div class="framework">"Agora ou nunca + escassez informacional."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você cria PRESSÃO de tempo. "Agora", "esta é a última vez", "antes que saia do ar". Combina com escassez informacional ("a indústria não quer que você saiba").</p>
+        <p><strong>Quando usar:</strong> Avatar que já viu muita coisa igual. Precisa de uma RAZÃO pra agir hoje, não semana que vem. Funciona como gatilho final pra quem tá "quase convertendo".</p>
+        <p><strong>Avatar ideal:</strong> Mulher 40-65 que já tá em "awareness" do problema mas procrastinando. Viu o anúncio 3 vezes, abriu a LP, mas não comprou. Esse ângulo empurra.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Esta é a última vez que eu vou compartilhar isso" → (2) Razão da urgência (vírus, viralização, decisão regulatória) → (3) "Pegue [insumo] AGORA" → (4) CTA imediato.</p>
+        <div class="risk-row"><span class="risk-dot orange"></span><strong>Risco Meta review:</strong> MÉDIO — não tem f-bombs mas tem "run to the kitchen" e "last time". Meta tem regras sobre claims exagerados de escassez. Aceitável com moderação.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">This is the last time I'm sharing this… If you are struggling with your belly fat, take the paper and pen and watch this…</div>
+        <div class="hook">After going viral on TikTok, grandmothers are running to the supermarket to buy baking soda, but here is what they don't know...</div>
+        <div class="hook">Don't buy baking soda on Amazon without watching this video first... If you don't believe me, I am a gastroenterologist and cancer researcher.</div>
+        <div class="hook">9 out of 10 people who take baking soda to reduce belly fat are doing it completely wrong; here is why it doesn't work.</div>
+        <div class="hook">Run to the kitchen and grab a pinch of baking soda, because the GLP-1 patient who paid over $2,000 to learn is going to show you how to do it.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">I almost didn't post this. My lawyer told me not to.
+
+Last week, this baking soda protocol went viral on TikTok. 4.2 million views. 18,000 comments.
+
+Then the GLP-1 industry started sending cease-and-desist letters to anyone sharing the recipe.
+
+I have until Sunday to take this down. After that, the only place you'll find the 3-ingredient protocol is buried in a research paper from 2019 that no one will read.
+
+This is the exact recipe: the order, the ratio, the timing. I've used it for 7 weeks. Down 19 pounds. No needles. No $1,500/month prescriptions.
+
+I made a free 5-minute video. Watch it now — before it comes down.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 6 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">6</div>
+      <div class="angle-info">
+        <h3>CURIOSIDADE</h3>
+        <div class="framework">"Open loop + informação retida."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você abre um "loop" de curiosidade — começa a explicar algo, mas PARA no ponto crucial. A leitora PRECISA clicar pra fechar o loop. Informação retida = o cérebro fica incomodado até resolver.</p>
+        <p><strong>Quando usar:</strong> Avatar curioso, que se orgulha de "pesquisar antes de comprar". Quer entender a ciência, não só acreditar. Top of funnel forte.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 35-60, escolaridade alta, cética por padrão. Tenta achar o "furo" do produto. Quando não acha, compra.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) Pergunta intrigante ("Por que NENHUM médico fala sobre X?") → (2) Dados de validação ("Harvard study", "Yale research") → (3) "Aqui está o que eles não contam" → (4) CTA pra fechar o loop.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — copy informativo, baseado em "estudos". Mas cuidado: claims de "Harvard study" sem nome específico pode ser flag. Sempre cite o autor/ano se possível.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">Why doesn't any doctor tell you about the L-cells in the intestine? I asked five endocrinologists, and NOT ONE mentioned them. Then I found a Harvard study explaining why they can't talk about it…</div>
+        <div class="hook">How can you get your body to produce the SAME hormones as GLP-1? You probably didn't know this, but there is something in your kitchen cupboard that can…</div>
+        <div class="hook">Want to know why thin women stay thin after 40 and overweight women stay overweight? It's not genetics. It's not discipline. It's a difference in intestinal pH that no one talks about.</div>
+        <div class="hook">Overthinking "food noise"? Here's what no one tells you... The cause isn't psychological. It's a hormonal glitch in your gut that no doctor wants you to know about.</div>
+        <div class="hook">Why does the internet think Trump is taking an experimental weight-loss drug, and what does the White House have to say about it?</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">I asked 5 endocrinologists about L-cells. Not one mentioned them.
+
+So I went to the research. Spent two weeks reading every paper on PubMed about GLP-1 secretion.
+
+Here's what I found — and why I think it explains almost everything about weight loss after 40:
+
+Your intestinal lining contains specialized cells called L-cells. Their only job is to produce GLP-1 — the same hormone in Ozempic, Mounjaro, and Wegovy.
+
+But L-cells only release GLP-1 when gut pH is in a very specific range. Too acidic (which is what happens after 40) and they go dormant. They don't die — they stop producing.
+
+In a 2019 paper in the New England Journal of Medicine, researchers found that simply re-alkalizing the gut with a 3-ingredient protocol (baking soda + ginger + berberine) restored L-cell activity in 89% of subjects.
+
+Within 4 weeks, study participants lost an average of 8.4 pounds — without changing diet or exercise.
+
+I made a free 5-minute video explaining the exact recipe and where to get the right form of each ingredient.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 7 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">7</div>
+      <div class="angle-info">
+        <h3>REVELAÇÃO</h3>
+        <div class="framework">"Insider que quebra o silêncio da indústria."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você se posiciona como INSIDER que vai quebrar o silêncio. "Eu sou médico e não DEVERIA estar contando isso." Funciona porque combina autoridade + transgressão.</p>
+        <p><strong>Quando usar:</strong> Avatar que desconfia da indústria (Big Pharma, Big Food, GLP-1 industry) e quer um "verdadeiro" contar. Funciona especialmente bem se você tem credencial real OU avatar autorizado.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 40-65 que já gastou milhares com médico/nutricionista e tá saturada. Vê o establishment como o problema. Quer um "rebelde" com PhD.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Isso pode me cancelar, mas…" → (2) "A indústria de GLP-1 fatura $55 bilhões vendendo um hormônio que seu corpo JÁ produz" → (3) "E eu sou médico, supostamente deveria ficar quieto" → (4) "Aqui está o segredo" → CTA.</p>
+        <div class="risk-row"><span class="risk-dot red"></span><strong>Risco Meta review:</strong> ALTO — agressão explícita ("spit in the face", "this might get me cancelled"). Funciona BRILHANTEMENTE em native, vai tomar flag em Meta. Usar como "dark post" ou reformular em versão light.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (6) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">This might get me cancelled, but I'm going to say it: the GLP-1 industry rakes in $55 billion a year selling a hormone that your body CAN produce on its own.</div>
+        <div class="hook">Fuck it. Your body already produces GLP-1 naturally. The problem is, no one taught you how to switch it back on. I'm a doctor, and I'm supposed to keep this secret…</div>
+        <div class="hook">Women, stop taking GLP-1 injections! Your bodies already produce GLP-1 naturally. I'm a doctor, screw it. The problem is that no one taught you how to reactivate that production.</div>
+        <div class="hook">I'm going to spit in the face of every "expert" who claims the only way to lose weight after 40 is through injections. That is a LIE.</div>
+        <div class="hook">I was forbidden from saying this, but: baking soda, when combined with these other three ingredients, causes the body to naturally produce GLP-1 and GIP. And here is the secret...</div>
+        <div class="hook">Girls, after the GLP-1 injection, your body stops producing the hormone on its own. That's what happens when you stop...</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (versão SAFE pra Meta)</div>
+        <div class="sample-text">I've been told not to share this.
+
+I am a gastroenterologist. I have been one for 17 years. I work at a major research hospital. I have published in peer-reviewed journals.
+
+I am also about to say something that several of my colleagues would call career suicide:
+
+The GLP-1 industry is generating $55 billion per year selling a hormone — GLP-1 — that your own body already produces. Naturally. For free.
+
+You don't have a "GLP-1 deficiency." You have an intestinal pH imbalance that is putting your GLP-1-producing cells to sleep.
+
+There is a 3-ingredient protocol — baking soda, ginger extract, and berberine — that re-alkalizes the gut and reactivates those cells. The data is in three independent studies, including one at Yale.
+
+I have recommended this protocol to 47 patients over the past 18 months. 41 of them lost 10+ pounds without changing diet or exercise. None of them paid $1,500 a month.
+
+I made a free video explaining the exact protocol. I do not get paid for this. I'm sharing because I'm tired of watching patients suffer through prescriptions they don't need.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 8 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">8</div>
+      <div class="angle-info">
+        <h3>DESCOBERTA</h3>
+        <div class="framework">"Eu descobri isso por acidente."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você conta como descobriu a solução POR ACIDENTE — estava pesquisando outra coisa, tropeçou nisso. Funciona porque dá sensação de "achado raro" e remove sensação de "vendido".</p>
+        <p><strong>Quando usar:</strong> Avatar cético, com PhD mindset. Não acredita em "revelação". Quer ver LÓGICA de descoberta, não "o expert me disse". Mid-funnel forte.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 35-60 que já leu muito sobre o tema. Tem conhecimento prévio. Quando ouve "descoberta acidental", ativa curiosidade: "será que isso é real?"</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Eu estava pesquisando [outra coisa X]" → (2) "Achei um estudo sobre [Y]" → (3) "Fiquei em choque" → (4) "Testei em mim" → (5) Resultado. CTA no final.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — copy de descoberta, factual, sem agressão. Passa review tranquilo. É o ângulo mais "limpo" pra escalar.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (4) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">I was in shock when I discovered that baking soda does THIS in the intestine. It wakes up DORMANT cells that make your body produce its own weight loss hormones.</div>
+        <div class="hook">I'm shocked. I was researching GLP-1 and intestinal pH and found a study showing that dormant L-cells start producing GLP-1 again when intestinal acidity is neutralized.</div>
+        <div class="hook">Three things I wish I'd known before spending a fortune trying to lose weight: One, my body produces GLP-1 naturally. Two, it stopped because my gut became too acidic. Three, the reset costs less than a cup of coffee a day.</div>
+        <div class="hook">It might sound crazy, but I discovered that GLP-1 might be making my gut issues worse, and no one told me that.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">I was researching something completely different.
+
+I was looking at how gut pH affects sleep quality in menopausal women. Standard research rabbit hole.
+
+And then I found it.
+
+A 2019 paper from a research team at Yale showing that intestinal pH — specifically, when the gut becomes too acidic — directly suppresses the activity of L-cells. Those are the cells that produce GLP-1. The same GLP-1 that Ozempic and Mounjaro are synthesized versions of.
+
+I read the paper three times. Then I tried the protocol on myself. I wasn't overweight. I just wanted to see if it worked.
+
+Within 9 days, my afternoon energy crashes — the ones I'd had for years — disappeared. Within 3 weeks, I had lost 6 pounds without trying.
+
+I started recommending it to friends. Then to patients. Forty-seven of them, total. Forty-one lost 10+ pounds.
+
+I made a free 5-minute video walking through the study, the protocol, and the exact recipe. It's not magic. It's just chemistry that nobody talks about.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 9 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">9</div>
+      <div class="angle-info">
+        <h3>DEPOIMENTO</h3>
+        <div class="framework">"Prova social em primeira pessoa."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você compartilha um DEPOIMENTO real (ou verossímil) de alguém que usou o produto. Sem mencionar mecanismo. Só: "Eu perdi X. Sem isso, sem aquilo. Foi o que funcionou."</p>
+        <p><strong>Quando usar:</strong> Avatar que precisa ver OUTRA pessoa real tendo resultado. Bottom of funnel. Funciona especialmente pra quem está em dúvida final, comparando opções.</p>
+        <p><strong>Avatar ideal:</strong> Mulher 30-65, qualquer escolaridade. Funciona em TODOS os avatares — prova social é universal. Mais forte em quem tá saturada de "científico" e quer ver resultado humano.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) Quem é a pessoa (nome, idade, contexto breve) → (2) Situação antes (peso, tentativas, frustração) → (3) "Eu descobri [X]" → (4) Resultado concreto com número → (5) CTA emocional.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — copy de prova social. Cuidado apenas com claims absolutos ("100% safe", "guaranteed"). Use "X out of Y" ou resultados específicos.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (4) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">I cried in public; a follower of mine said: "I started wearing a bikini again this summer. 20 kilos are gone. I hadn't worn shorts since I was a child."</div>
+        <div class="hook">I lost 11 pounds in the first month. No needles. No dieting. Just by drinking this every morning. At 58, I'm doing more than I thought possible.</div>
+        <div class="hook">I went from size XL to size L in three months. Three kids—after the third one, I never thought I'd enjoy looking at myself in the mirror again.</div>
+        <div class="hook">My friend Sarah couldn't believe it. "Baking soda? Are you kidding me?" Thirty days later, she sent me a photo in her daughter's graduation dress. Eleven pounds lighter.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo</div>
+        <div class="sample-text">I lost 11 pounds in the first month. No needles. No dieting. No $1,500 prescriptions.
+
+I'm 58. I have three kids. I work full-time. I haven't seen my pre-baby body in 22 years.
+
+I've been "dieting" since Clinton's first term. Jenny Craig. Weight Watchers. Atkins. Keto. Intermittent fasting. A personal trainer for two years. A nutritionist for one. Two rounds of Ozempic — gained it all back both times.
+
+Then my sister sent me an article about a 3-ingredient baking soda recipe. I almost ignored it. "Baking soda," I thought. "Are you kidding me?"
+
+But I tried it. For 30 days. I lost 11 pounds without changing a single meal or a single workout.
+
+I'm now in month 5. Down 27 pounds total. My daughter cried when she saw me at her college graduation. I fit into a dress I haven't worn since 2007.
+
+I'm not saying this will work for you. I'm saying it worked for me. And I'm saying I made a free 5-minute video explaining exactly what I did. So you can try it too.
+[WATCH MY FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Árvore de decisão (PT-BR) — qual ângulo usar quando?</h2>
+
+  <div class="callout blue">
+    <strong>Use esta árvore pra escolher o ângulo antes de rodar o teste P1:</strong>
+    <ol style="margin:8px 0; padding-left:20px; line-height:1.7;">
+      <li><strong>Avatar tá EMOCIONAL ou LÓGICO?</strong><br>
+        Emocional → <strong>Ângulo 3 (HISTÓRIA EMOCIONAL)</strong> ou <strong>Ângulo 9 (DEPOIMENTO)</strong> (sempre safe pra Meta)<br>
+        Lógico → <strong>Ângulo 6 (CURIOSIDADE)</strong> ou <strong>Ângulo 8 (DESCOBERTA)</strong></li>
+      <li><strong>Avatar tem SINTOMA específico?</strong> (FUPA, GLP-1 user, +50, insônia)<br>
+        Sim → <strong>Ângulo 2 (QUALIFICAÇÃO)</strong> (auto-filtra)<br>
+        Não → vai pra próximo</li>
+      <li><strong>Avatar já tentou TUDO e tá frustrada?</strong><br>
+        Sim → <strong>Ângulo 1 (CAUSA RAIZ)</strong> ou <strong>Ângulo 4 (CONTRADIÇÃO)</strong> (cuidado com Meta)<br>
+        Não → vai pra próximo</li>
+      <li><strong>Avatar é cética da indústria?</strong><br>
+        Sim → <strong>Ângulo 7 (REVELAÇÃO)</strong> (cuidado, vai tomar flag em Meta)<br>
+        Não → vai pra próximo</li>
+      <li><strong>Avatar tá procrastinando (viu o ad 3+ vezes)?</strong><br>
+        Sim → <strong>Ângulo 5 (URGÊNCIA)</strong> (empurra pra ação)<br>
+        Não → volta pro topo da árvore</li>
+    </ol>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 Notas estratégicas finais (PT-BR)</h2>
+
+  <div class="grid-2">
+    <div class="callout green">
+      <strong>✅ Hooks SEGUROS pra Meta (recomendados):</strong>
+      <ul style="margin:8px 0; padding-left:20px;">
+        <li><strong>Angle 3 (História Emocional)</strong> — "My husband installed a siren", "The last time I cried in a Ross fitting room", "My neighbor cried in a fitting room" — visceral mas não ofensivo, passa review</li>
+        <li><strong>Angle 9 (Depoimento)</strong> — "I lost 11 pounds", "I went from size XL to size L" — prova social pura, sempre passa</li>
+        <li><strong>Angle 8 (Descoberta)</strong> — "I was in shock when I discovered" — curiosity loop sem agressão</li>
+        <li><strong>Angle 6 (Curiosidade)</strong> — "Why doesn't any doctor tell you" — copy informativo</li>
+        <li><strong>Angle 2 (Qualificação)</strong> — "If your FUPA is showing" — descritivo, sem risco</li>
+      </ul>
+    </div>
+    <div class="callout red">
+      <strong>⚠️ Hooks BLACK/HEAVY (risco Meta review):</strong>
+      <ul style="margin:8px 0; padding-left:20px;">
+        <li><strong>Angle 4 (Contradição)</strong> — "Fuck themselves if they tell you that you need more discipline" (f-bomb)</li>
+        <li><strong>Angle 7 (Revelação)</strong> — "This might get me cancelled", "I'm going to spit in the face of every expert" (agressão explícita)</li>
+        <li><strong>Angle 1 (Causa Raiz)</strong> — "What the fuck?", "Fuck the diet" (f-bombs)</li>
+        <li><strong>Angle 5 (Urgência)</strong> — "Run to the kitchen", "last time" (claims exagerados podem flagar)</li>
+      </ul>
+      <p style="margin:8px 0;"><strong>Onde usar black copy sem tomar flag:</strong> native ads (Taboola/Outbrain), dark posts, email, blog comments, advertorial. NÃO usar em Meta aberto (vai tomar reject ou shadow ban).</p>
+    </div>
+  </div>
+
+  <div class="callout gold">
+    <strong>🎯 Recomendação de uso (próximo P1 test do SlimSoda):</strong>
+    <ol style="margin:8px 0; padding-left:20px;">
+      <li><strong>Substituir 1 dos 5 concepts atuais</strong> por um ângulo do brief (recomendo <strong>Angle 4 (Contradição)</strong> — tem 5 hooks prontos e ataca GLP-1 que é o "antagonista" do SlimSoda)</li>
+      <li><strong>Adicionar 1 hook visceral</strong> em cada concept (abrir cada primary text com a primeira frase de um hook do brief)</li>
+      <li><strong>Testar Angle 9 (Depoimento)</strong> como 5º concept puro — esses hooks são "limpos" e funcionam em qualquer avatar</li>
+      <li><strong>Para Meta:</strong> usar SOMENTE as versões SAFE dos black hooks. Pra native/dark post: usar versão full black.</li>
+      <li><strong>Métrica de validação:</strong> CTR &gt; 1.5% (link) + IC &lt; $40 → passa pra P2 (testar imagem com esse copy winner)</li>
+    </ol>
+  </div>
+
+  <h2>📂 Onde encontrar os arquivos</h2>
+  <ul>
+    <li><strong>Brief original (2MB HTML):</strong> <code>by-product/slimsoda/copy/briefing-affiliate/raw-briefing.html</code></li>
+    <li><strong>Hooks extraídos (markdown):</strong> <code>by-product/slimsoda/copy/briefing-affiliate/hooks-extracted.md</code> (8KB, fácil de ler)</li>
+    <li><strong>Brief original no disco:</strong> <code>C:/Users/vsuga/Downloads/SlimSoda/eaa9daf5-6dfb-458f-927a-941ad249f68f.html</code></li>
+    <li><strong>Link HUB:</strong> <a href="../../../../index.html" style="color:var(--accent-light)">dr reference (HUB principal)</a></li>
+  </ul>
+
+  <div class="footer">
+    Brief: 9 ângulos + 48 hooks + 14 avatares + 8 long text ads + sample primary text + PT-BR · Salvo em 18/ago/2026 · v2 expandido com PT-BR + sample texts
+  </div>
+
+</div>
+</body>
+</html>

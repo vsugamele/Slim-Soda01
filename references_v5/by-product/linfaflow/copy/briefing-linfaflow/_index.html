@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linfaflow — Affiliate Marketing Brief (Margaret Story + 9 ângulos · PT-BR)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#FF8A3D; --accent-light:#ffb47a; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1120px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(255,138,61,0.12); color:var(--accent); border:1px solid rgba(255,138,61,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:24px; margin:40px 0 14px; padding-top:14px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:820px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .angle-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angle-header { padding:16px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(255,138,61,0.08), transparent); }
+  .angle-num { width:44px; height:44px; background:linear-gradient(135deg, var(--accent), #ffb47a); border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angle-info { flex:1; }
+  .angle-info h3 { font-size:17px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angle-info .framework { font-size:13px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angle-body { padding:14px 20px 20px; }
+  .angle-ptbr { background:rgba(78,161,255,0.06); border:1px solid rgba(78,161,255,0.2); border-radius:8px; padding:12px 16px; margin-bottom:12px; }
+  .angle-ptbr .ptbr-title { font-size:11px; font-weight:800; color:var(--blue); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .angle-ptbr p { margin:5px 0; font-size:13.5px; line-height:1.55; }
+  .angle-ptbr p strong { color:var(--blue); font-weight:700; }
+  .risk-row { display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .risk-dot { display:inline-block; width:8px; height:8px; border-radius:50%; }
+  .risk-dot.green { background:var(--green); }
+  .risk-dot.orange { background:var(--orange); }
+  .risk-dot.red { background:var(--red); }
+  .hooks-title { font-size:11px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; margin:10px 0 4px; }
+  .hook-list { }
+  .hook { display:flex; align-items:flex-start; gap:10px; padding:7px 0; border-bottom:1px dashed var(--border); font-size:13.5px; line-height:1.55; }
+  .hook:last-child { border-bottom:none; }
+  .hook::before { content: "→"; color:var(--accent); font-weight:700; flex-shrink:0; }
+  .primary-sample { background:rgba(6,167,125,0.06); border:1px solid rgba(6,167,125,0.25); border-radius:8px; padding:12px 16px; margin-top:10px; }
+  .primary-sample .sample-title { font-size:11px; font-weight:800; color:var(--green); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+  .primary-sample .sample-text { font-size:13px; line-height:1.65; color:var(--text); white-space:pre-wrap; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin:14px 0 18px; }
+  .stat { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .stat .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .stat .value { font-size:24px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0 18px; font-size:13px; }
+  th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  td .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  td .dot.green { background:var(--green); }
+  td .dot.orange { background:var(--orange); }
+  td .dot.red { background:var(--red); }
+  @media (max-width:820px) { .grid-3 { grid-template-columns:1fr 1fr; } }
+  @media (max-width:720px) { .grid-2, .grid-3 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../_index.html">← Linfaflow hub</a>
+
+  <header>
+    <span class="badge">Affiliate Marketing Brief · Margaret Story + 9 ângulos · PT-BR</span>
+    <h1>Linfaflow <span class="accent">· Lymphatic Drainage</span> — briefing completo</h1>
+    <p class="lede">Briefing da operação DR Linfaflow. <strong>Mesmo publisher do SlimSoda (Burnhack Method)</strong> — assinatura narrativa idêntica (luto familial + discovery ritual + before/after weekly cadence). <strong>Produto mid-tier, $89 B1G1, vertical: lymphedema / perna inchada / circulação.</strong></p>
+  </header>
+
+  <div class="callout gold">
+    <strong>📌 Canon (NÃO inventar / NÃO mudar):</strong>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>Ad icônico:</strong> Margaret Story — "My older sister had a routine vein procedure for her swollen legs. She died of a blood clot four weeks later. She was 62."</li>
+      <li><strong>Mecanismo 4 etapas:</strong> Break (hardened fluid) / Sweep (toward drainage channels) / Activate (circulation, system with no pump) / Purify (blood so nothing recirculates).</li>
+      <li><strong>Ritual:</strong> "30-Second Morning Ritual" — drops 1 mL twice a day, before coffee, sublingual.</li>
+      <li><strong>Avatar:</strong> women 50-70+, swollen legs/ankles, on water pill/diuretic, considering vein procedure.</li>
+      <li><strong>Hard rules:</strong> 90-Day Money-Back + "Talk to your doctor" + <strong>NEVER "stop your diuretic"</strong> (compliance FDA).</li>
+    </ul>
+  </div>
+
+  <div class="grid-3">
+    <div class="stat"><div class="label">Ads ativos</div><div class="value">~780</div></div>
+    <div class="stat"><div class="label">Anunciantes</div><div class="value">2</div></div>
+    <div class="stat"><div class="label">Preço</div><div class="value">$89</div></div>
+    <div class="stat"><div class="label">Garantia</div><div class="value">90d</div></div>
+    <div class="stat"><div class="label">Extratos botânicos</div><div class="value">4</div></div>
+    <div class="stat"><div class="label">Frequência</div><div class="value">2x/dia</div></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Referência rápida (PT-BR) — qual ângulo usar?</h2>
+  <p class="muted">Tabela com os 9 ângulos, framework, melhor uso e risco. Use como índice rápido pra escolher antes de testar.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Ângulo</th>
+        <th>Framework</th>
+        <th>Quando usar</th>
+        <th>Risco Meta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Margaret Story (vein/clot)</strong></td><td>Luto familial + regret</td><td>Mulher 50-65+, irmã morreu, considera procedimento</td><td><span class="dot red"></span>Alto (medical claim)</td></tr>
+      <tr><td>2</td><td><strong>"30-Second Morning Ritual"</strong></td><td>Solution-aware · mech</td><td>Já ouviu falar, quer saber COMO funciona</td><td><span class="dot green"></span>Baixo</td></tr>
+      <tr><td>3</td><td><strong>"Doctor Said Labs Are Normal"</strong></td><td>Problem-aware · diagnostic</td><td>Fez exames, médico disse "normal", frustrada</td><td><span class="dot orange"></span>Médio</td></tr>
+      <tr><td>4</td><td><strong>Compression Socks Don't Work</strong></td><td>Problem-aware · tried-it-all</td><td>Já tentou meias, drenagem, elevação — nada resolve</td><td><span class="dot green"></span>Baixo</td></tr>
+      <tr><td>5</td><td><strong>"I Almost Died / Flight Canceled"</strong></td><td>Near-miss · embarrassment</td><td>Perdeu voo, evitou evento, cancelou foto</td><td><span class="dot orange"></span>Médio</td></tr>
+      <tr><td>6</td><td><strong>Water Pill Trap</strong></td><td>Authority · trap exposure</td><td>Toma diurético há anos, quer sair</td><td><span class="dot red"></span>Alto (NUNCA peça pra parar)</td></tr>
+      <tr><td>7</td><td><strong>Heart-Smart Eating frame</strong></td><td>Authority · Louise Karther</td><td>Mulher 60-70+, foco cardiovascular/longevidade</td><td><span class="dot orange"></span>Médio (claim health)</td></tr>
+      <tr><td>8</td><td><strong>"Bones Feel Cold" / Morning Heaviness</strong></td><td>Sensory · embodied</td><td>Mulher 50+, sente peso/palidez nas pernas cedo</td><td><span class="dot green"></span>Baixo</td></tr>
+      <tr><td>9</td><td><strong>"Your Doctor Doesn't Measure This"</strong></td><td>Gap · reframe</td><td>Insatisfação com sistema, "labs miss it"</td><td><span class="dot orange"></span>Médio (medical claim)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Ângulo 1: Margaret Story (CANON)</h2>
+
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">1</div>
+      <div class="angle-info">
+        <h3>Margaret Story — Vein Procedure / Clot / Funeral</h3>
+        <div class="framework">Luto familial + regret + discovery ritual</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR · O que é / Quando usar / Avatar / Estrutura / Risco</div>
+        <p><strong>O que é:</strong> narrativa canônica do publisher. Abre com a morte da irmã (62 anos, 4 semanas após procedimento de varizes de rotina). Conta a busca da irmã sobrevivente (a "user") por uma alternativa. Termina com o ritual 30-second + resultado em 2 meses.</p>
+        <p><strong>Quando usar:</strong> mulher 50-65+, considerando ou prestes a fazer procedimento vascular, ou em luto recente. <strong>Avatar ideal:</strong> irmã mais nova, 50-60, BMI alto, swollen ankles, on diuretic há anos, com médico falando em surgery.</p>
+        <p><strong>Estrutura (4-ritual cadence):</strong> Week 1 tightness eased → Week 2 stairs sem heart pound → Week 3 ankle dent test → Week 4 shoes fit at 6pm → Month 2 BP low 120s + surgery cancelled.</p>
+        <p><strong>Risco Meta review:</strong> <span class="dot red"></span> ALTO — morte + clot + vein procedure = claims médicos. <strong>Mitigação:</strong> usar "My sister" (não "women who"), "died of a blood clot" (não "killed by"), sempre terminar com "Talk to your doctor". NUNCA mencionar "stop your diuretic".</p>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks verbatim (EN)</div>
+      <div class="hook-list">
+        <div class="hook">My older sister had a routine vein procedure for her swollen legs. She died of a blood clot four weeks later. She was 62.</div>
+        <div class="hook">Her funeral was on a Thursday. By Sunday I had scheduled the same procedure. I cancelled it on Tuesday. Here's what I found instead.</div>
+        <div class="hook">The vascular surgeon was very confident. The clot was very quiet. Four weeks later, so was she.</div>
+        <div class="hook">I went looking for what actually killed her. Not the clot — the thing the clot was trying to tell us.</div>
+        <div class="hook">Two months. Twenty-two mornings. Two plant extracts. That's the whole story. Almost.</div>
+        <div class="hook">Whatever you are doing, keep doing it. — Sister, age 64, month 2.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text (SAFE for Meta, abreviado)</div>
+        <div class="sample-text">My older sister had a routine vein procedure for her swollen legs. She died of a blood clot four weeks later. She was 62.
+
+I went looking for what actually killed her. Not the clot — the thing the clot was trying to tell us. I found a 30-second morning ritual with four plant extracts that the vascular system never told me about.
+
+Week 1 — the tightness in my ankles eased.
+Week 2 — I walked up the stairs without my heart pounding.
+Week 3 — the dent test stopped denting.
+Week 4 — my shoes fit again at 6pm.
+Month 2 — my blood pressure was in the 120s. The surgery I'd scheduled got cancelled.
+
+It's called Linfaflow. It's $89 with a 90-day money-back. I am not a doctor. Talk to yours. I am not telling you to stop your water pill. I am telling you there may be a missing piece your labs don't measure.
+
+[Linfaflow link] → if the link doesn't fit, that's the answer too.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Ângulo 2: 30-Second Morning Ritual (CANON)</h2>
+
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">2</div>
+      <div class="angle-info">
+        <h3>"30-Second Morning Ritual" — Solution-aware / mechanism</h3>
+        <div class="framework">Read-crook + time-flip · 4-ritual cadence</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR · O que é / Quando usar</div>
+        <p><strong>O que é:</strong> ângulo "COMO funciona" — assume que a user já ouviu falar de Linfaflow, quer saber o mecanismo e quanto tempo leva. Foco no "30 seconds" (tempo baixíssimo = baixo commitment) + 4 etapas (Break/Sweep/Activate/Purify).</p>
+        <p><strong>Quando usar:</strong> lead do Ad Library spy (2 anunciantes, page oficial + afiliado). Funciona bem em retargeting. <strong>Avatar:</strong> já clicou antes, tá comparando.</p>
+        <p><strong>Risco Meta review:</strong> <span class="dot green"></span> BAIXO — "ritual" + "support" + "may help" são palavras safes.</p>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks verbatim (EN)</div>
+      <div class="hook-list">
+        <div class="hook">Thirty seconds. That's it. Once in the morning, once at night. Linfaflow.</div>
+        <div class="hook">4 plant extracts. 30 seconds. Before coffee. That's the entire morning.</div>
+        <div class="hook">Cleavers to break. Stillingia to sweep. Prickly Ash to activate. Red Clover to purify. One dropper, twice a day.</div>
+        <div class="hook">If you can brew coffee, you can do this. If you can stir sugar, you can do this. If you can wait 30 seconds, you can do this.</div>
+        <div class="hook">The 30-second morning ritual the lymphatic system has been waiting for.</div>
+        <div class="hook">Two droppers. One minute. Zero disruption. Ninety days. Full refund if it doesn't.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text (SAFE)</div>
+        <div class="sample-text">Thirty seconds. That's the whole thing.
+
+LinfaFlow is four plant extracts — Cleavers, Stillingia, Prickly Ash, Red Clover — organized by what they each do for fluid that won't move. One dropper in the morning, one at night, before coffee. Sublingual, hold for 30 seconds, swallow.
+
+What the ritual does, in plain language: it breaks the hardened fluid, sweeps it toward your drainage channels, gets your circulation moving (the lymphatic system has no pump — it needs the help), and keeps what's in your blood from recirculating.
+
+Most women who try it say the food noise quiets within a week. Visible swelling tends to ease by month one. The 30-second promise is real. The 90-day money-back is real.
+
+[link]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Ângulo 3: "Doctor Said Labs Are Normal" (CANON)</h2>
+
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">3</div>
+      <div class="angle-info">
+        <h3>Doctor Said Labs Are Normal — Reframe / gap</h3>
+        <div class="framework">SPIN · problem-implication · reframe</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR · O que é / Quando usar / Risco</div>
+        <p><strong>O que é:</strong> "your labs are normal but you're still swollen" — abre com frustração do consultório, termina com "labs don't measure drainage".</p>
+        <p><strong>Quando usar:</strong> mulher 50+ que já foi ao médico, fez exames, ouviu "está tudo normal", mas continua com edema. <strong>Avatar:</strong> 50-65, frustrada com sistema, considerando suplementos.</p>
+        <p><strong>Risco Meta:</strong> <span class="dot orange"></span> MÉDIO — implica que médicos erram. <strong>Mitigação:</strong> usar "labs don't measure" (não "doctors are wrong"). Nunca dizer "your doctor is missing it".</p>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks verbatim (EN)</div>
+      <div class="hook-list">
+        <div class="hook">"Your labs are normal." She said it twice. The second time I almost believed her.</div>
+        <div class="hook">Three doctors. Six rounds of blood work. One pair of compression socks. Zero answers about why my ankles are still swelling.</div>
+        <div class="hook">Labs measure blood. They don't measure drainage. There's no standard test for the lymphatic system.</div>
+        <div class="hook">"Your labs are normal" is what a doctor says when the test she ran doesn't test for the thing that's wrong.</div>
+        <div class="hook">If your doctor ran the right test, the answer wouldn't be "normal." It would be "we don't have that test."</div>
+        <div class="hook">I have normal labs. I also have ankles that swell by 5pm. Both of those are true. One of them has an explanation.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Ângulo 4: "Compression Socks Don't Work" (CANON)</h2>
+
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">4</div>
+      <div class="angle-info">
+        <h3>Compression Socks / Lymphatic Massage / Elevation</h3>
+        <div class="framework">Tried-everything · different category</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR · O que é / Quando usar</div>
+        <p><strong>O que é:</strong> lista tudo que ela já tentou (meias, drenagem linfática, elevação, dry brushing) e explica que TUDO trabalha de fora pra dentro — Linfaflow trabalha de dentro pra fora.</p>
+        <p><strong>Quando usar:</strong> avatar tried-everything, tem gastado com meias, drenagem, elevação. <strong>Risco:</strong> <span class="dot green"></span> BAIXO.</p>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks verbatim (EN)</div>
+      <div class="hook-list">
+        <div class="hook">Compression socks. Lymphatic drainage. Leg elevation. Dry brushing. You tried all of them. Here's why none of them are wrong, and none of them are enough.</div>
+        <div class="hook">Those things all work from the outside. They help for a few hours. They don't touch the system that decides whether the fluid moves at all.</div>
+        <div class="hook">A lymphatic drainage session costs $80 to $150. You need it twice a month. That's $2,400 a year. The socks wear out.</div>
+        <div class="hook">A pneumatic pump costs $2,000 to $6,000. You still need to use it every day. Your insurance doesn't cover it.</div>
+        <div class="hook">LinfaFlow is $89 once. It supports the same system those tools do, from the inside. For 90 days, with a full refund if it doesn't.</div>
+        <div class="hook">The four things that didn't work weren't wrong. They were just one direction.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Ângulos 5-9 (resumo)</h2>
+  <p class="muted">5 ângulos adicionais seguem o mesmo padrão. Versão completa com 7 hooks cada + sample primary text em <a href="briefing-full.html" style="color:#4ea1ff;">briefing-full.html</a> (a ser expandido). Resumo dos frameworks:</p>
+
+  <div class="grid-2">
+    <div class="card"><h4>5. "I Almost Died / Flight Canceled"</h4><p>Near-miss + embarrassment. A irmã de Margaret quase perde um voo por causa do inchaço. "I had to take my shoes off at TSA. Both of them. I cried in the bathroom."</p><p><span class="dot orange"></span> Risco: médio (claim emocional forte)</p></div>
+    <div class="card"><h4>6. Water Pill Trap</h4><p>Authority + exposure. "Your water pill moves the fluid out. It doesn't fix the system. After 10 years, your potassium is gone, your kidneys are tired, and the swelling came back." <strong>MAS NUNCA peça pra parar.</strong> Termine com "talk to your doctor about potassium".</p><p><span class="dot red"></span> Risco: alto (medical claim)</p></div>
+    <div class="card"><h4>7. Heart-Smart Eating frame</h4><p>Pattern Louise Karther. "Heart-Smart Eating" + 4 extratos + 30-second. Foco cardiovascular, longevidade. <strong>Use this angle for 60-70+ avatar, not 50-60.</strong></p><p><span class="dot orange"></span> Risco: médio (claim heart)</p></div>
+    <div class="card"><h4>8. "Bones Feel Cold" / Morning Heaviness</h4><p>Sensory embodied. "When I step out of bed in the morning, my feet feel like they belong to someone else. By 9am they're mine again." Não é sobre peso, é sobre sensação.</p><p><span class="dot green"></span> Risco: baixo</p></div>
+    <div class="card"><h4>9. "Your Doctor Doesn't Measure This"</h4><p>Gap + reframe. O sistema médico não mede drenagem linfática. Não há especialidade que "detém" o sistema. "There is no specialty that 'owns' the lymphatic system."</p><p><span class="dot orange"></span> Risco: médio (medical claim)</p></div>
+    <div class="card"><h4>+ 5-7 hooks cada na versão full</h4><p>Quando precisar de um ângulo novo pra teste P1, use o framework do briefing-affiliate: <em>framework</em> + <em>quando usar</em> + <em>avatar</em> + <em>estrutura</em> + <em>risco</em>. Cobre qualquer ângulo derivado do canon.</p></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚨 Red Lines (NUNCA)</h2>
+
+  <div class="callout red">
+    <strong>1. NUNCA peça pra parar o diurético.</strong> "I am not telling you to stop your water pill. I am telling you there may be a missing piece your labs don't measure." — copy do canon.<br>
+    <strong>2. NUNCA diga que médico errou.</strong> Use "labs don't measure" / "there's no standard test" / "doctors don't have a specialty for it".<br>
+    <strong>3. NUNCA use "cure", "treat", "heal".</strong> Use "support", "may help", "ease".<br>
+    <strong>4. NUNCA mencione morte sem disclaimer.</strong> Toda vez que usar Margaret, terminar com "Talk to your doctor" + "individual results may vary".<br>
+    <strong>5. NUNCA mostre "before/after" com medidas específicas.</strong> Use week 1/2/3/4 cadence (vago, emocional).<br>
+    <strong>6. NUNCA compare com Ozempic/Wegovy.</strong> Linfaflow não compete com GLP-1, compete com meias + drenagem + water pill. O ângulo é "different category", não "better than injection".
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📊 Métricas & Tracking (PT-BR)</h2>
+
+  <div class="grid-3">
+    <div class="stat"><div class="label">CTR esperado (P1)</div><div class="value">1.5-2.5%</div></div>
+    <div class="stat"><div class="label">Hook Margaret Story</div><div class="value">3-4%</div></div>
+    <div class="stat"><div class="label">CTR 30-Second Ritual</div><div class="value">2-3%</div></div>
+    <div class="stat"><div class="label">CPC aceitável</div><div class="value">$0.40-$0.80</div></div>
+    <div class="stat"><div class="label">LP → checkout</div><div class="value">5-8%</div></div>
+    <div class="stat"><div class="label">ROI break-even (B1G1)</div><div class="value">3-4x</div></div>
+  </div>
+
+  <div class="callout blue">
+    <strong>📊 Stack de tracking:</strong> Meta Pixel (CAPI recomendado) → Supabase <code>imphq_leads</code> + <code>imphq_vendas</code>. <strong>Dashboard live:</strong> <a href="../../../../tracking/index.html" style="color:#4ea1ff;">dr-reference/tracking/</a> — vê leads + vendas em tempo real.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🌳 Árvore de decisão (PT-BR) — qual ângulo por avatar</h2>
+
+  <div class="callout green">
+    <h4>Step 1: Qual é a idade?</h4>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>50-60:</strong> Margaret Story (1) + 30-Second Ritual (2) + Compression (4)</li>
+      <li><strong>60-70:</strong> Margaret Story (1) + Heart-Smart (7) + Morning Heaviness (8)</li>
+      <li><strong>70+:</strong> Heart-Smart (7) + Doctor Said Labs (3) + Bones Cold (8)</li>
+    </ul>
+  </div>
+
+  <div class="callout gold">
+    <h4>Step 2: Qual o estado emocional?</h4>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>Luto / perda:</strong> Margaret Story (1) — NUNCA sem disclaimer</li>
+      <li><strong>Frustração com médicos:</strong> Labs Normal (3) + Doctor Doesn't Measure (9)</li>
+      <li><strong>Tried everything:</strong> Compression (4) + Water Pill (6) + 30-Second Ritual (2)</li>
+      <li><strong>Comparando opções:</strong> 30-Second Ritual (2) + Future Pace (pergunta direta)</li>
+    </ul>
+  </div>
+
+  <div class="callout blue">
+    <h4>Step 3: Qual o canal?</h4>
+    <ul style="margin:6px 0 0 18px; font-size:13.5px;">
+      <li><strong>Meta Feed (curto):</strong> Hook Margaret (1) → 30-Second Ritual (2) → 4-ritual cadence</li>
+      <li><strong>Messenger (longo):</strong> SPIN completo → Margaret Story → Trial close 0-10 → Oferta $89</li>
+      <li><strong>Retargeting (warm):</strong> 30-Second Ritual (2) + Heart-Smart (7)</li>
+      <li><strong>VSL/video:</strong> SPIN opening + Labs Normal (3) + 4-Stage mechanism + 90-day guarantee</li>
+    </ul>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🛠️ Onde rodar Linfaflow no stack</h2>
+
+  <table>
+    <thead>
+      <tr><th>Componente</th><th>Onde está</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>LP canônica</td><td>linfaflow.com (publisher)</td><td>Clonada em <code>by-product/linfaflow/lps/canonical/</code></td></tr>
+      <tr><td>Afiliado 1 (Burnhack)</td><td>burnhackmethod.com</td><td>Mesmo template do SlimSoda LP (reembalado)</td></tr>
+      <tr><td>Afiliado 2 (brungel1)</td><td>302 redirect → brungel1.com</td><td>Bed Time Weight Loss Hack (paralelo)</td></tr>
+      <tr><td>Flow Messenger</td><td>imphafilliate.vercel.app</td><td>LinfaFlow X1 (imperiox-aa918b63/templates.ts) — 11 estágios, SPIN completo, trial close 0-10</td></tr>
+      <tr><td>Flow Webchat (chat-x1 style)</td><td>Mesmo imperiox-aa918b63</td><td>Versão comprimida pra LP on-site</td></tr>
+      <tr><td>Ad Library</td><td>Meta Ad Library</td><td>2 anunciantes, ~780 ads, Margaret + Heart-Smart</td></tr>
+      <tr><td>Tracking</td><td>Supabase <code>imphq_leads</code> + <code>imphq_vendas</code></td><td>Live dashboard em <code>dr-reference/tracking/</code></td></tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    Briefing criado em 19/ago/2026 · Linfaflow v1 (9 ângulos, 5 em detalhe) · mesmo publisher do SlimSoda (Burnhack Method). <br>
+    Repo: <a href="https://github.com/vsugamele/imperiox-aa918b63" style="color:#FF8A3D;">vsugamele/imperiox-aa918b63</a> (Flow Linfaflow X1 completo) · <br>
+    Live: <a href="https://imphafilliate.vercel.app/" style="color:#FF8A3D;">imphafilliate.vercel.app</a> (LP canônica)
+  </div>
+
+</div>
+</body>
+</html>

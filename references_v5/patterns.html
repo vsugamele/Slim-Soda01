@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DR Patterns Bank — 36 mecânicas extraídas (6 páginas + quiz methodology)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #f6f4f0;
+    color: #1a1a1a;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  .layout { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  /* === SIDEBAR (mesma do hub) === */
+  aside {
+    background: #1a1a1a;
+    color: #e5e5e5;
+    padding: 24px 0;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  @media (max-width: 900px) { aside { position: static; height: auto; } }
+  aside .brand { padding: 0 20px 20px; border-bottom: 1px solid #2a2a2a; }
+  aside .brand h1 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: #fff; line-height: 1.2; }
+  aside .brand .sub { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; font-weight: 600; }
+  aside nav { padding: 16px 0; }
+  aside nav .nav-section { padding: 14px 20px 6px; color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+  aside nav a {
+    display: flex; align-items: center; gap: 10px; padding: 9px 20px;
+    color: #ccc; text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: background 0.15s, color 0.15s; border-left: 2px solid transparent;
+  }
+  aside nav a:hover { background: #242424; color: #fff; }
+  aside nav a.active { background: #242424; color: #fff; border-left-color: #c0392b; }
+  aside nav a .badge-sm { margin-left: auto; font-size: 9px; background: #c0392b; color: #fff; padding: 1px 6px; border-radius: 8px; font-weight: 700; }
+  aside .footer { padding: 16px 20px; color: #666; font-size: 11px; border-top: 1px solid #2a2a2a; margin-top: 20px; }
+
+  main { padding: 40px 36px 80px; max-width: 1100px; }
+  @media (max-width: 700px) { main { padding: 24px 18px 60px; } }
+
+  .header {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  }
+  .header p { color: #666; font-size: 15px; margin-top: 8px; max-width: 640px; }
+
+  /* === FILTERS === */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 14px 18px;
+  }
+  .filter {
+    padding: 6px 12px;
+    border-radius: 16px;
+    border: 1px solid #e0e0e0;
+    background: #faf8f5;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .filter:hover { border-color: #c0392b; color: #c0392b; }
+  .filter.active { background: #c0392b; color: #fff; border-color: #c0392b; }
+  .filter .count {
+    background: rgba(255,255,255,0.2);
+    padding: 0 6px;
+    border-radius: 8px;
+    margin-left: 4px;
+    font-size: 10px;
+  }
+  .filter:not(.active) .count { background: #ececec; color: #888; }
+
+  /* === PATTERN CARD === */
+  .patterns { display: flex; flex-direction: column; gap: 12px; }
+  .pat {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+  .pat h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .pat h3 .source {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #c0392b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: 8px;
+    background: #fff8e6;
+    padding: 2px 8px;
+    border-radius: 3px;
+    vertical-align: 2px;
+  }
+  .pat .desc { font-size: 14px; color: #444; line-height: 1.55; }
+  .pat .desc code { background: #f6f4f0; padding: 1px 6px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 12.5px; color: #c0392b; }
+  .pat .desc em { color: #1a1a1a; font-style: normal; font-weight: 600; }
+
+  .pat .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-end;
+    text-align: right;
+    min-width: 100px;
+  }
+  .pat .meta .tag {
+    font-size: 10px;
+    background: #f6f4f0;
+    color: #555;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .pat .meta .tag.cat { background: #1a1a1a; color: #fff; }
+
+  @media (max-width: 700px) {
+    .pat { grid-template-columns: 1fr; }
+    .pat .meta { flex-direction: row; align-items: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+<aside>
+  <div class="brand">
+    <h1>DR References</h1>
+    <div class="sub">4 pages · 91 files · 9.17 MB</div>
+  </div>
+  <nav>
+    <div class="nav-section">Pages</div>
+    <a href="index.html#pages">All 4 pages</a>
+    <a href="pages/slimsoda-article-lp/index.html" target="_blank">SlimSoda article LP <span class="badge-sm">100%</span></a>
+    <a href="pages/slimtide-vsl-recon/index.html" target="_blank">SlimTide VSL (recon) <span class="badge-sm" style="background:#2874a6">REC</span></a>
+    <a href="pages/southbeach-vsl-proxy/index.html" target="_blank">SouthBeach proxy <span class="badge-sm" style="background:#7d3c98">PROXY</span></a>
+    <a href="pages/shopzenvylite-buy1get1/index.html" target="_blank">SlimSoda B1G1 official <span class="badge-sm">100%</span></a>
+    <div class="nav-section">Library</div>
+    <a href="patterns.html" class="active">DR patterns bank <span class="badge-sm">25+</span></a>
+    <a href="README.md" target="_blank">README</a>
+  </nav>
+  <div class="footer">
+    Hub navegável pra estudo offline. HTML + imagens preservados exatamente como no original.
+  </div>
+</aside>
+
+<main>
+
+  <div class="header">
+    <h1>DR Patterns Bank</h1>
+    <p>Mecânicas extraídas das 4 páginas capturadas. <strong>25+ patterns</strong> organizados por categoria. Filtra por tipo no topo. Soma ao <code>_banco-padroes-dr.md</code> antes do próximo brief.</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-cat="all">Todas <span class="count">36</span></button>
+    <button class="filter" data-cat="hook">Hooks <span class="count">5</span></button>
+    <button class="filter" data-cat="cta">CTAs <span class="count">4</span></button>
+    <button class="filter" data-cat="proof">Social proof <span class="count">6</span></button>
+    <button class="filter" data-cat="structure">Structure <span class="count">5</span></button>
+    <button class="filter" data-cat="content">Content <span class="count">6</span></button>
+    <button class="filter" data-cat="checkout">Checkout <span class="count">4</span></button>
+    <button class="filter" data-cat="quiz">Quiz <span class="count">6</span></button>
+  </div>
+
+  <div class="patterns">
+
+    <div class="pat" data-cat="hook">
+      <div>
+        <h3>"$X + celebrity + Y lbs" headline <span class="source">slimtide v1</span></h3>
+        <div class="desc">Combina preço baixo + celebrity + número específico de resultado no mesmo headline. <em>Exemplo:</em> <code>"Yale Doctor Reveals the $1 Baking Soda Recipe That Helped Oprah Drop 43 lbs — Without Injections"</code>. Funciona pra qualquer vertical com ângulo de preço + autoridade social.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">hook</span>
+        <span class="tag">slimtide v1</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="hook">
+      <div>
+        <h3>Authority doctor + familiar como paciente <span class="source">southbeach + slimsoda</span></h3>
+        <div class="desc">Doutor com credencial (Yale/Stanford) fala da descoberta + cita paciente próxima (mãe/amiga/celebrity) como prova. <em>Exemplo:</em> "Dr. Ania Jastreboff from Yale + Jennifer Mitchell, 52, mother of three, lost 47 lbs".</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">hook</span>
+        <span class="tag">southbeach</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="hook">
+      <div>
+        <h3>Question-and-answer interview format <span class="source">slimsoda</span></h3>
+        <div class="desc">Pseudo-entrevista: host pergunta cética + doctor responde com revelation. Formato de "talk show" que simula autoridade editorial. Cada bloco é image + pergunta + resposta.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">hook</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="hook">
+      <div>
+        <h3>Star + 3-ingredient stack + bold CTA <span class="source">slimsoda</span></h3>
+        <div class="desc">Headline com [Authority] + [Never do X with Y] + [outcome específico]. <em>Exemplo:</em> <code>"Yale Doctor Reveals: Never Mix Baking Soda With These 3 Ingredients — Unless You Want To Lose 24 Pounds in 15 Days"</code>. Em-dash separa a "lição" do outcome.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">hook</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="hook">
+      <div>
+        <h3>"I'm the one who created it" first-person <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Formulador(a) fala em primeira pessoa como criador do método. <em>Exemplo:</em> <code>"The 'Baking Soda Water Shot' Everyone's Talking About Is Real. But They're Doing It Wrong. I Should Know. I'm the One Who Created It."</code></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">hook</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="cta">
+      <div>
+        <h3>CTA image + CTA button stack <span class="source">slimsoda</span></h3>
+        <div class="desc">Botão visual (imagem CTA-style com texto grande) + botão texto logo abaixo. Empilhados. <em>Dobra conversão</em> porque o olho bate 2x no mesmo CTA com formatos diferentes.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">cta</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="cta">
+      <div>
+        <h3>Article → VSL handoff CTA <span class="source">slimsoda</span></h3>
+        <div class="desc">CTA de article LP que aponta pra VSL externa. <em>Exemplo:</em> <code>"WATCH THE 5-MINUTE VIDEO TO GET YOUR DREAM BODY BEFORE SUMMER"</code> + "CLICK TO WATCH" button. Transfere heat da article pra VSL.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">cta</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="cta">
+      <div>
+        <h3>"Buy 1, Get 1 FREE" pricing block <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Strikethrough do preço original (<code>$119.98</code>) + bold preço novo (<code>Just $29.99</code>) em cor destaque. Padrão clássico de supplement DR. Mostra economia em % ou valor absoluto.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">cta</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="cta">
+      <div>
+        <h3>Sticky bottom CTA <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Barra CTA fixa no bottom que aparece via JS quando user scrolla até a seção de preço. <em>Exemplo:</em> <code>"Get 2 SlimSoda Tubs — $29.99 →"</code>. Sempre visível no momento da decisão.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">cta</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>Reviews formato Facebook-comment <span class="source">southbeach + slimtide v1 + shopzenvylite</span></h3>
+        <div class="desc">Avatar + nome + tempo + <code>Like · Reply · X ❤</code> imita UI social real. 9-15 comentários em stack. Tá nas 3 páginas — funciona pra qualquer vertical.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">universal</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>First-last name + city + state <span class="source">southbeach + shopzenvylite</span></h3>
+        <div class="desc">Reviews com nome completo + cidade + estado. <em>Exemplos:</em> <code>"Judy M., Dallas, TX"</code>, <code>"Roberta Alessi-Nguyen"</code>, <code>"Theresa M. (from the article)"</code>. Dá peso geográfico e individual.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">southbeach</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>Comments com arco narrativo <span class="source">slimtide v1</span></h3>
+        <div class="desc">9 comentários em sequência: cético <code>"Wait what's the actual recipe?"</code> → convencido <code>"she breaks it down early on"</code> → adotou <code>"3 weeks in and my coworker asked if I got work done"</code> → resultado forte <code>"down 29 lbs. i'm honestly confused how this isn't bigger news"</code>. Cobre hesitação → adoção → resultado.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">slimtide v1</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>Time decay real nos comments <span class="source">slimtide v1 + shopzenvylite</span></h3>
+        <div class="desc">Distribuição tipo <code>"2h → 1h → 55 min → 40 min → 32 min → 28 min → 20 min → just now"</code>. Não é uniforme — é rampa que dá sensação de orgânico ativo. Pseudo-engagement ao vivo.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">slimtide v1</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>"X people found this helpful" por review <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Social proof quantificado por review: <code>"247 people found this helpful"</code>, <code>"204 people found this helpful"</code>, <code>"178 people found this helpful"</code>. Não só estrelas, mas contagem de validação.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="proof">
+      <div>
+        <h3>Comment thread com reply da marca <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Marca responde perguntas técnicas em reply dentro dos comments. <em>Exemplo:</em> "Dana Whitfield" respondendo "Erica — PCOS is exactly the type of insulin/metabolic dysregulation berberine has been studied for...". Imita engajamento real, mas é conteúdo plantado.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">proof</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="structure">
+      <div>
+        <h3>5-numbered-reasons listicle <span class="source">southbeach</span></h3>
+        <div class="desc">Lista numerada de 5 razões com heading + imagem + 2-3 linhas cada. Funciona pra qualificar benefício em escaneabilidade. Cada número é um ângulo de venda.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">structure</span>
+        <span class="tag">southbeach</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="structure">
+      <div>
+        <h3>Day 1/14/30 calendar timeline <span class="source">southbeach</span></h3>
+        <div class="desc">Promise visual de progressão temporal. Cada step com calendar icon + label "Day 1 / Day 14 / Day 30" + body do que esperar. Acaba com foto do resultado final.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">structure</span>
+        <span class="tag">southbeach</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="structure">
+      <div>
+        <h3>"As Featured In" logo strip <span class="source">southbeach</span></h3>
+        <div class="desc">5 logos de mídias em row, no topo da LP. Funciona mesmo sem ser mídia real (logos de redes sociais ou sites genéricos). Aumenta perceived authority.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">structure</span>
+        <span class="tag">southbeach</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="structure">
+      <div>
+        <h3>Quote box dedicado do doctor <span class="source">southbeach</span></h3>
+        <div class="desc">Bloco único com foto do médico + aspas em destaque + flexa de continuidade. Tipo "direct quote" com seta apontando pro resto do copy. Separa do body normal pra dar peso.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">structure</span>
+        <span class="tag">southbeach</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="structure">
+      <div>
+        <h3>Author byline + dynamic date <span class="source">slimsoda</span></h3>
+        <div class="desc">2 linhas: data dinâmica (JS atualiza pra hoje) + "Posted By [Name]" + avatar circular com inicial. <em>Exemplo:</em> <code>"JUN 10, 2026"</code> + <code>"CORRESPONDENT"</code> + <code>"SA"</code> + <code>"Sarah Alfonsil"</code>.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">structure</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>TODAY/NBC wrapper pra social proof <span class="source">slimtide v1</span></h3>
+        <div class="desc">Simula ser um post do TODAY/NBC News. Logo rainbow gradient + nav "On the Show/Shop/Health/Food/Life" + "Sign In" button + "36,158 Comments". Funciona pra qualquer vertical de health/wellness/lifestyle.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">slimtide v1</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>"Independent formulator" (não "doctor"/"scientist") <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Vendor se posiciona como "formuladora independente" pra evitar red line de capability claim médico. <em>Aplicável</em> a qualquer vertical de supplement/H&W sem license médica.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">shopzenvylite</span>
+        <span class="tag">avoid-red-line</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>"© SlimTide Research" footer <span class="source">slimtide v1</span></h3>
+        <div class="desc">Vendor se passa por "research entity" (não ecommerce). <em>Padrão de pseudo-autoridade em DR</em>. Footer: "© [Brand] Research [Year]. All Rights Reserved" + "For Product Support, please contact the vendor HERE" (afasta responsabilidade).</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">slimtide v1</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>"60-Day Empty-Tub Money-Back Guarantee" <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Risk reversal com número específico (60 days) + nome criativo ("empty-tub") que reforça que precisa usar TUDO pra ser elegível. Mais forte que genérico "30-day money-back".</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>Price ladder Ozempic/capsule/SlimSoda <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Compara com alternativas caras ($1,000/mo Ozempic, $100 watered-down capsule) pra fazer preço baixo parecer bargain. <em>Pattern de "anchor alto → solução barata"</em>. Funciona pra qualquer vertical de supplement vs procedimento.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>"Six Months From Now..." future-tense close <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Fechamento emocional em 2nd person future-tense: <code>"Six months from now, you'll either be free, or still reading articles like this"</code>. Pattern de <em>regret-avoidance</em> no close final da LP.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="content">
+      <div>
+        <h3>"I'm a [credential]" comments <span class="source">shopzenvylite</span></h3>
+        <div class="desc">Comentários em primeira pessoa com credencial peer-to-peer: <code>"I'm a registered dietitian"</code>, <code>"I'm a physical therapist"</code>, <code>"I'm a 46-year-old CPA from Milwaukee"</code>. Pseudo-autoridade que valida a offer.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">content</span>
+        <span class="tag">shopzenvylite</span>
+      </div>
+    </div>
+
+    <!-- CHECKOUT (Funnelish) -->
+    <div class="pat" data-cat="checkout">
+      <div>
+        <h3>3-tier bundle pricing (B1G1 → B2G2 → B3G3) <span class="source">funnelish</span></h3>
+        <div class="desc">Três tiers de bundle com <code>BEST VALUE</code> e <code>MOST POPULAR</code> badges. Cima = mais unidades, preço por unidade menor. For心理学: o tier do meio é o que 60% compra, mas o destaque <em>BEST VALUE</em> empurra pro top. SlimSoda: B3G3 $19.99/each ($119.99) | B2G2 $24.99/each ($99.99) | B1G1 $29.99/each ($59.99).</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">checkout</span>
+        <span class="tag">funnelish</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="checkout">
+      <div>
+        <h3>10min sticky timer topbar ("SALE ENDS SOON!") <span class="source">funnelish</span></h3>
+        <div class="desc">Sticky bar no topo da página: red badge <code>% SALE ENDS SOON!</code> + countdown <code>09:48</code> + "Your cart is reserved for". Reduz abandono porque cria urgency real. <em>Funciona em qualquer checkout custom — Shopify padrão não tem.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">checkout</span>
+        <span class="tag">funnelish</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="checkout">
+      <div>
+        <h3>"Only X items Left" progress bar <span class="source">funnelish</span></h3>
+        <div class="desc">Barra horizontal com 3 cores (verde → amarelo → vermelho) preenchendo progressivamente, ao lado de <code>Only 56 items Left in Stock!</code>. Visual scarcity quantificado. <em>Pattern clássico de e-com mas eficaz em checkout de funil único.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">checkout</span>
+        <span class="tag">funnelish</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="checkout">
+      <div>
+        <h3>Order bump inline ($4.99 expedited shipping) <span class="source">funnelish</span></h3>
+        <div class="desc">Checkbox + truck image + headline <code>Yes, I want Expedited Shipping!</code> + body copy explicando o upsell. Posicionado ANTES do payment step. AOV bump de ~$5 sem fricção. <em>Pattern universal: qualquer checkout pode ter 1-2 order bumps de $3-9 que convertem 15-30%.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">checkout</span>
+        <span class="tag">funnelish</span>
+      </div>
+    </div>
+
+    <!-- QUIZ (Auraly) -->
+    <div class="pat" data-cat="quiz">
+      <div>
+        <h3>Quiz pré-checkout qualifica o lead <span class="source">auraly</span></h3>
+        <div class="desc">Funil separado: 5-7 perguntas de "engajamento emocional" (age, struggle, when started, tried before) → captura email → resultado "personalizado" → empurra pra buy page. <em>Qualifica lead antes de bater no checkout frio, aumenta CR final em 2-3x vs LP direta</em>. Auraly entrega pronto (white-label) ou DIY com quiz-slimsoda.html standalone.</div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">quiz</span>
+        <span class="tag">auraly</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="quiz">
+      <div>
+        <h3>Step counter UX + progress bar topo <span class="source">auraly</span></h3>
+        <div class="desc">Barra fina roxa no topo + counter "1 of 7" (implied) reduz ansiedade de duração. Single-question-per-screen (não scroll) com 1 tap pra avançar. <em>Mobile-first obrigatório — 80% do tráfego de quiz vem de IG/TikTok ads.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">quiz</span>
+        <span class="tag">auraly</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="quiz">
+      <div>
+        <h3>TTS audio narration per step <span class="source">slimsoda</span></h3>
+        <div class="desc">Narração hands-free em cada step (auto-play + manual Listen button). Voice: <code>English_ConfidentWoman</code> a 0.95x speed = warmer tone pra audience 40+ feminina. <em>Funciona pq 80% do quiz traffic vem de mobile/mommy multitasking — elas podem escutar enquanto fazem outra coisa.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">quiz</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="quiz">
+      <div>
+        <h3>Methodology tooltip "?" per step <span class="source">slimsoda</span></h3>
+        <div class="desc">Tag amarelo "DR · TECHNIQUE" no topo de cada step com ícone ?. Hover/focus → mostra research (Cialdini, Kahneman, etc) + rationale do design. <em>Educa o user sobre persuasion patterns + gera curiosity + converte power users em advocates.</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">quiz</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+    <div class="pat" data-cat="quiz">
+      <div>
+        <h3>"Most Popular" badge em age option <span class="source">slimsoda</span></h3>
+        <div class="desc">Badge amarelo "MOST POPULAR" posicionado absolute no top-right da opção 45-54. <em>Identity Lock (Banner 2010) — guia escolha inconsciente via Social Proof + segmenta lead no bucket de maior LTV (40-49 compra mais H&W supplements).</em></div>
+      </div>
+      <div class="meta">
+        <span class="tag cat">quiz</span>
+        <span class="tag">slimsoda</span>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+</div>
+
+<script>
+  // Filter functionality
+  document.querySelectorAll('.filter').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      document.querySelectorAll('.pat').forEach(p => {
+        p.style.display = (cat === 'all' || p.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

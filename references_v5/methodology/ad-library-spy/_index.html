@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Ad Library Spy Intel — Quem está vendendo mais? (Linfaflow / SlimSoda / Cardio Clear)</title>
+<meta name="description" content="Spy intel via Meta Ad Library: ranking de volume de ads ativos por produto, top affiliates por rede, e o que isso significa pra escalar.">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --panel: #14181d;
+    --panel-2: #1c2128;
+    --border: #2a313b;
+    --text: #e7eaf0;
+    --muted: #9aa3b2;
+    --accent: #ff8a3d;
+    --gold: #ffd166;
+    --green: #06a77d;
+    --red: #c0392b;
+    --blue: #4ea1ff;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 24px 96px; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px; }
+  .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255, 138, 61, 0.12); color: var(--accent); border: 1px solid rgba(255, 138, 61, 0.3); margin-bottom: 12px; }
+  h1 { font-size: 32px; line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.02em; }
+  h2 { font-size: 22px; margin: 36px 0 14px; padding-top: 12px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+  h3 { font-size: 17px; margin: 22px 0 10px; color: var(--gold); }
+  h4 { font-size: 14px; margin: 18px 0 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  p, li { color: var(--text); }
+  .muted { color: var(--muted); font-size: 13px; }
+  .lede { font-size: 17px; color: #d3d8e0; max-width: 760px; }
+  .callout { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 16px 18px; border-radius: 8px; margin: 18px 0; }
+  .callout strong { color: var(--accent); }
+  .pill { display: inline-block; padding: 3px 9px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+  .pill-rank-1 { background: rgba(255, 209, 102, 0.15); color: var(--gold); border: 1px solid rgba(255, 209, 102, 0.3); }
+  .pill-rank-2 { background: rgba(192, 192, 192, 0.12); color: #d0d4dc; border: 1px solid rgba(192, 192, 192, 0.3); }
+  .pill-rank-3 { background: rgba(205, 127, 50, 0.12); color: #cd7f32; border: 1px solid rgba(205, 127, 50, 0.3); }
+  .pill-spike { background: rgba(6, 167, 125, 0.12); color: var(--green); border: 1px solid rgba(6, 167, 125, 0.3); }
+  .pill-warn { background: rgba(192, 57, 43, 0.12); color: var(--red); border: 1px solid rgba(192, 57, 43, 0.3); }
+  .pill-info { background: rgba(78, 161, 255, 0.12); color: var(--blue); border: 1px solid rgba(78, 161, 255, 0.3); }
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 24px; font-size: 14px; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { background: var(--panel-2); color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; }
+  tr:hover td { background: rgba(255, 255, 255, 0.02); }
+  .num-big { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; color: var(--gold); }
+  .num-mid { font-size: 22px; font-weight: 800; color: #d0d4dc; }
+  .num-low { font-size: 22px; font-weight: 800; color: #cd7f32; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 18px 0 24px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0 24px; }
+  .card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .card .value { font-size: 28px; font-weight: 800; margin-top: 6px; letter-spacing: -0.02em; }
+  .card .sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .card.gold .value { color: var(--gold); }
+  .card.silver .value { color: #d0d4dc; }
+  .card.bronze .value { color: #cd7f32; }
+  code, .mono { font-family: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace; font-size: 12.5px; background: var(--panel-2); padding: 1px 6px; border-radius: 4px; color: #ffd9b8; }
+  .url { font-family: "JetBrains Mono", "SF Mono", Consolas, Menlo, monospace; font-size: 12px; color: var(--blue); word-break: break-all; }
+  .pattern-list { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; }
+  .pattern-list li { margin: 8px 0; }
+  .footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+  .arrow { color: var(--accent); font-weight: 800; }
+  @media (max-width: 720px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Spy Intel · Meta Ad Library · 17/ago/2026</span>
+    <h1>Quem está vendendo mais — Linfaflow vs SlimSoda vs Cardio Clear?</h1>
+    <p class="lede">Ranking por <strong>volume de ads ativos</strong> na Meta Ad Library (proxy razoável: mais ads = mais $$ em mídia = mais venda). Análise feita com busca <code>keyword_exact_phrase</code> pra eliminar 95% de ruído do keyword search.</p>
+    <p class="muted">Fonte: <a href="https://www.facebook.com/ads/library/" style="color: var(--blue);">facebook.com/ads/library</a> · País: US · Status: active · Tipo: all · Data da captura: 2026-08-17</p>
+  </header>
+
+  <div class="callout">
+    <strong>Veredito (1 linha):</strong> por volume de ads ativos, <strong>SlimSoda está vendendo mais</strong> (~1.100 ads), seguido de <strong>Linfaflow</strong> (~780 ads), com <strong>Cardio Clear MUITO atrás</strong> (~80-100 ads). Diferença de <strong>10-15×</strong> entre SlimSoda e Cardio Clear.
+  </div>
+
+  <h2>O Ranking</h2>
+
+  <div class="grid-3">
+    <div class="card gold">
+      <div class="label">🥇 #1 — SlimSoda</div>
+      <div class="value num-big">~1.100</div>
+      <div class="sub">ads ativos · 4+ afiliados · mais aquecido</div>
+    </div>
+    <div class="card silver">
+      <div class="label">🥈 #2 — Linfaflow</div>
+      <div class="value num-mid">~780</div>
+      <div class="sub">ads ativos · 2 anunciantes · mid-tier</div>
+    </div>
+    <div class="card bronze">
+      <div class="label">🥉 #3 — Cardio Clear</div>
+      <div class="value num-low">~80-100</div>
+      <div class="sub">ads ativos · 13+ afiliados · subexplorado</div>
+    </div>
+  </div>
+
+  <h2>🥇 SlimSoda — ~1.100 ads ativos</h2>
+
+  <h3>Top affiliates (páginas rodando os ads)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Página Facebook</th>
+        <th># ads visíveis</th>
+        <th>Mais antigo</th>
+        <th>URL LP</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Joe Yeugen</strong></td>
+        <td>3+ ads</td>
+        <td>Jul 6, 2026</td>
+        <td><span class="url">SHOPZENVYLITE.COM</span></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Rafael Yugen</strong></td>
+        <td>2+ ads</td>
+        <td>Jul 21, 2026</td>
+        <td><span class="url">SHOPZENVYLITE.COM</span></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>Amanda White Tips</strong></td>
+        <td>1 ad</td>
+        <td>Ago 15, 2026</td>
+        <td><span class="url">SLIMSODA.VITALYNE.STORE</span> <span class="pill pill-spike">LP NOVA</span></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Best Offers Health</strong></td>
+        <td>2 ads</td>
+        <td>Ago 14, 2026</td>
+        <td><span class="url">SHOPZENVYLITE.COM</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Sinais</h3>
+  <div class="pattern-list">
+    <ul>
+      <li><strong>Shopzenvy Lite</strong> (<span class="url">SHOPZENVYLITE.COM</span>) é a LP canônica que a gente já tem clonada. Joe Yeugen + Rafael Yugen são os 2 top spenders.</li>
+      <li><strong>2 LPs diferentes ativas</strong> (Shopzenvy + Vitalyne) = publisher está diversificando o stack de landers pra evitar fadiga de LP / bans.</li>
+      <li>Atividade começou <strong>Jul 6, 2026</strong> (5-6 semanas de operação contínua).</li>
+      <li>Mais recente ad: <strong>Ago 15, 2026</strong> (Amanda White Tips na Vitalyne) — campanha em expansão.</li>
+    </ul>
+  </div>
+
+  <h2>🥈 Linfaflow — ~780 ads ativos</h2>
+
+  <h3>Top affiliates (páginas rodando os ads)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Página Facebook</th>
+        <th>Page ID</th>
+        <th># ads</th>
+        <th>Notas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Linfaflow</strong> <span class="pill pill-info">OFICIAL</span></td>
+        <td><code>61572057097384</code></td>
+        <td>4+ ads</td>
+        <td>Publisher direto — roda o ad Margaret canônico + posts de branding</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Get Linfaflow</strong> <span class="pill pill-info">AFILIADO</span></td>
+        <td><code>61590846797954</code></td>
+        <td>2 ads</td>
+        <td>Provavelmente afiliado ou LP alternativa</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Ad icônico capturado (verbatim)</h3>
+  <div class="callout">
+    <strong>Margaret Story (Library ID 2800456156978830)</strong> — 2 versões, started Ago 8, 2026.<br>
+    "My older sister had a routine vein procedure for her swollen legs. She died of a blood clot four weeks later. She was 62."<br>
+    <em>Mesma estrutura narrativa do Mr. Roberts (Cardio Clear) — publisher usa o mesmo template "luto familial + discovery ritual 30-second" pros 3 produtos.</em>
+  </div>
+
+  <div class="pattern-list">
+    <ul>
+      <li>Atividade Jun-Ago/2026 (~2 meses), bem distribuída — não é pico, é operação contínua.</li>
+      <li>Rede menor que SlimSoda (2 páginas vs 4+) mas com LP canônica única.</li>
+      <li>Ad Margaret tem 4 ingredientes botânicos + ritual "Break / Sweep / Activate / Purify" — mesma mecânica de "ritual em 4 etapas" que SlimSoda (3 etapas) e Cardio Clear (2 cápsulas antes do café).</li>
+    </ul>
+  </div>
+
+  <h2>🥉 Cardio Clear — ~80-100 ads ativos <span class="pill pill-warn">SUBEXPLORADO</span></h2>
+
+  <h3>Top affiliates (páginas rodando "Arterial Cement")</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Página Facebook</th>
+        <th>LP URL</th>
+        <th># ads visíveis</th>
+        <th>Mais antigo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><strong>Louise Karther</strong> 🏆</td>
+        <td><span class="url">CARDIO.VITALHOLLOW.COM</span></td>
+        <td><strong>6+ ads</strong> (4 versions)</td>
+        <td>Jun 28, 2026</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><strong>Helen Carter</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 10, 2026</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><strong>James Smith</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 11, 2026</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><strong>Kessia Fontana</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 12, 2026</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><strong>Margaret Wilson</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 12, 2026</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td><strong>Lea Seixas</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 10, 2026</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td><strong>Helén Silva</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>2+ ads</td>
+        <td>Ago 11, 2026</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td><strong>Luciane Porto</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 11, 2026</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td><strong>Karina Lopes</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 15, 2026</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td><strong>Mirna Nunes</strong></td>
+        <td><span class="url">HEALTH.USLIFETODAY.ONLINE</span></td>
+        <td>1+ ad</td>
+        <td>Ago 11, 2026</td>
+      </tr>
+      <tr>
+        <td>11+</td>
+        <td><em>+ mais 3-4 contas não detalhadas</em></td>
+        <td>—</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>2ª frente descoberta: ângulo ED (Erectile Dysfunction) <span class="pill pill-spike">NEW</span></h3>
+  <div class="callout">
+    <strong>Achado importante:</strong> existe um ad <em>completamente diferente</em> rodando Cardio Clear com ângulo <strong>ED / nitric oxide / endothelial function</strong> (não o ângulo BP / Arterial Cement canônico).
+    <br><br>
+    <strong>Página:</strong> "The Wellness Insider" · <strong>LP:</strong> <span class="url">THEWELLNESSINSIDER.LIFE</span> · <strong>Started:</strong> Ago 16, 2026 · <strong>Impressões:</strong> &lt;100 (recém-lançado, vale monitorar)
+    <br><br>
+    <em>Story:</em> "When my wife told me she was 'too sore' to be intimate... erectile dysfunction... urologist Dr. Erik Johansen... endothelial function... Cardio Clear formula with beetroot, cayenne, turmeric, ginseng, hawthorn, K2, D3."
+  </div>
+
+  <h3>Sinais</h3>
+  <div class="pattern-list">
+    <ul>
+      <li><strong>13+ afiliados com nomes brasileiros</strong> — maior rede de afiliados dos 3 produtos.</li>
+      <li>Top spenders: <strong>Louise Karther</strong> (6+ ads, Jun 28 — mais antiga de toda a rede) + cluster de 9+ contas anônimas em HEALTH.USLIFETODAY.ONLINE.</li>
+      <li>Atividade concentrada Ago 10-15 (5 dias com 6+ ads novos) = escala rápida na reta final de Ago.</li>
+      <li><strong>2 LPs diferentes</strong> (VitalHollow + USLifeToday) = publisher diversificando stack, padrão idêntico ao SlimSoda.</li>
+      <li><strong>Subexplorado = blue ocean</strong>. Só 80-100 ads vs 1.100 do SlimSoda significa que Cardio Clear tem 10× menos ruído competitivo no leilão Meta.</li>
+    </ul>
+  </div>
+
+  <h2>📊 O que os 3 produtos têm em comum (publisher = mesmo grupo)</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="label">Padrão #1</div>
+      <div style="font-size: 16px; font-weight: 700; margin-top: 8px;">Páginas-afiliado com nomes próprios</div>
+      <p class="muted" style="margin-top: 6px;">Joe Yeugen, Rafael Yugen, Louise Karther, Helen Carter, James Smith, Margaret Wilson, Lea Seixas... — todos nomes em inglês (exceto quando são brasileiros). É a <em>"rede de lifeless names"</em> — a mesma assinatura do publisher.</p>
+    </div>
+    <div class="card">
+      <div class="label">Padrão #2</div>
+      <div style="font-size: 16px; font-weight: 700; margin-top: 8px;">2-3 LPs por produto</div>
+      <p class="muted" style="margin-top: 6px;">Shopzenvy + Vitalyne (SlimSoda) · VitalHollow + USLifeToday (Cardio Clear) · Linfaflow canônica. Diversificação pra evitar fadiga de LP e ban de domínio.</p>
+    </div>
+    <div class="card">
+      <div class="label">Padrão #3</div>
+      <div style="font-size: 16px; font-weight: 700; margin-top: 8px;">Atividade Jun-Ago 2026</div>
+      <p class="muted" style="margin-top: 6px;">Todos os 3 produtos lançaram no mesmo período (~2 meses). Publisher está escalando rede simultaneamente — mesmo budget, mesma operação.</p>
+    </div>
+    <div class="card">
+      <div class="label">Padrão #4</div>
+      <div style="font-size: 16px; font-weight: 700; margin-top: 8px;">Estrutura narrativa: luto + discovery</div>
+      <p class="muted" style="margin-top: 6px;">Mr. Roberts (Cardio) + Margaret (Linfaflow) + Rachel (SlimSoda) = mesmo template "parente morreu / não vou deixar comigo / descobri ritual". Factory de stories.</p>
+    </div>
+  </div>
+
+  <h2>🎯 Implicação estratégica</h2>
+
+  <h3>Se você quer escalar um dos 3 (escolha por objetivo)</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Objetivo</th>
+        <th>Produto recomendado</th>
+        <th>Razão</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Maximizar revenue de curto prazo</strong></td>
+        <td><span class="pill pill-rank-1">SlimSoda</span></td>
+        <td>Maior volume de demanda comprovada. Risco: leilão Meta mais saturado, CPC mais alto.</td>
+      </tr>
+      <tr>
+        <td><strong>Blue ocean / menos competição</strong></td>
+        <td><span class="pill pill-rank-3">Cardio Clear</span></td>
+        <td>Só 80-100 ads vs 1.100 = leilão 10× mais barato. Maior AOV ($297 vs $29.99) compensa volume menor.</td>
+      </tr>
+      <tr>
+        <td><strong>Meio termo / brand building</strong></td>
+        <td><span class="pill pill-rank-2">Linfaflow</span></td>
+        <td>780 ads = mid-tier saudável. Mercado menos óbvio (linfático, não é emagrecimento nem cardio padrão).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Se você quer copiar a estrutura de afiliados</h3>
+  <div class="callout">
+    O publisher demonstrou que <strong>a rede de páginas com nomes próprios</strong> (13+ contas tipo Louise Karther, Helen Carter, Joe Yeugen) <strong>é o motor de escala</strong>. Cada página roda o mesmo VSL/landing com a mesma copy — só muda o "Page Name" pra ter identidades separadas no Meta. <strong>Ação:</strong> criar 10-15 páginas de Facebook com nomes humanos, todas linkando pro mesmo VSL/quiz/checkout, com UTMs separados pra atribuir qual página converteu melhor.
+  </div>
+
+  <h2>⚠️ Disclaimer importante</h2>
+  <div class="pattern-list">
+    <ul>
+      <li><strong>"Mais ads" ≠ "mais receita absoluta".</strong> Cardio Clear tem menos ads mas pode ter AOV 6-10× maior (R$297 vs R$29.99 B1G1). Receita total pode ser equivalente mesmo com volume menor.</li>
+      <li><strong>Ad Library não mostra spend $$, só volume de criativos.</strong> Mas é o melhor proxy público gratuito.</li>
+      <li><strong>Active ads ≠ running ads.</strong> Um ad "active" pode estar pausado pelo publisher a qualquer momento.</li>
+      <li><strong>Geografia: US only</strong>. Brasil e EU podem ter volumes diferentes (Cardio Clear parece ter campanha EU também — vi "Transparência da UE" flag em alguns).</li>
+    </ul>
+  </div>
+
+  <h2>🔍 Como reproduzir essa análise em outro produto</h2>
+  <div class="callout">
+    <strong>Method replicável:</strong> (1) Identifica a frase EXATA única do produto (ex: "TitanFlow", "Prodentim", "Prostadine", "GlucoFreeze"). (2) Vai em <span class="url">facebook.com/ads/library</span> → search_type=keyword_exact_phrase → country=US → active=active. (3) Ranqueia por volume de resultados. (4) Identifica os page names (afiliados) — procura padrões tipo "nome humano repetido" = mesma rede. (5) Clica em cada page pra ver histórico completo. (6) Compara com seu produto e decide se a oferta tá saturada ou blue ocean.
+  </div>
+
+  <div class="footer">
+    Captura: 17/ago/2026 · Fonte: Meta Ad Library · Dados: US, active only · Próxima re-scan recomendada: 7-14 dias (volume muda rápido).
+  </div>
+
+</div>
+</body>
+</html>

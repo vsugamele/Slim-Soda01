@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>SlimSoda — Native Display Ads (5 criativos) — Salvo 2026-08-17</title>
+<style>
+:root {
+  --bg: #0B0E14; --sf: #121826; --sf2: #0E1420; --ln: #232C40;
+  --tx: #EAF0FA; --mut: #93A0B8; --fnt: #5C6880;
+  --brand: #F5841F;
+  --ok: #2BD576; --lim: #9ADE4B; --warn: #FFC53D; --bad: #FF5A65;
+  --ac: #E9EEF7;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 32px 22px; }
+.halo { position: fixed; inset: 0 0 auto 0; height: 360px; pointer-events: none; z-index: 0; background: radial-gradient(640px 240px at 18% -60px, rgba(245,132,31,.18), transparent 70%), radial-gradient(520px 220px at 85% -80px, rgba(77,159,255,.09), transparent 70%); }
+.eyebrow { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--brand); display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.eyebrow::before { content: ""; width: 34px; height: 3px; background: var(--brand); }
+.atitle { font-family: 'Archivo', 'Arial Black', sans-serif; font-weight: 900; font-size: clamp(32px, 4.6vw, 48px); letter-spacing: -1.2px; line-height: 1.04; text-transform: uppercase; margin-top: 16px; }
+.atitle .ak { color: var(--brand); }
+.sub { color: var(--mut); margin-top: 9px; font-size: 15px; max-width: 62ch; }
+h2 { font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -0.5px; line-height: 1.12; margin-top: 56px; border-bottom: 1px solid var(--ln); padding-bottom: 10px; }
+h3 { font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 21px; margin: 32px 0 8px; }
+p { color: #C3CCDD; font-size: 15px; max-width: 80ch; }
+.lead { color: #A7B2C7; margin-top: 10px; max-width: 78ch; font-size: 16.5px; }
+.lead b { color: var(--tx); }
+.card { background: var(--sf); border: 1px solid var(--ln); border-radius: 16px; padding: 20px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+.grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+@media (max-width: 880px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+.ct { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--ac); margin-bottom: 12px; }
+.kv { margin-top: 14px; }
+.kv .r { display: grid; grid-template-columns: 200px 1fr; gap: 14px; padding: 10px 0; border-bottom: 1px dashed var(--ln); }
+.kv .r:last-child { border-bottom: 0; }
+.kv .k { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #7E8AA0; padding-top: 3px; }
+.kv .v { font-size: 15px; font-weight: 600; color: var(--tx); }
+@media (max-width: 640px) { .kv .r { grid-template-columns: 1fr; gap: 3px; } }
+.pill { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.6px; padding: 3px 10px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+.p-ok { color: #6BF0A6; background: rgba(43,213,118,.12); border-color: rgba(43,213,118,.45); }
+.p-warn { color: #FFD86B; background: rgba(255,197,61,.12); border-color: rgba(255,197,61,.45); }
+.p-bad { color: #FF8B94; background: rgba(255,90,101,.12); border-color: rgba(255,90,101,.45); }
+.p-info { color: #8CC2FF; background: rgba(77,159,255,.12); border-color: rgba(77,159,255,.45); }
+.p-vio { color: #C9B8FF; background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.45); }
+.p-brand { color: #FFB36B; background: rgba(245,132,31,.12); border-color: rgba(245,132,31,.45); }
+.co { display: flex; gap: 14px; align-items: flex-start; border: 1px solid var(--ln); border-left: 4px solid var(--ac); border-radius: 14px; padding: 16px 18px; margin-top: 14px; background: var(--sf); }
+.co .ic { font-size: 21px; line-height: 1.3; }
+.co .t { display: block; font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.2px; margin-bottom: 4px; color: var(--tx); }
+.co p { color: #C3CCDD; font-size: 14.8px; }
+.co p b { color: var(--tx); }
+.co.warn { border-left-color: #FFC53D; }
+.co.bad { border-left-color: #FF5A65; }
+.co.info { border-left-color: #4D9FFF; }
+.co.vio { border-left-color: #A78BFA; }
+.co.ok { border-left-color: #2BD576; }
+.co.brand { border-left-color: var(--brand); }
+
+/* GALLERY */
+.gallery { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 22px; }
+.creative { background: var(--sf); border: 1px solid var(--ln); border-radius: 16px; overflow: hidden; }
+.creative-img { width: 100%; display: block; }
+.creative-meta { padding: 16px 20px; border-top: 1px solid var(--ln); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 720px) { .creative-meta { grid-template-columns: 1fr; } }
+.creative-meta .col h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: #FFB36B; margin-bottom: 8px; }
+.creative-meta .col p { color: #C3CCDD; font-size: 14px; line-height: 1.5; }
+.creative-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--brand); letter-spacing: 1.5px; }
+
+.back { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700; color: var(--mut); text-decoration: none; margin-bottom: 24px; padding: 8px 14px; border: 1px solid var(--ln); border-radius: 8px; }
+.back:hover { color: var(--tx); border-color: var(--brand); }
+</style>
+</head>
+<body>
+<div class="halo"></div>
+<div class="wrap">
+
+<a class="back" href="../../index.html">← Voltar ao hub</a>
+
+<div class="eyebrow">DR References · Native Display Ads</div>
+<h1 class="atitle">SlimSoda — <span class="ak">5 criativos nativos</span></h1>
+<p class="lead">5 unidades criativas do SlimSoda em formato "sponsored article" / "health desk" — mesmo funil, ângulos diferentes. <b>Hero, copy, scoop visual e bottle idênticos</b> em todos. Variação = headline + tagline + formato. Salvo pelo Vinicius em 16/ago/2026 (WhatsApp). 1,6MB total.</p>
+
+<div class="grid3" style="margin-top:24px">
+  <div class="card"><div class="ct">📐 Formato</div><p>5 imagens estáticas, 1:1 (Instagram/FB feed), 1080×1080 ou 1080×1350. Editorial fake: "MORNING ROUTINE EXPLAINED" / "HEALTH DESK" / "SPONSORED WELLNESS ARTICLE" / "MORNING WELLNESS REPORT". Footer comum: "Adults 18+ · Dietary supplement".</p></div>
+  <div class="card"><div class="ct">🎨 Identidade visual</div><p>Bottle SlimSoda (laranja + navy) + scoop branco + glass of water na cena. <b>Trio repetido 5×</b> com mesmo ângulo. Orange #F5841F + navy #1A2B5C + cream background. <b>Tag "BAKING SODA" + "CONCENTRATED" no seal</b> âncora do mecanismo.</p></div>
+  <div class="card"><div class="ct">🔬 Stack narrativa</div><p><b>Editorial wrapper</b> (morning report, health desk) → <b>headline de好奇心</b> ("Why simplicity is resonating", "people keep clicking on") → <b>3-2-1 sub-cópia</b> ("One scoop. One glass. 3 seconds.") → <b>CTA = READ MORE</b> (não "BUY NOW").</p></div>
+</div>
+
+<h2>Galeria dos 5 criativos</h2>
+<p style="margin-top:8px">Cada bloco tem a imagem full + breakdown de hook, copy, visual e CTA.</p>
+
+<div class="gallery">
+
+  <!-- 01 — Clutter vs Simple split -->
+  <div class="creative">
+    <img class="creative-img" src="01-clutter-vs-simple-split.jpeg" alt="Clutter vs Simple — split visual"/>
+    <div class="creative-meta">
+      <div class="col">
+        <h4><span class="creative-num">01 · </span>Hook + Copy</h4>
+        <p><b>Headline:</b> "YOUR MORNING HAS ENOUGH STEPS." (bold all-caps, dark bg). <b>Sub:</b> "Keep the routine simple." <b>Pill box:</b> "One scoop. One glass." <b>CTA:</b> "DISCOVER THE ROUTINE" (botão navy full-width).</p>
+      </div>
+      <div class="col">
+        <h4>Visual + Ângulo</h4>
+        <p><b>Split 50/50:</b> esquerda = clutter de bottles/notebooks/post-its (ruim, overstimulating). Direita = clean: 1 glass + 1 scoop + 1 bottle (solução). <b>Ângulo: anti-ritual complicado.</b> Diferente dos outros 4 (que são sponsored article). Único "lifestyle" do batch.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 — Scoop + Glass article -->
+  <div class="creative">
+    <img class="creative-img" src="02-scoop-glass-article.jpeg" alt="Scoop + Glass article"/>
+    <div class="creative-meta">
+      <div class="col">
+        <h4><span class="creative-num">02 · </span>Hook + Copy</h4>
+        <p><b>Eyebrow:</b> "MORNING ROUTINE EXPLAINED". <b>Headline serif:</b> "One scoop. One glass. Why simplicity is resonating with readers". <b>Body 3 col:</b> "Why readers are paying attention" / "The power of small, daily habits" / "What simplicity can look like". <b>CTA:</b> "SEE THE ARTICLE" (orange pill).</p>
+      </div>
+      <div class="col">
+        <h4>Visual + Ângulo</h4>
+        <p><b>Newspaper-style 3-column layout.</b> Cream paper bg + bottle + scoop + glass centralizado. Coluna esquerda justifica a curiosidade ("readers are embracing simple choices"). <b>Ângulo: editorial curiosity</b> — não vende, "explica o phenomenon". Footer Adults 18+.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 — Sponsored Wellness Article -->
+  <div class="creative">
+    <img class="creative-img" src="03-sponsored-wellness-article.jpeg" alt="Sponsored Wellness Article"/>
+    <div class="creative-meta">
+      <div class="col">
+        <h4><span class="creative-num">03 · </span>Hook + Copy</h4>
+        <p><b>Eyebrow:</b> "SPONSORED WELLNESS ARTICLE" (vermelho, all-caps). <b>Headline serif massive:</b> "The baking soda morning ritual people keep clicking on". <b>Drop cap "M"</b> em "Mornings set the tone for everything that follows". <b>Quote pull:</b> "It's not about perfection. It's about small, consistent choices." <b>CTA:</b> "OPEN THE STORY" (orange pill).</p>
+      </div>
+      <div class="col">
+        <h4>Visual + Ângulo</h4>
+        <p><b>Long-form editorial fake.</b> Cream paper bg, drop cap clássico de revista, pull-quote. Body fala "More and more people are turning to a time-tested ingredient — baking soda". <b>Ângulo: traditional recipe revival.</b> Disclaimer "Inside: what baking soda does, how to use it" (educational frame, não hard-sell).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 — Morning Wellness Report -->
+  <div class="creative">
+    <img class="creative-img" src="04-morning-wellness-report.jpeg" alt="Morning Wellness Report"/>
+    <div class="creative-meta">
+      <div class="col">
+        <h4><span class="creative-num">04 · </span>Hook + Copy</h4>
+        <p><b>Eyebrow:</b> "MORNING WELLNESS REPORT" (com hamburger menu + sun icon). <b>Headline serif:</b> "Why this simple morning routine is getting so much attention". <b>Body 3-sub-head:</b> "A small habit. A big shift." / "What's behind the buzz?" / Sub-CTA bottom. <b>CTA:</b> "READ THE ARTICLE" (orange pill).</p>
+      </div>
+      <div class="col">
+        <h4>Visual + Ângulo</h4>
+        <p><b>Magazine + report hybrid.</b> White bg, bottle + glass of water com bubble detail. Right side = "Curious what makes this morning step so effective — and how it fits into real people's daily routines? The full story breaks it all down." <b>Ângulo: buzz/curiosity</b> — "the buzz" + "people are talking". Footer Adults 18+.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 — Health Desk 3-second mix -->
+  <div class="creative">
+    <img class="creative-img" src="05-health-desk-3sec-mix.jpeg" alt="Health Desk 3-second mix"/>
+    <div class="creative-meta">
+      <div class="col">
+        <h4><span class="creative-num">05 · </span>Hook + Copy</h4>
+        <p><b>Eyebrow:</b> "HEALTH DESK" (navy pill, white text, top-left). <b>Headline navy bold:</b> "3-second morning mix sparks curiosity online". <b>Sub:</b> "A simple morning ritual is drawing attention for its quick prep and feel-good fizz. Here's what people are saying." <b>CTA:</b> "READ MORE →" (orange pill).</p>
+      </div>
+      <div class="col">
+        <h4>Visual + Ângulo</h4>
+        <p><b>Modern news desk layout.</b> Kitchen scene (cutting board, plant, glass of fizzing water com bubbles). Navy headline contrast. <b>Ângulo: viral curiosity</b> + "3-second" speed promise + fizzy water visual cue. Footer "From busy professionals to wellness enthusiasts" + Adults 18+.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<h2>Padrões replicáveis</h2>
+
+<div class="co brand">
+  <span class="ic">🎯</span>
+  <div>
+    <span class="t">Editorial wrapper como mecanismo de credibilidade</span>
+    <p>Os 4 sponsored-article usam wrapper fake de news outlet (MORNING ROUTINE EXPLAINED, HEALTH DESK, SPONSORED WELLNESS ARTICLE, MORNING WELLNESS REPORT). <b>Copy = reportagem, não venda.</b> "READ MORE" / "SEE THE ARTICLE" / "OPEN THE STORY" viram soft CTAs que abrem o funil sem pedir compra. <b>Replicável pra Cardio Clear:</b> "MORNING BP REPORT" / "HEART HEALTH DESK" / "WELLNESS DISPATCH" — mesmo tom, cor navy + red.</p>
+  </div>
+</div>
+
+<div class="co info">
+  <span class="ic">🔁</span>
+  <div>
+    <span class="t">3 ingredientes visuais idênticos × 5 ângulos</span>
+    <p>Bottle + scoop + glass of water aparecem em TODOS os 5 criativos. Ângulo muda (newspaper / magazine / split / wellness report), mas o <b>trio de produto é fixo.</b> Isso é meta-learning: o algoritmo Meta aprende a associar esse trio visual com o produto, e o user reconhece a marca de longe. <b>Replicável:</b> Cardio Clear precisa do próprio trio fixo (bottle + BP monitor + capsule close-up) em TODOS os criativos.</p>
+  </div>
+</div>
+
+<div class="co ok">
+  <span class="ic">📏</span>
+  <div>
+    <span class="t">One scoop. One glass. → fórmula de 3 palavras</span>
+    <p>O ritual é reduzido a <b>3 palavras canônicas</b> repetidas em todos os criativos: "One scoop. One glass. [X seconds/ritual/simple]." Memorável, escaneável, repetível. <b>Replicável pro Cardio Clear:</b> "Two capsules. Before coffee. 30 seconds." → mesmo formato de 3-3-2.</p>
+  </div>
+</div>
+
+<div class="co vio">
+  <span class="ic">🧂</span>
+  <div>
+    <span class="t">"Baking soda" nomeado nos criativos</span>
+    <p>Os 4 sponsored-article têm o nome do ingrediente principal no headline OU subhead: "baking soda morning ritual" / "BAKING SODA" no seal da bottle. <b>O creator cita abertamente o ingrediente "barato" como mecanismo.</b> Reduz ceticismo (não é "fórmula secreta cara"), ancora o ritual como recipe replicável. <b>Replicável pro Cardio Clear:</b> nomear "Sardinian Bitter Honey" / "Cagnulari grape" no headline quando possível.</p>
+  </div>
+</div>
+
+<div class="co warn">
+  <span class="ic">⚠️</span>
+  <div>
+    <span class="t">Footer obrigatório "Adults 18+ · Dietary supplement"</span>
+    <p>Presente em 4 dos 5. Sinaliza compliance FTC de cara (não é claim, é disclaimer). <b>Replicável:</b> Cardio Clear precisa do footer análogo ("Adults 18+ · Dietary supplement. Not intended to diagnose, treat, cure or prevent any disease. Talk to your doctor before use."). Disclaimer longo = análise, disclaimer curto = scroll-stopper.</p>
+  </div>
+</div>
+
+<div class="co">
+  <span class="ic">📐</span>
+  <div>
+    <span class="t">Aspect ratio 1:1 e 4:5, não 9:16</span>
+    <p>Todos os 5 são quadrado ou quase quadrado (IG feed + FB feed), não vertical Stories/Reels. <b>Por quê:</b> sponsored article precisa parecer ARTIGO, não vídeo. Vertical = nativo de Reels, quadrado = nativo de feed estático. <b>Replicável pro Cardio Clear:</b> criativos image-first = 1:1, criativos VSL-cover = 9:16.</p>
+  </div>
+</div>
+
+<h2>Comparação lado a lado</h2>
+<div class="tw" style="margin-top:14px;overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Wrapper</th><th>Hook angle</th><th>Format</th><th>CTA</th></tr></thead>
+<tbody>
+<tr><td><b>01</b></td><td>(none — direct)</td><td>Anti-ritual complicado (split visual)</td><td>Square 1:1</td><td>DISCOVER THE ROUTINE</td></tr>
+<tr><td><b>02</b></td><td>MORNING ROUTINE EXPLAINED</td><td>Editorial curiosity (resonating with readers)</td><td>Square 1:1</td><td>SEE THE ARTICLE</td></tr>
+<tr><td><b>03</b></td><td>SPONSORED WELLNESS ARTICLE</td><td>Recipe revival (baking soda morning ritual)</td><td>Portrait 4:5</td><td>OPEN THE STORY</td></tr>
+<tr><td><b>04</b></td><td>MORNING WELLNESS REPORT</td><td>Buzz (getting so much attention)</td><td>Square 1:1</td><td>READ THE ARTICLE</td></tr>
+<tr><td><b>05</b></td><td>HEALTH DESK</td><td>Viral + speed (3-second mix sparks curiosity)</td><td>Square 1:1</td><td>READ MORE →</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Stack de copy (verbatim)</h2>
+<div class="grid2">
+  <div class="card">
+    <div class="ct">📌 Headlines (4 variantes)</div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8">
+    "One scoop. One glass. Why simplicity is resonating with readers"<br><br>
+    "The baking soda morning ritual people keep clicking on"<br><br>
+    "Why this simple morning routine is getting so much attention"<br><br>
+    "3-second morning mix sparks curiosity online"
+    </p>
+  </div>
+  <div class="card">
+    <div class="ct">🎯 CTAs (5 variantes)</div>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8">
+    "READ THE ARTICLE →"<br>
+    "SEE THE ARTICLE"<br>
+    "OPEN THE STORY"<br>
+    "READ MORE →"<br>
+    "DISCOVER THE ROUTINE"
+    </p>
+    <p style="margin-top:12px;color:#7E8AA0"><b>100% soft CTA</b> — nenhum "BUY NOW" ou "SHOP NOW". Compatível com Meta native ad policy.</p>
+  </div>
+</div>
+
+<div style="margin-top:48px;padding:20px;border-top:1px solid var(--ln);color:#5C6880;font-size:12px;font-family:'JetBrains Mono',monospace">
+  Salvo pelo Vinicius em 2026-08-16 (WhatsApp) · 5 arquivos · 1,6MB total · 1 vertical (SlimSoda) · 1 tipo (native display ads)
+</div>
+
+</div>
+</body>
+</html>

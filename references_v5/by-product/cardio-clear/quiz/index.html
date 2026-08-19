@@ -1,0 +1,943 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Sanjay Gupta — Metabolic Reset Quiz</title>
+<style>
+  :root{
+    --primary:#6B2FB3;
+    --primary-light:#A78BFA;
+    --primary-dark:#3D1B70;
+    --accent:#10B981;
+    --accent-soft:#D1FAE5;
+    --bg:#F5F0FF;
+    --bg-light:#FFFFFF;
+    --text:#1F1147;
+    --text-light:#6B6383;
+    --border:#E9E1F8;
+    --expert-bg:#FFFFFF;
+    --user-bg:linear-gradient(135deg,#6B2FB3,#A78BFA);
+    --shadow:0 4px 14px rgba(107,47,179,.10);
+    --shadow-lg:0 16px 40px rgba(107,47,179,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased}
+  .app{max-width:480px;margin:0 auto;min-height:100vh;background:var(--bg-light);box-shadow:0 0 60px rgba(107,47,179,.08);position:relative;display:flex;flex-direction:column}
+  .progress{position:sticky;top:0;height:5px;background:#EEE5FA;z-index:50}
+  .progress-bar{height:100%;background:linear-gradient(90deg,var(--primary),var(--primary-light));width:0%;transition:width .5s ease}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--bg-light);border-bottom:1px solid var(--border);position:sticky;top:5px;z-index:49}
+  .expert-badge{display:flex;align-items:center;gap:8px;background:#F4EEFC;padding:6px 12px;border-radius:20px;font-size:12px;color:var(--primary);font-weight:600}
+  .expert-badge .av{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#A78BFA,#6B2FB3);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;position:relative}
+  .expert-badge .av::after{content:"";position:absolute;bottom:-1px;right:-1px;width:8px;height:8px;background:var(--accent);border:2px solid #fff;border-radius:50%;animation:pulse-dot 1.6s infinite}
+  .expert-badge .name{font-size:12px}
+  .expert-badge .name small{display:block;font-size:9px;color:var(--text-light);font-weight:500;letter-spacing:.3px;margin-top:1px}
+  .step-counter{font-size:12px;color:var(--text-light);font-weight:500}
+  @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.15)}}
+  .stage{flex:1;padding:18px 16px 110px;display:flex;flex-direction:column;overflow-y:auto;background:linear-gradient(180deg,#F5F0FF 0%,#FAF5FF 100px,#FFFFFF 200px)}
+  .step{display:none;flex-direction:column;gap:10px;flex:1}
+  .step.active{display:flex;animation:fadeIn .4s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* CHAT BUBBLE */
+  .chat-bubble{display:flex;gap:8px;align-items:flex-end;animation:bubbleIn .5s cubic-bezier(.2,.9,.3,1.2);max-width:92%}
+  .chat-bubble.expert{align-self:flex-start}
+  .chat-bubble.user{align-self:flex-end;flex-direction:row-reverse;animation-delay:.1s}
+  .avatar{width:34px;height:34px;border-radius:50%;flex-shrink:0;overflow:hidden;background:linear-gradient(135deg,#A78BFA,#6B2FB3);display:flex;align-items:center;justify-content:center;position:relative;color:#fff;font-size:12px;font-weight:800;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .bubble{background:var(--expert-bg);padding:12px 16px;border-radius:20px;border-bottom-left-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.05);font-size:14.5px;line-height:1.5;color:var(--text)}
+  .bubble strong{color:var(--primary);font-weight:700}
+  .bubble em{font-style:italic;color:var(--primary-dark)}
+  .chat-bubble.user .bubble{background:var(--user-bg);color:#fff;border-bottom-left-radius:20px;border-bottom-right-radius:6px;box-shadow:0 2px 10px rgba(107,47,179,.2)}
+  .chat-bubble.user .bubble strong{color:#FDE68A}
+  @keyframes bubbleIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+  /* TYPING */
+  .typing-bubble{display:flex;gap:8px;align-items:flex-end;align-self:flex-start;animation:bubbleIn .4s}
+  .typing{background:#fff;padding:14px 18px;border-radius:20px;border-bottom-left-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.05);display:flex;gap:4px;align-items:center}
+  .typing span{width:7px;height:7px;background:var(--primary-light);border-radius:50%;animation:typing 1.2s infinite}
+  .typing span:nth-child(2){animation-delay:.15s}
+  .typing span:nth-child(3){animation-delay:.3s}
+  @keyframes typing{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+
+  /* QUICK REPLIES (chips) */
+  .quick-replies{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 4px 42px;animation:bubbleIn .5s}
+  .chip{background:#fff;border:2px solid var(--border);border-radius:24px;padding:10px 16px;font-size:14px;font-weight:600;color:var(--text);cursor:pointer;transition:all .2s;font-family:inherit;display:inline-flex;align-items:center;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.04)}
+  .chip:hover{border-color:var(--primary-light);transform:translateY(-1px);box-shadow:0 4px 12px rgba(107,47,179,.12)}
+  .chip:active{transform:translateY(0)}
+  .chip.selected{background:var(--user-bg);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(107,47,179,.25)}
+  .chip-emoji{font-size:16px;line-height:1}
+  .chip-multi{position:relative}
+  .chip-multi.selected::after{content:"✓";position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:var(--accent);color:#fff;border-radius:50%;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:800;border:2px solid #fff}
+
+  /* INLINE INPUT */
+  .chat-input-wrap{padding:6px 0 0 42px;display:flex;flex-direction:column;gap:8px;animation:bubbleIn .5s}
+  .chat-input-row{display:flex;gap:8px;align-items:center;background:#fff;border:2px solid var(--border);border-radius:28px;padding:4px 4px 4px 18px;box-shadow:0 2px 8px rgba(0,0,0,.04);transition:border-color .2s}
+  .chat-input-row:focus-within{border-color:var(--primary)}
+  .chat-input{flex:1;border:none;outline:none;font-size:15px;font-family:inherit;color:var(--text);background:transparent;padding:10px 0}
+  .chat-input::placeholder{color:var(--text-light)}
+  .send-btn{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s,opacity .15s}
+  .send-btn:hover{transform:scale(1.05)}
+  .send-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+  .send-btn svg{width:16px;height:16px}
+
+  /* CTAs inline (chips) */
+  .cta-chip{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;border-radius:24px;padding:12px 24px;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 20px rgba(107,47,179,.25);font-family:inherit;transition:transform .15s,box-shadow .15s}
+  .cta-chip:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(107,47,179,.35)}
+  .cta-chip:active{transform:translateY(0)}
+  .cta-chip:disabled{opacity:.5;cursor:not-allowed;transform:none}
+  .cta-wrap{padding:6px 0 0 42px;animation:bubbleIn .5s}
+
+  /* HERO (step 0) - 1 expert bubble grande + CTA */
+  .hero-bubble{max-width:96%;padding:18px 20px;font-size:15.5px;line-height:1.55}
+  .hero-h1{font-size:22px;font-weight:800;line-height:1.2;margin-bottom:10px;color:var(--text)}
+  .hero-h1 .highlight{background:linear-gradient(135deg,var(--primary),var(--primary-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  .hero-stats{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+  .hero-stat{background:#F4EEFC;color:var(--primary);padding:4px 10px;border-radius:14px;font-size:11px;font-weight:600}
+  .bottle-float{width:90px;height:120px;margin:8px auto;animation:float 3s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .bottle-float svg{width:100%;height:100%;filter:drop-shadow(0 12px 24px rgba(107,47,179,.2))}
+
+  /* REVEAL CARDS (no chat) */
+  .reveal-card{background:linear-gradient(135deg,#fff,#F4EEFC);border:1px solid var(--border);border-radius:16px;padding:14px;margin:8px 0 4px 42px;box-shadow:var(--shadow);animation:bubbleIn .5s}
+  .reveal-card h4{color:var(--primary-dark);font-size:11px;font-weight:700;margin-bottom:8px;letter-spacing:1px;text-transform:uppercase}
+  .reveal-list{list-style:none;padding:0;margin:0}
+  .reveal-list li{padding:5px 0 5px 22px;position:relative;font-size:13.5px;color:var(--text);line-height:1.4}
+  .reveal-list li::before{content:"✓";position:absolute;left:0;top:5px;width:16px;height:16px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+
+  /* MECHANISM BLOCK (in chat) */
+  .mechanism{background:linear-gradient(135deg,#1F1147,#3D1B70);color:#fff;padding:14px 16px;border-radius:14px;margin:6px 0 4px 42px;animation:bubbleIn .5s;box-shadow:var(--shadow-lg)}
+  .mechanism-label{display:inline-block;background:linear-gradient(135deg,#F59E0B,#EF4444);color:#fff;font-size:9px;padding:3px 8px;border-radius:10px;font-weight:700;letter-spacing:.5px;margin-bottom:8px}
+  .mechanism h3{font-size:15px;font-weight:800;line-height:1.25;margin-bottom:6px}
+  .mechanism p{font-size:12.5px;line-height:1.5;opacity:.92}
+  .mechanism strong{color:#FDE68A}
+
+  /* ASSET FRAME */
+  .asset-frame{background:repeating-linear-gradient(45deg,#F4EEFC,#F4EEFC 12px,#EDE3FF 12px,#EDE3FF 24px);border:2px dashed var(--primary);border-radius:14px;padding:14px;margin:6px 0 4px 42px;position:relative;animation:bubbleIn .5s}
+  .asset-frame-label{position:absolute;top:-10px;left:14px;background:var(--primary);color:#fff;font-size:9px;padding:3px 10px;border-radius:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+  .asset-frame-content{display:flex;gap:10px;align-items:flex-start}
+  .asset-frame-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px}
+  .asset-frame-text{flex:1;font-size:12px;line-height:1.4;color:var(--text)}
+  .asset-frame-text strong{display:block;color:var(--primary-dark);margin-bottom:3px;font-size:13px}
+  .asset-frame-prompt{background:#1F1147;color:#E9E1F8;padding:10px;border-radius:8px;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:10.5px;line-height:1.5;margin-top:8px;max-height:160px;overflow-y:auto;white-space:pre-wrap}
+  .asset-frame-prompt::before{content:"📋 PROMPT TO RUN: ";color:#FDE68A;font-weight:700}
+
+  /* AUDIO CARD */
+  .audio-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:12px;margin:6px 0 4px 42px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;animation:bubbleIn .5s}
+  .audio-row{display:flex;align-items:center;gap:10px}
+  .audio-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#A78BFA,#6B2FB3);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;position:relative;flex-shrink:0}
+  .audio-avatar::after{content:"";position:absolute;bottom:0;right:0;width:12px;height:12px;background:var(--accent);border:2px solid #fff;border-radius:50%}
+  .audio-play{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
+  .audio-play:hover{transform:scale(1.05)}
+  .audio-bar{flex:1;height:5px;background:#E9E1F8;border-radius:3px;overflow:hidden;position:relative}
+  .audio-bar-fill{position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--primary-light));transition:width .3s linear;border-radius:3px}
+  .audio-time{display:flex;justify-content:space-between;font-size:10px;color:var(--text-light);font-variant-numeric:tabular-nums}
+
+  /* OFFER CARD (in chat) */
+  .offer-card{background:linear-gradient(135deg,#fff,#F4EEFC);border:2px solid var(--primary);border-radius:16px;padding:16px;margin:6px 0 4px 42px;box-shadow:var(--shadow-lg);animation:bubbleIn .5s}
+  .offer-eyebrow{font-size:10px;color:var(--primary);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+  .offer-title{font-size:18px;font-weight:800;margin:4px 0 10px;line-height:1.2}
+  .offer-anchor{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+  .offer-old{font-size:16px;color:var(--text-light);text-decoration:line-through}
+  .offer-new{font-size:30px;font-weight:800;color:var(--primary);line-height:1}
+  .offer-save{background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.5px}
+  .offer-includes{list-style:none;padding:0;margin:12px 0 0}
+  .offer-includes li{padding:6px 0 6px 24px;position:relative;font-size:13px;line-height:1.4}
+  .offer-includes li::before{content:"✓";position:absolute;left:0;top:6px;width:18px;height:18px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800}
+  .offer-guarantee{font-size:11px;color:var(--text-light);margin-top:10px;text-align:center}
+
+  /* URGENCY + COUNTDOWN */
+  .urgency{background:linear-gradient(135deg,#FEE2E2,#FECACA);border:1px solid #F87171;color:#7F1D1D;padding:10px 12px;border-radius:12px;font-size:12px;font-weight:600;text-align:center;margin:6px 0 4px 42px;animation:bubbleIn .5s}
+  .urgency strong{color:#DC2626}
+  .countdown{display:flex;gap:6px;justify-content:center;margin:6px 0 4px 42px;animation:bubbleIn .5s}
+  .cd-cell{background:#1F1147;color:#fff;padding:8px 10px;border-radius:8px;text-align:center;min-width:48px}
+  .cd-num{font-size:20px;font-weight:800;display:block;line-height:1;font-variant-numeric:tabular-nums}
+  .cd-lbl{font-size:8px;text-transform:uppercase;letter-spacing:1px;opacity:.7;display:block;margin-top:2px}
+
+  /* CHECK CIRCLE (final reveal) */
+  .check-circle{width:60px;height:60px;background:linear-gradient(135deg,var(--accent),#059669);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 10px 24px rgba(16,185,129,.3);animation:pop .6s cubic-bezier(.2,.9,.3,1.4)}
+  @keyframes pop{0%{transform:scale(0);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+  .check-circle svg{width:32px;height:32px;color:#fff}
+
+  /* METHODOLOGY TOOLTIP */
+  .method-tag{display:inline-flex;align-items:center;gap:5px;background:linear-gradient(135deg,#FEF3C7,#FDE68A);color:#92400E;font-size:10px;padding:3px 10px;border-radius:14px;font-weight:600;margin-bottom:8px;cursor:help;position:relative;letter-spacing:.3px;border:1px solid #F59E0B;align-self:flex-start}
+  .method-tag .q{width:14px;height:14px;background:#92400E;color:#FEF3C7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800}
+  .method-info{display:none;position:absolute;bottom:calc(100% + 8px);left:0;background:#1F1147;color:#fff;padding:10px 12px;border-radius:10px;font-size:11px;line-height:1.45;width:300px;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,.25);font-weight:400;letter-spacing:0;text-align:left}
+  .method-info strong{color:#FDE68A;display:block;margin-bottom:3px}
+  .method-tag:hover .method-info{display:block;animation:fadeIn .2s}
+
+  /* BOTTOM ACTION (sticky) */
+  .bottom-action{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:linear-gradient(180deg,transparent,#fff 30%);padding:16px 16px 20px;z-index:40}
+  .bottom-action .cta-chip{width:100%;justify-content:center;padding:14px 20px;font-size:15px}
+
+  /* BOTTOM NAV HINT */
+  .nav-hint{position:fixed;bottom:6px;left:0;right:0;max-width:480px;margin:0 auto;text-align:center;font-size:9px;color:var(--text-light);z-index:39;pointer-events:none}
+
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div id="static-notice" style="position:fixed;top:0;left:0;right:0;z-index:9999;background:linear-gradient(90deg,#1a2b5c,#C8102E);color:#fff;padding:10px 20px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,0.3)">
+  <div>
+    <strong>⚠️ MODO PREVIEW ESTÁTICO</strong> · LLM e TTS não funcionam aqui (precisa do server local rodando em <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:3px">http://localhost:3000</code>). Você pode navegar pela estrutura visual e copy, mas as respostas geradas pelo GPT/TTS vão falhar.
+  </div>
+  <div style="font-size:12px;opacity:0.85">
+    💡 Pra ativar LLM + TTS: <code style="background:rgba(0,0,0,0.3);padding:2px 6px;border-radius:3px">cd quiz-v5-server && node server.js</code>
+  </div>
+</div>
+<div class="app" style="padding-top:50px">
+  <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+  <div class="topbar">
+    <div class="expert-badge">
+      <div class="av">SG</div>
+      <div class="name">Dr. Sanjay Gupta<small>Yale Cardiology · online</small></div>
+    </div>
+    <div class="step-counter" id="step-counter">1 / 10</div>
+  </div>
+  <div class="stage" id="stage">
+
+    <!-- STEP 0: HERO — Expert opens with 1 big bubble + bottle + CTA -->
+    <div class="step active" data-step="0">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Pattern Interrupt + Authority Anchor</strong>Expert opens the conversation directly — not the brand. Yale credential + 4,000+ helped + 7 in 10 women stat creates authority in the first message. The bottle animation underneath is the only "ad-like" element; everything else is chat.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar" id="exp-0">SG</div>
+        <div class="bubble hero-bubble">
+          <div class="hero-h1">Why your <span class="highlight">arteries are rusting</span> from the inside — even when your BP "looks normal."</div>
+          <div class="bottle-float">
+            <svg viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cardioWave" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#F0F4FA"/></linearGradient></defs>
+              <rect x="38" y="2" width="24" height="14" rx="3" fill="#1E3A5F"/>
+              <rect x="42" y="0" width="16" height="6" rx="2" fill="#0F2440"/>
+              <path d="M28 28 Q28 22 34 22 L66 22 Q72 22 72 28 L72 118 Q72 124 66 124 L34 124 Q28 124 28 118 Z" fill="url(#cardioWave)" stroke="#E2EAF5" stroke-width="0.5"/>
+              <path d="M28 95 Q40 88 50 92 T72 90 L72 118 Q72 124 66 124 L34 124 Q28 124 28 118 Z" fill="#DC2626"/>
+              <text x="50" y="48" text-anchor="middle" font-size="10" font-weight="800" fill="#1E3A5F">CARDIO</text>
+              <text x="50" y="60" text-anchor="middle" font-size="10" font-weight="800" fill="#DC2626">CLEAR</text>
+              <path d="M42 75 L46 75 L48 70 L52 80 L54 75 L58 75" stroke="#DC2626" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p style="font-size:14px;line-height:1.5;margin-top:4px">I'm <strong>Dr. Sanjay Gupta</strong>, Yale-trained cardiologist. 20+ years, <strong>12,000+ patients</strong> treated for arterial health and BP support.</p>
+          <div class="hero-stats"><span class="hero-stat">1 in 3 adults</span><span class="hero-stat">Yale Cardiology</span><span class="hero-stat">90s assessment</span></div>
+          <p style="font-size:14px;margin-top:6px">Take this with me. I'll tailor a heart protocol to your numbers. <em>Ready?</em> 👇</p>
+        </div>
+      </div>
+      <div class="cta-wrap"><button class="cta-chip" onclick="goStep(1)">Let's begin ✨</button></div>
+    </div>
+
+    <!-- STEP 1: GENDER -->
+    <div class="step" data-step="1">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Micro-Commitment Ladder (Cialdini)</strong>Smallest possible "yes" first. Gender is non-threat binary. The user picks a chip → it instantly becomes a user bubble on the chat → expert responds. Each micro-agreement builds momentum toward the offer.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">First — <strong>who am I talking to?</strong> This helps me tailor the protocol to your body. 💜</div>
+      </div>
+      <div class="quick-replies" id="qr-gender">
+        <button class="chip" data-value="female" onclick="pickChip(this,'gender')"><span class="chip-emoji">👩</span>A woman</button>
+        <button class="chip" data-value="male" onclick="pickChip(this,'gender')"><span class="chip-emoji">👨</span>A man</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: ON BP PILLS 6+ MONTHS? (the hard filter — the protocol is for people on BP medication) -->
+    <div class="step" data-step="2">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Hard Avatar Filter (canon: "if you've been on Losartan for more than 6 months")</strong>This is the single most important filter in the quiz. The official CBS VSL says "If you've been on Losartan for more than 6 months" — that's the exact buyer. If they answer NO, we soft-redirect to "talk to your doctor first." The protocol is positioned as adjunct, not replacement. This kills the "but I'm not on meds" tire-kicker before they invest 3 more minutes.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">One quick filter before we go deeper 💜 <strong>Have you been on blood pressure medication for 6 months or more?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-on-pills">
+        <button class="chip" data-value="yes-6mo" onclick="pickChip(this,'on_pills_6mo')"><span class="chip-emoji">💊</span>Yes — 6 months or longer</button>
+        <button class="chip" data-value="recent" onclick="pickChip(this,'on_pills_6mo')"><span class="chip-emoji">🆕</span>Just started this year</button>
+        <button class="chip" data-value="no" onclick="pickChip(this,'on_pills_6mo')"><span class="chip-emoji">🤔</span>No, not on medication</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: AGE (55+ peak) -->
+    <div class="step" data-step="3">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Identity Lock + MOST POPULAR (Thaler)</strong>50-64 = "MOST COMMON" — peak avatar. The testimonial cohort (Patricia 67, James 64, David 71, Mr. Roberts 64) clusters 60-71. Below 50, the "12 years on the pill" archetypal story doesn't land. Above 75, comorbidities dilute the message. We exclude 35-49 to keep the funnel tight.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">Got it 💜 <strong>What age range are you in?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-age">
+        <button class="chip" data-value="50-64" onclick="pickChip(this,'age')"><span class="chip-emoji">🍂</span>50 – 64 <span style="background:#DC2626;color:#fff;font-size:9px;padding:1px 6px;border-radius:8px;margin-left:4px;font-weight:800">MOST COMMON</span></button>
+        <button class="chip" data-value="65-74" onclick="pickChip(this,'age')"><span class="chip-emoji">🌳</span>65 – 74</button>
+        <button class="chip" data-value="75+" onclick="pickChip(this,'age')"><span class="chip-emoji">🏔️</span>75+</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: STRUGGLE -->
+    <div class="step" data-step="4">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Loss Aversion + Visceral Specificity (Kahneman)</strong>Specific visceral copy (barriga, cansaço, compulsão, nada funciona) hits twice: it's specific (not generic) and triggers loss aversion — pain of staying stuck > pleasure of solution. Kahneman: losses loom 2x larger than equivalent gains.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">OK <span class="greet-name" data-bind="name">friend</span> 💜 Now the real talk — <strong>which one hurts the most right now?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-struggle">
+        <button class="chip" data-value="bp_creeping" onclick="pickChip(this,'struggle')"><span class="chip-emoji">💉</span>BP creeping up even on meds</button>
+        <button class="chip" data-value="stroke_fear" onclick="pickChip(this,'struggle')"><span class="chip-emoji">⚡</span>Scared of a stroke like family</button>
+        <button class="chip" data-value="cholesterol_stuck" onclick="pickChip(this,'struggle')"><span class="chip-emoji">📈</span>Cholesterol won't budge</button>
+        <button class="chip" data-value="statin_side_effects" onclick="pickChip(this,'struggle')"><span class="chip-emoji">😣</span>Statin side effects (muscle pain, fog)</button>
+      </div>
+    </div>
+
+    <!-- STEP 5: EXPERT REVEAL — Arterial Cement + Mr. Roberts archetypal story -->
+    <div class="step" data-step="5">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Progressive Consciousness + Curiosity Gap (Loewenstein) + Mr. Roberts archetypal story</strong>Expert "hears" the user's struggle by name → names the CANON mechanism ("Arterial Cement" — fibrin + calcium + microplastics, NOT "rust" or "plaque") → invokes the archetypal Mr. Roberts (64, 12 years on Losartan, didn't make it) to anchor mortality → opens curiosity gap ("three ingredients from a Sardinian Blue Zone"). Now the user needs the offer to close the gap. This is the keystone move.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">I hear you, <span class="greet-name" data-bind="name">friend</span> 💜 <span id="struggle-phrase">What you're describing</span> is <strong>not just aging</strong>. Last week, a 64-year-old patient of mine — Mr. Roberts — didn't make it. He'd been on Losartan for 12 years. His wife asked the nurse one question: <em>"But what could we have done?"</em></div>
+      </div>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">The answer is what's called <strong>"Arterial Cement"</strong> — a hard, gray mixture of <strong>fibrin, calcium, and microplastics</strong> building up inside your artery walls. You eat about 5 grams of plastic every week — the size of a credit card. Your body releases a sticky protein called fibrin to seal the cuts. It captures calcium, fat, more plastic — and all of it hardens, like cement.</div>
+      </div>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">No Losartan, Lisinopril, or Amlodipile can reach it. But a forgotten ritual from the <strong>Sardinian Blue Zone</strong> — where less than 1 in 20 people develop high blood pressure — can. <strong>Three ingredients</strong>: bitter honey from the corbezzolo tree, rare Cagnulari grape extract, and a third Mediterranean botanical. A few more questions, and I'll show you exactly what I see for you 👇</div>
+      </div>
+      <div class="cta-wrap"><button class="cta-chip" onclick="goStep(5)">Show me the research →</button></div>
+    </div>
+
+    <!-- STEP 5: WHEN STARTED -->
+    <div class="step" data-step="6">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Story Anchoring (Loewenstein gap)</strong>Asking "when did this start" activates autobiographical memory → user builds a narrative. Loewenstein: gap between "shared my story" and "haven't heard the solution" generates tension that needs closing. Expert will close it at the reveal step.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">There's usually a moment it flipped. <strong>When did it start for you?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-when">
+        <button class="chip" data-value="recent" onclick="pickChip(this,'when')"><span class="chip-emoji">🩺</span>Just diagnosed this year</button>
+        <button class="chip" data-value="year" onclick="pickChip(this,'when')"><span class="chip-emoji">📅</span>1-3 years now</button>
+        <button class="chip" data-value="years" onclick="pickChip(this,'when')"><span class="chip-emoji">⏳</span>5+ years — long haul</button>
+        <button class="chip" data-value="cant-pinpoint" onclick="pickChip(this,'when')"><span class="chip-emoji">🤷</span>Can't pinpoint — it crept up</button>
+      </div>
+    </div>
+
+    <!-- STEP 7: WHAT YOU'VE ALREADY TRIED (pre-empts objections) -->
+    <div class="step" data-step="7">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Pre-empt Objections (DR core)</strong>By the time you ask the user to invest in a new solution, they've already tried things. Naming the previous attempts (keto, Ozempic, gym) prevents the silent objection "but I already tried that" and creates a contrast with the 3-ingredient approach.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">OK, before I show you the recipe — <strong>what's the most you've spent trying to fix this so far?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-tried">
+        <button class="chip" data-value="nothing" onclick="pickChip(this,'what_tried')"><span class="chip-emoji">🤷</span>Nothing that worked yet</button>
+        <button class="chip" data-value="supplements" onclick="pickChip(this,'what_tried')"><span class="chip-emoji">💊</span>Fish oil / CoQ10 / garlic pills</button>
+        <button class="chip" data-value="diet" onclick="pickChip(this,'what_tried')"><span class="chip-emoji">🥗</span>Diet + exercise changes</button>
+        <button class="chip" data-value="meds" onclick="pickChip(this,'what_tried')"><span class="chip-emoji">💉</span>BP meds / statins already</button>
+      </div>
+    </div>
+
+    <!-- STEP 8: MULTI-SELECT DESIRES -->
+    <div class="step" data-step="8">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Desire Amplification (Auraly core)</strong>User picks MULTIPLE outcomes. Each tap adds to their "future self" wish list. The offer later has to cover ALL of these. Counter "0 / 4 selected" updates live. This is the highest-impact step in the whole quiz.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">One more. <strong>What outcomes are you committing to?</strong> Pick all that apply — I'll factor each into your protocol. 🎯</div>
+      </div>
+      <div class="quick-replies" id="qr-desires">
+        <button class="chip chip-multi" data-value="lower-bp" onclick="toggleMulti(this)"><span class="chip-emoji">💉</span>Lower BP naturally</button>
+        <button class="chip chip-multi" data-value="off-statins" onclick="toggleMulti(this)"><span class="chip-emoji">💊</span>Get off statins someday</button>
+        <button class="chip chip-multi" data-value="heart-strong" onclick="toggleMulti(this)"><span class="chip-emoji">❤️</span>Protect my heart for my family</button>
+        <button class="chip chip-multi" data-value="energy" onclick="toggleMulti(this)"><span class="chip-emoji">⚡</span>Energy to keep up with grandkids</button>
+        <button class="chip chip-multi" data-value="off-meds" onclick="toggleMulti(this)"><span class="chip-emoji">🌿</span>Reduce my BP meds (with doctor)</button>
+      </div>
+      <div class="quick-replies" id="desires-counter" style="font-size:12px;color:var(--text-light);padding-left:42px"><span id="dc-num">0</span> / 5 outcomes selected · <strong>tap to select</strong></div>
+      <div class="cta-wrap" id="desires-cta" style="display:none"><button class="cta-chip" onclick="goStep(9)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 9: BP RANGE (anchors a specific number) -->
+    <div class="step" data-step="9">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Specificity Bias + Commitment</strong>Asking for a specific BP range triggers the commitment principle. The user later sees real numbers in the testimonial. The LLM uses this to match the protocol framing.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">One more for the protocol 💜 <strong>What's your last BP reading been?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-weight">
+        <button class="chip" data-value="just-diagnosed" onclick="pickChip(this,'weight_goal')"><span class="chip-emoji">🩺</span>Just diagnosed — don't know numbers</button>
+        <button class="chip" data-value="130-140" onclick="pickChip(this,'weight_goal')"><span class="chip-emoji">📊</span>130-140 / 80-90</button>
+        <button class="chip" data-value="140-160" onclick="pickChip(this,'weight_goal')"><span class="chip-emoji">📊</span>140-160 / 90-100</button>
+        <button class="chip" data-value="160+" onclick="pickChip(this,'weight_goal')"><span class="chip-emoji">📊</span>160+ / 100+</button>
+      </div>
+    </div>
+
+    <!-- STEP 10: BIGGEST FEAR (loss aversion amplification) -->
+    <div class="step" data-step="10">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Loss Aversion (Kahneman) + Open Loop</strong>Naming the fear locks it in as something to be solved. The expert later closes the loop at the offer step ("here's how the protocol addresses this specific fear"). Kahneman: losses loom 2x larger than equivalent gains — visceral fear copy outperforms aspirational copy 2:1.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">I need to understand what we're really fixing here. <strong>What scares you most about staying like this?</strong></div>
+      </div>
+      <div class="quick-replies" id="qr-fear">
+        <button class="chip" data-value="stroke" onclick="pickChip(this,'biggest_fear')"><span class="chip-emoji">🧠</span>That I'll have a stroke</button>
+        <button class="chip" data-value="heart-attack" onclick="pickChip(this,'biggest_fear')"><span class="chip-emoji">💔</span>That I'll have a heart attack</button>
+        <button class="chip" data-value="lose-independence" onclick="pickChip(this,'biggest_fear')"><span class="chip-emoji">🪑</span>That I'll lose my independence</button>
+        <button class="chip" data-value="miss-grandkids" onclick="pickChip(this,'biggest_fear')"><span class="chip-emoji">👶</span>That I won't see my grandkids grow up</button>
+      </div>
+    </div>
+
+    <!-- STEP 11: NAME -->
+    <div class="step" data-step="11">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Reciprocity + Personalization (Regan)</strong>Regan: receiving a small gift (the personalized protocol) makes the recipient 2x more likely to comply with the purchase. Asking for the name flips personalization on — every next step uses it.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">Almost there 💜 <strong>Tell me — what should I call you?</strong></div>
+      </div>
+      <div class="chat-input-wrap">
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" id="name-input" placeholder="Your first name" maxlength="30" autocomplete="off">
+          <button class="send-btn" id="name-send" onclick="submitName()" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 12: EMAIL CAPTURE (builds list + adds perceived value) -->
+    <div class="step" data-step="12">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Reciprocity + List Building</strong>Email is the lowest-friction ask after the user has invested 8-10 steps of commitment. They WANT the protocol delivered — email feels like a natural next step. Also: email is the follow-up channel if they don't buy at step 14 (abandoned cart sequence).</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">Last one 💜 <strong>Where should I send your protocol + the 7-day anti-crave meal plan?</strong></div>
+      </div>
+      <div class="chat-input-wrap">
+        <div class="chat-input-row">
+          <input type="email" class="chat-input" id="email-input" placeholder="your@email.com" maxlength="80" autocomplete="email">
+          <button class="send-btn" id="email-send" onclick="submitEmail()" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 13: PREPARING (Personalized Reveal + asset frame) -->
+    <div class="step" data-step="13">
+      <span class="method-tag" tabindex="0">?<span class="q">?</span><span class="method-info"><strong>Open Loop + Personalized Reveal (Auraly)</strong>Highest-tension moment. Expert says "I'm preparing something personalized for you" → loads the reveal. Asset-frame below is the placeholder for the before/after image YOU create. Copy "reverse the arterial rust" only appears if user selected "bp_creeping" in step 4.</span></span>
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">🔮 Hold on — <strong>I'm preparing your personalized arterial-health protocol</strong>, <span class="greet-name" data-bind="name">friend</span>... <em>starting right now</em> 👇</div>
+      </div>
+      <div class="asset-frame">
+        <div class="asset-frame-label">📸 ASSET NEEDED</div>
+        <div class="asset-frame-content">
+          <div class="asset-frame-icon">🖼️</div>
+          <div class="asset-frame-text">
+            <strong>Personalized "Before/After"</strong>
+            Cole sua imagem em <code>images/transformation.jpg</code>. Prompt Midjourney pronto no <code>quiz-assets-needed.md</code>.
+            <div class="asset-frame-prompt">A side-by-side transformation photo of a [woman] 30-44 who lost 30 lbs. LEFT (before): oversized t-shirt, no makeup, tired. RIGHT (after): fitted activewear, golden hour light, glowing skin, toned midsection. Same person. Studio photojournalistic. iPhone 15 Pro. 3:4.</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal-card">
+        <h4>What I see for your heart, <span id="user-name-upper" class="greet-name" data-bind="name">friend</span>:</h4>
+        <ul class="reveal-list">
+          <li>A 3-phase protocol to <span id="reveal-1">unlock the stubborn weight</span></li>
+          <li>One molecule (mitoquinol) that repairs the arterial lining from the inside</li>
+          <li>Daily habit to <span id="reveal-2">stabilize BP naturally</span></li>
+          <li>90-day timeline tailored to <span id="reveal-3">your current meds</span></li>
+        </ul>
+      </div>
+      <div class="cta-wrap"><button class="cta-chip" onclick="goStep(9)">Reveal my protocol ✨</button></div>
+    </div>
+
+    <!-- STEP 9: RESULT + OFFER -->
+    <div class="step" data-step="14">
+      <div class="chat-bubble expert" style="max-width:96%;align-self:center;flex-direction:column;align-items:center">
+        <div class="check-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="bubble" style="text-align:center;background:transparent;box-shadow:none;padding:0 0 6px">
+          <div style="font-size:18px;font-weight:800;line-height:1.2">Your protocol is ready,<br><span style="color:var(--primary)" class="greet-name" data-bind="name">friend</span> 💜</div>
+        </div>
+      </div>
+
+      <div class="mechanism">
+        <span class="mechanism-label">🔬 THE MECHANISM (Yale Cardiology Research)</span>
+        <h3>The "Arterial Rust" — and the molecule that scrubs it out</h3>
+        <p>Yale researchers found that <strong>1 in 3 adults over 50</strong> carry early-stage endothelial damage that stiffens arteries and pushes BP up — even on medication. The fix is <strong>one mitochondria-targeted molecule</strong> (mitoquinol) that repairs the arterial lining from the inside.</p>
+      </div>
+
+      <div class="asset-frame">
+        <div class="asset-frame-label">🎙️ ASSET NEEDED</div>
+        <div class="asset-frame-content">
+          <div class="asset-frame-icon">🎤</div>
+          <div class="asset-frame-text">
+            <strong>Expert audio narration (60s MP3)</strong>
+            Cole em <code>audio/result.mp3</code>. Roteiro de 60s no <code>quiz-assets-needed.md</code>. Web Speech API fallback abaixo.
+            <div class="asset-frame-prompt">[Read calm, authority, slight smile, 0.95x]
+"Hi [Name]. Dr. Sanjay Gupta here. What I see for you is a 3-phase arterial reset. Phase 1, calm the inflammation in your arteries. Phase 2, deliver mitoquinol directly to the endothelial lining, where the rust lives. Phase 3, lock in the new arterial pattern. Most of my patients in your profile see BP numbers change in 30 days. You're not broken — your arteries just need the right signal. Let's do this together."</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="audio-card">
+        <div class="audio-row">
+          <div class="audio-avatar">SG</div>
+          <button class="audio-play" id="audio-play-btn" onclick="toggleAudio()">
+            <svg id="audio-icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="audio-icon-pause" class="hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+          </button>
+          <div class="audio-bar"><div class="audio-bar-fill" id="audio-bar-fill"></div></div>
+        </div>
+        <div class="audio-time"><span id="audio-current">0:00</span><span id="audio-total">0:36</span></div>
+      </div>
+
+      <div class="chat-bubble expert">
+        <div class="avatar">SG</div>
+        <div class="bubble">Your protocol is in a bottle. <strong>Cardio Clear 90-Day Arterial Reset</strong> — built for exactly what I just saw in your profile ❤️</div>
+      </div>
+
+      <div class="offer-card">
+        <div class="offer-eyebrow">Your arterial reset protocol</div>
+        <div class="offer-title">Cardio Clear — 90-Day Supply</div>
+        <div class="offer-anchor">
+          <span class="offer-old">$297</span>
+          <span class="offer-new">$59</span>
+          <span class="offer-save">−80%</span>
+        </div>
+        <div style="font-size:11px;color:var(--text-light)">90 capsules (3-month supply) · FREE US shipping · 90-Day Money-Back Guarantee.</div>
+        <ul class="offer-includes">
+          <li>3-month supply (90 capsules) Cardio Clear formula</li>
+          <li>Dr. Gupta's 90-Day Arterial Reset Protocol PDF</li>
+          <li>BP tracking template + monthly check-in email</li>
+          <li>Free bonus: 7-Day Heart-Healthy Meal Plan</li>
+        </ul>
+        <div class="offer-guarantee">🔒 Secure checkout · 60-day empty-tub money-back</div>
+      </div>
+
+      <div class="urgency">⏰ <strong>Use the whole bottle.</strong><br>If your numbers don't improve in 90 days, I refund every penny.</div>
+
+      <div class="countdown" id="countdown">
+        <div class="cd-cell"><span class="cd-num" id="cd-h">23</span><span class="cd-lbl">hours</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-m">59</span><span class="cd-lbl">min</span></div>
+        <div class="cd-cell"><span class="cd-num" id="cd-s">47</span><span class="cd-lbl">sec</span></div>
+      </div>
+
+      <div class="cta-wrap"><button class="cta-chip" onclick="claimOffer()">Claim My Cardio Clear Now →</button></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* STATE */
+const state = {
+  current: 0, total: 15,
+  gender: null, age: null, on_pills_6mo: null, struggle: null, when: null, desires: [],
+  what_tried: null, weight_goal: null, biggest_fear: null,
+  name: null, email: null
+};
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+/* STRUGGLE PHRASES (progressive consciousness) */
+const strugglePhrase = {
+  'bp_creeping': 'The blood pressure that keeps creeping up',
+  'stroke_fear': 'The fear of a stroke you can\'t shake',
+  'cholesterol_stuck': 'The cholesterol that won\'t move',
+  'statin_side_effects': 'The statin side effects you\'re tired of'
+};
+const revealStruggle = {
+  'bp_creeping': 'reverse the arterial rust causing pressure to climb',
+  'stroke_fear': 'protect your arteries from the silent damage',
+  'cholesterol_stuck': 'finally move the cholesterol that won\'t budge',
+  'statin_side_effects': 'support your arteries without the side effects'
+};
+const revealWhen = {
+  'recent': 'just diagnosed — best window to act',
+  'year': '1-3 years now — pattern, not a phase',
+  'years': '5+ years — still fully reversible',
+  'cant-pinpoint': 'your unique timeline'
+};
+
+/* FLOW */
+function goStep(n){
+  $$('.step').forEach(el => el.classList.remove('active'));
+  const t = document.querySelector(`.step[data-step="${n}"]`);
+  if(t) t.classList.add('active');
+  state.current = n;
+  $('#progress-bar').style.width = ((n+1)/state.total*100) + '%';
+  $('#step-counter').textContent = `${n+1} / ${state.total}`;
+  document.querySelector('.stage').scrollTop = 0;
+  if(n === 4) hydrateStep4();
+  if(n === 7) submitName();
+  if(n === 8) hydrateStep8();
+  if(n === 9) startCountdown();
+}
+
+/* CHIP PICK (single-select) */
+function pickChip(el, key){
+  const value = el.dataset.value;
+  state[key] = value;
+  // mark selected
+  el.parentElement.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  // add user bubble mirroring the chip
+  const label = el.innerHTML;
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.innerHTML = `<div class="avatar">${value === 'female' ? '👩' : value === 'male' ? '👨' : '✓'}</div><div class="bubble" style="display:flex;align-items:center;gap:4px">${label}</div>`;
+  el.parentElement.before(userBubble);
+  // hide chips
+  setTimeout(()=>{ el.parentElement.style.display = 'none'; userBubble.style.animation = 'bubbleIn .5s'; }, 120);
+  // typing → advance
+  const next = state.current + 1;
+  showTyping(()=>goStep(next), 650);
+}
+
+/* TOGGLE MULTI-SELECT */
+function toggleMulti(el){
+  const value = el.dataset.value;
+  el.classList.toggle('selected');
+  if(el.classList.contains('selected')){
+    if(!state.desires.includes(value)) state.desires.push(value);
+  } else {
+    state.desires = state.desires.filter(x => x !== value);
+  }
+  $('#dc-num').textContent = state.desires.length;
+  $('#desires-cta').style.display = state.desires.length >= 1 ? 'flex' : 'none';
+}
+
+/* SUBMIT MULTI (when user taps Continue) */
+function submitMulti(){
+  // build user bubble listing choices
+  const labels = [...document.querySelectorAll('#qr-desires .chip.selected')].map(c => c.textContent.trim());
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.innerHTML = `<div class="avatar">✓</div><div class="bubble" style="font-size:13px;line-height:1.4"><strong>${state.desires.length} outcomes:</strong><br>${labels.map(l=>'• '+l).join('<br>')}</div>`;
+  document.querySelector('#qr-desires').before(userBubble);
+  document.querySelector('#qr-desires').style.display = 'none';
+  document.querySelector('#desires-counter').style.display = 'none';
+  document.querySelector('#desires-cta').style.display = 'none';
+  const next = state.current + 1;
+  showTyping(()=>goStep(next), 650);
+}
+
+/* SUBMIT NAME (from input or auto on step 7 enter) */
+function submitName(){
+  const v = $('#name-input').value.trim();
+  if(v.length < 2) return;
+  state.name = v;
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.innerHTML = `<div class="avatar">👤</div><div class="bubble">${v}</div>`;
+  document.querySelector('.chat-input-wrap').before(userBubble);
+  document.querySelector('.chat-input-wrap').style.display = 'none';
+  const next = state.current + 1;
+  showTyping(()=>goStep(next), 650);
+}
+
+/* SUBMIT EMAIL (step 12 → 13) */
+function submitEmail(){
+  const v = $('#email-input').value.trim();
+  // basic email check
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) return;
+  state.email = v;
+  const userBubble = document.createElement('div');
+  userBubble.className = 'chat-bubble user';
+  userBubble.innerHTML = `<div class="avatar">📧</div><div class="bubble">${v}</div>`;
+  document.querySelector('.chat-input-wrap').before(userBubble);
+  document.querySelector('.chat-input-wrap').style.display = 'none';
+  // CRM: capture lead
+  if (typeof quizTrack !== 'undefined') {
+    try {
+      quizTrack.lead(v, state.name, state, state.current);
+    } catch (e) { console.warn('[crm] lead failed', e); }
+  }
+  const next = state.current + 1;
+  showTyping(()=>goStep(next), 650);
+}
+
+/* TYPING INDICATOR */
+function showTyping(callback, ms=650){
+  const indicator = document.createElement('div');
+  indicator.className = 'typing-bubble';
+  indicator.id = 'typing-indicator';
+  indicator.innerHTML = `<div class="avatar">SG</div><div class="typing"><span></span><span></span><span></span></div>`;
+  document.querySelector('.step.active').appendChild(indicator);
+  setTimeout(()=>{
+    const t = document.getElementById('typing-indicator');
+    if(t) t.remove();
+    callback();
+    document.querySelector('.stage').scrollTop = document.querySelector('.stage').scrollHeight;
+  }, ms);
+}
+
+/* HYDRATE DYNAMIC COPY */
+function hydrateStep4(){
+  if(state.struggle && strugglePhrase[state.struggle]){
+    $('#struggle-phrase').textContent = strugglePhrase[state.struggle];
+  }
+  // update all greet-name spans with name
+  updateGreet();
+}
+function hydrateStep8(){
+  if(state.struggle && revealStruggle[state.struggle]){
+    $('#reveal-1').textContent = revealStruggle[state.struggle];
+  }
+  if(state.desires.includes('lower-bp')) $('#reveal-1').textContent = 'lower your BP numbers naturally';
+  if(state.desires.includes('off-statins')) $('#reveal-1').textContent = 'work toward reducing your statins (with your doctor)';
+  if(state.desires.includes('heart-strong')) $('#reveal-1').textContent = 'protect your heart for the people you love';
+  if(state.desires.includes('energy')) $('#reveal-2').textContent = 'rebuild the energy to keep up with life';
+  if(state.desires.includes('off-meds')) $('#reveal-2').textContent = 'reduce your BP meds gradually (with your doctor)';
+  if(state.when && revealWhen[state.when]) $('#reveal-3').textContent = revealWhen[state.when];
+  if(!revealWhen[state.when] && state.when !== 'cant-pinpoint') $('#reveal-3').textContent = 'your unique timeline';
+  updateGreet();
+}
+function updateGreet(){
+  const n = state.name || 'friend';
+  document.querySelectorAll('.greet-name').forEach(el => el.textContent = n);
+  $('#user-name-upper') && ($('#user-name-upper').textContent = n.toUpperCase());
+}
+
+/* NAME INPUT HANDLER */
+document.addEventListener('DOMContentLoaded', ()=>{
+  const ni = $('#name-input');
+  if(ni){
+    ni.addEventListener('input', ()=>{
+      $('#name-send').disabled = ni.value.trim().length < 2;
+    });
+    ni.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && ni.value.trim().length >= 2) submitName();
+    });
+  }
+  const ei = $('#email-input');
+  if(ei){
+    ei.addEventListener('input', ()=>{
+      const ok = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ei.value.trim());
+      $('#email-send').disabled = !ok;
+    });
+    ei.addEventListener('keydown', e => {
+      if(e.key === 'Enter' && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ei.value.trim())) submitEmail();
+    });
+  }
+  // override the Continue button on step 8 to call submitMulti
+  const cta6 = document.querySelector('#desires-cta .cta-chip');
+  if(cta6) cta6.onclick = submitMulti;
+});
+
+/* AUDIO (Web Speech API fallback) */
+let audioPlaying = false, audioTimer = null;
+function toggleAudio(){
+  if(audioPlaying) pauseAudio(); else playAudio();
+}
+function playAudio(){
+  audioPlaying = true;
+  $('#audio-icon-play').classList.add('hidden');
+  $('#audio-icon-pause').classList.remove('hidden');
+  if('speechSynthesis' in window){
+    const text = `Hi ${state.name || 'friend'}. This is Dr. Sanjay Gupta. What I see for you is the 30-second Arterial Flush Ritual. Two capsules every morning, before coffee, before breakfast. The Sardinian honey dissolves the fibrin barrier. The Cagnulari grape protects the arterial walls. The third botanical flushes the cement. Most of my patients in your profile see their numbers stabilize within 3 weeks. Always talk to your cardiologist before changing your medication. You're not broken. Your arteries just need the right signal. Let's do this together.`;
+    const u = new SpeechSynthesisUtterance(text);
+    u.rate = 0.95; u.pitch = 1.05;
+    const voices = speechSynthesis.getVoices();
+    const enF = voices.find(v=>/en[-_]?US/i.test(v.lang) && /female|samantha|victoria|karen|tessa|allison/i.test(v.name)) || voices.find(v=>/en[-_]?US/i.test(v.lang));
+    if(enF) u.voice = enF;
+    u.onend = ()=>{ pauseAudio(); $('#audio-bar-fill').style.width='0%'; $('#audio-current').textContent='0:00'; };
+    speechSynthesis.speak(u);
+    const start = Date.now();
+    audioTimer = setInterval(()=>{
+      const e = (Date.now()-start)/1000;
+      const p = Math.min(e/36*100, 100);
+      $('#audio-bar-fill').style.width = p + '%';
+      $('#audio-current').textContent = `${Math.floor(e/60)}:${Math.floor(e%60).toString().padStart(2,'0')}`;
+      if(p >= 100) clearInterval(audioTimer);
+    }, 250);
+  }
+}
+function pauseAudio(){
+  audioPlaying = false;
+  $('#audio-icon-play').classList.remove('hidden');
+  $('#audio-icon-pause').classList.add('hidden');
+  if('speechSynthesis' in window) speechSynthesis.cancel();
+  if(audioTimer){ clearInterval(audioTimer); audioTimer = null; }
+}
+
+/* COUNTDOWN */
+function startCountdown(){
+  let total = 23*3600 + 59*60 + 47;
+  setInterval(()=>{
+    if(total <= 0) return;
+    total--;
+    $('#cd-h').textContent = Math.floor(total/3600).toString().padStart(2,'0');
+    $('#cd-m').textContent = Math.floor((total%3600)/60).toString().padStart(2,'0');
+    $('#cd-s').textContent = (total%60).toString().padStart(2,'0');
+  }, 1000);
+}
+
+/* CLAIM */
+function claimOffer(){
+  if (typeof quizTrack !== 'undefined') {
+    try {
+      quizTrack.ctaClick({
+        product: 'cardioclear',
+        offer: 'cardio_3bottles_or_6pack',
+        anchor: '297',
+        guarantee: '90d_mb',
+        step: 14,
+        state_summary: state
+      });
+    } catch (e) { console.warn('[crm] ctaClick failed', e); }
+  }
+  alert(`🎉 Protocol claimed for ${state.name}!\n\nIn a real funnel this redirects to checkout.\n\nDetails:\n- Gender: ${state.gender}\n- Age: ${state.age}\n- Struggle: ${state.struggle}\n- Started: ${state.when}\n- Desires: ${state.desires.join(', ')}`);
+}
+
+/* INIT */
+window.addEventListener('load', ()=>{
+  if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged = ()=>{}; speechSynthesis.getVoices(); }
+  if (typeof quizTrack !== 'undefined') {
+    try { quizTrack.init('cardioclear'); } catch (e) { console.warn('[crm] init failed', e); }
+  }
+  goStep(0);
+});
+</script>
+
+<!-- V5 LLM + TTS INTEGRATION -->
+<script src="quiz-track.js"></script>
+<script>
+/* ================================================================
+   V5 — Auraly-grade personalization via OpenRouter + ElevenLabs
+   Only 3 steps use LLM (4, 7, 9) — rest stays static v4c
+   Falls back silently to static copy if API fails
+   ================================================================ */
+const API_BASE = (typeof location !== 'undefined' && location.hostname === 'localhost' && location.port === '3000')
+  ? ''  // same origin
+  : 'http://localhost:3000';  // change to your deployed server URL
+
+const LLM_STEPS = {
+  5:  { type: 'multi', minBubbles: 3, showCta: true,  ctaText: 'Show me the research →',       ctaAction: 'goStep(6)' },
+  11: { type: 'multi', minBubbles: 2, showCta: true,  ctaText: 'Reveal my protocol →',       ctaAction: 'goStep(12)' },
+  14: { type: 'multi', minBubbles: 3, showCta: true,  ctaText: 'Claim my Cardio Clear →', ctaAction: 'claimOffer()' }
+};
+
+let currentAudio = null;
+function stopAudio(){
+  if(currentAudio){ currentAudio.pause(); currentAudio.currentTime = 0; currentAudio = null; }
+}
+function playAudio(url){
+  stopAudio();
+  if(!url) return;
+  currentAudio = new Audio(url);
+  currentAudio.volume = 0.85;
+  currentAudio.play().catch(e=>console.warn('[v5] audio play failed', e));
+}
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+
+function makeExpertBubble(text){
+  const wrap = document.createElement('div');
+  wrap.className = 'chat-bubble expert llm-bubble';
+  wrap.style.opacity = '0';
+  wrap.style.transform = 'translateY(6px)';
+  wrap.innerHTML = `<div class="avatar">SG</div><div class="bubble">${text}</div>`;
+  // animate in
+  requestAnimationFrame(()=>{
+    wrap.style.transition = 'opacity .4s, transform .4s';
+    wrap.style.opacity = '1';
+    wrap.style.transform = 'translateY(0)';
+  });
+  return wrap;
+}
+
+function makeTypingIndicator(){
+  const div = document.createElement('div');
+  div.className = 'typing-bubble llm-typing';
+  div.innerHTML = `<div class="avatar">SG</div><div class="typing"><span></span><span></span><span></span></div><div class="typing-label" style="font-size:11px;color:var(--text-light);margin-left:8px;align-self:center">Dr. Gupta is reading your profile...</div>`;
+  return div;
+}
+
+function makeLLMCTA(text, action){
+  const wrap = document.createElement('div');
+  wrap.className = 'cta-wrap llm-cta';
+  wrap.innerHTML = `<button class="cta-chip" onclick="${action}">${text}</button>`;
+  return wrap;
+}
+
+async function loadLLMStep(stepNum){
+  const cfg = LLM_STEPS[stepNum];
+  if(!cfg) return;
+  const stepEl = document.querySelector(`.step[data-step="${stepNum}"]`);
+  if(!stepEl) return;
+  if(stepEl.dataset.llmLoaded === '1') return;  // already loaded
+  stepEl.dataset.llmLoaded = '1';
+
+  // 1. Remove static expert bubbles and CTA, keep method-tag
+  const staticBubbles = stepEl.querySelectorAll('.chat-bubble.expert');
+  staticBubbles.forEach(b => b.remove());
+  const staticCta = stepEl.querySelector('.cta-wrap');
+  if(staticCta) staticCta.style.display = 'none';
+
+  // 2. Insert typing indicator
+  const typing = makeTypingIndicator();
+  stepEl.appendChild(typing);
+  scrollStage();
+
+  // 3. Fetch
+  const t0 = Date.now();
+  let data;
+  try {
+    const res = await fetch(`${API_BASE}/api/respond`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ step: stepNum, state, withAudio: true })
+    });
+    if(!res.ok) throw new Error('api_' + res.status);
+    data = await res.json();
+  } catch (err) {
+    // FALLBACK: restore static copy
+    console.warn('[v5] API failed, restoring static copy', err);
+    typing.remove();
+    // re-insert the static bubbles (re-clone from a hidden template or restore by re-running markup)
+    // Simplest: re-insert a generic fallback message + show original CTA
+    stepEl.insertBefore(
+      makeExpertBubble("I'm having trouble connecting right now. Let me share what I know from your answers — this part is well-trodden for me. 💜"),
+      stepEl.querySelector('.cta-wrap') || null
+    );
+    if(staticCta) staticCta.style.display = '';
+    return;
+  }
+
+  // 4. Replace typing with first bubble
+  typing.remove();
+  const firstBubble = makeExpertBubble(data.bubbles[0] || data.text);
+  stepEl.appendChild(firstBubble);
+  scrollStage();
+  if(data.audioUrl) playAudio(`${API_BASE}${data.audioUrl}`);
+
+  // 5. Append remaining bubbles one at a time
+  for(let i = 1; i < data.bubbles.length; i++){
+    await sleep(550);
+    stepEl.appendChild(makeExpertBubble(data.bubbles[i]));
+    scrollStage();
+  }
+
+  // 6. Append CTA
+  if(cfg.showCta){
+    await sleep(300);
+    stepEl.appendChild(makeLLMCTA(cfg.ctaText, cfg.ctaAction));
+    scrollStage();
+  }
+
+  console.log(`[v5] step ${stepNum} loaded in ${Date.now()-t0}ms, ${data.bubbles.length} bubbles, audio: ${data.audioUrl ? 'yes' : 'no'}, cached: ${data.cached}`);
+}
+
+function scrollStage(){
+  const stage = document.querySelector('.stage');
+  if(stage) stage.scrollTop = stage.scrollHeight;
+}
+
+// Hook goStep to fire LLM loader on relevant steps + emit CRM events
+const _origGoStep = goStep;
+goStep = function(n){
+  _origGoStep(n);
+  // CRM: track step completion
+  if (typeof quizTrack !== 'undefined') {
+    try { quizTrack.stepComplete(n, state); } catch (e) { console.warn('[crm] stepComplete failed', e); }
+  }
+  if(LLM_STEPS[n]) {
+    // small delay so the step transition animation finishes first
+    setTimeout(()=>loadLLMStep(n), 50);
+  }
+};
+</script>
+
+</body>
+</html>
+</html>

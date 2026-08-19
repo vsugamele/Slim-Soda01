@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>SlimSoda Funnel — End-to-End Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #0f0f10; color: #e5e5e5; min-height: 100vh; padding: 40px 20px; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 1400px; margin: 0 auto; }
+  h1 { font-size: 36px; font-weight: 900; letter-spacing: -0.5px; color: #fff; margin-bottom: 8px; }
+  h1 span { color: #c0392b; }
+  .sub { color: #888; font-size: 15px; margin-bottom: 48px; }
+  .sub code { background: #1a1a1a; padding: 2px 8px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #f0a040; }
+
+  /* === STAGE === */
+  .stages { display: flex; flex-direction: column; gap: 0; }
+  .stage {
+    display: grid;
+    grid-template-columns: 200px 1fr 320px;
+    gap: 24px;
+    padding: 28px;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .stage + .stage { border-top: none; border-radius: 0 0 12px 12px; }
+  .stage:first-child { border-radius: 12px 12px 0 0; }
+  .stage:last-child { border-radius: 0 0 12px 12px; }
+  @media (max-width: 1100px) { .stage { grid-template-columns: 1fr; } }
+
+  .stage-num {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .stage-num .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #c0392b;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  .stage-num h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #fff;
+    margin-top: 4px;
+    line-height: 1.2;
+  }
+  .stage-num .badge {
+    margin-top: 12px;
+    font-size: 10px;
+    background: #2a2a2a;
+    color: #aaa;
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .stage-body { color: #ccc; font-size: 14px; line-height: 1.6; }
+  .stage-body p { margin-bottom: 10px; }
+  .stage-body strong { color: #fff; font-weight: 700; }
+  .stage-body code { background: #0a0a0a; padding: 1px 6px; border-radius: 3px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #f0a040; }
+
+  .stage-side {
+    background: #0a0a0a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .stage-side .label { color: #888; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; margin-bottom: 8px; }
+  .stage-side .item { font-size: 12px; color: #ccc; line-height: 1.5; padding: 4px 0; border-bottom: 1px solid #1a1a1a; }
+  .stage-side .item:last-child { border-bottom: none; }
+  .stage-side .item strong { color: #fff; }
+  .stage-side .item code { font-size: 11px; color: #f0a040; }
+
+  /* === ARROW === */
+  .arrow-down {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, #1a1a1a 0%, #0f0f10 100%);
+    border-left: 1px solid #2a2a2a;
+    border-right: 1px solid #2a2a2a;
+    color: #c0392b;
+    font-size: 20px;
+  }
+
+  /* === METRICS === */
+  .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 48px; }
+  @media (max-width: 800px) { .metrics { grid-template-columns: 1fr 1fr; } }
+  .metric { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 20px; }
+  .metric strong { display: block; font-size: 28px; font-weight: 800; color: #c0392b; }
+  .metric span { color: #888; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+
+  /* === CHANNELS === */
+  .channels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .ch {
+    background: #2a2a2a;
+    color: #ccc;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .ch.ig { background: #e1306c; color: #fff; }
+  .ch.fb { background: #1877f2; color: #fff; }
+  .ch.tt { background: #000; color: #fff; }
+  .ch.email { background: #f0a040; color: #0a0a0a; }
+
+  /* === TRACKING STACK === */
+  .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 8px; }
+  @media (max-width: 800px) { .stack-grid { grid-template-columns: 1fr; } }
+  .stack-item { background: #0a0a0a; border: 1px solid #2a2a2a; border-radius: 6px; padding: 10px 12px; }
+  .stack-item .name { color: #f0a040; font-size: 12px; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+  .stack-item .role { color: #aaa; font-size: 11px; margin-top: 2px; }
+
+  /* === FUNNEL SVG === */
+  .funnel-wrap { background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 24px; margin-bottom: 48px; text-align: center; }
+  .funnel-wrap h3 { color: #fff; font-size: 20px; margin-bottom: 16px; font-weight: 800; }
+  .funnel-wrap svg { max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <h1>SlimSoda Funnel <span>End-to-End</span></h1>
+  <p class="sub">Arquitetura completa do stack DR. Cada stage com URL, copy/asset summary, e stack técnico.</p>
+
+  <!-- SVG FUNNEL OVERVIEW -->
+  <div class="funnel-wrap">
+    <h3>📉 Conversion funnel (visão macro)</h3>
+    <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#c0392b"/>
+          <stop offset="1" stop-color="#8b1f1a"/>
+        </linearGradient>
+        <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#e67e22"/>
+          <stop offset="1" stop-color="#a04000"/>
+        </linearGradient>
+        <linearGradient id="g3" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#f1c40f"/>
+          <stop offset="1" stop-color="#b7950b"/>
+        </linearGradient>
+        <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#27ae60"/>
+          <stop offset="1" stop-color="#1e8449"/>
+        </linearGradient>
+        <linearGradient id="g5" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2980b9"/>
+          <stop offset="1" stop-color="#1f618d"/>
+        </linearGradient>
+        <linearGradient id="g6" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7d3c98"/>
+          <stop offset="1" stop-color="#5b2c6f"/>
+        </linearGradient>
+      </defs>
+
+      <!-- trapezoids stacked -->
+      <polygon points="100,40 1100,40 1000,90 200,90" fill="url(#g1)"/>
+      <polygon points="200,100 1000,100 920,150 280,150" fill="url(#g2)"/>
+      <polygon points="280,160 920,160 850,210 350,210" fill="url(#g3)"/>
+      <polygon points="350,220 850,220 790,270 410,270" fill="url(#g4)"/>
+      <polygon points="410,280 790,280 740,330 460,330" fill="url(#g5)"/>
+      <polygon points="460,340 740,340 700,380 500,380" fill="url(#g6)"/>
+
+      <!-- labels -->
+      <text x="600" y="72" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">1. AD (Instagram, Facebook, TikTok)</text>
+      <text x="600" y="85" text-anchor="middle" fill="#fff" font-size="11" opacity="0.85">Awareness · Cold traffic · Targeting 40-65 women, H&W interest</text>
+
+      <text x="600" y="132" text-anchor="middle" fill="#fff" font-size="16" font-weight="700">2. ARTICLE LP · slimsoda.corewellnessjournal.com</text>
+      <text x="600" y="145" text-anchor="middle" fill="#fff" font-size="10" opacity="0.85">Yale doctor narrative · baking soda reactivation · redirects to VSL</text>
+
+      <text x="600" y="192" text-anchor="middle" fill="#fff" font-size="15" font-weight="700">3. VSL · trustedconsumervoice.com/vsl/slimtide/v1</text>
+      <text x="600" y="204" text-anchor="middle" fill="#fff" font-size="10" opacity="0.85">Vturb player · 60-90 min video · TODAY/NBC social proof</text>
+
+      <text x="600" y="252" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">4. SHOP LP · shopzenvylite.com/pages/slimsoda-buy-1-tub</text>
+      <text x="600" y="263" text-anchor="middle" fill="#fff" font-size="9" opacity="0.85">Dana Whitfield narrative · GLP-1/berberine · 60-day guarantee</text>
+
+      <text x="600" y="312" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">5. CHECKOUT · secureorder.shopzenvylite.com/funnelish</text>
+      <text x="600" y="323" text-anchor="middle" fill="#fff" font-size="9" opacity="0.85">3-tier bundle · timer 10min · order bump $4.99 shipping</text>
+
+      <text x="600" y="370" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">6. PURCHASE → POST-FLOW</text>
+      <text x="600" y="380" text-anchor="middle" fill="#fff" font-size="8" opacity="0.85">(upsell/email not captured)</text>
+    </svg>
+  </div>
+
+  <!-- METRICS -->
+  <div class="metrics">
+    <div class="metric"><strong>6</strong><span>Stages identificados</span></div>
+    <div class="metric"><strong>4</strong><span>URLs clonadas</span></div>
+    <div class="metric"><strong>~$90</strong><span>Ticket (3-pack $19.99/each × 3 = $59.97+ship)</span></div>
+    <div class="metric"><strong>IG + ManyChat</strong><span>Tráfego típico</span></div>
+  </div>
+
+  <!-- STAGES -->
+  <div class="stages">
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 01</span>
+        <h2>Paid Ad</h2>
+        <span class="badge">Awareness</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>Channels:</strong></p>
+        <div class="channels">
+          <span class="ch ig">Instagram (principal)</span>
+          <span class="ch fb">Facebook</span>
+          <span class="ch tt">TikTok</span>
+        </div>
+        <p style="margin-top:12px"><strong>Creative angles (DR):</strong> B6 51x plastic in arteries / B7 Sardinia longevity / B2 No losartan needed / B3 Losartan lying / B9 3am heart racing. Mix de 6+ concepts criativos.</p>
+        <p><strong>Targeting:</strong> Women 40-65, US, interest in health, weight loss, supplements, GLP-1 awareness. <em>Meta-safe copy only.</em></p>
+        <p><strong>Tracking:</strong> UTM <code>utm_source=instagram</code> + <code>utm_id=&lt;influencer&gt;</code> + <code>utm_term=manychat</code> + <code>rtkcid</code> (RedTrack click id).</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">Padrões observados</div>
+        <div class="item"><strong>Influencer-driven:</strong> "britaniakellish" no utm_id = uma creator específica. Escala via dezenas de creators.</div>
+        <div class="item"><strong>ManyChat flow:</strong> utm_term=manychat indica integração ManyChat pós-quiz pra SMS/IG DM sequence.</div>
+        <div class="item"><strong>Geo-fence US:</strong> Cardio Clear, SlimSoda article LP, VSL = US-only. Não serve tráfego BR.</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">▼</div>
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 02</span>
+        <h2>Article LP</h2>
+        <span class="badge">Top of Funnel</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>URL:</strong> <code>https://slimsoda.corewellnessjournal.com/</code></p>
+        <p><strong>Offer:</strong> SlimSoda (baking soda weight loss trick, GLP-1/GIP reactivation angle).</p>
+        <p><strong>Copy:</strong> "Yale Doctor Reveals: Never Mix Baking Soda With These 3 Ingredients — Unless You Want To Lose 24 Pounds in 15 Days." Pseudo-investigation framing, Jennifer Mitchell anchor (52, mãe de 3, 47 lbs em 30 dias).</p>
+        <p><strong>CTA:</strong> "CLICK TO WATCH" → outbound <code>g8mv2trk.com</code> (trustedconsumervoice slimtide VSL).</p>
+        <p><strong>Stack:</strong> Elementor (WordPress), Cloudflare, 13 imagens (rotativas por IP/cookie), reviews 3-nome + 1-CTA-empilhado.</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">Gaps / notas</div>
+        <div class="item">Imagens rotativas por personalization (Yale/entrevista OU antes/depois OU Oprah). Captured: versão Yale.</div>
+        <div class="item">Stack: Elementor + Cloudflare. ELEMENTOR_KEY=hidden no DOM.</div>
+        <div class="item">Compliance: "These statements have not been evaluated by the FDA" no footer.</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">▼</div>
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 03</span>
+        <h2>VSL (Video Sales Letter)</h2>
+        <span class="badge">Mid Funnel</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>URL:</strong> <code>https://trustedconsumervoice.com/vsl/slimtide/v1/?aff_id=45242&subid=...</code></p>
+        <p><strong>Purpose:</strong> Página de "social proof" estilo TODAY/NBC News. 36,158 comments + 9 Facebook-style comments com arco narrativo (cético → convencido → resultado).</p>
+        <p><strong>Player:</strong> Vturb embed (Name interno: <code>"SlimSoda"</code>), vídeo vertical 1536x1920, Smart Autoplay PT-BR. HLS: <code>cdn.converteai.net/.../main.m3u8</code>.</p>
+        <p><strong>Publisher:</strong> trustedconsumervoice.com = generic affiliate LP tracker (CPA Dynu In Media, $109 payout).</p>
+        <p><strong>Outbound:</strong> → shopzenvylite.com B1G1 page (próximo stage).</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">Bloqueios</div>
+        <div class="item">Cloudflare silent-block pra IP datacenter.</div>
+        <div class="item">Requer <code>aff_id</code>+<code>subid</code> válidos (click id do Facebook/Google ads).</div>
+        <div class="item">Reconstruído via player.js config + print do user.</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">▼</div>
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 04</span>
+        <h2>Shop LP (Buy Page)</h2>
+        <span class="badge">Conversion</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>URL:</strong> <code>https://shopzenvylite.com/pages/slimsoda-buy-1-tub-get-1-free</code></p>
+        <p><strong>Offer:</strong> SlimSoda "Baking Soda Water Shot" — $29.99 B1G1 (era $119.98).</p>
+        <p><strong>Stack:</strong> Shopify (Shrine PRO theme), 17 imagens high-res, "Dana Whitfield = independent formulator" narrativa, mecanismo GLP-1/DPP-4/berberine, 60-day empty-tub guarantee, 1,342 FB-style comments.</p>
+        <p><strong>Outbound CTA:</strong> "SEND MY 2 TUBS" → <code>https://secureorder.shopzenvylite.com/funnelish?store=8hu1da-yg&funnelishId=544</code>.</p>
+        <p><strong>Compliance footer:</strong> "© 2026 SlimSoda. All Rights Reserved." + FDA disclaimer + "This site is not a part of the Facebook website..."</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">DR patterns novos (esse stage)</div>
+        <div class="item"><strong>"I'm the one who created it"</strong> first-person formulador.</div>
+        <div class="item"><strong>Price ladder</strong> Ozempic $1k/mo vs capsule $100 vs SlimSoda $29.99.</div>
+        <div class="item"><strong>"60-Day Empty-Tub Guarantee"</strong> risk reversal com nome criativo.</div>
+        <div class="item"><strong>"Six months from now..."</strong> future-tense regret-avoidance close.</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">▼</div>
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 05</span>
+        <h2>Checkout (Funnelish)</h2>
+        <span class="badge">Money</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>URL:</strong> <code>https://secureorder.shopzenvylite.com/funnelish?store=8hu1da-yg&funnelishId=544</code></p>
+        <p><strong>3 steps:</strong> (1) Select Order Quantity → (2) Your Informations → (3) Payment Methods.</p>
+        <p><strong>3-tier bundle pricing:</strong> Buy 3 Get 3 Free @ <strong>$19.99/each</strong> (BEST VALUE) · Buy 2 Get 2 Free @ $24.99/each (MOST POPULAR) · Buy 1 Get 1 Free @ $29.99/each.</p>
+        <p><strong>Urgency stack:</strong> Sticky timer 10min countdown + "Only 56 Items Left in Stock!" + barra de scarcity.</p>
+        <p><strong>Order bump:</strong> Expedited Shipping $4.99 (caixa amarela destacada).</p>
+        <p><strong>Trust stack:</strong> 4.7★ 1000+ Verified Reviews · 100% Money Back Guarantee · SSL Encrypted · Visa/MC/Amex/Discover badges.</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">DR patterns (checkout)</div>
+        <div class="item"><strong>3-tier bundle</strong> com anchor "BEST VALUE" pré-selecionado.</div>
+        <div class="item"><strong>Order bump inline</strong> no step de shipping (não na thank you page).</div>
+        <div class="item"><strong>Sticky timer countdown</strong> que reseta a cada reload.</div>
+        <div class="item"><strong>3-step minimizado</strong> (não 5-step) — minimiza friction.</div>
+      </div>
+    </div>
+
+    <div class="arrow-down">▼</div>
+
+    <div class="stage">
+      <div class="stage-num">
+        <span class="n">STAGE 06</span>
+        <h2>Post-Purchase</h2>
+        <span class="badge">⚠️ Not Captured</span>
+      </div>
+      <div class="stage-body">
+        <p><strong>Capturado (parcial):</strong> URL pattern <code>/funnelish/thankyou?store=X&funnelishId=Y&cart={cartId}&key={key}</code> identificado. Sem cart válido, server retorna "Not Found — The requested cart or store could not be found" (screenshot em <code>pages/funnelish-checkout/thankyou-notfound-2026-08-16.jpg</code>).</p>
+        <p><strong>Esperado (não capturado — requer purchase real):</strong></p>
+        <p>• Thank you page (confirmação de pedido, número de tracking, ETA entrega)</p>
+        <p>• Upsell / OTO (one-time-offer — geralmente 1-click bump tipo "Add a 2nd bottle at 50% off")</p>
+        <p>• Email sequence (7d, 14d, 30d check-ins)</p>
+        <p>• Subscription offer (monthly refills?)</p>
+        <p><em>Padrão típico:</em> Thank you → OTO upsell ($39 bundle) → main offer confirmation. Email 1 imediatamente com tracking info.</p>
+        <p><em>Tracking:</em> Conversion pixel dispara RedTrack + fb pixel + Hotmart conversion.</p>
+      </div>
+      <div class="stage-side">
+        <div class="label">Stack provável</div>
+        <div class="item"><strong>Thank you:</strong> Funnelish template. URL pattern confirmado; renderização requer purchase real.</div>
+        <div class="item"><strong>Email:</strong> Klaviyo ou Mailchimp (integração Shopify).</div>
+        <div class="item"><strong>SMS:</strong> ManyChat flow (utm_term=manychat) — sequencia pós-compra.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TRACKING STACK -->
+  <h2 style="margin-top:64px;font-size:24px;color:#fff;font-weight:800;margin-bottom:8px">Tracking & Integration Stack</h2>
+  <p style="color:#888;font-size:14px;margin-bottom:20px">Stack técnico identificado no funil inteiro.</p>
+
+  <div class="stack-grid">
+    <div class="stack-item"><div class="name">RedTrack</div><div class="role">Affiliate click tracking + conversion attribution (cdn.redtrack.io)</div></div>
+    <div class="stack-item"><div class="name">Hotmart</div><div class="role">Product backend + payment processing + subscription (pay.hotmart.com)</div></div>
+    <div class="stack-item"><div class="name">Shopify</div><div class="role">Shop LP + product catalog (8hu1da-yg.myshopify.com)</div></div>
+    <div class="stack-item"><div class="name">Funnelish</div><div class="role">Checkout customizado com timer/scarcity/order-bump</div></div>
+    <div class="stack-item"><div class="name">Vturb</div><div class="role">VSL player + smart autoplay (scripts.converteai.net)</div></div>
+    <div class="stack-item"><div class="name">Supabase</div><div class="role">Quiz backend (auth + data) - if quiz Auraly used</div></div>
+    <div class="stack-item"><div class="name">ManyChat</div><div class="role">IG/FB DM automation + SMS (utm_term=manychat)</div></div>
+    <div class="stack-item"><div class="name">Cloudflare</div><div class="role">CDN + bot protection (all 3 VSL/article/checkout)</div></div>
+    <div class="stack-item"><div class="name">Microsoft Clarity</div><div class="role">Heatmaps + session recordings (clarity.ms)</div></div>
+  </div>
+
+  <!-- OUTBOUND MAP -->
+  <h2 style="margin-top:64px;font-size:24px;color:#fff;font-weight:800;margin-bottom:8px">Outbound Link Map</h2>
+  <p style="color:#888;font-size:14px;margin-bottom:20px">Pra onde cada página aponta.</p>
+
+  <div style="background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:24px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2;color:#ccc;">
+    <div><span style="color:#c0392b">Ad</span> (Instagram/Facebook)</div>
+    <div style="padding-left:32px;color:#888">↓ click → RedTrack clickid</div>
+    <div style="padding-left:32px">→ <span style="color:#fff">slimsoda.corewellnessjournal.com</span> (article LP)</div>
+    <div style="padding-left:64px;color:#888">↓ CTA "CLICK TO WATCH"</div>
+    <div style="padding-left:64px">→ <span style="color:#fff">g8mv2trk.com</span> → <span style="color:#fff">trustedconsumervoice.com/vsl/slimtide/v1/</span> (VSL social proof)</div>
+    <div style="padding-left:96px;color:#888">↓ VSL CTA</div>
+    <div style="padding-left:96px">→ <span style="color:#fff">shopzenvylite.com/pages/slimsoda-buy-1-tub-get-1-free</span> (Shop LP)</div>
+    <div style="padding-left:128px;color:#888">↓ "SEND MY 2 TUBS" CTA</div>
+    <div style="padding-left:128px">→ <span style="color:#fff">secureorder.shopzenvylite.com/funnelish</span> (Funnelish checkout)</div>
+    <div style="padding-left:160px;color:#888">↓ "ORDER NOW"</div>
+    <div style="padding-left:160px">→ <span style="color:#fff">Thank you page (URL pattern captured, notFound sem cart)</span></div>
+    <div style="padding-left:192px;color:#888">↓ (presumed) OTO upsell</div>
+    <div style="padding-left:192px">→ <span style="color:#fff">Hotmart confirmation + email sequence</span></div>
+  </div>
+
+  <p style="margin-top:48px;color:#666;font-size:12px;text-align:center">
+    Hub gerado em 2026-08-16 · 6 stages mapeados · 4 URLs clonadas 100% + 1 VSL recon + 1 quiz standalone
+  </p>
+
+</div>
+
+</body>
+</html>

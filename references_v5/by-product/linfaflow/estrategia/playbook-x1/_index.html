@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook Linfaflow X1 — Primary Test Sequence (Bifi methodology)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#FF8A3D; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --purple:#7c3aed; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(255,138,61,0.12); color:var(--accent); border:1px solid rgba(255,138,61,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h2 { font-size:22px; margin:36px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:17px; margin:22px 0 10px; color:var(--accent); }
+  p, li { color:var(--text); }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout strong { color:var(--accent); }
+  .callout.gold strong { color:var(--gold); }
+  .pill { display:inline-block; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:rgba(255,138,61,0.15); color:var(--accent); border:1px solid rgba(255,138,61,0.3); }
+  .pill-p1 { background:rgba(255,138,61,0.15); color:var(--accent); }
+  .pill-p2 { background:rgba(78,161,255,0.15); color:var(--blue); }
+  .pill-p3 { background:rgba(6,167,125,0.15); color:var(--green); }
+  .pill-p4 { background:rgba(192,57,43,0.15); color:var(--red); }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:14px; }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; overflow-x:auto; font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.6; }
+  pre .c { color:var(--muted); }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:18px 0 18px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .card .value { font-size:18px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:18px 0 14px; }
+  .flow .step { font-size:11.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border:1.5px solid var(--border); background:var(--panel); padding:7px 11px; border-radius:4px; }
+  .flow .step.hot { background:var(--accent); color:#0b0d10; border-color:var(--accent); }
+  .flow .arrow { color:var(--accent); font-weight:800; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  @media (max-width:720px) { .grid-3 { grid-template-columns:1fr; } h1 { font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../_index.html">← Linfaflow hub</a>
+
+  <header>
+    <span class="badge">Playbook · Linfaflow X1 · Bifi methodology</span>
+    <h1>Linfaflow X1 — Primary Test Sequence 💧</h1>
+    <p class="lede">Sequência concreta de primary test do Linfaflow, baseada na metodologia <strong>P1 → P2 → P3 → P4</strong> do @gbifi. Linfaflow é o mid-tier entre SlimSoda e Cardio Clear: <strong>~780 ads ativos, AOV $59.99 (B2G1) + subscription $30/mês (LTV $180 em 6 meses) + Wellness Club upsell ($462)</strong>. Avatar: women 50-70+ on water pill, swollen legs/ankles, considering vein procedure.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Vantagem Linfaflow (vs outros):</strong>
+    <ul style="margin:8px 0 0; padding-left:20px;">
+      <li><strong>Vertical menos óbvia</strong> (linfático) — <em>não é emagrecimento nem cardio padrão</em>, leilão Meta mais barato</li>
+      <li><strong>LTV real = $642</strong> ($180 subscription + $462 Wellness Club upsell) — o mais alto dos 3 produtos</li>
+      <li><strong>Publisher tem LPs canônicas ativas</strong> (linfaflow.com live, podemos clonar e espelhar)</li>
+      <li><strong>Mecanismo visualizável</strong> (4 plant extracts + "Break/Sweep/Activate/Purify" 4-stage ritual)</li>
+    </ul>
+  </div>
+
+  <h2>📊 Resumo rápido (X1 = 2 fases = ~5 dias)</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="label">P1 — Primary Text</div>
+      <div class="value">ABO 1-5-3</div>
+      <p class="muted" style="margin-top:6px">5 concepts × 3 primary texts = <strong>15 ads</strong> · $40/conjunto · <strong>2 dias</strong> · $400 total</p>
+    </div>
+    <div class="card">
+      <div class="label">P2 — Imagem/Adformat</div>
+      <div class="value">ABO 1-5-10</div>
+      <p class="muted" style="margin-top:6px">5 conjuntos × 10 adformats = <strong>50 ads</strong> · $40/conjunto · <strong>3 dias</strong> · $600 total</p>
+    </div>
+    <div class="card">
+      <div class="label">Output (winner)</div>
+      <div class="value">1 angle + 1 image</div>
+      <p class="muted" style="margin-top:6px">O criativo validado vai pra <strong>P3 (escala)</strong> com CBO bidcap · 1-100-1 · Bid 83% CPA</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <span class="step">P1 (2d · $400)</span><span class="arrow">→</span>
+    <span class="step">P2 (3d · $600)</span><span class="arrow">→</span>
+    <span class="step hot">P3 ESCALA (1+)</span><span class="arrow">→</span>
+    <span class="step">P4 CEMITÉRIO</span>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p1">P1</span> Primary Text — qual copy vende?</h2>
+
+  <h3>📋 Ficha técnica P1 — Linfaflow</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-3 (1 campanha · 5 conjuntos · 3 anúncios por conjunto = <strong>15 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td><strong>$40/dia</strong> × 2 dias = $80 por conjunto · <strong>$400 total</strong></td></tr>
+      <tr><td><strong>Imagem</strong></td><td>Mesma imagem em todos os 15 (bottle Linfaflow "Tastes Like Honey" + swelling visualization)</td></tr>
+      <tr><td><strong>Público</strong></td><td>100% aberto · só <strong>idade (50-70) + gênero (mulher)</strong> — avatar canonical</td></tr>
+      <tr><td><strong>CTA</strong></td><td>"READ THE STORY →" (soft, frame editorial)</td></tr>
+      <tr><td><strong>Link</strong></td><td>LP Linfaflow (linfaflow.com quando clonada, ou LP própria)</td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>2 dias</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎯 Os 5 concepts (ângulo + avatar) — Linfaflow canônico</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Concept (ângulo + avatar)</th>
+        <th>Hook emocional</th>
+        <th>Primary texts (3 variantes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>C1</strong></td>
+        <td><strong>"Margaret sister death" (F, 55-65, sister had procedure)</strong></td>
+        <td>Luto familial + blood clot fear + "I cancelled my surgery"</td>
+        <td>
+          (1a) "My older sister had a routine vein procedure. She died of a blood clot four weeks later. She was 62."<br>
+          (1b) "After Margaret's funeral, my own vascular surgeon scheduled me for the same procedure. I cancelled."<br>
+          (1c) "Her dress is still in the garment bag in the spare room. Her daughter got married in June. Empty seat."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C2</strong></td>
+        <td><strong>"Water pill fails" (F, 55-70, on diuretic 5+ anos)</strong></td>
+        <td>Frustração com medicação + "still swollen" + body betrayal</td>
+        <td>
+          (2a) "I've been on the same water pill for eight years. The swelling never went down. The doctor doubled the dose. Still swollen."<br>
+          (2b) "Three different diuretics. The ankles vanish before dinner no matter which one I take."<br>
+          (2c) "My nurse practitioner shrugged. 'Keep taking it. Lower your salt.' I've heard that for a decade."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C3</strong></td>
+        <td><strong>"Vein procedure scam" (F, 60-70, considering procedure)</strong></td>
+        <td>Medo + "they don't tell you" + procedure risk revelation</td>
+        <td>
+          (3a) "The vascular surgeon said it was 'straightforward, home the same day.' They never told me about the clot risk."<br>
+          (3b) "I was scheduled for the same procedure Margaret had. Then I read the research they don't show you at the consult."<br>
+          (3c) "When the body's second drain is already sluggish, the weeks after a leg procedure are the most dangerous window there is."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C4</strong></td>
+        <td><strong>"30-second ritual" (F, 50-65, prevention mindset)</strong></td>
+        <td>Simplicidade + "30 seconds" + "before coffee"</td>
+        <td>
+          (4a) "Two drops. Under the tongue. Before coffee. 30 seconds. That's it. That's the whole thing."<br>
+          (4b) "I don't have time for 12 supplements. I have time for one thing I do before I get out of bed."<br>
+          (4c) "It's not a 90-day program. It's a 30-second morning ritual. And it works faster than anything my doctor prescribed."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C5</strong></td>
+        <td><strong>"4-stage ritual visualized" (F, 55-70, all natural)</strong></td>
+        <td>Mechanism visualizável + "4 plants" + "you can see it work"</td>
+        <td>
+          (5a) "Four plants. Four jobs. Break. Sweep. Activate. Purify. The fluid that hasn't moved in years starts moving in week one."<br>
+          (5b) "I pressed my thumb into my ankle and the dent came right back instead of staying. That's when I knew it was working."<br>
+          (5c) "Cleavers, Red Clover, Stillingia Root, Prickly Ash Bark. Your second drain wakes up. You can feel it."
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P1 (Linfaflow)</h3>
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte</th><th>Watch</th><th>Winner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Custo por IC</strong></td><td>&gt; $40</td><td>$20-40</td><td>&lt; $20 (subscription CPA target)</td></tr>
+      <tr><td><strong>CTR (link)</strong></td><td>&lt; 0.7%</td><td>0.7-1.3%</td><td>&gt; 1.3%</td></tr>
+      <tr><td><strong>CPC (link)</strong></td><td>&gt; $1.50</td><td>$0.60-1.50</td><td>&lt; $0.60</td></tr>
+      <tr><td><strong>Custo por page view</strong></td><td>&gt; $5</td><td>$2-5</td><td>&lt; $2</td></tr>
+      <tr><td><strong>Finalizações iniciadas (IC)</strong></td><td>0</td><td>1-2</td><td>3+</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P1 (pra levar pra P2)</h3>
+  <p>1-2 winners de concept. Vão pra P2 com 10 imagens diferentes cada.</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p2">P2</span> Imagem/Adformat — qual formato aguenta?</h2>
+
+  <h3>📋 Ficha técnica P2 — Linfaflow</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-10 (5 conjuntos × 10 ads = <strong>50 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td>$40/dia × 3 dias = $120 por conjunto · <strong>$600 total</strong></td></tr>
+      <tr><td><strong>Primary text</strong></td><td>O 1-2 winners da P1</td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>3 dias</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🖼️ Os 10 adformats a testar (com o winner text da P1)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Adformat</th>
+        <th>Descrição</th>
+        <th>Trio visual fixo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A1</strong></td>
+        <td>Native sponsored (HEART-SMART EATING — replicar Louise Karther pattern)</td>
+        <td>Frame "5 foods that reduce puffiness" + 5 bullets, editorial wrapper</td>
+        <td>5 food photos + bottle</td>
+      </tr>
+      <tr>
+        <td><strong>A2</strong></td>
+        <td>Native sponsored (MORNING SWELLING REPORT)</td>
+        <td>Frame "morning news" — "Here's what your swollen ankles are trying to tell you"</td>
+        <td>bottle + swollen ankle comparison + morning light</td>
+      </tr>
+      <tr>
+        <td><strong>A3</strong></td>
+        <td>Native sponsored (LYMPHATIC HEALTH DESK)</td>
+        <td>Frame "news desk" com drop cap + pull-quote</td>
+        <td>doctor + lymph diagram + bottle</td>
+      </tr>
+      <tr>
+        <td><strong>A4</strong></td>
+        <td>Native sponsored (30-SECOND MORNING RITUAL EXPLAINED)</td>
+        <td>Frame "wellness routine" — 4 plants explained (Break/Sweep/Activate/Purify)</td>
+        <td>4 plant photos + ritual icon + bottle</td>
+      </tr>
+      <tr>
+        <td><strong>A5</strong></td>
+        <td>Native sponsored (WHAT YOUR VASCULAR SURGEON WON'T TELL YOU)</td>
+        <td>Frame "investigative" — 3 things surgeons know about procedure risk</td>
+        <td>scared patient + surgeon + procedure room</td>
+      </tr>
+      <tr>
+        <td><strong>A6</strong></td>
+        <td>UGC video (60+ woman, kitchen morning)</td>
+        <td><em>A criar</em>: iPhone footage, 60s woman, taking drops under tongue</td>
+        <td>UGC real-life</td>
+      </tr>
+      <tr>
+        <td><strong>A7</strong></td>
+        <td>UGC video (before/after ankle dent test)</td>
+        <td><em>A criar</em>: split screen, ankle dent test, 4-week timeline</td>
+        <td>before/after swelling</td>
+      </tr>
+      <tr>
+        <td><strong>A8</strong></td>
+        <td>Carousel (3 cards: hook → 4-stage ritual → 4-week proof)</td>
+        <td><em>A criar</em>: 3 slides, mobile-first</td>
+        <td>scary stat → ritual → results</td>
+      </tr>
+      <tr>
+        <td><strong>A9</strong></td>
+        <td>Static lifestyle (60+ woman, morning, light breakfast)</td>
+        <td><em>A criar</em>: high-end photo, golden hour kitchen</td>
+        <td>lifestyle premium</td>
+      </tr>
+      <tr>
+        <td><strong>A10</strong></td>
+        <td>Static price-anchored (3-bottle 70% OFF vs 1-bottle 25% OFF)</td>
+        <td><em>A criar</em>: 3-tier compare, strikethrough</td>
+        <td>price anchor visual</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P2 (Linfaflow)</h3>
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte</th><th>Watch</th><th>Winner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Compras (não só IC)</strong></td><td>0 após 3 dias</td><td>1-3</td><td>4+</td></tr>
+      <tr><td><strong>ROAS</strong></td><td>&lt; 0.5</td><td>0.5-1.5</td><td>&gt; 1.5</td></tr>
+      <tr><td><strong>CPA</strong></td><td>&gt; $120 (1.5× target)</td><td>$80-120</td><td>&lt; $80 (subscription CPA target)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P2 (pra levar pra P3)</h3>
+  <p>1-3 combinações vencedoras (text + image). Cada combo vira 1 conjunto na P3.</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p3">P3</span> Escala (CBO bidcap) — qual o teto desse criativo?</h2>
+
+  <h3>📋 Ficha P3 — Linfaflow (1 winner exemplo)</h3>
+  <pre><span class="c"># Campanha P3 — Linfaflow
+# Estrutura: 1 campanha · 1 conjunto por criativo validado (1-3 conjuntos)
+# Verba inicial: 10 tickets de CPA = 10 × $80 = $800 por conjunto
+# Bid inicial: 83% do CPA = $66
+
+Campanha: "P3 — Linfaflow — Scale-Winners"
+  Conjunto 1: "Winner-A1-FOODS-THAT-REDUCE-PUFFINESS"
+    Anúncio: text-P1-winner-C1 (Margaret sister death) + image-A1 (5 foods editorial)
+    Budget: $800
+    Bid: $66 (83% CPA)
+    Bidcap: ON
+    Otimização: CONVERSÕES (Purchase + Subscription)
+    Attribution: 7-day click
+
+<span class="c"># IMPORTANTE: otimizar pra Purchase (não Lead) — Linfaflow tem subscription</span>
+<span class="c"># Eventos: 1 IC = $0.20-0.50 (otimização pre-Purchase)</span>
+<span class="c"># Purchase = $59.99 one-shot ou $29.99/mês recorrente</span>
+<span class="c"># Subscription = upsell automático, alto LTV</span></pre>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p4">P4</span> Cemitério — perpetua winners que morreram</h2>
+  <pre><span class="c"># P4 — Cemitério do Linfaflow
+# Estrutura: 1 campanha · 1 conjunto · até 10 ads
+# Verba: $500/dia · cost cap = último CPA validado
+
+Campanha: "P4 — Linfaflow — Cemetery"
+  Conjunto: "cemetery-pool"
+    Anúncios (até 10): winners antigos que morreram
+    Budget: $500/dia
+    Cost cap: $80 (último CPA validado)</pre>
+
+  <h2>💰 Budget total do X1 (P1 + P2)</h2>
+  <table>
+    <thead><tr><th>Fase</th><th>Dias</th><th>Budget</th><th>Output</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P1 (Primary text)</strong></td><td>2</td><td><strong>$400</strong></td><td>1-2 winners de copy</td></tr>
+      <tr><td><strong>P2 (Image/Adformat)</strong></td><td>3</td><td><strong>$600</strong></td><td>1-3 winners de text+image</td></tr>
+      <tr><td><strong>TOTAL X1</strong></td><td><strong>5 dias</strong></td><td><strong>$1,000</strong></td><td>1-3 criativos prontos pra P3</td></tr>
+    </tbody>
+  </table>
+
+  <h2>🛑 Red lines Linfaflow (CRÍTICO)</h2>
+  <div class="callout">
+    <strong>Linfaflow também tem red lines médicas (mesmo sendo women's health):</strong>
+    <h3 style="margin-top:14px;">🚫 NUNCA:</h3>
+    <ul style="margin:8px 0; padding-left:20px;">
+      <li>"Cure lymphedema" / "cure for swollen legs" (red line crítico)</li>
+      <li>"Replace your water pill" (red line crítico)</li>
+      <li>"Vein procedure is unnecessary" (red line — ad Margaret diz "cancelled" mas não "unnecessary")</li>
+      <li>Antes/depois de edema/swelling sem disclaimer médico</li>
+      <li>"Doctor approved" sem nome específico</li>
+      <li>"Margaret" (irmã que morreu) como se fosse paciente atual (ela morreu = old story)</li>
+    </ul>
+    <h3 style="margin-top:14px;">✅ SEMPRE:</h3>
+    <ul style="margin:8px 0; padding-left:20px;">
+      <li>"Talk to your doctor before changing your routine"</li>
+      <li>"30-day money-back guarantee"</li>
+      <li>"These statements have not been evaluated by the FDA or MHRA"</li>
+      <li>"Not intended to diagnose, treat, cure or prevent any disease" (canon disclaimer)</li>
+      <li>Margaret como <em>story</em> da irmã, não como paciente atual (already deceased, in past tense)</li>
+    </ul>
+  </div>
+
+  <h2>🔁 Próximas ações após X1</h2>
+  <ol>
+    <li>Se X1 validar winner → P3 (escala) com bid +17% cada 2-3 dias</li>
+    <li>Testar <strong>subscription vs one-shot</strong> como objetivo de otimização (subscription LTV = 6× higher)</li>
+    <li>Após 60+ dias sem escalar, mover pra P4 (cemitério) com $500/dia</li>
+    <li>Monitorar Wellness Club upsell conversion rate (target: 5-10% dos buyers aceitam o upsell)</li>
+  </ol>
+
+  <h2>🧠 Detalhe importante: subscription vs one-shot</h2>
+  <div class="callout gold">
+    <strong>Linfaflow é o ÚNICO dos 3 produtos com modelo de subscription real.</strong> SlimSoda é one-shot (B1G1 não recorrente). Cardio Clear é one-shot (6-bottle pack de 6 meses).
+    <p style="margin-top:12px;"><strong>Implicação pra Meta:</strong> otimizar pra <code>Subscribe</code> event (não Purchase) pode ser mais lucrativo. LTV: $180 (subscription) vs $59.99 (one-shot) = 3× mais.</p>
+    <p style="margin-top:8px;"><strong>Ação:</strong> criar 2 conjuntos paralelos em P3 — um otimizando Purchase, outro otimizando Subscribe. Comparar CPA 1 mês depois.</p>
+  </div>
+
+  <div class="footer">
+    Baseado em: estrutura CBO + DTC Affiliate Black do @gbifi (cards #8 e #9 do hub) · Aplicação concreta pro Linfaflow (avatar 50-70 women, CPA $80, ticket $59.99 B2G1 + subscription $30/mês) · Salvo em <code>by-product/linfaflow/estrategia/playbook-x1/</code>
+  </div>
+
+</div>
+</body>
+</html>

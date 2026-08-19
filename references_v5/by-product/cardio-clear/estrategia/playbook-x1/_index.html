@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook Cardio Clear X1 — Primary Test Sequence (Bifi methodology)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#C8102E; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --purple:#7c3aed; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(200,16,46,0.12); color:var(--accent); border:1px solid rgba(200,16,46,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h2 { font-size:22px; margin:36px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:17px; margin:22px 0 10px; color:var(--accent); }
+  p, li { color:var(--text); }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.purple { border-left-color:var(--purple); }
+  .callout strong { color:var(--accent); }
+  .callout.gold strong { color:var(--gold); }
+  .pill { display:inline-block; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:rgba(200,16,46,0.15); color:var(--accent); border:1px solid rgba(200,16,46,0.3); }
+  .pill-p1 { background:rgba(200,16,46,0.15); color:var(--accent); }
+  .pill-p2 { background:rgba(78,161,255,0.15); color:var(--blue); }
+  .pill-p3 { background:rgba(6,167,125,0.15); color:var(--green); }
+  .pill-p4 { background:rgba(192,57,43,0.15); color:var(--red); }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:14px; }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; overflow-x:auto; font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.6; }
+  pre .c { color:var(--muted); }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:18px 0 18px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .card .value { font-size:18px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:18px 0 14px; }
+  .flow .step { font-size:11.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border:1.5px solid var(--border); background:var(--panel); padding:7px 11px; border-radius:4px; }
+  .flow .step.hot { background:var(--accent); color:#0b0d10; border-color:var(--accent); }
+  .flow .arrow { color:var(--accent); font-weight:800; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  @media (max-width:720px) { .grid-3 { grid-template-columns:1fr; } h1 { font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../_index.html">← Cardio Clear hub</a>
+
+  <header>
+    <span class="badge">Playbook · Cardio Clear X1 · Bifi methodology</span>
+    <h1>Cardio Clear X1 — Primary Test Sequence 🫀</h1>
+    <p class="lede">Sequência concreta de primary test do Cardio Clear, baseada na metodologia <strong>P1 → P2 → P3 → P4</strong> do @gbifi. <strong>Blue ocean (10× menos competição que SlimSoda)</strong> + AOV 5-10× maior. CPA estimado <strong>$80-100</strong> (vs $80 SlimSoda — mesmo ticket, AOV maior justifica CPA maior). Ticket de venda: <strong>$49 single ou $294 6-bottle (Pay 3 Get 6)</strong>.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Vantagem competitiva Cardio Clear (vs SlimSoda):</strong>
+    <ul style="margin:8px 0 0; padding-left:20px;">
+      <li><strong>AOV 5-10× maior</strong> ($294 vs $30) — receita similar com 10× menos vendas</li>
+      <li><strong>Avatar com poder aquisitivo</strong> — 60-75+ on BP pills 6+ mo, often Medicare/retirees com $$</li>
+      <li><strong>Menos competição no leilão</strong> — 80-100 ads (vs 1.100 SlimSoda) = CPM menor</li>
+      <li><strong>Persona forte</strong> (Dr. Sanjay Gupta Yale NEJM) — anchor de credibilidade +385% vs SlimSoda (Dana Whitfield, formulator)</li>
+    </ul>
+  </div>
+
+  <h2>📊 Resumo rápido (X1 = 2 fases = ~5 dias)</h2>
+  <div class="grid-3">
+    <div class="card">
+      <div class="label">P1 — Primary Text</div>
+      <div class="value">ABO 1-5-3</div>
+      <p class="muted" style="margin-top:6px">5 concepts × 3 primary texts = <strong>15 ads</strong> · $40/conjunto · <strong>2 dias</strong> · $400 total</p>
+    </div>
+    <div class="card">
+      <div class="label">P2 — Imagem/Adformat</div>
+      <div class="value">ABO 1-5-10</div>
+      <p class="muted" style="margin-top:6px">5 conjuntos × 10 adformats = <strong>50 ads</strong> · $40/conjunto · <strong>3 dias</strong> · $600 total</p>
+    </div>
+    <div class="card">
+      <div class="label">Output (winner)</div>
+      <div class="value">1 angle + 1 image</div>
+      <p class="muted" style="margin-top:6px">O criativo validado vai pra <strong>P3 (escala)</strong> com CBO bidcap · 1-100-1 · Bid 83% CPA = $66-83</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <span class="step">P1 (2d · $400)</span><span class="arrow">→</span>
+    <span class="step">P2 (3d · $600)</span><span class="arrow">→</span>
+    <span class="step hot">P3 ESCALA (1+)</span><span class="arrow">→</span>
+    <span class="step">P4 CEMITÉRIO</span>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p1">P1</span> Primary Text — qual copy vende?</h2>
+
+  <h3>📋 Ficha técnica P1 — Cardio Clear</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-3 (1 campanha · 5 conjuntos · 3 anúncios por conjunto = <strong>15 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td><strong>$50/dia</strong> × 2 dias = $100 por conjunto · <strong>$500 total</strong> (CPA target $80-100, então 60% = $50)</td></tr>
+      <tr><td><strong>Imagem</strong></td><td>Mesma imagem em todos os 15 (Dr. Sanjay Gupta headshot + 30-Second Morning Ritual badge)</td></tr>
+      <tr><td><strong>Headline</strong></td><td>Mesma nos 3 anúncios de cada conjunto</td></tr>
+      <tr><td><strong>Público</strong></td><td>100% aberto · só <strong>idade (50-75) + gênero (70% M / 30% F)</strong> — avatar canonical</td></tr>
+      <tr><td><strong>CTA</strong></td><td>"READ THE REPORT →" (soft, frame editorial)</td></tr>
+      <tr><td><strong>Link</strong></td><td>LP Cardio Clear (VitalHollow ou USLifeToday quando voltarem, ou LP própria) com UTM</td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>2 dias</strong> (programar pra começar 04:00)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎯 Os 5 concepts (ângulo + avatar) — Cardio Clear canônico</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Concept (ângulo + avatar)</th>
+        <th>Hook emocional</th>
+        <th>Primary texts (3 variantes)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>C1</strong></td>
+        <td><strong>"NEJM 2024 microplastic study" (M, 65+)</strong></td>
+        <td>Indignação científica + "ninguém te contou" + dado chocante</td>
+        <td>
+          (1a) "A NEJM study found 51× more microplastic in your arteries. Yale cardiology is finally responding."<br>
+          (1b) "The number wasn't supposed to be this high. The study wasn't supposed to leak. But it did."<br>
+          (1c) "1 in 3 adults over 50. They knew. They didn't tell you. Until now."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C2</strong></td>
+        <td><strong>"Mr. Roberts archetypal" (M, 64, on Losartan 12 anos)</strong></td>
+        <td>Luto familial + regret avoidance + "what could we have done?"</td>
+        <td>
+          (2a) "Mr. Roberts didn't make it to his granddaughter's recital. His wife asked the doctor 'what could we have done?'"<br>
+          (2b) "12 years on Losartan. BP 170 on 3 medications. His wife keeps the voicemail. 14 seconds."<br>
+          (2c) "He cancelled the surgery. The cardiologist looked at his chart and said 'whatever you're doing, keep doing it.'"
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C3</strong></td>
+        <td><strong>"Sardinian research buried" (M, 60+, mediterranean curious)</strong></td>
+        <td>Knowledge suppressed by money + "they don't want you to know" + exotic source</td>
+        <td>
+          (3a) "Sardinian grandmothers knew this 90 years ago. Modern medicine just confirmed it in 2024."<br>
+          (3b) "You can't patent a Mediterranean plant. So the research sat in a drawer for 90 years."<br>
+          (3c) "The Italian cardiologist who published it was told to stop. He didn't."
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C4</strong></td>
+        <td><strong>"Doctor betrayal" (M, 65+, on 3 BP meds)</strong></td>
+        <td>Frustração com medicação + "the drugs don't work" + "they keep adding"</td>
+        <td>
+          (4a) "Three medications. BP still 170. The cardiologist added a fourth. I asked what else they had."<br>
+          (4b) "The doctor said the drugs would 'manage' my pressure. Twenty years later I'm on four and the number is the same."<br>
+          (4c) "They keep prescribing. I keep taking. The number never moves. Nobody says 'let's fix the wall.'"
+        </td>
+      </tr>
+      <tr>
+        <td><strong>C5</strong></td>
+        <td><strong>"Arterial Cement visual" (M, 60+, prevention now)</strong></td>
+        <td>Body betrayal + scary visualization + "you can't unsee it"</td>
+        <td>
+          (5a) "Your arteries are hardening. Layer by layer. Like cement being poured inside your chest. You just can't see it yet."<br>
+          (5b) "The cardiologist showed me the scan. He said the word 'cement' and I stopped breathing."<br>
+          (5c) "5 grams of microplastic enter your body every week. Where do you think it ends up?"
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P1 (Cardio Clear)</h3>
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte</th><th>Watch</th><th>Winner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Custo por IC</strong></td><td>&gt; $50</td><td>$25-50</td><td>&lt; $25 (CPA target atingido)</td></tr>
+      <tr><td><strong>CTR (link)</strong></td><td>&lt; 0.6%</td><td>0.6-1.2%</td><td>&gt; 1.2%</td></tr>
+      <tr><td><strong>CPC (link)</strong></td><td>&gt; $2</td><td>$0.75-2</td><td>&lt; $0.75</td></tr>
+      <tr><td><strong>Custo por page view</strong></td><td>&gt; $7</td><td>$3-7</td><td>&lt; $3</td></tr>
+      <tr><td><strong>Finalizações iniciadas (IC)</strong></td><td>0</td><td>1-2</td><td>3+</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P1 (pra levar pra P2)</h3>
+  <p>1-2 winners de concept. O 1-2 winners vão pra P2 com 10 imagens diferentes cada.</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p2">P2</span> Imagem/Adformat — qual formato aguenta?</h2>
+
+  <h3>📋 Ficha técnica P2 — Cardio Clear</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Valor</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Estrutura</strong></td><td>ABO 1-5-10 (5 conjuntos × 10 ads = <strong>50 ads no ar</strong>)</td></tr>
+      <tr><td><strong>Budget por conjunto</strong></td><td>$50/dia × 3 dias = $150 por conjunto · <strong>$750 total</strong></td></tr>
+      <tr><td><strong>Primary text</strong></td><td>O 1-2 winners da P1 (mesmo texto nos 10 ads de cada conjunto)</td></tr>
+      <tr><td><strong>Tempo</strong></td><td><strong>3 dias</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>🖼️ Os 10 adformats a testar (com o winner text da P1)</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Adformat</th>
+        <th>Descrição</th>
+        <th>Trio visual fixo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A1</strong></td>
+        <td>Native sponsored (HEART-SMART EATING STARTS IN YOUR KITCHEN)</td>
+        <td>Ad Louise Karther canônico — frame editorial food list, 5 bullets</td>
+        <td>5 food photos + Dr. Sanjay headshot</td>
+      </tr>
+      <tr>
+        <td><strong>A2</strong></td>
+        <td>Native sponsored (MORNING BP REPORT)</td>
+        <td>Frame "morning news" — "Here's what 12,000 patients taught me about BP"</td>
+        <td>bottle + BP monitor + morning light</td>
+      </tr>
+      <tr>
+        <td><strong>A3</strong></td>
+        <td>Native sponsored (HEART HEALTH DESK)</td>
+        <td>Frame "news desk" com drop cap + pull-quote</td>
+        <td>doctor + report + capsule close-up</td>
+      </tr>
+      <tr>
+        <td><strong>A4</strong></td>
+        <td>Native sponsored (30-SECOND MORNING RITUAL EXPLAINED)</td>
+        <td>Frame "wellness routine explained" — recipe style</td>
+        <td>capsules in palm + glass + ritual icon</td>
+      </tr>
+      <tr>
+        <td><strong>A5</strong></td>
+        <td>Native sponsored (WHAT YOUR DOCTOR WON'T TELL YOU)</td>
+        <td>Frame "investigative" — 3 things cardiologists know but won't say</td>
+        <td>scared patient + doctor back-turned + BP monitor</td>
+      </tr>
+      <tr>
+        <td><strong>A6</strong></td>
+        <td>UGC video (60+ man, kitchen morning)</td>
+        <td><em>A criar</em>: iPhone footage, 60-70s man, taking 2 capsules with water before coffee</td>
+        <td>UGC real-life</td>
+      </tr>
+      <tr>
+        <td><strong>A7</strong></td>
+        <td>UGC video (before/after BP numbers)</td>
+        <td><em>A criar</em>: split screen, BP 170→118 over 90 days, with cuff</td>
+        <td>before/after BP numbers</td>
+      </tr>
+      <tr>
+        <td><strong>A8</strong></td>
+        <td>Carousel (3 cards: hook → mechanism → 90-day proof)</td>
+        <td><em>A criar</em>: 3 slides, mobile-first, Sarah Gupta avatar</td>
+        <td>scary stat → mechanism → 90-day timeline</td>
+      </tr>
+      <tr>
+        <td><strong>A9</strong></td>
+        <td>Static lifestyle (60+ man, morning, healthy breakfast)</td>
+        <td><em>A criar</em>: high-end photo, golden hour kitchen</td>
+        <td>lifestyle premium</td>
+      </tr>
+      <tr>
+        <td><strong>A10</strong></td>
+        <td>Static price-anchored ($297 single → $49 / 6-bottle $294)</td>
+        <td><em>A criar</em>: 3-product compare, strikethrough</td>
+        <td>price anchor visual</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>✂️ Régua de corte P2 (Cardio Clear)</h3>
+  <table>
+    <thead><tr><th>Métrica</th><th>Corte</th><th>Watch</th><th>Winner</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Compras</strong></td><td>0 após 3 dias</td><td>1-3</td><td>4+</td></tr>
+      <tr><td><strong>ROAS</strong></td><td>&lt; 0.5</td><td>0.5-2.0</td><td>&gt; 2.0 (Cardio Clear roda alto por causa do AOV)</td></tr>
+      <tr><td><strong>CPA</strong></td><td>&gt; $200 (1.5× target)</td><td>$120-200</td><td>&lt; $100 (target)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>✅ Output P2 (pra levar pra P3)</h3>
+  <p>1-3 combinações vencedoras (text + image). Cada combo vira 1 conjunto na P3.</p>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p3">P3</span> Escala (CBO bidcap) — qual o teto desse criativo?</h2>
+
+  <h3>📋 Ficha P3 — Cardio Clear (1 winner exemplo)</h3>
+  <pre><span class="c"># Campanha P3 — Cardio Clear
+# Estrutura: 1 campanha · 1 conjunto por criativo validado (1-3 conjuntos)
+# Verba inicial: 10 tickets de CPA = 10 × $100 = $1.000 por conjunto
+# Bid inicial: 83% do CPA = $83
+
+Campanha: "P3 — Cardio Clear — Scale-Winners"
+  Conjunto 1: "Winner-A2-MORNING-BP-REPORT"
+    Anúncio: text-P1-winner-C1 (NEJM 2024) + image-A2 (MORNING BP REPORT)
+    Budget: $1.000
+    Bid: $83 (83% CPA)
+    Bidcap: ON
+    Otimização: CONVERSÕES (Purchase)
+    Attribution: 7-day click
+
+<span class="c"># Regras Bifi:</span>
+<span class="c"># - A cada 2-3 dias, sobe lance 17% (até 1.5× CPA = $150)</span>
+<span class="c"># - Aumenta budget em 5× se CPA estável</span>
+<span class="c"># - NUNCA pause conjunto · NUNCA > 100 conjuntos</span></pre>
+
+  <!-- ════════════════════════════════════════════ -->
+  <h2><span class="pill pill-p4">P4</span> Cemitério — perpetua winners que morreram</h2>
+  <pre><span class="c"># P4 — Cemitério do Cardio Clear
+# Estrutura: 1 campanha · 1 conjunto · até 10 ads
+# Verba: $500/dia · cost cap = último CPA validado
+# NUNCA mexer no cost cap
+
+Campanha: "P4 — Cardio Clear — Cemetery"
+  Conjunto: "cemetery-pool"
+    Anúncios (até 10): winners antigos que morreram
+    Budget: $500/dia
+    Cost cap: $100 (último CPA validado)</pre>
+
+  <h2>💰 Budget total do X1 (P1 + P2)</h2>
+  <table>
+    <thead><tr><th>Fase</th><th>Dias</th><th>Budget</th><th>Output</th></tr></thead>
+    <tbody>
+      <tr><td><strong>P1 (Primary text)</strong></td><td>2</td><td><strong>$500</strong></td><td>1-2 winners de copy</td></tr>
+      <tr><td><strong>P2 (Image/Adformat)</strong></td><td>3</td><td><strong>$750</strong></td><td>1-3 winners de text+image</td></tr>
+      <tr><td><strong>TOTAL X1</strong></td><td><strong>5 dias</strong></td><td><strong>$1,250</strong></td><td>1-3 criativos prontos pra P3</td></tr>
+    </tbody>
+  </table>
+
+  <h2>🛑 Red lines (CRÍTICO pro Cardio Clear)</h2>
+  <div class="callout">
+    <strong>Cardio Clear tem red lines mais rígidas que SlimSoda/Linfaflow porque:</strong> avatar 60-75+ on BP pills, <strong>Meta review considera claim médico pesado</strong>. Audience também mais propensa a reporting.
+    <h3 style="margin-top:14px;">🚫 NUNCA:</h3>
+    <ul style="margin:8px 0; padding-left:20px;">
+      <li>"Cure" / "cure for high blood pressure" (red line crítico)</li>
+      <li>"Stop taking your medication" (red line crítico)</li>
+      <li>"100% safe" / "no side effects" (red line crítico)</li>
+      <li>"Guaranteed to lower your BP by X points" (red line crítico)</li>
+      <li>Antes/depois de BP numbers sem disclaimer médico</li>
+      <li>Depoimentos fabricados de médicos (só Dr. Sanjay Gupta é autorizado)</li>
+      <li>Mostrar remédios com X marcado (ban direto)</li>
+    </ul>
+    <h3 style="margin-top:14px;">✅ SEMPRE:</h3>
+    <ul style="margin:8px 0; padding-left:20px;">
+      <li>"Talk to your doctor before changing your routine"</li>
+      <li>"100% compatible with all three medications"</li>
+      <li>"90-day money-back guarantee"</li>
+      <li>"Dietary supplement" disclaimer</li>
+      <li>"Dr. Sanjay Gupta is a paid spokesperson" (em algum lugar)</li>
+    </ul>
+  </div>
+
+  <h2>🔁 Próximas ações após X1</h2>
+  <ol>
+    <li>Se X1 validar winner → P3 (escala) + 1 mês de bid +17% cada 2-3 dias</li>
+    <li>Se X1 não validar → 5 concepts diferentes na próxima semana (Bifi: "suba 5 testes/semana")</li>
+    <li>Variar headline/avatar/hook (P3 otimização) preservando o winning angle</li>
+    <li>Após 60+ dias, mover ad pra P4 (cemitério) se gastar parar</li>
+  </ol>
+
+  <div class="footer">
+    Baseado em: estrutura CBO + DTC Affiliate Black do @gbifi (cards #8 e #9 do hub) · Aplicação concreta pro Cardio Clear (avatar 50-75 on BP pills, CPA $80-100, ticket $49 single ou $294 6-bottle) · Salvo em <code>by-product/cardio-clear/estrategia/playbook-x1/</code>
+  </div>
+
+</div>
+</body>
+</html>
