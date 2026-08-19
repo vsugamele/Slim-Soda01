@@ -27,5 +27,15 @@
         }
       ]
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/refresh-spy",
+      "schedule": "0 9 * * 1"
+    },
+    {
+      "path": "/api/cron/daily-decision",
+      "schedule": "0 8 * * *"
+    }
   ]
 }
