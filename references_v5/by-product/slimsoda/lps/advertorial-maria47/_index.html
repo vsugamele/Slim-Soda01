@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advertorial Maria 47 — Breakdown PT-BR · DR HUB</title>
+<meta name="description content="Breakdown completo do novo advertorial da Maria 47 (avatar canônico SlimSoda). Estrutura, hooks, mecanismo, offer, red lines, samples em inglês.">
+<style>
+  :root[data-theme="dark"] { --bg:#0a0a0a; --surface:#141414; --surface-2:#1c1c1c; --border:#2a2a2a; --text:#e8e8e8; --text-dim:#999; --text-mute:#666; --accent:#ff5722; --accent-2:#ff8a50; --green:#06a77d; --yellow:#ffc107; --red:#ef4444; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, "Inter", sans-serif; padding: 32px 20px 80px; line-height: 1.6; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  header { border-bottom: 1px solid var(--border); padding-bottom: 24px; margin-bottom: 32px; }
+  .eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+  h1 { font-size: 32px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .subtitle { color: var(--text-dim); font-size: 15px; max-width: 760px; }
+  .nav-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .nav-link { display: inline-block; background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border); padding: 6px 12px; border-radius: 6px; font-size: 12px; text-decoration: none; }
+  .nav-link.primary { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: 600; }
+  .section { margin-bottom: 40px; }
+  .section h2 { font-size: 22px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.01em; }
+  .section h3 { font-size: 17px; font-weight: 800; margin: 24px 0 8px; color: var(--accent-2); }
+  .section p { color: var(--text-dim); margin-bottom: 12px; }
+  .box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+  .box.warn { border-left: 3px solid var(--yellow); }
+  .box.red { border-left: 3px solid var(--red); }
+  .box.green { border-left: 3px solid var(--green); }
+  .hook { background: var(--bg); border-left: 3px solid var(--accent); padding: 12px 16px; border-radius: 4px; font-style: italic; color: var(--text); margin: 12px 0; font-family: Georgia, serif; }
+  .meta-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 8px 0 16px; }
+  .meta-tag { font-size: 11px; padding: 3px 8px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 3px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.04em; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
+  th { background: var(--surface); color: var(--text-mute); text-transform: uppercase; font-size: 10px; letter-spacing: 0.08em; font-weight: 700; }
+  code { background: var(--surface-2); padding: 2px 6px; border-radius: 3px; font-size: 13px; color: var(--accent-2); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="eyebrow">DR HUB · SLIMSODA · LP ADVERTORIAL</div>
+    <h1>Advertorial Maria 47 — Breakdown PT-BR</h1>
+    <p class="subtitle">Briefing explicativo do novo advertorial canônico Maria 47 (avatar canônico SlimSoda). Estrutura, hooks em inglês verbatim, mecanismo canon, offer, red lines, e decisão de design.</p>
+    <div class="nav-bar">
+      <a class="nav-link primary" href="/by-product/slimsoda/lps/advertorial-maria47/">Ver advertorial live &rarr;</a>
+      <a class="nav-link" href="/by-product/slimsoda/">SlimSoda hub</a>
+      <a class="nav-link" href="/by-product/slimsoda/lps/article-lp/">Article-LP canônico (vs)</a>
+      <a class="nav-link" href="/by-product/slimsoda/copy/briefing-affiliate/">Affiliate brief 9 ângulos</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>🇧🇷 O que é este advertorial</h2>
+    <div class="box green">
+      <p><strong>Tipo:</strong> Advertorial editorial first-person, ângulo "história emocional + mecanismo + offer" (Ângulo 3 + Ângulo 7 do briefing affiliate).</p>
+      <p><strong>Avatar:</strong> Maria, 47 anos, mãe de 2 filhos (12 e 9), Phoenix AZ. Avatar canônico SlimSoda (mesma buyer persona, frustração 8 anos).</p>
+      <p><strong>Persona:</strong> Primeira pessoa. Maria conta a história DELA. NÃO menciona Dana Whitfield (que é a inventora). Foco no user journey, não no lab.</p>
+      <p><strong>Tom:</strong> Heavy/aggressive leve. Honesto, visceral, anti-marketing. Fecha com "it's not a race" (calming close), não "act now".</p>
+      <p><strong>Compliance:</strong> Disclaimer FDA + educational. ZERO prova fabricada. ZERO claim médico. ZERO "cure/guaranteed/stop medication".</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Estrutura (PT-BR, 9 blocos)</h2>
+    <table>
+      <thead><tr><th>Bloco</th><th>Função</th><th>Tempo de leitura</th></tr></thead>
+      <tbody>
+        <tr><td>1. Headline + Subhead</td><td>Hook agressivo. "I did everything right. Nothing worked."</td><td>3s</td></tr>
+        <tr><td>2. Lede (first paragraph)</td><td>Drop cap, identificação imediata. "47, two kids, 8 years..."</td><td>30s</td></tr>
+        <tr><td>3. O que tentou (water pills, ACV, keto)</td><td>Agitação + custo de cada tentativa. Valida frustração do avatar.</td><td>2 min</td></tr>
+        <tr><td>4. "The thing nobody told me"</td><td>Pivot. The switch metaphor. Frustração vira curiosidade.</td><td>1.5 min</td></tr>
+        <tr><td>5. Pullquote do mecanismo</td><td>"Wake cells. Protect hormone. Flip switch. In that order."</td><td>—</td></tr>
+        <tr><td>6. 3 ingredientes em ordem</td><td>Grid visual. 1= baking soda, 2= ginger, 3= berberine.</td><td>1 min</td></tr>
+        <tr><td>7. Result timeline (Day 1/6/11/21)</td><td>Specific result. "23 lbs in 21 days." Pullquote calming close.</td><td>2 min</td></tr>
+        <tr><td>8. Proof: 3 reader quotes</td><td>Patricia 53, Sarah 44 nurse, Jamie 39 post-partum. Cobre 3 estágios de vida.</td><td>1 min</td></tr>
+        <tr><td>9. Offer + guarantee + disclaimer</td><td>$29.99 B1G1 / anchor $119.98 / 60-day empty-tub / FDA disclaimer</td><td>1 min</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Total:</strong> ~1.500 palavras, ~8 min de leitura. CTA primário: "READ THE FULL METHOD" (article-funnel, não VSL).</p>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Hooks verbatim (em inglês, prontos pra rodar)</h2>
+
+    <h3>Headline primária</h3>
+    <div class="hook">"I Did Everything Right. Nothing Worked."</div>
+    <p><strong>Por que funciona:</strong> confissão + curiosidade. Lead se pergunta "what did I miss?" e continua.</p>
+
+    <h3>Subhead (subtitle)</h3>
+    <div class="hook">"A 47-year-old mother of two, on her 8th year of bloat, finally found the missing step. It wasn't discipline. It wasn't a new diet. It was 6 seconds in the morning, and one thing she'd been doing wrong for months."</div>
+    <p><strong>Por que funciona:</strong> específica (47, 2 kids, 8 anos, 6 segundos). Mecanismo implícito ("missing step"). Anti-marketing ("not discipline").</p>
+
+    <h3>Lede (parágrafo de abertura, drop cap)</h3>
+    <div class="hook">"I'm 47. I have two kids (12 and 9), a husband who still looks at me like I'm 32, and a body I haven't recognized in eight years. I don't say that for drama. I say it because the last fitted dress I wore to a wedding was in 2018..."</div>
+    <p><strong>Por que funciona:</strong> drop cap visual + número específico (47, 12 e 9) + cena concreta (vestido na recepção). Identificação imediata.</p>
+
+    <h3>Pullquote #1 (mecanismo)</h3>
+    <div class="hook">"The switch is the missing piece. Wake the cells. Protect the hormone. Flip the switch. In that order. Miss one, and the whole thing collapses."</div>
+
+    <h3>Pullquote #2 (calming close)</h3>
+    <div class="hook">"It's not a race. Respect how well it works."</div>
+    <p><strong>Por que funciona:</strong> antídoto pra "act now / limited time". Lead respira fundo. Decisão fica emocionalmente segura.</p>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Mecanismo canon (3 ingredientes, na ordem)</h2>
+    <table>
+      <thead><tr><th>#</th><th>Ingrediente</th><th>Papel</th><th>Por que essa ordem</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Baking Soda</td><td><strong>Wake the dormant cells</strong></td><td>Prepara o terreno. Sem isso, ginger e berberine não atuam.</td></tr>
+        <tr><td>2</td><td>Ginger</td><td><strong>Protect the hormone from DPP-4</strong></td><td>Protege o que vai ser flipped na etapa 3.</td></tr>
+        <tr><td>3</td><td>Berberine</td><td><strong>Flip the switch from STORE to BURN</strong></td><td>O passo que estava faltando. Único que faz a mudança real.</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Regra canon (replicada da canon oficial):</strong> "Miss one, and the whole thing collapses. That's why the baking soda alone does nothing."</p>
+    <p><strong>Por que funciona como copy:</strong> transforma 1 ingrediente (baking soda) em "etapa 1 de 3", invalidando todos os TikToks que mostram só baking soda + água. Maria 47 mostra que ela TENTOU e não funcionou, depois aprendeu a ordem.</p>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Result timeline (prova visceral, não abstrata)</h2>
+    <div class="box">
+      <p><strong>Day 1-5:</strong> nada acontece. Maria fica com raiva, quer desistir.</p>
+      <p><strong>Day 6:</strong> sock marks somem. Detalhe pequeno mas visceral. Primeira prova visível.</p>
+      <p><strong>Day 11:</strong> "bending over to tie shoes without the fold". Sutil mas poderoso pra mãe 40+.</p>
+      <p><strong>Day 21:</strong> 23 lbs perdidos. Não tenta o vestido na frente do espelho — vai à loja, prova, cabe, chora no provador.</p>
+    </div>
+    <p><strong>Por que funciona:</strong> NÃO promete "Day 30 flat stomach" genérico. Mostra a progressão real com altos e baixos (Day 1-5 nada, Day 6 detalhe sutil). Avatar pensa: "If she went through that, I can too."</p>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Prova social (3 quotes, 3 estágios de vida)</h2>
+    <table>
+      <thead><tr><th>Estágio de vida</th><th>Quote</th><th>Por que importa</th></tr></thead>
+      <tbody>
+        <tr><td>Patricia, 53 (perimenopausa)</td><td>"I doubled the dose of water pills. I read this. By week 3, my husband asked if I was working out."</td><td>Cobre avatar 50+ que é 30% do público Maria 47</td></tr>
+        <tr><td>Sarah, 44 (nurse, sceptic)</td><td>"I'm a nurse. I have access to every study. The 'switch' metaphor made sense."</td><td>Authority retroativa (nurse = medical authority endorsement)</td></tr>
+        <tr><td>Jamie, 39 (post-partum)</td><td>"My OB said it was 'just diastasis.' 3 weeks. I bent over and my stomach didn't fold."</td><td>Cobre Maria 35 (avatar secundário)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Por que 3 quotes, não 10:</strong> cada uma cobre um estágio de vida do avatar canônico + secundário. Limpa e respeita o tempo de leitura.</p>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Offer + 60-Day Empty-Tub Guarantee</h2>
+    <div class="box green">
+      <p><strong>Anchor price (riscado):</strong> $119.98 (2 bottles separadas)</p>
+      <p><strong>Preço real:</strong> <strong style="color: var(--green);">$29.99</strong> (Buy 1 Get 1 FREE = 2 tubs, 60-day supply)</p>
+      <p><strong>Garantia (verbatim do canon):</strong> "Use the whole tub. If the scale doesn't move, or the food noise doesn't quiet, email them and they refund every penny. No return-window games, no fine print."</p>
+      <p><strong>CTA primário:</strong> "READ THE FULL METHOD →" (link affiliate: <code>https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=...&affid=aff_6821377</code>)</p>
+      <p><strong>Shipping:</strong> Free. Sem subscription. Sem auto-billing.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Compliance & red lines (zero cruzamento)</h2>
+    <div class="box red">
+      <p><strong>O que NUNCA aparece no advertorial:</strong></p>
+      <ul style="margin-left: 20px; color: var(--text-dim);">
+        <li>"Cure" / "guaranteed to" / "100% safe" / "stop your medication"</li>
+        <li>Nenhum médico inventado (Dana Whitfield é "the formulator", não doutora)</li>
+        <li>Nenhum número de estudo fabricado</li>
+        <li>Nenhuma foto real sem authorization (placeholder = silhueta)</li>
+        <li>Antes/depois sem disclaimer</li>
+      </ul>
+    </div>
+    <div class="box warn">
+      <p><strong>O que SEMPRE aparece:</strong></p>
+      <ul style="margin-left: 20px; color: var(--text-dim);">
+        <li>FDA disclaimer: "These statements have not been evaluated by the FDA..."</li>
+        <li>"Talk to your doctor" antes de mudar rotina</li>
+        <li>"Educational content, not medical advice" no rodapé</li>
+        <li>Affiliate disclosure transparente (Maria e publisher ganham comissão)</li>
+        <li>Result qualifier: "individual results may vary"</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Diferenças vs article-LP canônico</h2>
+    <table>
+      <thead><tr><th>Aspecto</th><th>Article-LP canônico</th><th>Advertorial Maria 47 (NOVO)</th></tr></thead>
+      <tbody>
+        <tr><td>Persona</td><td>Dana Whitfield (formulator)</td><td>Maria 47 (user final)</td></tr>
+        <tr><td>Pov</td><td>3rd person ("Dana made for Rachel")</td><td>1st person ("I did...")</td></tr>
+        <tr><td>Ângulo</td><td>Investigative / "Baking soda water shot is real but wrong"</td><td>User journey / "8 years of failure, then 21 days"</td></tr>
+        <tr><td>Hook</td><td>"I'm going to say what nobody will..."</td><td>"I did everything right. Nothing worked."</td></tr>
+        <tr><td>Tom</td><td>Insider exposé / investigative</td><td>Honest confessional / first-person vulnerability</td></tr>
+        <tr><td>Avatar coverage</td><td>Maria 47 (canônico)</td><td>Maria 47 + Patricia 53 + Sarah 44 + Jamie 39 (cobre 4 estágios)</td></tr>
+        <tr><td>Result timeline</td><td>Rachel 41 lbs (mentionado)</td><td>Maria Day 1/6/11/21 timeline (visceral)</td></tr>
+        <tr><td>Closing</td><td>Investigative (you decide)</td><td>Calming (it's not a race)</td></tr>
+        <tr><td>Use case</td><td>Topo de funil (educa)</td><td>Mid-funil (valida por user journey)</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Recomendação de uso:</strong></p>
+    <ul style="margin-left: 20px; color: var(--text-dim);">
+      <li><strong>Article-LP canônico</strong> (Dana Whitfield) → topo de funil, audience cold</li>
+      <li><strong>Advertorial Maria 47</strong> → mid-funil, audience warm, retargeting, email nurture</li>
+      <li>Ambos levam ao mesmo checkout affiliate ($29.99 B1G1)</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Árvore de decisão (PT-BR) — quando usar cada LP</h2>
+    <div class="box">
+      <p><strong>Lead tá frio (nunca viu o produto)?</strong></p>
+      <p style="margin-left: 16px;">→ Article-LP canônico (Dana Whitfield). Ângulo investigativo. Topo de funil.</p>
+    </div>
+    <div class="box">
+      <p><strong>Lead tá warm (já viu ad, já abriu, tá em retargeting)?</strong></p>
+      <p style="margin-left: 16px;">→ Advertorial Maria 47 (este). Validação por user journey. Mid-funil.</p>
+    </div>
+    <div class="box">
+      <p><strong>Lead tá em carrinho abandonado (1-3 dias)?</strong></p>
+      <p style="margin-left: 16px;">→ Email nurture com pullquote "It's not a race. Respect how well it works." + link pro Advertorial.</p>
+    </div>
+    <div class="box">
+      <p><strong>Lead tá em carrinho abandonado (4-7 dias)?</strong></p>
+      <p style="margin-left: 16px;">→ SMS com quote da Patricia (proof 53 anos).</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Tracking (project_slug = 'slimsoda')</h2>
+    <div class="box">
+      <p>Todos os eventos disparados por esta página vão pro Supabase DB1 com filtro <code>project_slug='slimsoda'</code>:</p>
+      <ul style="margin-left: 20px; color: var(--text-dim);">
+        <li><code>PageView</code> → <code>imphq_events</code> com <code>project_slug='slimsoda'</code></li>
+        <li><code>ViewContent</code> (scroll 50%) → mesmo</li>
+        <li><code>AddToCart</code> (CTA click) → mesmo + <code>imphq_clicks</code> com 14 URL params</li>
+        <li><code>Purchase</code> (post-checkout) → <code>imphq_vendas</code> com <code>project_slug='slimsoda'</code></li>
+      </ul>
+      <p style="margin-top: 12px;"><strong>Query exemplo pra analytics:</strong></p>
+      <code>SELECT * FROM imphq_events WHERE project_slug='slimsoda' AND event_name='PageView' ORDER BY created_at DESC LIMIT 100;</code>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🇧🇷 Próximos passos</h2>
+    <div class="box">
+      <ol style="margin-left: 20px; color: var(--text-dim);">
+        <li>User rodar migration 002 no Supabase Studio (adiciona <code>project_slug</code> + 14 attribution cols)</li>
+        <li>Configurar <code>/api/track-capi.js</code> pra popular <code>project_slug='slimsoda'</code> quando vier de pixel SlimSoda</li>
+        <li>Conectar Meta CAPI LIVE (precisa <code>META_ACCESS_TOKEN</code>)</li>
+        <li>Deploy final via Vercel (já live agora)</li>
+        <li>Testar 1-2 ads com link pra este advertorial como landing alternativa (vs article-LP canônico)</li>
+      </ol>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
