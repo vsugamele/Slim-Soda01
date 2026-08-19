@@ -32,18 +32,49 @@
   }
   sessionStorage.setItem("imp_last_activity", String(now));
 
-  // Capture UTM params
+  // Capture UTM + click-ID params (full attribution chain, like Manual/BR Meta tracking)
   var params = new URLSearchParams(window.location.search);
+  // All params we want to capture: UTMs + Meta/Google/BR-platform specifics
+  var ATTR_PARAMS = [
+    "utm_source","utm_medium","utm_campaign","utm_content","utm_term",
+    "utm_id",            // Meta ad ID (numeric, e.g. 120249312094700455)
+    "fbclid",            // Meta click ID — converted to fbc cookie below
+    "gclid","gbraid","wbraid", // Google click IDs
+    "nbt",               // NewBreed tag (BR ad platform)
+    "nb_placement",      // NewBreed placement (e.g. Instagram_Reels)
+    "nb_expid_meta",     // NewBreed experiment ID (A/B test)
+    "coupon"             // Coupon code shown in ad
+  ];
   var utms = {};
-  ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
+  ATTR_PARAMS.forEach(function(k){
     var v = params.get(k);
     if(v){ utms[k] = v; localStorage.setItem("imp_"+k, v); }
     else { var s = localStorage.getItem("imp_"+k); if(s) utms[k] = s; }
   });
-
-  // Capture link_id
-  var linkId = params.get("imp_link_id") || localStorage.getItem("imp_link_id") || null;
+  // Convenience aliases
+  var linkId = utms.imp_link_id || params.get("imp_link_id") || localStorage.getItem("imp_link_id") || null;
   if(params.get("imp_link_id")){ localStorage.setItem("imp_link_id", params.get("imp_link_id")); }
+  var fbclid = utms.fbclid || null;
+  var coupon = utms.coupon || null;
+
+  // Convert fbclid to fbc (Meta's click ID cookie format: fb.1.<timestamp_ms>.<fbclid>)
+  // This is what Meta CAPI expects in user_data.fbc for advanced matching.
+  var fbc = null;
+  if(fbclid){
+    fbc = "fb.1." + Date.now() + "." + fbclid;
+    try { document.cookie = "_fbc=" + fbc + "; path=/; max-age=" + (60*60*24*30) + "; SameSite=Lax"; } catch(e){}
+  } else {
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_fbc=([^;]+)/);
+      if(m) fbc = m[1];
+    } catch(e){}
+  }
+  // Read fbp (Meta browser ID) — Meta sets this on first fbq init
+  var fbp = null;
+  try {
+    var m = document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/);
+    if(m) fbp = m[1];
+  } catch(e){}
 
   // Store landing page
   if(!localStorage.getItem("imp_landing")) localStorage.setItem("imp_landing", window.location.href);
@@ -65,16 +96,29 @@
     }).catch(function(){});
   }
 
-  // Register click (if UTMs or linkId present)
+  // Register click (if any attribution params or linkId present)
   if(Object.keys(utms).length > 0 || linkId){
     sbPost("imphq_clicks", {
       id: crypto.randomUUID(),
+      visitor_id: visitorId,
+      session_id: sessionId,
       link_id: linkId,
       utm_source: utms.utm_source || null,
       utm_medium: utms.utm_medium || null,
       utm_campaign: utms.utm_campaign || null,
       utm_content: utms.utm_content || null,
       utm_term: utms.utm_term || null,
+      utm_id: utms.utm_id || null,
+      fbclid: fbclid,
+      fbc: fbc,
+      fbp: fbp,
+      gclid: utms.gclid || null,
+      gbraid: utms.gbraid || null,
+      wbraid: utms.wbraid || null,
+      nbt: utms.nbt || null,
+      nb_placement: utms.nb_placement || null,
+      nb_expid_meta: utms.nb_expid_meta || null,
+      coupon: coupon,
       referrer: document.referrer || null,
       page_url: window.location.href,
       user_agent: navigator.userAgent
@@ -128,17 +172,22 @@
   }
 
   // Server-side CAPI helper (sends same eventID as fbq for dedup)
-  // Passes external_id (visitor_id) + fbp cookie for advanced matching
+  // Passes external_id (visitor_id) + fbc/fbp cookies for advanced matching
+  // fbc is built from fbclid (Meta's click-ID cookie format)
   function sendCapi(eventName, eventData, eventId){
     if(!eventId) return;
     var meta = document.querySelector('meta[name="imp-pixel-id"]');
     var pid = meta ? meta.getAttribute("content") : null;
     if(!pid) return;
-    // Read fbp cookie set by Meta pixel (improves match quality)
-    var fbp = null;
+    // Read fbc/fbp cookies (Meta's click + browser IDs — critical for matching)
+    var fbcSend = null, fbpSend = null;
+    try {
+      var m = document.cookie.match(/(?:^|;\s*)_fbc=([^;]+)/);
+      if(m) fbcSend = m[1];
+    } catch(e){}
     try {
       var m = document.cookie.match(/(?:^|;\s*)_fbp=([^;]+)/);
-      if(m) fbp = m[1];
+      if(m) fbpSend = m[1];
     } catch(e){}
     try {
       fetch("/api/track-capi", {
@@ -151,7 +200,8 @@
           event_data: eventData || {},
           event_source_url: window.location.href,
           external_id: visitorId,
-          fbp: fbp
+          fbc: fbcSend,
+          fbp: fbpSend
         }),
         keepalive: true
       }).catch(function(){});
