@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" role="img" aria-label="Two columns of handwritten calorie measurements. Left column: Friend Kristin 5 foot 4 124 pounds. Right column: Maria 5 foot 6 174 pounds. Days 1 through 14.">
+  <defs>
+    <linearGradient id="wood" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a87a4a"/>
+      <stop offset="100%" stop-color="#7a5430"/>
+    </linearGradient>
+    <pattern id="grain" patternUnits="userSpaceOnUse" width="200" height="40">
+      <path d="M0 20 Q 50 12, 100 20 T 200 20" fill="none" stroke="#5a3d1f" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  <rect width="720" height="360" fill="url(#wood)"/>
+  <rect width="720" height="360" fill="url(#grain)"/>
+
+  <!-- Center divider (moleskine spread) -->
+  <line x1="360" y1="20" x2="360" y2="340" stroke="#3a2812" stroke-width="2" stroke-dasharray="3 4" opacity="0.5"/>
+
+  <!-- LEFT COLUMN: Kristin (5'4" / 124 lbs) -->
+  <g font-family="'Caveat', 'Brush Script MT', cursive">
+    <text x="180" y="48" font-size="24" font-weight="700" fill="#fff8e0" text-anchor="middle" font-family="Arial, sans-serif">FRIEND · KRISTIN</text>
+    <text x="180" y="68" font-size="13" fill="#fff8e0" text-anchor="middle" font-family="Arial, sans-serif" opacity="0.85">5'4" · 124 lbs · no diet</text>
+  </g>
+  <g font-family="'Caveat', 'Brush Script MT', cursive" font-size="20" fill="#fff8e0">
+    <text x="40" y="105">Day 1 · 1,820 cal</text>
+    <text x="40" y="135">Day 2 · 1,940 cal</text>
+    <text x="40" y="165">Day 3 · 1,775 cal</text>
+    <text x="40" y="195">Day 4 · 1,890 cal</text>
+    <text x="40" y="225">Day 5 · 2,010 cal</text>
+    <text x="40" y="255">Day 6 · 1,860 cal</text>
+    <text x="40" y="285">Day 7 · 1,925 cal</text>
+    <text x="40" y="315">avg · 1,888</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="11" fill="#fff8e0" opacity="0.75">
+    <text x="320" y="105" text-anchor="end">+124.0</text>
+    <text x="320" y="135" text-anchor="end">+123.8</text>
+    <text x="320" y="165" text-anchor="end">+124.2</text>
+    <text x="320" y="195" text-anchor="end">+124.1</text>
+    <text x="320" y="225" text-anchor="end">+123.9</text>
+    <text x="320" y="255" text-anchor="end">+124.0</text>
+    <text x="320" y="285" text-anchor="end">+124.0</text>
+    <text x="320" y="315" text-anchor="end" font-weight="700" fill="#7cf07c">steady</text>
+  </g>
+
+  <!-- RIGHT COLUMN: Maria (5'6" / 174 lbs) -->
+  <g font-family="'Caveat', 'Brush Script MT', cursive">
+    <text x="540" y="48" font-size="24" font-weight="700" fill="#fff8e0" text-anchor="middle" font-family="Arial, sans-serif">ME · MARIA</text>
+    <text x="540" y="68" font-size="13" fill="#fff8e0" text-anchor="middle" font-family="Arial, sans-serif" opacity="0.85">5'6" · 174 lbs · dieting</text>
+  </g>
+  <g font-family="'Caveat', 'Brush Script MT', cursive" font-size="20" fill="#fff8e0">
+    <text x="400" y="105">Day 1 · 1,540 cal</text>
+    <text x="400" y="135">Day 2 · 1,610 cal</text>
+    <text x="400" y="165">Day 3 · 1,490 cal</text>
+    <text x="400" y="195">Day 4 · 1,555 cal</text>
+    <text x="400" y="225">Day 5 · 1,520 cal</text>
+    <text x="400" y="255">Day 6 · 1,600 cal</text>
+    <text x="400" y="285">Day 7 · 1,485 cal</text>
+    <text x="400" y="315">avg · 1,543</text>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="11" fill="#fff8e0" opacity="0.75">
+    <text x="680" y="105" text-anchor="end">+174.0</text>
+    <text x="680" y="135" text-anchor="end">+174.6</text>
+    <text x="680" y="165" text-anchor="end">+175.1</text>
+    <text x="680" y="195" text-anchor="end">+175.4</text>
+    <text x="680" y="225" text-anchor="end">+175.8</text>
+    <text x="680" y="255" text-anchor="end">+176.0</text>
+    <text x="680" y="285" text-anchor="end">+176.0</text>
+    <text x="680" y="315" text-anchor="end" font-weight="700" fill="#ff7a7a">+2.0 lbs</text>
+  </g>
+
+  <!-- Bottom annotation -->
+  <text x="360" y="348" font-size="11" fill="#fff8e0" text-anchor="middle" font-family="Arial, sans-serif" opacity="0.65" font-style="italic">Same week · same household · opposite response</text>
+</svg>
