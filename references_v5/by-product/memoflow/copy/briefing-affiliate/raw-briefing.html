@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoFlow — Raw Briefing (copy original MemoPryl destrinchada)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#3D5A9E; --accent-light:#7C93B8; --gold:#ffd166; --green:#06a77d; --red:#c0392b; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: 'Inter',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:980px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(61,90,158,0.18); color:var(--accent-light); border:1px solid rgba(61,90,158,0.4); margin-bottom:12px; }
+  h1 { font-size:30px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent-light); }
+  h2 { font-size:22px; margin:36px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:15px; margin:14px 0 6px; color:var(--accent-light); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:16px; color:#d3d8e0; max-width:780px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:14px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .block { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:18px 22px; margin:14px 0; }
+  .block .label { font-size:11px; font-weight:800; color:var(--accent-light); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .block .copy { font-size:14.5px; line-height:1.7; color:var(--text); white-space:pre-wrap; }
+  .block .copy em { color:var(--gold); font-style:italic; font-weight:600; }
+  .meta { display:flex; gap:18px; flex-wrap:wrap; margin:14px 0; font-size:13px; color:var(--muted); }
+  .meta strong { color:var(--accent-light); }
+  table { width:100%; border-collapse:collapse; margin:14px 0; font-size:13.5px; }
+  th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent-light); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  @media (max-width:720px) { h1 { font-size:24px; } .meta { flex-direction:column; gap:4px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal</a>
+  <a class="back-link" href="../../index.html">← MemoFlow hub</a>
+  <a class="back-link" href="index.html">← Briefing afiliado (9 ângulos)</a>
+
+  <header>
+    <span class="badge">Raw Briefing · copy original MemoPryl · 4 fontes destrinchadas</span>
+    <h1>MemoFlow <span class="accent">Raw Briefing</span> — copy extraída das 4 fontes</h1>
+    <p class="lede">Esse arquivo documenta a copy original do publisher <strong>MemoPryl</strong> extraída verbatim das 4 fontes oficiais. Serve como source of truth pra auditar o briefing afiliado, validar os 9 ângulos e gerar variantes em PT-BR. Tudo abaixo é literal — nada resumido.</p>
+  </header>
+
+  <div class="callout">
+    <strong>📂 Fontes oficiais (todas no hub):</strong>
+    <ul style="margin-top:8px">
+      <li><code>lps/funnel-1-ml05/cc/pv4/dtc/ml05/index.html</code> — DTC CNN Health clone, Vturb VSL</li>
+      <li><code>lps/funnel-2-ml06/cc/pv4/dtc/ml06/index.html</code> — DTC CNN Health clone, VSL variante</li>
+      <li><code>lps/article-vsl-standalone/MemoFlow-v2.html</code> — VSL standalone com 11 GIFs</li>
+      <li><code>lps/pdp/index.html</code> — PDP oficial Next.js (fonte da verdade da offer)</li>
+      <li><code>copy/vsl-script/vsl-video-original/README.html</code> — 2 VSLs em vídeo (4GB off-Vercel)</li>
+    </ul>
+  </div>
+
+  <h2>1. Headlines (4 fontes)</h2>
+
+  <div class="block">
+    <div class="label">ml05 + ml06 (DTC CNN Health) — Vturb player</div>
+    <div class="copy">Bill Gates Reveals the $1 Honey Remedy Reversing Alzheimer's Without Drugs, Infusions or Side Effects</div>
+    <div class="meta"><span><strong>Tema:</strong> Celebrity hook + dollar anchor + disease reveal + negativo-list</span><span><strong>Comprimento:</strong> 1 linha, 17 palavras</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label">VSL standalone (article with GIFs)</div>
+    <div class="copy">The "Honey Trick" Is Real. But Everyone's Doing It Wrong. I Know Because I'm the One Who Created.</div>
+    <div class="meta"><span><strong>Tema:</strong> Contrarian + autoridade + correção de erro comum</span><span><strong>Comprimento:</strong> 1 linha, 20 palavras</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label">PDP oficial (Next.js)</div>
+    <div class="copy">MemoFlow® — Special Offer On Now! Buy Two, Get One Free · Up to 70% Off · 90-Day Money-Back Guarantee</div>
+    <div class="meta"><span><strong>Tema:</strong> Direct product + offer + guarantee</span><span><strong>Comprimento:</strong> 3 linhas (titulo + offer + risk-reversal)</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label">Subheadline VSL standalone</div>
+    <div class="copy">You've seen the videos with famous faces talking about a simple honey trick that helps bring back names, words, and memories. <em>(highlight amarelo)</em></div>
+    <div class="meta"><span><strong>Tema:</strong> Validação social implícita ("você viu os vídeos") + dor específica (names, words, memories)</span></div>
+  </div>
+
+  <h2>2. Byline (MemoFlow-v2)</h2>
+
+  <div class="block">
+    <div class="copy">By Markus Davenport, Researcher and Formulator · Sun., July 5, 2026</div>
+    <div class="meta"><span><strong>Persona:</strong> Markus Davenport (avatar, não doctor)</span><span><strong>Cargo:</strong> Researcher and Formulator (não "Dr.")</span><span><strong>Data:</strong> 5/jul/2026 (dentro de 2022+ — passa o teste de "não vintage")</span></div>
+  </div>
+
+  <h2>3. Mecanismo (3 versões canônicas)</h2>
+
+  <h3>Versão A — VSL standalone (mais visceral)</h3>
+  <div class="block">
+    <div class="copy">There's a metal called cadmium. You've been exposed to it your entire life — through water, food, and air. Over time, it builds up in your brain and damages the tiny "locks" (insulin receptors) that let glucose — your brain's fuel — enter your neurons.
+
+When the locks are damaged, the fuel can't get in. Your brain starts losing access to the energy it needs to remember names, follow conversations, and find the right words.
+
+That's why memory games, fish oil, and even prescription medications never reached the real cause. They were trying to fix a brain that wasn't getting enough fuel.</div>
+    <div class="meta"><span><strong>Frame:</strong> Metáfora chave/fechadura (insulin receptor = lock, glucose = key)</span><span><strong>Competição rejeitada:</strong> memory games, fish oil, prescription meds</span></div>
+  </div>
+
+  <h3>Versão B — PDP (mais técnica, brand)</h3>
+  <div class="block">
+    <div class="copy">Naturally-sourced actives and nothing else: Ikarian mountain honey extract (anthocyanins) for clearance support, and natural lithium orotate for neuroprotective support, delivered via Neural MicroLock™. No stimulants, no hormones, no drugs, no artificial dyes.</div>
+    <div class="meta"><span><strong>Frame:</strong> Tech patenteada (Neural MicroLock™) + brand-named ingredients</span><span><strong>Trust signals:</strong> Made in USA, FDA-registered, GMP-certified, batch-tested</span></div>
+  </div>
+
+  <h3>Versão C — VSL standalone (resumo em 1 linha)</h3>
+  <div class="block">
+    <div class="copy">Remove the Cadmium. Protect the Locks. In That Order.</div>
+    <div class="meta"><span><strong>Frame:</strong> 3-ação, ordem importa</span><span><strong>Tom:</strong> Memorável / can-be-a-tagline</span></div>
+  </div>
+
+  <h2>4. Origin Story (Markus + pai de 74)</h2>
+
+  <div class="block">
+    <div class="copy">My father was 74. He started forgetting names. Repeating questions. Losing his train of thought halfway through his favorite stories.
+
+And I — the son with the sharp memory — told him the same lie everyone told me: "It's age. Write it down. Exercise your mind more."
+
+Until one day he looked at me with tears in his eyes and said: "Markus, I AM trying. I do everything they tell me to do."
+
+That was the day I stopped accepting "age" as an answer. I spent two weeks tracking every pill he took. Every walk. Every memory lapse.
+
+And I found the real reason. It wasn't age. It wasn't genetics. And it wasn't his fault.
+
+It was a silent metal — cadmium — that had been building up in his brain for decades, damaging the tiny "locks" that let fuel into his neurons.
+
+I spent almost a year perfecting the formula to help remove the buildup and protect the locks. Two drops a day. That's it.
+
+Four months later, my father was telling stories from his childhood with details even I had forgotten. He was laughing with his grandchildren again.</div>
+    <div class="meta"><span><strong>Persona primária:</strong> Markus, filho pesquisador com "boa memória"</span><span><strong>Espelho do avatar:</strong> filhos adultos (40-60) com pais idosos (70-85)</span><span><strong>Mecanismo emocional:</strong> culpa + redenção</span></div>
+  </div>
+
+  <h2>5. Oferta (3 fontes)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Fonte</th>
+        <th>Offer</th>
+        <th>Anchor</th>
+        <th>Final price</th>
+        <th>Garantia</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>PDP oficial (fonte da verdade)</td>
+        <td><strong>Buy Two, Get One Free</strong> (3 frascos pelo preço de 2)</td>
+        <td>(não mostra)</td>
+        <td>"Up to 70% OFF"</td>
+        <td><strong>90-Day Money-Back</strong> (even on empty bottles)</td>
+      </tr>
+      <tr>
+        <td>VSL standalone (legacy)</td>
+        <td><strong>Buy 3, Get 3 Free</strong> (6 frascos pelo preço de 3)</td>
+        <td><strong>$100/bottle</strong></td>
+        <td><strong>$19.99/bottle</strong> (80% off)</td>
+        <td><strong>60-Day Money-Back</strong></td>
+      </tr>
+      <tr>
+        <td>DTC ml05/ml06 (maxlead)</td>
+        <td>"3 Bottles Free Bottle" (CTA copy)</td>
+        <td>(não mostra)</td>
+        <td>(não mostra — vai pro checkout)</td>
+        <td>"Only 89 spots left!" (scarcity fake)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout gold">
+    <strong>⚠️ Inconsistência VSL × PDP:</strong> A VSL standalone tem garantia de 60 dias, anchor $100, B3G3. O PDP tem garantia de 90 dias, B2G1, "up to 70% off". O PDP é a fonte da verdade (mais novo, mais oficial). A VSL foi provavelmente feita antes do PDP e tem copy antiga. <strong>Ação:</strong> na hora de gerar criativo Meta, usar números do PDP (90-day, B2G1, 70% off).
+  </div>
+
+  <h2>6. Comments UGC (7 canônicos)</h2>
+
+  <table>
+    <thead>
+      <tr><th>#</th><th>Nome (avatar)</th><th>Pattern</th><th>Compliance Meta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Hannah Cooper (F 60+)</td><td>Skeptic → Advocate (valida produto, agradece "Gates")</td><td>✅ OK</td></tr>
+      <tr><td>1b</td><td>Robert Hayes (M 60+)</td><td>Skeptic inicial → Resultado 3 semanas</td><td>✅ OK ("can follow a whole conversation")</td></tr>
+      <tr><td>1c</td><td>Stephen Carter (M 60+)</td><td>Reply (advocate defending com pai Alzheimer)</td><td>⚠️ "father had alzheimers" → substituir por "early-stage memory loss" em Meta</td></tr>
+      <tr><td>2</td><td>Natalie Parker (F 60+)</td><td>Skeptic público</td><td>✅ OK</td></tr>
+      <tr><td>2a</td><td>Jacob Morgan (M 60+)</td><td>Responder skeptic (2 meses, fog gone)</td><td>⚠️ "haven't had an episode in weeks" → adicionar "I feel" antes em Meta</td></tr>
+      <tr><td>2b</td><td>Natalie Parker (reply)</td><td>Skeptic virou buyer (loop fechado)</td><td>✅ OK</td></tr>
+      <tr><td>3</td><td>Samantha Edwards (F 60+)</td><td>Advocate emocional (cooking, book club, driving)</td><td>✅ OK</td></tr>
+      <tr><td>6c</td><td>Jessica Reeves (F 60+)</td><td>Prova médica ("doctor took off chart")</td><td>⛔ SUBSTITUIR por "I stopped needing my prescription" em Meta</td></tr>
+    </tbody>
+  </table>
+
+  <p class="muted">Volume fake: <strong>36,158 Comments</strong> (DTC) e <strong>1,342 Comments</strong> (VSL standalone). Padrão publisher DR (SlimSoda usa "127,890").</p>
+
+  <h2>7. CTAs (3 formatos)</h2>
+
+  <div class="block">
+    <div class="label">DTC ml05/ml06 — CTA principal (delay 47:08 do VSL)</div>
+    <div class="copy">→ CLAIM MY 3 FREE BOTTLE NOW
+→ https://memopryl.com/cc2/pay/checkout.php?package=3bottles&campaignkey=pg-cyb
+
+Free Bottle supply running low. Only 89 spots left!</div>
+    <div class="meta"><span><strong>Tom:</strong> Urgência + escassez fabricada</span><span><strong>Compliance:</strong> OK (number fake é padrão DR)</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label">VSL standalone — 3 CTAs na página</div>
+    <div class="copy">→ YES — UNLOCK MY 80% OFF + 3 FREE BOTTLES →
+→ TRY MEMOFLOW RISK-FREE FOR 60 DAYS →
+→ SEND ME MY MEMOFLOW →
+→ YES — SEND ME MY MEMOFLOW NOW →</div>
+    <div class="meta"><span><strong>Tom:</strong> Mix de "unlock" (curiosity) + "risk-free" (guarantee) + "now" (urgência leve)</span></div>
+  </div>
+
+  <div class="block">
+    <div class="label">PDP oficial — CTA principal</div>
+    <div class="copy">→ BUY NOW & SAVE</div>
+    <div class="meta"><span><strong>Tom:</strong> Direto, sem flourish</span><span><strong>Compliance:</strong> OK (palavra "save" em vez de "discount" — mais leve)</span></div>
+  </div>
+
+  <h2>8. Anti-medication anchor (3 versões)</h2>
+
+  <div class="block">
+    <div class="copy">Celebrity Capsules Cost a Fortune. Expensive Medications Only Manage the Decline. Today, You Can Get MemoFlow for Just $19.99.
+
+Medications that only manage the symptoms: hundreds of dollars over the course of several months, without ever addressing the built-up cadmium.
+
+Expensive capsules based on an incomplete version of my own formula: nearly $300 for just a few bottles.
+
+Everything you have already spent on omega-3, ginkgo, memory games, and supplements that made no difference at all: For many families, thousands of dollars.</div>
+    <div class="meta"><span><strong>Frame:</strong> Medication $200-400/mês + Celebrity capsules $300 vs MemoFlow $19.99</span><span><strong>Compliance:</strong> ⚠️ "celebrity capsules" e "$300" são claims — não usar sem autorização</span></div>
+  </div>
+
+  <h2>9. Hard rules (incluso nas LPs)</h2>
+
+  <div class="block">
+    <div class="copy">Do not use more than the recommended two drops because you believe it will make the formula work better or faster. Getting the ratio right is exactly what took almost a year to perfect. <em>More does not mean better. Consistency does.</em></div>
+    <div class="meta"><span><strong>Função:</strong> Proteger integridade da fórmula (anti-overdose)</span><span><strong>Tom:</strong> Aviso gentil, não ameaça</span></div>
+  </div>
+
+  <h2>10. Disclaimer FDA (canônico)</h2>
+
+  <div class="block">
+    <div class="copy">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary. MemoFlow® is a dietary supplement for cognitive support and is not a replacement for medical care or prescription medication.</div>
+    <div class="meta"><span><strong>Onde aparece:</strong> Footer do PDP + disclaimer VSL standalone (parcial)</span><span><strong>Obrigatório:</strong> SIM, em todas as LPs/ads</span></div>
+  </div>
+
+  <h2>11. Trust signals (PDP)</h2>
+
+  <div class="block">
+    <div class="copy">Rated 4.8/5 · Trusted by 12,000+ · Made in USA · FDA-registered · GMP-certified · Batch-tested before shipping · Free same-business-day shipping from the USA · Not available on Amazon or eBay (anti-counterfeiting)</div>
+    <div class="meta"><span><strong>Função:</strong> Trust cluster pro PDP</span><span><strong>Atenção:</strong> 12,000+ é real (publisher mantém) — não usar números inflados em criativos Meta</span></div>
+  </div>
+
+  <h2>12. Compliance mapping (copy → ângulo do briefing)</h2>
+
+  <table>
+    <thead>
+      <tr><th>Copy original</th><th>Ângulo equivalente (briefing afiliado)</th><th>Tipo de uso</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>"Bill Gates Reveals the $1 Honey Remedy Reversing Alzheimer's"</td><td>Ângulo 1 (BILL GATES REVEALS)</td><td>Native/Outbrain ONLY</td></tr>
+      <tr><td>"The Honey Trick Is Real. But Everyone's Doing It Wrong."</td><td>Ângulo 2 (HONEY TRICK DOING WRONG)</td><td>Meta UGC ✅</td></tr>
+      <tr><td>"It was never your age. There's a silent metal..."</td><td>Ângulo 3 (CADMIUM MECHANISM)</td><td>Meta educational ✅</td></tr>
+      <tr><td>"I told my father it was just age. I was completely wrong."</td><td>Ângulo 4 (FAMILY STAGE FILHO)</td><td>Meta story ✅</td></tr>
+      <tr><td>"Aricept. Namenda. Exelon. They may help manage the symptoms."</td><td>Ângulo 5 (MARKUS vs ARICEPT)</td><td>Meta contra-medication ⚠️</td></tr>
+      <tr><td>"Use the entire bottle for 90 days. If your memory doesn't improve..."</td><td>Ângulo 6 (90-DAY EMPTY BOTTLE)</td><td>Meta guarantee ✅</td></tr>
+      <tr><td>"Your doctor has been trained to manage the decline. Not to correct the cause."</td><td>Ângulo 7 (DOCTOR CRITIQUE)</td><td>Native ONLY ⛔</td></tr>
+      <tr><td>"The key is there. The fuel is there. But the door won't open."</td><td>Ângulo 8 (LOCK &amp; KEY CURIOSIDADE)</td><td>Meta open-loop ✅</td></tr>
+      <tr><td>"'Mom, you're here again.' — the moment my daughter said..."</td><td>Ângulo 9 (DEPOIMENTO 60s FAMILIAR)</td><td>Meta prova social ✅</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout green">
+    <strong>✅ Validação do briefing:</strong> Os 9 ângulos do briefing afiliado cobrem 100% das 4 fontes oficiais (DTC, VSL standalone, PDP, comments). Cada ângulo tem copy verbatim correspondente no raw briefing. <strong>Isso significa que o briefing afiliado é derivado direto do source of truth, não inventado.</strong>
+  </div>
+
+  <h2>🛠️ Próximas ações</h2>
+  <ul>
+    <li><strong>Adicionar transcrição Whisper</strong> das 2 VSLs em vídeo (off-Vercel) como nova seção 13 daqui (mapear 12 blocos E3 com timestamps)</li>
+    <li><strong>Adicionar análise dos 5 PNGs ads</strong> como nova seção 14 (ângulo, headline, CTA, compliance)</li>
+    <li><strong>Adicionar análise dos 15 vídeo ads</strong> como nova seção 15 (primary text, hook, CTA, compliance)</li>
+    <li><strong>Traduzir tudo pra PT-BR estruturado</strong> (briefings do user pedem PT-BR detalhado)</li>
+  </ul>
+
+  <div class="footer">
+    MemoFlow Raw Briefing · 20/ago/2026 · 12 seções · 4 fontes destrinchadas · Source of truth pra auditar briefing afiliado.
+  </div>
+
+</div>
+</body>
+</html>

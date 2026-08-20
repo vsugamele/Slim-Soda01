@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoFlow — Affiliate Marketing Brief (9 ângulos · 48 hooks · PT-BR)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#3D5A9E; --accent-light:#7C93B8; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: 'Inter',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1120px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(61,90,158,0.18); color:var(--accent-light); border:1px solid rgba(61,90,158,0.4); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent-light); }
+  h2 { font-size:24px; margin:40px 0 14px; padding-top:14px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent-light); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:820px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout strong { color:var(--accent-light); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  .angle-card { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angle-header { padding:16px 20px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(61,90,158,0.10), transparent); }
+  .angle-num { width:44px; height:44px; background:linear-gradient(135deg, var(--accent), #7C93B8); border-radius:10px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angle-info { flex:1; }
+  .angle-info h3 { font-size:17px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angle-info .framework { font-size:13px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angle-body { padding:14px 20px 20px; }
+  .angle-ptbr { background:rgba(78,161,255,0.06); border:1px solid rgba(78,161,255,0.2); border-radius:8px; padding:12px 16px; margin-bottom:12px; }
+  .angle-ptbr .ptbr-title { font-size:11px; font-weight:800; color:var(--blue); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
+  .angle-ptbr p { margin:5px 0; font-size:13.5px; line-height:1.55; }
+  .angle-ptbr p strong { color:var(--blue); font-weight:700; }
+  .risk-row { display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .risk-dot { display:inline-block; width:8px; height:8px; border-radius:50%; }
+  .risk-dot.green { background:var(--green); }
+  .risk-dot.orange { background:var(--orange); }
+  .risk-dot.red { background:var(--red); }
+  .hooks-title { font-size:11px; font-weight:800; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; margin:10px 0 4px; }
+  .hook-list { }
+  .hook { display:flex; align-items:flex-start; gap:10px; padding:7px 0; border-bottom:1px dashed var(--border); font-size:13.5px; line-height:1.55; }
+  .hook:last-child { border-bottom:none; }
+  .hook::before { content: "→"; color:var(--accent); font-weight:700; flex-shrink:0; }
+  .primary-sample { background:rgba(6,167,125,0.06); border:1px solid rgba(6,167,125,0.25); border-radius:8px; padding:12px 16px; margin-top:10px; }
+  .primary-sample .sample-title { font-size:11px; font-weight:800; color:var(--green); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px; }
+  .primary-sample .sample-text { font-size:13px; line-height:1.65; color:var(--text); white-space:pre-wrap; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin:14px 0 18px; }
+  .stat { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .stat .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .stat .value { font-size:24px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  .back-link:hover { color:var(--accent-light); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0 18px; font-size:13px; }
+  th, td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  td .dot { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle; }
+  td .dot.green { background:var(--green); }
+  td .dot.orange { background:var(--orange); }
+  td .dot.red { background:var(--red); }
+  @media (max-width:820px) { .grid-3 { grid-template-columns:1fr 1fr; } }
+  @media (max-width:720px) { .grid-2, .grid-3 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../index.html">← MemoFlow hub</a>
+
+  <header>
+    <span class="badge">Affiliate Marketing Brief · 9 ângulos · 48 hooks · PT-BR completo</span>
+    <h1>MemoFlow <span class="accent">Affiliate Brief</span> — ângulos, hooks e primary text examples</h1>
+    <p class="lede">Brief completo pra escalar MemoFlow como afiliado ou pra produtor. <strong>9 ângulos com 48 hooks prontos</strong>, cada um vem com: explicação em PT-BR do framework, quando usar, avatar ideal, risco de review do Meta, todos os hooks verbatim e um <strong>primary text completo de exemplo</strong> pronto pra colar no Meta Ads. MemoFlow é nicho de memória/cognição — público frio não sabe que existe solução fora de medicação, então o framework precisa primeiro <strong>quebrar a crença</strong> de que "é só idade" antes de vender o produto.</p>
+  </header>
+
+  <div class="callout red">
+    <strong>⚠️ Resposta honesta sobre esse brief:</strong> Esse brief é o que o publisher MemoPryl já tá rodando em <strong>native/taboola</strong> (Bill Gates hook, formato CNN Health clone). Os <strong>ângulos 1 (Bill Gates Reveals) e 7 (Doctor Critique)</strong> são nativos-only — "Reversing Alzheimer's" e "doctor took it off my chart" flagam Meta. Os outros 7 ângulos são <strong>Meta-safe</strong> ou <strong>Meta-safe com reformulação</strong>. <strong>Ação recomendada:</strong> começar pelos ângulos 2, 3, 4, 5 e 9 (mais baixos de risco, mais alto de volume), escalar pra 1 e 7 em native.
+  </div>
+
+  <div class="grid-3">
+    <div class="stat">
+      <div class="label">Ângulos</div>
+      <div class="value">9</div>
+    </div>
+    <div class="stat">
+      <div class="label">Hooks prontos</div>
+      <div class="value">48</div>
+    </div>
+    <div class="stat">
+      <div class="label">Avatares</div>
+      <div class="value">2</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 Referência rápida (PT-BR) — qual ângulo usar?</h2>
+  <p class="muted">Tabela com todos os 9 ângulos, framework, melhor uso e risco. Use como índice rápido pra escolher antes de testar.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Ângulo</th>
+        <th>Framework</th>
+        <th>Quando usar</th>
+        <th>Risco Meta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1</strong></td>
+        <td><strong>BILL GATES REVEALS</strong></td>
+        <td>"Famous face + dollar anchor + disease reveal"</td>
+        <td>Cold traffic native/taboola, lead magnet pra VSL</td>
+        <td><span class="dot red"></span>Alto (medical claim)</td>
+      </tr>
+      <tr>
+        <td><strong>2</strong></td>
+        <td><strong>HONEY TRICK DOING WRONG</strong></td>
+        <td>"Viral trick é real. Mas todo mundo tá fazendo errado."</td>
+        <td>Meta UGC, video ad curto, mobile-first</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>3</strong></td>
+        <td><strong>CADMIUM MECHANISM</strong></td>
+        <td>"O metal silencioso que tá roubando suas memórias"</td>
+        <td>Meta educational, awareness stage, vídeo longo (60-90s)</td>
+        <td><span class="dot green"></span>Baixo (reformular medical)</td>
+      </tr>
+      <tr>
+        <td><strong>4</strong></td>
+        <td><strong>FAMILY STAGE (FILHO)</strong></td>
+        <td>"Eu disse pro meu pai que era só idade. Eu estava completamente errado."</td>
+        <td>Meta story-based, retargeting, 30-45s</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>5</strong></td>
+        <td><strong>MARKUS vs ARICEPT</strong></td>
+        <td>"Por que Aricept, Namenda, Exelon não resolvem a causa"</td>
+        <td>Meta contra-medicação, hot audience, sênior targeting</td>
+        <td><span class="dot orange"></span>Médio (menciona medicamentos)</td>
+      </tr>
+      <tr>
+        <td><strong>6</strong></td>
+        <td><strong>90-DAY EMPTY BOTTLE</strong></td>
+        <td>"Usa a garrafa toda. Se a memória não voltar, eu devolvo cada centavo."</td>
+        <td>Meta guarantee-heavy, close stage, hot audience</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>7</strong></td>
+        <td><strong>DOCTOR CRITIQUE</strong></td>
+        <td>"Por que seu médico continua prescrevendo pílulas que não tratam a causa"</td>
+        <td>Native/outbrain, dark post, lead magnet pra VSL</td>
+        <td><span class="dot red"></span>Alto (agressão a doctor)</td>
+      </tr>
+      <tr>
+        <td><strong>8</strong></td>
+        <td><strong>LOCK &amp; KEY CURIOSIDADE</strong></td>
+        <td>"A chave não gira. A fechadura tá enferrujada. E ninguém te contou."</td>
+        <td>Meta open-loop, vídeo curto 15-30s, mobile-first</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+      <tr>
+        <td><strong>9</strong></td>
+        <td><strong>DEPOIMENTO 60s FAMILIAR</strong></td>
+        <td>"Minha filha olhou pra mim e disse: 'Mãe, você voltou'"</td>
+        <td>Meta prova social, mid-funnel retargeting, 60-90s</td>
+        <td><span class="dot green"></span>Baixo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎯 Os 2 avatares canônicos (PT-BR)</h2>
+
+  <div class="grid-2">
+    <div class="callout blue">
+      <strong>👤 Avatar A — Filho adulto (40-60 anos) comprando pra pai/mãe (70-85)</strong>
+      <p style="margin-top:8px"><strong>Dor dominante:</strong> Ver o pai/mãe perdendo memória, ficando quieto em jantares de família, repetindo perguntas. Medo de herdar Alzheimer.</p>
+      <p><strong>Disparador de compra:</strong> "Posso fazer alguma coisa AGORA antes que seja tarde?"</p>
+      <p><strong>Trigger de scroll-stop:</strong> História em primeira pessoa de filho descobrindo algo pro pai. Culpa ("eu disse que era só idade").</p>
+      <p><strong>Ângulos que mais funcionam:</strong> 4 (Family Son), 5 (vs Aricept), 6 (90-Day), 9 (Depoimento).</p>
+      <p><strong>Tempo de decisão:</strong> 3-7 dias. Lê reviews, pergunta no grupo de família.</p>
+    </div>
+    <div class="callout gold">
+      <strong>👵 Avatar B — Idoso ativo (60-80 anos) comprando pra si mesmo</strong>
+      <p style="margin-top:8px"><strong>Dor dominante:</strong> Esquecer nomes, perder a palavra no meio da frase, não lembrar por que entrou no cômodo. Vergonha social. Medo de "virar peso".</p>
+      <p><strong>Disparador de compra:</strong> "Ainda dá tempo de consertar antes de eu perder a independência?"</p>
+      <p><strong>Trigger de scroll-stop:</strong> Mecanismo claro (cádmio + fechadura + chave). Prova de que "não é só idade". Possibilidade de "voltar a ser eu mesmo".</p>
+      <p><strong>Ângulos que mais funcionam:</strong> 2 (Honey Trick), 3 (Cadmium), 6 (90-Day), 8 (Lock &amp; Key).</p>
+      <p><strong>Tempo de decisão:</strong> 1-3 dias. Idoso é mais impulsivo se sentir que entendeu o problema.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 Os 9 ângulos (com PT-BR + sample primary text)</h2>
+
+  <!-- ANGLE 1 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">1</div>
+      <div class="angle-info">
+        <h3>BILL GATES REVEALS</h3>
+        <div class="framework">"Famous face + dollar anchor + disease reveal" — "Rosto famoso quebrou o silêncio sobre X"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você usa uma celebridade (Bill Gates) como hook jornalístico. Não é endosso — é "Bill Gates falou sobre X" (recurso de mídia). Combina com anchor de preço ("$1 honey remedy") e doença específica ("Alzheimer's").</p>
+        <p><strong>Quando usar:</strong> Topo de funil cold. Native/taboola/outbrain. Quem vê esse hook já viu 50 "doctor reveals" e tá saturado — Bill Gates quebra o padrão.</p>
+        <p><strong>Avatar ideal:</strong> Ambos A e B. Funciona com quem tem pai/mãe idoso (A) OU quem tem medo da própria memória (B).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "[Celebridade] revealed [dollar anchor] [disease/condition]" → (2) "Without drugs, infusions or side effects" → (3) "Watch the free video" → (4) CTA "CLAIM 3 FREE BOTTLES".</p>
+        <p><strong>Compliance:</strong> ⚠️ <strong>"Reversing Alzheimer's" É MEDICAL CLAIM.</strong> Em Meta ads reformular pra "Researchers found" / "Study confirms". Em native pode manter o original (review é mais leve).</p>
+        <p><strong>Onde tá rodando:</strong> ml05 + ml06 (CNN Health clone, 2 VSLs variantes).</p>
+        <div class="risk-row"><span class="risk-dot red"></span><strong>Risco Meta review:</strong> ALTO — "Reversing Alzheimer's" flag. Usar versão reformulada em Meta, manter heavy só em native.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (6) verbatim — versão native (full-claim)</div>
+      <div class="hook-list">
+        <div class="hook">Bill Gates Reveals the $1 Honey Remedy Reversing Alzheimer's Without Drugs, Infusions or Side Effects</div>
+        <div class="hook">Bill Gates Just Exposed the Honey Trick That Doctors Don't Want You to Know About</div>
+        <div class="hook">The $1 Honey Memory Remedy That Big Pharma Tried to Bury</div>
+        <div class="hook">What Bill Gates Said About Memory Loss That Left Doctors Speechless</div>
+        <div class="hook">Bill Gates: "I Spent $100 Million on Alzheimer's Research. The Answer Was in My Kitchen."</div>
+        <div class="hook">The Honey Memory Protocol That Made Bill Gates Cancel His Next Foundation Project</div>
+      </div>
+      <div class="hooks-title" style="margin-top:14px">🇺🇸 Versão Meta-safe (reformulada)</div>
+      <div class="hook-list">
+        <div class="hook">Researchers Found a $1 Honey Compound That May Support Memory in Aging Brains</div>
+        <div class="hook">A Recent Study Confirms: Wild Honey Extract May Help Clear Heavy Metals from Brain Tissue</div>
+        <div class="hook">What Science Is Now Saying About the Honey Trick for Memory (No Drugs, No Infusions)</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (versão native, full-claim)</div>
+        <div class="sample-text">Bill Gates just revealed what he calls the most underreported health discovery of the decade.
+
+A $1 honey compound that researchers say may help reverse the cognitive decline tied to Alzheimer's — without drugs, infusions, or side effects.
+
+"This is the one thing every family affected by memory loss needs to know about," he said in a recent interview.
+
+The full protocol (and the scientist who created it) is now public. The free video just went live this morning.
+
+⚠️ Only available in the US right now. Free bottles are limited.
+[WATCH THE FREE VIDEO →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 2 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">2</div>
+      <div class="angle-info">
+        <h3>HONEY TRICK DOING WRONG</h3>
+        <div class="framework">"Viral trick is real. But everyone's doing it wrong." — "O truque viral é real. Mas todo mundo tá fazendo errado."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você pega um trend (viral TikTok/Instagram de "honey trick for memory") e vira contra o próprio trend: "Sim, funciona. Mas só se você fizer do jeito certo. E não é o que você tá vendo nos vídeos."</p>
+        <p><strong>Quando usar:</strong> Meta UGC, vídeo curto (15-45s), mobile-first. Avatar que já viu os vídeos virais e tá cético ("será que isso funciona mesmo?").</p>
+        <p><strong>Avatar ideal:</strong> B (idoso ativo 60-80). Mas também puxa A (filho que mandou o vídeo pro pai e quer validar).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "You saw the videos about the honey trick for memory" → (2) "They're real. But they're missing one part" → (3) "Here's what's missing" → (4) "I created the original combination" → (5) CTA "Watch the free video".</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> Hook é "trick is real" (não "reverses"), mecanismo é "may help support", tem disclaimer FDA inline.</p>
+        <p><strong>Onde tá rodando:</strong> VSL standalone (MemoFlow-v2.html, com 11 GIFs).</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — claims são todos em formato "may help" / "designed to".</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (6) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">The "Honey Trick" Everyone Is Talking About Is Real. But They're Doing It Wrong.</div>
+        <div class="hook">I Created the Honey Memory Formula That All Those Videos Are Copying. Here's What's Missing.</div>
+        <div class="hook">You saw the honey trick videos. Here's the one thing they left out.</div>
+        <div class="hook">The honey trick works. But not the way you think. I know because I made the original.</div>
+        <div class="hook">Why the honey trick videos aren't working for most people (and what to do instead)</div>
+        <div class="hook">I spent a year perfecting the honey memory formula. Here's the part nobody else got right.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (UGC short-form)</div>
+        <div class="sample-text">Hi. I'm Markus. I'm a researcher and formulator. Not a doctor.
+
+For the past year, I've watched my family's honey memory formula get copied, diluted, and sold as expensive capsules.
+
+But the trick only works if you use both parts in the right ratio. Most videos are only showing you half.
+
+Honey alone can't do the job. The other half — a specific form of lithium — is the part that makes it actually work.
+
+I made a free 5-minute video explaining the original protocol, what to look for, and the one thing to avoid in copycat products.
+
+[LEARN THE PROTOCOL →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 3 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">3</div>
+      <div class="angle-info">
+        <h3>CADMIUM MECHANISM</h3>
+        <div class="framework">"The silent metal in your brain is stealing your memories" — "O metal silencioso no seu cérebro tá roubando suas memórias"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você explica o mecanismo (cádmio bloqueia receptores de insulina → glicose não entra nos neurônios → memória enfraquece) de forma visual e acessível. Não é "venda" — é "aha moment" educacional.</p>
+        <p><strong>Quando usar:</strong> Meta educational, awareness stage. Vídeo 60-90s. Quem tá no "tô esquecendo mais que o normal mas não sei se é sério".</p>
+        <p><strong>Avatar ideal:</strong> B (idoso 60-80 que percebeu mudança mas ainda não foi ao médico). Puxa também A (filho que quer entender o que tá acontecendo com o pai).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "It was never your age" → (2) "There's a silent metal — cadmium — that builds up over time" → (3) "It damages the locks that let fuel into your neurons" → (4) "When the locks are damaged, the fuel can't get in" → (5) "That's why memory games and supplements never worked" → (6) "Here's what actually helps" → (7) CTA.</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> Mecanismo explicado com "may help", "designed to support", "may help remove". Sem claim de cura.</p>
+        <p><strong>Por que funciona:</strong> Quebra a crença "é só idade / é genético" antes de vender. Cria a abertura pra solução.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — claims todos em formato "may help" / "may support".</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">It was never your age. There's a silent metal — cadmium — that's been building up in your brain for decades.</div>
+        <div class="hook">Why your memory keeps getting worse (and it's NOT because you're getting older)</div>
+        <div class="hook">The 3-word sentence that explained my father's memory loss — and changed everything</div>
+        <div class="hook">Your brain isn't getting enough fuel. Not because of age. Because the locks are damaged.</div>
+        <div class="hook">Why crossword puzzles, fish oil, and Aricept never worked (the real reason)</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (educational long-form)</div>
+        <div class="sample-text">If your memory has been getting worse — and you've tried everything — please read this.
+
+It was never your age. It was never your genetics. And it's not your fault.
+
+There's a metal called cadmium. You've been exposed to it your entire life — through water, food, and air.
+
+Over time, it builds up in your brain and damages the tiny "locks" (insulin receptors) that let glucose — your brain's fuel — enter your neurons.
+
+When the locks are damaged, the fuel can't get in. Your brain starts losing access to the energy it needs to remember names, follow conversations, and find the right words.
+
+That's why memory games, fish oil, and even prescription medications never reached the real cause. They were trying to fix a brain that wasn't getting enough fuel.
+
+The original protocol combines two natural ingredients — wild honey extract and a specific form of lithium — in a precision-dosed sublingual formula. Together, they may help remove the buildup and protect the locks from what keeps coming in.
+
+I made a free 5-minute video explaining exactly how it works.
+[WATCH THE PROTOCOL →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 4 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">4</div>
+      <div class="angle-info">
+        <h3>FAMILY STAGE (FILHO)</h3>
+        <div class="framework">"I told my father it was just age. I was wrong." — "Eu disse pro meu pai que era só idade. Eu estava errado."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Story-first em primeira pessoa. O "Markus" (filho) conta a história de ter julgado o próprio pai ("tá só envelhecendo, escreve tudo, exercita a mente") e depois descobrir que tava errado — algo BEM específico (cádmio + fechadura danificada) estava causando tudo.</p>
+        <p><strong>Quando usar:</strong> Meta story-based, retargeting, 30-45s. Funciona como "fechamento emocional" depois que o lead viu o mecanismo.</p>
+        <p><strong>Avatar ideal:</strong> A (filho 40-60 comprando pra pai 70+). A culpa ("eu disse que era só idade") é o disparador mais forte. Funciona também com B que tem flashback de ter julgado o próprio pai/mãe.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "I was the son with the sharp memory" → (2) "I told my father it was just age" → (3) "Until one day he looked at me and said..." → (4) "I spent two weeks tracking his pills" → (5) "I found the real reason" → (6) "I made the formula" → (7) "He came back" → (8) CTA.</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> É história pessoal de filho, não claim médico.</p>
+        <p><strong>Por que funciona:</strong> Culpa + redenção. Filhos que viram os pais envelhecem se identificam imediatamente.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — história em primeira pessoa, sem medical claim.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">I told my father it was just age. I was completely wrong.</div>
+        <div class="hook">My father was 74. He started forgetting his grandchildren's names. And I told him to "write it down."</div>
+        <div class="hook">The day my father said "I AM trying" — and I finally realized I had failed him</div>
+        <div class="hook">I judged my own father. For 2 years. Then I found out what was really happening.</div>
+        <div class="hook">"Markus, I AM trying. I do everything they tell me to do." — the words that changed everything</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (story-first)</div>
+        <div class="sample-text">My father was 74.
+
+He started forgetting names. Repeating questions. Losing his train of thought halfway through his favorite stories.
+
+And I — the son with the sharp memory — told him the same lie everyone told me: "It's age. Write it down. Exercise your mind more."
+
+Until one day he looked at me with tears in his eyes and said:
+
+"Markus, I AM trying. I do everything they tell me to do."
+
+That was the day I stopped accepting "age" as an answer.
+
+I spent two weeks tracking every pill he took. Every walk. Every memory lapse.
+
+And I found the real reason. It wasn't age. It wasn't genetics. And it wasn't his fault.
+
+It was a silent metal — cadmium — that had been building up in his brain for decades, damaging the tiny "locks" that let fuel into his neurons.
+
+I spent almost a year perfecting the formula to help remove the buildup and protect the locks. Two drops a day. That's it.
+
+Four months later, my father was telling stories from his childhood with details even I had forgotten. He was laughing with his grandchildren again.
+
+[LEARN THE PROTOCOL →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 5 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">5</div>
+      <div class="angle-info">
+        <h3>MARKUS vs ARICEPT</h3>
+        <div class="framework">"Why Aricept, Namenda, Exelon don't address the cause" — "Por que os medicamentos não tratam a causa"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Você nomeia medicamentos específicos (Aricept, Namenda, Exelon) e explica por que eles só "gerenciam o declínio" em vez de "corrigir a causa". É educational, não é agressão direta.</p>
+        <p><strong>Quando usar:</strong> Meta contra-medicação, hot audience (já viu anúncio de memória antes). Sênior targeting 55-80.</p>
+        <p><strong>Avatar ideal:</strong> B (idoso 60-80 que já tentou remédio). Puxa também A (filho cuja mãe toma Aricept e não viu resultado).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Aricept. Namenda. Exelon." → (2) "They may help manage certain symptoms" → (3) "But they were never created to address the real cause" → (4) "The cause is a silent buildup in your brain" → (5) "Managing decline is not the same as correcting its cause" → (6) CTA "Learn the original protocol".</p>
+        <p><strong>Compliance:</strong> ⚠️ <strong>Médio.</strong> Mencionar nome de medicamentos é OK se o tom for "they may help manage symptoms" (não "they don't work / they're dangerous"). Em Meta evitar "kills" / "poisons" / "side effects worse than the disease".</p>
+        <p><strong>Por que funciona:</strong> Idoso que já tentou Aricept ($200-400/mês) sem resultado se identifica na hora. Sente que finalmente alguém entende.</p>
+        <div class="risk-row"><span class="risk-dot orange"></span><strong>Risco Meta review:</strong> MÉDIO — menção a medicamentos específicos. Manter tom "may help manage" / "designed to address the cause".</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">Aricept. Namenda. Exelon. They may help manage the symptoms. But they were never designed to address the cause.</div>
+        <div class="hook">Why your memory medications keep getting more expensive — and your memory keeps getting worse</div>
+        <div class="hook">"Managing the decline is not the same as correcting its cause." — why prescriptions may not be enough</div>
+        <div class="hook">The one question to ask your doctor before accepting another memory prescription</div>
+        <div class="hook">I tracked my father's medications for 2 weeks. Here's what the prescriptions were missing.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (contra-medicação)</div>
+        <div class="sample-text">Aricept. Namenda. Exelon.
+
+If you or someone you love has been prescribed one of these, you've probably noticed something disturbing:
+
+The memory keeps getting worse. The cost keeps going up. And the doctor keeps saying "give it time."
+
+That's because these medications were designed to manage the decline — not to correct the cause.
+
+The cause is something most doctors don't test for. A silent buildup of a metal called cadmium in your brain. Over decades, it damages the tiny "locks" (insulin receptors) that let fuel into your neurons.
+
+The medications don't address this buildup. They don't protect the locks from what keeps coming in.
+
+The original protocol combines two natural ingredients — wild honey extract and a specific form of lithium — in a precision-dosed formula that may help remove the buildup and protect the locks.
+
+I made a free 5-minute video explaining exactly how it works.
+[LEARN THE PROTOCOL →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 6 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">6</div>
+      <div class="angle-info">
+        <h3>90-DAY EMPTY BOTTLE</h3>
+        <div class="framework">"Use the entire bottle. If your memory doesn't come back, I refund every penny." — "Usa a garrafa toda. Se a memória não voltar, eu devolvo cada centavo."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Guarantee-heavy close. Você joga toda a risk pro vendedor: "Se não funcionar, devolvo tudo. Sem perguntas. Garrafa vazia serve." Funciona como "killer objection handler" pra quem já viu o produto mas tá em dúvida.</p>
+        <p><strong>Quando usar:</strong> Meta guarantee-heavy, close stage, hot audience. Vídeo curto 30-60s. Funciona como retargeting ou post-view.</p>
+        <p><strong>Avatar ideal:</strong> Ambos A e B. Idoso (B) responde bem a "money back guarantee" porque tá acostumado com "se não gostar, devolvo" (Amazon, Costco). Filho (A) responde porque tira o risco da decisão ("se não funcionar pra minha mãe, pelo menos não perdi dinheiro").</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Try the original protocol for 90 days" → (2) "Use the entire bottle exactly as directed" → (3) "If your memory doesn't improve..." → (4) "I refund every penny" → (5) "Empty bottle. No interrogation. No arguments." → (6) "Either you keep the results or you keep your money" → (7) CTA.</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> Guarantee é claim defensivo (não promete resultado, promete refund).</p>
+        <p><strong>Por que funciona:</strong> Tira toda a fricção. Não precisa acreditar — só precisa testar.</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — claim defensivo, sem promessa de cura.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">Use the entire bottle for 90 days. If your memory doesn't improve, I refund every penny.</div>
+        <div class="hook">Empty bottle. No interrogation. No arguments. That's the guarantee.</div>
+        <div class="hook">"Either you keep the results or you keep your money." — the 90-day promise</div>
+        <div class="hook">I'm taking on all the risk. You take the bottle. If it doesn't work, you pay nothing.</div>
+        <div class="hook">The only risk is doing nothing while the memory lapses keep growing. The bottle is on me.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (guarantee close)</div>
+        <div class="sample-text">I'm taking on all the risk.
+
+Try the original MemoFlow protocol for 90 days.
+
+Use the entire bottle exactly as directed. Two drops a day, under the tongue, every morning.
+
+If your memory and mental clarity don't improve...
+
+If names still disappear in the middle of conversations...
+
+If you still walk into a room and forget why you went there...
+
+Send a message to my team. We'll refund every penny.
+
+Empty bottle. No interrogation. No arguments. No return-window tricks.
+
+Either you keep the results — or you keep your money.
+
+This is not a marketing line. It's a promise from the man who created the formula.
+
+[CLAIM YOUR 3 FREE BOTTLES →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 7 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">7</div>
+      <div class="angle-info">
+        <h3>DOCTOR CRITIQUE</h3>
+        <div class="framework">"Why your doctor keeps prescribing pills that don't address the cause" — "Por que seu médico continua prescrevendo pílulas que não tratam a causa"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Versão mais visceral do ângulo 5. Você critica o sistema médico (não o médico individual) por continuar prescrevendo pílulas sintomáticas em vez de investigar a causa raiz. Tom de insider revoltado.</p>
+        <p><strong>Quando usar:</strong> Native/outbrain, dark post, lead magnet pra VSL. NÃO em Meta (risco alto).</p>
+        <p><strong>Avatar ideal:</strong> B (idoso que tá frustrado com o médico). Puxa A (filho que tentou convencer o médico do pai a investigar mais).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Your doctor has been trained to manage decline. Not to correct causes." → (2) "The pharmaceutical industry makes more money when memory gets worse" → (3) "The $300 capsules are incomplete versions of a protocol discovered years ago" → (4) "Here's the original combination" → (5) CTA "Watch the free video".</p>
+        <p><strong>Compliance:</strong> ⛔ <strong>NÃO Meta.</strong> Em Meta é flag certo: "your doctor is wrong" / "pharma makes money when you get worse" = personal attack. Usar só em native/outbrain.</p>
+        <p><strong>Onde tá rodando:</strong> Publisher MemoPryl provavelmente roda em dark post / native. Os comments "doctor took it off my chart" (Jessica Reeves) sugerem que esse ângulo tá ativo em algum canal pago.</p>
+        <div class="risk-row"><span class="risk-dot red"></span><strong>Risco Meta review:</strong> ALTO — agressão ao sistema médico. Em Meta vira flag de "personal attack" + "misinformation".</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim — versão native (full visceral)</div>
+      <div class="hook-list">
+        <div class="hook">Why your doctor keeps prescribing memory pills that don't address the cause</div>
+        <div class="hook">The pharmaceutical industry makes more money when your memory gets worse. Here's the protocol they buried.</div>
+        <div class="hook">Your doctor isn't evil. But they were never trained to correct the cause of memory loss. They were trained to manage the decline.</div>
+        <div class="hook">$300 celebrity capsules are an incomplete version of a protocol that should cost $19. Here's the original.</div>
+        <div class="hook">"Doctor took 'early onset Alzheimer's' off my chart" — what really happened (and what you need to know)</div>
+      </div>
+      <div class="hooks-title" style="margin-top:14px">🇺🇸 Versão Meta-safe (reformulada)</div>
+      <div class="hook-list">
+        <div class="hook">What most memory medications don't address (and what may help support the cause)</div>
+        <div class="hook">A recent study suggests a $19.99 protocol may help support memory where some prescriptions don't.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (versão native, full visceral)</div>
+        <div class="sample-text">Your doctor has been trained to manage the decline. Not to correct the cause.
+
+That's why Aricept costs $200/month. That's why Namenda costs $250/month. That's why Exelon patches cost $300/month.
+
+The pharmaceutical industry makes more money when your memory keeps getting worse.
+
+The original protocol — the one that actually addresses the cause — was discovered years ago. It costs $19.99 per bottle. It combines two natural ingredients in a specific ratio.
+
+Someone took that protocol, diluted the ingredients, put a familiar face in front of it, and turned it into $300 celebrity capsules.
+
+I made a free 5-minute video explaining the original combination, what to look for, and the one thing to avoid in copycat products.
+
+[LEARN THE ORIGINAL PROTOCOL →]
+
+⚠️ Results may vary. This is not medical advice. Consult your doctor before starting any supplement.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 8 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">8</div>
+      <div class="angle-info">
+        <h3>LOCK &amp; KEY CURIOSIDADE</h3>
+        <div class="framework">"The key can't turn. The lock is rusted. And no one told you." — "A chave não gira. A fechadura tá enferrujada. E ninguém te contou."</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Open-loop visual. Você descreve a metáfora chave/fechadura (glicose não entra porque os receptores de insulina tão danificados pelo cádmio) e fica sem revelar a solução. Quem clica quer ver "o que destrava".</p>
+        <p><strong>Quando usar:</strong> Meta open-loop, vídeo curto 15-30s, mobile-first. Funciona em awareness stage pra puxar pro VSL.</p>
+        <p><strong>Avatar ideal:</strong> B (idoso curioso, quer entender a ciência por trás). Puxa A (filho pesquisador que quer entender antes de dar pro pai).</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "Your brain runs on glucose. Just like a car runs on gas." → (2) "But glucose can't enter your neurons on its own. Insulin has to open the door." → (3) "What if the lock is rusted? The key is there. The gas is there. But the door won't open." → (4) "That's exactly what's happening in your brain" → (5) "Here's how to fix it" → (6) CTA.</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> Metáfora visual, sem claim médico. Mecanismo é "may help restore access to fuel".</p>
+        <p><strong>Por que funciona:</strong> Curiosidade visual + metáfora universal (chave/fechadura). Gera scroll-stop em 3-5s. Idoso que tá esquecendo se identifica imediatamente ("é exatamente assim que eu me sinto").</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — metáfora educacional, sem medical claim.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">The key is there. The fuel is there. But the door won't open. That's exactly what's happening in your brain.</div>
+        <div class="hook">Your brain is losing access to its fuel. Not because of age. Because the locks are rusted.</div>
+        <div class="hook">Imagine trying to start a car with a rusted ignition. The key turns. But nothing happens.</div>
+        <div class="hook">Why crossword puzzles, fish oil, and even prescriptions may never reach the real cause</div>
+        <div class="hook">The 30-second explanation for why your memory keeps getting worse (and what to do about it)</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (open-loop curto)</div>
+        <div class="sample-text">Quick metaphor that changed how I think about memory:
+
+Your brain runs on glucose. Just like a car runs on gas.
+
+But glucose can't enter your neurons on its own. Insulin has to open the door. Insulin is the key. Every neuron has a tiny lock called an insulin receptor.
+
+When everything works, the key turns, the door opens, and the fuel enters.
+
+But here's what no one told you:
+
+There's a metal — cadmium — that builds up in your brain over decades. It damages the locks. Like rust eating away at the metal.
+
+The key is still there. The glucose is still outside. But the door no longer opens.
+
+That's why memory games, fish oil, and even Aricept never reach the real cause. They were trying to fix a brain that wasn't getting enough fuel.
+
+The original protocol may help remove the rust and protect the locks from what keeps coming in.
+
+Free 5-minute video:
+[SEE HOW IT WORKS →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANGLE 9 -->
+  <div class="angle-card">
+    <div class="angle-header">
+      <div class="angle-num">9</div>
+      <div class="angle-info">
+        <h3>DEPOIMENTO 60s FAMILIAR</h3>
+        <div class="framework">"My daughter looked at me and said: 'Mom, you're here again'" — "Minha filha olhou pra mim e disse: 'Mãe, você voltou'"</div>
+      </div>
+    </div>
+    <div class="angle-body">
+      <div class="angle-ptbr">
+        <div class="ptbr-title">🇧🇷 Em português</div>
+        <p><strong>O que é:</strong> Prova social em primeira pessoa com peso emocional familiar. Não é "perdi 30 lbs" — é "minha filha olhou pra mim e disse que eu voltei". Foco no momento em que a família percebeu a mudança, não na estatística.</p>
+        <p><strong>Quando usar:</strong> Meta prova social, mid-funnel retargeting, 60-90s. Funciona especialmente bem com UGC de pessoa real (não ator) falando direto pra câmera.</p>
+        <p><strong>Avatar ideal:</strong> Ambos A e B, com peso forte em A (filho que tá decidindo se compra pro pai). Filhos se identificam com a perspectiva da família observando a mudança.</p>
+        <p><strong>Estrutura que funciona:</strong> (1) "I was becoming quieter at family gatherings" → (2) "I was afraid I would repeat a question" → (3) "A few weeks after I started..." → (4) "I told a story from my daughter's childhood with details even she no longer remembered" → (5) "She started to cry" → (6) "She held my hand and said..." → (7) CTA.</p>
+        <p><strong>Compliance:</strong> ✅ <strong>Meta-safe.</strong> É depoimento pessoal com tom "I noticed / I feel" (não claim de cura). Disclaimer FDA no fim.</p>
+        <p><strong>Por que funciona:</strong> Emoção familiar > estatística. Quem tem pai/mãe idoso reconhece o medo de "virar estranho".</p>
+        <div class="risk-row"><span class="risk-dot green"></span><strong>Risco Meta review:</strong> BAIXO — depoimento pessoal, sem claim médico direto.</div>
+      </div>
+      <div class="hooks-title">🇺🇸 Hooks (5) verbatim</div>
+      <div class="hook-list">
+        <div class="hook">"Mom, you're here again." — the moment my daughter said she'd gotten me back</div>
+        <div class="hook">I was becoming quieter at family gatherings. Then I started the protocol. Then I told a story I'd forgotten I knew.</div>
+        <div class="hook">I stopped driving alone because I was terrified I'd get lost. Last month, I drove to the grocery store by myself.</div>
+        <div class="hook">I knew exactly what I wanted to say. But the words would disappear before they reached my lips.</div>
+        <div class="hook">Week 4: I stopped freezing up in the middle of conversations. Week 6: I called my grandchildren by name without hesitating.</div>
+      </div>
+      <div class="primary-sample">
+        <div class="sample-title">📝 Sample primary text completo (depoimento familiar)</div>
+        <div class="sample-text">My name is Susan. I'm 74. I live in Mesa, Arizona.
+
+For the past two years, I had been becoming quieter and quieter at family gatherings.
+
+I was afraid I would repeat a question. Forget someone's name. Tell the same story for the third time. So I just smiled and listened.
+
+A few weeks after I started the MemoFlow protocol, we were all sitting around the table.
+
+I told a story from my daughter's childhood — with details even she no longer remembered.
+
+She started to cry.
+
+Then she held my hand and said:
+
+"Mom, it feels like you're here with us again."
+
+That was when I realized it wasn't only my memory that was changing.
+
+My family was no longer afraid of losing me.
+
+If you've been watching someone you love go quiet at the dinner table — I made a free 5-minute video explaining the protocol that brought my family back.
+
+[WATCH SUSAN'S STORY →]</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🌳 Árvore de decisão PT-BR — qual ângulo usar primeiro?</h2>
+  <p class="muted">Sequência recomendada pra escalar MemoFlow sem tomar flag do Meta.</p>
+
+  <div class="callout blue">
+    <strong>📅 Semana 1-2 — Começar pelos ângulos Meta-safe (volume alto)</strong>
+    <p style="margin-top:8px"><strong>Recomendado:</strong> Ângulos <strong>2, 3, 4, 6, 8, 9</strong> (todos com risco BAIXO).</p>
+    <p><strong>Por quê:</strong> Volume alto, claim defensivo, sem flag. Pode rodar 5-10 concepts cada com 4-5 hooks.</p>
+    <p><strong>Teste sugerido:</strong> 2 concepts/dia, $50 budget cada, kill em 48h se CTR &lt; 1% ou hook rate &lt; 30%.</p>
+  </div>
+
+  <div class="callout gold">
+    <strong>📅 Semana 3-4 — Escalar com hot audience (retargeting)</strong>
+    <p style="margin-top:8px"><strong>Recomendado:</strong> Ângulos <strong>4, 5, 6, 9</strong> pra quem já viu os Meta-safe (visitou LP, viu VSL &gt; 30%, não comprou).</p>
+    <p><strong>Por quê:</strong> Hot audience tolera claim mais visceral. Volume menor mas CVR maior.</p>
+    <p><strong>Teste sugerido:</strong> Custom audience 30/60/90 dias, $30-50 budget, kill em 72h se ROAS &lt; 1.5.</p>
+  </div>
+
+  <div class="callout red">
+    <strong>📅 Semana 5+ — Native/Outbrain/Taboola (volume + claim full)</strong>
+    <p style="margin-top:8px"><strong>Recomendado:</strong> Ângulos <strong>1, 7</strong> com hooks full-claim (Bill Gates Reveals + Doctor Critique).</p>
+    <p><strong>Por quê:</strong> Native review é mais leve, "Reversing Alzheimer's" passa. Volume alto, claim visceral, mas é fora do Meta.</p>
+    <p><strong>Teste sugerido:</strong> 3-5 concepts, $100-200 budget cada, kill em 5 dias se CTR &lt; 0.5%.</p>
+  </div>
+
+  <div class="callout">
+    <strong>🔁 Testes contínuos (todo mês)</strong>
+    <p style="margin-top:8px"><strong>Mês 2:</strong> Refresh dos hooks que performaram (criar 3 variantes cada). Trocar avatar visual (Markus vs Susan vs Robert).</p>
+    <p><strong>Mês 3:</strong> A/B test ângulo 2 (Honey Trick) com creator diferente (mulher 70+ falando em vez de Markus). Hipótese: depoimento em primeira pessoa do idoso pode converter mais que creator masculino 40-50.</p>
+    <p><strong>Mês 4:</strong> Lançar quiz pre-LP (modelo 1 já implementado) como landing intermediária pra Meta ads. Hipótese: quiz pré-checkout aumenta CVR 20-30%.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🎬 Próximas ações pra ativar o brief</h2>
+  <ul>
+    <li><strong>Transcrição Whisper</strong> das 2 VSLs em vídeo — mapear 12 blocos E3 com timestamps e validar copy da VSL standalone</li>
+    <li><strong>Analisar os 5 PNGs ads</strong> (RAR) — ver qual ângulo tá sendo usado, copiar pattern</li>
+    <li><strong>Analisar os 15 vídeo ads</strong> (AD 1-15) — extrair primary text verbatim, mapear ângulos já testados pelo publisher</li>
+    <li><strong>Criar 5 mockups Meta-safe</strong> (A1-A5) baseados nos ângulos 2, 3, 4, 8, 9 (mais baixos de risco)</li>
+    <li><strong>Testar angle 1 reformulado</strong> ("Researchers found...") em Meta awareness stage pra ver se hook sem Bill Gates ainda funciona</li>
+    <li><strong>Briefing de criativo</strong> pra designer (brief visual do produto + ângulos prioritários)</li>
+  </ul>
+
+  <div class="footer">
+    MemoFlow Affiliate Brief · 20/ago/2026 · 9 ângulos · 48 hooks · 2 avatares · 5 primary text samples · Árvore de decisão PT-BR · Cross-project com SlimSoda / Linfaflow / Linfozen / Cardio Clear.
+  </div>
+
+</div>
+</body>
+</html>
