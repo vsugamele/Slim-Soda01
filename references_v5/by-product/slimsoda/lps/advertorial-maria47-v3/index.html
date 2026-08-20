@@ -43,6 +43,20 @@
   .testimonial { background: #fff; border: 1px solid #e8e0d0; border-left: 4px solid #c9a96e; padding: 22px 26px; margin: 24px 0; border-radius: 2px; }
   .testimonial .who { font-family: Arial, sans-serif; font-size: 12px; color: #666; margin-top: 14px; display: block; }
   .testimonial .who strong { color: #1a1a1a; }
+  .testimonial.with-avatar { display: grid; grid-template-columns: 80px 1fr; gap: 18px; align-items: start; padding: 22px 24px 22px 22px; }
+  .testimonial.with-avatar .avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #c9a96e; }
+  .testimonial.with-avatar .testimonial-body { min-width: 0; }
+  .testimonial.with-avatar .testimonial-body p { margin: 0 0 10px; }
+  .testimonial.with-avatar .testimonial-body .who { margin-top: 8px; }
+  .product-hero { width: 100%; max-width: 720px; margin: 20px auto; display: block; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .comment { background: #fafafa; border: 1px solid #eee; padding: 16px 20px; margin: 16px 0; border-radius: 4px; font-size: 15px; line-height: 1.6; }
+  .comment.with-avatar { display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: start; }
+  .comment.with-avatar .avatar { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid #ddd; }
+  .comment.with-avatar .comment-body { min-width: 0; }
+  .comment.with-avatar .comment-body p { margin: 0 0 8px; }
+  .comment.with-avatar .comment-body .meta { display: block; }
+  .pull.with-avatar { display: grid; grid-template-columns: 90px 1fr; gap: 20px; align-items: center; }
+  .pull.with-avatar .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #c9a96e; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
   .step-card { background: #fff; border: 1px solid #e8e0d0; border-radius: 6px; padding: 20px 24px; margin: 16px 0; display: grid; grid-template-columns: 60px 1fr; gap: 18px; align-items: start; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
   .step-card .num { font-family: 'Playfair Display', Georgia, serif; font-size: 42px; font-weight: 700; color: #c9a96e; line-height: 1; display: flex; align-items: center; justify-content: center; height: 60px; }
   .step-card h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; line-height: 1.3; margin: 0 0 6px; color: #1a1a1a; }
@@ -141,6 +155,8 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <div class="byline">
   <strong>By the SlimSoda Editorial Team</strong> · Updated August 19, 2026 · 12 min read
 </div>
+
+<img class="product-hero" src="images/product-hero.jpg" alt="The 3-Ingredient Method: baking soda, apple cider vinegar, and lemon" loading="eager">
 
 <p>For eight years, I tried everything.</p>
 
@@ -264,24 +280,36 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>One of the things I learned from Dana is that the 3-Ingredient Method works for very different women. The bloat has different causes. But the order fixes all of them. Here are four women who tried it.</p>
 
-<div class="testimonial">
+<div class="testimonial with-avatar">
+<img class="avatar" src="images/avatar-jamie-39.jpg" alt="Jamie, 39, new mom" loading="lazy">
+<div class="testimonial-body">
 <p>"I'm a new mom. My baby is 18 months. I still look 5 months pregnant. Three weeks. I bent over to tie my shoes and my stomach didn't fold. That's the moment I knew."</p>
 <span class="who"><strong>Jamie, 39</strong> · New mom · Phoenix, AZ</span>
 </div>
+</div>
 
-<div class="testimonial">
+<div class="testimonial with-avatar">
+<img class="avatar" src="images/avatar-sarah-44.jpg" alt="Sarah, 44, nurse" loading="lazy">
+<div class="testimonial-body">
 <p>"I'm a nurse. I have access to every study. The 'order matters' thing actually made scientific sense to me. By Day 11, my scrubs fit differently. My husband asked if I was working out. I wasn't."</p>
 <span class="who"><strong>Sarah, 44</strong> · Nurse · Raleigh, NC</span>
 </div>
+</div>
 
-<div class="testimonial">
+<div class="testimonial with-avatar">
+<img class="avatar" src="images/avatar-patricia-53.jpg" alt="Patricia, 53, perimenopause" loading="lazy">
+<div class="testimonial-body">
 <p>"I doubled the dose of water pills. I read this. By week 3, my husband asked if I was working out. He said my face looked different. He didn't know what changed. I just smiled."</p>
 <span class="who"><strong>Patricia, 53</strong> · Perimenopause · Mesa, AZ</span>
 </div>
+</div>
 
-<div class="testimonial">
+<div class="testimonial with-avatar">
+<img class="avatar" src="images/avatar-linda-62.jpg" alt="Linda, 62, post-menopause" loading="lazy">
+<div class="testimonial-body">
 <p>"I'm 62. I gained 8 pounds in 6 months. My doctor said hormones. I tried the method because I was tired of being tired. By Day 6, my socks didn't leave marks. I didn't know socks could do that."</p>
 <span class="who"><strong>Linda, 62</strong> · Post-menopause · Asheville, NC</span>
+</div>
 </div>
 
 <p>Four women. Four different decades. Four different reasons for the bloat. The same method. The same order.</p>
@@ -418,7 +446,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>I waited eight years. I can't give you those years back. But I can give you the order. The rest is up to you.</p>
 
-<p class="pull">"It's not a race. Respect how well it works. The order will do the rest."
+<p class="pull with-avatar"><img class="avatar" src="images/avatar-maria-47.jpg" alt="Maria, 47">"It's not a race. Respect how well it works. The order will do the rest."
 <cite>— Maria, 47, Phoenix AZ</cite></p>
 
 <a class="cta" href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=slimsoda-v3&affid=aff_6821377">Try SlimSoda Risk-Free for 60 Days</a>
@@ -427,29 +455,44 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <div class="comments">
 <h2>What Readers Are Saying</h2>
 
-<div class="comment">
+<div class="comment with-avatar">
+<img class="avatar" src="images/avatar-maria-47.jpg" alt="Diana K." loading="lazy">
+<div class="comment-body">
 <p>"I tried the order. I was skeptical. I had been through 4 diets and 2 prescription pills. By Day 11 I cried in the bathroom. Not because I was sad. Because I finally understood. Thank you for the order. Not the ingredients. The order."</p>
 <span class="meta"><span class="author">Diana K.</span> · Mesa, AZ · 14 days ago</span>
 </div>
+</div>
 
-<div class="comment reply">
+<div class="comment reply with-avatar">
+<img class="avatar" src="images/avatar-maria-47.jpg" alt="Maria, Editorial Team" loading="lazy">
+<div class="comment-body">
 <p>"Diana — that's the moment, isn't it? Day 11. The order does its job. Your job is to keep going. I'm so glad you didn't quit. — Maria"</p>
 <span class="meta"><span class="author">Maria, Editorial Team</span> · 14 days ago</span>
 </div>
+</div>
 
-<div class="comment">
+<div class="comment with-avatar">
+<img class="avatar" src="images/avatar-sarah-44.jpg" alt="Dr. Sarah M., RN" loading="lazy">
+<div class="comment-body">
 <p>"I have access to NEJM and I read the order thing 3 times. The mechanism is plausible. The dose is below the therapeutic threshold so no side effects. Bought it. Will report back."</p>
 <span class="meta"><span class="author">Dr. Sarah M., RN</span> · Raleigh, NC · 21 days ago</span>
 </div>
+</div>
 
-<div class="comment">
+<div class="comment with-avatar">
+<img class="avatar" src="images/avatar-patricia-53.jpg" alt="Patricia L." loading="lazy">
+<div class="comment-body">
 <p>"I'm 53. Perimenopause. I've gained 8 pounds in 6 months. I tried the method. I didn't expect it to work. Day 6: sock marks gone. Day 11: jeans button. I'm writing this comment in a dress I haven't worn since 2019. Please don't take this down."</p>
 <span class="meta"><span class="author">Patricia L.</span> · Mesa, AZ · 28 days ago</span>
 </div>
+</div>
 
-<div class="comment">
+<div class="comment with-avatar">
+<img class="avatar" src="images/avatar-jamie-39.jpg" alt="Jamie W." loading="lazy">
+<div class="comment-body">
 <p>"I'm a new mom. 18 months postpartum. I still looked 5 months pregnant. The 3-Ingredient Method is the only thing that worked. The order is everything. I keep telling my friends. They think I'm exaggerating. I'm not."</p>
 <span class="meta"><span class="author">Jamie W.</span> · Phoenix, AZ · 35 days ago</span>
+</div>
 </div>
 
 </div>
