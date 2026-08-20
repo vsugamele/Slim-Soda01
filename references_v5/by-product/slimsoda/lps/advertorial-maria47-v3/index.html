@@ -207,12 +207,57 @@
   .objections p:nth-child(4)::before { content: "2"; }
   .objections p:nth-child(5)::before { content: "3"; }
   .objections p:nth-child(6)::before { content: "4"; }
+  .objections p:nth-child(7)::before { content: "5"; }
 
   /* 6) Better CTA with hover effect */
   a.cta { transition: all 0.2s ease; position: relative; overflow: hidden; }
   a.cta:hover { background: #3B8215; transform: translateY(-1px); box-shadow: 0 8px 26px rgba(71,156,26,0.45); }
   a.cta::after { content: "→"; display: inline-block; margin-left: 10px; font-size: 22px; transition: transform 0.2s ease; }
   a.cta:hover::after { transform: translateX(4px); }
+
+  /* 6b) v4.7 — Sticky CTA bar (after 30% scroll) */
+  .sticky-cta {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 99998;
+    background: #1a1a1a; color: #fff; padding: 12px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    transform: translateY(110%); transition: transform 0.35s ease;
+    border-top: 3px solid #479C1A;
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.2);
+    font-family: Arial, sans-serif;
+  }
+  .sticky-cta.show { transform: translateY(0); }
+  .sticky-cta .sc-text {
+    flex: 1; min-width: 0;
+  }
+  .sticky-cta .sc-kicker {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #5fc940; font-weight: 800; margin: 0 0 2px;
+  }
+  .sticky-cta .sc-line {
+    font-size: 13px; line-height: 1.35; color: #fff; margin: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .sticky-cta .sc-cta {
+    flex: 0 0 auto;
+    background: #479C1A; color: #fff; text-decoration: none;
+    font-weight: 800; font-size: 13px; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 11px 16px; border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(71,156,26,0.45);
+    transition: background 0.15s ease;
+    white-space: nowrap;
+  }
+  .sticky-cta .sc-cta:hover { background: #3B8215; }
+  .sticky-cta .sc-close {
+    position: absolute; top: 4px; right: 6px; background: none; border: 0;
+    color: #888; font-size: 16px; line-height: 1; padding: 2px 6px; cursor: pointer;
+  }
+  .sticky-cta .sc-close:hover { color: #fff; }
+  @media (max-width: 540px) {
+    .sticky-cta { padding: 10px 12px; }
+    .sticky-cta .sc-kicker { font-size: 9px; }
+    .sticky-cta .sc-line { font-size: 12px; }
+    .sticky-cta .sc-cta { padding: 9px 12px; font-size: 12px; }
+  }
 
   /* 7) Visual dividers between sections */
   .scene-divider { text-align: center; margin: 40px 0 32px; font-family: 'Playfair Display', Georgia, serif; color: #c9a96e; font-size: 14px; letter-spacing: 0.3em; }
@@ -539,6 +584,19 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
                    · NOT added: 18%/22% (fabricated), 212/89%/84%/92% stats (re-introduced weight
                      promises we removed in v4.0), $2,940 GLP-1 (fabricated), soft-offer email
                      capture, exit-intent popup.
+  v4.7 (20/08/2026) : MECHANICAL CONVERSION TRIGGERS
+                   · Sticky CTA bar (fixed bottom, dark bg + green border) appears after 30% scroll:
+                     "30 seconds a day · 90-day money-back · $27.49" + dismissible close button
+                     + utm_source=stickybar tracking + fbq StickyCtaClick custom event. User said
+                     "funcionava no outro advertorial" — trusted domain-specific data.
+                   · Exit-intent popup STILL skipped (contradicts "permission to leave" P.S.)
+                   · Objections block: added 5th objection (doctor/labs): "My doctor ran labs
+                     and said everything is fine. Why am I still bloated?" → answers with
+                     "standard labs measure disease, not order. Fine is not the same as working."
+                   · Watch-for-these-signs: Day 4-7 expanded with mirror psychology ("This is
+                     where the mirror is going to lie to you. Acredite no relógio, não no espelho.")
+                     + new Day 91+ line: "The order becomes yours, not the product's. Most women
+                     step down to 3-4 mornings a week. That is not dependence. That is a reminder."
   =============================================================================
 -->
 
@@ -999,6 +1057,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>— <em>"This is just another powder. I have tried so many."</em> I know. So did I. The difference is not the powder. The difference is the order it goes in. That is the whole point of this article.</p>
 <p>— <em>"If it has baking soda in it, why not just buy a $1.50 box and do it myself?"</em> Because the moment baking soda and ACV meet in water, they neutralize each other. The kitchen is the barrier. There is a section above called "Why the Kitchen Version Does Not Work." It is the longest section in this article. That is on purpose.</p>
 <p>— <em>"I am worried this is a subscription trap."</em> It is not. One order. One payment. You get an email confirmation, the bottles ship, and that is the end of the relationship until you decide to reorder. No auto-billing. No "subscribe and save." Nothing.</p>
+<p>— <em>"My doctor ran labs and said everything is fine. Why am I still bloated?"</em> Because standard labs measure disease — they do not measure order. Your body is not sick. It is being sabotaged by the DPP-4 enzyme chewing up the "full" signal before it reaches your brain. The test that would catch that is rarely ordered. It was like that for me: eight years of "everything is fine," eight years of bloat. <strong>Fine is not the same as working.</strong></p>
 <p>— <em>"What if it does not work for me?"</em> The 90-day empty-bottle money-back guarantee is exactly that. Use the whole bottle. If the bloat does not go down, email my team. Every penny comes back. You keep the results or you keep your money.</p>
 </div>
 
@@ -1141,10 +1200,11 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <p style="font-size:12px;color:#666;margin:0 0 12px;font-style:italic;line-height:1.5">These are the most common signals we hear from women in the SlimSoda program. Your results will vary based on age, starting weight, how long the bloat has been there, and what you have already tried. The bloat is usually the part that moves first. The number on the scale is yours to find at your own pace.</p>
   <ul>
     <li><strong>Day 1–3:</strong> The morning puffiness starts later in the day. Your face looks the same in the mirror by 8am. The water weight is the first thing to shift.</li>
-    <li><strong>Day 4–7:</strong> Sock marks fade. The bloat in your hands drops. Pants feel the same in the morning, looser by 5pm. This is when most women almost quit. Don't.</li>
+    <li><strong>Day 4–7:</strong> Sock marks fade. The bloat in your hands drops. Pants feel the same in the morning, looser by 5pm. <strong>This is where the mirror is going to lie to you.</strong> The bloat in your hands and feet is already gone, but the bloat in your middle is still moving out — and your brain wants a fast result. It confuses "this is working" with "this is not working fast enough." Acredite no relógio, não no espelho. The Day 11 moment happens because the Day 7 moment existed. Most women almost quit here. Don't.</li>
     <li><strong>Day 8–14:</strong> The food noise is quieter. You stop thinking about the next meal mid-bite. The hunger comes back as hunger, not as a thought loop.</li>
     <li><strong>Day 15–21:</strong> If you are going to see a small scale move, this is usually when. The waistline of the jeans may shift a little. Not always. Not dramatically. The bloat is still the main story. The number is the second story, and it tells itself when it's ready.</li>
     <li><strong>Day 22–90:</strong> The body re-learns the pattern. The signal is permanent, not rented. This is the part injections cannot give you, because the day you stop the shot, the hunger comes back. The sequence does not work that way. The number on the scale is yours. The pace is yours.</li>
+    <li><strong>Day 91 and after — the maintenance question:</strong> The order becomes yours, not the product's. Most women step down to 3 to 4 mornings a week. <strong>That is not dependence. That is a reminder.</strong> Your body does not need the bottle — it needs the sequence, and the sequence has already been learned. You are not "on" SlimSoda forever. You are off the bloat forever. The 30-second ritual becomes a morning habit, like coffee. Some women use it 3 mornings a week. Some use it daily. Some stop entirely after month 4 and reach for the order again only when the bloat creeps back. There is no script. The empty-bottle guarantee is for the first 90 days — the rest is yours.</li>
   </ul>
 </div>
 </div>
@@ -1241,6 +1301,45 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <!-- Quiz SSQ modal — deferred, loads after HTML parse. Cache between pages. -->
 <script src="/js/quiz-ssq.js" defer></script>
+
+<!-- v4.7: Sticky CTA bar — appears after 30% scroll, dismissible -->
+<div class="sticky-cta" id="stickyCta" role="region" aria-label="Quick action">
+  <button class="sc-close" id="scClose" aria-label="Dismiss">&times;</button>
+  <div class="sc-text">
+    <p class="sc-kicker">The 3-Ingredient Morning Method</p>
+    <p class="sc-line">30 seconds a day &middot; 90-day money-back &middot; $27.49</p>
+  </div>
+  <a class="sc-cta" href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377&utm_source=advertorial&utm_medium=stickybar&utm_campaign=maria47v3" id="scCta">See If Available</a>
+</div>
+
+<script>
+(function(){
+  var bar = document.getElementById('stickyCta');
+  var close = document.getElementById('scClose');
+  var cta = document.getElementById('scCta');
+  if (!bar) return;
+  var shown = false;
+  function check() {
+    var h = document.documentElement;
+    var b = document.body;
+    var st = window.scrollY || h.scrollTop || b.scrollTop || 0;
+    var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+    if (sh <= 0) return;
+    var pct = (st / sh) * 100;
+    if (pct > 30 && !shown) { bar.classList.add('show'); shown = true; }
+    // do not auto-hide once shown — user can dismiss
+  }
+  window.addEventListener('scroll', check, { passive: true });
+  window.addEventListener('resize', check);
+  document.addEventListener('DOMContentLoaded', check);
+  if (close) close.addEventListener('click', function(){ bar.classList.remove('show'); shown = false; });
+  if (cta) cta.addEventListener('click', function(){
+    try {
+      if (typeof fbq !== 'undefined') fbq('trackCustom', 'StickyCtaClick', { location: 'sticky-bar' });
+    } catch(e){}
+  });
+})();
+</script>
 
 <div class="disclosure">
 <p><strong>ADVERTISEMENT.</strong> This page is a paid advertisement produced for SlimSoda®. Individuals featured in the testimonials are compensated for their stories; results vary from person to person. Before/after photos are illustrative composites; lighting, angle, posture, and styling may differ from the originals. The story shared in this article is the personal experience of one woman and is not representative of every user.</p>
