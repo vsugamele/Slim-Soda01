@@ -44,3 +44,7 @@ buy-page/*.log
 # Organico HUB (4 pilares de produção de conteúdo orgânico)
 !/organico/
 !/organico/**
+
+# SlimSoda PDP v3 (Product Detail Page oficial)
+!/slimsoda-pdp/
+!/slimsoda-pdp/**
