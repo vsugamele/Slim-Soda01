@@ -1,0 +1,7 @@
+# Vídeo ads originais (muito grandes pro Vercel — limite 100MB/arquivo)
+# Mantidos off-Vercel, source files em C:\Users\vsuga\Downloads\Produtos Bifi\MEMO\Vsl\Ads\
+*.mp4
+
+# Áudios transcritos das VSLs (cada um ~115MB WAV)
+# Mantidos off-Vercel
+*.wav
