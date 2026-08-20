@@ -72,12 +72,12 @@
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
     showStep('intro');
-    trackEvent('QuizOpen');
+    trackEvent('ss_quiz_opened');
   }
   function closeQuiz() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
-    trackEvent('QuizClose', { step: current });
+    trackEvent('ss_quiz_closed', { quiz_step: current + 1, answers_count: answers.filter(function(a){ return a !== null && typeof a !== 'undefined'; }).length });
   }
 
   function showStep(step) {
@@ -109,6 +109,13 @@
         optsBox.querySelectorAll('.ssq-opt').forEach(function(x){ x.classList.remove('sel'); });
         btn.classList.add('sel');
         nextBtn.disabled = false;
+        trackEvent('ss_quiz_answered', {
+          quiz_step: current + 1,
+          question_text: q.q,
+          answer_index: i,
+          answer_label: o.l,
+          answer_value: o.v
+        });
       });
       optsBox.appendChild(btn);
     });
@@ -118,10 +125,10 @@
     if (current < questions.length - 1) {
       current++;
       showStep('q');
-      trackEvent('QuizStep', { step: current });
+      trackEvent('ss_quiz_step_viewed', { quiz_step: current + 1, question_text: questions[current].q });
     } else {
       showStep('load');
-      trackEvent('QuizComplete', { answers: answers });
+      trackEvent('ss_quiz_completed', { answers: answers, answers_count: answers.length });
       // Simulate processing
       var loadMessages = [
         'Building your custom protocol...',
@@ -151,7 +158,7 @@
         document.getElementById('ssqEstLine2').innerHTML = '<strong>Day 6:</strong> ' + m.day6 + ' · <strong>Day 11:</strong> ' + m.day11 + ' · <strong>Day 21:</strong> ' + m.day21 + '.';
         prog.style.width = '100%';
         showStep('res');
-        trackEvent('QuizResultShown', { profile: lenAnswer });
+        trackEvent('ss_quiz_result_viewed', { profile: lenAnswer, answers: answers });
       }, 2800);
     }
   }
@@ -161,21 +168,21 @@
     else { showStep('intro'); current = 0; }
   }
 
-  // imptrack: unified trackCtaClick + trackInitiateCheckout (matches buy-page + PDP)
+  // Fallback imptrack: the shared /js/slimsoda-journey.js tracker owns this when present.
   window.imptrack = window.imptrack || {
     page: 'maria47-v3',
     trackCtaClick: function(d){
       try {
-        if (typeof fbq !== 'undefined') fbq('trackCustom', 'CtaClick', d || {});
-        var payload = {event_name: 'CtaClick', event_data: d || {}, page: this.page, ts: Date.now()};
-        if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: 'ss_cta_clicked', page: this.page }, d || {}));
+        if (typeof fbq !== 'undefined') fbq('trackCustom', 'ss_cta_clicked', d || {});
       } catch(e){}
     },
     trackInitiateCheckout: function(d){
       try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Object.assign({ event: 'ss_checkout_clicked', page: this.page }, d || {}));
         if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
-        var payload = {event_name: 'InitiateCheckout', event_data: d || {}, page: this.page, ts: Date.now()};
-        if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
       } catch(e){}
     }
   };
@@ -183,17 +190,18 @@
   // Track function (custom events for quiz funnel)
   function trackEvent(name, data) {
     try {
-      if (typeof fbq !== 'undefined') fbq('trackCustom', name, data || {});
-      var payload = { event_name: name, event_data: data || {}, page: 'maria47-v3', ts: Date.now() };
-      // Best-effort: send to /api/track-capi.js (silent fail if not present)
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload));
+      if (window.SlimSodaJourney && typeof window.SlimSodaJourney.track === 'function') {
+        window.SlimSodaJourney.track(name, data || {});
+        return;
       }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name, page: 'maria47-v3' }, data || {}));
+      if (typeof fbq !== 'undefined') fbq('trackCustom', name, data || {});
     } catch (e) {}
   }
 
   // Wire events
-  if (startBtn) startBtn.addEventListener('click', function() { current = 0; showStep('q'); trackEvent('QuizStart'); });
+  if (startBtn) startBtn.addEventListener('click', function() { current = 0; showStep('q'); trackEvent('ss_quiz_started', { quiz_step: 1, question_text: questions[0].q }); });
   if (skipBtn) skipBtn.addEventListener('click', closeQuiz);
   if (closeBtn) closeBtn.addEventListener('click', closeQuiz);
   if (nextBtn) nextBtn.addEventListener('click', next);
@@ -206,13 +214,6 @@
       // Only intercept the in-article CTAs (not footer / disclosure)
       if (a.closest('.disclosure')) return;
       e.preventDefault();
-      // Track CTA click with position info
-      window.imptrack.trackCtaClick({
-        cta_id: a.id || a.className,
-        cta_label: (a.textContent || '').trim().slice(0, 60),
-        cta_position: a.getBoundingClientRect().top > 1000 ? 'below-fold' : 'above-fold',
-        cta_href: a.href
-      });
       openQuiz();
     });
   });
@@ -225,7 +226,8 @@
         cta_id: 'quiz-final',
         cta_label: (t.textContent || '').trim().slice(0, 60),
         value: 27.49, currency: 'USD',
-        href: t.href
+        href: t.href,
+        answers: answers
       });
     }
   });

@@ -48,3 +48,6 @@ buy-page/*.log
 # SlimSoda PDP v3 (Product Detail Page oficial)
 !/slimsoda-pdp/
 !/slimsoda-pdp/**
+
+.vercel
+.env*

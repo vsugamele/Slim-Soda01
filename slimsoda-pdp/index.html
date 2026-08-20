@@ -36,40 +36,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-<!-- imptrack: unified click + checkout tracking (matches maria47-v3 + buy-page) -->
-<script>
-window.imptrack = window.imptrack || {
-  page: 'slimsoda-pdp',
-  trackCtaClick: function(d){
-    try {
-      if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
-      var payload = {event_name: 'CtaClick', event_data: d || {}, page: this.page, ts: Date.now()};
-      if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
-    } catch(e){}
-  },
-  trackInitiateCheckout: function(d){
-    try {
-      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
-      var payload = {event_name: 'InitiateCheckout', event_data: d || {}, page: this.page, ts: Date.now()};
-      if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
-    } catch(e){}
-  }
-};
-// Auto-wire all checkout buttons (v3btn class = buy buttons; .checkout-link = any direct checkout)
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a.v3btn, a.checkout-link').forEach(function(a){
-    a.addEventListener('click', function(){
-      window.imptrack.trackInitiateCheckout({
-        cta_id: a.id || a.className,
-        cta_label: (a.textContent || '').trim().slice(0, 60),
-        cta_position: a.getBoundingClientRect().top > 1000 ? 'below-fold' : 'above-fold',
-        value: 27.49, currency: 'USD',
-        href: a.href
-      });
-    });
-  });
-});
-</script>
+<script src="/js/slimsoda-journey.js" defer></script>
 <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/slick.css" rel="stylesheet" type="text/css"/>
