@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="60-day money back guarantee seal">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="90-day money back guarantee seal">
   <defs>
     <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#c9a96e"/>
@@ -13,7 +13,7 @@
   <circle cx="100" cy="100" r="84" fill="url(#g2)" stroke="#8a6d2c" stroke-width="1.5"/>
   <g font-family="Arial, sans-serif" text-anchor="middle" fill="#5c4717">
     <text x="100" y="48" font-size="9" font-weight="700" letter-spacing="2">MONEY BACK</text>
-    <text x="100" y="92" font-size="36" font-weight="800" letter-spacing="0">60</text>
+    <text x="100" y="92" font-size="36" font-weight="800" letter-spacing="0">90</text>
     <text x="100" y="108" font-size="11" font-weight="700" letter-spacing="2">DAY</text>
     <text x="100" y="124" font-size="9" font-weight="700" letter-spacing="2">GUARANTEE</text>
     <line x1="50" y1="138" x2="150" y2="138" stroke="#8a6d2c" stroke-width="0.8"/>
