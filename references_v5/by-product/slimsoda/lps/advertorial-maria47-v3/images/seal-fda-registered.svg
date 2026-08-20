@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="FDA Registered Facility trust seal">
+  <defs>
+    <linearGradient id="g1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a3a08"/>
+      <stop offset="100%" stop-color="#0a1f04"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c9a96e"/>
+      <stop offset="100%" stop-color="#8a6d2c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="96" fill="url(#g1)" stroke="url(#g2)" stroke-width="4"/>
+  <circle cx="100" cy="100" r="84" fill="none" stroke="url(#g2)" stroke-width="1.5" stroke-dasharray="2 3"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle" fill="#c9a96e">
+    <text x="100" y="62" font-size="11" font-weight="700" letter-spacing="2.5">REGISTERED</text>
+    <text x="100" y="88" font-size="28" font-weight="800" letter-spacing="3" fill="#fff">FDA</text>
+    <text x="100" y="108" font-size="9" font-weight="700" letter-spacing="2">FACILITY</text>
+    <line x1="40" y1="120" x2="160" y2="120" stroke="#c9a96e" stroke-width="1"/>
+    <text x="100" y="140" font-size="8" font-weight="600" letter-spacing="1.5">cGMP</text>
+    <text x="100" y="154" font-size="8" font-weight="600" letter-spacing="1.5">CERTIFIED</text>
+    <text x="100" y="168" font-size="7" letter-spacing="1.2" fill="#8a6d2c">SLIMSODA POWDER</text>
+  </g>
+</svg>
