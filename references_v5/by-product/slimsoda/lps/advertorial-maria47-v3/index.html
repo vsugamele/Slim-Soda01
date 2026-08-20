@@ -124,6 +124,95 @@
   .hl { background: linear-gradient(180deg, transparent 60%, #fff3a8 60%); padding: 0 3px; font-weight: 700; color: #1a1a1a; }
   .hl-green { color: #2f6a10; font-weight: 700; }
   .hl-red { color: #c0392b; font-weight: 700; }
+
+  /* ===== DESIGN v4.1: Maria Quiet visual upgrades ===== */
+
+  /* 1) Reading progress bar (sticky top) */
+  .reading-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: rgba(0,0,0,0.06); z-index: 9999; pointer-events: none; }
+  .reading-progress::after { content: ""; display: block; height: 100%; width: 0; background: linear-gradient(90deg, #479C1A 0%, #c9a96e 100%); transition: width 0.05s linear; }
+  body.scrolled .reading-progress::after { width: var(--progress, 0%); }
+
+  /* 2) Section number badges (Cena 01, Cena 02, ...) */
+  .scenenote { position: relative; padding-left: 56px !important; }
+  .scenenote::before { content: counter(slim-scene); counter-increment: slim-scene; position: absolute; left: 0; top: 0; font-family: 'Playfair Display', Georgia, serif; font-size: 14px; font-weight: 800; color: #fff; background: #1a1a1a; border-radius: 50%; width: 32px; height: 32px; line-height: 32px; text-align: center; letter-spacing: 0; }
+  .scenenote { counter-reset: slim-scene; }
+  body { counter-reset: slim-scene; }
+  .scenenote:nth-of-type(1) { counter-increment: slim-scene 0; }
+  /* Apply via JS-free attribute: each .scenenote is a fresh counter trigger */
+  .scenenote { display: block; }
+
+  /* 3) Drop cap on first paragraph after each H2 (magazine style) */
+  h2 + p::first-letter,
+  h3 + p::first-letter,
+  .dropcap::first-letter {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 56px;
+    font-weight: 800;
+    line-height: 0.85;
+    float: left;
+    margin: 4px 10px 0 0;
+    color: #c0392b;
+  }
+  h2 + p,
+  h3 + p { font-size: 17px; line-height: 1.7; color: #1a1a1a; }
+
+  /* 4) Better pull quote (Maria/Kristin/Dana citations) */
+  .pull {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.45;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #faf7f0 0%, #fff 100%);
+    border-left: 5px solid #c9a96e;
+    padding: 22px 28px;
+    margin: 32px 0;
+    border-radius: 0 6px 6px 0;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    font-style: italic;
+  }
+  .pull cite { display: block; margin-top: 12px; font-size: 12px; font-family: Arial, sans-serif; font-style: normal; color: #888; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
+  .pull::before { content: "\201C"; font-size: 60px; line-height: 0; vertical-align: -10px; color: #c9a96e; margin-right: 4px; font-family: 'Playfair Display', Georgia, serif; }
+
+  /* 5) Numbered objections with icons */
+  .objections p:nth-child(n+3) { position: relative; padding-left: 36px; }
+  .objections p:nth-child(n+3)::before { position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #c9a96e; color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 800; line-height: 24px; text-align: center; }
+  .objections p:nth-child(3)::before { content: "1"; }
+  .objections p:nth-child(4)::before { content: "2"; }
+  .objections p:nth-child(5)::before { content: "3"; }
+  .objections p:nth-child(6)::before { content: "4"; }
+
+  /* 6) Better CTA with hover effect */
+  a.cta { transition: all 0.2s ease; position: relative; overflow: hidden; }
+  a.cta:hover { background: #3B8215; transform: translateY(-1px); box-shadow: 0 8px 26px rgba(71,156,26,0.45); }
+  a.cta::after { content: "→"; display: inline-block; margin-left: 10px; font-size: 22px; transition: transform 0.2s ease; }
+  a.cta:hover::after { transform: translateX(4px); }
+
+  /* 7) Visual dividers between sections */
+  .scene-divider { text-align: center; margin: 40px 0 32px; font-family: 'Playfair Display', Georgia, serif; color: #c9a96e; font-size: 14px; letter-spacing: 0.3em; }
+  .scene-divider::before, .scene-divider::after { content: "·"; display: inline-block; margin: 0 16px; color: #c9a96e; opacity: 0.5; }
+
+  /* 8) Hero image treatment */
+  .fig img { border-radius: 4px; box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+  /* 9) Better focus state */
+  a:focus, button:focus { outline: 2px solid #479C1A; outline-offset: 2px; }
+
+  /* 10) Animated hero fade-in (CSS only) */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  h1, .sub, .byline, h2, .ad-label, .hero-eyebrow { animation: fadeUp 0.6s ease-out backwards; }
+  h1 { animation-delay: 0s; }
+  .sub { animation-delay: 0.1s; }
+  .byline { animation-delay: 0.2s; }
+  h2 { animation-delay: 0.3s; }
+
+  /* 11) Section number manual counter (since we don't use JS) */
+  .scenenote { position: relative; }
+  .scenenote[data-scene]::before { content: attr(data-scene); }
+
+  @media (max-width: 640px) {
+    h2 + p::first-letter { font-size: 44px; }
+    .pull { font-size: 18px; padding: 16px 20px; }
+  }
   @media (max-width: 640px) {
     body { padding: 0; }
     .page { padding: 14px; }
@@ -244,6 +333,8 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 </head>
 <body>
 
+<div class="reading-progress" aria-hidden="true"></div>
+
 <!--
   =============================================================================
   ADV V3.1 — STRUCTURE MAP (refactored 20/08/2026 with Quiet Weight canon 22 patterns + 7 "soco na cara" elements)
@@ -352,7 +443,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>My mom called me one night, the way moms do when they have been biting their tongue for months. "Maria, are you sure you are not sick? You used to eat whatever you wanted." I sat on the kitchen floor and cried. <span class="hl">"Mom, I am eating less than I ever did. I just do not know what to do."</span> She went quiet. Then she said the only thing a mom can say from a thousand miles away. "I believe you, baby." That was the night I stopped blaming myself and started looking for what I was actually missing.</p>
 
-<p class="scenenote">BEFORE YOU READ ANOTHER WORD</p>
+<p class="scenenote" data-scene="01">BEFORE YOU READ ANOTHER WORD</p>
 
 <h2>Does Any of This Sound Like Your Morning?</h2>
 
@@ -372,7 +463,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>That was my response. And once I understood it, there were only a few ways to approach it.</p>
 
-<p class="scenenote">WHY YOUR PREVIOUS ATTEMPTS FAILED</p>
+<p class="scenenote" data-scene="02">WHY YOUR PREVIOUS ATTEMPTS FAILED</p>
 
 <h2>Three Things I Tried That the Internet Swears By</h2>
 
@@ -414,7 +505,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <p class="figcaption">Same plate of food. Two completely different fates inside two different bodies. <strong>The sequence decides which one you become.</strong></p>
 </div>
 
-<p class="scenenote">THE BIOLOGICAL CAUSE</p>
+<div class="scene-divider">·  ·  ·</div>
+
+<p class="scenenote" data-scene="03">THE BIOLOGICAL CAUSE</p>
 
 <h2>What is actually happening inside you</h2>
 
@@ -422,7 +515,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>The trap has three parts: the cells that go quiet, the enzyme that chews up the signal, and the missing switch that would tell your body to burn instead of store. Each part needs a different ingredient. In a specific order. That is the method.</p>
 
-<p class="scenenote">THE METHOD</p>
+<p class="scenenote" data-scene="04">THE METHOD</p>
 
 <h2>Three ordinary ingredients, in a specific order</h2>
 
@@ -460,7 +553,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p class="pull">"Miss one, and the whole thing collapses. That's why baking soda alone does nothing. The sequence is the mechanism."
 <cite>— Dana Whitfield</cite></p>
 
-<p class="scenenote">WHY THE KITCHEN VERSION DOES NOT WORK</p>
+<p class="scenenote" data-scene="05">WHY THE KITCHEN VERSION DOES NOT WORK</p>
 
 <h2>Why the Kitchen Version Does Not Work</h2>
 
@@ -482,7 +575,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p><strong>A small warning, because I want to be honest.</strong> The method works faster than you expect. Some women in our consumer trial had to slow down to five mornings a week instead of seven. The sequence is doing its job. Your job is to listen to your own body. <strong>More is not better. Consistency is.</strong></p>
 </div>
 
-<p class="scenenote">THE WEEK I PROVED IT TO MYSELF</p>
+<div class="scene-divider">·  ·  ·</div>
+
+<p class="scenenote" data-scene="06">THE WEEK I PROVED IT TO MYSELF</p>
 
 <h2>Two columns. Two friends. Two weeks.</h2>
 
@@ -503,7 +598,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p><strong>Quick safety note:</strong> If you take medication for blood pressure or diabetes, or if you are pregnant or nursing, talk to your doctor first. Most women see no side effects.</p>
 </div>
 
-<p class="scenenote">THE PROOF</p>
+<p class="scenenote" data-scene="07">THE PROOF</p>
 
 <div class="stat-row">
 <div>
@@ -524,7 +619,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>And these weren't women on a strict diet. They weren't working out. They weren't taking anything else. They were just doing the 3-Ingredient Method, in the right order, every morning.</p>
 
-<p class="scenenote">WHO IT'S WORKING FOR</p>
+<p class="scenenote" data-scene="08">WHO IT'S WORKING FOR</p>
 
 <h2>Four Women, Four Different Reasons, Same Method</h2>
 
@@ -571,7 +666,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <p class="figcaption">Four ways. Three of them will fail you. <strong>Only one is built on the order your body actually needs.</strong></p>
 </div>
 
-<p class="scenenote">WHAT'S ACTUALLY IN THE METHOD</p>
+<p class="scenenote" data-scene="09">WHAT'S ACTUALLY IN THE METHOD</p>
 
 <h2>The Three Ingredients, In Detail</h2>
 
@@ -588,7 +683,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>Talk to your doctor before starting if you take medication for blood pressure, diabetes, or are pregnant or nursing.</p>
 </div>
 
-<p class="scenenote">WHAT TO EXPECT</p>
+<div class="scene-divider">·  ·  ·</div>
+
+<p class="scenenote" data-scene="10">WHAT TO EXPECT</p>
 
 <h2>What happened when I started</h2>
 
@@ -612,13 +709,13 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>Look at what came before — the water pills, the ACV alone, the baking soda alone, the keto, the cutting, the fasting, the doubling of doses. <strong>None of those were failures. They were early.</strong> You did not have the order. Now you do.</p>
 
-<p class="scenenote">WHAT YOU'RE NOT DOING</p>
+<p class="scenenote" data-scene="11">WHAT YOU'RE NOT DOING</p>
 
 <h2>What this method isn't</h2>
 
 <p>It is not a diet. Not a drug. Not a subscription. Not a workout. Not a 30-day challenge. Not a coach. Not a meal plan. Not a lifestyle overhaul. Just three ingredients, in the right order, for 30 seconds every morning. If it does not work, the bottle is returnable. The choice is yours.</p>
 
-<p class="scenenote">WHY YOUR PREVIOUS ATTEMPTS DID NOT STICK</p>
+<p class="scenenote" data-scene="12">WHY YOUR PREVIOUS ATTEMPTS DID NOT STICK</p>
 
 <h2>Why this method works when the others did not</h2>
 
@@ -641,7 +738,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <p class="figcaption">Three paths. One you rent. One you buy that does not address the order. One you own. <strong>You are paying for the order, not the ingredients.</strong> The fix is not rented.</p>
 </div>
 
-<p class="scenenote">THE OFFER</p>
+<p class="scenenote" data-scene="13">THE OFFER</p>
 
 <h2>Try the 3-Ingredient Method for Yourself</h2>
 
@@ -649,7 +746,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>The 3-Ingredient Method is now available in a single 30-second daily powder. It's called <strong>SlimSoda</strong>. It's not a pill. It's not a drink mix. It's a single-serve powder you stir into 8oz of cold water. Once a day. First thing in the morning.</p>
 
-<p class="scenenote">THE OFFER (AND WHY IT'S STRUCTURED THIS WAY)</p>
+<div class="scene-divider">·  ·  ·</div>
+
+<p class="scenenote" data-scene="14">THE OFFER (AND WHY IT'S STRUCTURED THIS WAY)</p>
 
 <h2>Why I Won't Sell You a Single Bottle</h2>
 
@@ -688,7 +787,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>No subscription. No auto-billing. No coaching upsell. No "premium" tier. The product is the product.</p>
 
 <div class="objections">
-<p class="scenenote">A FEW THINGS YOU ARE PROBABLY THINKING</p>
+<p class="scenenote" data-scene="15">A FEW THINGS YOU ARE PROBABLY THINKING</p>
 <p><strong>You are probably also thinking some version of this.</strong> I thought all of them before I ordered.</p>
 <p>— <em>"This is just another powder. I have tried so many."</em> I know. So did I. The difference is not the powder. The difference is the order it goes in. That is the whole point of this article.</p>
 <p>— <em>"If it has baking soda in it, why not just buy a $1.50 box and do it myself?"</em> Because the moment baking soda and ACV meet in water, they neutralize each other. The kitchen is the barrier. There is a section above called "Why the Kitchen Version Does Not Work." It is the longest section in this article. That is on purpose.</p>
@@ -705,7 +804,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>Normally, I don't share this card with anyone outside my own kitchen. But if you're going to try SlimSoda, I want you to have the original recipe too. So you can see what's inside. So you know why it works.</p>
 
-<p class="scenenote">WHICH STORY WILL YOU BE TELLING?</p>
+<p class="scenenote" data-scene="16">WHICH STORY WILL YOU BE TELLING?</p>
 
 <h2>Three Months From Now, You Will Be Living One of Two Stories</h2>
 
@@ -731,7 +830,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <p class="figcaption">This is what Path 2 looks like. <strong>The closet door open. The lake. The photo you are in this time.</strong> Not behind the camera. Not in a cover-up. Present.</p>
 </div>
 
-<p class="scenenote">THE COST OF WAITING</p>
+<p class="scenenote" data-scene="17">THE COST OF WAITING</p>
 
 <h2>What happens if you wait</h2>
 
@@ -741,7 +840,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>That is the cost of waiting. Not just the bloat. The slow, quiet shrinking of your life around the bloat. The invitations you decline. The photos you skip.</p>
 
-<p class="scenenote">THE QUIET LEDGER</p>
+<p class="scenenote" data-scene="18">THE QUIET LEDGER</p>
 
 <h2>What I Spent Before I Found the Sequence</h2>
 
@@ -761,9 +860,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>You don't have to wait 8 years. I did. I lost 8 years. You can lose 8 years too. Or you can lose 30 seconds every morning for 21 days. That's the only difference between us now.</p>
 
-<p class="scenenote">FINAL WORD</p>
+<p class="scenenote" data-scene="19">FINAL WORD</p>
 
-<p>I didn't write this to sell you SlimSoda. I wrote it because I wish someone had shown me the sequence eight years ago. The internet is full of ingredients. Almost none of it is full of sequence. And the sequence is the part that fixes the bloat, not the ingredients.</p>
+<p>I wrote this because I wish someone had explained the sequence to me before I wasted eight years trying random fixes. The internet is full of ingredients. Almost none of it is full of sequence. And the sequence is the part that fixes the bloat, not the ingredients.</p>
 
 <p>If you've read this far, you already know what to do. The question is just whether you do it today, or whether you wait another month, another year, another eight years.</p>
 
@@ -835,10 +934,10 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 </div>
 
 <div class="comment with-avatar">
-<img class="avatar" src="images/avatar-sarah-44.jpg" alt="Maria L., RN" loading="lazy">
+<img class="avatar" src="images/avatar-sarah-44.jpg" alt="Karen S." loading="lazy">
 <div class="comment-body">
-<p>"The 'BURN vs STORE' diagram FINALLY made me understand what my body has been doing for the last 12 years. I am an RN. I have told hundreds of patients 'calories in, calories out' my whole career. Ordering this today and I owe every single one of my patients an apology."</p>
-<span class="meta"><span class="author">Maria L., RN</span> · Raleigh, NC · 11 days ago · Like · Reply · 256</span>
+<p>"I am not going to lie. I clicked on this from a Facebook ad and I was ready to leave in the first 30 seconds. The two-column log made me stay. I do not know yet if it works. But the logic of the order is the first thing in ten years that has not insulted my intelligence. I ordered the 60-day kit. Screenshot this. I will report back."</p>
+<span class="meta"><span class="author">Karen S.</span> · Raleigh, NC · 11 days ago · Like · Reply · 256</span>
 </div>
 </div>
 
@@ -940,6 +1039,24 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
     </div>
   </div>
 </div>
+
+<script>
+// Reading progress bar
+(function(){
+  function updateProgress(){
+    var h = document.documentElement;
+    var b = document.body;
+    var st = window.scrollY || h.scrollTop || b.scrollTop;
+    var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+    var pct = sh > 0 ? Math.min(100, Math.max(0, (st / sh) * 100)) : 0;
+    document.body.style.setProperty('--progress', pct.toFixed(1) + '%');
+    if (pct > 0) document.body.classList.add('scrolled'); else document.body.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  document.addEventListener('DOMContentLoaded', updateProgress);
+})();
+</script>
 
 <script>
 (function() {
@@ -1181,3 +1298,5 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 </body>
 </html>
+
+
