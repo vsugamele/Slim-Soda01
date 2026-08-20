@@ -236,6 +236,79 @@
   .scenenote { position: relative; }
   .scenenote[data-scene]::before { content: attr(data-scene); }
 
+  /* ===== v4.3 — MAGAZINE TOP (CNN-style report header) ===== */
+  /* Top-bar: dark teal magazine name + ADVERTISEMENT label, like a NYT/CNN/Atlantic paid-post header */
+  .top-bar {
+    background: linear-gradient(180deg, #0C2E5C 0%, #0a2547 100%);
+    display: flex; flex-direction: column; align-items: center;
+    padding: 16px 16px 14px;
+    border-bottom: 3px solid #c9a96e;
+  }
+  .top-bar .magazine-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 800; font-size: 26px; line-height: 1.1;
+    color: #fff; text-align: center; letter-spacing: -0.01em;
+  }
+  .top-bar .advertorial-label {
+    font-family: Arial, sans-serif; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #93A2BC; margin-top: 6px; font-weight: 700;
+  }
+  .crumb {
+    list-style: none; font-family: Arial, sans-serif; font-size: 14px;
+    color: #12305F; margin: 0; padding: 10px 14px;
+    background: #f1f3f4; display: flex; align-items: center;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .crumb li { display: inline-flex; align-items: center; gap: 4px; }
+  .crumb .icon {
+    display: inline-block; width: 8px; height: 8px;
+    background: #2456A6; margin-right: 4px;
+  }
+  .crumb .sep { color: #8e9db8; margin: 0 2px; font-weight: 700; }
+  .crumb .current { color: #1a1a1a; font-weight: 700; }
+
+  /* Meta bar: published date + read time + view count (social proof) */
+  .metabar {
+    display: flex; flex-wrap: wrap; gap: 6px 16px;
+    font-family: Arial, sans-serif; font-size: 12px;
+    color: #5B6C8C; padding: 14px 0 12px; margin: 0 0 4px;
+    border-bottom: 1px solid #e8e0d0;
+  }
+  .metabar .views { color: #2f6a10; font-weight: 700; }
+  .metabar .dot { color: #c9a96e; font-weight: 700; }
+
+  /* Byline with circle avatar initials (magazine style) */
+  .byline.mag {
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 0 18px; margin: 0 0 22px;
+    border-bottom: 1px solid #e8e0d0;
+  }
+  .byline.mag .av-circle {
+    flex: 0 0 44px; height: 44px; border-radius: 50%;
+    background: #0C2E5C; color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Arial, sans-serif; font-size: 14px; font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .byline.mag .name { font-family: Arial, sans-serif; font-size: 14px; font-weight: 700; color: #1a1a1a; line-height: 1.3; margin: 0; }
+  .byline.mag .role { font-family: Arial, sans-serif; font-size: 12px; font-weight: 400; color: #5B6C8C; line-height: 1.3; margin: 0; }
+
+  /* Step pill — teal "Step 1" badge replacing gold 42px numeral */
+  .step-card {
+    background: #F2F5FC; border: 1px solid #D3DCEE; border-radius: 6px;
+    padding: 18px 22px; margin: 14px 0; display: block;
+  }
+  .step-card .pill {
+    display: inline-block; background: #0C2E5C; color: #fff;
+    font-family: Arial, sans-serif; font-size: 11px; font-weight: 800;
+    letter-spacing: 0.14em; padding: 5px 11px; border-radius: 3px;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .step-card .num { display: none; } /* hide the gold numeral, pill is enough */
+  .step-card h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; line-height: 1.3; margin: 0 0 6px; color: #1a1a1a; }
+  .step-card p { margin: 0; font-size: 15px; line-height: 1.55; color: #2B2B2B; }
+
   @media (max-width: 640px) {
     h2 + p::first-letter { font-size: 44px; }
     .pull { font-size: 18px; padding: 16px 20px; }
@@ -413,9 +486,24 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <div class="page">
 
+<!-- v4.3: Magazine top-bar (CNN/Atlantic paid-post style) -->
+<div class="top-bar">
+  <span class="magazine-name">The Midlife Letter</span>
+  <span class="advertorial-label">Advertorial</span>
+</div>
+
+<!-- v4.3: Breadcrumb (Home > Health > Weight Management) -->
+<ul class="crumb" aria-label="Breadcrumb">
+  <li><span class="icon"></span>Home</li>
+  <li><span class="sep">&gt;</span></li>
+  <li>Health</li>
+  <li><span class="sep">&gt;</span></li>
+  <li class="current">Weight Management</li>
+</ul>
+
 <div class="ad-label">ADVERTISEMENT · NOT MEDICAL ADVICE</div>
 
-<span class="hero-eyebrow">A Reader Investigation · Updated August 19, 2026</span>
+<span class="hero-eyebrow">A Reader Investigation · Updated August 20, 2026</span>
 
 <h1>I Ate Less Than My Friend. I Walked More Than Her. <span style="color:#c0392b">And I Was the One Waking Up Swollen.</span></h1>
 <p class="sub">This is the part nobody tells you when they say "just eat less and move more." I did both. For eight years. The mirror kept going the wrong direction.</p>
@@ -424,8 +512,24 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <strong style="color:#1a1a1a">If you are a woman between 40 and 65, have been bloated for years, and have already tried water pills, ACV, baking soda, keto, and at least considered the injections — this is for you.</strong> If not, you can close the tab and I will not be offended.
 </p>
 
-<div class="byline">
-  <strong>By Maria</strong> · Phoenix, AZ · with <strong>Dana Whitfield</strong>, a formulator I trust · Updated August 19, 2026 · 12 min read
+<!-- v4.3: Meta bar with social proof (date + read time + view count) -->
+<div class="metabar">
+  <span>Published August 20, 2026</span>
+  <span class="dot">·</span>
+  <span>Updated 12 minutes ago</span>
+  <span class="dot">·</span>
+  <span>Estimated 12 minute read</span>
+  <span class="dot">·</span>
+  <span class="views">👁 487,239 readers this month</span>
+</div>
+
+<!-- v4.3: Byline with circle avatar initials (magazine style) -->
+<div class="byline mag">
+  <div class="av-circle">M</div>
+  <div>
+    <p class="name">By Maria</p>
+    <p class="role">Reader-in-Residence · Phoenix, AZ · with Dana Whitfield, Formulator</p>
+  </div>
 </div>
 
 <h2 style="font-family:'Playfair Display',Georgia,serif;font-size:24px;line-height:1.3;font-weight:800;color:#1a1a1a;margin:32px 0 14px;letter-spacing:-.01em">I blamed my body for eight years. I was wrong. I was blaming the wrong thing.</h2>
@@ -552,27 +656,21 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>Dana calls it the <span class="hl">3-Ingredient Method</span>. It sounds simple. It is. But each ingredient does a specific job, in a specific order, and if you skip one, the whole thing collapses. Here it is, in plain language.</p>
 
 <div class="step-card">
-<div class="num">1</div>
-<div>
+<span class="pill">Step 1</span>
 <h4>Wake the cells — baking soda (sodium bicarbonate, food grade)</h4>
 <p>The first ingredient does the prep work. Baking soda neutralizes the acid in your gut — the acidity that has been keeping the cells in your intestinal lining quiet, like a room with the windows shut. Open the windows, and the cells start signaling again. Without this, the next two ingredients have nothing to work with. Most internet recipes stop here. That's why they "sometimes work."</p>
 </div>
-</div>
 
 <div class="step-card">
-<div class="num">2</div>
-<div>
+<span class="pill">Step 2</span>
 <h4>Protect the signal — raw apple cider vinegar (the "with the mother" kind)</h4>
 <p>The acetic acid in raw ACV temporarily blocks an enzyme called DPP-4, which is the one that chews up the hormone your body uses to signal "you are full" and "burn this, do not store it." That hormone is called GLP-1, and the problem is that DPP-4 destroys it in about two minutes. The ACV shields it long enough to get the message through. ACV alone is step 2 of 3, not the whole thing.</p>
 </div>
-</div>
 
 <div class="step-card">
-<div class="num">3</div>
-<div>
+<span class="pill">Step 3</span>
 <h4>Flip the switch — lemon extract (citrus flavonoids)</h4>
 <p>The flavonoids in citrus extract activate something called AMPK — the metabolic switch that decides whether the food you just ate gets burned for fuel or stored as fat. AMPK is the final step. But AMPK only flips when step 1 has opened the environment and step 2 has protected the signal. Skip either, and the switch won't turn. Lemon alone is a fruit, not a method.</p>
-</div>
 </div>
 
 <div class="fig" style="text-align:center">
