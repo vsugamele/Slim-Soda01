@@ -27,12 +27,7 @@
   .sub { font-size: 18px; line-height: 1.6; color: #333; margin: 0 0 22px; font-style: italic; }
   .byline { font-family: Arial, sans-serif; font-size: 12px; color: #666; text-align: left; padding: 12px 0 24px; border-bottom: 1px solid #eee; margin-bottom: 30px; }
   .byline strong { color: #1a1a1a; }
-  .pull { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; line-height: 1.4; font-style: italic; padding: 18px 24px; margin: 24px 0; border-left: 4px solid #c9a96e; background: #faf7f0; color: #1a1a1a; }
-  .pull.with-avatar { display: grid; grid-template-columns: 64px 1fr; gap: 16px; align-items: center; padding: 22px 24px; }
-  .pull.with-avatar .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid #c9a96e; grid-column: 1; align-self: start; }
-  .pull.with-avatar > :not(.avatar) { grid-column: 2; }
-  .pull.with-avatar p { margin: 0; }
-  .pull.with-avatar cite { display: block; margin-top: 6px; }
+  /* .pull is defined in v4.1 section below with full redesign (gradient bg, gold border, opening quote) */
   .pull cite { display: block; margin-top: 10px; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.15em; color: #888; font-style: normal; text-transform: uppercase; }
   .scenenote { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.15em; color: #888; text-transform: uppercase; margin: 32px 0 6px; }
   .checklist { background: #faf7f0; border: 1px solid #e8e0d0; padding: 18px 24px; margin: 20px 0; border-radius: 2px; }
@@ -62,8 +57,6 @@
   .comment.with-avatar .comment-body { min-width: 0; }
   .comment.with-avatar .comment-body p { margin: 0 0 8px; }
   .comment.with-avatar .comment-body .meta { display: block; }
-  .pull.with-avatar { display: grid; grid-template-columns: 90px 1fr; gap: 20px; align-items: center; }
-  .pull.with-avatar .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #c9a96e; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
   .step-card { background: #fff; border: 1px solid #e8e0d0; border-radius: 6px; padding: 20px 24px; margin: 16px 0; display: grid; grid-template-columns: 60px 1fr; gap: 18px; align-items: start; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
   .step-card .num { font-family: 'Playfair Display', Georgia, serif; font-size: 42px; font-weight: 700; color: #c9a96e; line-height: 1; display: flex; align-items: center; justify-content: center; height: 60px; }
   .step-card h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; line-height: 1.3; margin: 0 0 6px; color: #1a1a1a; }
@@ -180,6 +173,32 @@
   .pull cite { display: block; margin-top: 12px; font-size: 12px; font-family: Arial, sans-serif; font-style: normal; color: #888; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; }
   .pull::before { content: "\201C"; font-size: 60px; line-height: 0; vertical-align: -10px; color: #c9a96e; margin-right: 4px; font-family: 'Playfair Display', Georgia, serif; }
 
+  /* 4b) Pull with avatar (Maria 47 closing) — single source of truth, no duplicates */
+  .pull.with-avatar {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    column-gap: 20px;
+    row-gap: 0;
+    align-items: start;
+    padding: 22px 24px;
+  }
+  .pull.with-avatar .avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #c9a96e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    grid-column: 1;
+    align-self: start;
+  }
+  .pull.with-avatar .pull-body {
+    grid-column: 2;
+    min-width: 0; /* CRITICAL: prevents grid blowout, lets body shrink below intrinsic content size */
+  }
+  .pull.with-avatar .pull-quote { margin: 0; }
+  .pull.with-avatar .pull-body cite { margin-top: 12px; }
+
   /* 5) Numbered objections with icons */
   .objections p:nth-child(n+3) { position: relative; padding-left: 36px; }
   .objections p:nth-child(n+3)::before { position: absolute; left: 0; top: 2px; width: 24px; height: 24px; border-radius: 50%; background: #c9a96e; color: #fff; font-family: 'Playfair Display', Georgia, serif; font-size: 13px; font-weight: 800; line-height: 24px; text-align: center; }
@@ -219,6 +238,8 @@
   @media (max-width: 640px) {
     h2 + p::first-letter { font-size: 44px; }
     .pull { font-size: 18px; padding: 16px 20px; }
+    .pull.with-avatar { grid-template-columns: 56px 1fr; column-gap: 14px; padding: 18px 18px; }
+    .pull.with-avatar .avatar { width: 56px; height: 56px; border-width: 2px; }
   }
   @media (max-width: 640px) {
     body { padding: 0; }
@@ -981,9 +1002,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 </div>
 
 <div class="trust-seals" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:18px;margin:28px 0 8px;padding:18px;background:#faf7f0;border:1px solid #e8e0d0;border-radius:6px">
-  <img src="images/seal-fda-registered.svg" alt="FDA Registered Facility" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
-  <img src="images/seal-90day-moneyback.svg" alt="90-Day Money Back Guarantee" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
-  <img src="images/seal-verified-purchase.svg" alt="Verified Purchase" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
+  <img src="images/seal-fda-registered.svg?v=2" alt="FDA Registered Facility" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
+  <img src="images/seal-90day-moneyback.svg?v=2" alt="90-Day Money Back Guarantee" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
+  <img src="images/seal-verified-purchase.svg?v=2" alt="Verified Purchase" width="90" height="90" style="width:90px;height:90px" loading="lazy" decoding="async">
 </div>
 <p class="footnote" style="margin-top:4px">FDA-registered cGMP facility · Empty-bottle 90-day guarantee · All reviews verified at point of purchase</p>
 
@@ -1053,7 +1074,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 </div>
 
 <script>
-// Reading progress bar
+// Reading progress bar (tiny, runs after DOMContentLoaded)
 (function(){
   function updateProgress(){
     var h = document.documentElement;
@@ -1070,232 +1091,8 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 })();
 </script>
 
-<script>
-(function() {
-  var overlay = document.getElementById('ssqOverlay');
-  var card = document.getElementById('ssqCard');
-  var closeBtn = document.getElementById('ssqClose');
-  var skipBtn = document.getElementById('ssqSkip');
-  var startBtn = document.getElementById('ssqStart');
-  var stepIntro = document.getElementById('ssqStepIntro');
-  var stepQ = document.getElementById('ssqStepQ');
-  var stepLoad = document.getElementById('ssqStepLoad');
-  var stepRes = document.getElementById('ssqStepRes');
-  var prog = document.getElementById('ssqProg');
-  var kicker = document.getElementById('ssqStepKicker');
-  var qText = document.getElementById('ssqQText');
-  var optsBox = document.getElementById('ssqOpts');
-  var nextBtn = document.getElementById('ssqNext');
-  var backBtn = document.getElementById('ssqBack');
-
-  // Quiz state
-  var current = 0;
-  var answers = [];
-
-  var questions = [
-    {
-      q: "How long has the bloat been part of your day?",
-      opts: [
-        { emo: "🌱", l: "Less than 6 months", v: 0 },
-        { emo: "🌿", l: "6 months to 2 years", v: 1 },
-        { emo: "🌳", l: "2 to 5 years", v: 2 },
-        { emo: "🪵", l: "More than 5 years", v: 3 }
-      ]
-    },
-    {
-      q: "What have you already tried that did not stick?",
-      opts: [
-        { emo: "💧", l: "Water pills", v: 0 },
-        { emo: "🍎", l: "Apple cider vinegar alone", v: 1 },
-        { emo: "🥄", l: "Baking soda on its own", v: 2 },
-        { emo: "🤷", l: "Nothing yet — just starting to look", v: 3 }
-      ]
-    },
-    {
-      q: "When does the bloat usually show up?",
-      opts: [
-        { emo: "🌅", l: "By mid-morning", v: 0 },
-        { emo: "🌞", l: "After lunch", v: 1 },
-        { emo: "🌙", l: "By evening", v: 2 },
-        { emo: "⏰", l: "It does not really leave", v: 3 }
-      ]
-    },
-    {
-      q: "If this works, what is the small thing you would notice first?",
-      opts: [
-        { emo: "💍", l: "My ring fits differently", v: 0 },
-        { emo: "👖", l: "My jeans stop fighting me", v: 1 },
-        { emo: "🪞", l: "The mirror is less of a fight", v: 2 },
-        { emo: "🤷", l: "Honestly, I am just browsing", v: 3 }
-      ]
-    }
-  ];
-
-  // Open quiz on first CTA click
-  function openQuiz(e) {
-    if (e) e.preventDefault();
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    showStep('intro');
-    trackEvent('QuizOpen');
-  }
-  function closeQuiz() {
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    trackEvent('QuizClose', { step: current });
-  }
-
-  function showStep(step) {
-    stepIntro.style.display = 'none';
-    stepQ.style.display = 'none';
-    stepLoad.style.display = 'none';
-    stepRes.style.display = 'none';
-    if (step === 'intro') stepIntro.style.display = 'block';
-    if (step === 'q') { stepQ.style.display = 'block'; renderQ(); }
-    if (step === 'load') stepLoad.style.display = 'block';
-    if (step === 'res') stepRes.style.display = 'block';
-  }
-
-  function renderQ() {
-    var q = questions[current];
-    kicker.textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
-    qText.textContent = q.q;
-    prog.style.width = ((current) / questions.length * 100) + '%';
-    optsBox.innerHTML = '';
-    answers[current] = null;
-    nextBtn.disabled = true;
-    q.opts.forEach(function(o, i) {
-      var btn = document.createElement('button');
-      btn.className = 'ssq-opt';
-      btn.type = 'button';
-      btn.innerHTML = '<span class="ssq-emo">' + o.emo + '</span><span class="ssq-lbl">' + o.l + '</span>';
-      btn.addEventListener('click', function() {
-        answers[current] = i;
-        optsBox.querySelectorAll('.ssq-opt').forEach(function(x){ x.classList.remove('sel'); });
-        btn.classList.add('sel');
-        nextBtn.disabled = false;
-      });
-      optsBox.appendChild(btn);
-    });
-  }
-
-  function next() {
-    if (current < questions.length - 1) {
-      current++;
-      showStep('q');
-      trackEvent('QuizStep', { step: current });
-    } else {
-      showStep('load');
-      trackEvent('QuizComplete', { answers: answers });
-      // Simulate processing
-      var loadMessages = [
-        'Building your custom protocol...',
-        'Matching 200+ women with similar profiles...',
-        'Calculating your day-by-day timeline...',
-        'Almost done...'
-      ];
-      var ml = document.getElementById('ssqLoadTitle');
-      var i = 0;
-      var loadInterval = setInterval(function() {
-        i++;
-        if (i < loadMessages.length) ml.textContent = loadMessages[i];
-      }, 600);
-      setTimeout(function() {
-        clearInterval(loadInterval);
-        // Personalize result based on Q1 (length of bloat) — behavioral, no weight promises
-        var lenAnswer = answers[0];
-        var messages = {
-          0: { title: "Your first signal is likely a quiet morning.", est: "A small morning shift", day6: "less morning puffiness when you wake up", day11: "mid-afternoon bloat stays lighter, longer", day21: "your usual jeans feel different when you put them on" },
-          1: { title: "Here is what women with your timeline usually notice first.", est: "A small morning shift", day6: "sock marks start to fade", day11: "food noise gets quieter through the afternoon", day21: "the jeans you stopped reaching for feel possible again" },
-          2: { title: "Here is what tends to happen first for you.", est: "A small morning shift", day6: "a noticeable lightness in the face by mid-morning", day11: "the bloat that used to show up by 3pm stays away", day21: "you catch yourself in a mirror and stop looking away" },
-          3: { title: "Here is what we hear most often from women at this stage.", est: "A small morning shift", day6: "you sleep through the night without feeling swollen", day11: "you start saying yes to dinners again", day21: "you get in a photo without thinking about the angle" }
-        };
-        var m = messages[lenAnswer] || messages[1];
-        document.getElementById('ssqResTitle').textContent = m.title;
-        document.getElementById('ssqEstBig').textContent = m.est;
-        document.getElementById('ssqEstLine2').innerHTML = '<strong>Day 6:</strong> ' + m.day6 + ' · <strong>Day 11:</strong> ' + m.day11 + ' · <strong>Day 21:</strong> ' + m.day21 + '.';
-        prog.style.width = '100%';
-        showStep('res');
-        trackEvent('QuizResultShown', { profile: lenAnswer });
-      }, 2800);
-    }
-  }
-
-  function back() {
-    if (current > 0) { current--; showStep('q'); }
-    else { showStep('intro'); current = 0; }
-  }
-
-  // imptrack: unified trackCtaClick + trackInitiateCheckout (matches buy-page + PDP)
-  window.imptrack = window.imptrack || {
-    page: 'maria47-v3',
-    trackCtaClick: function(d){
-      try {
-        if (typeof fbq !== 'undefined') fbq('trackCustom', 'CtaClick', d || {});
-        var payload = {event_name: 'CtaClick', event_data: d || {}, page: this.page, ts: Date.now()};
-        if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
-      } catch(e){}
-    },
-    trackInitiateCheckout: function(d){
-      try {
-        if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
-        var payload = {event_name: 'InitiateCheckout', event_data: d || {}, page: this.page, ts: Date.now()};
-        if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
-      } catch(e){}
-    }
-  };
-
-  // Track function (custom events for quiz funnel)
-  function trackEvent(name, data) {
-    try {
-      if (typeof fbq !== 'undefined') fbq('trackCustom', name, data || {});
-      var payload = { event_name: name, event_data: data || {}, page: 'maria47-v3', ts: Date.now() };
-      // Best-effort: send to /api/track-capi.js (silent fail if not present)
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload));
-      }
-    } catch (e) {}
-  }
-
-  // Wire events
-  if (startBtn) startBtn.addEventListener('click', function() { current = 0; showStep('q'); trackEvent('QuizStart'); });
-  if (skipBtn) skipBtn.addEventListener('click', closeQuiz);
-  if (closeBtn) closeBtn.addEventListener('click', closeQuiz);
-  if (nextBtn) nextBtn.addEventListener('click', next);
-  if (backBtn) backBtn.addEventListener('click', back);
-  if (overlay) overlay.addEventListener('click', function(e) { if (e.target === overlay) closeQuiz(); });
-
-  // Open quiz when any CTA in article body is clicked (NOT in disclosure/footer)
-  document.querySelectorAll('a.cta').forEach(function(a) {
-    a.addEventListener('click', function(e) {
-      // Only intercept the in-article CTAs (not footer / disclosure)
-      if (a.closest('.disclosure')) return;
-      e.preventDefault();
-      // Track CTA click with position info
-      window.imptrack.trackCtaClick({
-        cta_id: a.id || a.className,
-        cta_label: (a.textContent || '').trim().slice(0, 60),
-        cta_position: a.getBoundingClientRect().top > 1000 ? 'below-fold' : 'above-fold',
-        cta_href: a.href
-      });
-      openQuiz();
-    });
-  });
-
-  // Track when user clicks the final "Send My 90-Day SlimSoda Kit" button (after quiz)
-  document.addEventListener('click', function(e) {
-    var t = e.target;
-    if (t && t.id === 'ssqFinal') {
-      window.imptrack.trackInitiateCheckout({
-        cta_id: 'quiz-final',
-        cta_label: (t.textContent || '').trim().slice(0, 60),
-        value: 27.49, currency: 'USD',
-        href: t.href
-      });
-    }
-  });
-})();
-</script>
+<!-- Quiz SSQ modal — deferred, loads after HTML parse. Cache between pages. -->
+<script src="/js/quiz-ssq.js" defer></script>
 
 <div class="disclosure">
 <p><strong>ADVERTISEMENT.</strong> This page is a paid advertisement produced for SlimSoda®. Individuals featured in the testimonials are compensated for their stories; results vary from person to person. Before/after photos are illustrative composites; lighting, angle, posture, and styling may differ from the originals. The story shared in this article is the personal experience of one woman and is not representative of every user.</p>
