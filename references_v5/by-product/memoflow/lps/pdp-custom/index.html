@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MemoFlow® — Official Store · 90-Day Money-Back Guarantee</title>
+<meta name="description" content="MemoFlow® — Buy 2, Get 1 Free. Ikarian mountain honey extract and natural lithium orotate delivered via Neural MicroLock™. 90-day money-back guarantee, even on empty bottles. Made in USA, FDA-registered, GMP-certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:#FAFAF7;color:#1D254B;font-family:'Poppins',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:#1E2359;text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.pdp-header{background:#1E2359;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.pdp-header .logo{color:#fff;font-family:Bitter,serif;font-size:18px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+.pdp-header .sub{color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.pdp-header .right{color:rgba(255,255,255,.85);font-size:12.5px;font-weight:500}
+.pdp-header .right b{color:#E09A22}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{padding:48px 0 36px;background:linear-gradient(180deg,#FFFFFF 0%,#F4F1EA 100%)}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.hero-img{position:relative;border-radius:2px;overflow:hidden;box-shadow:0 18px 50px rgba(30,35,89,.15)}
+.hero-img img{display:block;width:100%}
+.hero-img .stamp{position:absolute;top:18px;left:18px;background:#1E2359;color:#fff;padding:8px 14px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.hero-img .stamp b{color:#E09A22}
+.hero-kicker{margin:0 0 8px;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8895AB}
+.hero h1{font-family:Bitter,Georgia,serif;font-size:46px;font-weight:800;line-height:1.08;letter-spacing:-.5px;color:#1E2359;margin:0 0 14px}
+.hero h1 em{font-style:normal;color:#E09A22}
+.hero-tag{font-size:18px;line-height:1.5;color:#33415E;margin:0 0 22px}
+.hero-rating{display:flex;align-items:center;gap:10px;margin:0 0 18px;font-size:13.5px;color:#5D6B82}
+.hero-rating .stars{color:#E09A22;letter-spacing:2px;font-size:16px}
+.hero-trust-row{display:flex;gap:18px;flex-wrap:wrap;margin:0 0 26px;padding:14px 0;border-top:1px solid #E4E8F0;border-bottom:1px solid #E4E8F0}
+.hero-trust-row div{font-size:12.5px;font-weight:600;color:#1E2359;display:flex;align-items:center;gap:6px}
+.hero-trust-row div::before{content:'✓';color:#3D9E14;font-weight:800;font-size:14px}
+.cta-primary{display:inline-block;background:#E09A22;color:#1B2A4A;padding:18px 30px;font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;letter-spacing:.08em;text-transform:uppercase;text-align:center;border-radius:2px;transition:background .15s;text-decoration:none;width:100%;max-width:480px}
+.cta-primary:hover{background:#C9861A;text-decoration:none}
+.cta-sub{display:block;margin-top:10px;font-size:12.5px;color:#7A879B;text-align:center}
+
+/* ============================================================
+   TRUST BAR (4 seals)
+   ============================================================ */
+.trust-bar{background:#1E2359;padding:34px 0;color:#fff}
+.trust-bar h3{margin:0 0 22px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:center;justify-items:center}
+.trust-grid .seal{background:#fff;width:148px;height:148px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.trust-grid .seal img{width:90px;height:90px;display:block;margin-bottom:6px;border-radius:50%}
+.trust-grid .seal .lbl{font-size:10.5px;font-weight:700;color:#1E2359;letter-spacing:.06em;line-height:1.25;text-transform:uppercase}
+
+/* ============================================================
+   GENERIC SECTIONS
+   ============================================================ */
+section.block{padding:64px 0;border-top:1px solid #ECEEF2}
+section.block h2{font-family:Bitter,Georgia,serif;font-size:34px;font-weight:800;line-height:1.18;color:#1E2359;margin:0 0 16px;letter-spacing:-.3px}
+section.block h2 em{font-style:normal;color:#E09A22}
+section.block .lead{font-size:18px;line-height:1.6;color:#33415E;margin:0 0 24px;max-width:780px}
+section.block p{margin:0 0 16px;color:#33415E;line-height:1.7;font-size:16px}
+section.block p strong{color:#1E2359;font-weight:700}
+
+/* Problem */
+.problem{background:#F4F1EA}
+.problem h2{color:#1E2359}
+
+/* Mechanism */
+.mech-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:18px}
+.mech-card{background:#fff;border:1px solid #E4E8F0;border-radius:2px;padding:24px 22px;position:relative}
+.mech-card .num{position:absolute;top:-14px;left:18px;width:36px;height:36px;background:#1E2359;color:#fff;font-family:Bitter,serif;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:2px}
+.mech-card h4{font-family:Bitter,serif;font-size:18px;font-weight:800;color:#1E2359;margin:8px 0 8px;line-height:1.25}
+.mech-card p{font-size:14.5px;color:#5D6B82;line-height:1.55;margin:0}
+
+/* ============================================================
+   OFFER BOX
+   ============================================================ */
+.offer{background:linear-gradient(180deg,#FFFFFF 0%,#F4F1EA 100%)}
+.offer-box{max-width:760px;margin:0 auto;background:#fff;border:2px solid #1E2359;border-radius:2px;padding:36px 32px;box-shadow:0 18px 50px rgba(30,35,89,.12);position:relative}
+.offer-box .badge{position:absolute;top:-16px;right:24px;background:#D0021B;color:#fff;padding:8px 18px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;border-radius:2px}
+.offer-box h3{font-family:Bitter,serif;font-size:28px;font-weight:800;color:#1E2359;margin:0 0 6px;line-height:1.2}
+.offer-box .sub{font-size:14px;color:#5D6B82;margin:0 0 22px}
+.offer-price{display:flex;align-items:baseline;gap:14px;margin:0 0 6px;flex-wrap:wrap}
+.offer-price .strike{font-size:22px;color:#9AA8BB;text-decoration:line-through;font-weight:600;margin:0}
+.offer-price .price{font-family:Bitter,serif;font-size:54px;font-weight:800;color:#1E2359;margin:0;line-height:1}
+.offer-price .price small{font-size:18px;font-weight:600;color:#5D6B82;margin-left:4px}
+.offer-save{display:inline-block;background:#3D9E14;color:#fff;padding:6px 12px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;border-radius:2px;margin:0 0 22px}
+.offer-box ul{list-style:none;padding:0;margin:0 0 22px}
+.offer-box ul li{padding:8px 0 8px 26px;position:relative;font-size:15px;color:#33415E;line-height:1.5}
+.offer-box ul li::before{content:'✓';position:absolute;left:0;top:8px;color:#3D9E14;font-weight:800;font-size:18px;line-height:1}
+.offer-box ul li b{color:#1E2359;font-weight:700}
+.offer-cta{text-align:center;margin:8px 0 14px}
+.offer-payment{display:flex;justify-content:center;align-items:center;gap:14px;padding-top:18px;border-top:1px solid #E4E8F0;flex-wrap:wrap}
+.offer-payment img{height:30px;width:auto;display:inline-block}
+.offer-payment .lbl{font-size:11.5px;font-weight:700;color:#7A879B;letter-spacing:.1em;text-transform:uppercase}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials{background:#fff}
+.t-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+.t-card{background:#FAFAF7;border:1px solid #E4E8F0;border-radius:2px;padding:22px 20px;display:flex;flex-direction:column}
+.t-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.t-avatar{width:54px;height:54px;border-radius:50%;object-fit:cover;background:#1E2359;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Bitter,serif;font-weight:800;font-size:20px;flex-shrink:0}
+.t-avatar img{width:54px;height:54px;border-radius:50%;object-fit:cover;display:block}
+.t-meta{font-size:13px;color:#5D6B82;line-height:1.3}
+.t-meta .nm{font-family:Bitter,serif;font-weight:700;color:#1E2359;font-size:15px;display:block}
+.t-stars{color:#E09A22;letter-spacing:1.5px;font-size:13px;margin:0 0 10px}
+.t-quote{font-size:14px;line-height:1.55;color:#33415E;margin:0}
+.t-quote b{color:#1E2359;font-weight:700}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{background:#F4F1EA}
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item{background:#fff;border:1px solid #E4E8F0;border-radius:2px;padding:22px 26px}
+.faq-item h4{font-family:Bitter,serif;font-size:18px;font-weight:800;color:#1E2359;margin:0 0 8px;line-height:1.3}
+.faq-item p{font-size:15px;color:#33415E;margin:0;line-height:1.6}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta{padding:64px 0;background:linear-gradient(135deg,#1E2359 0%,#3D5A9E 100%);color:#fff;text-align:center}
+.final-cta h2{font-family:Bitter,serif;font-size:36px;font-weight:800;line-height:1.18;margin:0 0 14px;color:#fff;letter-spacing:-.3px}
+.final-cta p{font-size:16.5px;color:rgba(255,255,255,.85);margin:0 0 28px;max-width:680px;margin-left:auto;margin-right:auto}
+.final-cta .cta-primary{background:#E09A22;color:#1B2A4A;display:inline-block;width:auto;max-width:540px}
+.final-cta .cta-primary:hover{background:#C9861A}
+.final-cta .cta-sub{color:rgba(255,255,255,.6)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.pdp-footer{background:#0F1432;color:rgba(255,255,255,.6);padding:36px 20px 28px;font-size:12.5px;line-height:1.6}
+.pdp-footer .ftr-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:start}
+.pdp-footer .disclaimer{font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;font-style:italic;margin:0 0 16px}
+.pdp-footer .meta{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.5}
+.pdp-footer .meta b{color:rgba(255,255,255,.7);font-weight:600}
+.pdp-footer .links{font-size:12px;display:flex;flex-direction:column;gap:6px}
+.pdp-footer .links a{color:rgba(255,255,255,.6);text-decoration:none}
+.pdp-footer .links a:hover{color:#fff;text-decoration:underline}
+.pdp-footer .copy{grid-column:1/-1;padding-top:20px;margin-top:20px;border-top:1px solid rgba(255,255,255,.08);text-align:center;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.05em}
+
+/* ============================================================
+   ADVERTISEMENT subtle banner
+   ============================================================ */
+.advert-banner{background:#F0F0EC;border-bottom:1px solid #DDD8CC;padding:8px 20px;text-align:left;font-size:10.5px;color:#7A879B;letter-spacing:.18em;text-transform:uppercase;font-weight:600}
+.advert-banner b{color:#5D6B82;font-weight:700}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:24px}
+  .hero h1{font-size:34px}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .trust-grid .seal{width:130px;height:130px}
+  .mech-grid{grid-template-columns:1fr}
+  .t-grid{grid-template-columns:repeat(2,1fr)}
+  .pdp-footer .ftr-wrap{grid-template-columns:1fr}
+  section.block h2{font-size:26px}
+  .final-cta h2{font-size:26px}
+}
+@media(max-width:560px){
+  .hero{padding:32px 0 24px}
+  .hero h1{font-size:28px}
+  .offer-box{padding:26px 20px}
+  .offer-price .price{font-size:42px}
+  .t-grid{grid-template-columns:1fr}
+  .cta-primary{padding:16px 18px;font-size:14.5px;letter-spacing:.04em}
+}
+</style>
+</head>
+<body>
+
+<div class="advert-banner"><b>Advertisement</b> &nbsp; MemoFlow is a dietary supplement. Statements not evaluated by the FDA.</div>
+
+<header class="pdp-header">
+  <div><span class="logo">MEMO HEALTH</span> &nbsp; <span class="sub">Official Store</span></div>
+  <div class="right">Order today &nbsp;·&nbsp; <b>80% OFF · B2G1 FREE</b></div>
+</header>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+<div class="wrap">
+<div class="hero-grid">
+  <div class="hero-img">
+    <span class="stamp">Today's offer · <b>Buy 2 Get 1</b></span>
+    <img src="../../imagens/producao/pdp/hero/hero-pdp.jpg" alt="MemoFlow dropper bottle on kitchen counter with honey and ginger">
+  </div>
+  <div>
+    <p class="hero-kicker">MemoFlow® · 10-Second Morning Ritual</p>
+    <h1>The bottle that <em>may help</em> your memory<br>show up again.</h1>
+    <p class="hero-tag">Two drops under the tongue, each morning. <strong>Ikarian mountain honey extract</strong> + <strong>natural lithium orotate</strong>, delivered through <strong>Neural MicroLock™</strong>. Made in the USA. <strong>90-day money-back guarantee</strong>, even on empty bottles.</p>
+    <div class="hero-rating">
+      <span class="stars">★★★★★</span>
+      <span><b>4.8 / 5</b> from 12,000+ verified customers</span>
+    </div>
+    <div class="hero-trust-row">
+      <div>FDA-registered facility</div>
+      <div>GMP-certified</div>
+      <div>Made in USA</div>
+    </div>
+    <a class="cta-primary" href="#offer">→ CLAIM MY 70% OFF BUNDLE →</a>
+    <span class="cta-sub">3 bottles · 90-day supply · free shipping</span>
+  </div>
+</div>
+</div>
+</section>
+
+<!-- ============================================================
+     TRUST BAR (4 seals)
+     ============================================================ -->
+<section class="trust-bar">
+<div class="wrap">
+  <h3>Why 12,000+ readers trust MemoFlow</h3>
+  <div class="trust-grid">
+    <div class="seal">
+      <img src="../../imagens/producao/pdp/trust-seals/trust-90day.jpg" alt="90-Day Money-Back Guarantee">
+      <div class="lbl">90-Day<br>Money-Back</div>
+    </div>
+    <div class="seal">
+      <img src="../../imagens/producao/pdp/trust-seals/trust-fda.jpg" alt="FDA Registered Facility">
+      <div class="lbl">FDA-Registered<br>Facility</div>
+    </div>
+    <div class="seal">
+      <img src="../../imagens/producao/pdp/trust-seals/trust-gmp.jpg" alt="GMP Certified">
+      <div class="lbl">GMP<br>Certified</div>
+    </div>
+    <div class="seal">
+      <img src="../../imagens/producao/pdp/trust-seals/trust-usa.jpg" alt="Made in USA">
+      <div class="lbl">Made in<br>USA</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================
+     PROBLEM
+     ============================================================ -->
+<section class="block problem">
+<div class="wrap">
+  <h2>The memory problem <em>nobody</em> wants to talk about.</h2>
+  <p class="lead">It is not Alzheimer's. It is not a diagnosis. It is the slow drift of a name that used to be on the tip of your tongue, a word that disappears mid-sentence, a moment of standing in the kitchen with no idea why you walked in.</p>
+  <p>For most of the people reading this, the changes started small. A pair of glasses that always seemed to be in the wrong place. A birthday that was remembered on the wrong day. A story that was told the same way twice in the same conversation.</p>
+  <p>For years, the only conversation available was the one between <strong>you</strong> and <strong>your doctor</strong> — and the doctor only had one tool: <strong>a medication that manages the decline</strong> but does not address the cause.</p>
+  <p>That is the gap MemoFlow was designed to fill. Not as a replacement for medical care. <strong>As the missing piece.</strong></p>
+</div>
+</section>
+
+<!-- ============================================================
+     MECHANISM
+     ============================================================ -->
+<section class="block mechanism">
+<div class="wrap">
+  <h2>Why MemoFlow works where other approaches <em>don't.</em></h2>
+  <p class="lead">Three things had to be true at the same time for the formula to work the way the research suggested. Most products on the shelf get one of these right. We got all three.</p>
+  <div class="mech-grid">
+    <div class="mech-card">
+      <div class="num">1</div>
+      <h4>Ikarian mountain honey extract</h4>
+      <p>Wild honey from the Ikarian mountain range carries naturally high levels of anthocyanins — compounds studied for their role in helping the body clear heavy metals like <strong>cadmium</strong> from neural tissue.</p>
+    </div>
+    <div class="mech-card">
+      <div class="num">2</div>
+      <h4>Natural lithium orotate</h4>
+      <p>A trace mineral studied for its neuroprotective role. In the right micro-dose, it helps protect the insulin receptors in the hippocampus — the part of the brain tied to memory and recall.</p>
+    </div>
+    <div class="mech-card">
+      <div class="num">3</div>
+      <h4>Neural MicroLock™ delivery</h4>
+      <p>Most supplements get digested before they get to work. Our sublingual drop format holds the active ingredients under the tongue for ten seconds. The body absorbs them directly, in the ratio the research was built around.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================
+     OFFER
+     ============================================================ -->
+<section class="block offer" id="offer">
+<div class="wrap">
+  <h2 style="text-align:center">Today's offer: <em>Buy 2, Get 1 Free.</em></h2>
+  <p class="lead" style="text-align:center;margin-left:auto;margin-right:auto">The 3-bottle protocol is the one most readers in the MemoFlow community start with. It covers the 90-day window the research was built around.</p>
+  <div class="offer-box">
+    <span class="badge">B2G1 · 70% OFF</span>
+    <h3>MemoFlow® — 3 Bottle Protocol</h3>
+    <p class="sub">Two drops under the tongue, each morning. 90-day supply.</p>
+    <div class="offer-price">
+      <p class="strike">$297</p>
+      <p class="price">$59<small>total</small></p>
+    </div>
+    <span class="offer-save">Save $238 · 70% OFF</span>
+    <ul>
+      <li><b>3 bottles</b> of MemoFlow® (90-day supply)</li>
+      <li><b>Neural MicroLock™</b> sublingual dropper delivery</li>
+      <li><b>90-Day Money-Back Guarantee</b> — even on empty bottles</li>
+      <li><b>FREE same-day shipping</b> from the USA</li>
+      <li>Batch-tested · FDA-registered · GMP-certified facility</li>
+    </ul>
+    <div class="offer-cta">
+      <a class="cta-primary" href="https://memopryl.com/cc2/pay/checkout.php?package=3bottles&campaignkey=pg-cyb">→ ADD TO CART — 70% OFF →</a>
+      <span class="cta-sub">One-time payment · No subscription · No auto-bill</span>
+    </div>
+    <div class="offer-payment">
+      <span class="lbl">Secure checkout</span>
+      <img src="../pdp/images/visa.png" alt="Visa">
+      <img src="../pdp/images/mastercard.png" alt="Mastercard">
+      <span class="lbl">256-bit SSL</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS (8)
+     ============================================================ -->
+<section class="block testimonials">
+<div class="wrap">
+  <h2>Real customers. <em>Real changes.</em></h2>
+  <p class="lead">Eight readers who shared what the 90-day protocol looked like for them. Names changed for privacy. Photos used with permission.</p>
+  <div class="t-grid">
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/arthur.jpg" alt="Arthur M."></div><div class="t-meta"><span class="nm">Arthur M.</span>Phoenix, AZ · 71</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"I was on Aricept for three years. The neurologist said <b>'keep doing what you are doing.'</b> MemoFlow is the only thing I added."</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/carol.jpg" alt="Carol B."></div><div class="t-meta"><span class="nm">Carol B.</span>Tampa, FL · 68</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"My granddaughter asked me to play a memory game. I won. <b>I had not won in four years.</b>"</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/eleanor.jpg" alt="Eleanor P."></div><div class="t-meta"><span class="nm">Eleanor P.</span>Boise, ID · 73</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"I keep my MemoFlow next to my morning coffee. <b>Two drops, ten seconds.</b> That is the whole ritual."</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/frank.jpg" alt="Frank D."></div><div class="t-meta"><span class="nm">Frank D.</span>Pittsburgh, PA · 76</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"My wife said she noticed before I did. The other day I remembered our anniversary date on the first try. <b>She cried.</b>"</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/joan.jpg" alt="Joan M."></div><div class="t-meta"><span class="nm">Joan M.</span>Sacramento, CA · 67</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"I was skeptical about the honey and lithium story. Then I read the cadmium piece. <b>I tried it for 60 days. I am on my second bottle now.</b>"</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/linda.jpg" alt="Linda R."></div><div class="t-meta"><span class="nm">Linda R.</span>Nashville, TN · 65</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"I bought 3 bottles because of the 90-day guarantee. <b>If it did not work, I would send them back. I am not sending them back.</b>"</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/ruth.jpg" alt="Ruth S."></div><div class="t-meta"><span class="nm">Ruth S.</span>Denver, CO · 74</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"I told my doctor I was trying a natural protocol. He said, <b>'Keep doing what works.'</b> That was all I needed to hear."</p>
+    </div>
+    <div class="t-card">
+      <div class="t-head"><div class="t-avatar"><img src="../../imagens/pdp-people/walter.jpg" alt="Walter H."></div><div class="t-meta"><span class="nm">Walter H.</span>Atlanta, GA · 70</div></div>
+      <div class="t-stars">★★★★★</div>
+      <p class="t-quote">"My son ordered this for me. I rolled my eyes. <b>Then I read the ingredient list. I changed my mind.</b>"</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="block faq">
+<div class="wrap">
+  <h2 style="text-align:center">Questions answered <em>honestly.</em></h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <h4>How fast will I notice something?</h4>
+      <p>Most readers report small changes in 14–21 days — a name remembered, a word that no longer disappears mid-sentence. The bigger shifts tend to show up around the 60–90 day mark, which is why the 3-bottle protocol was designed to cover that window.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What if it does not work for me?</h4>
+      <p>Send the bottles back within 90 days for a full refund. We accept returns on opened bottles and even empty bottles. We pay the return shipping. No restocking fee. No questions asked.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Is it safe to take with my medication?</h4>
+      <p>MemoFlow is a dietary supplement, not a medication. It is designed to complement — not replace — anything your doctor has prescribed. We always recommend telling your doctor before starting any new supplement, especially if you take medication or have a medical condition.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Where is it made?</h4>
+      <p>MemoFlow is made in an FDA-registered, GMP-certified facility in the United States. Every batch is third-party tested for identity, potency, and purity. It is not available on Amazon or eBay — that is intentional, to protect you from counterfeits.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+     ============================================================ -->
+<section class="final-cta">
+<div class="wrap">
+  <h2>If this is the page you have been<br>looking for, the next step is small.</h2>
+  <p>Two drops under the tongue. Each morning. 90 days. If the protocol does not work for you, we send your money back. The only risk is the one you have already been living with.</p>
+  <a class="cta-primary" href="https://memopryl.com/cc2/pay/checkout.php?package=3bottles&campaignkey=pg-cyb">→ YES — SEND ME MY MEMOFLOW 3-BOTTLE BUNDLE →</a>
+  <span class="cta-sub">70% off today · free shipping · 90-day money-back guarantee</span>
+</div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="pdp-footer">
+<div class="ftr-wrap wrap">
+  <div>
+    <p class="disclaimer">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. MemoFlow is a dietary supplement. Individual results may vary. The testimonials on this page reflect the personal experience of individual customers and are not a guarantee of future results. Always consult your doctor before starting any new supplement, especially if you have a medical condition or take medication.</p>
+    <p class="meta"><b>Markus Research Inc.</b> · 1317 Edgewater Dr, Suite 8730, Orlando FL 32804, USA<br>
+    Customer support: <b>support@memopryl.com</b> · Hours: Mon-Fri 9am-6pm EST<br>
+    MemoFlow® is a registered trademark of Markus Research Inc. Neural MicroLock™ is a trademark of Markus Research Inc.</p>
+  </div>
+  <div class="links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms of Service</a>
+    <a href="#">Refund &amp; Return Policy</a>
+    <a href="#">Shipping Policy</a>
+    <a href="#">Contact Us</a>
+    <a href="#">FDA Disclaimer</a>
+  </div>
+  <div class="copy">© 2026 Markus Research Inc. · All rights reserved. · Not available on Amazon or eBay.</div>
+</div>
+</footer>
+
+</body>
+</html>
