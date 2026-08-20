@@ -6,6 +6,70 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <meta content="telephone=no" name="format-detection"/>
 <title>SlimSoda® — Lose Weight, Even If You Cheat</title>
+
+<!-- Microsoft Clarity (unified project y5bohcogcz) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y5bohcogcz");
+</script>
+<!-- End Microsoft Clarity -->
+
+<!-- Meta Pixel Code (SlimSoda) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2211508706308536');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_name: 'SlimSoda PDP', content_category: 'health_supplement'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- imptrack: unified click + checkout tracking (matches maria47-v3 + buy-page) -->
+<script>
+window.imptrack = window.imptrack || {
+  page: 'slimsoda-pdp',
+  trackCtaClick: function(d){
+    try {
+      if (typeof fbq !== 'undefined') fbq('track', 'AddToCart', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
+      var payload = {event_name: 'CtaClick', event_data: d || {}, page: this.page, ts: Date.now()};
+      if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
+    } catch(e){}
+  },
+  trackInitiateCheckout: function(d){
+    try {
+      if (typeof fbq !== 'undefined') fbq('track', 'InitiateCheckout', {value: d.value || 27.49, currency: 'USD', content_ids: ['slimsoda-3bottles']});
+      var payload = {event_name: 'InitiateCheckout', event_data: d || {}, page: this.page, ts: Date.now()};
+      if (navigator.sendBeacon) { navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload)); }
+    } catch(e){}
+  }
+};
+// Auto-wire all checkout buttons (v3btn class = buy buttons; .checkout-link = any direct checkout)
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a.v3btn, a.checkout-link').forEach(function(a){
+    a.addEventListener('click', function(){
+      window.imptrack.trackInitiateCheckout({
+        cta_id: a.id || a.className,
+        cta_label: (a.textContent || '').trim().slice(0, 60),
+        cta_position: a.getBoundingClientRect().top > 1000 ? 'below-fold' : 'above-fold',
+        value: 27.49, currency: 'USD',
+        href: a.href
+      });
+    });
+  });
+});
+</script>
 <link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/common.css" rel="stylesheet" type="text/css"/>
 <link href="assets/css/slick.css" rel="stylesheet" type="text/css"/>

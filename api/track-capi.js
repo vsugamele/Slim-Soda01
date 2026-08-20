@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   if (req.method === "OPTIONS") return res.status(200).end();
 
   const accessToken = process.env.META_ACCESS_TOKEN;
-  const pixelId = req.query.pixel_id || req.body?.pixel_id || process.env.META_PIXEL_ID || "1619587959397761";
+  const pixelId = req.query.pixel_id || req.body?.pixel_id || process.env.META_PIXEL_ID || "2211508706308536";
   const apiVersion = "v19.0";
 
   // ---- HEALTH CHECK (GET) ----
