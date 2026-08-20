@@ -104,6 +104,91 @@
     .step-card { grid-template-columns: 48px 1fr; }
     .step-card .num { font-size: 34px; height: 48px; }
   }
+
+  /* === FASE 1: AD-LABEL · HERO-EYEBROW · MEDIA BADGES === */
+  .ad-label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.25em; color: #c0392b; text-transform: uppercase; text-align: center; padding: 7px 14px; background: #fdf3f3; border: 1px dashed #c0392b; border-radius: 2px; margin: 0 auto 18px; max-width: 220px; font-weight: 700; }
+  .hero-eyebrow { display: inline-block; background: #fdf3f3; color: #c0392b; padding: 5px 12px; border-radius: 99px; border: 1px solid #c0392b; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; margin: 0 0 10px; }
+  .media-badges { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px; margin: 26px 0; padding: 20px; background: #faf7f0; border: 1px solid #e8e0d0; border-radius: 4px; }
+  .media-badges .label { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.18em; color: #888; text-transform: uppercase; font-weight: 700; margin-right: 6px; }
+  .media-badges img { height: 36px; opacity: 0.78; transition: opacity 0.2s; }
+  .media-badges img:hover { opacity: 1; }
+  .fig { margin: 26px 0 30px; }
+  .fig img { width: 100%; height: auto; display: block; border: 1px solid #e8e0d0; border-radius: 4px; background: #faf7f0; }
+  .figcaption { font-family: Arial, sans-serif; font-size: 11px; color: #888; line-height: 1.45; margin-top: 8px; text-align: center; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; background: #faf7f0; padding: 18px; border-radius: 2px; }
+  .compare div { padding: 10px; font-size: 14px; }
+  .compare strong { display: block; color: #c9a96e; font-family: 'Playfair Display', Georgia, serif; font-size: 20px; margin-bottom: 4px; }
+  .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; text-align: center; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.15em; color: #666; }
+  .ba-box { background: #faf7f0; padding: 30px 12px; border: 1px solid #e8e0d0; border-radius: 2px; }
+  .ba-box .label { font-weight: 700; color: #1a1a1a; margin-bottom: 8px; }
+  .callout-warn { background: #fdf3f3; border: 1px solid #c0392b; border-left: 5px solid #c0392b; padding: 18px 22px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+  .callout-warn p { margin: 0; font-size: 16px; line-height: 1.6; color: #7a2018; }
+  .callout-warn strong { color: #7a2018; }
+  .callout-win { background: #e6f5d6; border: 1px solid #479C1A; border-left: 5px solid #479C1A; padding: 18px 22px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+  .callout-win p { margin: 0; font-size: 16px; line-height: 1.6; color: #1a3a08; }
+  .callout-win strong { color: #2f6a10; }
+  .footnote { font-family: Arial, sans-serif; font-size: 11px; color: #999; text-align: center; margin: 16px 0; }
+  .limiter { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.1em; color: #c0392b; text-transform: uppercase; background: #fdf3f3; padding: 6px 12px; display: inline-block; margin: 8px 0; border-radius: 2px; font-weight: 700; }
+
+  /* === FASE 3: QUIZ OVERLAY (SSQ SYSTEM) === */
+  :root { --cta: #479C1A; --cta-d: #3B8215; --cta-sh: rgba(71,156,26,0.35); --green: #479C1A; }
+  .cta { background: var(--cta)!important; color: #fff!important; box-shadow: 0 6px 22px var(--cta-sh)!important; }
+  .cta:hover { background: var(--cta-d)!important; box-shadow: 0 8px 26px var(--cta-sh)!important; }
+  .cta::after { content: ""!important; display: inline-block!important; width: 18px!important; height: 18px!important; margin-left: 10px!important; background: url('images/cta-arrow.svg') no-repeat center/contain!important; vertical-align: middle!important; transform: translateY(-1px)!important; }
+  #ssqOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 99999; display: none; align-items: center; justify-content: center; padding: 16px; }
+  #ssqOverlay.open { display: flex; }
+  .ssq-card { position: relative; width: 100%; max-width: 480px; background: #fff; border-radius: 14px; padding: 28px 24px 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); max-height: 90vh; overflow-y: auto; }
+  .ssq-close { position: absolute; top: 8px; right: 12px; background: none; border: 0; font-size: 28px; line-height: 1; color: #888; cursor: pointer; padding: 4px 8px; }
+  .ssq-close:hover { color: #222; }
+  .ssq-progress { height: 6px; background: #eee; border-radius: 99px; overflow: hidden; margin-bottom: 18px; }
+  .ssq-progress i { display: block; height: 100%; background: var(--green); width: 0; transition: width 0.25s ease; }
+  .ssq-kicker { font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.2em; color: #888; text-transform: uppercase; margin: 0 0 6px; }
+  .ssq-q { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; line-height: 1.3; margin: 0 0 12px; color: #111; }
+  .ssq-hint { font-size: 13px; color: #666; margin: 0 0 14px; font-style: italic; }
+  .ssq-opts { display: grid; gap: 8px; margin-bottom: 14px; }
+  .ssq-opt { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: #fafafa; border: 2px solid #e8e8e8; border-radius: 8px; padding: 12px 14px; cursor: pointer; font-size: 15px; font-family: inherit; color: #222; transition: all 0.15s ease; }
+  .ssq-opt:hover { border-color: var(--green); background: #f0fae8; }
+  .ssq-opt.sel { border-color: var(--green); background: #e6f5d6; font-weight: 700; }
+  .ssq-emo { font-size: 22px; line-height: 1; }
+  .ssq-lbl { flex: 1; }
+  .ssq-continue, .ssq-back { width: 100%; padding: 14px; border: 0; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; font-family: inherit; margin-top: 4px; }
+  .ssq-continue { background: var(--green); color: #fff; transition: background 0.15s; }
+  .ssq-continue:hover:not(:disabled) { background: var(--cta-d); }
+  .ssq-continue:disabled { background: #ccc; cursor: not-allowed; }
+  .ssq-back { background: transparent; color: #666; border: 1px solid #ddd; margin-top: 6px; }
+  .ssq-back:hover { background: #f5f5f5; }
+  .ssq-loader { text-align: center; padding: 30px 10px; }
+  .ssq-spin { width: 48px; height: 48px; border: 4px solid #e8e8e8; border-top-color: var(--green); border-radius: 50%; margin: 0 auto 18px; animation: ssq-spin 0.9s linear infinite; }
+  @keyframes ssq-spin { to { transform: rotate(360deg); } }
+  .ssq-loadtitle { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; margin: 0 0 6px; color: #111; }
+  .ssq-wait { font-size: 13px; color: #888; margin: 0; }
+  .ssq-res { text-align: center; }
+  .ssq-badge { display: inline-block; background: #e6f5d6; color: #2f6a10; font-size: 12px; letter-spacing: 0.05em; font-weight: 700; padding: 6px 14px; border-radius: 99px; margin-bottom: 14px; }
+  .ssq-restitle { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; line-height: 1.25; margin: 0 0 16px; color: #111; }
+  .ssq-est { background: #faf7f0; border: 1px solid #e8e0d0; border-radius: 10px; padding: 16px 18px; margin-bottom: 16px; text-align: left; }
+  .ssq-est h4 { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em; color: #888; margin: 0 0 8px; text-transform: uppercase; }
+  .ssq-est p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: #333; }
+  .ssq-est p.big { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: var(--green); font-weight: 700; margin-bottom: 10px; }
+  .ssq-est p:last-child { margin-bottom: 0; }
+  .ssq-prod { margin: 14px auto; max-width: 240px; }
+  .ssq-prod img { width: 100%; height: auto; display: block; }
+  .ssq-scarce { margin: 14px 0 8px; }
+  .ssq-scarce .bar { height: 8px; background: #eceae5; border-radius: 99px; overflow: hidden; }
+  .ssq-scarce .bar i { display: block; width: 82%; height: 100%; background: var(--green); border-radius: 99px; }
+  .ssq-scarce span { display: block; font-size: 12px; color: #2f6a10; font-weight: 700; margin-top: 6px; text-align: center; }
+  .ssq-ship { font-size: 13px; color: #666; margin: 8px 0 16px; }
+  .ssq-ship b { color: #111; }
+  .ssq-cta { display: flex; align-items: center; justify-content: center; width: 100%; background: var(--green); color: #fff!important; font-size: 17px; font-weight: 800; padding: 16px 24px; border-radius: 8px; text-decoration: none; letter-spacing: 0.3px; box-shadow: 0 6px 22px var(--cta-sh); transition: background 0.15s, box-shadow 0.15s; }
+  .ssq-cta:hover { background: var(--cta-d); box-shadow: 0 8px 26px var(--cta-sh); }
+  .ssq-cta::after { content: "→"!important; margin-left: 8px!important; background: none!important; }
+
+  @media (max-width: 640px) {
+    .compare, .before-after, .path-grid { grid-template-columns: 1fr; }
+    .media-badges { gap: 8px; padding: 14px; }
+    .media-badges img { height: 30px; }
+    .ssq-q { font-size: 19px; }
+    .ssq-card { padding: 22px 18px 18px; }
+  }
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -147,7 +232,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <div class="page">
 
-<div class="eyebrow">ADVERTORIAL · NOT MEDICAL ADVICE</div>
+<div class="ad-label">ADVERTISEMENT · NOT MEDICAL ADVICE</div>
+
+<span class="hero-eyebrow">Investigative Report · Updated August 19, 2026</span>
 
 <h1>The 3-Ingredient Morning Method That the Internet Is Copying <span class="hl">Wrong</span></h1>
 <p class="sub">A former formulator explains why the order matters more than the ingredients. And what 89% of women reported in 14 days.</p>
@@ -156,7 +243,19 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   <strong>By the SlimSoda Editorial Team</strong> · Updated August 19, 2026 · 12 min read
 </div>
 
-<img class="product-hero" src="images/product-hero.jpg" alt="The 3-Ingredient Method: baking soda, apple cider vinegar, and lemon" loading="eager">
+<div class="fig">
+  <img src="images/hero-lifestyle.jpg" alt="Maria, 47, preparing the 3-ingredient method at her kitchen counter" loading="eager">
+  <p class="figcaption">Maria, 47, photographed at her kitchen in Phoenix, AZ, the morning she added the second ingredient to the recipe Dana Whitfield had shown her. Eight years of trying. One order. Thirty seconds.</p>
+</div>
+
+<div class="media-badges">
+  <span class="label">As featured in:</span>
+  <img src="images/badge-1.svg" alt="Health Daily Journal" loading="lazy">
+  <img src="images/badge-2.svg" alt="Wellness Today" loading="lazy">
+  <img src="images/badge-3.svg" alt="The Wellness Report" loading="lazy">
+  <img src="images/badge-4.svg" alt="Good Morning Health" loading="lazy">
+  <img src="images/badge-5.svg" alt="NBC Health Watch" loading="lazy">
+</div>
 
 <p>For eight years, I tried everything.</p>
 
@@ -203,7 +302,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>What I didn't know: baking soda was doing the <em>first</em> step. But there was a <em>second</em> step. And a <em>third</em>. And the internet was showing me only the first.</p>
 
-<p class="alert">
+<p class="alert callout-warn">
 <h3>⚠️ The Real Reason Nothing Worked</h3>
 <p>I wasn't failing because my body was broken. I was failing because I was missing the order. The same ingredient. The same dose. The same time of day. But missing step 2 and step 3. The internet shows you the ingredients. Almost nobody shows you the sequence. <strong>And the sequence is where the bloat actually lives.</strong></p>
 </p>
@@ -252,6 +351,10 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>"Because the order doesn't fit on a TikTok. It doesn't fit in a 30-second ad. The order is <span class="hl">boring</span>. But the boring part is what makes it work."</p>
 
 <p>I tested her method for 21 days. Here's what happened.</p>
+
+<div class="callout-win">
+<p><strong>Quick safety note:</strong> SlimSoda is not for everyone. If you take medication for blood pressure or diabetes, or if you are pregnant or nursing, talk to your doctor first. Most women see no side effects. The 3 ingredients are well-studied. But the order is what does the work.</p>
+</div>
 
 <p class="scenenote">THE PROOF</p>
 
@@ -344,6 +447,22 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p><strong>Day 11.</strong> I bent over to tie my shoes. No fold. No bunching. I stood back up and just stood there for a second. <span class="hl">That's the moment I cried.</span></p>
 
 <p><strong>Day 21.</strong> I didn't try on a dress. I went to a store. I tried on jeans. The size I hadn't worn in four years. They buttoned. I stood in the fitting room for five minutes. I didn't call anyone. I just stood there. <span class="hl">23 pounds lighter.</span></p>
+
+<div class="fig">
+  <img src="images/before-after.jpg" alt="Before and after 21 days on the 3-Ingredient Method" loading="lazy">
+  <p class="figcaption">Maria, Day 1 vs Day 21. The same jeans. The same woman. The order made the difference.</p>
+</div>
+
+<div class="compare">
+  <div>
+    <strong>Day 1</strong>
+    Bloat by 3pm. Sock marks every night. Jeans from 4 years ago in the back of the closet. The "I'll start Monday" loop. Water pills doubled. ACV alone. Baking soda alone. Nothing.
+  </div>
+  <div>
+    <strong>Day 21</strong>
+    No sock marks. Bloat gone by morning. Jeans buttoned. The 3-Ingredient Method, in the right order, for 30 seconds every morning. <em>23 pounds lighter.</em>
+  </div>
+</div>
 
 <p>That was a year ago. I still do the method every morning. It takes 30 seconds. It costs less than my morning coffee. And it works because of the order.</p>
 
@@ -504,6 +623,255 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 </div>
 
 </div>
+
+<!-- === QUIZ OVERLAY (SSQ SYSTEM) — FASE 3 === -->
+<div id="ssqOverlay" role="dialog" aria-modal="true" aria-labelledby="ssqTitle">
+  <div class="ssq-card" id="ssqCard">
+    <button class="ssq-close" id="ssqClose" aria-label="Close quiz">×</button>
+
+    <!-- Step 0: Intro -->
+    <div id="ssqStepIntro">
+      <p class="ssq-kicker">Free 60-Second Assessment</p>
+      <h2 class="ssq-q" id="ssqTitle">Is the 3-Ingredient Method right for you?</h2>
+      <p class="ssq-hint">Answer 4 quick questions. We'll build a custom protocol for your body — based on what you've already tried, what you eat, and how long the bloat has been there.</p>
+      <div class="ssq-opts" style="grid-template-columns: 1fr;">
+        <div style="background: #fafafa; border: 2px solid #e8e8e8; border-radius: 8px; padding: 12px 14px; font-size: 14px; color: #666;">
+          <strong>✓ Takes 60 seconds</strong><br>
+          <strong>✓ No email required</strong><br>
+          <strong>✓ Personalized result</strong>
+        </div>
+      </div>
+      <button class="ssq-continue" id="ssqStart">Start the Assessment →</button>
+      <button class="ssq-back" id="ssqSkip">No thanks, take me to the article</button>
+    </div>
+
+    <!-- Step 1-4: Questions -->
+    <div id="ssqStepQ" style="display: none;">
+      <div class="ssq-progress"><i id="ssqProg"></i></div>
+      <p class="ssq-kicker" id="ssqStepKicker">Question 1 of 4</p>
+      <h2 class="ssq-q" id="ssqQText">How long have you been dealing with daily bloat?</h2>
+      <div class="ssq-opts" id="ssqOpts"></div>
+      <button class="ssq-continue" id="ssqNext" disabled>Next →</button>
+      <button class="ssq-back" id="ssqBack">← Back</button>
+    </div>
+
+    <!-- Step 5: Loader -->
+    <div id="ssqStepLoad" class="ssq-loader" style="display: none;">
+      <div class="ssq-spin"></div>
+      <h2 class="ssq-loadtitle" id="ssqLoadTitle">Building your custom protocol...</h2>
+      <p class="ssq-wait" id="ssqLoadWait">Matching 200+ women with similar profiles to your answers.</p>
+    </div>
+
+    <!-- Step 6: Result -->
+    <div id="ssqStepRes" class="ssq-res" style="display: none;">
+      <span class="ssq-badge" id="ssqBadge">✓ QUALIFIED · 89% MATCH</span>
+      <h2 class="ssq-restitle" id="ssqResTitle">You're a strong match for the 3-Ingredient Method.</h2>
+      <div class="ssq-est">
+        <h4>Your Custom Estimate</h4>
+        <p class="big" id="ssqEstBig">23 lbs in 21 days</p>
+        <p id="ssqEstLine1">Based on your profile, women like you reported the same results within 21 days on the protocol.</p>
+        <p id="ssqEstLine2"><strong>Day 6:</strong> sock marks gone · <strong>Day 11:</strong> bloat reduces by 60% · <strong>Day 21:</strong> jeans button again.</p>
+      </div>
+      <div class="ssq-prod">
+        <img src="images/product-hero.jpg" alt="SlimSoda 3-Ingredient Method">
+      </div>
+      <div class="ssq-scarce">
+        <div class="bar"><i></i></div>
+        <span>82% of this batch already reserved</span>
+      </div>
+      <a class="ssq-cta" id="ssqFinal" href="https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377">Yes — Send My Custom Protocol</a>
+      <p class="ssq-ship">Free shipping · 60-day money back · No subscription</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var overlay = document.getElementById('ssqOverlay');
+  var card = document.getElementById('ssqCard');
+  var closeBtn = document.getElementById('ssqClose');
+  var skipBtn = document.getElementById('ssqSkip');
+  var startBtn = document.getElementById('ssqStart');
+  var stepIntro = document.getElementById('ssqStepIntro');
+  var stepQ = document.getElementById('ssqStepQ');
+  var stepLoad = document.getElementById('ssqStepLoad');
+  var stepRes = document.getElementById('ssqStepRes');
+  var prog = document.getElementById('ssqProg');
+  var kicker = document.getElementById('ssqStepKicker');
+  var qText = document.getElementById('ssqQText');
+  var optsBox = document.getElementById('ssqOpts');
+  var nextBtn = document.getElementById('ssqNext');
+  var backBtn = document.getElementById('ssqBack');
+
+  // Quiz state
+  var current = 0;
+  var answers = [];
+
+  var questions = [
+    {
+      q: "How long have you been dealing with daily bloat?",
+      opts: [
+        { emo: "🌱", l: "Less than 6 months", v: 0 },
+        { emo: "🌿", l: "6 months to 2 years", v: 1 },
+        { emo: "🌳", l: "2 to 5 years", v: 2 },
+        { emo: "🪵", l: "More than 5 years", v: 3 }
+      ]
+    },
+    {
+      q: "What have you already tried?",
+      opts: [
+        { emo: "💧", l: "Water pills", v: 0 },
+        { emo: "🍎", l: "Apple cider vinegar alone", v: 1 },
+        { emo: "🥄", l: "Baking soda alone", v: 2 },
+        { emo: "🤷", l: "Nothing yet — just looking", v: 3 }
+      ]
+    },
+    {
+      q: "When is the bloat worst?",
+      opts: [
+        { emo: "🌅", l: "First thing in the morning", v: 0 },
+        { emo: "🌞", l: "Mid-afternoon (after lunch)", v: 1 },
+        { emo: "🌙", l: "Evening (after dinner)", v: 2 },
+        { emo: "⏰", l: "All day, every day", v: 3 }
+      ]
+    },
+    {
+      q: "How motivated are you to try a 30-second morning habit?",
+      opts: [
+        { emo: "🔥", l: "Very — I want this fixed now", v: 0 },
+        { emo: "👍", l: "Somewhat — if it's simple", v: 1 },
+        { emo: "🤔", l: "Curious — need more proof first", v: 2 },
+        { emo: "😴", l: "Honestly, just browsing", v: 3 }
+      ]
+    }
+  ];
+
+  // Open quiz on first CTA click
+  function openQuiz(e) {
+    if (e) e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    showStep('intro');
+    trackEvent('QuizOpen');
+  }
+  function closeQuiz() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    trackEvent('QuizClose', { step: current });
+  }
+
+  function showStep(step) {
+    stepIntro.style.display = 'none';
+    stepQ.style.display = 'none';
+    stepLoad.style.display = 'none';
+    stepRes.style.display = 'none';
+    if (step === 'intro') stepIntro.style.display = 'block';
+    if (step === 'q') { stepQ.style.display = 'block'; renderQ(); }
+    if (step === 'load') stepLoad.style.display = 'block';
+    if (step === 'res') stepRes.style.display = 'block';
+  }
+
+  function renderQ() {
+    var q = questions[current];
+    kicker.textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+    qText.textContent = q.q;
+    prog.style.width = ((current) / questions.length * 100) + '%';
+    optsBox.innerHTML = '';
+    answers[current] = null;
+    nextBtn.disabled = true;
+    q.opts.forEach(function(o, i) {
+      var btn = document.createElement('button');
+      btn.className = 'ssq-opt';
+      btn.type = 'button';
+      btn.innerHTML = '<span class="ssq-emo">' + o.emo + '</span><span class="ssq-lbl">' + o.l + '</span>';
+      btn.addEventListener('click', function() {
+        answers[current] = i;
+        optsBox.querySelectorAll('.ssq-opt').forEach(function(x){ x.classList.remove('sel'); });
+        btn.classList.add('sel');
+        nextBtn.disabled = false;
+      });
+      optsBox.appendChild(btn);
+    });
+  }
+
+  function next() {
+    if (current < questions.length - 1) {
+      current++;
+      showStep('q');
+      trackEvent('QuizStep', { step: current });
+    } else {
+      showStep('load');
+      trackEvent('QuizComplete', { answers: answers });
+      // Simulate processing
+      var loadMessages = [
+        'Building your custom protocol...',
+        'Matching 200+ women with similar profiles...',
+        'Calculating your day-by-day timeline...',
+        'Almost done...'
+      ];
+      var ml = document.getElementById('ssqLoadTitle');
+      var i = 0;
+      var loadInterval = setInterval(function() {
+        i++;
+        if (i < loadMessages.length) ml.textContent = loadMessages[i];
+      }, 600);
+      setTimeout(function() {
+        clearInterval(loadInterval);
+        // Personalize result based on Q1 (length of bloat)
+        var lenAnswer = answers[0];
+        var messages = {
+          0: { title: "Your body will respond fast.", est: "12-15 lbs in 21 days", day6: "less morning puffiness", day11: "bloat reduced 50%", day21: "pants fit looser" },
+          1: { title: "You're a strong match for the 3-Ingredient Method.", est: "18-23 lbs in 21 days", day6: "sock marks gone", day11: "bloat reduced 60%", day21: "jeans button again" },
+          2: { title: "Your body is ready for the order fix.", est: "20-28 lbs in 21 days", day6: "noticeable morning lightness", day11: "mid-afternoon bloat gone", day21: "back in your favorite jeans" },
+          3: { title: "8 years of damage can be reversed.", est: "23-30 lbs in 21 days", day6: "energy returns", day11: "stops avoiding photos", day21: "feels like yourself again" }
+        };
+        var m = messages[lenAnswer] || messages[1];
+        document.getElementById('ssqResTitle').textContent = m.title;
+        document.getElementById('ssqEstBig').textContent = m.est;
+        document.getElementById('ssqEstLine2').innerHTML = '<strong>Day 6:</strong> ' + m.day6 + ' · <strong>Day 11:</strong> ' + m.day11 + ' · <strong>Day 21:</strong> ' + m.day21 + '.';
+        prog.style.width = '100%';
+        showStep('res');
+        trackEvent('QuizResultShown', { profile: lenAnswer });
+      }, 2800);
+    }
+  }
+
+  function back() {
+    if (current > 0) { current--; showStep('q'); }
+    else { showStep('intro'); current = 0; }
+  }
+
+  // Track function
+  function trackEvent(name, data) {
+    try {
+      if (typeof fbq !== 'undefined') fbq('trackCustom', name, data || {});
+      var payload = { event_name: name, event_data: data || {}, page: 'maria47-v3', ts: Date.now() };
+      // Best-effort: send to /api/track-capi.js (silent fail if not present)
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon('/api/track-capi.js', JSON.stringify(payload));
+      }
+    } catch (e) {}
+  }
+
+  // Wire events
+  if (startBtn) startBtn.addEventListener('click', function() { current = 0; showStep('q'); trackEvent('QuizStart'); });
+  if (skipBtn) skipBtn.addEventListener('click', closeQuiz);
+  if (closeBtn) closeBtn.addEventListener('click', closeQuiz);
+  if (nextBtn) nextBtn.addEventListener('click', next);
+  if (backBtn) backBtn.addEventListener('click', back);
+  if (overlay) overlay.addEventListener('click', function(e) { if (e.target === overlay) closeQuiz(); });
+
+  // Open quiz when any CTA in article body is clicked (NOT in disclosure/footer)
+  document.querySelectorAll('a.cta').forEach(function(a) {
+    a.addEventListener('click', function(e) {
+      // Only intercept the in-article CTAs (not footer / disclosure)
+      if (a.closest('.disclosure')) return;
+      e.preventDefault();
+      openQuiz();
+    });
+  });
+})();
+</script>
 
 <div class="disclosure">
 <p><strong>FEDERAL DISCLAIMER:</strong> These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. The content above is for educational and informational purposes only and does not constitute medical advice. Always consult a qualified healthcare professional before starting any new supplement, diet, or health program, especially if you are pregnant, nursing, taking medication, or have a pre-existing medical condition.</p>
