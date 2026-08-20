@@ -83,10 +83,28 @@
   .cta-sub { display: block; text-align: center; font-family: Arial, sans-serif; font-size: 12px; color: #888; margin: 8px 0 24px; letter-spacing: 0.05em; }
   .guarantee { background: #f5f3ed; border: 1px dashed #c9a96e; padding: 24px 28px; margin: 28px 0; border-radius: 2px; }
   .guarantee h3 { color: #1a1a1a; margin-top: 0; }
-  .price-reveal { text-align: center; margin: 32px auto; padding: 28px 24px; background: #1a1a1a; border-radius: 6px; color: #fff; max-width: 520px; }
-  .price-reveal .strike { text-decoration: line-through; color: #888; font-size: 18px; margin-right: 10px; }
-  .price-reveal .now { font-family: 'Playfair Display', Georgia, serif; font-size: 38px; font-weight: 700; color: #c9a96e; }
-  .price-reveal .save { display: block; margin-top: 8px; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.15em; color: #5fc940; text-transform: uppercase; font-weight: 700; }
+  .price-reveal { text-align: center; margin: 36px auto; padding: 32px 24px 28px; background: #1a1a1a; border-radius: 8px; color: #fff; max-width: 520px; box-shadow: 0 8px 28px rgba(0,0,0,0.18); }
+  .price-reveal .kicker { display: block; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.22em; color: #c9a96e; text-transform: uppercase; font-weight: 800; margin-bottom: 14px; }
+  .price-reveal .strike { display: block; text-decoration: line-through; color: #888; font-family: Arial, sans-serif; font-size: 18px; margin-bottom: 4px; }
+  .price-reveal .now { display: block; font-family: 'Playfair Display', Georgia, serif; font-size: 64px; line-height: 1; font-weight: 800; color: #5fc940; margin-bottom: 12px; text-shadow: 0 2px 8px rgba(95,201,64,0.3); }
+  .price-reveal .save { display: block; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.18em; color: #fff; text-transform: uppercase; font-weight: 800; padding: 8px 14px; background: rgba(95,201,64,0.15); border: 1px solid rgba(95,201,64,0.4); border-radius: 4px; }
+  .price-reveal .meta { display: block; margin-top: 12px; font-family: Arial, sans-serif; font-size: 11px; color: #999; letter-spacing: 0.05em; }
+
+  .quiet-expense { background: #faf7f0; border: 1px solid #e8e0d0; border-radius: 6px; padding: 18px 22px; margin: 18px 0; font-family: Arial, sans-serif; }
+  .quiet-expense .qe-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #e8e0d0; font-size: 14px; color: #333; }
+  .quiet-expense .qe-row:last-child { border-bottom: 0; }
+  .quiet-expense .qe-row.qe-total { border-top: 2px solid #1a1a1a; margin-top: 6px; padding-top: 12px; font-size: 15px; color: #1a1a1a; }
+  .quiet-expense .qe-row.qe-now { background: #e6f5d6; margin: 8px -22px -18px; padding: 12px 22px; border-bottom: 0; border-radius: 0 0 6px 6px; color: #2f6a10; }
+  .quiet-expense .qe-amt { font-weight: 700; font-family: 'Playfair Display', Georgia, serif; font-size: 16px; }
+  .quiet-expense .qe-row.qe-now .qe-amt { color: #2f6a10; font-size: 20px; }
+
+  .watch-for { background: #fff; border: 2px solid #5fc940; border-radius: 8px; padding: 20px 24px; margin: 18px 0; }
+  .watch-for h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; color: #1a1a1a; margin: 0 0 10px; }
+  .watch-for ul { list-style: none; padding: 0; margin: 0; }
+  .watch-for li { padding: 8px 0 8px 28px; position: relative; font-size: 14px; line-height: 1.5; color: #333; border-bottom: 1px solid #f0fae8; }
+  .watch-for li:last-child { border-bottom: 0; }
+  .watch-for li::before { content: "✓"; position: absolute; left: 6px; top: 8px; color: #5fc940; font-weight: 800; }
+  .watch-for li strong { color: #1a1a1a; }
   .alert { background: #FEF9E7; border: 2px dashed #D0021B; border-radius: 6px; padding: 20px 24px; margin: 26px 0; }
   .alert h3 { color: #1a1a1a; margin-top: 0; }
   .disclosure { background: #f0f0f0; border-top: 1px solid #ccc; padding: 18px; font-family: Arial, sans-serif; font-size: 11px; line-height: 1.5; color: #666; margin-top: 48px; border-radius: 2px; }
@@ -206,23 +224,33 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <!--
   =============================================================================
-  ADV V3.1 — STRUCTURE MAP (refactored 20/08/2026 with Quiet Weight canon 22 patterns)
+  ADV V3.1 — STRUCTURE MAP (refactored 20/08/2026 with Quiet Weight canon 22 patterns + 7 "soco na cara" elements)
   =============================================================================
   Type           : Method/origin variant (NEW ANGLE — different from v2 first-person)
-  Framework      : Filemon E3 (12-block expansion, adapted from Core Strength VSL) + adv5 canon
+  Framework      : Filemon E3 (12-block expansion, adapted from Core Strength VSL) + adv5 canon + adv2 Reader Warning soco-na-cara elements
   Block order    : Two-stage headline → Bridge (12 min commitment) → Lead → Confessional beat
-                   → Pre-checklist (9 itens) → Raio X (3 jornadas) → Dana workspace
+                   → Dialogue visceral (Maria's mom: "Mom, I am eating less than I ever did...") → Pre-checklist (7 personas + "This is not for...")
+                   → Raio X (3 jornadas) → Dana workspace
                    → BURN vs STORE diagram → Mecanismo (3 ingredientes) → Cycle GIF
                    → Tese (3 stats) → 4 Histórias (4 avatares + 4 before/afters)
-                   → Apresentação → Future Pacing sensorial → 7 Razões
-                   → Oferta ($119.98→$29.99) → Bônus (recipe card)
-                   → PATH 1/2 (close) → Cost of Inaction → "It's not a race" + P.S./P.P.S./P.P.P.S.
-                   → 7 comments section → Guarantee + 3 trust seals
+                   → Apresentação → Future Pacing sensorial → "Not failures. They were early." (soco #3) → 7+1 Razões
+                   → Oferta ($54.98→$27.49) → Bônus (recipe card)
+                   → PATH 1/2 (close) → Cost of Inaction → Quiet Ledger (soco #2: $7,762 spent, no fix) → "It's not a race" + P.S./P.P.S./P.P.P.S./P.P.P.P.S.
+                   → 7 comments section → Guarantee + "Watch for these signs" day-by-day (soco #5) + Industry call-out ($400B) in P.P.P.P.S. (soco #7) + 3 trust seals
+                   → Quiz SSQ modal with Anti-scarcity honesty (soco #4) → PDP
   Canon patterns : All 22 patterns from adv5 Quiet Weight implemented
   7 Técnicas     : #1 Identification (4 avatares) · #2 New cause = new mechanism (order matters)
                    · #3 Mechanism branded (SlimSoda) · #4 Transição (não diet, não drug, não subscription)
                    · #5 Fifth Desperation (8 anos tentativas) · #6 Future Pacing sensorial
                    · #7 Negative Reverse (sem keto, sem water pills, sem subscription)
+  7 "Soco na cara" elements (from adv2 Reader Warning canon, applied 20/08/2026):
+                   · #1 Dialogue visceral (Maria's mom phone call) ✅
+                   · #2 Quiet Expense list ($7,762 over 8 years vs $27.49 today) ✅
+                   · #3 "Not failures. They were early." (reframe após Day 7 alert) ✅
+                   · #4 Anti-scarcity honesty (no fake countdown, real production run) ✅
+                   · #5 "Watch for these signs" day-by-day guarantee expansion (90 full days) ✅
+                   · #6 "Who it's for" positive framing (7 personas + "This is not for...") ✅
+                   · #7 Industry call-out ($400B diet industry in P.P.P.P.S.) ✅
   4 avatares     : Maria 35 (new mom) · 47 (canônica) · 55 (perimenopausa) · 62 (post-menopausa)
   Visual assets  : 6 AI images (hero mise-en-scène + 3 mech frames + burn-vs-store + dana workspace)
                    + 4 before/afters (1 per avatar) + mech-cycle.gif (4.4s loop)
@@ -289,23 +317,25 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>I was wrong. Not a little wrong. The kind of wrong that makes you sit at your own kitchen table at 7 AM and wonder how you ever said the words "I just need to try harder" to a body that was doing exactly what it was told.</p>
 
-<p class="scenenote">BEFORE YOU READ ANOTHER WORD, SEE HOW MANY OF THESE SOUND LIKE YOU</p>
+<p>My mom called me one night, the way moms do when they have been biting their tongue for months. "Maria, are you sure you are not sick? You used to eat whatever you wanted." I sat on the kitchen floor and cried. <span class="hl">"Mom, I am eating less than I ever did. I just do not know what to do."</span> She went quiet. Then she said the only thing a mom can say from a thousand miles away. "I believe you, baby." That was the night I stopped blaming myself and started looking for what I was actually missing.</p>
 
-<h2>If Four or More of These Sound Familiar, the Problem Is Not How Hard You Are Trying</h2>
+<p class="scenenote">BEFORE YOU READ ANOTHER WORD, SEE IF THIS IS FOR YOU</p>
 
-<p>The women who responded best to the original recipe did not all look the same. Some needed to lose 15 pounds. Some needed to lose 50. Some were mothers. Some were long past menopause. Some had tried injections. Some had spent decades dieting. But they kept describing the same body response.</p>
+<h2>This Method Is For You If You See Yourself In Any of These</h2>
+
+<p>You do not need to be a certain age, a certain size, or someone who has never tried anything before. The 3-Ingredient Method was built for women who already know what it feels like to do everything right and still see the scale move the wrong way.</p>
 
 <div class="checklist">
-<p>You eat less than people who stay naturally thin — but your body holds on anyway.</p>
-<p>You wake up flatter and end the day feeling swollen, heavy, or bigger around the middle.</p>
-<p>You think about food even when you know you are not physically hungry.</p>
-<p>Your body seemed to "change the rules" after 40, pregnancy, menopause, stress, or years of dieting.</p>
-<p>You can lose weight through restriction, but it returns the moment you stop.</p>
-<p>Your doctor says your labs look "fine," yet you know your body is not responding normally.</p>
-<p>Your belly, waist, face, or arms seem to hold weight first — and release it last.</p>
-<p>You get dressed where the light is bad, so the mirror forgives what it shows you.</p>
-<p>You are tired of starting over every Monday.</p>
+<p><strong>You are over 40</strong> and your body seems to have changed the rules since your 30s.</p>
+<p><strong>You are a mother</strong> whose metabolism never came back after pregnancy, no matter what you tried.</p>
+<p><strong>You are in perimenopause or menopause</strong> and feel hungrier, puffier, and less responsive than you did five years ago.</p>
+<p><strong>You are exhausted by food noise</strong> — the constant mental negotiation around eating that never quiets down.</p>
+<p><strong>You lost weight on injections</strong> but you do not want a $1,000-a-month lifetime dependency.</p>
+<p><strong>You already tried berberine, ginger, or baking soda alone</strong> and felt nothing change.</p>
+<p><strong>You want a simple morning ritual</strong> instead of another complicated program, another coach, another meal plan.</p>
 </div>
+
+<p><strong>This is not for</strong> someone looking for a one-day miracle. It is for the woman who is ready to give a complete system enough time and consistency to work — even if the order is not what TikTok taught her.</p>
 
 <p>That was my response. And once I understood it, there were only a few ways to approach it.</p>
 
@@ -574,6 +604,8 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>On Day 7, I almost quit. I was tired of "methods" that didn't work. If I had quit on Day 7, I would never have made it to Day 11. <strong>The bloat doesn't leave on Day 1. It leaves on Day 11. Stay with it.</strong> The sequence is doing its work. Your job is to not quit before the bloat releases.</p>
 </div>
 
+<p>Look at what came before — the water pills, the ACV alone, the baking soda alone, the keto, the injections, the cutting, the fasting, the doubling of doses. <strong>None of those were failures. They were early.</strong> You didn't have the order. Now you do. Every "failure" was just a step you had to walk through to get here. Stop counting what didn't work. Count what comes next.</p>
+
 <p class="scenenote">WHAT YOU'RE NOT DOING</p>
 
 <h2>What This Method Isn't</h2>
@@ -618,9 +650,11 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p>The 3-Ingredient Method is now available in a single 30-second daily powder. It's called <strong>SlimSoda</strong>. It's not a pill. It's not a drink mix. It's a single-serve powder you stir into 8oz of cold water. Once a day. First thing in the morning.</p>
 
 <div class="price-reveal">
-<span class="strike">$119.98</span>
-<span class="now">$29.99</span>
-<span class="save">Buy 1 Get 1 FREE · 60-day supply · One-time payment</span>
+<span class="kicker">Today's Launch Offer · One-Time Payment</span>
+<span class="strike">$54.98</span>
+<span class="now">$27.49</span>
+<span class="save">Buy 1 Get 1 FREE</span>
+<span class="meta">2 BOTTLES · 60 SERVINGS · FREE SHIPPING USA</span>
 </div>
 
 <p><strong>What's included:</strong></p>
@@ -678,6 +712,24 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <p>That's the cost of waiting. Not just the bloat. The slow, quiet shrinking of your life around the bloat. The invitations you decline. The photos you skip. The mornings you spend staring at the closet before you give up and wear the same stretchy pants as yesterday.</p>
 
+<p class="scenenote">THE QUIET LEDGER</p>
+
+<h2>What I Spent Before I Found the Sequence</h2>
+
+<p>Here is what I spent in those 8 years. Real money. Not theoretical. Real receipts, real cards, real "this time will be different" energy. Eight years of the wellness industry finding me, and me believing it.</p>
+
+<div class="quiet-expense">
+  <div class="qe-row"><span class="qe-item">Weight Watchers / Noom (3 rounds, quit each one)</span><span class="qe-amt">$1,247</span></div>
+  <div class="qe-row"><span class="qe-item">Prescription water pills (8 months, on and off)</span><span class="qe-amt">$640</span></div>
+  <div class="qe-row"><span class="qe-item">GLP-1 injections (3 rounds, quit due to nausea)</span><span class="qe-amt">$2,940</span></div>
+  <div class="qe-row"><span class="qe-item">Acupuncture + cupping (12 sessions, "for bloating")</span><span class="qe-amt">$1,800</span></div>
+  <div class="qe-row"><span class="qe-item">"Detox" teas, berberine, supplements, the wellness aisle</span><span class="qe-amt">$1,135</span></div>
+  <div class="qe-row qe-total"><span class="qe-item">Total spent, no fix in sight</span><span class="qe-amt">$7,762</span></div>
+  <div class="qe-row qe-now"><span class="qe-item">The 3-Ingredient Method · 2 bottles of SlimSoda</span><span class="qe-amt">$27.49</span></div>
+</div>
+
+<p>Eight years. $7,762. Still bloated. Still hiding in the photos. Still ordering the "safe" item on the menu. The order was $27.49. I wish someone had shown me the math in 2018.</p>
+
 <p>You don't have to wait 8 years. I did. I lost 8 years. You can lose 8 years too. Or you can lose 30 seconds every morning for 21 days. That's the only difference between us now.</p>
 
 <p class="scenenote">FINAL WORD</p>
@@ -700,6 +752,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 <p><strong>P.S.</strong> I waited 8 years. I cannot give you those years back. But I can give you the morning ritual. The rest is up to you. And if you are still not sure, scroll back up. Read the four women. Read the timeline. Then decide.</p>
 <p><strong>P.P.S.</strong> Plain baking soda is not the recipe. It only does the first job. SlimSoda does all three, in order: <strong>Wake the cells. Protect the hormone. Flip the switch.</strong> That is the part every viral TikTok video leaves out. That is the part that changes the bloat.</p>
 <p><strong>P.P.P.S.</strong> The 90-day guarantee is empty-bottle. Use the whole supply. If the bloat does not go down, or the scale does not move, or the food noise does not quiet, every penny comes back. You keep the results or you keep your money. The only thing you cannot do is stay trapped in the same place.</p>
+<p><strong>P.P.P.P.S.</strong> The diet industry is worth $400 billion a year. Most of that money comes from women who buy a new fix every 90 days. This is not that. This is a 3-ingredient sequence. You can do it in your kitchen with $4 of grocery store items, in the right order, for 30 seconds every morning. Or you can do it with SlimSoda, and skip the 8 years of math I did. <strong>Same method. Same order. The bottle just spares you the chemistry experiment.</strong> The 30-year-old woman who lost 23 lbs and the 71-year-old who said "I did not think this was still possible" are not anomalies. They are the point.</p>
 </div>
 
 <div class="comments">
@@ -790,8 +843,19 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
 
 <div class="guarantee">
 <h3>90-Day Empty-Bottle Money-Back Guarantee</h3>
-<p>Use the entire bottle. If the bloat doesn't go down, or the scale doesn't move, or the food noise doesn't quiet, email us at the address printed on your bottle. We refund every penny. <strong>No return-window games. No fine print. No 30-day countdown. 60 full days.</strong></p>
+<p>Use the entire bottle. If the bloat doesn't go down, or the scale doesn't move, or the food noise doesn't quiet, email us at the address printed on your bottle. We refund every penny. <strong>No return-window games. No fine print. No 30-day countdown. 90 full days.</strong></p>
 <p>Even if both bottles are empty. You tried it. It didn't work for you. We send your money back. That's the deal.</p>
+
+<div class="watch-for">
+  <h4>Watch for these signs along the way. They're how you'll know the order is doing its job.</h4>
+  <ul>
+    <li><strong>Day 1–3:</strong> The morning puffiness starts later in the day. Your face looks the same in the mirror by 8am. The water weight is the first thing to shift.</li>
+    <li><strong>Day 4–7:</strong> Sock marks fade. The bloat in your hands drops. Pants feel the same in the morning, looser by 5pm. This is when most women almost quit. Don't.</li>
+    <li><strong>Day 8–14:</strong> The food noise is quieter. You stop thinking about the next meal mid-bite. The hunger comes back as hunger, not as a thought loop.</li>
+    <li><strong>Day 15–21:</strong> The number on the scale moves. The waistline of the jeans changes. You button them without a plan. This is the day the closet door stays open.</li>
+    <li><strong>Day 22–90:</strong> The body re-learns the pattern. The weight is not rented. It is yours. This is the part injections cannot give you, because the day you stop the shot, the hunger comes back. The sequence does not work that way.</li>
+  </ul>
+</div>
 </div>
 
 <div class="trust-seals" style="display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:18px;margin:28px 0 8px;padding:18px;background:#faf7f0;border:1px solid #e8e0d0;border-radius:6px">
@@ -858,6 +922,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
         <div class="bar"><i></i></div>
         <span>82% of this batch already reserved</span>
       </div>
+      <p style="font-size:11px;color:#888;font-style:italic;margin:6px 0 0;line-height:1.4">Real for this production run. It resets when the next batch opens. <strong>No fake countdown timers. No "5 left in stock" theater.</strong> If you're ready, you're ready. If not, the article is still there.</p>
       <a class="ssq-cta" id="ssqFinal" href="/slimsoda-pdp/?&affid=aff_6821377&utm_source=advertorial&utm_medium=quiz&utm_campaign=maria47v3">Yes — Send My 90-Day SlimSoda Kit →</a>
       <p class="ssq-ship">90-day empty-bottle guarantee · No subscription · Free shipping USA</p>
     </div>
