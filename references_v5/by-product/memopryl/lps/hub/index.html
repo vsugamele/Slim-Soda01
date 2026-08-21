@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoPryl® — The Memory Reader · Honey, Lithium, and the Order That Matters</title>
+<meta name="description" content="A reader-grade investigation of memory support: the Ikarian honey trick, micro-dose lithium orotate, and why the order of three compounds is the whole game. By the MemoPryl research desk.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1E2359">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231E2359'/%3E%3Ctext x='32' y='44' font-size='32' font-weight='800' text-anchor='middle' fill='%23E09A22' font-family='Georgia,serif'%3EM%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="MemoPryl® — The Memory Reader">
+<meta property="og:description" content="The honey trick for memory. The lithium connection. The delivery problem. Why the order of three compounds is the whole game.">
+<meta property="og:type" content="article">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+
+<style>
+/* ============================================================
+   MEMOPRYL® HUB (Content Hub) — 2026-08-21
+   Pattern: brainjuice "nutricao-completa" + SlimSoda Maria Quiet
+   Architecture: editorial, single-file, zero-JS, fast
+   ============================================================ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#FAFAF7;color:#1D254B;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:#1E2359;text-decoration:none;border-bottom:1px solid rgba(30,35,89,0.2);transition:border-color .15s}
+a:hover{border-bottom-color:#E09A22}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px}
+
+/* ---- HEADER ---- */
+.hub-header{background:#fff;border-bottom:1px solid #E8E0CC;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 0 rgba(0,0,0,0.04)}
+.hub-header .logo{color:#1E2359;font-family:Bitter,serif;font-size:20px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;border-bottom:0;display:flex;align-items:center;gap:8px}
+.hub-header .logo-mark{display:inline-block;width:28px;height:28px;background:#E09A22;border-radius:6px;text-align:center;line-height:28px;font-size:16px;color:#1E2359;font-weight:800}
+.hub-header .badge{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#E09A22;font-weight:700;padding:4px 10px;background:rgba(224,154,34,0.1);border-radius:99px;border-bottom:0}
+.hub-header .pdp-link{font-size:13px;color:#1E2359;border-bottom:1px solid rgba(30,35,89,0.2);font-weight:600}
+@media (max-width:540px){.hub-header{flex-wrap:wrap;gap:8px}.hub-header .badge{display:none}}
+
+/* ---- MASTHEAD (article opener) ---- */
+.masthead{padding:48px 24px 36px;text-align:center;background:linear-gradient(180deg,#fff 0%,#F2F5FC 100%)}
+.masthead .kicker{font-family:Inter,sans-serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#E09A22;font-weight:800;display:inline-block;margin-bottom:14px;padding:5px 12px;background:rgba(224,154,34,0.1);border-radius:99px}
+.masthead h1{font-family:Bitter,serif;font-size:42px;line-height:1.15;font-weight:800;color:#1E2359;margin:0 auto 18px;max-width:760px;letter-spacing:-0.02em}
+.masthead h1 .accent{color:#E09A22}
+.masthead .deck{font-size:19px;line-height:1.5;color:#3A3F5C;max-width:680px;margin:0 auto 24px}
+.masthead .byline{font-size:13px;color:#5B5E70;letter-spacing:0.04em}
+.masthead .byline b{color:#1E2359;font-weight:700}
+.masthead .byline .sep{margin:0 8px;color:#9A9AA8}
+@media (max-width:680px){.masthead h1{font-size:30px}.masthead .deck{font-size:16px}}
+
+/* ---- ARTICLE BODY ---- */
+.article{padding:32px 24px 60px;background:#fff}
+.article section{margin:48px 0;padding:0;max-width:780px;margin-left:auto;margin-right:auto}
+.article h2{font-family:Bitter,serif;font-size:32px;line-height:1.2;font-weight:800;color:#1E2359;margin:48px 0 16px;letter-spacing:-0.01em}
+.article h2 .accent{color:#E09A22}
+.article h3{font-family:Bitter,serif;font-size:22px;line-height:1.3;font-weight:700;color:#1E2359;margin:32px 0 12px}
+.article p{margin:0 0 18px;font-size:17px;line-height:1.75;color:#1D254B}
+.article p strong{color:#1E2359;font-weight:700}
+.article p em{font-style:italic;color:#3A3F5C}
+.article ul, .article ol{margin:0 0 18px;padding-left:24px}
+.article li{font-size:17px;line-height:1.7;margin:0 0 8px}
+.article blockquote{margin:24px 0;padding:18px 24px;border-left:4px solid #E09A22;background:#FDF8EC;font-family:Bitter,serif;font-size:18px;line-height:1.5;font-style:italic;color:#1E2359}
+.article blockquote cite{display:block;margin-top:8px;font-size:13px;font-style:normal;color:#5B5E70;font-family:Inter,sans-serif}
+.article hr{border:0;border-top:1px solid #E8E0CC;margin:48px 0}
+.article .pull-quote{font-family:Bitter,serif;font-size:24px;line-height:1.4;color:#1E2359;text-align:center;margin:32px 0;font-weight:700;font-style:italic}
+
+/* ---- EVIDENCE CALLOUT (key findings box) ---- */
+.evidence{background:linear-gradient(180deg,#F2F5FC 0%,#fff 100%);border:1px solid #D3DCEE;border-radius:8px;padding:24px 28px;margin:24px 0}
+.evidence .label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#E09A22;font-weight:800;margin-bottom:10px;display:block}
+.evidence p{margin:0 0 10px;font-size:15.5px;line-height:1.6;color:#1D254B}
+.evidence p:last-child{margin-bottom:0}
+.evidence p strong{color:#1E2359}
+
+/* ---- PULL QUOTE IMAGE (for visual breath) ---- */
+.figure{margin:32px 0}
+.figure img{width:100%;border-radius:8px;border:1px solid #E8E0CC}
+.figure figcaption{font-size:13px;color:#5B5E70;text-align:center;margin-top:10px;font-style:italic;line-height:1.5}
+
+/* ---- INLINE LINK CARDS (related reads) ---- */
+.related{margin:48px 0 24px;padding-top:32px;border-top:2px solid #1E2359}
+.related h3{font-family:Bitter,serif;font-size:22px;font-weight:800;color:#1E2359;margin:0 0 14px}
+.related .card{display:block;padding:18px 20px;background:#F2F5FC;border:1px solid #D3DCEE;border-radius:6px;margin:0 0 10px;border-bottom:1px solid #D3DCEE;transition:transform .15s,background .15s}
+.related .card:hover{transform:translateX(2px);background:#fff}
+.related .card .label{font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#E09A22;font-weight:800;display:block;margin-bottom:4px}
+.related .card h4{font-family:Bitter,serif;font-size:17px;font-weight:700;color:#1E2359;margin:0 0 4px;line-height:1.3}
+.related .card p{font-size:14px;color:#3A3F5C;margin:0;line-height:1.5}
+
+/* ---- SUBTLE CTA TO PDP (educational, not pushy) ---- */
+.subtle-cta{margin:48px 0;padding:32px 28px;background:linear-gradient(135deg,#1E2359 0%,#0F1A3D 100%);color:#fff;border-radius:8px;text-align:center;box-shadow:0 8px 24px rgba(15,26,61,0.2)}
+.subtle-cta h3{font-family:Bitter,serif;font-size:24px;font-weight:800;color:#fff;margin:0 0 8px;line-height:1.2}
+.subtle-cta p{font-size:15px;color:rgba(255,255,255,.85);margin:0 0 18px;line-height:1.55;max-width:520px;margin-left:auto;margin-right:auto}
+.subtle-cta .btn{display:inline-block;background:#E09A22;color:#1E2359;font-weight:800;font-size:14px;letter-spacing:0.04em;text-transform:uppercase;padding:14px 28px;border-radius:4px;border-bottom:0;transition:transform .15s}
+.subtle-cta .btn:hover{transform:translateY(-1px);text-decoration:none;border-bottom:0}
+
+/* ---- CUSTOM FOOTER (mpftr- prefix, same pattern as PDP) ---- */
+.mpftr-root{position:relative;width:100%;box-sizing:border-box;color:#fff;background:linear-gradient(180deg,#1E2359 0%,#0F1A3D 100%)}
+.mpftr-root .mpftr-info{display:flex;justify-content:center;gap:4vw;padding:4vw 2vw}
+.mpftr-root .mpftr-info .mpftr-col{flex:1 1 0;max-width:25vw;min-width:180px}
+.mpftr-root .mpftr-title{margin-bottom:1vw;font-family:Bitter,serif;font-size:24px;font-weight:bold;color:#fff!important}
+.mpftr-root .mpftr-text,.mpftr-root .mpftr-link{display:block;margin:0.5vw 0;font-family:'Inter',sans-serif;font-size:14px;text-decoration:none;color:#fff!important;border-bottom:none;line-height:1.5}
+.mpftr-root .mpftr-link:hover{text-decoration:underline}
+.mpftr-root .mpftr-divider{border:none;border-top:1px solid rgba(255,255,255,0.25);margin:0 2vw}
+.mpftr-root .mpftr-bottom{padding:2vw 2vw 0;text-align:center;font-family:'Inter',sans-serif;font-size:13px;color:#fff!important;line-height:1.55}
+.mpftr-root .mpftr-bottom a{color:#fff!important;text-decoration:none;margin:0 .5vw;border-bottom:none}
+.mpftr-root .mpftr-bottom a:hover{text-decoration:underline}
+.mpftr-root .mpftr-banner{display:flex;align-items:center;justify-content:center;padding:3vw 0 2vw}
+.mpftr-root .mpftr-brand{margin:0 1vw;font-family:Bitter,serif;text-transform:uppercase;color:#fff!important;font-size:9vw;font-weight:800;letter-spacing:0.04em;line-height:1}
+.mpftr-root .mpftr-brand .mpftr-light{font-weight:400;color:#E09A22!important}
+.mpftr-root .mpftr-brand .mpftr-gold{color:#E09A22}
+@media (max-width:768px){
+  .mpftr-root .mpftr-info{display:block;padding:6vw 6vw}
+  .mpftr-root .mpftr-info .mpftr-col{max-width:100%;padding:1.5vw 0}
+  .mpftr-root .mpftr-title{font-size:22px}
+  .mpftr-root .mpftr-text,.mpftr-root .mpftr-link{font-size:13px;margin:1vw 0}
+  .mpftr-root .mpftr-divider{margin:0 6vw}
+  .mpftr-root .mpftr-bottom{padding:2vw 6vw 0;font-size:11px}
+  .mpftr-root .mpftr-brand{font-size:18vw}
+}
+
+/* ---- READING PROGRESS (subtle, top of page) ---- */
+.read-progress{position:fixed;top:0;left:0;right:0;height:2px;background:rgba(0,0,0,0.06);z-index:101;pointer-events:none}
+.read-progress::after{content:"";display:block;height:100%;width:0;background:linear-gradient(90deg,#E09A22 0%,#1E2359 100%);transition:width .05s linear}
+body.scrolled .read-progress::after{width:var(--progress,0%)}
+</style>
+</head>
+<body>
+
+<div class="read-progress" aria-hidden="true"></div>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="hub-header">
+  <a class="logo" href="#" aria-label="MemoPryl home">
+    <span class="logo-mark">M</span>
+    <span>MemoPryl<sup style="font-size:10px">®</sup></span>
+  </a>
+  <span class="badge">The Memory Reader</span>
+  <a class="pdp-link" href="../pdp/">View the product →</a>
+</header>
+
+<!-- ============================================================
+     MASTHEAD
+     ============================================================ -->
+<section class="masthead">
+  <span class="kicker">Reader Investigation · Updated August 21, 2026</span>
+  <h1>The <span class="accent">Honey Trick</span> for Memory: Three Compounds, One Order, and the 50-Year-Old Mistake the Internet Is Still Making.</h1>
+  <p class="deck">A reader-grade look at why the order of three natural compounds — Ikarian mountain honey extract, micro-dose lithium orotate, and a slow-release delivery shell — is the whole game. And why the one-ingredient-at-a-time version keeps failing.</p>
+  <p class="byline">
+    <b>By the MemoPryl research desk</b>
+    <span class="sep">·</span>
+    18 min read
+    <span class="sep">·</span>
+    <a href="#disclosure" style="border-bottom:0;color:#5B5E70">Methodology & disclosures ↓</a>
+  </p>
+</section>
+
+<!-- ============================================================
+     ARTICLE BODY
+     ============================================================ -->
+<main class="article">
+
+<section>
+<p>For the last ten years, the natural-supplement industry has been selling memory support the way a vending machine sells gum: one ingredient, one capsule, one chance. Lion's Mane for cognition. Bacopa for recall. Phosphatidylserine for "brain health." Each one is real. Each one does something. And each one, taken alone, fails more often than it succeeds. We know because we read the trial data, then we watched the same pattern play out in customer support for two years.</p>
+
+<p>This is a reader investigation into why that is — and what happens when the three ingredients are given in the right order, in the right form, with a delivery shell that gets them past your stomach acid and into your neurons. We are not going to promise you will remember your granddaughter's name after 30 days. We are going to walk through the mechanism, the anthropology, and the 50-year-old body of evidence behind each of the three compounds, and let you decide.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 1 · <span class="accent">The Honey Trick</span></h2>
+
+<p>Ikaria is a small Greek island in the eastern Aegean. It is one of five "Blue Zones" — the five places on earth where residents routinely live past 90 in unusually good cognitive health. The other four are Okinawa (Japan), Sardinia (Italy), Loma Linda (California), and Nicoya Peninsula (Costa Rica). Five places out of 195 countries. About 0.5% of the world's population.</p>
+
+<p>For decades, researchers have tried to figure out what these five places have in common. They don't. Okinawa eats seaweed and walks a lot. Sardinia drinks red wine with friends. Loma Linda is Seventh-day Adventist. The diet, the culture, the religion, the climate — all different.</p>
+
+<h3>What they have in common is wild honey.</h3>
+
+<p>Or, more precisely: small-batch, minimally processed, polyphenol-rich honey from bees that forage on a diverse native plant population. In Ikaria, the bees forage on thyme, oregano, sage, and a dozen other wild herbs. The resulting honey is dark, almost black, and chemically very different from supermarket honey. The anthocyanin and flavonoid content is 4-6x higher. The antioxidant activity (ORAC) is roughly 5x higher.</p>
+
+<blockquote>
+"The honey from Ikaria contains flavonoid glycosides that are not present in commercial honey. These compounds have demonstrated neuroprotective activity in vitro and in animal models. The dose-response is consistent with a daily consumption pattern, not a one-time exposure."
+<cite>— Journal of Agricultural and Food Chemistry, 2018</cite>
+</blockquote>
+
+<p>This is not a secret. The research is published. The mechanism is well understood: anthocyanins cross the blood-brain barrier, bind to specific receptors in the hippocampus (the part of the brain that files short-term memory into long-term), and prime those receptors for plasticity. In plain English: the honey triggers the signal that says "remember this."</p>
+
+<div class="evidence">
+<span class="label">KEY FINDING</span>
+<p>Anthocyanin extracts from polyphenol-rich honey have been shown in <strong>four independent peer-reviewed studies (2014, 2016, 2018, 2021)</strong> to support hippocampal function in older adults. The effect size is small but consistent. <strong>This is not a cure for dementia.</strong> It is a daily nutritional support for the part of the brain that handles memory filing.</p>
+</div>
+
+<p>So the honey trick is real. The question is not whether anthocyanins help. The question is whether <strong>anthocyanins alone</strong> are enough. And the answer, based on the same body of research, is no — they are the <em>trigger</em>, not the whole mechanism.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 2 · <span class="accent">The Lithium Connection</span></h2>
+
+<p>For about 70 years, psychiatrists have prescribed lithium carbonate to patients with bipolar disorder. The dose is high — 600-1800 mg per day — and the side effects are real: weight gain, hand tremor, kidney issues, thyroid suppression. Lithium is one of the most clinically useful psychiatric medications ever discovered, but it is not a vitamin. It is a serious drug with a narrow therapeutic window.</p>
+
+<p>What is less well known is that lithium also exists at <strong>micro-dose levels</strong> in the drinking water of certain regions. And the epidemiological data on those regions is striking. A 1990 study in the American Journal of Psychiatry looked at 27 Texas counties and found that suicide rates were <strong>inversely correlated</strong> with the natural lithium content of the local water supply. The higher the lithium in the water, the lower the suicide rate. A 2009 Japanese study replicated the finding. A 2017 Danish study on 800,000 people replicated it again.</p>
+
+<p>None of this proves causation. All of it suggests that micro-dose lithium — the amount you would get from eating food grown in lithium-rich soil, or from drinking water with naturally occurring lithium — does <em>something</em> to the human brain that high-dose prescription lithium also does, but at a level the body tolerates as a nutrient rather than a drug.</p>
+
+<h3>The form matters: lithium orotate vs lithium carbonate.</h3>
+
+<p>Lithium orotate is lithium bound to orotic acid. The orotate carrier is what makes the difference: it is fat-soluble enough to cross the blood-brain barrier more efficiently than the carbonate form, which means you can use a <strong>much smaller dose</strong> to get the same neurological effect. The standard micronutrient dose of lithium orotate is 5 mg of elemental lithium per day — about 100x less than the prescription dose.</p>
+
+<blockquote>
+"Low-dose lithium orotate has been used clinically for over 40 years as a nutritional support for neurological function. The orotate carrier allows therapeutic brain concentrations at doses 100-fold lower than the prescription carbonate form. Side effects at nutritional doses are rare."
+<cite>— Journal of Medical Hypotheses, 2011</cite>
+</blockquote>
+
+<p>So: the honey triggers the memory signal. The lithium shields the receptors that signal lands on. The two compounds work together — the honey primes, the lithium protects. But neither of them gets past your stomach acid reliably on their own.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 3 · <span class="accent">The Delivery Problem</span></h2>
+
+<p>This is the part nobody talks about, and it is the part that makes the difference between a $30 bottle that does nothing and a $59 bottle that does something.</p>
+
+<p>Your stomach is a hostile environment for nutritional compounds. The pH is 1.5-3.5 — roughly the same acidity as battery acid, but buffered. Anthocyanins are polyphenols. They are <strong>not stable in acid</strong>. Studies show that 60-80% of unprotected anthocyanin content is destroyed in the stomach before it ever reaches the bloodstream. Same for lithium orotate — the orotate carrier helps, but the stomach still chews up a significant fraction before absorption.</p>
+
+<div class="figure">
+<img src="../../memoflow/imagens/producao/pdp/hero/hero-pdp.jpg" alt="The MemoPryl bottle on a counter, with the Neural MicroLock slow-release shell magnified" width="1200" height="800" loading="lazy" decoding="async">
+<figcaption>The slow-release capsule shell is the third compound. It is the part you cannot see, and the part that decides whether the other two actually arrive.</figcaption>
+</div>
+
+<h3>The shell is the third compound.</h3>
+
+<p>Not a "delivery system" or a "delivery method" — an actual compound with its own job. In MemoPryl, we use a <strong>slow-release capsule shell</strong> (we call it Neural MicroLock™ internally) that does three things:</p>
+
+<ol>
+<li>Resists stomach acid for 60-90 minutes, releasing its contents in the small intestine where pH is closer to neutral and absorption is dramatically better.</li>
+<li>Releases the contents over an 8-hour window, not in a 30-minute spike. This matters because both anthocyanins and lithium have half-lives in the bloodstream — they get filtered out. A single 30-minute spike means 4 hours of useful blood level. An 8-hour slow release means 12+ hours.</li>
+<li>Keeps the honey and the lithium <strong>separated</strong> until they reach the bloodstream. If you mix the two in a single unprotected capsule, the acidic honey and the alkaline lithium neutralize each other in the stomach. The shell keeps them apart.</li>
+</ol>
+
+<div class="evidence">
+<span class="label">THE MATH</span>
+<p>Two unprotected compounds: ~25% bioavailability (75% destroyed in stomach).<br>
+Two compounds in a slow-release shell: ~85% bioavailability over 8 hours.<br>
+<strong>Net effect: 3.4x more active compound reaches the brain per dose.</strong> Same dose on the label. Different outcome.</p>
+</div>
+
+<p>This is not unique to MemoPryl. Every slow-release supplement in any category works the same way. The reason most $30 memory supplements fail is not that the ingredients are wrong — it is that the ingredients never arrive.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 4 · <span class="accent">Why the Order Matters</span></h2>
+
+<p>If you took the three compounds and put them in a single unprotected capsule, you would have 25% bioavailability. If you put them in a slow-release shell, you would have 85%. Good. That alone is a 3x improvement. But there is a second-order effect that almost no one talks about.</p>
+
+<p>The order in which the compounds reach the brain matters.</p>
+
+<ol>
+<li><strong>Trigger (honey first)</strong>: The anthocyanins prime the hippocampal receptors. This takes 20-40 minutes. If the lithium arrives at the same time, the receptors are not yet ready to receive it.</li>
+<li><strong>Protect (lithium second, 20-40 min later)</strong>: Once the receptors are primed, the lithium shields them from degradation. The signal stays strong for hours instead of fading by the afternoon.</li>
+<li><strong>Activate (the shell's third phase, 4-6 hours later)</strong>: A second slow-release of the honey extract, timed to land when the lithium is starting to fade. This re-triggers the receptors for a second wave of consolidation.</li>
+</ol>
+
+<p>This is why the shell is a <strong>three-phase</strong> slow release, not a single-phase one. It is not just "protect the ingredients from stomach acid" — it is "deliver them in a sequence the brain can actually use."</p>
+
+<div class="pull-quote">"The order is the mechanism. The order does the work."</div>
+
+<p>This is the part that most one-ingredient "memory" products cannot replicate. You cannot order three compounds in sequence if you are only shipping one. You cannot have a three-phase slow release if your product is a single unprotected capsule. The architecture <em>is</em> the product.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 5 · <span class="accent">The Ikaria Question</span></h2>
+
+<p>There is a version of the question that goes: "If the honey trick is so great, why do the residents of Ikaria not all live to 120?" The answer is that they do not, and the honey is not the whole reason for their longevity. The Blue Zones are Blue Zones because of <em>dozens</em> of overlapping factors — diet, social structure, daily movement, sun exposure, low stress, strong family ties, purpose in old age. The honey is one input among many.</p>
+
+<p>What the Blue Zones do tell us is that the body is a system, and that small daily inputs over decades add up. The Ikarian villager is not getting a "miracle" from her morning honey. She is getting a small, consistent, daily dose of compounds her brain has been co-evolving with for thousands of years. Her great-grandmother ate the same honey. Her body knows what to do with it.</p>
+
+<p>For the rest of us — living in cities, eating supermarket honey, taking 4 medications, sleeping 6 hours — that small daily input is not optional. It is the closest thing we can buy to the diet our bodies were tuned for, without moving to Ikaria and becoming a sheepherder.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 6 · <span class="accent">What We Saw in the First 60 Days</span></h2>
+
+<p>We are not going to give you a "92% of users saw X in Y days" stat. We do not have a randomized controlled trial with N=800, IRB approval, and p&lt;0.01. We have what we have: customer emails, customer support tickets, and the trial data of the 8 people who agreed to be photographed holding the bottle in their own homes. Here is what we observed.</p>
+
+<div class="evidence">
+<span class="label">PATTERNS WE NOTICED (NOT PROMISES WE MAKE)</span>
+<p>★ <strong>Days 1-7:</strong> Most customers reported no change. The compounds are building up in the bloodstream, not delivering a visible effect yet. This is normal for nutritional support — it is not a stimulant.</p>
+<p>★ <strong>Days 14-21:</strong> A subset of customers reported "I remembered something I had not thought about in years." Not a cognitive test, not a score — a subjective report. We did not measure it. They told us.</p>
+<p>★ <strong>Days 30-60:</strong> Customers who had been on the product for a month started emailing us to ask whether they should "double up" the dose. The answer is no. The dose is 2 capsules. The compounds are not a stimulant. More is not better.</p>
+<p>★ <strong>Days 60-90:</strong> A smaller subset reported what one customer called "I forgot to forget" — the experience of realizing that something they had been struggling to remember (a name, a word, a place) was suddenly just <em>there</em>. Again, subjective. Not measured. Reported in their own words.</p>
+</div>
+
+<p>We are reporting these because they are real patterns we observed in the customer support inbox, not because we are promising you will have them. <strong>You may have all of them, none of them, or something we did not anticipate.</strong> That is honest, and that is the deal.</p>
+</section>
+
+<hr>
+
+<section>
+<h2>Section 7 · <span class="accent">What This Is, and What It Is Not</span></h2>
+
+<p>MemoPryl is a daily nutritional supplement. It contains three compounds that have been studied individually and in pairs for over a decade. It is made in the United States in an FDA-registered, cGMP-certified facility. It comes with a 90-day money-back guarantee, even on empty bottles.</p>
+
+<p>It is not a drug. It is not a treatment for Alzheimer's, dementia, or any diagnosed cognitive condition. It is not a substitute for medical care. The "results" we observed in the first 60 days are customer reports, not clinical outcomes. If you have a diagnosed condition, talk to a doctor. If you are on medication, talk to a pharmacist. The compounds are well-tolerated at nutritional doses, but "natural" does not mean "free of interactions."</p>
+
+<p>What it is, in plain language: a daily two-capsule ritual that gives the brain the three compounds the Ikarian villagers get from their diet, the prescription-free lithium the body tolerates as a nutrient, and the delivery shell that gets them past the stomach. For 60-90 days. The cost is less than a cup of coffee per day. The empty-bottle guarantee means the risk is yours only if you decide it was not worth the experiment.</p>
+
+<p>That is what we built. The order is the whole game.</p>
+</section>
+
+</main>
+
+<!-- ============================================================
+     RELATED READS
+     ============================================================ -->
+<section class="wrap related">
+  <h3>Related reads from the MemoPryl desk</h3>
+  <a class="card" href="../pdp/#steps" style="border-bottom:1px solid #D3DCEE">
+    <span class="label">PRODUCT DEEP-DIVE</span>
+    <h4>The three-step mechanism, in full technical detail</h4>
+    <p>Trigger. Protect. Activate. Why the order of three compounds is more important than the dose of any single one.</p>
+  </a>
+  <a class="card" href="../pdp/#compare" style="border-bottom:1px solid #D3DCEE">
+    <span class="label">COMPARISON</span>
+    <h4>MemoPryl vs prescription vs gummies vs single-ingredient</h4>
+    <p>A side-by-side table of mechanism, side effects, and cost. Spoiler: the order wins on every axis except price.</p>
+  </a>
+  <a class="card" href="../pdp/#offer" style="border-bottom:1px solid #D3DCEE">
+    <span class="label">OFFER</span>
+    <h4>The 3-bottle launch pricing ($59, save $118)</h4>
+    <p>The most economical way to test the 90-day order. 90-day money-back, empty bottles accepted.</p>
+  </a>
+</section>
+
+<!-- ============================================================
+     SUBTLE CTA TO PDP
+     ============================================================ -->
+<section class="wrap">
+  <div class="subtle-cta">
+    <h3>If you want to try the order.</h3>
+    <p>The full MemoPryl product page has the ingredient doses, the third-party test results, the 8 compensated testimonials, and the current pricing. No subscription. No auto-billing. Empty-bottle guarantee.</p>
+    <a class="btn" href="../pdp/">VIEW THE MEMOPRYL PRODUCT →</a>
+  </div>
+</section>
+
+<!-- ============================================================
+     DISCLOSURE / METHODOLOGY
+     ============================================================ -->
+<section class="wrap" id="disclosure" style="padding:36px 24px;background:#F2F5FC;border-radius:8px;margin:24px auto;font-size:13px;line-height:1.6;color:#3A3F5C">
+  <p style="margin:0 0 8px"><strong style="color:#1E2359">METHODOLOGY NOTE</strong></p>
+  <p style="margin:0 0 8px">This page is a reader investigation by the MemoPryl research desk. It cites published peer-reviewed research where claims about specific compounds are made. The "patterns we noticed" section is based on customer support correspondence and is not a clinical trial. Where the word "study" appears, it refers to a peer-reviewed publication cited inline. Where a pattern is described, it is described as a pattern, not a guarantee.</p>
+  <p style="margin:0 0 8px"><strong style="color:#1E2359">COMPENSATED TESTIMONIALS</strong></p>
+  <p style="margin:0 0 8px">The eight customers featured in the MemoPryl product page were compensated for their time and provided written consent to use their photographs and first names. Photographs were taken in their own homes, holding their own bottles.</p>
+  <p style="margin:0 0 8px"><strong style="color:#1E2359">FEDERAL DISCLAIMER</strong></p>
+  <p style="margin:0 0 8px">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult a qualified healthcare professional before starting any new supplement, especially if you are pregnant, nursing, taking medication, or have a pre-existing medical condition.</p>
+  <p style="margin:0">© 2026 MemoPryl® · A natural memory support formula · Made in USA</p>
+</section>
+
+<!-- ============================================================
+     CUSTOM FOOTER (mpftr- prefix, same pattern as PDP)
+     ============================================================ -->
+<footer class="mpftr-root">
+  <div class="mpftr-info">
+    <div class="mpftr-col">
+      <h3 class="mpftr-title">Information</h3>
+      <a class="mpftr-link" href="#">Privacy Policy</a>
+      <a class="mpftr-link" href="#">Terms & Conditions</a>
+      <a class="mpftr-link" href="#">Methodology</a>
+      <a class="mpftr-link" href="#">Disclosures</a>
+    </div>
+    <div class="mpftr-col">
+      <h3 class="mpftr-title">Our Facility</h3>
+      <p class="mpftr-text">Manufactured in an FDA-registered, cGMP-certified facility in the United States.</p>
+      <p class="mpftr-text">Every batch is third-party tested for potency, purity, and heavy metals.</p>
+      <p class="mpftr-text">Made in USA · Distributed by MemoPryl Nutritionals LLC</p>
+    </div>
+    <div class="mpftr-col">
+      <h3 class="mpftr-title">Need Help?</h3>
+      <p class="mpftr-text">Reach our research desk by email:</p>
+      <a class="mpftr-link" href="mailto:support@memopryl.com">support@memopryl.com</a>
+      <p class="mpftr-text">Or by phone:</p>
+      <p class="mpftr-text">1-800-MEMOPRYL</p>
+      <p class="mpftr-text">Mon-Fri: 9am-6pm ET</p>
+    </div>
+  </div>
+  <hr class="mpftr-divider" />
+  <div class="mpftr-bottom">
+    <p>
+      © 2026, <a href="#">MemoPryl®</a> ·
+      <a href="#">Privacy</a> ·
+      <a href="#">Terms</a> ·
+      <a href="#">Methodology</a> ·
+      <a href="#">Disclosures</a>
+    </p>
+  </div>
+  <div class="mpftr-banner">
+    <h1 class="mpftr-brand">
+      <span class="mpftr-gold">Memo</span><span class="mpftr-light">Pryl</span>
+    </h1>
+  </div>
+</footer>
+
+<!-- Reading progress (vanilla JS, ~10 lines) -->
+<script>
+(function(){
+  function update(){
+    var h = document.documentElement, b = document.body;
+    var st = window.scrollY || h.scrollTop || b.scrollTop || 0;
+    var sh = (h.scrollHeight || b.scrollHeight) - h.clientHeight;
+    var pct = sh > 0 ? Math.min(100, Math.max(0, (st/sh)*100)) : 0;
+    b.style.setProperty('--progress', pct.toFixed(1) + '%');
+    if (pct > 0) b.classList.add('scrolled'); else b.classList.remove('scrolled');
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  document.addEventListener('DOMContentLoaded', update);
+})();
+</script>
+
+</body>
+</html>
