@@ -1,4 +1,22 @@
 {
+  "rewrites": [
+    {
+      "source": "/methodology/(.*)",
+      "destination": "/references_v5/methodology/$1"
+    },
+    {
+      "source": "/tracking/(.*)",
+      "destination": "/references_v5/tracking/$1"
+    },
+    {
+      "source": "/by-product/(.*)",
+      "destination": "/references_v5/by-product/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/references_v5/"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)\\.(jpg|jpeg|png|gif|webp|svg|ico|webm|mp4)",
