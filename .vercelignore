@@ -1,0 +1,23 @@
+# .vercelignore — exclude source / non-deploy assets from Vercel bundle
+# Keeps repo intact (git still tracks) but slims deployment to ~160MB (under Hobby 1GB)
+# DOES NOT touch /methodology / /tracking / /by-product/* folders — DR Hub needs them
+
+# === Meta ad creatives (15 MP4s @ ~20MB each = 990MB) ===
+# These are uploaded directly to Meta Ads Manager, never served from Vercel
+**/ads/video-angulos/*.mp4
+**/video-angulos/*.mp4
+**/ads/imagem-angulo-*/*.png
+**/video-angulos/frames/*-frame-40pct.jpg
+
+# === Original VSL audio sources (4 WAVs @ ~110MB each = 450MB) ===
+# Already transcribed to markdown in same folder; keep .md, drop the .wav
+**/audio-transcripts/*.wav
+**/audio-transcripts/*.mp3
+
+# === Trash + internal archives (not user-facing) ===
+**_archive/
+**/_trash/
+**/trash/
+**/copy/raw-*.html
+**/copy/*/raw-*.html
+**/copy/*/raw-*.md

@@ -49,5 +49,8 @@ buy-page/*.log
 !/slimsoda-pdp/
 !/slimsoda-pdp/**
 
+# Vercel-specific deploy ignore (excludes MP4s + WAVs + trash from bundle)
+!/.vercelignore
+
 .vercel
 .env*
