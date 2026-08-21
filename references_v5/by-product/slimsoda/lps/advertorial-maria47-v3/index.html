@@ -587,8 +587,9 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   v4.7 (20/08/2026) : MECHANICAL CONVERSION TRIGGERS
                    · Sticky CTA bar (fixed bottom, dark bg + green border) appears after 30% scroll:
                      "30 seconds a day · 90-day money-back · $27.49" + dismissible close button
-                     + utm_source=stickybar tracking + fbq StickyCtaClick custom event. User said
-                     "funcionava no outro advertorial" — trusted domain-specific data.
+                     + fbq StickyCtaClick custom event. v4.7.1: CTA goes to /slimsoda-pdp/ (not
+                     direct checkout) — the user has already scrolled 30%+ so they don't need the
+                     quiz. PDP is the natural intermediate step. utm_medium=stickybar.
                    · Exit-intent popup STILL skipped (contradicts "permission to leave" P.S.)
                    · Objections block: added 5th objection (doctor/labs): "My doctor ran labs
                      and said everything is fine. Why am I still bloated?" → answers with
@@ -1309,7 +1310,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
     <p class="sc-kicker">The 3-Ingredient Morning Method</p>
     <p class="sc-line">30 seconds a day &middot; 90-day money-back &middot; $27.49</p>
   </div>
-  <a class="sc-cta" href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377&utm_source=advertorial&utm_medium=stickybar&utm_campaign=maria47v3" id="scCta">See If Available</a>
+  <a class="sc-cta" href="/slimsoda-pdp/?&affid=aff_6821377&utm_source=advertorial&utm_medium=stickybar&utm_campaign=maria47v3" id="scCta">See If Available</a>
 </div>
 
 <script>
