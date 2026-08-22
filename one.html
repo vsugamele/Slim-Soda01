@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎯 The One Page · Decisão do dia</title>
+<meta name="description" content="Decision dashboard. O que fazer hoje, pipeline de criativos, ângulos rodando, páginas, dados, log de iteração.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117; --panel: #1A1D24; --panel-2: #232730; --border: rgba(255,255,255,0.08);
+  --text: #FAFAF7; --muted: #9A9AA8; --muted-2: #6B6B78;
+  --accent: #E09A22; --accent-2: #F5841F; --gold: #FFD166;
+  --green: #06A77D; --red: #c0392b; --blue: #4ea1ff; --purple: #B197FC;
+  --slim: #F5841F; --linfozen: #4ea1ff; --linfaflow: #06A77D; --cardio: #c0392b; --memo: #B197FC;
+  --shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1320px; margin: 0 auto; padding: 24px 28px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===== HEADER ===== */
+header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.hdr-left { flex: 1; min-width: 280px; }
+.hdr-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.kicker { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+h1 { font-family: 'Bitter', Georgia, serif; font-size: 36px; font-weight: 800; line-height: 1.1; margin: 0 0 4px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--accent); }
+.subtitle { font-size: 14px; color: var(--muted); margin: 0; }
+.subtitle b { color: var(--text); font-weight: 600; }
+
+.live-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; background: rgba(6,167,125,0.15); color: var(--green); border: 1px solid rgba(6,167,125,0.3); border-radius: 99px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.live-pill .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: var(--panel); border: 1px solid var(--border); color: var(--text); border-radius: 6px; font-size: 12px; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+.btn:hover { background: var(--panel-2); border-color: var(--accent); text-decoration: none; }
+.btn-primary { background: var(--accent); color: #000; border-color: var(--accent); }
+.btn-primary:hover { background: var(--gold); }
+.btn-sm { padding: 4px 10px; font-size: 11px; }
+
+/* ===== TOP GRID: 4-col status + decision ===== */
+.top-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px; }
+.metric { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.metric .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.metric .value { font-family: 'Bitter', serif; font-size: 28px; font-weight: 800; line-height: 1; margin-bottom: 2px; }
+.metric .sub { font-size: 11px; color: var(--muted); }
+.metric .delta-up { color: var(--green); font-weight: 700; }
+.metric .delta-down { color: var(--red); font-weight: 700; }
+.metric .accent { color: var(--accent); }
+.metric.slim .value { color: var(--slim); }
+.metric.linfozen .value { color: var(--linfozen); }
+.metric.linfaflow .value { color: var(--linfaflow); }
+.metric.cardio .value { color: var(--cardio); }
+.metric.memo .value { color: var(--memo); }
+
+/* ===== DECISION BANNER ===== */
+.decision-banner { background: linear-gradient(135deg, rgba(224,154,34,0.15), rgba(30,35,89,0.15)); border: 1px solid var(--accent); border-radius: 10px; padding: 18px 22px; margin-bottom: 24px; position: relative; overflow: hidden; }
+.decision-banner::before { content: ''; position: absolute; top: -50%; right: -10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(224,154,34,0.15), transparent 70%); pointer-events: none; }
+.decision-banner .kicker { color: var(--accent); }
+.decision-banner h2 { font-family: 'Bitter', serif; font-size: 24px; font-weight: 800; margin: 4px 0 8px; line-height: 1.2; }
+.decision-banner p { font-size: 14px; color: var(--text); margin: 0 0 10px; max-width: 800px; }
+.decision-banner .why { font-size: 12px; color: var(--muted); }
+.decision-banner .why b { color: var(--gold); }
+.decision-banner .actions { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; position: relative; z-index: 1; }
+
+/* ===== MAIN GRID: 2-col ===== */
+.main-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-bottom: 24px; }
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+.panel-title { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.panel-title h3 { font-family: 'Bitter', serif; font-size: 18px; font-weight: 800; margin: 0; }
+.panel-title .meta { font-size: 11px; color: var(--muted); }
+.panel-title .actions { display: flex; gap: 6px; }
+
+/* ===== PIPELINE TABLE ===== */
+.pipeline { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.pipeline th { text-align: left; padding: 8px 10px; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; border-bottom: 1px solid var(--border); }
+.pipeline td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.pipeline tr:last-child td { border-bottom: none; }
+.pipeline .product-cell { display: flex; align-items: center; gap: 6px; font-weight: 700; }
+.pipeline .icon { font-size: 16px; }
+.pipeline .angle { color: var(--text); }
+.pipeline .format { color: var(--muted); font-size: 11px; }
+.pipeline .hook { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--gold); display: block; margin-top: 2px; max-width: 280px; }
+.pipeline .lp { font-size: 11px; }
+.pipeline .data { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+.pipeline .data .up { color: var(--green); }
+.pipeline .data .down { color: var(--red); }
+.status-pill { display: inline-block; padding: 2px 7px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.status-pill.concept { background: rgba(154,154,168,0.15); color: var(--muted); }
+.status-pill.brief { background: rgba(78,161,255,0.15); color: var(--blue); }
+.status-pill.production { background: rgba(255,209,102,0.15); color: var(--gold); }
+.status-pill.review { background: rgba(177,151,252,0.15); color: var(--purple); }
+.status-pill.live { background: rgba(6,167,125,0.15); color: var(--green); }
+.status-pill.paused { background: rgba(192,57,43,0.15); color: var(--red); }
+
+/* ===== ANGLES LIST ===== */
+.angles { list-style: none; padding: 0; margin: 0; }
+.angles li { padding: 10px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; }
+.angles li:last-child { border-bottom: none; }
+.angles .check { width: 18px; height: 18px; border: 1.5px solid var(--border); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+.angles .check.done { background: var(--green); border-color: var(--green); color: #000; font-size: 11px; font-weight: 800; }
+.angles .check.running { border-color: var(--gold); color: var(--gold); font-size: 9px; font-weight: 800; }
+.angles .text { flex: 1; }
+.angles .label { font-size: 12px; font-weight: 600; color: var(--text); }
+.angles .sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.angles .tag { font-size: 10px; padding: 1px 6px; background: var(--panel-2); border-radius: 3px; color: var(--muted); margin-left: 4px; }
+
+/* ===== PAGES TABLE ===== */
+.pages { width: 100%; border-collapse: collapse; font-size: 12px; }
+.pages th, .pages td { padding: 7px 8px; text-align: left; border-bottom: 1px solid var(--border); }
+.pages th { color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+.pages tr:last-child td { border-bottom: none; }
+.pages a { font-size: 11px; color: var(--accent); }
+
+/* ===== ITERATIVE LOG ===== */
+.log { list-style: none; padding: 0; margin: 0; }
+.log li { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; }
+.log li:last-child { border-bottom: none; }
+.log .date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+.log .what b { color: var(--text); }
+.log .what .impact-up { color: var(--green); font-weight: 700; }
+.log .what .impact-down { color: var(--red); font-weight: 700; }
+.log .what .impact-neutral { color: var(--muted); font-weight: 700; }
+
+/* ===== QUICK WINS / ALERTS ===== */
+.win-list { list-style: none; padding: 0; margin: 0; }
+.win-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; display: flex; align-items: flex-start; gap: 8px; }
+.win-list li:last-child { border-bottom: none; }
+.win-list .icon { flex-shrink: 0; font-size: 14px; }
+.win-list .text { flex: 1; }
+.win-list .text b { color: var(--text); }
+.alert-list { list-style: none; padding: 0; margin: 0; }
+.alert-list li { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 12.5px; display: flex; align-items: flex-start; gap: 8px; }
+.alert-list li:last-child { border-bottom: none; }
+.alert-list .icon { flex-shrink: 0; font-size: 14px; color: var(--red); }
+
+/* ===== META NAV ===== */
+.nav-strip { display: flex; gap: 6px; margin-bottom: 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; flex-wrap: wrap; align-items: center; }
+.nav-strip .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.nav-strip a { padding: 4px 10px; background: var(--panel-2); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; }
+.nav-strip a:hover { background: var(--accent); color: #000; text-decoration: none; }
+.nav-strip a.active { background: var(--accent); color: #000; }
+
+footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 11px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+footer a { color: var(--muted); }
+footer .legend { display: flex; gap: 10px; flex-wrap: wrap; }
+footer .legend span { display: flex; align-items: center; gap: 4px; }
+footer .legend .swatch { width: 10px; height: 10px; border-radius: 2px; }
+
+@media (max-width: 1100px) {
+  .top-grid { grid-template-columns: repeat(3, 1fr); }
+  .main-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { padding: 16px 14px 60px; }
+  h1 { font-size: 26px; }
+  .top-grid { grid-template-columns: repeat(2, 1fr); }
+  .pipeline .hook { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav-strip">
+    <span class="label">Navegar:</span>
+    <a href="references_v5/index.html">DR Hub</a>
+    <a href="one.html" class="active">🎯 One Page</a>
+    <a href="references_v5/by-product/slimsoda/index.html">SlimSoda</a>
+    <a href="references_v5/by-product/memopryl/">MemoPryl</a>
+    <a href="intel/spy-2026-08-22/MASTER.md">📡 Spy 22/ago</a>
+    <a href="REPOS.md">📂 Repos</a>
+  </div>
+
+  <header>
+    <div class="hdr-left">
+      <div class="kicker">DR · Command Center</div>
+      <h1>🎯 The One Page</h1>
+      <p class="subtitle">O que fazer <b>hoje</b>. Pipeline de criativos. Ângulos rodando. Páginas. Decisão. Log de iteração. <span id="today-date">—</span></p>
+    </div>
+    <div class="hdr-right">
+      <span class="live-pill"><span class="dot"></span>Live · auto-save 5min</span>
+      <a href="references_v5/tracking/" class="btn">📊 Tracking</a>
+      <a href="intel/spy-2026-08-22/MASTER.md" class="btn">📡 Spy intel</a>
+    </div>
+  </header>
+
+  <!-- ===== TOP METRICS ===== -->
+  <div class="top-grid">
+    <div class="metric slim">
+      <div class="label">🥤 SlimSoda</div>
+      <div class="value">$19.99<span style="font-size:14px;color:var(--muted)">/tub</span></div>
+      <div class="sub">4 LPs · 1 advertorial live · 6 Native ads</div>
+    </div>
+    <div class="metric memo">
+      <div class="label">🧠 MemoPryl</div>
+      <div class="value">$59<span style="font-size:14px;color:var(--muted)"> B2G1</span></div>
+      <div class="sub">2 LPs · 6 Meta criativos · 4 trust seals</div>
+    </div>
+    <div class="metric linfaflow">
+      <div class="label">💧 Linfaflow</div>
+      <div class="value">$49<span style="font-size:14px;color:var(--muted)">/bot</span></div>
+      <div class="sub">Brief 9 ângulos · VSL+LP em produção</div>
+    </div>
+    <div class="metric cardio">
+      <div class="label">❤️ Cardio Clear</div>
+      <div class="value">$59<span style="font-size:14px;color:var(--muted)">/bot</span></div>
+      <div class="sub">Brief 8 ângulos · Dr. Sanjay Gupta autorizado</div>
+    </div>
+    <div class="metric linfozen">
+      <div class="label">💧 Linfozen</div>
+      <div class="value">$59<span style="font-size:14px;color:var(--muted)">/bot</span></div>
+      <div class="sub">Brief 9 ângulos · B2H2/B2H3 validados</div>
+    </div>
+  </div>
+
+  <!-- ===== DECISION BANNER ===== -->
+  <div class="decision-banner">
+    <div class="kicker">🎯 Decisão do dia · 2026-08-22</div>
+    <h2>Briefar 2 criativos SlimSoda pro ângulo "anti-scam honest baking soda"</h2>
+    <p>O cluster baking soda tá LOTADO de deepfakes (Oprah, Jastreboff, Bill Gates). BBB/NYT/Snopes todos cobriram. <b>SlimSoda pode se diferenciar</b> com ângulo "no fake celeb, real ingredients, real research". Spy de 22/ago identificou como gap real, blue ocean.</p>
+    <p class="why"><b>Por quê:</b> gap cross-vertical (todas as 4 verticais têm ângulo anti-scam livre); 65+ women over 40 tá sub-servido; preço 50-60% abaixo do mercado reforça trust; "no subscription" é hero angle herdado do SlimSoda.</p>
+    <div class="actions">
+      <a href="intel/spy-2026-08-22/slimsoda.md" class="btn btn-primary">📡 Ver spy SlimSoda</a>
+      <a href="references_v5/by-product/slimsoda/copy/briefing-affiliate/index.html" class="btn">📝 Brief template</a>
+      <a href="references_v5/by-product/slimsoda/lps/article-lp/index.html" class="btn">📄 Listicle (Yale)</a>
+    </div>
+  </div>
+
+  <!-- ===== MAIN GRID: Pipeline + Angles ===== -->
+  <div class="main-grid">
+    <div class="panel">
+      <div class="panel-title">
+        <h3>🛠️ Pipeline de criativos</h3>
+        <span class="meta">5 produtos · 12 ângulos em teste</span>
+        <div class="actions">
+          <a href="#" class="btn btn-sm">+ Add</a>
+        </div>
+      </div>
+      <table class="pipeline">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Ângulo</th>
+            <th>Hook (verbatim EN)</th>
+            <th>Status</th>
+            <th>LP</th>
+            <th>Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="product-cell"><span class="icon">🥤</span>SlimSoda</div></td>
+            <td class="angle">Anti-scam honest baking soda</td>
+            <td><span class="format">UGC 60-90s</span><code class="hook">"I saw all those ads claiming Oprah swears by a baking soda recipe. Most of them are fake. Here's what baking soda actually does."</code></td>
+            <td><span class="status-pill concept">Concept</span></td>
+            <td><a class="lp" href="slimsoda-pdp/">PDP</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">🥤</span>SlimSoda</div></td>
+            <td class="angle">Sardinian centenarian</td>
+            <td><span class="format">Carousel 5 cards</span><code class="hook">"The women of Sardinia and Okinawa drink a morning mineral tonic. They're not on GLP-1s. They live past 100."</code></td>
+            <td><span class="status-pill concept">Concept</span></td>
+            <td><a class="lp" href="slimsoda-pdp/">PDP</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">🧠</span>MemoPryl</div></td>
+            <td class="angle">Harvard lithium microdose</td>
+            <td><span class="format">UGC 60-90s</span><code class="hook">"Harvard scientists just found the missing brain mineral that protects memory after 60."</code></td>
+            <td><span class="status-pill concept">Concept</span></td>
+            <td><a class="lp" href="references_v5/by-product/memopryl/lps/pdp/">PDP V2</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">🧠</span>MemoPryl</div></td>
+            <td class="angle">Blue zone in a capsule</td>
+            <td><span class="format">Static image + carousel</span><code class="hook">"On a Greek island, 75% fewer people over 85 get dementia. Researchers finally know why."</code></td>
+            <td><span class="status-pill concept">Concept</span></td>
+            <td><a class="lp" href="references_v5/by-product/memopryl/lps/hub/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">💧</span>Linfaflow</div></td>
+            <td class="angle">5pm ankle check</td>
+            <td><span class="format">UGC iPhone 60-90s</span><code class="hook">"Why your socks leave deeper marks by 5pm (it's not sodium)."</code></td>
+            <td><span class="status-pill brief">Brief</span></td>
+            <td><a class="lp" href="references_v5/by-product/linfaflow/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">💧</span>Linfaflow</div></td>
+            <td class="angle">Post-flight lymph reset</td>
+            <td><span class="format">Static image + carousel</span><code class="hook">"After a 6-hour flight, why your ankles don't bounce back for 2 days."</code></td>
+            <td><span class="status-pill brief">Brief</span></td>
+            <td><a class="lp" href="references_v5/by-product/linfaflow/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">❤️</span>Cardio Clear</div></td>
+            <td class="angle">4-in-1 mechanism</td>
+            <td><span class="format">UGC couple 60-90s</span><code class="hook">"Most heart supplements give you one ingredient. Big pharma gives you one pill. We give you four."</code></td>
+            <td><span class="status-pill brief">Brief</span></td>
+            <td><a class="lp" href="references_v5/by-product/cardio-clear/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">❤️</span>Cardio Clear</div></td>
+            <td class="angle">Dr. Sanjay Gupta authorized (anti-scam)</td>
+            <td><span class="format">Talking-head + UGC</span><code class="hook">"I'm not endorsing CardioFlush or CardioClear7. Those are scams. I AM the formulator behind Cardio Clear."</code></td>
+            <td><span class="status-pill concept">Concept</span></td>
+            <td><a class="lp" href="references_v5/by-product/cardio-clear/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">💧</span>Linfozen</div></td>
+            <td class="angle">Menopause belly (55-70 sub-avatar)</td>
+            <td><span class="format">UGC 60-90s</span><code class="hook">"The 7 lbs that won't come off in your 60s isn't fat — it's stagnant lymph."</code></td>
+            <td><span class="status-pill brief">Brief</span></td>
+            <td><a class="lp" href="references_v5/by-product/linfozen/">Hub</a></td>
+            <td class="data">—</td>
+          </tr>
+          <tr>
+            <td><div class="product-cell"><span class="icon">🥤</span>SlimSoda (legacy)</div></td>
+            <td class="angle">Yale + Baking Soda (Maria 47 v4.7.1)</td>
+            <td><span class="format">Advertorial long-form</span><code class="hook">"Yale Doctor reveals the $1 baking soda recipe..."</code></td>
+            <td><span class="status-pill live">Live</span></td>
+            <td><a class="lp" href="references_v5/by-product/slimsoda/lps/advertorial-maria47-v3/index.html">v3</a></td>
+            <td class="data">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>🎯 Ângulos em teste (8)</h3>
+        <span class="meta">2 / 8 rodando</span>
+      </div>
+      <ul class="angles">
+        <li>
+          <div class="check done">✓</div>
+          <div class="text">
+            <div class="label">SlimSoda · Yale + Baking Soda <span class="tag">live 30+ dias</span></div>
+            <div class="sub">advertorial-maria47-v3 — top performer histórico, agora saturado</div>
+          </div>
+        </li>
+        <li>
+          <div class="check running">▶</div>
+          <div class="text">
+            <div class="label">SlimSoda · Anti-scam honest baking soda <span class="tag">brief</span></div>
+            <div class="sub">gap real, blue ocean · 65+ sub-avatar</div>
+          </div>
+        </li>
+        <li>
+          <div class="check"></div>
+          <div class="text">
+            <div class="label">SlimSoda · Sardinian centenarian <span class="tag">concept</span></div>
+            <div class="sub">Sardinia/Okinawa exotification, longevidade</div>
+          </div>
+        </li>
+        <li>
+          <div class="check running">▶</div>
+          <div class="text">
+            <div class="label">MemoPryl · Honey Trick (Bill Gates clone) <span class="tag">live</span></div>
+            <div class="sub">scam-flagged cluster — separar marca ou descontinuar</div>
+          </div>
+        </li>
+        <li>
+          <div class="check"></div>
+          <div class="text">
+            <div class="label">MemoPryl · Harvard lithium microdose <span class="tag">concept · GAP real</span></div>
+            <div class="sub">paper Nature 2025 + pilot Pittsburgh 2026 · 0 concorrentes Meta</div>
+          </div>
+        </li>
+        <li>
+          <div class="check"></div>
+          <div class="text">
+            <div class="label">MemoPryl · Blue zone in a capsule (Ikaria) <span class="tag">concept</span></div>
+            <div class="sub">75% menos dementia 85+ · lítio da água</div>
+          </div>
+        </li>
+        <li>
+          <div class="check"></div>
+          <div class="text">
+            <div class="label">Linfaflow · 5pm ankle check <span class="tag">brief</span></div>
+            <div class="sub">time-specificity é fresco, não saturado</div>
+          </div>
+        </li>
+        <li>
+          <div class="check"></div>
+          <div class="text">
+            <div class="label">Cardio Clear · 4-in-1 + Dr. Sanjay Gupta anti-scam <span class="tag">concept</span></div>
+            <div class="sub">diferencia CardioClear7 scam + posicionamento autorizado</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== SECOND GRID: Pages + Log ===== -->
+  <div class="main-grid">
+    <div class="panel">
+      <div class="panel-title">
+        <h3>📄 Pages status</h3>
+        <span class="meta">10+ LPs ativas</span>
+        <div class="actions">
+          <a href="references_v5/" class="btn btn-sm">Ver todas</a>
+        </div>
+      </div>
+      <table class="pages">
+        <thead>
+          <tr><th>Page</th><th>Status</th><th>Última</th><th>Tipo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="references_v5/by-product/slimsoda/lps/advertorial-maria47-v3/">SlimSoda Maria 47 v4.7.1</a></td><td><span class="status-pill live">Live</span></td><td>17/ago</td><td>Advertorial</td></tr>
+          <tr><td><a href="references_v5/by-product/slimsoda/lps/article-lp/">SlimSoda Yale+BakingSoda</a></td><td><span class="status-pill live">Live</span></td><td>17/ago</td><td>Listicle</td></tr>
+          <tr><td><a href="slimsoda-pdp/">SlimSoda PDP v3</a></td><td><span class="status-pill live">Live</span></td><td>20/ago</td><td>PDP</td></tr>
+          <tr><td><a href="slimtide-vsl/">SlimTide VSL</a></td><td><span class="status-pill live">Live</span></td><td>17/ago</td><td>VSL</td></tr>
+          <tr><td><a href="buy-page/">SlimSoda buy-page (Shopzenvy Lite)</a></td><td><span class="status-pill live">Live</span></td><td>17/ago</td><td>Checkout</td></tr>
+          <tr><td><a href="references_v5/by-product/memopryl/lps/pdp/">MemoPryl PDP V2</a></td><td><span class="status-pill live">Live</span></td><td>21/ago</td><td>PDP</td></tr>
+          <tr><td><a href="references_v5/by-product/memopryl/lps/hub/">MemoPryl Content Hub</a></td><td><span class="status-pill live">Live</span></td><td>21/ago</td><td>Editorial</td></tr>
+          <tr><td><a href="memo.purelabss.com/ml05">MemoPryl DTC ml05</a></td><td><span class="status-pill live">Live</span></td><td>22/ago</td><td>DTC CNN clone</td></tr>
+          <tr><td><a href="memo.purelabss.com/ml06">MemoPryl DTC ml06</a></td><td><span class="status-pill live">Live</span></td><td>22/ago</td><td>DTC CNN clone</td></tr>
+          <tr><td><a href="references_v5/index.html">DR Hub v26</a></td><td><span class="status-pill live">Live</span></td><td>22/ago</td><td>Reference</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>📝 Log de iteração</h3>
+        <span class="meta">o que mudou → o que rolou</span>
+      </div>
+      <ul class="log">
+        <li>
+          <div class="date">22/ago</div>
+          <div class="what"><b>Spy 22/ago</b> commitado em <code>intel/spy-2026-08-22/</code> · 5 verticals analisados, 120+ ads mapeados. <span class="impact-up">+gap real identificado</span> em todas as 4 verticais.</div>
+        </li>
+        <li>
+          <div class="date">22/ago</div>
+          <div class="what"><b>repo + GitHub</b> memo.purelabss.com standalone com fix de CSS (ícones SVG 797×797 → 24px). <span class="impact-up">+MLP renderiza</span></div>
+        </li>
+        <li>
+          <div class="date">21/ago</div>
+          <div class="what"><b>MemoPryl hub</b> — PDP V2 + Content Hub + 6 criativos + 4 trust seals + 2 VSLs + 5 DTC funnels deployados. <span class="impact-up">+brand assets completos</span></div>
+        </li>
+        <li>
+          <div class="date">20/ago</div>
+          <div class="what"><b>SlimSoda PDP</b> deployado com checkout real (memopryl.com B2G1 60-day MBG). <span class="impact-up">+conversion ready</span></div>
+        </li>
+        <li>
+          <div class="date">17/ago</div>
+          <div class="what"><b>SlimSoda Maria 47 v4.7.1 Quiet</b> — magazine layout + heavy copy + sticky CTA. <span class="impact-up">+top performer histórico</span></div>
+        </li>
+        <li>
+          <div class="date">17/ago</div>
+          <div class="what"><b>Quiz 8 steps + Chat x1</b> deployados pra SlimSoda. <span class="impact-neutral">data TBD</span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== THIRD GRID: Quick wins + Alerts ===== -->
+  <div class="main-grid">
+    <div class="panel">
+      <div class="panel-title">
+        <h3>💡 Quick wins (5-7 dias)</h3>
+      </div>
+      <ul class="win-list">
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>Brief SlimSoda "anti-scam honest baking soda"</b> — 1 criativo UGC 60-90s, sem fake celeb, hook nos primeiros 3s. <a href="intel/spy-2026-08-22/slimsoda.md">Ver spy →</a></div>
+        </li>
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>Brief MemoPryl "Harvard lithium microdose"</b> — gap real, paper Nature 2025. 0 concorrentes no Meta. <a href="intel/spy-2026-08-22/memopryl.md">Ver spy →</a></div>
+        </li>
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>SlimSoda pricing messaging</b> — frame "$0 subscription · 50-60% below market" como hero do ad copy (já tá pronto, só precisa explodir)</div>
+        </li>
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>Cardio Clear "real doctor, no deepfake"</b> — aproveitar Dr. Sanjay Gupta autorizado pra ocupar lane anti-CardioClear7 scams</div>
+        </li>
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>Consolidar slimsoda-pdp</b> dentro de <code>references_v5/by-product/slimsoda/</code> (tá no root, separado)</div>
+        </li>
+        <li>
+          <span class="icon">⚡</span>
+          <div class="text"><b>Limpar Maria 47 v2</b> (<code>advertorial-maria47/</code>) — v4.7.1 Quiet já é a main, v2 é lixo</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>⚠️ Alertas & decisões pendentes</h3>
+      </div>
+      <ul class="alert-list">
+        <li>
+          <span class="icon">!</span>
+          <div class="text"><b style="color:var(--red)">MemoPryl cluster scam-flagged</b> (BBB, Forbes, NBC, Snopes). Nome "MemoPryl" hoje tá associado a deepfake Bill Gates. <b>Decisão pendente:</b> rebrandar ou separar marca visual total antes de escalar Meta ads.</div>
+        </li>
+        <li>
+          <span class="icon">!</span>
+          <div class="text"><b style="color:var(--gold)">SlimSoda cluster scam risk</b> — mesmo ângulo baking soda tá LOTADO de scams (Lean Peak, AlkaLean, SodaSlim com deepfake Oprah/Jastreboff). <b>Decisão:</b> anti-scam positioning é MUST-HAVE pra escalar.</div>
+        </li>
+        <li>
+          <span class="icon">!</span>
+          <div class="text"><b style="color:var(--blue)">Meta CAPI live data</b> — bloqueado por falta de <code>META_ACCESS_TOKEN</code> env var. PageView + ViewContent rodam, mas eventos deduplicados não validam até configurar token.</div>
+        </li>
+        <li>
+          <span class="icon">!</span>
+          <div class="text"><b style="color:var(--purple)">Slim.purelabs.com DNS</b> — não configurado ainda. Usar memo.purelabss.com como pattern pra adicionar subdomains ml05/ml06.</div>
+        </li>
+        <li>
+          <span class="icon">!</span>
+          <div class="text"><b style="color:var(--muted)">deploy-memopryl/</b> (root) — pasta obsoleta, mesmo remote que v2. Deletar pra limpar workspace.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <span>🎯 The One Page · v1 · 2026-08-22 · <a href="REPOS.md">REPOS</a> · <a href="references_v5/">DR Hub</a></span>
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--green)"></span>Live</span>
+      <span><span class="swatch" style="background:var(--purple)"></span>Review</span>
+      <span><span class="swatch" style="background:var(--gold)"></span>Production</span>
+      <span><span class="swatch" style="background:var(--blue)"></span>Brief</span>
+      <span><span class="swatch" style="background:var(--muted)"></span>Concept</span>
+    </div>
+  </footer>
+
+</div>
+<script>
+  // Auto-fill today's date
+  var d = new Date();
+  var months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  document.getElementById('today-date').textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+</script>
+</body>
+</html>
