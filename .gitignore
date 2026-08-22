@@ -9,6 +9,7 @@
 # Libera APENAS o que vai pro deploy em produção
 !/.gitignore
 !/README.md
+!/REPOS.md
 !/index.html
 !/vercel.json
 !/slimsoda-creatives.html
@@ -40,6 +41,10 @@ buy-page/*.log
 # DR Reference HUB v23+ (briefings, methodology, tracking)
 !/references_v5/
 !/references_v5/**
+
+# Intel (spy reports, methodology decisions — internal, não vai pro deploy)
+!/intel/
+!/intel/**
 
 # Organico HUB (4 pilares de produção de conteúdo orgânico)
 !/organico/
