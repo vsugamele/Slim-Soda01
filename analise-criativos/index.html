@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Análise Criativa · Por que vende · Como reusar · Como saturar</title>
+<meta name="description" content="Hub de análises criativas DR. Cada análise quebra um top performer em copy, foto, layout, mecanismo — depois mostra a evolução compliance-safe cross-vertical.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117; --panel: #1A1D24; --panel-2: #232730; --border: rgba(255,255,255,0.08);
+  --text: #FAFAF7; --muted: #9A9AA8; --muted-2: #6B6B78;
+  --accent: #E09A22; --gold: #FFD166; --green: #06A77D; --red: #c0392b; --blue: #4ea1ff; --purple: #B197FC;
+  --slim: #F5841F; --memo: #B197FC;
+  --shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 28px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-strip { display: flex; gap: 6px; margin-bottom: 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; flex-wrap: wrap; align-items: center; }
+.nav-strip .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.nav-strip a { padding: 4px 10px; background: var(--panel-2); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; }
+.nav-strip a:hover { background: var(--accent); color: #000; text-decoration: none; }
+.nav-strip a.active { background: var(--accent); color: #000; }
+header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px; }
+.kicker { display: inline-block; padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(224,154,34,0.12); color: var(--accent); border: 1px solid rgba(224,154,34,0.3); margin-bottom: 12px; }
+h1 { font-family: 'Bitter', Georgia, serif; font-size: 40px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--accent); }
+h2 { font-family: 'Bitter', serif; font-size: 22px; line-height: 1.2; margin: 32px 0 14px; padding-top: 14px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+h2 .num { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; background: rgba(255,255,255,0.08); color: var(--muted); padding: 3px 8px; border-radius: 3px; margin-right: 8px; }
+.lede { font-size: 17px; color: #d3d8e0; max-width: 820px; margin: 0 0 12px; }
+.canon { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canon strong { color: var(--accent); }
+.canongreen { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--green); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canongreen strong { color: var(--green); }
+.callout { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.callout.warn { border-left-color: var(--red); }
+.callout.good { border-left-color: var(--green); }
+.callout strong { color: var(--accent); }
+.callout.warn strong { color: var(--red); }
+.callout.good strong { color: var(--green); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; transition: transform 0.15s, border-color 0.15s; }
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(224,154,34,0.06), var(--panel)); }
+.card h3 { margin: 0 0 8px; font-family: 'Bitter', serif; font-size: 20px; line-height: 1.2; }
+.card .meta { font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+.card .desc { font-size: 13.5px; color: var(--text); margin-bottom: 12px; line-height: 1.5; }
+.card .tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--panel-2); color: var(--muted); margin-right: 4px; margin-bottom: 4px; }
+.card .tag.warn { background: rgba(192,57,43,0.15); color: var(--red); }
+.card .tag.gold { background: rgba(255,209,102,0.15); color: var(--gold); }
+.card .tag.good { background: rgba(6,167,125,0.15); color: var(--green); }
+.card .tag.blue { background: rgba(78,161,255,0.15); color: var(--blue); }
+.card .tag.accent { background: rgba(224,154,34,0.15); color: var(--accent); }
+.card .actions { margin-top: 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; text-decoration: none; transition: all 0.15s; }
+.btn:hover { background: var(--accent); color: #000; border-color: var(--accent); text-decoration: none; }
+.btn-primary { background: var(--accent); color: #000; border-color: var(--accent); }
+.btn-primary:hover { background: var(--gold); }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--panel-2); color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--panel-2); padding: 1px 5px; border-radius: 3px; color: var(--gold); }
+.quote { background: var(--panel-2); border-left: 3px solid var(--accent); padding: 12px 14px; margin: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); border-radius: 0 4px 4px 0; }
+
+.fakead { background: linear-gradient(135deg, #f8f6f3 0%, #faf8f5 100%); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 14px 0; color: #1a1a1a; font-family: Georgia, serif; }
+.fakead .lbl { display: inline-block; background: rgba(60,60,60,0.7); color: white; padding: 2px 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.fakead .lbl.safe { background: rgba(6,167,125,0.85); }
+.fakead .head { font-size: 20px; font-weight: 900; line-height: 1.15; color: #1a1a1a; margin: 0 0 8px; }
+.fakead .head em { font-style: italic; color: #06A77D; }
+.fakead .img { background: #ddd; height: 180px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 11px; margin: 10px 0; border-radius: 4px; }
+.fakead .meta { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
+.fakead blockquote { font-style: italic; font-size: 14px; color: #333; border-left: 3px solid #06A77D; padding-left: 12px; margin: 12px 0; }
+
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav-strip">
+    <span class="label">Análise:</span>
+    <a href="../one.html">🎯 One Page</a>
+    <a href="../references_v5/index.html">DR Hub</a>
+    <a href="../intel/spy-2026-08-22/MASTER.md">📡 Spy 22/ago</a>
+    <a href="index.html" class="active">🧠 Análise criativa</a>
+    <a href="../REPOS.md">📂 Repos</a>
+  </div>
+
+  <header>
+    <span class="kicker">Análise criativa · DR · Cross-vertical · 2026-08-22</span>
+    <h1>🧠 Por que <span class="accent">vende</span> · Como reusar · Como <span class="accent">saturar</span></h1>
+    <p class="lede">Cada análise quebra um top performer em <b>copy, foto, layout, mecanismo</b> — depois mostra a evolução compliance-safe. Aplicação cross-vertical (SlimSoda, MemoPryl, Linfaflow, Cardio Clear, Linfozen). O objetivo é transformar "achismo" em framework replicável.</p>
+  </header>
+
+  <div class="canon">
+    <strong>Como ler cada análise:</strong> 5 blocos sempre na mesma ordem — (1) <b>Mockup</b> visual do criativo, (2) <b>Copy</b> quebrado em 4 blocos estruturais, (3) <b>Foto</b> com anatomia (persona, enquadramento, iluminação, eye contact), (4) <b>Layout/formato</b> comparando 5 opções, (5) <b>Mecanismo psicológico</b> dos 6 levers que fazem converter. Sempre termina com <b>evolução compliance-safe</b> + framework cross-vertical.
+  </div>
+
+  <h2><span class="num">01</span>Análises publicadas</h2>
+  <div class="grid-2">
+
+    <a href="adv1-oprah.html" class="card featured" style="text-decoration:none;color:inherit;">
+      <div class="meta">#1 · 22/ago/2026 · ~6 min de leitura</div>
+      <h3>🧠 "Oprah-style" Top Performer</h3>
+      <p class="desc">O criativo authority-female + Yale + baking soda que <b>mais vendeu historicamente</b> no nicho weight loss. Já está saturado (BBB+NYT+Snopes cobriram deepfakes), mas o <b>mecanismo</b> continua válido — só muda a máscara.</p>
+      <span class="tag warn">SATURADO</span>
+      <span class="tag accent">SLIMSODA LANE</span>
+      <span class="tag blue">CROSS-VERTICAL</span>
+      <div class="actions">
+        <span class="btn btn-primary">Ler análise →</span>
+      </div>
+    </a>
+
+    <a href="adv2-anti-scam.html" class="card" style="text-decoration:none;color:inherit;">
+      <div class="meta">#2 · 22/ago/2026 · ~5 min de leitura</div>
+      <h3>🥤 "Anti-scam Honest Baking Soda" · SlimSoda</h3>
+      <p class="desc">Evolução compliance-safe do #1. Mesma estrutura de copy (setup+revelação+autoridade+CTA low-friction), mas usando <b>"Harvard scientists found the missing mineral"</b> no lugar de "Oprah endorses baking soda". Ângulo blue ocean identificado pelo spy 22/ago.</p>
+      <span class="tag good">GAP 2026-08</span>
+      <span class="tag accent">SLIMSODA</span>
+      <span class="tag gold">DECISÃO DO DIA</span>
+      <div class="actions">
+        <span class="btn btn-primary">Ler análise →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <h2><span class="num">02</span>Fila de próximas análises</h2>
+  <div class="grid-3">
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#3 · em produção</div>
+      <h3>🧠 MemoPryl · "Honey Trick + Ikaria"</h3>
+      <p class="desc">Análise do adv1 do MemoPryl (vovó grega + mel + longevidade blue zone). Quebra do c01-honey-trick-ikaria.jpg. Mecanismo: <b>exotic provenance + proxy-buy</b> (filha comprando pra mãe).</p>
+      <span class="tag accent">MEMOPRYL</span>
+      <span class="tag">PRIORIDADE</span>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#4 · em fila</div>
+      <h3>💧 Linfaflow · "5pm Ankle Check"</h3>
+      <p class="desc">UGC iPhone 60-90s, mulher mostrando tornozelo com marca de meia + falando "it's not sodium". Mecanismo: <b>relatable symptom + 1 cause unknown</b>.</p>
+      <span class="tag accent">LINFAFLOW</span>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#5 · em fila</div>
+      <h3>❤️ Cardio Clear · "4-in-1 Mechanism"</h3>
+      <p class="desc">UGC couple 60-90s, mostrando frascos dos 4 ingredientes. Mecanismo: <b>differentiation by scope</b> (most give 1, big pharma gives 1, we give 4).</p>
+      <span class="tag accent">CARDIO CLEAR</span>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#6 · em fila</div>
+      <h3>💧 Linfozen · "Fibrotic Solvent"</h3>
+      <p class="desc">Análise do B2H2/B2H3 validado. Mecanismo: <b>technical jargon + menopause belly</b> (avatar 55-70 sub-servido).</p>
+      <span class="tag accent">LINFOZEN</span>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#7 · em fila</div>
+      <h3>🥤 SlimSoda · "Yale+BakingSoda" (Maria 47 v4.7.1)</h3>
+      <p class="desc">Análise do advertorial canônico, especificamente do formato long-form magazine + heavy copy + sticky CTA. Mecanismo: <b>scroll-depth + path 1/2 close</b>.</p>
+      <span class="tag accent">SLIMSODA</span>
+      <span class="tag gold">ATIVO</span>
+    </div>
+
+    <div class="card" style="opacity: 0.6;">
+      <div class="meta">#8 · em fila</div>
+      <h3>🧠 MemoPryl · "Lithium Microdose"</h3>
+      <p class="desc">Análise do c02-lithium-microdose.jpg (editorial flat lay + beaker). Mecanismo: <b>specificity = credibility</b> (5mg é o detalhe que convence).</p>
+      <span class="tag accent">MEMOPRYL</span>
+    </div>
+
+  </div>
+
+  <h2><span class="num">03</span>Framework replicável (extração cross-vertical)</h2>
+  <p>Quando o #1 e o #2 forem publicados, dá pra extrair 7 elementos estruturais que se repetem em TODOS os top performers:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>O que é</th>
+        <th>Por que funciona</th>
+        <th>Compliance risk 2026</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>1. Headline 2-partes</b></td>
+        <td>Setup emocional + especificidade numérica</td>
+        <td>Captura atenção + pré-qualifica</td>
+        <td><span class="tag warn">Médio</span> — número específico = claim</td>
+      </tr>
+      <tr>
+        <td><b>2. Foto protagonista</b></td>
+        <td>Mulher 50-65+ kitchen, eye contact direto</td>
+        <td>Viewer se projeta na transformação</td>
+        <td><span class="tag good">Baixo</span> — se for foto real</td>
+      </tr>
+      <tr>
+        <td><b>3. Autoridade institucional</b></td>
+        <td>Yale, Harvard, Stanford, Mayo</td>
+        <td>Transfer trust da instituição pro produto</td>
+        <td><span class="tag warn">Alto</span> — não pode ser deepfake</td>
+      </tr>
+      <tr>
+        <td><b>4. Setup "buried cure"</b></td>
+        <td>"They don't want you to know"</td>
+        <td>Ativa conspiracy pattern, viciante</td>
+        <td><span class="tag warn">Médio</span> — atacar indústria OK, marca específica NÃO</td>
+      </tr>
+      <tr>
+        <td><b>5. Specificity = credibility</b></td>
+        <td>"5mg", "24 pounds", "3 ingredients"</td>
+        <td>Específico = crível; genérico = scam</td>
+        <td><span class="tag warn">Alto</span> — número precisa ser verificável</td>
+      </tr>
+      <tr>
+        <td><b>6. CTA low-friction</b></td>
+        <td>"Watch 5 min", "Read 30 sec"</td>
+        <td>Zero commitment percebido</td>
+        <td><span class="tag good">Baixo</span></td>
+      </tr>
+      <tr>
+        <td><b>7. ADVERTISEMENT box sutil</b></td>
+        <td>Small caps gray, sem border vermelho</td>
+        <td>Compliance + quebra pattern interrupt</td>
+        <td><span class="tag good">Baixo</span> — mas obrigatório</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="canongreen">
+    <strong>Princípio unificador:</strong> a estrutura de 4 blocos do copy (setup → revelação → autoridade → CTA) é <b>framework universal</b> de direct response. Funciona em qualquer vertical, qualquer produto, qualquer avatar. O que muda entre #1 e #2 NÃO é a estrutura — é o <b>conteúdo</b> do bloco 3 (autoridade) e a forma de cumprir compliance. Se você dominar essa estrutura, consegue produzir 10 criativos/semana sem perder qualidade.
+  </div>
+
+  <h2><span class="num">04</span>Por que análise > swipe file</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>❌ Swipe file (modelo antigo)</h3>
+      <p style="font-size:13px;">Você salva 100 imagens, copia o headline, ajusta o produto. Resultado: você vira mais um no cluster saturado. Quando Meta pune, você não sabe POR QUE puniu nem como ajustar.</p>
+    </div>
+    <div class="card">
+      <h3>✅ Análise estrutural (nosso modelo)</h3>
+      <p style="font-size:13px;">Você quebra o top performer em 7 elementos, entende o mecanismo de cada um, identifica quais são reutilizáveis e quais estão saturados. Daí você reusa a estrutura + inventa conteúdo novo + passa compliance.</p>
+    </div>
+  </div>
+
+  <footer>
+    <span>🧠 Análise criativa · DR Hub · 2026-08-22</span>
+    <span>
+      <a href="../one.html">🎯 One Page</a> ·
+      <a href="../references_v5/index.html">DR Hub</a> ·
+      <a href="../REPOS.md">📂 Repos</a> ·
+      <a href="../intel/spy-2026-08-22/MASTER.md">📡 Spy</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>

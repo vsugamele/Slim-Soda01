@@ -51,6 +51,10 @@ buy-page/*.log
 !/organico/
 !/organico/**
 
+# Análise criativa (DR top performers quebrados em copy/foto/layout/mecanismo)
+!/analise-criativos/
+!/analise-criativos/**
+
 # SlimSoda PDP v3 (Product Detail Page oficial)
 !/slimsoda-pdp/
 !/slimsoda-pdp/**

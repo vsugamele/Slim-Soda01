@@ -68,7 +68,24 @@
 | Pasta | Conteúdo | Local |
 |---|---|---|
 | `páginas/hub-preview/intel/spy-2026-08-22/` | Master spy briefing + 4 per-vertical reports (SlimSoda, Linfaflow+Linfozen, MemoPryl, Cardio Clear) | dentro do repo `Slim-Soda01` (versionado) |
+| `páginas/hub-preview/analise-criativos/` | Hub de análises criativas (top performers quebrados em copy/foto/layout/mecanismo, evolução compliance-safe cross-vertical) | dentro do repo `Slim-Soda01` (versionado) |
 | `páginas/hub-preview/REPOS.md` | este arquivo | dentro do repo `Slim-Soda01` (versionado) |
+
+### Análise criativa (`analise-criativos/`)
+
+Pasta de **análise estrutural de top performers** (não swipe file). Cada análise quebra um criativo em:
+1. Mockup visual
+2. Copy em 4 blocos estruturais (set-up → revelação → autoridade → CTA)
+3. Foto com anatomia (persona, enquadramento, iluminação, eye contact)
+4. Layout/formato comparando 5 opções
+5. Mecanismo psicológico dos 6 levers que fazem converter
+6. Comparação #1 vs #2
+7. Brief de produção (formato, persona, hook, body, CTA, compliance)
+
+- `analise-criativos/index.html` — hub (lista de publicadas + fila)
+- `analise-criativos/adv1-oprah.html` — "Oprah-style" Top Performer (saturado, framework universal)
+- `analise-criativos/adv2-anti-scam.html` — "Anti-scam Honest Baking Soda" (SlimSoda, gap real)
+- Fila: #3 MemoPryl Honey Trick · #4 Linfaflow 5pm ankle · #5 Cardio Clear 4-in-1 · #6 Linfozen Fibrotic · #7 SlimSoda Maria 47 v4.7.1 · #8 MemoPryl Lithium
 
 ---
 
