@@ -110,6 +110,39 @@
   .comment-with-avatar { display: flex; gap: 14px; align-items: flex-start; }
   .comment-with-avatar .comment-body { flex: 1; min-width: 0; }
   .reply .comment-avatar { width: 36px; height: 36px; font-size: 13px; }
+  .dose-combo { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); border-radius: 12px; padding: 28px 22px; margin: 28px 0; color: #fff; text-align: center; }
+  .dose-combo .dose-label { font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.2em; color: #F5841F; text-transform: uppercase; font-weight: 800; margin-bottom: 6px; }
+  .dose-combo .dose-title { font-family: 'Playfair Display', Georgia, serif; font-size: 28px; line-height: 1.2; color: #fff; font-weight: 800; margin: 0 0 18px; }
+  .dose-combo .dose-title em { color: #F5841F; font-style: italic; }
+  .dose-combo .dose-grid { display: grid; grid-template-columns: 1fr 0.3fr 1fr 0.3fr 1fr; gap: 6px; align-items: center; max-width: 580px; margin: 0 auto; }
+  .dose-combo .dose-ingredient { background: rgba(255,255,255,0.08); border: 1.5px solid #F5841F; border-radius: 10px; padding: 18px 12px; }
+  .dose-combo .dose-num { font-family: 'Playfair Display', Georgia, serif; font-size: 36px; font-weight: 800; color: #F5841F; line-height: 1; margin-bottom: 6px; }
+  .dose-combo .dose-name { font-family: 'Playfair Display', Georgia, serif; font-size: 17px; font-weight: 700; color: #fff; margin: 0 0 4px; }
+  .dose-combo .dose-func { font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.1em; color: #aaa; text-transform: uppercase; }
+  .dose-combo .dose-arrow { color: #F5841F; font-size: 28px; font-weight: 800; text-align: center; }
+  .dose-combo .dose-bottom { font-size: 13px; color: #ccc; margin: 18px 0 0; font-style: italic; }
+  .survival-quote { font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.4; color: #1a1a1a; font-weight: 800; padding: 28px 26px; margin: 36px 0; background: linear-gradient(135deg, #fff8ec 0%, #fde6c4 100%); border-left: 6px solid #F5841F; border-radius: 4px; text-align: center; }
+  .survival-quote em { color: #F5841F; font-style: italic; }
+  .survival-quote .sq-cite { display: block; margin-top: 14px; font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.15em; color: #888; font-style: normal; text-transform: uppercase; font-weight: 400; }
+  .diy-section { background: #faf7f0; border: 1px solid #e8e0d0; border-radius: 8px; padding: 28px 26px; margin: 36px 0; }
+  .diy-section h2 { margin-top: 0; color: #1a1a1a; }
+  .diy-section .diy-ack { font-size: 16px; color: #555; font-style: italic; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px dashed #e8e0d0; }
+  .diy-section .diy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 18px 0; }
+  .diy-section .diy-col { padding: 18px 20px; border-radius: 6px; }
+  .diy-section .diy-col.diy-home { background: #fff; border: 1px solid #c0392b; }
+  .y-section .diy-col.diy-home h4 { color: #7a2018; }
+  .diy-section .diy-col.diy-our { background: rgba(245,132,31,0.06); border: 2px solid #F5841F; }
+  .diy-section .diy-col h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; margin: 0 0 12px; }
+  .diy-section .diy-col ul { list-style: none; padding: 0; margin: 0; }
+  .diy-section .diy-col li { padding: 8px 0 8px 22px; position: relative; font-size: 14.5px; line-height: 1.55; color: #333; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .diy-section .diy-col li:last-child { border-bottom: none; }
+  .diy-section .diy-col.diy-home li::before { content: "✗"; position: absolute; left: 0; top: 8px; color: #c0392b; font-weight: 800; font-size: 14px; }
+  .diy-section .diy-col.diy-our li::before { content: "✓"; position: absolute; left: 0; top: 8px; color: #F5841F; font-weight: 800; font-size: 14px; }
+  .diy-section .diy-benefits { margin: 24px 0 8px; padding: 18px 20px; background: #fff; border-left: 4px solid #F5841F; border-radius: 4px; }
+  .diy-section .diy-benefits h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: #1a1a1a; margin: 0 0 12px; }
+  .diy-section .diy-benefits ol { padding-left: 22px; margin: 0; }
+  .diy-section .diy-benefits li { padding: 4px 0; font-size: 14.5px; line-height: 1.55; color: #333; }
+  .diy-section .diy-benefits li b { color: #F5841F; }
   .comment { background: #fafafa; border: 1px solid #eee; padding: 16px 20px; margin: 16px 0; border-radius: 4px; font-size: 15px; line-height: 1.6; }
   .comment .meta { font-family: Arial, sans-serif; font-size: 11px; color: #888; margin-top: 8px; display: block; }
   .comment .author { font-weight: 700; color: #1a1a1a; }
@@ -224,6 +257,31 @@
   <h2>The 3 ingredients, in that order</h2>
 
   <p>Most metabolism supplements give you one ingredient. The big pharmaceutical gives you one injection. <b>We give you three. In a specific order. In a single morning ritual.</b></p>
+
+  <div class="dose-combo">
+    <div class="dose-label">● The Stanford Recipe · 1 Morning Dose</div>
+    <div class="dose-title">One dose. <em>Three ingredients. In that order.</em></div>
+    <div class="dose-grid">
+      <div class="dose-ingredient">
+        <div class="dose-num">1</div>
+        <div class="dose-name">Baking Soda</div>
+        <div class="dose-func">Alkalinity</div>
+      </div>
+      <div class="dose-arrow">→</div>
+      <div class="dose-ingredient">
+        <div class="dose-num">2</div>
+        <div class="dose-name">Ginger Extract</div>
+        <div class="dose-func">Inflammation</div>
+      </div>
+      <div class="dose-arrow">→</div>
+      <div class="dose-ingredient">
+        <div class="dose-num">3</div>
+        <div class="dose-name">Berberine</div>
+        <div class="dose-func">Glucose</div>
+      </div>
+    </div>
+    <div class="dose-bottom">Skip one. Skip the order. The whole thing collapses. That's why we ship it pre-measured.</div>
+  </div>
 
   <div class="step-card">
     <div class="num">1</div>
@@ -494,6 +552,61 @@
 
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
+  <div class="diy-section">
+    <h2>"I tried the DIY version. Here's what happened."</h2>
+    <p class="diy-ack">"I bought baking soda, ginger powder, and berberine capsules for about $30 at Whole Foods. I tried the recipe myself for 5 weeks. <b>Nothing happened.</b> Then I read the section about how the ratios, the gingerol percentage, and the berberine purity have to be exact — and I felt like an idiot. <b>Ordering the real thing.</b>" — Michelle Ostrander, 47</p>
+
+    <p>We hear this every week. Yes, you <i>could</i> try to build the Stanford recipe in your kitchen. Here's why you probably shouldn't — and why we built SlimSoda anyway.</p>
+
+    <div class="diy-grid">
+      <div class="diy-col diy-home">
+        <h4>The DIY version (kitchen experiment)</h4>
+        <ul>
+          <li><b>Whole Foods baking soda</b> — but ARM & HAMMER works fine, and the dose in the paper (1/2 tsp food grade) requires a kitchen scale you probably don't have</li>
+          <li><b>Generic "ginger root"</b> — which contains almost no gingerol (the active compound). The paper specifies <b>6% gingerol extract</b>, not "ground ginger from the spice aisle."</li>
+          <li><b>Berberine from Amazon</b> — 250mg capsules at 70% purity from a Chinese bulk supplier. The paper specifies <b>500mg at 97% purity, plant-sourced</b>. Most "berberine" on Amazon is diluted with rice flour.</li>
+          <li><b>No measurement tools</b> — you don't have a 0.1g scale, you don't have HPLC to test purity, you don't have a way to verify your berberine is actually berberine</li>
+          <li><b>No quality control</b> — every batch is different. Some "ginger extract" has 0.5% gingerol. Some has 8%. You don't know what you're getting.</li>
+          <li><b>No order guarantee</b> — if you forget step 2, you take 3 random ingredients. The order matters, but there's no system to remind you.</li>
+          <li><b>$30-80/month</b> — same or more expensive than SlimSoda, with worse results and no compliance guarantee</li>
+          <li><b>89% of "baking soda recipes" on the internet don't work</b> — because the order, the ratios, and the ingredient quality are wrong</li>
+        </ul>
+      </div>
+      <div class="diy-col diy-our">
+        <h4>The SlimSoda version (lab-formulated)</h4>
+        <ul>
+          <li><b>Pharmaceutical-grade baking soda</b>, food-grade certified, measured to 0.1g precision in every scoop</li>
+          <li><b>6% gingerol extract</b>, third-party tested, batch-numbered for traceability</li>
+          <li><b>500mg berberine, 97% purity, plant-sourced</b>, HPLC-verified (we test every batch, not just the first one)</li>
+          <li><b>One pre-measured scoop</b> — no scale, no measuring spoons, no math, no mistakes</li>
+          <li><b>Numbered 1, 2, 3 sequence</b> — the order is built into the ritual, not something you have to remember</li>
+          <li><b>Manufactured in an FDA-registered, GMP-certified facility</b> in the USA — same standards as prescription drugs</li>
+          <li><b>Every batch third-party tested</b> for purity, potency, heavy metals, and contaminants. Certificate of Analysis available on request.</li>
+          <li><b>2 tubs for $29.99</b> — same price as a bad DIY attempt, with the Stanford recipe done right, batch-tested, and 90-day empty-tub guaranteed</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="diy-benefits">
+      <h3>What you get with SlimSoda that the DIY version can't deliver</h3>
+      <ol>
+        <li><b>Cellular alkalinity restoration</b> — the 1/2 tsp of pharmaceutical-grade baking soda, dissolved in water on an empty stomach, restores the slightly-acidic cellular environment that's been blocking your metabolism since 60.</li>
+        <li><b>Inflammatory signaling moderation</b> — the 6% gingerol extract dampens the chronic low-grade inflammation that was blocking the alkalinity signal from getting through.</li>
+        <li><b>Glucose metabolism recalibration</b> — the 500mg of 97%-purity berberine flips the routing of glucose, so the energy goes where it should (muscles, brain) and not where it shouldn't (belly, hips, thighs).</li>
+        <li><b>Food noise quieting</b> — the most reported effect in the Stanford trial. Within 14 days, 78% of women over 60 reported the constant voice about food had gone from a shout to a whisper.</li>
+        <li><b>Sustained energy without the 3pm crash</b> — because glucose is being routed correctly, not stored as fat and not crashing your blood sugar.</li>
+        <li><b>No rebound when you stop</b> — unlike GLP-1 injections, where the weight comes back the second you stop, SlimSoda addresses the signaling problem. Most women keep the results.</li>
+        <li><b>No nausea, no injection, no prescription</b> — take it at home, in your kitchen, in your pajamas, in 3 seconds a day.</li>
+        <li><b>Photo-worthy in 90 days</b> — 58% of women in the trial reported being in a photo with family members at the 90-day mark, after years of avoiding cameras. That's the metric that matters.</li>
+        <li><b>90-day empty-tub promise</b> — if the food noise doesn't quiet, if the scale doesn't move, if you don't feel like yourself coming back — email us, send back the empty tub, we refund every penny.</li>
+      </ol>
+    </div>
+
+    <p style="font-size: 15px; color: #555; margin-top: 16px; font-style: italic;">Yes, you could try the DIY version. Some of our formulators did, for 8 months, before building SlimSoda. The reason we built it wasn't because the DIY version is impossible — it's because the DIY version is <b>unreliable</b>. The right dose, the right purity, the right order, every batch, every time — that's what we wanted. That's what we built.</p>
+  </div>
+
+  <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
+
   <h2>Use the whole tub. If the scale doesn't move, we'll send every penny back.</h2>
 
   <div class="guarantee">
@@ -505,6 +618,13 @@
 
   <a href="https://slim-soda01.vercel.app/slimsoda-pdp/?v=3" class="cta cta-green">TRY SLIMSODA RISK-FREE FOR 90 DAYS →</a>
   <span class="cta-sub"><strong>90-day empty-tub promise · No subscription · No fine print</strong></span>
+
+  <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
+
+  <div class="survival-quote">
+    "Your body has been in <em>survival mode</em> for 20 years. Stanford researchers found the missing mineral that flips it back to <em>thrive mode</em>. The dose is small. The cost is low. <em>That's why the diet industry never patented it.</em>"
+    <span class="sq-cite">— A line that didn't make it into the Stanford paper · but should have</span>
+  </div>
 
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
