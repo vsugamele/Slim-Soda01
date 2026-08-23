@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎬 Storyboard · SlimSoda Anti-scam Honest Baking Soda · UGC 60-90s frame-by-frame</title>
+<meta name="description content="Storyboard production-ready do Brief #1 SlimSoda anti-scam honest baking soda. 6 frames UGC 60-90s. Dana Whitfield formuladora. 3 hooks variantes, 3 primary texts variantes, 3 CTA variantes. Frame-by-frame visual + áudio + texto overlay + production notes + compliance checklist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117; --panel: #1A1D24; --panel-2: #232730; --border: rgba(255,255,255,0.08);
+  --text: #FAFAF7; --muted: #9A9AA8; --muted-2: #6B6B78;
+  --accent: #E09A22; --gold: #FFD166; --green: #06A77D; --red: #c0392b; --blue: #4ea1ff;
+  --slim: #F5841F;
+  --slim-soft: rgba(245,132,31,0.12);
+  --slim-border: rgba(245,132,31,0.3);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 28px 28px 96px; }
+a { color: var(--slim); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-strip { display: flex; gap: 6px; margin-bottom: 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; flex-wrap: wrap; align-items: center; }
+.nav-strip .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.nav-strip a { padding: 4px 10px; background: var(--panel-2); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; }
+.nav-strip a:hover { background: var(--slim); color: #000; text-decoration: none; }
+.nav-strip a.active { background: var(--slim); color: #000; }
+
+header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px; }
+.kicker { display: inline-block; padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: var(--slim-soft); color: var(--slim); border: 1px solid var(--slim-border); margin-bottom: 12px; }
+h1 { font-family: 'Bitter', Georgia, serif; font-size: 38px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--slim); }
+h2 { font-family: 'Bitter', Georgia, serif; font-size: 24px; line-height: 1.2; margin: 36px 0 12px; padding-top: 12px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+h3 { font-size: 16px; margin: 18px 0 8px; color: var(--slim); }
+h4 { font-size: 13px; margin: 14px 0 6px; color: var(--text); text-transform: uppercase; letter-spacing: 0.06em; }
+.lede { font-size: 17px; color: #d3d8e0; max-width: 800px; margin: 0 0 12px; }
+p, li { font-size: 14.5px; }
+ul, ol { margin: 8px 0 16px 24px; padding: 0; }
+li { margin: 4px 0; }
+
+.canon { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--slim); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canon strong { color: var(--slim); }
+.callout { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.callout.warn { border-left-color: var(--red); }
+.callout.good { border-left-color: var(--green); }
+.callout strong { color: var(--accent); }
+.callout.warn strong { color: var(--red); }
+.callout.good strong { color: var(--green); }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--panel-2); color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+.label { color: var(--muted); font-size: 12px; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--panel-2); padding: 1px 5px; border-radius: 3px; color: var(--gold); }
+
+.frame-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 16px 0; position: relative; }
+.frame-card .frame-num { display: inline-block; background: var(--slim); color: #000; font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 99px; margin-bottom: 8px; }
+.frame-card .frame-time { display: inline-block; background: var(--panel-2); color: var(--gold); font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 3px 10px; border-radius: 99px; margin-left: 8px; }
+.frame-card .frame-title { font-family: 'Bitter', serif; font-size: 18px; font-weight: 800; margin: 6px 0 10px; color: var(--text); }
+.frame-card .frame-section { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 10px 0; }
+.frame-card .frame-section .label { display: block; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.frame-card .frame-section .content { font-size: 14px; color: var(--text); }
+.frame-card .frame-sketch { background: linear-gradient(135deg, #2a2a3a 0%, #1a1a2a 100%); border: 1px dashed rgba(255,255,255,0.15); border-radius: 6px; padding: 14px; text-align: center; color: var(--muted); font-style: italic; font-size: 12px; min-height: 90px; display: flex; align-items: center; justify-content: center; margin: 8px 0; }
+
+.quote { background: var(--panel-2); border-left: 3px solid var(--slim); padding: 12px 14px; margin: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); border-radius: 0 4px 4px 0; }
+.quote.green { border-left-color: var(--green); }
+.quote.warn { border-left-color: var(--red); }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--panel-2); color: var(--muted); }
+.tag.good { background: rgba(6,167,125,0.15); color: var(--green); }
+.tag.warn { background: rgba(192,57,43,0.15); color: var(--red); }
+.tag.gold { background: rgba(255,209,102,0.15); color: var(--gold); }
+.tag.blue { background: rgba(78,161,255,0.15); color: var(--blue); }
+.tag.slim { background: var(--slim-soft); color: var(--slim); }
+
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 720px) { .frame-card .frame-section { grid-template-columns: 1fr; } h1 { font-size: 26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav-strip">
+    <span class="label">Storyboard:</span>
+    <a href="../one.html">🎯 One Page</a>
+    <a href="../references_v5/index.html">DR Hub</a>
+    <a href="../intel/spy-2026-08-22/MASTER.md">📡 Spy</a>
+    <a href="brief-slimsoda-anti-scam-2026-08-23.md">📋 Brief #1</a>
+    <a href="../analise-criativos/adv2-anti-scam.html">🧠 Análise #2</a>
+    <a href="storyboard-slimsoda-anti-scam-2026-08-23.html" class="active">🎬 Storyboard</a>
+  </div>
+
+  <header>
+    <span class="kicker">Storyboard · Brief #1 · SlimSoda Anti-scam · UGC 60-90s</span>
+    <h1>🎬 "Anti-scam Honest Baking Soda" <span class="accent">·</span> Storyboard frame-by-frame</h1>
+    <p class="lede">Storyboard production-ready do <a href="brief-slimsoda-anti-scam-2026-08-23.md">Brief #1</a>. <b>6 frames · 60-90s · UGC iPhone</b>. Personagem: <b>Dana Whitfield</b> (formuladora real do SlimSoda, NÃO doctor). 3 hooks variantes + 3 primary texts + 3 CTA variantes. Hook nos primeiros 3s, sem fake celeb, compliance-safe (FDA + structure-function).</p>
+  </header>
+
+  <div class="canon">
+    <strong>TL;DR (resumo de 1 parágrafo):</strong> o criativo UGC mostra Dana Whitfield (formuladora) falando direto pra câmera em kitchen background com baking soda + lemons + jar visíveis. Hook 0-3s quebra o cluster de deepfake (Oprah, Jastreboff, Bill Gates) com pattern interrupt <em>"I saw all those ads... most of them are fake"</em>. Body 3-50s constrói autoridade <b>invertida</b> — <em>"I'm not a doctor, I'm a formulator"</em> + cite BBB+Forbes+Snopes (pattern interrupt), sem atacar marca específica. CTA 50-90s é low-friction <em>"Watch the 90-second video"</em>. Variação: hook alternativo <em>"The FDA just sent 35 warning letters to baking soda ads"</em> (mais agressivo, cite real action). LP destino: <a href="https://slim-soda01.vercel.app/slimsoda-pdp/">PDP v3</a> ou <a href="https://slim-soda01.vercel.app/references_v5/by-product/slimsoda/lps/article-lp/">article-LP Yale listicle</a> (reforça ângulo "research real").
+  </div>
+
+  <!-- ===== BRIEF RECAP ===== -->
+  <h2>📋 Brief recap (resumo)</h2>
+
+  <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+    <div>
+      <h4>Ângulo</h4>
+      <p><b>Anti-scam honest baking soda</b> — SlimSoda ocupa o lane "o único baking soda honesto do cluster fake".</p>
+      <h4>Por que agora</h4>
+      <p>Cluster baking soda LOTADO de deepfakes (Oprah, Jastreboff, Bill Gates) — 50+ ads ativos. BBB + NYT + Snopes cobriram. <b style="color:var(--green)">0 ads com ângulo anti-scam no Meta inteiro</b> (gap real, blue ocean).</p>
+      <h4>Decisão</h4>
+      <p>UGC 60-90s com Dana Whitfield (formuladora real, não doctor), hook nos primeiros 3s, sem fake celeb.</p>
+    </div>
+    <div>
+      <h4>Buyer primária</h4>
+      <p>Mulher 50-65+ USA, já viu 50 ads baking soda fake, cética mas procurando solução. Cansada de Ozempic $1,000/mês. Food noise, photo avoidance.</p>
+      <h4>Sub-avatar</h4>
+      <p>Filha 30-45 comprando pra mãe (proxy-buy).</p>
+      <h4>Personagem do criativo</h4>
+      <p><b>Dana Whitfield</b> (formuladora independente, 50+, kitchen background, eye contact direto, sorriso leve, tom anti-claim transparente).</p>
+    </div>
+  </div>
+
+  <!-- ===== STORYBOARD: 6 FRAMES ===== -->
+  <h2>🎬 Storyboard · 6 frames</h2>
+
+  <p>Storyboard linear de 60-90s. Cada frame tem visual sketch + áudio TTS/voiceover + text overlay + production notes. Pode filmar em 1-2 takes.</p>
+
+  <!-- FRAME 1: HOOK -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 1</span><span class="frame-time">0:00 → 0:03 · 3 segundos</span>
+    <div class="frame-title">🚨 HOOK · Pattern interrupt + anti-claim</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Close-up Dana. Olho no olho. Sorriso leve. Kitchen ao fundo desfocada.<br>
+      Baking soda + limão + jar visíveis em counter (lado direito do frame).<br>
+      No scratch overlay, leve banner topo: <code>AD</code> (compliance Facebook 2026).
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover (EN)</span>
+        <div class="quote">"I saw all those ads claiming Oprah swears by a baking soda recipe. Most of them are fake. Here's what baking soda actually does."</div>
+        <p style="font-size:12px; color:var(--muted);">Tom: matter-of-fact, slightly tired, "I'm about to set the record straight" energy. NÃO accusatory, NÃO angry.</p>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay (lower-third, 1.5s cada)</span>
+        <div class="quote">"<b>I saw all those ads</b>" (0-1s)<br>"<b>Most are fake.</b>" (1-2s)<br>"<b>Here's what baking soda actually does.</b>" (2-3s)</div>
+        <p style="font-size:12px; color:var(--muted);">Font: bold sans-serif, white com drop shadow. Bottom 30% do frame.</p>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera / Composição</span>
+        <p>iPhone 15+ close-up, Dana 60% do frame (chest up). 1.5m de distância. Eye line direto na lens. Light natural (window left, 5000K daylight). Sem ring light, sem flash.</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Silêncio inicial (0-1s) → leve room tone kitchen (1-3s). SEM música (música = ad feel, queremos authentic).</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <strong>✅ Por que funciona:</strong> quebra cluster deepfake com <b>name-drop de celebridade real</b> (Oprah) sem ser endorsement (Oprah = "eles dizem", "I saw"). Pattern interrupt forte pra quem viu 50 ads deepfake. 3 segundos = hook rate ≥ 35% target.
+    </div>
+  </div>
+
+  <!-- FRAME 2: PROBLEM -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 2</span><span class="frame-time">0:03 → 0:15 · 12 segundos</span>
+    <div class="frame-title">📰 PROBLEM · Authority + cluster exposé</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Medium shot, Dana leaning in slightly. Kitchen counter visível. <br>
+      Corta pra B-roll fake ads (rápido, 2s cada): Oprah fake ad, Jastreboff fake ad, "Yale doctor" fake ad — 3 screenshots stock, fade rápido.<br>
+      Volta pra Dana medium shot.
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover (EN)</span>
+        <div class="quote">"For 6 months I've been watching fake celebrity endorsements of 'baking soda recipes' flood Facebook. The BBB, Forbes, and Snopes have covered them. None of them are real. None of them work as advertised."</div>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay</span>
+        <div class="quote">"<b>50+ fake ads</b> in 6 months" (3-7s)<br>"<b>BBB + Forbes + Snopes</b> covered them" (7-11s)<br>"<b>None are real.</b>" (11-15s)</div>
+        <p style="font-size:12px; color:var(--muted);">B-roll fake ads: usar stock images/screen-recordings (deepfake Oprah etc) com blur leve + tag "FAKE" vermelha. 2s cada.</p>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera</span>
+        <p>Dana lean-in (1m de distância) com cutaways B-roll fake ads. Cut rápido (2s cada) signal "I researched this, you should too".</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Room tone continua. Leve sound effect "switch" (soft click) nos cutaways B-roll. SEM música.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>🧠 Mecanismo DR:</strong> (1) <b>Pre-qualification (invertido)</b> — citar BBB+Forbes+Snopes filtra quem é cético (target). (2) <b>Specificity = credibility</b> — "6 months", "50+ ads" = verificável. (3) <b>Authority transfer (invertido)</b> — Dana não cita Yale, cita <b>órgãos de imprensa</b> que fizeram a verificação. (4) <b>Cluster exposé</b> — "I watched them" = insider feel.
+    </div>
+  </div>
+
+  <!-- FRAME 3: SOLUTION -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 3</span><span class="frame-time">0:15 → 0:30 · 15 segundos</span>
+    <div class="frame-title">🔬 SOLUTION · Mechanism reveal + ingredients</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Corta pra hands-on-counter: Dana pega baking soda, abre jar de ginger powder, mostra frasco de berberine. Close-up shots. 3 ingredientes em ordem. Voltas pra Dana medium shot.
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover (EN)</span>
+        <div class="quote">"So I made a 90-second video to show you what baking soda actually does in the body, what the research says, and how to use it safely with two common kitchen ingredients — without fake celebs, without GLP-1 injections, without $1,000 a month."</div>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay</span>
+        <div class="quote">"<b>3 ingredients</b>" (15-20s, on top of ingredient shot)<br>"<b>In that order</b>" (20-25s)<br>"<b>No fake celeb · No $1,000/mo</b>" (25-30s)</div>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera</span>
+        <p>Macro shots das mãos + ingredientes. 2-3s cada ingrediente (baking soda → ginger → berberine). Dana explica o "in that order" apontando com finger.</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Room tone + leve "shaker" sound quando pega cada ingrediente (ASMR touch). SEM música.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>🧠 Mecanismo DR:</strong> (1) <b>Specificity = trust</b> — "3 ingredients" + "in that order" = formula exclusiva, verificável. (2) <b>Anti-injection price canon</b> — "without $1,000 a month" = comparação direta com Ozempic. (3) <b>Substance over celebrity</b> — "without fake celebs" reforça lane "honest product".
+    </div>
+  </div>
+
+  <!-- FRAME 4: AUTHORITY -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 4</span><span class="frame-time">0:30 → 0:50 · 20 segundos</span>
+    <div class="frame-title">🎓 AUTHORITY · Formulator transparency</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Back to Dana medium shot, slight lean back (open posture). Sorriso leve. <br>
+      Corta pra shot: research papers impressos ou open no laptop atrás dela. <br>
+      Voltas pra Dana eye contact direto.
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover (EN)</span>
+        <div class="quote">"I'm not a doctor. I'm a formulator. Here's the research, here's the recipe, here's the price. No celebrity. No injection. No subscription."</div>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay</span>
+        <div class="quote">"<b>I'm not a doctor.</b>" (30-35s)<br>"<b>I'm a formulator.</b>" (35-40s)<br>"<b>Research · Recipe · Price</b>" (40-45s)<br>"<b>No subscription. No fine print.</b>" (45-50s)</div>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera</span>
+        <p>Dana lean back, open posture, eye contact. Corta pra research papers/laptop (1.5s shot, soft focus). Voltas Dana. Tom: confident, calm, peer-level.</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Room tone + leve "page turn" sound effect quando cutaway research papers. SEM música.</p>
+      </div>
+    </div>
+
+    <div class="callout good">
+      <strong>✅ Frame 4 é o coração do criativo.</strong> "I'm not a doctor, I'm a formulator" é o pattern interrupt mais poderoso do criativo. <b>Anti-authority as authority</b> — viewer transfere trust da <b>própria intuição</b> ("essa pessoa tá dizendo o que eu tava pensando"). A frase "No subscription" reforça SlimSoda hero (50-60% below market, no fine print). <b>Target: hold rate ≥ 25% no frame 4.</b>
+    </div>
+  </div>
+
+  <!-- FRAME 5: CTA -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 5</span><span class="frame-time">0:50 → 0:60 · 10 segundos</span>
+    <div class="frame-title">👉 CTA · Low-friction, anti-pressure</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Dana lower-third frame (chest up). Sorriso leve, eye contact. <br>
+      CTA visual overlay centro: "Watch the 90-second video" com arrow pointing down/right.<br>
+      Background: produto SlimSoda visível (1 tub + scoop + glass).
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover (EN)</span>
+        <div class="quote">"Watch the 90-second video. See for yourself. No fake celeb. No subscription. Cancel anytime."</div>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay</span>
+        <div class="quote">"<b>WATCH THE 90-SECOND VIDEO</b>" (50-55s, big, center, white-on-dark)<br>"<b>No fake celeb · No subscription · Cancel anytime</b>" (55-60s, smaller, below)</div>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera</span>
+        <p>Dana chest up, eye contact. Product shot inset (bottom right) com soft drop shadow.</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Room tone. SEM música.</p>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>🧠 Mecanismo DR:</strong> (1) <b>Low-friction CTA</b> — "Watch the 90-second video" = zero commitment, click = learn more. (2) <b>Calm close, never urgency</b> — "See for yourself" = respect viewer agency. (3) <b>No-pressure reassurance</b> — "No subscription · Cancel anytime" = transparency.
+    </div>
+  </div>
+
+  <!-- FRAME 6: STICKY -->
+  <div class="frame-card">
+    <span class="frame-num">FRAME 6</span><span class="frame-time">0:60 → 0:90 · 30 segundos</span>
+    <div class="frame-title">📌 STICKY · Product + compliance</div>
+
+    <div class="frame-sketch">
+      [SKETCH]<br>
+      Full product beauty shot: SlimSoda tub, scoop, glass of water, lemons.<br>
+      Center overlay: "SlimSoda · $29.99 · 60-Day Empty-Tub Promise" + small "Cancel anytime" badge.<br>
+      Bottom compliance footer: "These statements have not been evaluated by the FDA..." (small, gray).
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎙️ Áudio / Voiceover</span>
+        <p style="color:var(--muted);">Silêncio. Música de fundo leve (optional, ~10% volume).</p>
+      </div>
+      <div>
+        <span class="label">📝 Text overlay</span>
+        <div class="quote">"<b>SlimSoda · $29.99 · 60-Day Empty-Tub Promise</b>" (center, big)<br>"<b>Cancel anytime · No subscription</b>" (smaller, below)<br>"<small>These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease.</small>" (bottom, 9pt gray)</div>
+      </div>
+    </div>
+
+    <div class="frame-section">
+      <div>
+        <span class="label">🎯 Câmera</span>
+        <p>Static product shot, soft light, marble counter. 30 segundos é tempo suficiente pra <b>replay do frame 5</b> se user quiser.</p>
+      </div>
+      <div>
+        <span class="label">🎵 Sound design</span>
+        <p>Leve música lo-fi / acoustic background (royalty-free, <10% volume). NÃO dramática.</p>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <strong>⚠️ Compliance obrigatório:</strong> FDA disclaimer <b>SEMPRE presente</b> no frame 6 (10s+). Sem disclaimer = Meta bane. "No subscription · Cancel anytime" reforça SlimSoda hero. <b>Estilo = calm, NOT urgency</b> (no countdown, no "act now", no limited stock).
+    </div>
+  </div>
+
+  <!-- ===== VARIAÇÕES: 3 HOOKS ===== -->
+  <h2>🔀 Variações de hook (3 opções pra A/B test)</h2>
+
+  <p>3 hooks alternativos. Cada um é o "Frame 1" do storyboard. <b>Recomendo começar com Hook H-V1 (recomendação)</b> + H-V2 (alternativa agressiva) em A/B test.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variação</th>
+        <th>Hook (verbatim EN, 0-3s)</th>
+        <th>Tom</th>
+        <th>Compliance</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>H-V1</b> <span class="tag slim">Recomendação</span></td>
+        <td>"I saw all those ads claiming Oprah swears by a baking soda recipe. Most of them are fake. Here's what baking soda actually does."</td>
+        <td>Anti-claim, matter-of-fact, peer-level</td>
+        <td>✅ Compliance-safe (name-drop + debunk)</td>
+      </tr>
+      <tr>
+        <td><b>H-V2</b> <span class="tag warn">Agressivo</span></td>
+        <td>"The FDA just sent 35 warning letters to baking soda ads. Here's what they found, and what actually works."</td>
+        <td>Authority cite, slightly aggressive, institutional</td>
+        <td>⚠️ Verify "35 warning letters" claim is real (cite FDA action 2025-2026)</td>
+      </tr>
+      <tr>
+        <td><b>H-V3</b> <span class="tag good">Suave</span></td>
+        <td>"A formulator watched 50 fake baking soda ads and decided to set the record straight."</td>
+        <td>Calm, narrative, "I'm one of you"</td>
+        <td>✅ Compliance-safe (no name-drop)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <strong>🧪 A/B test sugerido:</strong>
+    <ul>
+      <li><b>Ad Set 1:</b> H-V1 (recomendação) + F-V1 (UGC 60-90s) + CTA-V1 ("Watch the 90-second video")</li>
+      <li><b>Ad Set 2:</b> H-V2 (agressivo) + F-V1 + CTA-V1</li>
+      <li><b>Budget:</b> $50/dia cada, 7 dias, mesmo audience (50-65+ women USA, health/wellness interests)</li>
+      <li><b>Win criteria:</b> Hook rate ≥ 35% + ROAS D7 ≥ 1.5x. Se V1 > V2 em ROAS, scale V1. Se V2 > V1 em CTR, scale V2.</li>
+    </ul>
+  </div>
+
+  <!-- ===== PRIMARY TEXT VARIATIONS ===== -->
+  <h2>📝 Variações de primary text (3 opções)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variante</th>
+        <th>Primary text (verbatim EN)</th>
+        <th>Char count</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>PT1</b> <span class="tag slim">Recomendação</span></td>
+        <td>"For 6 months I've been watching fake celebrity endorsements of 'baking soda recipes' flood Facebook. The BBB, Forbes, and Snopes have covered them. None are real. None work as advertised. So I made a 90-second video to show you what baking soda actually does, what the research says, and how to use it safely with 2 common kitchen ingredients. No fake celeb. No subscription. Cancel anytime."</td>
+        <td>~450</td>
+      </tr>
+      <tr>
+        <td><b>PT2</b> <span class="tag blue">Curta</span></td>
+        <td>"I made a 90-second video. No fake celeb, no Ozempic, no $1,000/month. Just what baking soda actually does — backed by recent research. Watch it. Decide for yourself."</td>
+        <td>~180</td>
+      </tr>
+      <tr>
+        <td><b>PT3</b> <span class="tag good">Storytelling</span></td>
+        <td>"Last week my sister sent me a fake Oprah ad claiming she endorses baking soda for weight loss. I had to explain it's not real. Then I made this video. 90 seconds. What baking soda actually does. What the research says. How to use it safely. No fake celeb. No injection. No subscription. Real ingredients. Real research. Real talk."</td>
+        <td>~330</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== CTA VARIATIONS ===== -->
+  <h2>👉 Variações de CTA (3 opções)</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variante</th>
+        <th>CTA (verbatim EN)</th>
+        <th>Tom</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>CTA-V1</b> <span class="tag slim">Recomendação</span></td>
+        <td>"Watch the 90-second video · No fake celeb · No subscription · Cancel anytime"</td>
+        <td>Low-friction, learn-more</td>
+      </tr>
+      <tr>
+        <td><b>CTA-V2</b> <span class="tag blue">Text-first</span></td>
+        <td>"Read the 30-second recipe"</td>
+        <td>Text-first, 60-75+ women preferem</td>
+      </tr>
+      <tr>
+        <td><b>CTA-V3</b> <span class="tag good">Lowest-friction</span></td>
+        <td>"See the 7-second morning ritual"</td>
+        <td>Lowest commitment, curiosity</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== PRODUCTION NOTES ===== -->
+  <h2>🎥 Production notes</h2>
+
+  <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+    <div>
+      <h4>📍 Location</h4>
+      <p>Kitchen com luz natural (window). Counter visível pra shots de ingredientes. <b>Avoid:</b> kitchen moderna demais (parece ad), dark kitchen (moody), messy kitchen (distracting).</p>
+      <h4>💡 Light</h4>
+      <p>Window light left, 5000K daylight. SEM ring light, SEM flash, SEM softbox (queremos authentic). Cloudy day = melhor (light even).</p>
+      <h4>🎙️ Áudio</h4>
+      <p>Lavalier mic (Rode Wireless GO II ou similar). Gravar em -12dB peak. SEM echo (evitar kitchen vazia). Room tone gravado separado.</p>
+    </div>
+    <div>
+      <h4>📱 Câmera</h4>
+      <p>iPhone 15+ (ou 14), 4K 30fps. Back camera. Estabilização on. Filmar horizontal OU vertical (decidir pelo placement Meta: feed = 4:5 vertical, stories/reels = 9:16 vertical).</p>
+      <h4>👗 Wardrobe</h4>
+      <p>Dana: casual clean (linen shirt + jeans). SEM logo. SEM makeup pesado. SEM jewelry distracting. Cores neutras.</p>
+      <h4>⏱️ Tempo de produção</h4>
+      <p>Setup 30min. Filme 1h (2-3 takes). Edição 2h. Compliance review 30min. <b>Total: ~4h do setup ao ready-to-upload.</b></p>
+    </div>
+  </div>
+
+  <!-- ===== COMPLIANCE CHECKLIST ===== -->
+  <h2>⚖️ Compliance checklist (antes de subir)</h2>
+
+  <div class="grid-2" style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+    <div>
+      <h4 style="color:var(--red)">❌ NÃO fazer (red lines)</h4>
+      <ul>
+        <li>❌ NÃO citar Oprah, Jastreboff, Bill Gates pelo nome (mesmo pra "debunk" = pode ser visto como endorsement)</li>
+        <li>❌ NÃO usar deepfake de celebridade real</li>
+        <li>❌ NÃO dizer "cures", "treats", "prevents disease"</li>
+        <li>❌ NÃO dizer "lose X lbs in Y days"</li>
+        <li>❌ NÃO usar before/after fabricada</li>
+        <li>❌ NÃO atacar marca específica de suplemento concorrente</li>
+        <li>❌ NÃO usar fotos de mulher em body transformation</li>
+        <li>❌ NÃO usar urgência (countdown, "act now", limited stock)</li>
+      </ul>
+    </div>
+    <div>
+      <h4 style="color:var(--green)">✅ DEVE ter (compliance + trust)</h4>
+      <ul>
+        <li>✅ FDA disclaimer no final (frame 6, 10s+ visível)</li>
+        <li>✅ "I'm not a doctor, I'm a formulator" (transparência)</li>
+        <li>✅ "What the research says" (claim genérica)</li>
+        <li>✅ "Two common kitchen ingredients" (genérico, não proprietary blend fake)</li>
+        <li>✅ AI label se Dana for avatar sintético (Meta 2026 obriga)</li>
+        <li>✅ "Cancel anytime" (transparência de pricing)</li>
+        <li>✅ 18+ age restriction na campanha (Meta)</li>
+        <li>✅ Tom calm, NOT urgency</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== MÉTRICAS ESPERADAS ===== -->
+  <h2>📊 Métricas esperadas</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Métrica</th>
+        <th>Target (Meta benchmark weight loss)</th>
+        <th>Por que esperamos acima do benchmark</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Hook rate (3s view)</b></td>
+        <td>≥ 35%</td>
+        <td>Pattern interrupt quebra cluster deepfake</td>
+      </tr>
+      <tr>
+        <td><b>Hold rate (ThruPlay)</b></td>
+        <td>≥ 25%</td>
+        <td>60-90s é short, hold deve ser alto</td>
+      </tr>
+      <tr>
+        <td><b>CTR (link)</b></td>
+        <td>≥ 1.5%</td>
+        <td>Curiosity gap "what it actually does"</td>
+      </tr>
+      <tr>
+        <td><b>CPC</b></td>
+        <td>$0.40-0.80</td>
+        <td>Cetic-aware audience paga mais</td>
+      </tr>
+      <tr>
+        <td><b>CPM</b></td>
+        <td>$8-15</td>
+        <td>Health/wellness vertical</td>
+      </tr>
+      <tr>
+        <td><b>ROAS (D7)</b></td>
+        <td>1.5-2.5x</td>
+        <td>First-time traffic, learning phase</td>
+      </tr>
+      <tr>
+        <td><b>ROAS (D30)</b></td>
+        <td>2.5-4.0x</td>
+        <td>Retargeting + LAL warmed</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== PRÓXIMOS PASSOS ===== -->
+  <h2>🎯 Próximos passos</h2>
+
+  <ol>
+    <li><b>Aprovar storyboard</b> → passar pra time de produção (criativo + edição)</li>
+    <li><b>Produzir criativo UGC 60-90s</b> com Dana Whitfield (formuladora real) ou atriz similar (50+, kitchen background)</li>
+    <li><b>A/B test</b> Hook H-V1 vs H-V2 (mesmo F-V1, mesmo CTA-V1)</li>
+    <li><b>Subir no Meta Ads Manager</b> como Branded Content (se Dana é creator) ou Direct Upload (se Dana é formuladora real da marca)</li>
+    <li><b>Pixel Meta</b> já wired no PDP v3 + via /api/track-capi (Supabase + Meta CAPI server-side)</li>
+    <li><b>Tracking</b> via /api/track-capi (server-side) + Meta Pixel (client-side)</li>
+    <li><b>Reunião de 7 dias</b> pra avaliar hook rate, hold rate, CPC, ROAS D7</li>
+    <li><b>Iterar</b> baseado em dados — se hook > 40%, escalar; se hold < 20%, ajustar frame 3 (15-30s)</li>
+  </ol>
+
+  <!-- ===== CROSS-REFERENCES ===== -->
+  <h2>🔗 Cross-references</h2>
+
+  <ul>
+    <li><b>Brief #1 (este storyboard é baseado):</b> <a href="brief-slimsoda-anti-scam-2026-08-23.md">brief-slimsoda-anti-scam-2026-08-23.md</a></li>
+    <li><b>Análise criativa #2:</b> <a href="../analise-criativos/adv2-anti-scam.html">adv2-anti-scam.html</a> — copy breakdown, foto anatomia, mecanismo, framework replicável</li>
+    <li><b>Análise criativa #9 (cloaker):</b> <a href="../analise-criativos/adv9-cloaker-burnhack.html">adv9-cloaker-burnhack.html</a> — confirma que Adv2 = LP oficial vendor que afiliado usa</li>
+    <li><b>Spy intel:</b> <a href="../intel/spy-2026-08-22/slimsoda.md">intel/spy-2026-08-22/slimsoda.md</a> — finding #1 (anti-scam = blue ocean)</li>
+    <li><b>Playbook:</b> <a href="../intel/playbook-slimsoda-memopryl-2026-08-23.md">playbook-slimsoda-memopryl-2026-08-23.md</a> — inventário + roadmap + decision tree</li>
+    <li><b>One Page:</b> <a href="../one.html">one.html</a> — pipeline criativo, cluster strategy</li>
+    <li><b>DR Hub:</b> <a href="../references_v5/index.html">references_v5/index.html</a> — decisão do dia + briefs + análises</li>
+    <li><b>LP destino:</b> <a href="https://slim-soda01.vercel.app/slimsoda-pdp/">slimsoda-pdp/</a> ou <a href="https://slim-soda01.vercel.app/references_v5/by-product/slimsoda/lps/article-lp/">article-lp Yale listicle</a></li>
+  </ul>
+
+  <footer>
+    <span>Storyboard · SlimSoda Anti-scam · 23/ago/2026</span>
+    <span>by Vinicius Sugamele · Mavis · Slim-Soda01 hub</span>
+  </footer>
+
+</div>
+</body>
+</html>
