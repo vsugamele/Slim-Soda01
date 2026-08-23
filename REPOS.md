@@ -74,10 +74,13 @@
 
 ### Briefs production-ready (`briefs/`)
 
-Pasta de **briefs criativos prontos pra produção**. Cada brief tem 10 seções: visão geral, persona, mecanismo, copy completa, storyboard, compliance, variações, métricas esperadas, cross-reference, próximos passos.
+Pasta de **briefs criativos prontos pra produção**. Cada brief tem 10 seções: visão geral, persona, mecanismo, copy completa, storyboard, compliance, variações, métricas esperadas, cross-reference, próximos passos. **5 briefs cross-vertical** (23/ago/2026) prontos pra sprint paralelo.
 
-- `briefs/brief-slimsoda-anti-scam-2026-08-23.md` — SlimSoda "Anti-scam Honest Baking Soda" (UGC 60-90s, Dana Whitfield, GAP 2026-08)
-- `briefs/brief-memopryl-lithium-2026-08-23.md` — MemoPryl "Harvard Lithium Microdose" (editorial flat lay + carrossel 5 cards, Nature 2025, GAP 2026-08)
+- `briefs/brief-slimsoda-anti-scam-2026-08-23.md` — SlimSoda "Anti-scam Honest Baking Soda" (UGC 60-90s, Dana Whitfield, framework **anti-claim**)
+- `briefs/brief-slimsoda-stanford-2026-08-23.md` — SlimSoda "Stanford Missing Mineral" (editorial flat lay, 3 ingredients in that order, framework **Scientists found X**)
+- `briefs/brief-memopryl-lithium-2026-08-23.md` — MemoPryl "Harvard Lithium Microdose" (editorial flat lay + carrossel 5 cards, Nature 2025, framework **Scientists found X**)
+- `briefs/brief-cardioclear-uva-2026-08-23.md` — Cardio Clear "UVA Real Driver" (editorial flat lay + talking-head, 4 named ingredients, Dr. Sanjay Gupta autorizado, framework **Scientists found X**)
+- `briefs/brief-linfaflow-stanford-2026-08-23.md` — Linfaflow "Stanford Lymphatic Memory" (editorial flat lay, 4 named herbs, metaphor lymphatic memory, framework **Scientists found X**)
 
 ### Análise criativa (`analise-criativos/`)
 
