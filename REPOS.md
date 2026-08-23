@@ -69,7 +69,15 @@
 |---|---|---|
 | `páginas/hub-preview/intel/spy-2026-08-22/` | Master spy briefing + 4 per-vertical reports (SlimSoda, Linfaflow+Linfozen, MemoPryl, Cardio Clear) | dentro do repo `Slim-Soda01` (versionado) |
 | `páginas/hub-preview/analise-criativos/` | Hub de análises criativas (top performers quebrados em copy/foto/layout/mecanismo, evolução compliance-safe cross-vertical) | dentro do repo `Slim-Soda01` (versionado) |
+| `páginas/hub-preview/briefs/` | Briefs criativos production-ready (PT-BR + EN, storyboard, compliance, métricas esperadas) | dentro do repo `Slim-Soda01` (versionado) |
 | `páginas/hub-preview/REPOS.md` | este arquivo | dentro do repo `Slim-Soda01` (versionado) |
+
+### Briefs production-ready (`briefs/`)
+
+Pasta de **briefs criativos prontos pra produção**. Cada brief tem 10 seções: visão geral, persona, mecanismo, copy completa, storyboard, compliance, variações, métricas esperadas, cross-reference, próximos passos.
+
+- `briefs/brief-slimsoda-anti-scam-2026-08-23.md` — SlimSoda "Anti-scam Honest Baking Soda" (UGC 60-90s, Dana Whitfield, GAP 2026-08)
+- `briefs/brief-memopryl-lithium-2026-08-23.md` — MemoPryl "Harvard Lithium Microdose" (editorial flat lay + carrossel 5 cards, Nature 2025, GAP 2026-08)
 
 ### Análise criativa (`analise-criativos/`)
 

@@ -43,6 +43,10 @@ buy-page/*.log
 !/references_v5/
 !/references_v5/**
 
+# Production-ready briefs (criativos, copy, storyboard, compliance)
+!/briefs/
+!/briefs/**
+
 # Intel (spy reports, methodology decisions — internal, não vai pro deploy)
 !/intel/
 !/intel/**
