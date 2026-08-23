@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Análise criativa #4 — Linfaflow "5pm Ankle Check" · UGC iPhone · Relatable symptom + anatomy-first</title>
+<meta name="description" content="Análise do adv4 Linfaflow: UGC iPhone 60-90s com hook time-specific (5pm) + debunk (it's not sodium). Mecanismo: pre-qualification by visible symptom + lymphatic system education + buried cure. Compliance-safe structure-function only.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117; --panel: #1A1D24; --panel-2: #232730; --border: rgba(255,255,255,0.08);
+  --text: #FAFAF7; --muted: #9A9AA8; --muted-2: #6B6B78;
+  --accent: #E09A22; --gold: #FFD166; --green: #06A77D; --red: #c0392b; --blue: #4ea1ff; --purple: #B197FC;
+  --linfa: #06A77D;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-strip { display: flex; gap: 6px; margin-bottom: 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; flex-wrap: wrap; align-items: center; }
+.nav-strip .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.nav-strip a { padding: 4px 10px; background: var(--panel-2); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; }
+.nav-strip a:hover { background: var(--accent); color: #000; text-decoration: none; }
+.nav-strip a.active { background: var(--linfa); color: #000; }
+
+header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px; }
+.kicker { display: inline-block; padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(6,167,125,0.12); color: var(--linfa); border: 1px solid rgba(6,167,125,0.3); margin-bottom: 12px; }
+h1 { font-family: 'Bitter', Georgia, serif; font-size: 40px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--linfa); }
+h2 { font-family: 'Bitter', Georgia, serif; font-size: 24px; line-height: 1.2; margin: 36px 0 12px; padding-top: 12px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+h3 { font-size: 16px; margin: 18px 0 8px; color: var(--linfa); }
+h4 { font-size: 13px; margin: 14px 0 6px; color: var(--text); text-transform: uppercase; letter-spacing: 0.06em; }
+.lede { font-size: 17px; color: #d3d8e0; max-width: 760px; margin: 0 0 12px; }
+p, li { font-size: 14.5px; }
+ul, ol { margin: 8px 0 16px 24px; padding: 0; }
+li { margin: 4px 0; }
+
+.canon { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--linfa); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canon strong { color: var(--linfa); }
+.canongreen { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--linfa); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canongreen strong { color: var(--linfa); }
+.callout { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.callout.warn { border-left-color: var(--red); }
+.callout.good { border-left-color: var(--linfa); }
+.callout strong { color: var(--accent); }
+.callout.warn strong { color: var(--red); }
+.callout.good strong { color: var(--linfa); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; }
+.card h4 { margin-top: 0; color: var(--linfa); }
+.card p { font-size: 13px; margin: 4px 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--panel-2); color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+.label { color: var(--muted); font-size: 12px; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--panel-2); padding: 1px 5px; border-radius: 3px; color: var(--gold); }
+.quote { background: var(--panel-2); border-left: 3px solid var(--linfa); padding: 12px 14px; margin: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); border-radius: 0 4px 4px 0; }
+
+.fakead { background: linear-gradient(180deg, #f4f8f6 0%, #f9fbfa 100%); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 14px 0; color: #1a1a1a; font-family: Georgia, serif; }
+.fakead .lbl { display: inline-block; background: rgba(6,167,125,0.85); color: white; padding: 2px 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.fakead .head { font-size: 20px; font-weight: 900; line-height: 1.15; color: #1a1a1a; margin: 0 0 8px; }
+.fakead .head em { font-style: italic; color: #06A77D; }
+.fakead .img { background: linear-gradient(180deg, #1a1a1a 0%, #2a2a2a 100%); color: #aaa; height: 180px; display: flex; align-items: center; justify-content: center; font-size: 11px; margin: 10px 0; border-radius: 4px; }
+.fakead .meta { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
+.fakead blockquote { font-style: italic; font-size: 14px; color: #333; border-left: 3px solid #06A77D; padding-left: 12px; margin: 12px 0; }
+.fakead .scene { background: #fff; border: 1px solid #ddd; border-radius: 6px; padding: 8px 12px; margin: 6px 0; font-size: 12px; }
+.fakead .scene b { color: #06A77D; }
+.fakead .scene .timestamp { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #06A77D; font-weight: 800; margin-right: 6px; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--panel-2); color: var(--muted); }
+.tag.good { background: rgba(6,167,125,0.15); color: var(--linfa); }
+.tag.warn { background: rgba(192,57,43,0.15); color: var(--red); }
+.tag.gold { background: rgba(255,209,102,0.15); color: var(--gold); }
+.tag.blue { background: rgba(78,161,255,0.15); color: var(--blue); }
+
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 720px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav-strip">
+    <span class="label">Análise:</span>
+    <a href="../one.html">🎯 One Page</a>
+    <a href="../references_v5/index.html">DR Hub</a>
+    <a href="../intel/spy-2026-08-22/MASTER.md">📡 Spy 22/ago</a>
+    <a href="index.html">🧠 Análise</a>
+    <a href="adv1-oprah.html">#1 Oprah</a>
+    <a href="adv2-anti-scam.html">#2 Anti-scam</a>
+    <a href="adv3-memopryl-honey.html">#3 MemoPryl Honey</a>
+    <a href="adv4-linfaflow-5pm.html" class="active">#4 Linfaflow 5pm</a>
+  </div>
+
+  <header>
+    <span class="kicker">Análise criativa · #4 · Linfaflow · cross-vertical (lymphatic)</span>
+    <h1>💧 "5pm Ankle Check" <span class="accent">·</span> UGC iPhone + time-specificity + anatomy-first</h1>
+    <p class="lede">A análise #1 mostrou que "celeb + authority + buried cure" tá saturado. A #2 mostrou que virar <b>âncora honesta do cluster</b> funciona. Esta #4 muda o eixo: em vez de fake-authority, <b>UGC iPhone de mulher real mostrando tornozelo com marca de meia</b>. Mecanismo: <b>relatable symptom + time-specificity (5pm) + debunk ("it's not sodium") + lymphatic system education</b>. Compliance-safe por design: structure-function only, sem "cures lymphedema", sem peso.</p>
+  </header>
+
+  <div class="canon">
+    <strong>Resumo de 1 parágrafo:</strong> o adv4 Linfaflow "5pm Ankle Check" é UGC iPhone 60-90s onde mulher 45-60+ <b>mostra a marca de meia no tornozelo às 5pm</b> e diz "it's not sodium" — quebra o myth que toda mulher 50+ acredita (inchaço = comer muito sal). O <b>mechanism</b> é lymphatic system drainage (não kidney, não circulation). Funciona por (1) <b>time-specificity (5pm)</b> = "isso acontece COMIGO" (qualquer working woman reconhece), (2) <b>visible evidence</b> (marca de meia) = zero ceticismo, (3) <b>debunk</b> ("it's not sodium") = quebra myth + ativa curiosity, (4) <b>anatomy education</b> = "lymphatic system ninguém fala disso" = buried cure real. <b>Compliance-safe</b>: "supports lymphatic system" é structure-function (FDA 21 CFR 101.93), "may help reduce occasional swelling" é claim permitido, time-specificity (5pm) é relatável mas não disease claim. Maioria dos concorrentes fala "lose weight" / "flat belly" (genérico) — esse ângulo é <b>blue ocean</b>.
+  </div>
+
+  <!-- ===== MOCKUP ADV4 ===== -->
+  <h2>1. Estrutura visual (mockup UGC iPhone)</h2>
+  <p>Como o criativo aparece. Diferente dos #1 e #2 (editorial fake-ad estático), o #4 é <b>UGC talking-head 60-90s</b> em iPhone. "ADVERTISEMENT" é só a label — o resto é raw footage.</p>
+
+  <div class="fakead">
+    <div class="lbl">UGC · 60-90s</div>
+    <h3 class="head">Hook 0-3s (verbatim): <em>"Why your socks leave deeper marks by 5pm (it's not sodium)."</em></h3>
+
+    <div class="img">
+      [Frame 0-3s: iPhone selfie vertical 9:16. Knee-down crop → tilt up pra face. White socks, deep dent no tornozelo. Natural light, office ou kitchen.]
+    </div>
+
+    <div class="scene">
+      <b>🟢 SCENE 1 (0-3s) · Hook + visual evidence</b><br>
+      <span class="timestamp">[camera tilts UP from ankle to face]</span><br>
+      "OK, look at this. See that dent in my ankle? That's from my sock. <b>It's 5pm.</b> And no, I didn't eat a bag of chips. <b>It's not sodium.</b>"
+    </div>
+
+    <div class="scene">
+      <b>🟢 SCENE 2 (3-18s) · Myth break + relatable setup</b><br>
+      <span class="timestamp">[sitting on couch, holding mug, casual]</span><br>
+      "I used to think it was salt. Cut salt for 3 months. Still swollen every day by 5pm. Doctor checked heart, kidneys, circulation — all 'normal.' But the swelling kept getting worse."
+    </div>
+
+    <div class="scene">
+      <b>🟢 SCENE 3 (18-50s) · Anatomy education + authority</b><br>
+      <span class="timestamp">[holds up phone with lymphatic system graphic, then 4 herbal bottles]</span><br>
+      "Then I read about the <b>lymphatic system</b>. Basically your body's drain. When it gets sluggish — after 40, definitely after 50 — fluid pools in your ankles, hands, face. <b>Your kidneys can't fix it. Different system.</b> 4 botanicals — cleavers, red clover, stillingia, prickly ash — shown in studies to <b>support healthy lymphatic flow</b>. Not a diuretic. Not a 'water pill.'"
+    </div>
+
+    <div class="scene">
+      <b>🟢 SCENE 4 (50-80s) · Identity + soft CTA</b><br>
+      <span class="timestamp">[standing, showing flat ankle, smiling, eye contact]</span><br>
+      "I've been doing a 7-second morning thing for 6 weeks. My socks don't leave marks anymore. <b>Watch the 7-second morning ritual that helps.</b>"
+    </div>
+
+    <div class="meta">📍 Linfaflow · $49/bottle · 90-day guarantee · <b style="color:#06A77D">WATCH THE 7-SECOND RITUAL</b> · ⚠️ FDA disclaimer · Statements not evaluated by FDA · Not intended to diagnose, treat, cure, or prevent any disease</div>
+  </div>
+
+  <h3>Por que essa estrutura funciona</h3>
+  <ul>
+    <li><b>Hook 0-3s começa com <code>visible evidence</code></b> (marca de meia) — viewer VÊ o sintoma antes da explicação. <b>Pré-qualificação instantânea</b>: quem tem, fica; quem não tem, scrolla. Sem disease claim.</li>
+    <li><b>Time-specificity "by 5pm"</b> — exatamente 5pm = working woman tira sapato / mom chega em casa. Reconhecimento imediato: "ela tá falando de MIM".</li>
+    <li><b>Debunk "it's not sodium"</b> — quebra myth que 99% das mulheres 50+ acreditam. Quem já cortou sal e não resolveu vai clicar. <b>Filtra exatamente quem tem o problema real</b>.</li>
+    <li><b>4 named botanicals + "not a diuretic"</b> — específico = credível (cleavers, red clover, stillingia, prickly ash) + anti-categoria (diuréticos viciam, perdem potássio). Reorienta: é lymphatic support, não "water pill".</li>
+    <li><b>CTA "7-second morning ritual"</b> — low-friction extremo + habit-forming (não commitment único).</li>
+  </ul>
+
+  <!-- ===== COPY BREAKDOWN ===== -->
+  <h2>2. Copy — breakdown estrutural (4 blocos)</h2>
+  <p>Mesmo framework do #1 e #2 (setup → revelação → autoridade → CTA), mas com <b>conteúdo 100% UGC first-person</b>. Não é editorial, não é fake-authority, é "uma mulher contando a história dela".</p>
+
+  <h3>Bloco 1 — Set-up (visible evidence + time-specificity)</h3>
+  <div class="quote">"Look at this. See that dent in my ankle? That's from my sock. It's 5pm. And no, I didn't eat a bag of chips. It's not sodium."</div>
+  <p><b>O que faz:</b> (1) <b>shows evidence</b> (camera no tornozelo antes de subir pra face), (2) <b>time-specificity</b> ("5pm"), (3) <b>preempt debunk</b> ("I didn't eat chips" — antecipa o que viewer tá pensando). Viewer pensa "eu tenho isso EXATAMENTE assim" → <b>pre-qualification instantânea</b> sem disease claim.</p>
+  <p><b>Estrutura reusável:</b> <code>[Look at X]. [It's TIME]. [I didn't do OBVIOUS CAUSE]. [It's not X].</code> Compliance-safe: sock marks + 5pm são fatos observáveis.</p>
+
+  <h3>Bloco 2 — Revelação (anatomy education + 1 cause unknown)</h3>
+  <div class="quote">"Then I read about the lymphatic system. It's basically your body's drain. When it gets sluggish — usually after 40, definitely after 50 — fluid pools in your ankles, your hands, your face. Your kidneys can't fix it. It's a different system."</div>
+  <p><b>O que faz:</b> (1) <b>anatomia real</b> (lymphatic existe mas leigos não conhecem), (2) <b>"body's drain"</b> = metáfora acessível, (3) <b>"sluggish after 40/50"</b> = age-specific, (4) <b>"different system"</b> = reorienta categoria. Viewer ouve "lymphatic" e pensa "nunca ouvi falar, meu médico nunca mencionou" → <b>buried cure conspiracy</b> real (lymphatic health raramente discutido em consultas de 15min).</p>
+  <p><b>Estrutura reusável:</b> <code>Then I read about [SYSTEM]. It's basically [METAPHOR]. When it gets [VERB] after [AGE], [WHAT HAPPENS]. [OTHER SYSTEM] can't fix it.</code> Compliance-safe: "lymphatic system" é anatomia, não claim.</p>
+
+  <h3>Bloco 3 — Autoridade (research + 4 named botanicals)</h3>
+  <div class="quote">"Researchers have been studying this for years. 4 botanicals — cleavers, red clover, stillingia, prickly ash — they've been shown in studies to support healthy lymphatic flow. Not a diuretic. Not a 'water pill.' Different thing."</div>
+  <p><b>O que faz:</b> (1) <b>"researchers"</b> (vago mas real, sem fabricar Yale), (2) <b>4 named botanicals</b> = specificity = credibility, (3) <b>"shown in studies"</b> = verificável, (4) <b>"support healthy lymphatic flow"</b> = structure-function, (5) <b>"not a diuretic"</b> = anti-categoria. Viewer transfere trust do <b>research em geral</b> (não de instituição fabricada).</p>
+  <p><b>Estrutura reusável:</b> <code>Researchers have studied [N] [ingredients]. [NAME 1], [NAME 2], [NAME 3], [NAME 4] — shown to [structure-function]. Not [bad category]. Different thing.</code> Compliance-safe: "support healthy lymphatic flow" é structure-function FDA-permitido.</p>
+
+  <h3>Bloco 4 — CTA (7-second morning ritual)</h3>
+  <div class="quote">"I've been doing a 7-second morning thing for 6 weeks. My socks don't leave marks anymore. Watch the 7-second morning ritual that helps."</div>
+  <p><b>O que faz:</b> (1) <b>"7-second"</b> = ultra-low-friction (menor que 5-min), (2) <b>"morning thing"</b> = habit-forming, (3) <b>"6 weeks"</b> = tempo específico, (4) <b>"socks don't leave marks"</b> = loop closed com Scene 1, (5) <b>"that helps"</b> = soft claim. 7 segundos = "vou ver rapidinho, sem risco". Loop closed = <b>transformação funcional</b> (não before/after fake).</p>
+  <p><b>Estrutura reusável:</b> <code>I've been doing a [N-second] [TIME OF DAY] thing for [PERIOD]. [SYMPTOM] [past negative]. Watch the [N-second] [TIME] ritual that helps.</code> Compliance-safe: "that helps" é soft claim, "socks don't leave marks" é personal testimony.</p>
+
+  <!-- ===== MECHANISM ===== -->
+  <h2>3. Mecanismo — 6 levers de direct response</h2>
+  <p>O #1 e o #2 tinham autoridade fabricada. O #4 tem <b>autoridade orgânica</b> (UGC, peer, first-person). Os 6 levers operam de forma diferente.</p>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>1. Pre-qualification (visible evidence)</h4>
+      <p><b>#1/#2:</b> filtravam por instituição (Yale) ou anti-claim (anti-scam). <b>#4:</b> filtra por <b>visible symptom</b>. Viewer que tem a marca de meia reconhece em 0.5s. <b>CPM mais barato, CTR mais alto</b> — público que fica é o que tem o problema real.</p>
+      <p><b>Copy lever:</b> "See that dent in my ankle?" + "It's 5pm" — auto-verificáveis pela viewer.</p>
+    </div>
+    <div class="card">
+      <h4>2. Authority transfer (peer-to-peer)</h4>
+      <p><b>#1:</b> Yale+Jastreboff pro produto. <b>#2:</b> BBB+Forbes+Snopes. <b>#4:</b> transfere trust de <b>peer first-person</b>. "Essa pessoa é como eu, ela tem o mesmo problema, descobriu algo que eu não descobri".</p>
+      <p><b>Peer trust > institutional trust</b> quando o produto é wellness/lifestyle (vs medical hard).</p>
+      <p><b>Copy lever:</b> primeira pessoa, "I read about", "I've been doing" — todos peer voice.</p>
+    </div>
+    <div class="card">
+      <h4>3. Buried cure (anatomy-first)</h4>
+      <p><b>#1:</b> "Big Pharma esconde" (vilão externo). <b>#2:</b> "BBB cobriu scam" (vilão interno do cluster). <b>#4:</b> "Lymphatic system — different from kidneys, different from circulation — and your doctor never mentioned it" (vilão = medical education gap, real, não fabricado).</p>
+      <p><b>Copy lever:</b> "different system", "researchers studying for years", "your kidneys can't fix it".</p>
+    </div>
+    <div class="card">
+      <h4>4. Low-friction CTA (7-sec ritual)</h4>
+      <p><b>#1:</b> 5-min video. <b>#2:</b> 90-sec video. <b>#4:</b> <b>7-second morning ritual</b> — o mais baixo de todos. 7 segundos = literalmente menos que um scroll. "Morning ritual" = habit, não commitment único.</p>
+      <p>Viewer 50+ com job ou kids tem <b>atenção fragmentada</b>. 7-sec é o único formato que ela vê até o fim.</p>
+      <p><b>Copy lever:</b> número específico (7) + tempo de dia (morning) + "ritual" (não video/article).</p>
+    </div>
+    <div class="card">
+      <h4>5. Aspirational identity (sock freedom)</h4>
+      <p><b>#1:</b> "dream body before summer" (estética). <b>#2:</b> "I'm not a doctor, I'm a formulator" (honestidade). <b>#4:</b> "My socks don't leave marks anymore" — <b>identidade funcional</b>, não estética. Viewer quer ser a pessoa que <b>usa meia sem marca</b>, <b>não pensa em inchaço</b>, <b>coloca sapato sem dor</b>. Aspirational mas <b>não physique</b> (compliance-safe).</p>
+      <p><b>Copy lever:</b> "socks don't leave marks" = autonomia corporal, não beleza.</p>
+    </div>
+    <div class="card">
+      <h4>6. Specificity = credibility (5pm + 4 botanicals)</h4>
+      <p><b>#1:</b> "24 pounds in 15 days" (fabricado = red line). <b>#2:</b> "90-second, two ingredients" (genérico verificável). <b>#4:</b> "5pm" (tempo específico, verificável por qualquer mulher) + "4 botanicals — cleavers, red clover, stillingia, prickly ash" (cada um com research).</p>
+      <p><b>Specificity máxima sem fabricated numbers.</b> 5pm é time-of-day, não weight/measurement. Botanicals são structure-function, não disease claim.</p>
+    </div>
+  </div>
+
+  <!-- ===== PHOTO ANATOMY ===== -->
+  <h2>4. Frame — anatomia (UGC iPhone 60-90s)</h2>
+  <p>A primeira frame (0-3s) trava ou perde a viewer. Diferente do #1 (foto produzida de mulher kitchen) e #2 (foto formuladora), o #4 começa com <b>knee-down crop do tornozelo com marca de meia</b>, depois sobe pra face.</p>
+
+  <table>
+    <thead>
+      <tr><th>Elemento</th><th>O que é</th><th>Por que funciona</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Frame 0-1s</b></td>
+        <td><b>Knee-down crop</b>: tornozelo, marca de meia visível, meia branca com indent profunda.</td>
+        <td>Viewer VÊ o sintoma antes de qualquer claim. <b>Auto-verificável</b> em 0.5s. Quem tem fica hipnotizado. Quem não tem, scrolla. <b>Pre-qualification por evidência física, não por copy</b>.</td>
+      </tr>
+      <tr>
+        <td><b>Frame 1-3s</b></td>
+        <td><b>Camera tilt UP</b> do tornozelo pra face. Mulher 45-60+, real (não produced), iPhone selfie.</td>
+        <td>Movimento = "real person", não stock footage. Face é <b>peer</b> (não celebrity, não formuladora). Eye contact direto. <b>Trust em 2 segundos</b>.</td>
+      </tr>
+      <tr>
+        <td><b>Enquadramento</b></td>
+        <td><b>Vertical 9:16, iPhone selfie</b>, close-up → medium shot. NÃO production value alto (sem ring light, sem mic, sem setup profissional).</td>
+        <td>iPhone vertical = mobile-first, scroll-friendly. Selfie = "real person filming herself" (vs produced ad). Low production value = <b>UGC authenticity</b>, trust +30% vs produced.</td>
+      </tr>
+      <tr>
+        <td><b>Light + Eye contact</b></td>
+        <td><b>Natural light</b> (kitchen window ou office overhead). Sem ring light, sem warm cinematic. Depois do tilt up, <b>olha direto pra câmera</b>, sorriso leve.</td>
+        <td>Natural light = "real life, not produced". Office = "I just got off work, took my shoes off" — adiciona <b>time-specificity visual</b> (5pm light = fim de dia). Eye contact = trust ("essa pessoa tá falando COMIGO"). Sorriso leve = "peer" (não host de TV).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== COMPARISON TABLE ===== -->
+  <h2>5. Comparison table — #4 Linfaflow 5pm vs #1 Oprah-style</h2>
+  <p>Comparação direta pra treinar visão. O #1 era saturado (celebrity+deepfake). O #4 é blue ocean (UGC peer+anatomy-first). Mesma estrutura de 4 blocos, mechanism completamente diferente.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>#1 Oprah-style (saturado)</th>
+        <th>#4 Linfaflow 5pm (UGC blue ocean)</th>
+        <th>Winner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Headline / Hook</b></td>
+        <td>"Yale Doctor Reveals: Never Mix Baking Soda With These 3 Ingredients"</td>
+        <td>"Why your socks leave deeper marks by 5pm (it's not sodium)"</td>
+        <td><span class="tag good">#4</span> — quebra pattern interrupt, auto-verificável</td>
+      </tr>
+      <tr>
+        <td><b>Formato</b></td>
+        <td>Editorial fake-ad (image static)</td>
+        <td>UGC iPhone talking-head 60-90s (video)</td>
+        <td><span class="tag good">#4</span> — UGC trust + mobile-first + scrollable</td>
+      </tr>
+      <tr>
+        <td><b>Persona</b></td>
+        <td>Mulher 50-65+ kitchen, baking soda visível (foto stock ou deepfake)</td>
+        <td>Mulher 45-60+ knee-down crop, tornozelo com marca de meia, depois face (UGC real)</td>
+        <td><span class="tag good">#4</span> — UGC real > foto stock/deepfake</td>
+      </tr>
+      <tr>
+        <td><b>Autoridade</b></td>
+        <td>Yale + Jastreboff deepfake + Today show</td>
+        <td>Peer first-person + "researchers" vago + 4 named botanicals</td>
+        <td><span class="tag good">#4</span> — peer trust + sem celebrity deepfake</td>
+      </tr>
+      <tr>
+        <td><b>Mecanismo / Revelação</b></td>
+        <td>"Baking Soda Trick" (nome próprio fake)</td>
+        <td>"Lymphatic system — different from kidneys, different from circulation" (anatomia real)</td>
+        <td><span class="tag good">#4</span> — anatomia real > nome próprio fake</td>
+      </tr>
+      <tr>
+        <td><b>CTA</b></td>
+        <td>"Watch 5-min video to get dream body before summer"</td>
+        <td>"Watch 7-second morning ritual that helps"</td>
+        <td><span class="tag good">#4</span> — 7-sec ultra-low-friction + habit-forming</td>
+      </tr>
+      <tr>
+        <td><b>Compliance 2026</b></td>
+        <td><span class="tag warn">ALTO RISCO</span> — celebrity deepfake + disease claim + fabricated number</td>
+        <td><span class="tag good">BAIXO RISCO</span> — UGC real + structure-function + visible evidence + no fabricated number</td>
+        <td><span class="tag good">#4</span> — escapa Meta 2026 + FTC</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== FRAMEWORK ===== -->
+  <h2>6. Framework replicável — extração dos 4 elementos</h2>
+  <p>Os 4 blocos estruturais (Set-up, Revelação, Autoridade, CTA) estão presentes no #1, #2 e #4. O que muda é o <b>tipo de evidência</b> e o <b>tipo de autoridade</b>.</p>
+
+  <div class="canongreen">
+    <strong>Princípio unificador #4 (UGC peer + anatomy-first):</strong> o ângulo Linfaflow 5pm inverte o eixo de autoridade. <b>#1 e #2 usavam autoridade externa fabricada</b> (Yale deepfake, BBB institutional) — funciona mas arriscado. <b>#4 usa peer first-person + anatomia real + visible evidence</b> — funciona com zero red line. Estrutura idêntica (setup→revelação→autoridade→CTA), mas <b>Bloco 1 vira "show evidence"</b> (não "cite institution") e <b>Bloco 3 vira "named botanicals + researchers vago"</b> (não "celebrity + talk show"). Replicável pra qualquer wellness/lifestyle com <b>anatomia ignorada</b>: digestive (microbiome), skin (barrier), joint (cartilage), cognitive (neuroplasticity), sleep (circadian). Mesmo template, mechanism novo, compliance-safe sempre.
+  </div>
+
+  <!-- ===== BRIEF PRODUCTION ===== -->
+  <h2>7. Brief de produção (Linfaflow adv1 "5pm Ankle Check")</h2>
+  <p>Baseado nesta análise, o brief concreto pra produzir o criativo:</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>📋 Formato + Persona</h4>
+      <p><b>UGC talking-head 60-90s</b> (iPhone selfie, vertical 9:16, knee-down crop inicial → sobe pra face, kitchen ou office background, natural light, NO ring light, NO mic profissional). <b>Mulher real 45-60+</b> (NÃO actress, NÃO AI avatar sem label), working professional OU mom. Knee-down crop com white socks + deep dent visível. Eye contact direto, sorriso leve. Casting de amiga / member do time Linfaflow, não celebridade.</p>
+    </div>
+    <div class="card">
+      <h4>🎬 Hook (verbatim EN, 0-3s)</h4>
+      <p><b>"Why your socks leave deeper marks by 5pm (it's not sodium)."</b></p>
+      <p>Mostra tornozelo com marca de meia ANTES de subir pra face. Texto embedded na tela: <code>5pm ⏰</code> + <code>not sodium ❌</code>.</p>
+    </div>
+    <div class="card">
+      <h4>📖 Body (3-60s)</h4>
+      <p>(3-18s) <b>Set-up:</b> "I cut salt for 3 months, still swollen." (18-50s) <b>Revelação + Autoridade:</b> lymphatic system education + 4 named botanicals (cleavers, red clover, stillingia, prickly ash) + "shown in studies to support healthy lymphatic flow" + "not a diuretic".</p>
+    </div>
+    <div class="card">
+      <h4>🎯 CTA + Compliance</h4>
+      <p><b>CTA (60-90s):</b> "Watch the 7-second morning ritual that helps." (low-friction + habit-forming + soft claim "helps"). CTA button overlay: <code>WATCH THE FREE VIDEO</code>.</p>
+      <p><b>Compliance:</b> ❌ "cures lymphedema" / perda de peso / antes-depois / "doctor-approved" sem doctor real. ✅ "Supports lymphatic system" (structure-function) / "May help reduce occasional swelling" (FDA soft claim) / time-specificity 5pm (relatable) / FDA disclaimer final / AI label se avatar sintético.</p>
+    </div>
+  </div>
+
+  <div class="canon">
+    <strong>Por que essa decisão é "do dia" pro Linfaflow:</strong> o cluster lymphatic drainage no Meta (ago/2026) tem 30+ ads ativos. A maioria fala "lose weight" / "flat belly" (genérico). <b>Nenhum</b> usa time-specificity (5pm) + visible evidence (sock marks) + debunk ("it's not sodium") + anatomy-first (lymphatic system). Linfaflow pode ser o <b>primeiro ad do cluster a quebrar o pattern interrupt</b>. CTR esperado: mais alto que média. CPC: médio (lymphatic-specific, audience menor mas mais qualificada). Conversão final: alta (visible evidence pré-qualifica exatamente quem tem o problema).
+  </div>
+
+  <footer>
+    <span>🧠 Análise criativa #4 · Linfaflow "5pm Ankle Check" · 2026-08-23</span>
+    <span>
+      <a href="adv3-memopryl-honey.html">← #3 MemoPryl Honey</a> ·
+      <a href="index.html">🧠 Análise</a> ·
+      <a href="../one.html">🎯 One Page</a> ·
+      <a href="adv5-cardio-4in1.html">#5 Cardio Clear 4-in-1 →</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>

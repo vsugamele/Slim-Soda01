@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🧠 Análise criativa #6 — Linfozen "Fibrotic Solvent Ritual" · Technical jargon + menopause belly</title>
+<meta name="description content="Análise do adv6 Linfozen (fibrotic solvent ritual, menopause 55-70+ sub-avatar, technical jargon). Copy, foto, mecanismo. Por que funciona num cluster saturado de drops lymphatic genéricos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117; --panel: #1A1D24; --panel-2: #232730; --border: rgba(255,255,255,0.08);
+  --text: #FAFAF7; --muted: #9A9AA8; --muted-2: #6B6B78;
+  --accent: #E09A22; --gold: #FFD166; --green: #06A77D; --red: #c0392b; --blue: #4ea1ff; --purple: #B197FC;
+  --linfo: #4ea1ff;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 28px 28px 96px; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.nav-strip { display: flex; gap: 6px; margin-bottom: 18px; padding: 10px 14px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; flex-wrap: wrap; align-items: center; }
+.nav-strip .label { font-size: 10px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.nav-strip a { padding: 4px 10px; background: var(--panel-2); color: var(--text); border-radius: 4px; font-size: 11px; font-weight: 600; }
+.nav-strip a:hover { background: var(--accent); color: #000; text-decoration: none; }
+.nav-strip a.active { background: var(--accent); color: #000; }
+
+header { border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 28px; }
+.kicker { display: inline-block; padding: 4px 10px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(78,161,255,0.12); color: var(--linfo); border: 1px solid rgba(78,161,255,0.3); margin-bottom: 12px; }
+h1 { font-family: 'Bitter', Georgia, serif; font-size: 40px; line-height: 1.1; margin: 0 0 8px; letter-spacing: -0.02em; }
+h1 .accent { color: var(--linfo); }
+h2 { font-family: 'Bitter', Georgia, serif; font-size: 24px; line-height: 1.2; margin: 36px 0 12px; padding-top: 12px; border-top: 1px solid var(--border); letter-spacing: -0.01em; }
+h3 { font-size: 16px; margin: 18px 0 8px; color: var(--linfo); }
+h4 { font-size: 13px; margin: 14px 0 6px; color: var(--text); text-transform: uppercase; letter-spacing: 0.06em; }
+.lede { font-size: 17px; color: #d3d8e0; max-width: 760px; margin: 0 0 12px; }
+p, li { font-size: 14.5px; }
+ul, ol { margin: 8px 0 16px 24px; padding: 0; }
+li { margin: 4px 0; }
+
+.canon { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--linfo); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canon strong { color: var(--linfo); }
+.canongreen { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--green); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.canongreen strong { color: var(--green); }
+.callout { background: var(--panel); border: 1px solid var(--border); border-left: 4px solid var(--blue); padding: 14px 18px; border-radius: 8px; margin: 14px 0; }
+.callout.warn { border-left-color: var(--red); }
+.callout.good { border-left-color: var(--green); }
+.callout strong { color: var(--accent); }
+.callout.warn strong { color: var(--red); }
+.callout.good strong { color: var(--green); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 14px 0; }
+.card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; }
+.card h4 { margin-top: 0; color: var(--linfo); }
+.card p { font-size: 13px; margin: 4px 0; }
+
+table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 13.5px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+th { background: var(--panel-2); color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+tr:last-child td { border-bottom: none; }
+.label { color: var(--muted); font-size: 12px; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--panel-2); padding: 1px 5px; border-radius: 3px; color: var(--gold); }
+.quote { background: var(--panel-2); border-left: 3px solid var(--linfo); padding: 12px 14px; margin: 10px 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--gold); border-radius: 0 4px 4px 0; }
+
+.fakead { background: linear-gradient(135deg, #f4f7fc 0%, #f8fafd 100%); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 14px 0; color: #1a1a1a; font-family: Georgia, serif; }
+.fakead .lbl { display: inline-block; background: rgba(60,60,60,0.7); color: white; padding: 2px 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.fakead .lbl.safe { background: rgba(78,161,255,0.85); }
+.fakead .head { font-size: 20px; font-weight: 900; line-height: 1.15; color: #1a1a1a; margin: 0 0 8px; }
+.fakead .head em { font-style: italic; color: #1d5fa3; }
+.fakead .img { background: #ddd; height: 180px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 11px; margin: 10px 0; border-radius: 4px; }
+.fakead .meta { font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ddd; }
+.fakead blockquote { font-style: italic; font-size: 14px; color: #333; border-left: 3px solid #1d5fa3; padding-left: 12px; margin: 12px 0; }
+.fakead .byline { font-size: 12px; color: #555; font-style: italic; margin: 4px 0; }
+
+.tag { display: inline-block; padding: 2px 8px; border-radius: 99px; font-size: 10px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; background: var(--panel-2); color: var(--muted); }
+.tag.good { background: rgba(6,167,125,0.15); color: var(--green); }
+.tag.warn { background: rgba(192,57,43,0.15); color: var(--red); }
+.tag.gold { background: rgba(255,209,102,0.15); color: var(--gold); }
+.tag.blue { background: rgba(78,161,255,0.15); color: var(--blue); }
+footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+@media (max-width: 720px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="nav-strip">
+    <span class="label">Análise:</span>
+    <a href="../one.html">🎯 One Page</a>
+    <a href="../references_v5/index.html">DR Hub</a>
+    <a href="../intel/spy-2026-08-22/MASTER.md">📡 Spy 22/ago</a>
+    <a href="index.html" class="active">🧠 Análise</a>
+    <a href="adv1-oprah.html">#1</a>
+    <a href="adv2-anti-scam.html">#2</a>
+    <a href="adv6-linfozen-fibrotic.html">#6</a>
+  </div>
+
+  <header>
+    <span class="kicker">Análise criativa · #6 · Linfozen · vertical (lymphatic / menopause)</span>
+    <h1>💧 "Fibrotic Solvent Ritual" <span class="accent">·</span> Technical jargon + menopause belly 55-70+</h1>
+    <p class="lede">Cluster lymphatic drops saturado de wellness genérico. Esse adv6 ocupa o gap: hook <code>"7 lbs that won't come off in your 60s isn't fat — it's stagnant lymph"</code> + nome próprio "Fibrotic Solvent Ritual" pré-qualificam o buyer pelo vocabulário.</p>
+  </header>
+
+  <div class="canon">
+    <strong>Resumo de 1 parágrafo:</strong> o #6 vende pelo mecanismo inverso do #1 Oprah: enquanto o #1 transfere autoridade de Yale/Jastreboff, o #6 transfere <b>linguagem técnica</b> ("fibrotic solvent", "stagnant lymph") como <b>pre-qualifier</b>. Quem não reconhece = ignora. Quem reconhece = já tá vendido. Substitui "cure lipedema" por <b>structure-function</b> ("may help reduce fibrotic tissue") + menopausal belly como contexto situacional. Funciona porque (a) cluster usa genérico, (b) menopause 55-70+ é sub-servido, (c) jargon é pattern interrupt.
+  </div>
+
+  <!-- ===== ESTRUTURA VISUAL ===== -->
+  <h2>1. Estrutura visual (mockup compliance-safe)</h2>
+
+  <div class="fakead">
+    <div class="lbl safe">ADVERTISEMENT</div>
+    <h3 class="head">The 7 lbs That Won't Come Off in Your 60s <em>Isn't Fat — It's Stagnant Lymph</em>. The Fibrotic Solvent Morning Ritual Researchers Are Quietly Studying.</h3>
+    <div class="byline">By Carla Mendes · Certified Lymphatic Therapist · Linfozen Editorial</div>
+    <div class="img">[Foto: mulher 60+, belly area crop, kitchen morning, glass com limão + drops bottle]</div>
+    <p>For years, doctors told women over 60 that the <b>stubborn belly fat</b> after menopause was just "calories in, calories out." Recent research on <b>fibrotic tissue</b> and stagnant lymph says otherwise.</p>
+    <p>I'm a certified lymphatic therapist. The pattern is the same: they eat well, they walk, the scale won't move — because what they're carrying isn't fat. It's <b>stagnant lymph packed into fibrotic tissue</b>.</p>
+    <p>So I made a 7-second video showing the <b>Fibrotic Solvent Morning Ritual</b>: a 3-ingredient drink (cleavers + stillingia + prickly ash) before breakfast, and the gentle fibrotic-tissue support routine that follows.</p>
+    <blockquote>"This isn't a diet. It's not a cleanse. It's a structure-function ritual for women whose lymphatic system needs support after 60." — Carla Mendes, CLT</blockquote>
+    <p style="font-size:13px;color:#666">→ Watch the 7-second morning ritual · No injection · No subscription · FDA disclaimer</p>
+    <div class="meta">📍 Sponsored content · <b style="color:#1d5fa3">Read the full protocol</b> · Linfozen.com · ⚠️ *Not evaluated by FDA</div>
+  </div>
+
+  <h3>Por que essa estrutura funciona (e o cluster genérico não funciona)</h3>
+  <ul>
+    <li><b>Hook com número + tempo + reframe contraintuitivo</b> — "espera, não é gordura?!" + jargon mantém o cérebro preso.</li>
+    <li><b>"Researchers Are Quietly Studying"</b> (não "Doctors Reveal") — refere-se a research em andamento, não deepfake.</li>
+    <li><b>"Carla Mendes, CLT"</b> — credencial real (Certified Lymphatic Therapist), não "Dr.". Trust sem red line.</li>
+    <li><b>Foto mostra belly area, NÃO face inteira</b> — solução brilhante pra compliance + relatability.</li>
+    <li><b>3 ingredientes nomeados (cleavers + stillingia + prickly ash)</b> — specificity = credibility. Real research.</li>
+    <li><b>"Fibrotic Solvent" como nome próprio</b> — inventado, soa técnico. Funciona como "Baking Soda Trick" do #1, sem celebrity.</li>
+    <li><b>"This isn't a diet. It's not a cleanse."</b> — <b>preempt skepticismo</b>. Viewer 60-75+ viu 50 "cleanses" scams.</li>
+    <li><b>CTA "7-second morning ritual"</b> — low-friction + ritual framing (compliance-safe).</li>
+  </ul>
+
+  <!-- ===== COPY BREAKDOWN ===== -->
+  <h2>2. Copy — breakdown estrutural (4 blocos)</h2>
+
+  <h3>Bloco 1 — Set-up (vilão + promessa)</h3>
+  <div class="quote">"For years, doctors told women over 60 that the stubborn belly fat after menopause was just 'calories in, calories out.' Recent research on fibrotic tissue and stagnant lymph says otherwise."</div>
+  <p><b>O que faz:</b> instala <b>vilão duplo</b>: (1) medical establishment que ignora lymphatic, (2) mainstream "calories in/out" que falha. <b>Por que funciona:</b> viewer 55-70+ <b>realmente foi ignorada</b> (NIH só começou a estudar lipedema em 2018). Não é conspiracy — é fato. "Research says otherwise" nomeia uma dor real. <b>Compliance:</b> crítica a framework, não a produto.</p>
+
+  <h3>Bloco 2 — Revelação (nome próprio + sintoma)</h3>
+  <div class="quote">"I made a 7-second video showing the Fibrotic Solvent Morning Ritual: a 3-ingredient drink (cleavers + stillingia + prickly ash) you take before breakfast, and the gentle fibrotic-tissue support routine that follows."</div>
+  <p><b>O que faz:</b> 4 jobs. (1) <b>nome próprio</b> ("Fibrotic Solvent Morning Ritual") = memorável. (2) <b>7-second</b> = low-friction. (3) <b>3 ingredientes</b> = specificity = credibility. (4) <b>contexto situacional</b> ("before breakfast", "gentle support routine") = compliance-safe.</p>
+  <p><b>Por que funciona:</b> "Fibrotic Solvent" soa científico. Viewer pensa "se é research-level, deve ser sério". É <b>jargon como trust signal</b> — não pra ser entendido, pra ser <b>sentido como autoridade</b>.</p>
+
+  <h3>Bloco 3 — Autoridade (credencial + peer)</h3>
+  <div class="quote">"I'm a certified lymphatic therapist. I work with women 55-70+ every day. The pattern is the same: they eat well, they walk, the scale won't move — because what they're carrying isn't fat. It's stagnant lymph packed into fibrotic tissue."</div>
+  <p><b>O que faz:</b> 3 camadas. (1) <b>credencial real</b> (CLT — verificável). (2) <b>peer relatable</b> ("I work with women 55-70+ every day" — Carla é "uma de nós"). (3) <b>story do avatar</b> ("they eat well, they walk, the scale won't move") — viewer pensa "ela tá descrevendo MINHA vida".</p>
+  <p><b>Por que funciona:</b> autoridade no Linfozen é <b>operador-a-operador</b> (terapeuta + paciente), não celebrity. Carla é "real person doing real work" — transfere trust por <b>autenticidade</b>.</p>
+
+  <h3>Bloco 4 — CTA (low-friction + reassurance)</h3>
+  <div class="quote">"Watch the 7-second morning ritual · No injection · No subscription · FDA disclaimer"</div>
+  <p><b>O que faz:</b> 4 elementos. (1) <b>7-second</b> = low-friction. (2) <b>No injection</b> = preempt (GLP-1 cluster saturou). (3) <b>No subscription</b> = reassure. (4) <b>FDA disclaimer</b> = compliance transparente.</p>
+  <p><b>Por que funciona:</b> cada elemento remove uma fricção. 7-sec = "não custa meu tempo". No injection = "não é Ozempic scam". FDA = "essa pessoa é honesta".</p>
+
+  <!-- ===== MECANISMO ===== -->
+  <h2>3. Mecanismo — por que esse ad converte (6 levers)</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <h4>1. Pre-qualification (via jargon)</h4>
+      <p><b>#1:</b> "Yale + Today" filtrava por instituição.</p>
+      <p><b>#6:</b> "Fibrotic Solvent + stagnant lymph + 60s" filtra por <b>vocabulário</b>. Quem não reconhece = ignora. Quem reconhece = já tá 50% vendido.</p>
+    </div>
+    <div class="card">
+      <h4>2. Authority transfer (operador-a-operador)</h4>
+      <p><b>#1:</b> viewer transfere trust de Yale+Jastreboff pro produto.</p>
+      <p><b>#6:</b> viewer transfere trust da <b>Carla CLT</b> (peer profissional). Authority por <b>autenticidade</b>, não instituição.</p>
+    </div>
+    <div class="card">
+      <h4>3. Buried cure conspiracy (research ignored)</h4>
+      <p><b>#1:</b> "Big Pharma esconde, Hollywood mente" (vilão genérico).</p>
+      <p><b>#6:</b> "NIH só começou a estudar lipedema em 2018" (vilão factual). Conspiracy baseado em fato.</p>
+    </div>
+    <div class="card">
+      <h4>4. Low-friction CTA (7-second ritual)</h4>
+      <p><b>#1:</b> 5-min video + "dream body before summer".</p>
+      <p><b>#6:</b> 7-second video + "morning ritual". "Ritual" (vs "trick") é compliance-safe — behavior, não resultado.</p>
+    </div>
+    <div class="card">
+      <h4>5. Aspirational identity (peer-to-peer)</h4>
+      <p><b>#1:</b> "dream body" = aspirational celebrity-level.</p>
+      <p><b>#6:</b> "women 55-70+ every day" = aspirational <b>peer-level</b>. <b>Community aspirational</b>, não celebrity.</p>
+    </div>
+    <div class="card">
+      <h4>6. Specificity = credibility (jargon = real)</h4>
+      <p><b>#1:</b> "24 pounds in 15 days" (número fabricado, red line).</p>
+      <p><b>#6:</b> "7 lbs", "60s", "cleavers + stillingia + prickly ash" (verificáveis).</p>
+    </div>
+  </div>
+
+  <!-- ===== FOTO ANATOMIA ===== -->
+  <h2>4. Foto — anatomia</h2>
+
+  <table>
+    <thead>
+      <tr><th>Elemento</th><th>Descrição</th><th>Por que funciona</th><th>Compliance</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Persona</b></td>
+        <td>Mulher 55-70+, belly area crop, kitchen morning, glass com limão + drops bottle</td>
+        <td>Viewer se vê no sintoma (belly) sem ver face fabricada. Crop no problema = projetar solução em si mesma.</td>
+        <td><span class="tag good">Baixo</span></td>
+      </tr>
+      <tr>
+        <td><b>Enquadramento</b></td>
+        <td>Mid-shot belly pra cima, SIDE angle</td>
+        <td>Side angle mostra perfil sem ser fat-shaming frontal. Crop exclui face = privacy + relatability.</td>
+        <td><span class="tag good">Baixo</span></td>
+      </tr>
+      <tr>
+        <td><b>Iluminação</b></td>
+        <td>Morning natural light, warm tones, soft shadows</td>
+        <td>"Morning ritual" precisa de luz de manhã. Warm = cozy, "começar o dia", não clinical.</td>
+        <td><span class="tag good">Baixo</span></td>
+      </tr>
+      <tr>
+        <td><b>Props</b></td>
+        <td>Glass com limão + drops bottle + 3 ingredientes (cleavers, stillingia, prickly ash)</td>
+        <td>3 ingredientes reforçam specificity = credibility. Glass = "morning ritual". Drops = produto explícito.</td>
+        <td><span class="tag gold">Médio</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== COMPARISON TABLE ===== -->
+  <h2>5. Comparison table — #6 Linfozen vs #1 Oprah</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>#1 Oprah-style (saturado)</th>
+        <th>#6 Linfozen (gap)</th>
+        <th>Winner</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Headline lever</b></td>
+        <td>"Yale Doctor Reveals..." (institucional)</td>
+        <td>"Fibrotic Solvent..." (jargon)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Autoridade</b></td>
+        <td>Oprah + Yale + Jastreboff (deepfake)</td>
+        <td>Carla Mendes CLT (credencial real)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Vilão</b></td>
+        <td>Big Pharma + Hollywood (genérico)</td>
+        <td>NIH research gap (factual)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Avatar</b></td>
+        <td>Mulher 50-65+ (genérico)</td>
+        <td>Mulher 55-70+ menopause (sub-avatar)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Specificity</b></td>
+        <td>"24 pounds in 15 days" (fabricado)</td>
+        <td>"7 lbs", 3 ingredients named (verificável)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Foto</b></td>
+        <td>Mulher 50+ sorrindo (face inteira)</td>
+        <td>Belly area crop (sem face)</td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+      <tr>
+        <td><b>Compliance 2026</b></td>
+        <td><span class="tag warn">ALTO</span></td>
+        <td><span class="tag good">BAIXO</span></td>
+        <td><span class="tag good">#6</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ===== FRAMEWORK REPLICÁVEL ===== -->
+  <h2>6. Framework replicável — extração dos 7 elementos</h2>
+
+  <div class="canongreen">
+    <strong>Princípio unificador do #6:</strong> quando um cluster está saturado de <b>genérico wellness</b>, o caminho compliance-safe é <b>ocupar o oposto do genérico</b> — virar o ângulo técnico/jargon. Linfozen = "fibrotic solvent" do cluster lymphatic. MemoPryl = "heavy metal chelation" do cluster Bill Gates. Cardio Clear = "4-pathway mechanism" do cluster CardioClear7. <b>Jargon é o novo celebrity</b>: pré-qualifica buyer educado, filtra ignorantes, soa "real research" sem fabricar.
+  </div>
+
+  <!-- ===== BRIEF DE PRODUÇÃO ===== -->
+  <h2>7. Brief de produção (Linfozen adv6 "Fibrotic Solvent")</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>📋 Formato</h4>
+      <p><b>UGC talking-head 60-90s</b> (iPhone, kitchen morning, natural light). Carla (CLT) falando direto pra câmera. Belly area crop no início + glass com água com limão + drops bottle.</p>
+    </div>
+    <div class="card">
+      <h4>👩 Quem aparece</h4>
+      <p><b>Carla Mendes, CLT</b> (55+, authentic, sem produção over). Eye contact direto, sorriso leve, kitchen background. Crop estratégico pra mostrar belly sem expor face.</p>
+    </div>
+    <div class="card">
+      <h4>🎬 Hook (verbatim EN, 0-3s)</h4>
+      <p><b>"The 7 lbs that won't come off in your 60s isn't fat — it's stagnant lymph."</b> Overlay: "Fibrotic Solvent Morning Ritual" + bottle visual.</p>
+    </div>
+    <div class="card">
+      <h4>📖 Body (3-60s)</h4>
+      <p>(3-15s) Doctors told you it's calories. (15-30s) Research on fibrotic tissue + stagnant lymph. (30-50s) 3-ingredient ritual: cleavers + stillingia + prickly ash. (50-60s) "I'm not a doctor, I'm a therapist."</p>
+    </div>
+    <div class="card">
+      <h4>🎯 CTA (60-90s)</h4>
+      <p><b>"Watch the 7-second morning ritual · No injection · No subscription · FDA disclaimer"</b> (low-friction + reassurance + compliance).</p>
+    </div>
+    <div class="card">
+      <h4>⚖️ Compliance checklist</h4>
+      <p>❌ Não "cures lipedema". ❌ Não "lose 7 lbs in X days". ❌ Não "doctor" se for CLT. ✅ "May help reduce fibrotic tissue" (structure-function). ✅ FDA disclaimer.</p>
+    </div>
+  </div>
+
+  <div class="canon">
+    <strong>Por que essa decisão importa:</strong> cluster lymphatic drops tem 50+ ads ativos (Lymphoria, Nuflos, EleVen Flow, LymphMD, Lymph Savior). TODOS usam wellness genérico. <b>Nenhum usa technical jargon como lever principal</b>, e <b>nenhum ataca o sub-avatar menopause 55-70+</b>. Linfozen pode ser o primeiro "fibrotic solvent" + menopause-specific do cluster.
+  </div>
+
+  <footer>
+    <span>🧠 Análise #6 · Linfozen "Fibrotic Solvent Ritual" · 2026-08-23</span>
+    <span>
+      <a href="adv1-oprah.html">← #1 Oprah</a> ·
+      <a href="adv2-anti-scam.html">#2 Anti-scam</a> ·
+      <a href="index.html">🧠 Hub</a> ·
+      <a href="adv7-slimsoda-maria47.html">#7 SlimSoda Maria 47 →</a>
+    </span>
+  </footer>
+
+</div>
+</body>
+</html>
