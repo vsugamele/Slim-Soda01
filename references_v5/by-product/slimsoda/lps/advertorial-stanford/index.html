@@ -82,6 +82,34 @@
   .faq-block summary::after { content: "+"; position: absolute; right: 0; top: 0; font-size: 24px; color: #F5841F; font-weight: 400; line-height: 1.2; }
   .faq-block details[open] summary::after { content: "−"; }
   .faq-block details p { margin: 14px 0 0; font-size: 15.5px; line-height: 1.65; color: #444; }
+  .day-timeline { margin: 36px 0; padding: 0; }
+  .day-timeline h2 { margin-top: 0; }
+  .day-timeline .timeline-track { position: relative; padding: 20px 0 0 24px; border-left: 3px solid #F5841F; margin: 24px 0 24px 16px; }
+  .day-timeline .timeline-day { position: relative; margin-bottom: 22px; padding-left: 24px; }
+  .day-timeline .timeline-day::before { content: ""; position: absolute; left: -33px; top: 6px; width: 16px; height: 16px; background: #F5841F; border-radius: 50%; border: 3px solid #fdfdfb; }
+  .day-timeline .timeline-day h4 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; color: #F5841F; margin: 0 0 4px; font-weight: 800; }
+  .day-timeline .timeline-day p { margin: 0; font-size: 15.5px; line-height: 1.55; color: #333; font-style: italic; }
+  .money-saved { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); color: #fff; border-radius: 8px; padding: 28px 26px; margin: 28px 0; }
+  .money-saved h3 { color: #F5841F; margin: 0 0 16px; font-size: 20px; text-align: center; }
+  .money-saved .ms-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 15px; }
+  .money-saved .ms-row:last-of-type { border-bottom: none; }
+  .money-saved .ms-row.ms-our { background: rgba(245,132,31,0.18); margin: 8px -26px -28px; padding: 16px 26px; border-radius: 0 0 8px 8px; border-top: 2px solid #F5841F; border-bottom: none; }
+  .money-saved .ms-amt { font-family: 'Playfair Display', Georgia, serif; font-size: 20px; font-weight: 800; }
+  .money-saved .ms-row.ms-our .ms-amt { color: #F5841F; font-size: 26px; }
+  .money-saved .ms-save { display: block; text-align: center; margin-top: 14px; font-family: Arial, sans-serif; font-size: 13px; color: #F5841F; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .why-us-table { margin: 28px 0; }
+  .why-us-table h2 { margin-top: 0; }
+  .why-us-table table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 16px; }
+  .why-us-table th { background: #1a1a1a; color: #fff; padding: 12px 10px; text-align: left; font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .why-us-table th:first-child { background: #F5841F; color: #1a1a1a; }
+  .why-us-table td { padding: 12px 10px; border-bottom: 1px solid #e8e0d0; vertical-align: top; }
+  .why-us-table td:first-child { font-weight: 700; color: #1a1a1a; }
+  .why-us-table tr.our-row td { background: rgba(245,132,31,0.06); }
+  .why-us-table tr.our-row td:first-child { color: #F5841F; }
+  .comment-avatar { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; color: #fff; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: -0.02em; flex-shrink: 0; }
+  .comment-with-avatar { display: flex; gap: 14px; align-items: flex-start; }
+  .comment-with-avatar .comment-body { flex: 1; min-width: 0; }
+  .reply .comment-avatar { width: 36px; height: 36px; font-size: 13px; }
   .comment { background: #fafafa; border: 1px solid #eee; padding: 16px 20px; margin: 16px 0; border-radius: 4px; font-size: 15px; line-height: 1.6; }
   .comment .meta { font-family: Arial, sans-serif; font-size: 11px; color: #888; margin-top: 8px; display: block; }
   .comment .author { font-weight: 700; color: #1a1a1a; }
@@ -257,6 +285,44 @@
 
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
+  <div class="day-timeline">
+    <h2>What 90 days on SlimSoda actually looks like</h2>
+    <p>Most women over 60 who try the Stanford recipe report a similar journey. Here's what it looks like, day by day, based on the trial data (paraphrased) and the 1,847 comments we've received.</p>
+
+    <div class="timeline-track">
+      <div class="timeline-day">
+        <h4>Day 1</h4>
+        <p>"I started. One scoop. One glass of water. Empty stomach. Tastes like baking soda. I set my expectations low."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 4</h4>
+        <p>"I noticed the food noise was... quieter. Not gone. Quieter. Like someone turned the volume from 8 to 3."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 7</h4>
+        <p>"I weighed myself. 3 pounds down. My husband said I looked 'less puffy.' I told him it was probably water."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 14</h4>
+        <p>"11 pounds. The food noise is almost gone. I didn't even finish the cookies my neighbor brought over. That has never happened."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 30</h4>
+        <p>"17 pounds. My jeans button. I haven't worn these in 2 years. My daughter asked what I was doing differently. I sent her the Stanford paper."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 60</h4>
+        <p>"23 pounds. My husband said 'you're glowing.' My doctor said 'whatever you're doing, keep doing it.' My labs came back better than they have in 5 years."</p>
+      </div>
+      <div class="timeline-day">
+        <h4>Day 90</h4>
+        <p>"29 pounds. I was in the photo with my grandkids at Thanksgiving. I didn't hide. I didn't crop. I didn't ask anyone to retake it. <b>This is the day I got my life back.</b>"</p>
+      </div>
+    </div>
+  </div>
+
+  <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
+
   <h2>"The diet industry never patented it."</h2>
 
   <p>Here's the part of the Stanford paper that made the rounds on Twitter, then on Facebook, then on every health newsletter from Boston to Boca:</p>
@@ -274,6 +340,45 @@
 
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
+  <div class="money-saved">
+    <h3>💸 The Real Cost of "Cheap" Solutions</h3>
+    <div class="ms-row">
+      <span>GLP-1 injections (Ozempic, Mounjaro, Wegovy)</span>
+      <span class="ms-amt">$1,000/mo</span>
+    </div>
+    <div class="ms-row" style="padding-left: 16px; color: #999; font-size: 13px;">
+      <span>= $12,000/year, FOREVER (and the weight comes back when you stop)</span>
+      <span></span>
+    </div>
+    <div class="ms-row">
+      <span>The celebrity capsule (watered-down version of someone else's recipe)</span>
+      <span class="ms-amt">$100/2 bot</span>
+    </div>
+    <div class="ms-row" style="padding-left: 16px; color: #999; font-size: 13px;">
+      <span>= $600/year (and you're funding their $1B marketing budget)</span>
+      <span></span>
+    </div>
+    <div class="ms-row">
+      <span>Shakes, programs, gummies, gadgets (you've tried)</span>
+      <span class="ms-amt">~$3,000/yr</span>
+    </div>
+    <div class="ms-row" style="padding-left: 16px; color: #999; font-size: 13px;">
+      <span>= $3,000/year (and you have nothing to show for it)</span>
+      <span></span>
+    </div>
+    <div class="ms-row ms-our">
+      <span>🥤 <b>SlimSoda · 2 tubs · 90 days</b></span>
+      <span class="ms-amt">$29.99</span>
+    </div>
+    <div class="ms-row" style="padding-left: 16px; color: #F5841F; font-size: 13px; background: rgba(245,132,31,0.06);">
+      <span>= $89.97/year (and 90-day empty-tub promise)</span>
+      <span></span>
+    </div>
+    <span class="ms-save">⚡ You save $11,310/year vs injections · $510/year vs celebrity capsule</span>
+  </div>
+
+  <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
+
   <h2>The celebrity capsule is $100. The injections are $1,000 a month. <em>Today, you get two tubs of SlimSoda for $29.99.</em></h2>
 
   <p>Let's talk about what this should cost.</p>
@@ -287,6 +392,62 @@
   <p><strong>SlimSoda was going to be $59.99 for a single tub.</strong> That was the plan. That's the real price. The Stanford paper came out, and the formulators who had been quietly working on this recipe for 2 years made a decision: <b>launch it at $29.99 with a 2nd tub free. Let the paper do the marketing.</b></p>
 
   <p>When you order one tub today, you get a second tub, free. Two months. <b>For less than the celebrity capsule charges for a single bottle of a watered-down version.</b></p>
+
+  <div class="why-us-table">
+    <h2>Why SlimSoda vs. the alternatives</h2>
+    <p>A side-by-side look. The recipe Stanford described — in your hands, in your kitchen, in your morning.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>SlimSoda</th>
+          <th>Celebrity Capsule</th>
+          <th>GLP-1 Injections</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="our-row">
+          <td><b>3 named ingredients</b> (baking soda, ginger, berberine) — in that order</td>
+          <td>1-2 ingredients (often proprietary blend, dose hidden)</td>
+          <td>1 synthetic molecule (semaglutide / tirzepatide)</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>$29.99 for 2 tubs</b> (60-day supply)</td>
+          <td>$100 for 2 bottles (60-day supply)</td>
+          <td>$1,000/month, forever</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>No prescription</b> · Buy online, ships to door</td>
+          <td>No prescription · Buy online</td>
+          <td>Doctor visit, prescription, pharmacy, weekly self-injection</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>No needle · No injection</b></td>
+          <td>No needle</td>
+          <td>Weekly self-injection · nausea common</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>No subscription</b> · buy once, ship once</td>
+          <td>Often auto-ship / hidden subscription</td>
+          <td>Recurring prescription refills</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>Backed by Stanford 2024 paper</b> (paraphrased)</td>
+          <td>Backed by celebrity endorsement (often deepfake)</td>
+          <td>Backed by clinical trials (real, but for a different mechanism)</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>90-day empty-tub promise</b> · refund every penny if it doesn't work</td>
+          <td>30-60 day MBG (often with restocking fee)</td>
+          <td>No MBG (insurance-dependent)</td>
+        </tr>
+        <tr class="our-row">
+          <td><b>Same recipe the paper described</b> · Stanford paraphrased</td>
+          <td>Diluted version of someone else's recipe</td>
+          <td>Pharmaceutical drug (different mechanism: GLP-1, not alkalinity)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="price-reveal">
     <span class="kicker">● Stanford 2024 Launch Offer · Limited Production Run</span>
@@ -576,8 +737,27 @@
 <script>
 (function(){
   var shown=false;
-  function c(){if(shown)return;var e=document.querySelector('.price-reveal');if(!e)return;if(e.getBoundingClientRect().top<window.innerHeight){document.getElementById('stickyCta').style.display='block';shown=true;window.removeEventListener('scroll',c)}}
+  function c(){if(shown)return;if(window.scrollY>600){document.getElementById('stickyCta').style.display='block';shown=true;window.removeEventListener('scroll',c)}}
   window.addEventListener('scroll',c);c();
+})();
+(function(){
+  var colors=['#F5841F','#06A77D','#4ea1ff','#B197FC','#c0392b','#E09A22','#479C1A','#9b59b6'];
+  document.querySelectorAll('.comment').forEach(function(c){
+    var a=c.querySelector('.author');
+    if(!a||c.querySelector('.comment-avatar'))return;
+    var name=a.textContent.split(',')[0].replace(/^Dr\.?\s*/,'').trim();
+    var parts=name.split(/\s+/);
+    var ini=parts.length>1?(parts[0][0]+parts[parts.length-1][0]):parts[0].slice(0,2);
+    ini=ini.toUpperCase();
+    var h=0;for(var i=0;i<name.length;i++){h=(h*31+name.charCodeAt(i))%1000}
+    var color=colors[h%colors.length];
+    var av=document.createElement('div');
+    av.className='comment-avatar';
+    av.textContent=ini;
+    av.style.background=color;
+    c.classList.add('comment-with-avatar');
+    c.insertBefore(av,c.firstChild);
+  });
 })();
 </script>
 
