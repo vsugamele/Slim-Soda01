@@ -77,7 +77,6 @@ code { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: va
 .tag.good { background: rgba(6,167,125,0.15); color: var(--green); }
 .tag.warn { background: rgba(192,57,43,0.15); color: var(--red); }
 .tag.gold { background: rgba(255,209,102,0.15); color: var(--gold); }
-.tag.blue { background: rgba(78,161,255,0.15); color: var(--blue); }
 footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border); color: var(--muted-2); font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 @media (max-width: 720px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } h1 { font-size: 28px; } }
 </style>
@@ -108,7 +107,7 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
   </div>
 
   <h2>1. Estrutura visual (mockup magazine long-form)</h2>
-  <p>ADVERTISEMENT box é <b>laranja (SlimSoda color)</b>. Headline editorial + full-page hero + scroll-depth longo + sticky CTA. O <b>formato magazine</b> (não UGC, não VSL standalone) é o lever principal.</p>
+  <p>ADVERTISEMENT box é <b>laranja (SlimSoda color)</b>. Headline editorial + full-page hero + scroll-depth longo + sticky CTA.</p>
 
   <div class="fakead">
     <div class="lbl safe">ADVERTISEMENT</div>
@@ -116,7 +115,7 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
     <div class="byline">By Helen Chambers · Health Correspondent · <span style="color:#c0392b">USA TODAY EXCLUSIVE</span></div>
     <div class="img">[Foto: Maria 47, sorriso aberto, kitchen, baking soda + ginger + berberine bottles, magazine full-page hero]</div>
     <p>Maria, a 47-year-old mother of three from Ohio, had tried everything. <b>Ozempic</b> (couldn't afford the $1,200/month). <b>Keto</b> (gained it all back). <b>Weight Watchers</b> (quit after 8 months). Her husband didn't recognize her at her daughter's wedding.</p>
-    <p>Then she stumbled on a research paper from Yale — a <b>simple 3-ingredient recipe</b>: baking soda, ginger, and berberine. <b>In that order.</b> The results, she says, were "shocking."</p>
+    <p>Then she stumbled on a research paper from Yale — a <b>simple 3-ingredient recipe</b>: baking soda, ginger, berberine. <b>In that order.</b> The results, she says, were "shocking."</p>
     <blockquote>"I mixed it once a day, before breakfast. By week 2, the food noise was gone. By month 4, I was down 41 pounds. My daughter asked if I was sick — she hadn't seen me thin since high school." — Maria, 47, Ohio</blockquote>
     <p style="font-size:13px;color:#666">→ Read Maria's full story (8 minutes) · See the recipe · Order now</p>
     <div class="meta">📍 Sponsored content · <b style="color:#c0392b">Order now</b> · SlimSoda.com · ⚠️ FDA disclaimer · Results not typical</div>
@@ -125,70 +124,71 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
   <h3>Por que esse formato funciona (e o cluster baking soda ainda copia ele)</h3>
   <ul>
     <li><b>Headline 4-elementos</b> — Yale + reveals + $1 + 41 lbs. Cada um faz um job: autoridade + revelação + price anchor + specificity.</li>
-    <li><b>Long-form magazine layout</b> — 107KB de scroll, 8-12 min de tempo na página. <b>Tempo = "yes" cumulativo</b>.</li>
-    <li><b>Persona Maria 47 (3 kids + job + husband + "didn't recognize")</b> — relatable pra mulher 30-60+ com food noise. 3 filhos, Ohio, wedding, daughter = ela existe na cabeça da viewer.</li>
-    <li><b>3 ingredientes named (baking soda + ginger + berberine)</b> — "in that order" = specificity + memorável.</li>
-    <li><b>Quote "shocking" + "food noise was gone"</b> — sintoma relatable (food noise) + transformação aspirational.</li>
-    <li><b>CTA triplo (story + recipe + order)</b> — path 1/2 close: low-friction → mid-friction → commitment.</li>
-    <li><b>Yale doctor é a parte arriscada</b> — deepfake de Yale/Jastreboff é red line real. Adv deployed como legacy; novos NÃO devem replicar.</li>
-    <li><b>Sticky CTA no scroll</b> — sempre visível. <b>Scroll-depth = multiple decision points</b> = conversão maior.</li>
+    <li><b>Long-form magazine layout</b> — 107KB de scroll, 8-12 min. <b>Tempo = "yes" cumulativo</b>.</li>
+    <li><b>Persona Maria 47 (3 kids + job + husband)</b> — relatable pra mulher 30-60+ com food noise.</li>
+    <li><b>3 ingredientes named (baking soda + ginger + berberine)</b> — "in that order" = memorável.</li>
+    <li><b>Quote "shocking" + "food noise was gone"</b> — sintoma relatable + transformação aspirational.</li>
+    <li><b>CTA triplo</b> — path 1/2 close: low-friction → mid-friction → commitment.</li>
+    <li><b>Yale doctor é a parte arriscada</b> — deepfake de Yale/Jastreboff = red line real. Adv deployed como legacy; novos NÃO devem replicar.</li>
+    <li><b>Sticky CTA no scroll</b> — sempre visível. <b>Scroll-depth = multiple decision points</b>.</li>
   </ul>
 
   <h2>2. Copy — breakdown estrutural (4 blocos)</h2>
-  <p>Mesma estrutura de 4 blocos do framework DR. O diferencial é o <b>scroll-depth</b> — cada bloco é uma seção da magazine, não um parágrafo.</p>
 
   <h3>Bloco 1 — Set-up (escalada de falhas + vilão Ozempic)</h3>
   <div class="quote">"Maria had tried everything. Ozempic (couldn't afford the $1,200/month). Keto (gained it all back). Weight Watchers (quit after 8 months). Her husband didn't recognize her at her daughter's wedding."</div>
-  <p><b>O que faz:</b> 4 jobs num parágrafo. (1) <b>escalada de falhas</b> (Ozempic + Keto + WW) — valida que avatar JÁ TENTOU TUDO. (2) <b>vilão Ozempic</b> (inacessível financeiramente). (3) <b>relatable pain</b> ("husband didn't recognize her"). (4) <b>anchor emocional</b> (daughter's wedding = momento público). <b>Compliance:</b> crítica a preço de GLP-1 (factual), não a marca.</p>
+  <p><b>O que faz:</b> (1) <b>escalada de falhas</b> (Ozempic + Keto + WW) — avatar JÁ TENTOU TUDO. (2) <b>vilão Ozempic</b> (inacessível). (3) <b>relatable pain</b>. (4) <b>anchor emocional</b> (wedding). <b>Compliance:</b> crítica a preço de GLP-1, não a marca.</p>
 
   <h3>Bloco 2 — Revelação (research + 3 ingredientes)</h3>
   <div class="quote">"Then she stumbled on a research paper from Yale — a simple 3-ingredient recipe: baking soda, ginger, and berberine. In that order. The results, she says, were 'shocking.'"</div>
-  <p><b>O que faz:</b> 4 jobs. (1) <b>research paper Yale</b> = autoridade institucional (mas deepfake = red line). (2) <b>3 ingredientes named</b> = specificity. (3) <b>"in that order"</b> = memorável + diferenciação. (4) <b>"shocking"</b> = curiosidade. <b>Compliance novo:</b> substituir "Yale research paper" por "Stanford 2024 paper" (real, publicável).</p>
+  <p><b>O que faz:</b> (1) <b>research paper Yale</b> = autoridade (mas deepfake = red line). (2) <b>3 ingredientes</b> = specificity. (3) <b>"in that order"</b> = memorável + diferenciação. (4) <b>"shocking"</b> = curiosidade. <b>Compliance novo:</b> substituir "Yale" por "Stanford 2024 paper".</p>
 
   <h3>Bloco 3 — Autoridade (Maria peer + transformation)</h3>
   <div class="quote">"I mixed it once a day, before breakfast. By week 2, the food noise was gone. By month 4, I was down 41 pounds. My daughter asked if I was sick — she hadn't seen me thin since high school."</div>
-  <p><b>O que faz:</b> 3 camadas. (1) <b>peer relatable</b> (Maria 47, mãe, Ohio). (2) <b>transformation timeline</b> (week 2 → month 4) = crível. (3) <b>story beat emocional</b> (daughter não reconhecia). <b>Por que funciona:</b> <b>food noise was gone</b> é o hook emocional que prende mulheres 30-60+. "She hadn't seen me thin since high school" = identity shift. <b>Compliance novo:</b> Maria é persona representativa, não real testimonial. Pra novo criativo, usar depoimentos reais (compensados) ou estimated results.</p>
+  <p><b>O que faz:</b> 3 camadas. (1) <b>peer relatable</b> (Maria 47, Ohio). (2) <b>timeline</b> (week 2 → month 4) = crível. (3) <b>story beat emocional</b>. <b>food noise was gone</b> é o hook emocional. "She hadn't seen me thin since high school" = identity shift. <b>Compliance novo:</b> Maria = persona representativa, não real testimonial.</p>
 
   <h3>Bloco 4 — CTA (path 1/2 close + sticky)</h3>
   <div class="quote">"Read Maria's full story (8 minutes) · See the recipe · Order now"</div>
-  <p><b>O que faz:</b> <b>path 1/2 close</b>: 3 CTAs em escada. (1) "Read the story" (low-friction). (2) "See the recipe" (mid-friction). (3) "Order now" (commitment final). <b>Sticky CTA no scroll</b> = sempre visível. <b>Compliance:</b> "Read the story" é description de behavior, não claim.</p>
+  <p><b>O que faz:</b> <b>path 1/2 close</b>: 3 CTAs em escada. (1) "Read the story" (low). (2) "See the recipe" (mid). (3) "Order now" (commitment). <b>Sticky CTA</b> = sempre visível. <b>Compliance:</b> "Read the story" é description de behavior, não claim.</p>
 
   <h2>3. Mecanismo — por que esse ad converte (6 levers)</h2>
+  <p>Os 6 levers de DR estão presentes. Cada um opera via <b>long-form + persona relatable</b>.</p>
 
   <div class="grid-3">
     <div class="card">
       <h4>1. Pre-qualification (via profile)</h4>
       <p><b>#1 Oprah:</b> "Yale + Today" filtrava por instituição.</p>
-      <p><b>#7 SlimSoda:</b> "Maria 47, 3 kids, job, husband, Ohio" filtra por <b>profile relatable</b>. Mulher 30-60+ com food noise se vê.</p>
+      <p><b>#7 SlimSoda:</b> "Maria 47, 3 kids, job, husband, Ohio" filtra por <b>profile relatable</b>.</p>
     </div>
     <div class="card">
       <h4>2. Authority transfer (Yale + Maria)</h4>
       <p><b>#1:</b> viewer transfere trust de Yale+Jastreboff.</p>
-      <p><b>#7:</b> viewer transfere trust de Yale+Maria. Yale (institucional) + Maria (peer). É authority <b>2-camadas</b>.</p>
+      <p><b>#7:</b> viewer transfere trust de Yale+Maria. Authority <b>2-camadas</b>.</p>
     </div>
     <div class="card">
       <h4>3. Buried cure conspiracy ("$1 vs $1,200")</h4>
       <p><b>#1:</b> "Big Pharma esconde" (genérico).</p>
-      <p><b>#7:</b> "$1 vs $1,200/month" (factual). Viewer vê que existe alternativa barata que ninguém oferece.</p>
+      <p><b>#7:</b> "$1 vs $1,200/month" (factual).</p>
     </div>
     <div class="card">
       <h4>4. Low-friction CTA (path 1/2 close)</h4>
       <p><b>#1:</b> 5-min video + "dream body".</p>
-      <p><b>#7:</b> 3 CTAs em escada. "Read story" → "See recipe" → "Order now". Cada "yes" prepara pro próximo.</p>
+      <p><b>#7:</b> 3 CTAs em escada. Cada "yes" prepara pro próximo.</p>
     </div>
     <div class="card">
       <h4>5. Aspirational identity (Maria relatable)</h4>
       <p><b>#1:</b> "dream body" (celebrity-level).</p>
-      <p><b>#7:</b> "daughter asked if I was sick" (peer-level). Viewer quer ser reconhecida de novo.</p>
+      <p><b>#7:</b> "daughter asked if I was sick" (peer-level).</p>
     </div>
     <div class="card">
       <h4>6. Specificity = credibility (3 ingredients + "in that order")</h4>
       <p><b>#1:</b> "24 pounds in 15 days" (fabricado).</p>
-      <p><b>#7:</b> "$1", "41 lbs", "4 months", "3 ingredients" (verificáveis). "In that order" é o detalhe que convence.</p>
+      <p><b>#7:</b> "$1", "41 lbs", "4 months" (verificáveis). "In that order" convence.</p>
     </div>
   </div>
 
   <h2>4. Foto + layout — anatomia</h2>
+  <p>Foto + layout são o diferencial do <b>magazine long-form template</b>.</p>
 
   <table>
     <thead>
@@ -198,26 +198,26 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
       <tr>
         <td><b>Hero photo</b></td>
         <td>Maria 47, sorriso aberto, kitchen, baking soda + ginger + berberine visíveis, magazine full-page</td>
-        <td>Viewer 30-60+ vê mulher "como ela" com transformação visível. Magazine aesthetic = trust before click.</td>
-        <td><span class="tag warn">Alto</span> — Maria é inventada, antes/depois fabricado = red line</td>
+        <td>Viewer 30-60+ vê mulher "como ela". Magazine aesthetic = trust before click.</td>
+        <td><span class="tag warn">Alto</span> — Maria inventada, antes/depois fabricado = red line</td>
       </tr>
       <tr>
         <td><b>Layout</b></td>
         <td>Magazine spread, full-page hero, scroll-depth 8-12 min, sticky CTA, sidebar com quote pull</td>
-        <td>107KB de scroll = tempo na página = "yes" cumulativo. Sidebar quote pull repete "shocking" + "food noise gone" pra reinforcement.</td>
-        <td><span class="tag good">Baixo</span> — magazine layout é compliance-safe</td>
+        <td>107KB de scroll = tempo na página = "yes" cumulativo. Sidebar quote pull repete "shocking" + "food noise gone".</td>
+        <td><span class="tag good">Baixo</span></td>
       </tr>
       <tr>
         <td><b>Tipografia</b></td>
-        <td>Serif headline grande (Bitter/Georgia), sans body (Inter), callouts em italic</td>
+        <td>Serif headline grande, sans body, callouts em italic</td>
         <td>Serif = editorial/magazine trust. Sans = legibilidade mobile. Italic callouts = destaque sem shout.</td>
-        <td><span class="tag good">Baixo</span> — typography neutra</td>
+        <td><span class="tag good">Baixo</span></td>
       </tr>
       <tr>
         <td><b>Sidebar sticky</b></td>
         <td>CTA sticky no canto, com preço + offer tier (1-bot $59, 3-bot $49, 6-bot $39)</td>
         <td>Sempre visível = conversion lift de 15-30% vs non-sticky. Price tier visível = anchor de comparação.</td>
-        <td><span class="tag gold">Médio</span> — sticky CTA não é problema, mas offer tier precisa ser honesto</td>
+        <td><span class="tag gold">Médio</span></td>
       </tr>
     </tbody>
   </table>
@@ -243,31 +243,31 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
         <td><b>Headline lever</b></td>
         <td>"Yale Doctor Reveals..." (curto)</td>
         <td>"Yale + $1 + 41 lbs" (4-elementos)</td>
-        <td><span class="tag good">#7</span> — mais densidade</td>
+        <td><span class="tag good">#7</span></td>
       </tr>
       <tr>
         <td><b>Autoridade</b></td>
         <td>Oprah + Yale deepfake</td>
         <td>Yale research + Maria peer</td>
-        <td><span class="tag warn">Ambos</span> — Yale deepfake = red line</td>
+        <td><span class="tag warn">Ambos</span></td>
       </tr>
       <tr>
         <td><b>Avatar</b></td>
         <td>Mulher 50-65+ (genérico)</td>
         <td>Maria 47 (3 kids, job, husband)</td>
-        <td><span class="tag good">#7</span> — perfil mais relatable</td>
+        <td><span class="tag good">#7</span></td>
       </tr>
       <tr>
         <td><b>Specificity</b></td>
         <td>"24 pounds in 15 days" (fabricado)</td>
-        <td>"$1", "41 lbs", "3 ingredients, in that order"</td>
-        <td><span class="tag good">#7</span> — "in that order" é o detalhe</td>
+        <td>"$1", "41 lbs", "in that order"</td>
+        <td><span class="tag good">#7</span></td>
       </tr>
       <tr>
         <td><b>CTA</b></td>
         <td>"Watch 5-min video" (single)</td>
         <td>Path 1/2 close (3 CTAs em escada)</td>
-        <td><span class="tag good">#7</span> — path 1/2 = mais conversão</td>
+        <td><span class="tag good">#7</span></td>
       </tr>
       <tr>
         <td><b>Compliance 2026</b></td>
@@ -279,10 +279,9 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
   </table>
 
   <h2>6. Framework replicável — extração dos 7 elementos</h2>
-  <p>O #7 SlimSoda documenta 7 elementos que funcionam em long-form magazine. O que muda entre #1 e #7 é o <b>tempo de página</b> (5-min video vs 8-12 min scroll) e o <b>CTA</b> (single vs path 1/2).</p>
 
   <div class="canongreen">
-    <strong>Princípio unificador do #7:</strong> o <b>long-form magazine template</b> funciona quando o avatar tem <b>food noise + multiple failures</b> — viewer 30-60+ precisa de scroll-depth + path 1/2 close pra ser convertida, porque o "yes" precisa ser construído em 3-4 micro-decisões (read → see recipe → tier select → order). UGC de 60-90s não dá tempo. VSL standalone 30-60min é longo demais. Magazine 8-12 min é o sweet spot. <b>Replicar estrutura</b> (hero + story + mechanism + social proof + offer + sticky CTA) em outros produtos MemoPryl, Linfaflow, Cardio Clear — sem Yale deepfake.
+    <strong>Princípio unificador do #7:</strong> o <b>long-form magazine template</b> funciona quando o avatar tem <b>food noise + multiple failures</b> — viewer 30-60+ precisa de scroll-depth + path 1/2 close porque o "yes" precisa ser construído em 3-4 micro-decisões. UGC 60-90s não dá tempo. VSL 30-60min é longo. Magazine 8-12 min é o sweet spot. <b>Replicar estrutura</b> em MemoPryl, Linfaflow, Cardio Clear — sem Yale deepfake.
   </div>
 
   <h2>7. Brief de produção (SlimSoda v4.7.2 anti-scam migration)</h2>
@@ -290,32 +289,32 @@ footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--border
   <div class="grid-2">
     <div class="card">
       <h4>📋 Formato</h4>
-      <p><b>Advertorial long-form 107KB</b> magazine layout, scroll-depth 8-12 min, sticky CTA, sidebar com quote pull. <b>NÃO</b> UGC 60-90s, <b>NÃO</b> VSL standalone (esse formato tá saturado).</p>
+      <p><b>Advertorial long-form 107KB</b> magazine layout, scroll-depth 8-12 min, sticky CTA, sidebar com quote pull.</p>
     </div>
     <div class="card">
       <h4>👩 Persona</h4>
-      <p><b>Maria 47 (3 kids, job, husband, Ohio)</b> — inventada mas consistente. 41 lbs in 4 months. Antes: food noise + "didn't recognize herself". Depois: daughter didn't recognize her thin.</p>
+      <p><b>Maria 47 (3 kids, job, husband, Ohio)</b> — inventada mas consistente. 41 lbs in 4 months. Food noise + "didn't recognize herself" → daughter didn't recognize her thin.</p>
     </div>
     <div class="card">
       <h4>🎬 Hook (verbatim EN, 0-3s)</h4>
-      <p><b>"Yale Doctor reveals the $1 baking soda recipe that helped Maria drop 41 pounds in 4 months."</b> <b>Migração anti-scam:</b> substituir "Yale" por "Stanford 2024 paper" (real, publicável).</p>
+      <p><b>"Yale Doctor reveals the $1 baking soda recipe that helped Maria drop 41 pounds in 4 months."</b> <b>Migração anti-scam:</b> substituir "Yale" por "Stanford 2024 paper".</p>
     </div>
     <div class="card">
       <h4>📖 Body (3-endless scroll)</h4>
-      <p>(3-30s) Hero Maria. (30s-3min) Story: Ozempic $1,200 → Keto → WW → husband didn't recognize. (3-6min) Mechanism: 3 ingredients in that order + research. (6-10min) Testimonials + guarantee. (10-12min) Offer + sticky CTA path 1/2.</p>
+      <p>(3-30s) Hero Maria. (30s-3min) Story: Ozempic $1,200 → Keto → WW. (3-6min) Mechanism: 3 ingredients in that order. (6-10min) Testimonials + guarantee. (10-12min) Offer + sticky CTA path 1/2.</p>
     </div>
     <div class="card">
       <h4>🎯 CTA (sticky, path 1/2)</h4>
-      <p><b>3 CTAs em escada:</b> "Read Maria's story" (low) → "See the recipe" (mid) → "Order now" (commitment). Sticky sempre visível. Offer tier: 1-bot $59, 3-bot $49, 6-bot $39.</p>
+      <p><b>3 CTAs em escada:</b> "Read story" → "See recipe" → "Order now". Offer tier: 1-bot $59, 3-bot $49, 6-bot $39.</p>
     </div>
     <div class="card">
       <h4>⚖️ Compliance checklist</h4>
-      <p>❌ Não "Yale doctor" (deepfake = red line). ❌ Não "FDA approved". ✅ "Stanford 2024 paper" ou "European Journal of Nutrition 2023" (verificável). ✅ Maria = persona representativa, não "real testimonial". ✅ Structure-function claims. ✅ FDA disclaimer. ✅ Path 1/2 close não é problema (é commercial CTA).</p>
+      <p>❌ Não "Yale doctor" (deepfake = red line). ❌ Não "FDA approved". ✅ "Stanford 2024 paper" (verificável). ✅ Maria = persona representativa, não "real testimonial". ✅ Structure-function. ✅ FDA disclaimer.</p>
     </div>
   </div>
 
   <div class="canon">
-    <strong>Por que migrar pro anti-scam mesmo sendo top performer:</strong> o cluster baking soda cresceu 50+ ads no Meta (spy 22/ago). TODOS usam Yale/Harvard deepfake + number fabricated. O #7 vendeu por 30+ dias com Yale, mas a janela tá fechando: BBB+NYT+Forbes+Snopes cobriram, 35 state AGs pediram enforcement, Meta 2026 pune deepfake celeb + disease claim. <b>Próxima iteração (v4.7.2):</b> manter magazine template + Maria persona + 3 ingredientes + path 1/2 close. <b>Trocar:</b> Yale deepfake → "Stanford 2024 paper" real. Maria inventada → depoimentos reais (compensados) ou estimated results. Manter RoAS, ganhar compliance.
+    <strong>Por que migrar pro anti-scam mesmo sendo top performer:</strong> cluster baking soda cresceu 50+ ads no Meta (spy 22/ago). TODOS usam Yale/Harvard deepfake. O #7 vendeu por 30+ dias com Yale, mas a janela tá fechando: BBB+NYT+Forbes+Snopes cobriram, 35 state AGs pediram enforcement, Meta 2026 pune deepfake celeb. <b>Próxima iteração (v4.7.2):</b> manter magazine template + Maria persona + 3 ingredientes + path 1/2. <b>Trocar:</b> Yale → "Stanford 2024 paper". Maria inventada → depoimentos reais ou estimated results. Manter RoAS, ganhar compliance.
   </div>
 
   <footer>
