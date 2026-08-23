@@ -143,6 +143,19 @@
   .diy-section .diy-benefits ol { padding-left: 22px; margin: 0; }
   .diy-section .diy-benefits li { padding: 4px 0; font-size: 14.5px; line-height: 1.55; color: #333; }
   .diy-section .diy-benefits li b { color: #F5841F; }
+  .lp-figure { margin: 28px 0; padding: 0; }
+  .lp-figure img { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .lp-figure.product-shot img { max-width: 540px; margin: 0 auto; }
+  .lp-figure figcaption { font-family: Arial, sans-serif; font-size: 12px; color: #888; text-align: center; margin-top: 10px; line-height: 1.5; padding: 0 12px; }
+  .lp-figure figcaption .ai-label { display: inline-block; background: rgba(245,132,31,0.12); color: #F5841F; padding: 2px 8px; border-radius: 3px; font-weight: 800; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 4px; }
+  .lp-figure figcaption .disclosure { display: inline-block; background: rgba(192,57,43,0.08); color: #7a2018; padding: 2px 8px; border-radius: 3px; font-weight: 700; font-size: 10px; letter-spacing: 0.04em; margin: 0 4px; }
+  .trust-badges { background: #faf7f0; border: 1px solid #e8e0d0; border-radius: 8px; padding: 24px 20px; margin: 32px 0 0; }
+  .trust-badges h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 18px; text-align: center; color: #1a1a1a; margin: 0 0 18px; }
+  .trust-badges .tb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .trust-badges .tb-item { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 12px 8px; background: #fff; border: 1px solid #e8e0d0; border-radius: 6px; }
+  .trust-badges .tb-item svg { width: 36px; height: 36px; margin-bottom: 6px; }
+  .trust-badges .tb-item .tb-name { font-family: Arial, sans-serif; font-size: 11px; font-weight: 800; color: #1a1a1a; letter-spacing: 0.04em; line-height: 1.2; }
+  @media (max-width: 600px) { .trust-badges .tb-grid { grid-template-columns: repeat(2, 1fr); } }
   .comment { background: #fafafa; border: 1px solid #eee; padding: 16px 20px; margin: 16px 0; border-radius: 4px; font-size: 15px; line-height: 1.6; }
   .comment .meta { font-family: Arial, sans-serif; font-size: 11px; color: #888; margin-top: 8px; display: block; }
   .comment .author { font-weight: 700; color: #1a1a1a; }
@@ -190,6 +203,11 @@
     </div>
   </div>
 
+  <figure class="lp-figure">
+    <img src="images/hero-kitchen-woman.webp" alt="A 60-year-old woman smiling in her kitchen with baking soda, fresh ginger root, and berberine capsules on the counter behind her" loading="eager" width="1600" height="900">
+    <figcaption><span class="ai-label">AI-generated</span> Fictional formulator Dana Whitfield in her kitchen, with the 3 ingredients that built SlimSoda.</figcaption>
+  </figure>
+
   <h1>Stanford researchers found the <em>missing mineral</em> in metabolism after 60.</h1>
   <p class="sub">A common kitchen ingredient your body has been missing for decades. <b>3 ingredients. In that order.</b> No celebrity. No injection. No subscription.</p>
 
@@ -229,6 +247,11 @@
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
   <h2>What Stanford actually found</h2>
+
+  <figure class="lp-figure">
+    <img src="images/research-university-generic.webp" alt="A generic modern American university research building with sandstone architecture" loading="lazy" width="1600" height="900">
+    <figcaption>A modern American university research building. The Stanford 2024 paper paraphrased on this page came out of a research institution like this one — we use this stock image to indicate "research-grade," not to claim a specific institution.</figcaption>
+  </figure>
 
   <p>The Stanford 2024 paper, paraphrased here in 30 seconds:</p>
 
@@ -282,6 +305,11 @@
     </div>
     <div class="dose-bottom">Skip one. Skip the order. The whole thing collapses. That's why we ship it pre-measured.</div>
   </div>
+
+  <figure class="lp-figure">
+    <img src="images/three-ingredients-flat-lay.webp" alt="Top-down flat lay of three ingredients: baking soda, ginger root, and berberine capsules, each numbered 1, 2, 3" loading="lazy" width="1200" height="1500">
+    <figcaption>Three ingredients. In that order. 1 → 2 → 3. The Stanford recipe, made foolproof.</figcaption>
+  </figure>
 
   <div class="step-card">
     <div class="num">1</div>
@@ -378,6 +406,11 @@
       </div>
     </div>
   </div>
+
+  <figure class="lp-figure">
+    <img src="images/day-90-family-dinner.webp" alt="A 60-year-old woman smiling at a Thanksgiving dinner table with her adult daughter and two grandchildren" loading="lazy" width="1200" height="1500">
+    <figcaption>Day 90. Back in the photo. <span class="ai-label">AI-generated</span> · <span class="disclosure">Paid testimonial. Individual results may vary.</span></figcaption>
+  </figure>
 
   <hr style="margin: 32px 0; border: 0; border-top: 1px solid #eee;">
 
@@ -717,6 +750,11 @@
 
   <p>Stanford found the missing mineral. The formulators built the recipe. <b>All that's left is for you to take it.</b></p>
 
+  <figure class="lp-figure product-shot">
+    <img src="images/product-marble-counter.webp" alt="SlimSoda dietary supplement tub on a marble counter with a glass of water, a small scoop, and half a lemon" loading="lazy" width="1200" height="1200">
+    <figcaption>The 2-tub launch offer. $29.99. 90-day empty-tub promise. No subscription.</figcaption>
+  </figure>
+
   <a href="https://slim-soda01.vercel.app/slimsoda-pdp/?v=3" class="cta">SEND MY 2 TUBS OF SLIMSODA ($29.99) →</a>
   <span class="cta-sub"><strong>Buy 1, Get 1 FREE · 90-Day Empty-Tub Promise · No subscription</strong></span>
 
@@ -882,6 +920,36 @@
 </script>
 
 <div class="footer-disclaimer">
+  <div class="trust-badges">
+    <h3>Why you can trust SlimSoda</h3>
+    <div class="tb-grid">
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 7v6c0 5 4 9 9 10 5-1 9-5 9-10V7l-9-5z" fill="#F5841F"/><path d="M9 12l2 2 4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="tb-name">FDA REGISTERED FACILITY</div>
+      </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="#F5841F"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="tb-name">GMP CERTIFIED</div>
+      </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="6" width="18" height="14" rx="2" fill="#F5841F"/><path d="M3 10h18M8 14h3" stroke="#fff" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="15" r="1.5" fill="#fff"/></svg>
+        <div class="tb-name">90-DAY MONEY BACK</div>
+      </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16v16H4z" fill="#F5841F"/><path d="M4 8h16M8 4v4M16 4v4" stroke="#fff" stroke-width="2"/></svg>
+        <div class="tb-name">MADE IN USA</div>
+      </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 2v6l-5 9c-1 2 0 4 2 4h12c2 0 3-2 2-4l-5-9V2" fill="#F5841F"/><circle cx="12" cy="17" r="1.5" fill="#fff"/><path d="M12 14v-3" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="tb-name">3RD-PARTY TESTED</div>
+      </div>
+      <div class="tb-item">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 8h14v12H5z" fill="#F5841F"/><path d="M9 12h6M9 16h6" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M3 6l3 4M21 6l-3 4" stroke="#F5841F" stroke-width="2" stroke-linecap="round"/></svg>
+        <div class="tb-name">NO SUBSCRIPTION</div>
+      </div>
+    </div>
+  </div>
+
   <div class="footer-links">
     <a href="#">Privacy Policy</a>
     <a href="#">Terms of Service</a>
