@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Talk to Mira - MemoFlow</title>
+  <base href="/chat-x1-memoflow/">
+  <meta name="imp-pixel-id" content="2211508706308536">
+  <meta name="robots" content="noindex,nofollow">
+  <script>
+(function(){
+  var PRODUCT = { id: "memoflow-3bottles", name: "MemoFlow 3-Bottle Bundle", project: "memoflow", funnel: "memoflow_x1", value: 59.00, currency: "USD" };
+  var SB_URL = "https://tkbivipqiewkfnhktmqq.supabase.co";
+  var SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRrYml2aXBxaWV3a2ZuaGt0bXFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0NzY4NDgsImV4cCI6MjA1NDA1Mjg0OH0.2TnLj4lriG7eoPQWDo0mV8u8YHor6bd5ItZCHYhkym0";
+  var visitorId = localStorage.getItem("imp_visitor_id");
+  if(!visitorId){ visitorId = crypto.randomUUID(); localStorage.setItem("imp_visitor_id", visitorId); }
+  var sessionId = sessionStorage.getItem("imp_session_id");
+  var lastActivity = parseInt(sessionStorage.getItem("imp_last_activity") || "0", 10);
+  var now = Date.now();
+  if(!sessionId || (now - lastActivity) > 1800000){ sessionId = crypto.randomUUID(); sessionStorage.setItem("imp_session_id", sessionId); }
+  sessionStorage.setItem("imp_last_activity", String(now));
+  var params = new URLSearchParams(window.location.search);
+  var ATTR_PARAMS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","utm_id","fbclid","gclid","gbraid","wbraid","xcod","creative_id","coupon","checkout_url"];
+  var attrs = {};
+  ATTR_PARAMS.forEach(function(k){ var v = params.get(k); if(v){ attrs[k] = v; localStorage.setItem("imp_"+k, v); } else { var s = localStorage.getItem("imp_"+k); if(s) attrs[k] = s; } });
+  if(!localStorage.getItem("imp_landing")) localStorage.setItem("imp_landing", window.location.href);
+  function genEventId(){ return crypto.randomUUID(); }
+  function sbPost(table, data, opts){ opts = opts || {}; return fetch(SB_URL + "/rest/v1/" + table, { method: "POST", headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" }, body: JSON.stringify(data), keepalive: !!opts.keepalive }).catch(function(){}); }
+  function basePayload(extra){ return Object.assign({ visitor_id: visitorId, session_id: sessionId, page_url: window.location.href, referrer: document.referrer || null, utm_source: attrs.utm_source || null, utm_medium: attrs.utm_medium || null, utm_campaign: attrs.utm_campaign || null, utm_content: attrs.utm_content || null, utm_term: attrs.utm_term || null, user_agent: navigator.userAgent }, extra || {}); }
+  function trackEvent(eventName, eventData, eventId, opts){
+    var eid = eventId || genEventId();
+    var payload = Object.assign({ product_id: PRODUCT.id, product_name: PRODUCT.name, project: PRODUCT.project, funnel: PRODUCT.funnel, creative_id: attrs.creative_id || null, xcod: attrs.xcod || null }, eventData || {});
+    if(window.fbq){ try { var metaPayload = Object.assign({ content_ids: [PRODUCT.id], content_name: PRODUCT.name, content_type: "product", value: payload.value || PRODUCT.value, currency: PRODUCT.currency }, payload); if(eventName === "ChatView") window.fbq("track", "ViewContent", metaPayload, { eventID: eid }); else if(eventName === "OfferView") window.fbq("track", "AddToCart", metaPayload, { eventID: eid }); else if(eventName === "InitiateCheckout") window.fbq("track", "InitiateCheckout", metaPayload, { eventID: eid }); else window.fbq("trackCustom", eventName, metaPayload, { eventID: eid }); } catch(e){} }
+    return sbPost("imphq_events", basePayload({ id: eid, event_name: eventName, event_data: payload }), opts);
+  }
+  function sendCapi(eventName, eventData, eventId){
+    var pixelMeta = document.querySelector('meta[name="imp-pixel-id"]');
+    var pixelId = pixelMeta ? pixelMeta.getAttribute("content") : null;
+    if(!pixelId || !eventId) return;
+    try { fetch("/api/track-capi", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pixel_id: pixelId, event_name: eventName, event_id: eventId, event_data: Object.assign({ content_ids: [PRODUCT.id], content_name: PRODUCT.name, content_type: "product", value: PRODUCT.value, currency: PRODUCT.currency }, eventData || {}), event_source_url: window.location.href, external_id: visitorId }), keepalive: true }).catch(function(){}); } catch(e){}
+  }
+  if(Object.keys(attrs).length){ sbPost("imphq_clicks", basePayload({ id: crypto.randomUUID(), link_id: params.get("imp_link_id") || null, fbclid: attrs.fbclid || null, gclid: attrs.gclid || null, gbraid: attrs.gbraid || null, wbraid: attrs.wbraid || null, coupon: attrs.coupon || null })); }
+  var pixelId = document.querySelector('meta[name="imp-pixel-id"]');
+  pixelId = pixelId ? pixelId.getAttribute("content") : null;
+  if(pixelId){ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js"); fbq("init", pixelId); var pv = genEventId(); fbq("track", "PageView", {}, { eventID: pv }); sendCapi("PageView", { source: "chat-x1-memoflow" }, pv); }
+  trackEvent("ChatView", { source: "chat-x1-memoflow" });
+  window.imptrack = { product: PRODUCT, attrs: attrs, getVisitorId: function(){ return visitorId; }, getSessionId: function(){ return sessionId; }, trackEvent: trackEvent, sendCapi: sendCapi, trackInitiateCheckout: function(data, keepalive){ var eid = genEventId(); var payload = Object.assign({ value: PRODUCT.value, currency: PRODUCT.currency }, data || {}); sendCapi("InitiateCheckout", payload, eid); return trackEvent("InitiateCheckout", payload, eid, { keepalive: !!keepalive }); } };
+})();
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #eef2f5; font-family: Inter, Arial, Helvetica, sans-serif; color: #101114; }
+    body { display: grid; place-items: center; padding: 18px; }
+    .shell { width: min(100%, 430px); height: min(920px, calc(100vh - 36px)); background: #f9faf8; border: 1px solid #dfe5e9; border-radius: 22px; overflow: hidden; display: grid; grid-template-rows: auto 1fr auto auto; box-shadow: 0 24px 70px rgba(16,24,40,.18); }
+    .top { padding: 16px 18px; background: #10243f; color: white; display: flex; gap: 12px; align-items: center; }
+    .avatar { width: 42px; height: 42px; border-radius: 50%; background: #8bd4d2; color: #10243f; display: grid; place-items: center; font-weight: 900; flex: 0 0 auto; }
+    .top h1 { margin: 0; font-size: 16px; letter-spacing: 0; }
+    .top p { margin: 3px 0 0; color: rgba(255,255,255,.72); font-size: 12px; line-height: 1.3; }
+    .status { margin-left: auto; color: #a8f0d2; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+    .messages { overflow-y: auto; padding: 18px 14px 22px; display: flex; flex-direction: column; gap: 12px; scroll-behavior: smooth; }
+    .msg { display: flex; gap: 9px; align-items: flex-end; }
+    .msg.user { justify-content: flex-end; }
+    .bubble { max-width: 82%; padding: 12px 14px; border-radius: 16px; font-size: 15px; line-height: 1.38; white-space: pre-wrap; box-shadow: 0 1px 0 rgba(16,24,40,.04); }
+    .bot .bubble { background: white; border: 1px solid #e4e8eb; border-bottom-left-radius: 5px; }
+    .user .bubble { background: #0f7658; color: white; border-bottom-right-radius: 5px; }
+    .mini-avatar { width: 28px; height: 28px; border-radius: 50%; background: #dcefed; color: #103f40; display: grid; place-items: center; font-size: 12px; font-weight: 900; flex: 0 0 auto; }
+    .tag { display: inline-block; margin-bottom: 7px; color: #0f7658; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; }
+    .typing { display: inline-flex; gap: 4px; padding: 13px 14px; background: white; border: 1px solid #e4e8eb; border-radius: 16px; width: 58px; }
+    .typing span { width: 7px; height: 7px; border-radius: 50%; background: #97a1aa; animation: bounce 1s infinite ease-in-out; }
+    .typing span:nth-child(2){ animation-delay: .15s; } .typing span:nth-child(3){ animation-delay: .3s; }
+    @keyframes bounce { 0%, 80%, 100% { transform: translateY(0); opacity: .45; } 40% { transform: translateY(-4px); opacity: 1; } }
+    .quick { padding: 0 14px 14px; display: grid; gap: 8px; background: #f9faf8; }
+    .quick button { width: 100%; padding: 12px 13px; border-radius: 12px; border: 1px solid #cbd5dc; background: white; color: #172033; text-align: left; font-weight: 760; font-size: 14px; cursor: pointer; }
+    .quick button.primary { background: #0f7658; border-color: #0f7658; color: white; text-align: center; }
+    .composer { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 12px; border-top: 1px solid #dfe5e9; background: white; }
+    .composer input { border: 1px solid #ccd6de; border-radius: 999px; padding: 13px 15px; font-size: 15px; outline: none; }
+    .composer button { border: 0; border-radius: 999px; padding: 0 16px; background: #10243f; color: white; font-weight: 900; cursor: pointer; }
+    .offer { background: #f2fbf8; border: 1px solid #b8e3d4; border-radius: 16px; padding: 14px; display: grid; gap: 10px; }
+    .offer h2 { margin: 0; font-size: 19px; line-height: 1.1; }
+    .offer ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: 13px; }
+    .price { display: flex; align-items: baseline; gap: 8px; font-weight: 900; }
+    .price strong { font-size: 28px; color: #0f7658; }
+    .cta { display: block; text-align: center; text-decoration: none; background: #0f7658; color: white; font-weight: 950; padding: 13px 15px; border-radius: 12px; }
+    .fine { font-size: 10px; line-height: 1.3; color: #66727d; }
+    @media (max-width: 520px) { body { padding: 0; } .shell { height: 100vh; border-radius: 0; border: 0; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="avatar">M</div>
+      <div>
+        <h1>Mira - MemoFlow Guide</h1>
+        <p>Private educational chat about memory support after 60.</p>
+      </div>
+      <div class="status">Online</div>
+    </header>
+    <section id="messages" class="messages"></section>
+    <section id="quick" class="quick"></section>
+    <form id="composer" class="composer">
+      <input id="input" type="text" maxlength="320" autocomplete="off" placeholder="Type a question...">
+      <button type="submit">Send</button>
+    </form>
+  </main>
+  <script>
+const DEFAULT_CHECKOUT = "https://memopryl.com/cc2/pay/checkout.php?package=3bottles&campaignkey=pg-cyb";
+const params = new URLSearchParams(window.location.search);
+const CHECKOUT_URL = params.get("checkout_url") || localStorage.getItem("imp_checkout_url") || DEFAULT_CHECKOUT;
+if(params.get("checkout_url")) localStorage.setItem("imp_checkout_url", params.get("checkout_url"));
+window.CHAT_LLM_ENDPOINT = window.CHAT_LLM_ENDPOINT || "/api/chat-llm-memoflow";
+const $messages = document.getElementById("messages");
+const $quick = document.getElementById("quick");
+const $composer = document.getElementById("composer");
+const $input = document.getElementById("input");
+const state = { step: 0, node: "start", buyer: null, concern: null, timeline: null, medical: null, temperature: null, objection: null };
+const SAFE_DISCLAIMER = "Quick note: I can share educational information, but this is not medical advice and it does not diagnose, treat, cure or prevent disease.";
+const SCRIPT = {
+  start: { tag: "Opening", text: "Hi, I am Mira. I help people understand the MemoFlow presentation without the hype.\n\nBefore I send the right part: is this for you or for someone in your family?", replies: [
+    { label: "For me", save: "buyer", value: "self", next: "concern" },
+    { label: "For my mom/dad", save: "buyer", value: "parent", next: "proxy" },
+    { label: "For my husband/wife", save: "buyer", value: "spouse", next: "concern" },
+    { label: "I just want to understand", save: "buyer", value: "research", next: "concern" }
+  ]},
+  proxy: { tag: "Caregiver", text: "That makes sense. A lot of people first look into this because they noticed small changes in someone they love.\n\nWhat made you click today?", replies: [
+    { label: "They repeat the same things", save: "concern", value: "repeating", next: "timeline" },
+    { label: "They forget names or words", save: "concern", value: "word_recall", next: "timeline" },
+    { label: "They misplace things often", save: "concern", value: "misplacing", next: "timeline" },
+    { label: "I am trying to prevent problems", save: "concern", value: "prevention_wording", next: "prevention_guardrail" }
+  ]},
+  concern: { tag: "1 question", text: "What feels most familiar right now?", replies: [
+    { label: "Names or words do not come quickly", save: "concern", value: "word_recall", next: "timeline" },
+    { label: "I walk into a room and forget why", save: "concern", value: "room_forget", next: "timeline" },
+    { label: "I repeat myself more than before", save: "concern", value: "repeating", next: "timeline" },
+    { label: "I am worried about aging", save: "concern", value: "aging_worry", next: "timeline" }
+  ]},
+  prevention_guardrail: { tag: "Important", text: "I understand the instinct. I need to be careful with the word prevent: no supplement should be sold as preventing Alzheimer's, dementia or memory loss.\n\nThe clean way to look at MemoFlow is memory support and healthy cognitive aging.", next: "timeline" },
+  timeline: { tag: "Pattern", text: "How long has this been noticeable?", replies: [
+    { label: "A few weeks", save: "timeline", value: "weeks", next: "medical" },
+    { label: "A few months", save: "timeline", value: "months", next: "medical" },
+    { label: "More than a year", save: "timeline", value: "year_plus", next: "medical" },
+    { label: "It comes and goes", save: "timeline", value: "comes_goes", next: "medical" }
+  ]},
+  medical: { tag: "Safety check", text: "Last safety check before I explain the mechanism: is there any diagnosis, medication, or doctor's follow-up involved?", replies: [
+    { label: "No diagnosis or medication", save: "medical", value: "none", next: "mirror" },
+    { label: "There is medication involved", save: "medical", value: "medication", next: "doctor_guardrail" },
+    { label: "There is a diagnosis", save: "medical", value: "diagnosis", next: "doctor_guardrail" },
+    { label: "I am not sure", save: "medical", value: "unsure", next: "mirror" }
+  ]},
+  doctor_guardrail: { tag: "Safe path", text: "Thanks for saying that. If medication or a diagnosis is involved, the right next step is to treat this as education only and run the ingredient list by a doctor or pharmacist before starting anything.\n\nI can still explain the MemoFlow idea in a safe way.", next: "mirror" },
+  mirror: { tag: "What I heard", text: () => `So the real issue is not just "memory." It is the uneasy feeling that ${state.buyer === "parent" ? "someone you care about" : "your own routine"} has changed: ${labelConcern(state.concern)}.\n\nThat is exactly where the clean MemoFlow explanation starts.`, next: "mechanism" },
+  mechanism: { tag: "MemoFlow mechanism", text: "The clean version is this:\n\nMemoFlow is positioned as a daily memory-support ritual built around Ikarian honey extract, lithium orotate and a sublingual delivery system called Neural MicroLock.\n\nNot a cure. Not a treatment. The argument is support for memory function and healthy cognitive aging.", replies: [
+    { label: "Why honey?", next: "honey" },
+    { label: "Why lithium?", next: "lithium" },
+    { label: "Is this like those fake celebrity ads?", next: "anti_scam" },
+    { label: "Show me the offer", next: "temperature", primary: true }
+  ]},
+  honey: { tag: "Ingredient", text: "The honey angle comes from the Blue Zone story: certain regions have unusual longevity patterns, and the VSL uses that as a bridge into memory-support nutrition.\n\nThe safe claim is not 'honey reverses dementia.' It is: the formula uses honey-derived compounds as part of a cognitive support ritual.", next: "temperature" },
+  lithium: { tag: "Ingredient", text: "Lithium is the specificity hook. The clean version talks about a trace-dose mineral angle, not a psychiatric drug claim.\n\nIf someone takes medication or has a condition, this is exactly why they should check the ingredient list with a professional first.", next: "temperature" },
+  anti_scam: { tag: "Transparency", text: "Good question. This X1 is intentionally not using Bill Gates, Dr. Oz, celebrity voices or 'reverse Alzheimer's' language.\n\nIf an ad needs a fake celebrity to sell, that is a red flag. This flow keeps the claim to memory support and sends the product facts, not hype.", next: "temperature" },
+  temperature: { tag: "Temperature", text: "From 0 to 10, how much does this make sense for your situation right now?", replies: [
+    { label: "9-10: I want the link", save: "temperature", value: "hot", next: "offer", primary: true },
+    { label: "7-8: I have one concern", save: "temperature", value: "warm", next: "objection" },
+    { label: "4-6: I need more proof", save: "temperature", value: "proof_needed", next: "proof" },
+    { label: "0-3: Not for me", save: "temperature", value: "cold", next: "soft_exit" }
+  ]},
+  proof: { tag: "Proof path", text: "Fair. The proof path should be simple:\n\n1. Read the ingredient list.\n2. Understand the daily ritual.\n3. Check the 90-day guarantee.\n4. If medication is involved, ask a doctor or pharmacist.\n\nIf those four points are acceptable, then it becomes a low-risk trial instead of a leap of faith.", next: "objection" },
+  objection: { tag: "Objection", text: "What is the main thing holding you back?", replies: [
+    { label: "I am skeptical", save: "objection", value: "skeptical", next: "skeptic" },
+    { label: "I worry about safety", save: "objection", value: "safety", next: "safety" },
+    { label: "I need to know the price", save: "objection", value: "price", next: "offer" },
+    { label: "I want the link", save: "objection", value: "ready", next: "offer", primary: true }
+  ]},
+  skeptic: { tag: "No hype", text: "That is the right instinct in this category. I would not trust a memory ad just because it sounds dramatic.\n\nThe reasonable test is: do the facts, ingredients, guarantee and disclaimers feel honest enough for a 90-day trial?", next: "offer" },
+  safety: { tag: "Safety", text: "The safest answer is: if there is medication, diagnosis, pregnancy, nursing, or any medical condition, check with a professional before starting.\n\nIf none of that applies, the offer is still a supplement trial with a guarantee, not a medical treatment.", next: "offer" },
+  offer: { tag: "Next step", text: "Based on what you told me, the clean next step is not to overthink it: read the offer, check the ingredient list, and decide if a 90-day trial makes sense.", offer: true, next: "ask_anything" },
+  ask_anything: { tag: "Still here", text: "Anything else you want to ask before you open it?", free: true },
+  soft_exit: { tag: "No pressure", text: "That is okay. I would rather you skip it than buy from pressure.\n\nIf the concern gets stronger, save this page and come back when you want the ingredient summary.", free: true }
+};
+function labelConcern(value){ return ({ word_recall: "names or words do not come as quickly", room_forget: "you walk into a room and lose the thread", repeating: "the same question or story comes up more than before", misplacing: "objects are misplaced often enough to worry you", aging_worry: "you are wondering what is normal aging and what deserves attention", prevention_wording: "you want to support memory before things feel worse" })[value] || "memory feels less reliable than before"; }
+function showTyping(){ const row = document.createElement("div"); row.className = "msg bot"; row.id = "typing"; row.innerHTML = '<div class="mini-avatar">M</div><div class="typing"><span></span><span></span><span></span></div>'; $messages.appendChild(row); scrollBottom(); }
+function hideTyping(){ const t = document.getElementById("typing"); if(t) t.remove(); }
+function addBot(text, tag){ const row = document.createElement("div"); row.className = "msg bot"; row.innerHTML = `<div class="mini-avatar">M</div><div class="bubble">${tag ? `<span class="tag">${tag}</span><br>` : ""}${text}</div>`; $messages.appendChild(row); scrollBottom(); }
+function addUser(text){ const row = document.createElement("div"); row.className = "msg user"; row.innerHTML = `<div class="bubble">${escapeHtml(text)}</div>`; $messages.appendChild(row); scrollBottom(); }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#039;" }[m])); }
+function scrollBottom(){ $messages.scrollTop = $messages.scrollHeight; }
+function clearQuick(){ $quick.innerHTML = ""; }
+function setQuick(replies){ clearQuick(); if(!replies || !replies.length) return; replies.forEach(r => { const btn = document.createElement("button"); btn.type = "button"; btn.className = r.primary ? "primary" : ""; btn.textContent = r.label; btn.addEventListener("click", () => { addUser(r.label); if(r.save) state[r.save] = r.value; if(window.imptrack) window.imptrack.trackEvent("ChatReply", { key: r.save || r.label, value: r.value || r.label, node: state.node, step: state.step }); clearQuick(); setTimeout(() => runNode(r.next), 450); }); $quick.appendChild(btn); }); }
+function getOfferCard(){ return `<div class="offer"><h2>MemoFlow 3-Bottle Bundle</h2><div class="price"><strong>$59</strong><span>B2G1 style offer</span></div><ul><li>Daily sublingual memory-support ritual</li><li>Ikarian honey extract + lithium orotate angle</li><li>90-day money-back guarantee according to checkout terms</li><li>No disease treatment promise</li></ul><a class="cta" href="${CHECKOUT_URL}" onclick="window.imptrack && window.imptrack.trackInitiateCheckout({source:'chat-x1-memoflow', node: state.node, step: state.step, temperature: state.temperature, objection: state.objection}, true); return true;">Open secure checkout</a><div class="fine">These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results may vary.</div></div>`; }
+function runNode(id){ const node = SCRIPT[id]; if(!node) return; state.step += 1; state.node = id; clearQuick(); showTyping(); setTimeout(() => { hideTyping(); const text = typeof node.text === "function" ? node.text() : node.text; if(text) addBot(text, node.tag); if(id === "start") addBot(SAFE_DISCLAIMER, "Safety"); if(node.offer){ const row = document.createElement("div"); row.className = "msg bot"; row.innerHTML = `<div class="mini-avatar">M</div><div class="bubble">${getOfferCard()}</div>`; $messages.appendChild(row); scrollBottom(); if(window.imptrack) window.imptrack.trackEvent("OfferView", { node: id, step: state.step, value: 59.00, temperature: state.temperature }); } if(node.replies) setQuick(node.replies); else if(node.next) setTimeout(() => runNode(node.next), 1300); else if(node.free) clearQuick(); }, 650); }
+async function handleFreeText(text){ addUser(text); clearQuick(); if(window.imptrack) window.imptrack.trackEvent("ChatFreeText", { text: text.substring(0, 120), node: state.node, step: state.step }); showTyping(); try { const res = await fetch(window.CHAT_LLM_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ state, user_text: text }) }); const data = await res.json().catch(() => ({})); hideTyping(); if(data.reply){ addBot(data.reply, "Answer"); if(!["offer","soft_exit"].includes(state.node)) setQuick([{ label: "Show me the offer", next: "offer", primary: true }, { label: "Keep explaining", next: "mechanism" }]); return; } } catch(e) { hideTyping(); } addBot("I hear you. The safest way to keep this simple is to read the ingredient list, check the guarantee, and ask a professional if medication is involved.", "Answer"); setQuick([{ label: "Show me the offer", next: "offer", primary: true }, { label: "Explain the mechanism again", next: "mechanism" }]); }
+$composer.addEventListener("submit", (e) => { e.preventDefault(); const text = $input.value.trim(); if(!text) return; $input.value = ""; handleFreeText(text); });
+setTimeout(() => runNode("start"), 500);
+  </script>
+</body>
+</html>

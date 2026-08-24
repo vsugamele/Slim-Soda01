@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MemoFlow X1 Natural Sales Flow</title>
+  <style>
+    :root {
+      --ink: #162033;
+      --muted: #657184;
+      --line: #d8dee7;
+      --paper: #f6f7f4;
+      --panel: #ffffff;
+      --green: #0f7658;
+      --green-soft: #e7f3ee;
+      --gold: #b7791f;
+      --red: #9b2c2c;
+      --blue: #28537a;
+      --shadow: 0 18px 45px rgba(19, 31, 49, .10);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); }
+    header { padding: 28px 20px 18px; border-bottom: 1px solid var(--line); background: #fff; position: sticky; top: 0; z-index: 5; }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .08em; color: var(--green); font-size: 12px; font-weight: 900; }
+    h1 { margin: 8px 0 8px; font-size: clamp(28px, 4vw, 48px); line-height: 1.02; letter-spacing: 0; }
+    .lead { max-width: 880px; color: var(--muted); font-size: 17px; line-height: 1.55; margin: 0; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    nav a { text-decoration: none; color: var(--ink); border: 1px solid var(--line); background: #fff; padding: 9px 12px; border-radius: 8px; font-weight: 800; font-size: 13px; }
+    main { padding: 26px 20px 56px; }
+    section { margin: 0 auto 28px; max-width: 1180px; }
+    h2 { font-size: 24px; margin: 0 0 14px; }
+    h3 { font-size: 17px; margin: 0 0 8px; }
+    p { line-height: 1.55; }
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; box-shadow: var(--shadow); }
+    .plain-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; }
+    .flow { display: grid; grid-template-columns: repeat(11, minmax(120px, 1fr)); gap: 10px; overflow-x: auto; padding-bottom: 8px; }
+    .step { min-height: 128px; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px; position: relative; }
+    .step strong { display: block; font-size: 13px; color: var(--green); margin-bottom: 6px; }
+    .step span { color: var(--muted); font-size: 13px; line-height: 1.35; display: block; }
+    .step:after { content: ""; position: absolute; right: -9px; top: 52px; width: 8px; height: 2px; background: var(--line); }
+    .step:last-child:after { display: none; }
+    .phone-shell { background: #101722; border-radius: 30px; padding: 12px; box-shadow: var(--shadow); }
+    .phone { background: #f7f8fa; border-radius: 22px; min-height: 610px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); }
+    .phone-head { background: #fff; border-bottom: 1px solid var(--line); padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+    .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; font-weight: 900; }
+    .status { font-size: 12px; color: var(--muted); }
+    .chat { padding: 14px; display: grid; gap: 10px; }
+    .bubble { max-width: 86%; padding: 11px 12px; border-radius: 16px; font-size: 14px; line-height: 1.45; white-space: pre-line; }
+    .bot { background: #fff; border: 1px solid var(--line); border-top-left-radius: 6px; }
+    .user { background: #dff2ea; justify-self: end; border-top-right-radius: 6px; }
+    .composer { height: 58px; margin: 12px; border: 1px solid var(--line); background: #fff; border-radius: 999px; display: flex; align-items: center; padding: 0 15px; color: var(--muted); font-size: 13px; }
+    .stage-list { display: grid; gap: 10px; }
+    .stage-row { display: grid; grid-template-columns: 128px minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; align-items: stretch; background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+    .stage-label { font-weight: 900; color: var(--green); font-size: 13px; text-transform: uppercase; letter-spacing: .04em; }
+    .stage-row p { margin: 0; font-size: 14px; color: var(--muted); }
+    .copy { background: #f8fafb; border: 1px solid var(--line); border-radius: 8px; padding: 12px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 13px; line-height: 1.48; white-space: pre-line; }
+    .pill { display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid var(--line); background: #fff; padding: 7px 10px; margin: 3px 4px 3px 0; font-size: 12px; font-weight: 800; color: var(--muted); }
+    .ok { border-color: #b8ddcf; color: var(--green); background: var(--green-soft); }
+    .warn { border-color: #e8cf9f; color: var(--gold); background: #fff7e8; }
+    .no { border-color: #e5b9b9; color: var(--red); background: #fff0f0; }
+    .blue { border-color: #b9cde2; color: var(--blue); background: #eff6fb; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .tabs button { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 9px 11px; color: var(--ink); font-weight: 850; cursor: pointer; }
+    .tabs button.active { background: var(--green); border-color: var(--green); color: #fff; }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+    .table th, .table td { border-bottom: 1px solid var(--line); padding: 11px; text-align: left; vertical-align: top; font-size: 14px; }
+    .table th { background: #f0f4f2; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+    .table tr:last-child td { border-bottom: 0; }
+    footer { color: var(--muted); font-size: 13px; padding: 22px 20px 40px; border-top: 1px solid var(--line); background: #fff; }
+    @media (max-width: 860px) {
+      header { position: static; }
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .stage-row { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr; overflow-x: visible; }
+      .step:after { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">MemoFlow X1 natural sales system</div>
+      <h1>IA livre por fora, script de venda por dentro.</h1>
+      <p class="lead">Este playbook mostra como o X1 deve parecer uma conversa real no Direct/Messenger, enquanto a IA segue uma esteira invisivel: dor, espelho, mecanismo, prova, seguranca, CRM progressivo, oferta e checkout.</p>
+      <nav>
+        <a href="#mapa">Mapa</a>
+        <a href="#demo">Demo</a>
+        <a href="#script">Script</a>
+        <a href="#conversao">Conversao</a>
+        <a href="#crm">CRM</a>
+        <a href="#intervencao">Intervencao IA</a>
+        <a href="#imperio">Imperio</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="mapa">
+      <h2>Mapa Do Fluxo</h2>
+      <div class="flow">
+        <div class="step"><strong>1. Contexto</strong><span>Conecta com o anuncio/VSL sem parecer atendimento automatico.</span></div>
+        <div class="step"><strong>2. Motivo</strong><span>Descobre por que a pessoa clicou e quem ela quer ajudar.</span></div>
+        <div class="step"><strong>3. Espelho</strong><span>Repete a preocupacao em linguagem humana para criar confianca.</span></div>
+        <div class="step"><strong>4. Mecanismo</strong><span>Explica MemoFlow pelo mecanismo, nao pelo pote.</span></div>
+        <div class="step"><strong>5. Prova</strong><span>Reduz medo de golpe e ancora em ingredientes, garantia e checkout.</span></div>
+        <div class="step"><strong>6. Seguranca</strong><span>Ativa guardrails quando surgem diagnostico, remedio ou doenca.</span></div>
+        <div class="step"><strong>7. Temperatura</strong><span>Identifica se o lead esta curioso, quente ou travado por objecao.</span></div>
+        <div class="step"><strong>8. CRM</strong><span>Coleta contato quando ajuda continuidade ou recuperacao.</span></div>
+        <div class="step"><strong>9. Oferta</strong><span>Apresenta o kit como teste de 90 dias, nao como pressao.</span></div>
+        <div class="step"><strong>10. Checkout</strong><span>Envia link, pausa segura ou follow-up automatico.</span></div>
+        <div class="step"><strong>11. Recuperacao</strong><span>Follow-up por canal original, email ou SMS com consentimento.</span></div>
+      </div>
+    </section>
+
+    <section id="demo" class="grid two">
+      <div class="panel">
+        <h2>Como Deve Parecer Para O Lead</h2>
+        <div class="phone-shell">
+          <div class="phone">
+            <div class="phone-head">
+              <div class="avatar">M</div>
+              <div><strong>Mira</strong><div class="status">normalmente responde em alguns segundos</div></div>
+            </div>
+            <div class="chat">
+              <div class="bubble bot">Vi que voce veio pelo video sobre memoria. Antes de eu te mandar qualquer link, o que mais te pegou ali: esquecer palavras, preocupacao com alguem da familia, ou saber se isso e real mesmo?</div>
+              <div class="bubble user">Minha mae anda repetindo as mesmas coisas e eu fiquei meio preocupado.</div>
+              <div class="bubble bot">Entendi. Quando e com mae ou pai, a duvida normalmente vem com medo de esperar demais, mas sem querer assustar a pessoa.</div>
+              <div class="bubble bot">Isso acontece mais em conversas do dia a dia ou ela tambem esquece objetos, nomes e compromissos?</div>
+              <div class="bubble user">Mais conversa e nomes.</div>
+              <div class="bubble bot">Entao o ponto nao e so "memoria". E voce tentando entender se da para apoiar essa fase sem cair em promessa exagerada de internet.</div>
+              <div class="bubble bot">A explicacao limpa do MemoFlow comeca pelo mecanismo: um ritual sublingual de suporte de memoria com mel de Ikaria, lithium orotate em dose traco e a entrega Neural MicroLock.</div>
+            </div>
+            <div class="composer">Escreva uma mensagem...</div>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>O Que A IA Faz Por Tras</h2>
+        <p><span class="pill ok">sem quick replies visiveis</span><span class="pill blue">classificacao invisivel</span><span class="pill warn">guardrail sob demanda</span><span class="pill blue">CRM progressivo</span></p>
+        <table class="table">
+          <thead><tr><th>Sinal do lead</th><th>Estado interno</th><th>Proxima acao</th></tr></thead>
+          <tbody>
+            <tr><td>"minha mae"</td><td>buyer=parent</td><td>Entrar em cuidador/proxy sem formulario.</td></tr>
+            <tr><td>"repetindo"</td><td>pain=repeating</td><td>Espelhar medo e pedir detalhe leve.</td></tr>
+            <tr><td>"pode me mandar depois?"</td><td>crm_intent=contact_ok</td><td>Pedir email/telefone com consentimento claro.</td></tr>
+            <tr><td>"isso e golpe?"</td><td>objection=scam</td><td>Responder, diferenciar hype de oferta real e voltar para prova.</td></tr>
+            <tr><td>"tem Alzheimer"</td><td>medical_flag=alzheimers_dementia</td><td>Ativar seguranca e recomendar medico/farmaceutico antes de compra.</td></tr>
+            <tr><td>"manda o link"</td><td>temperature=hot</td><td>Enviar checkout se nao houver risco; se houver, usar pausa segura.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="script">
+      <h2>Script De Venda</h2>
+      <div class="stage-list">
+        <div class="stage-row">
+          <div class="stage-label">Abertura</div>
+          <p>Contextualizar a origem sem parecer bot. Nao vender no primeiro toque.</p>
+          <div class="copy">Vi que voce veio pelo video sobre memoria. Antes de eu te mandar qualquer link, o que mais te pegou ali?</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Dor</div>
+          <p>Descobrir o gatilho emocional: proprio medo, pai/mae, ceticismo ou pesquisa.</p>
+          <div class="copy">Quando voce percebe isso mais: nomes/palavras, entrar num comodo e esquecer o motivo, ou repetir a mesma coisa sem notar?</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Espelho</div>
+          <p>Vender a sensacao de compreensao antes de vender produto.</p>
+          <div class="copy">Entao nao e so "memoria". E aquela sensacao de que algo mudou no dia a dia e voce quer entender antes de virar uma preocupacao maior.</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Mecanismo</div>
+          <p>Apresentar o diferencial com linguagem simples e claim seguro.</p>
+          <div class="copy">A ideia do MemoFlow e um ritual sublingual diario para suporte de memoria: mel de Ikaria, lithium orotate em dose traco e Neural MicroLock.</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Prova</div>
+          <p>Responder ceticismo sem prometer cura nem inventar autoridade.</p>
+          <div class="copy">Sua desconfiança e correta. Eu olharia tres coisas: mecanismo faz sentido, ingredientes estao claros e existe garantia real no checkout.</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">CRM</div>
+          <p>Coletar contato quando existe motivo claro: continuidade, resumo, checkout recovery ou follow-up.</p>
+          <div class="copy">Para eu nao te responder de forma generica: como posso te chamar?</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Oferta</div>
+          <p>Oferecer o teste de 90 dias quando ha temperatura, nao antes.</p>
+          <div class="copy">O caminho mais logico e o teste de 90 dias, porque memoria e rotina nao sao coisas que voce avalia em dois dias.</div>
+        </div>
+        <div class="stage-row">
+          <div class="stage-label">Checkout</div>
+          <p>Enviar o link com instrucao pratica e abertura para duvida.</p>
+          <div class="copy">Vou te mandar o checkout seguro. Confere principalmente kit, garantia e dados de envio. Se algo ficar confuso, me chama aqui antes de pagar.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conversao">
+      <h2>Matriz De Conversao</h2>
+      <div class="grid two">
+        <div class="plain-panel">
+          <h3>Tese Central</h3>
+          <div class="copy">Se o lead esta preocupado com memoria e cetico de promessa milagrosa, a venda nao e uma promessa mais forte.
+A venda e um teste de 90 dias com mecanismo especifico, ingredientes claros e garantia.</div>
+          <h3>Mecanismo Vendavel</h3>
+          <div class="copy">Ritual sublingual de suporte de memoria: mineral em dose traco + mel de Ikaria + Neural MicroLock.</div>
+        </div>
+        <div class="plain-panel">
+          <h3>Contrato Da IA</h3>
+          <table class="table">
+            <tbody>
+              <tr><td>1</td><td>Responder a preocupacao real do lead.</td></tr>
+              <tr><td>2</td><td>Classificar dor, angulo, objecao e temperatura.</td></tr>
+              <tr><td>3</td><td>Fazer ponte para o roteiro.</td></tr>
+              <tr><td>4</td><td>Mover para mecanismo, prova, CRM, oferta, checkout, pausa ou follow-up.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>Dor → Movimento De Venda</h3>
+      <table class="table">
+        <thead><tr><th>Dor</th><th>Emocao real</th><th>Movimento</th><th>Evitar</th></tr></thead>
+        <tbody>
+          <tr><td>Esquece nomes/palavras</td><td>Inseguranca de envelhecimento</td><td>Normalizar + mecanismo</td><td>Medicalizar cedo</td></tr>
+          <tr><td>Repete/misplaces</td><td>Perda de confianca</td><td>Espelho + consequencia cotidiana</td><td>Falar doenca/prevenir</td></tr>
+          <tr><td>Pai/mae mudando</td><td>Responsabilidade e medo</td><td>Caregiver empathy + suporte seguro</td><td>Assustar ou diagnosticar</td></tr>
+          <tr><td>Alzheimer/remedio/medico</td><td>Risco medico</td><td>Pausa segura + educacao</td><td>Mandar checkout</td></tr>
+          <tr><td>Golpe/fake</td><td>Desconfianca</td><td>Anti-scam + filtro de prova</td><td>Defender agressivamente</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Angulo → Mecanismo → Close</h3>
+      <table class="table">
+        <thead><tr><th>Sinal</th><th>Angulo</th><th>Mecanismo</th><th>Close</th></tr></thead>
+        <tbody>
+          <tr><td>Lithium, mineral, research</td><td>Missing brain mineral</td><td>Mineral em dose traco + ritual sublingual</td><td>Se o mecanismo fez sentido, o teste de 90 dias e o proximo passo logico.</td></tr>
+          <tr><td>Ikaria, honey, blue zone</td><td>Proveniencia natural</td><td>Mel de Ikaria + rotina diaria</td><td>A oferta e a versao pratica desse ritual.</td></tr>
+          <tr><td>Fake, scam, celebridade</td><td>Honest by design</td><td>Sem celebridade, ingredientes claros, garantia</td><td>Julgue a oferta real, nao os anuncios ruins.</td></tr>
+          <tr><td>Mae, pai, familia</td><td>Proxy buyer</td><td>Suporte seguro, nao tratamento</td><td>Um teste simples e melhor que ficar semanas na duvida.</td></tr>
+          <tr><td>Stress, brain fog</td><td>Stress-memory axis</td><td>Suporte a resposta natural ao stress + memoria</td><td>Comece com uma rotina antes de assumir que e so idade.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Objeções Principais</h3>
+      <table class="table">
+        <thead><tr><th>Objecao</th><th>Significado</th><th>Resposta melhor</th><th>Volta</th></tr></thead>
+        <tbody>
+          <tr><td>Isso e golpe?</td><td>Posso confiar?</td><td>Eu tambem desconfiaria. Separaria anuncio exagerado de oferta real: ingredientes, garantia e checkout.</td><td>Prova</td></tr>
+          <tr><td>Funciona?</td><td>Vou me arrepender?</td><td>O jeito honesto e olhar como teste de suporte por 90 dias, nao promessa imediata.</td><td>Oferta</td></tr>
+          <tr><td>Caro</td><td>Valor insuficiente</td><td>A pergunta e se vale testar com garantia ou continuar observando sem fazer nada.</td><td>Valor</td></tr>
+          <tr><td>Tenho que falar com familia</td><td>Precisa permissao social</td><td>Te mando um resumo curto para encaminhar sem parecer propaganda.</td><td>CRM</td></tr>
+          <tr><td>Tomo remedio</td><td>Risco medico</td><td>Confere com medico/farmaceutico antes. Posso explicar ingredientes, mas nao vender como tratamento.</td><td>Pausa segura</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="crm" class="grid two">
+      <div class="plain-panel">
+        <h2>Coleta CRM Progressiva</h2>
+        <p>O X1 nao deve parecer formulario. A coleta entra como continuidade da conversa e recuperacao de checkout.</p>
+        <table class="table">
+          <thead><tr><th>Momento</th><th>Campo</th><th>Copy natural</th></tr></thead>
+          <tbody>
+            <tr><td>Depois da dor</td><td>first_name</td><td>Para eu nao te responder de forma generica: como posso te chamar?</td></tr>
+            <tr><td>Antes/depois do checkout</td><td>email</td><td>Se o checkout travar ou voce sair da pagina, quer que eu te mande o resumo e o link por email tambem?</td></tr>
+            <tr><td>Quando o lead pede praticidade</td><td>phone</td><td>Se preferir, posso te mandar o link por SMS/WhatsApp para voce nao perder. Qual numero devo usar?</td></tr>
+            <tr><td>Canal social</td><td>channel_id</td><td>Captura invisivel do Instagram/Messenger/site session.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="plain-panel">
+        <h2>O Que Nao Fazer</h2>
+        <p><span class="pill no">formulario no inicio</span><span class="pill no">bloquear mecanismo</span><span class="pill no">pedir telefone sem motivo</span><span class="pill no">sem consentimento</span></p>
+        <h3>Boa coleta</h3>
+        <div class="copy">Perfeito, Ana. Vou deixar anotado: e para sua mae, a maior preocupacao e repeticao de conversas, e voce quer olhar sem promessa exagerada.</div>
+      </div>
+    </section>
+
+    <section id="intervencao" class="grid two">
+      <div class="plain-panel">
+        <h2>Regra De Intervencao Da IA</h2>
+        <div class="tabs">
+          <button class="active" data-tab="answer">Responder</button>
+          <button data-tab="bridge">Voltar ao script</button>
+          <button data-tab="advance">Avancar</button>
+          <button data-tab="handoff">Fallback</button>
+        </div>
+        <div id="answer" class="tab-panel active">
+          <h3>1. Responder primeiro</h3>
+          <p>A IA nunca ignora a pergunta do lead para empurrar roteiro. Ela responde curto, no tom do lead, e evita aula longa.</p>
+          <div class="copy">Entendo seu pe atras. Esse nicho tem anuncio ruim mesmo.</div>
+        </div>
+        <div id="bridge" class="tab-panel">
+          <h3>2. Fazer ponte</h3>
+          <p>Depois de responder, a IA conecta a resposta ao proximo bloco do roteiro.</p>
+          <div class="copy">Por isso eu separo promessa exagerada de internet da oferta real: ingredientes, garantia e checkout.</div>
+        </div>
+        <div id="advance" class="tab-panel">
+          <h3>3. Avancar sem parecer script</h3>
+          <p>A proxima pergunta deve parecer consequencia natural da conversa.</p>
+          <div class="copy">O que voce prefere entender primeiro: os ingredientes ou como funciona a garantia?</div>
+        </div>
+        <div id="handoff" class="tab-panel">
+          <h3>4. Resolver sem humano</h3>
+          <p>Lead quente recebe checkout. Risco medico, raiva, suporte pos-compra ou confusao de produto entram em pausa segura ou follow-up automatico.</p>
+          <div class="copy">Nesse ponto eu nao quero te empurrar para compra. Se tem diagnostico, remedio ou duvida medica, confere a lista de ingredientes com medico ou farmaceutico primeiro.</div>
+        </div>
+      </div>
+      <div class="plain-panel">
+        <h2>Red Lines</h2>
+        <p><span class="pill no">nao cura</span><span class="pill no">nao reverte Alzheimer</span><span class="pill no">nao previne demencia</span><span class="pill no">nao celebridade</span><span class="pill no">nao FDA approved</span></p>
+        <h3>Pode usar</h3>
+        <p><span class="pill ok">suporte de memoria</span><span class="pill ok">envelhecimento cognitivo saudavel</span><span class="pill ok">ritual sublingual</span><span class="pill ok">garantia de 90 dias</span></p>
+        <h3>Guardrail natural</h3>
+        <div class="copy">Se existe diagnostico, remedio ou acompanhamento medico, o certo e conferir a lista de ingredientes com medico ou farmaceutico antes de usar.</div>
+      </div>
+    </section>
+
+    <section id="imperio">
+      <h2>Camada Imperio</h2>
+      <table class="table">
+        <thead><tr><th>Evento</th><th>Quando dispara</th><th>Por que importa</th></tr></thead>
+        <tbody>
+          <tr><td>LeadIntentDetected</td><td>Primeira resposta util do lead.</td><td>Separa curioso de lead real.</td></tr>
+          <tr><td>PainIdentified</td><td>IA detecta dor principal.</td><td>Personaliza follow-up e argumento.</td></tr>
+          <tr><td>CRMSoftIdentityCaptured</td><td>Lead informa nome.</td><td>Personaliza a conversa e recuperacao.</td></tr>
+          <tr><td>CRMContactCaptured</td><td>Lead informa email/telefone com contexto.</td><td>Permite follow-up fora da sessao.</td></tr>
+          <tr><td>ConsentCaptured</td><td>Lead aceita receber resumo/link.</td><td>Guarda base de permissao e timestamp.</td></tr>
+          <tr><td>MechanismDelivered</td><td>IA explicou MemoFlow pelo mecanismo.</td><td>Marco de educacao antes da oferta.</td></tr>
+          <tr><td>ObjectionDetected</td><td>Lead fala preco, golpe, prova, seguranca ou familia.</td><td>Define play de recuperacao.</td></tr>
+          <tr><td>OfferReady</td><td>Lead esta quente ou pediu link.</td><td>Momento de checkout ou pausa segura.</td></tr>
+          <tr><td>CheckoutSent</td><td>Link enviado.</td><td>Ativa follow-up curto e attribution.</td></tr>
+          <tr><td>AutoResolutionTriggered</td><td>Risco medico, suporte, confusao ou limite de fechamento.</td><td>Protege conversao e compliance sem operador.</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">Arquivo de estrategia. A implementacao final deve usar mensagens livres para o lead e decisao automatica interna da IA.</div>
+  </footer>
+  <script>
+    document.querySelectorAll(".tabs button").forEach(function(button) {
+      button.addEventListener("click", function() {
+        document.querySelectorAll(".tabs button").forEach(function(item) { item.classList.remove("active"); });
+        document.querySelectorAll(".tab-panel").forEach(function(panel) { panel.classList.remove("active"); });
+        button.classList.add("active");
+        document.getElementById(button.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>

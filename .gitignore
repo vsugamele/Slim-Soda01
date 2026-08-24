@@ -27,6 +27,8 @@
 !/buy-page/**
 !/chat-x1/
 !/chat-x1/**
+!/chat-x1-memoflow/
+!/chat-x1-memoflow/**
 !/api/
 !/api/**
 
