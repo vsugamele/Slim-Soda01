@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Story-Engine 7 Beats · Diagrama visual (DR methodology)</title>
+<style>
+  :root{--bg:#0b0d10;--panel:#14181d;--panel-2:#1c2128;--border:#2a313b;--text:#e7eaf0;--muted:#9aa3b2;--accent:#ff8a3d;--gold:#ffd166;--green:#06a77d;--red:#c0392b;--blue:#4ea1ff;--magenta:#C73EAB}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 24px 96px}
+  header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:28px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,138,61,0.12);color:var(--accent);border:1px solid rgba(255,138,61,0.3);margin-bottom:12px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-0.02em}
+  h1 .accent{color:var(--accent)}
+  h2{font-size:24px;margin:36px 0 14px;padding-top:14px;border-top:1px solid var(--border);letter-spacing:-0.01em;color:var(--gold)}
+  h3{font-size:17px;margin:22px 0 10px;color:var(--accent)}
+  p,li{color:var(--text);font-size:14.5px}
+  .muted{color:var(--muted);font-size:13px}
+  .lede{font-size:17px;color:#d3d8e0;max-width:820px}
+  .callout{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);padding:14px 18px;border-radius:8px;margin:18px 0}
+
+  /* Diagram styling */
+  .diagram-container{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:24px;margin:24px 0}
+  .diagram-svg{display:block;margin:0 auto;max-width:100%;height:auto}
+  .beat-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;margin:16px 0;padding:18px 22px;position:relative}
+  .beat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--beat-color);border-radius:10px 0 0 10px}
+  .beat-num{position:absolute;top:14px;right:18px;font-size:42px;font-weight:900;color:var(--beat-color);opacity:0.25;line-height:1}
+  .beat-card h3{margin:0 0 4px;font-size:17px;color:var(--beat-color)}
+  .beat-card .beat-meta{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+  .beat-card p{margin:6px 0;font-size:14px}
+  .beat-card .verbatim{background:var(--panel-2);border-left:3px solid var(--beat-color);padding:8px 12px;margin:8px 0;font-family:Georgia,serif;font-style:italic;font-size:13px;border-radius:3px}
+  .footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+  .back-link{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none;font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="../../index.html">← Hub methodology</a>
+
+  <header>
+    <span class="badge">Methodology · Story-Engine 7 Beats · cross-project durável</span>
+    <h1>Story-Engine 7 Beats <span class="accent">· Diagrama Visual</span></h1>
+    <p class="lede">Os <strong>7 beats canônicos</strong> de qualquer copy DR (LP, VSL, advertorial, chat). Framework replicável cross-vertical: <strong>Lead → Bridge → Invalidate → Mechanism → Proof → Action → Close</strong>. Cada beat tem: função narrativa, técnica psicológica, exemplo verbatim, red line check.</p>
+  </header>
+
+  <div class="callout">
+    <strong>🎯 Por que 7 beats funciona:</strong> copy sem framework vira rant. Copy com framework vira jornada. <strong>Lead</strong> captura atenção em 3s. <strong>Bridge</strong> promete "stay for X minutos". <strong>Invalidate</strong> destrói solução anterior. <strong>Mechanism</strong> instala novo modelo mental. <strong>Proof</strong> valida com testemunho. <strong>Action</strong> ritualiza uso. <strong>Close</strong> fecha com offer binário (Path 1/2). <strong>Cross-project:</strong> os 7 beats aparecem em TUDO (Maria 47 v3 SlimSoda, advertorial-uva-v1 Cardio, advertorial-lipedema-v1 Linfozen, 3 chat-x1 briefings).
+  </div>
+
+  <h2>🎬 Diagrama visual (7 beats flow)</h2>
+  <div class="diagram-container">
+    <svg viewBox="0 0 1100 360" class="diagram-svg" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#ff8a3d;stop-opacity:0.15"/>
+          <stop offset="100%" style="stop-color:#ff8a3d;stop-opacity:0"/>
+        </linearGradient>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L10,5 L0,10 z" fill="#ff8a3d"/>
+        </marker>
+      </defs>
+
+      <!-- Beat 1: Lead -->
+      <g transform="translate(20, 80)">
+        <rect width="140" height="120" rx="8" fill="#ff8a3d" opacity="0.15" stroke="#ff8a3d" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#ff8a3d" font-size="32" font-weight="900" font-family="Georgia,serif">1</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">LEAD</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Hook · 3s</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">curiosity gap</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">loss tease</text>
+      </g>
+      <line x1="160" y1="140" x2="180" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 2: Bridge -->
+      <g transform="translate(180, 80)">
+        <rect width="140" height="120" rx="8" fill="#ffd166" opacity="0.15" stroke="#ffd166" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#ffd166" font-size="32" font-weight="900" font-family="Georgia,serif">2</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">BRIDGE</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Commit · 30s</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">"Stay for 12 min"</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">sunk cost trigger</text>
+      </g>
+      <line x1="320" y1="140" x2="340" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 3: Invalidate -->
+      <g transform="translate(340, 80)">
+        <rect width="140" height="120" rx="8" fill="#c0392b" opacity="0.15" stroke="#c0392b" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#c0392b" font-size="32" font-weight="900" font-family="Georgia,serif">3</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">INVALIDATE</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Destroy old · 1m</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">4 things don't work</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">old model invalid</text>
+      </g>
+      <line x1="480" y1="140" x2="500" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 4: Mechanism -->
+      <g transform="translate(500, 80)">
+        <rect width="140" height="120" rx="8" fill="#4ea1ff" opacity="0.15" stroke="#4ea1ff" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#4ea1ff" font-size="32" font-weight="900" font-family="Georgia,serif">4</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">MECHANISM</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Reveal · 2m</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">3-4 ingredientes</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">order matters</text>
+      </g>
+      <line x1="640" y1="140" x2="660" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 5: Proof -->
+      <g transform="translate(660, 80)">
+        <rect width="140" height="120" rx="8" fill="#06a77d" opacity="0.15" stroke="#06a77d" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#06a77d" font-size="32" font-weight="900" font-family="Georgia,serif">5</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">PROOF</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Validate · 1.5m</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">3 testemunhos</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">survivor + stat</text>
+      </g>
+      <line x1="800" y1="140" x2="820" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 6: Action -->
+      <g transform="translate(820, 80)">
+        <rect width="140" height="120" rx="8" fill="#C73EAB" opacity="0.15" stroke="#C73EAB" stroke-width="1.5"/>
+        <text x="70" y="32" text-anchor="middle" fill="#C73EAB" font-size="32" font-weight="900" font-family="Georgia,serif">6</text>
+        <text x="70" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">ACTION</text>
+        <text x="70" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Ritual · 1m</text>
+        <text x="70" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">"30s before coffee"</text>
+        <text x="70" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">3-3-2 cadence</text>
+      </g>
+      <line x1="960" y1="140" x2="980" y2="140" stroke="#ff8a3d" stroke-width="2" marker-end="url(#arr)"/>
+
+      <!-- Beat 7: Close -->
+      <g transform="translate(980, 80)">
+        <rect width="100" height="120" rx="8" fill="#ff8a3d" opacity="0.20" stroke="#ff8a3d" stroke-width="2"/>
+        <text x="50" y="32" text-anchor="middle" fill="#ff8a3d" font-size="32" font-weight="900" font-family="Georgia,serif">7</text>
+        <text x="50" y="56" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="700">CLOSE</text>
+        <text x="50" y="74" text-anchor="middle" fill="#9aa3b2" font-size="10" font-style="italic">Path 1/2</text>
+        <text x="50" y="92" text-anchor="middle" fill="#9aa3b2" font-size="10">CTA binário</text>
+        <text x="50" y="106" text-anchor="middle" fill="#9aa3b2" font-size="10">MBG anchor</text>
+      </g>
+
+      <!-- Top label -->
+      <text x="550" y="30" text-anchor="middle" fill="#9aa3b2" font-size="11" text-transform="uppercase" letter-spacing="2">Jornada de 7 beats · cross-vertical · 6-8 minutos total</text>
+      <text x="550" y="50" text-anchor="middle" fill="#e7eaf0" font-size="14" font-weight="600">Lead → Bridge → Invalidate → Mechanism → Proof → Action → Close</text>
+
+      <!-- Bottom timing -->
+      <text x="550" y="240" text-anchor="middle" fill="#9aa3b2" font-size="11" font-style="italic">3s · 30s · 1m · 2m · 1.5m · 1m · 30s = ~6-8 min total</text>
+
+      <!-- Conversion driver label -->
+      <text x="550" y="280" text-anchor="middle" fill="#ff8a3d" font-size="12" font-weight="700" letter-spacing="0.05em">EMOTION: curiosity → commitment → shame → revelation → hope → action → decision</text>
+      <text x="550" y="305" text-anchor="middle" fill="#9aa3b2" font-size="10">5 invalidations → 4 mechanisms → 3 testimonies → 2 options → 1 decision</text>
+      <text x="550" y="325" text-anchor="middle" fill="#06a77d" font-size="11" font-weight="700">PATTERN: every step narrows the funnel. 7 inputs → 1 binary decision (Path 1/2).</text>
+    </svg>
+  </div>
+
+  <h2>🎯 Os 7 beats em detalhe (com verbatim por beat)</h2>
+
+  <div class="beat-card" style="--beat-color:#ff8a3d">
+    <div class="beat-num">1</div>
+    <h3>LEAD · Hook · 3s</h3>
+    <div class="beat-meta">Função: capturar atenção em 3 segundos. Pattern interrupt. Curiosity gap aberto. Loss tease.</div>
+    <p><strong>Técnica psicológica:</strong> cérebro humano tem 3s de attention span. Lead precisa abrir um loop ("o que vem depois?"). Mix de 2-3 tipos de urgência fabricada (ver <a href="../urgency-7-types/index.html" style="color:var(--accent)">urgency-7-types</a>).</p>
+    <div class="verbatim">"Researchers at UVA Just Discovered the Real Driver of High Blood Pressure After 60 — And It's Not Cholesterol."</div>
+    <p class="muted">SlimSoda: "For eight years, I tried everything." · Cardio: "Mr. Roberts, 64, didn't make it to his granddaughter's recital." · Linfozen: "If your leg looks like this... Or this... Maybe it's not fat."</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#ffd166">
+    <div class="beat-num">2</div>
+    <h3>BRIDGE · Commit · 30s</h3>
+    <div class="beat-meta">Função: pedir commitment de tempo. Sunk cost. "Stay for X minutos, then decide."</div>
+    <p><strong>Técnica psicológica:</strong> sunk cost + commitment device. Pessoa que ouviu 30s tem 3× mais chance de chegar ao close do que pessoa que acabou de chegar.</p>
+    <div class="verbatim">"Stay with me for 12 minutes. If you have ever been the woman blaming her body for failing at something you were not even doing right, this is for you."</div>
+    <p class="muted">Cross-vertical: 12 min (SlimSoda) · 30s (Linfozen ritual) · 17s (Linfozen teaser) · "I'm about to tell you something" (Cardio).</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#c0392b">
+    <div class="beat-num">3</div>
+    <h3>INVALIDATE · Destroy old · 1m</h3>
+    <div class="beat-meta">Função: destruir modelo mental anterior. 4 invalidações. Old way = broken.</div>
+    <p><strong>Técnica psicológica:</strong> criar cognitive dissonance. Reader precisa de novo modelo pra resolver. Sem invalidar, mechanism não instala.</p>
+    <div class="verbatim">"Diet won't fix it. Exercise won't fix it. Ozempic won't fix it. Twenty-thousand-dollar liposuction won't fix it. Three ingredients. Ten seconds a day. That's the whole ritual."</div>
+    <p class="muted">SlimSoda: 3 attempts (water pills / ACV / baking soda alone) + "the order is what matters" · Cardio: "no statin dissolves cement" · Linfozen: 4 invalidações + conspiracy ($4B industry).</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#4ea1ff">
+    <div class="beat-num">4</div>
+    <h3>MECHANISM · Reveal · 2m</h3>
+    <div class="beat-meta">Função: instalar novo modelo mental. 3-4 ingredientes named. Order matters. "Miss one, and the whole thing collapses."</div>
+    <p><strong>Técnica psicológica:</strong> new mental model + sequence dependency. Reader precisa aprender a ordem pra ser digno do produto.</p>
+    <div class="verbatim">"Wake. Protect. Repair. Flip. The order is the mechanism. Skip one, and the whole thing weakens. This is what the viral videos leave out — and what most 'berberine + baking soda' recipes on Amazon miss entirely."</div>
+    <p class="muted">SlimSoda: Wake (baking soda) → Protect (gingerol) → Repair (NAD+) → Flip (berberine) · Cardio: Bitter Honey (dissolve fibrin) → Cagnulari (soften) → Botanical (inflammation) → Mineral (stabilize) · Linfozen: Bromelain (dissolve capsule) → Dandelion (lymphatic) → Cleavers (anti-inflammatory).</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#06a77d">
+    <div class="beat-num">5</div>
+    <h3>PROOF · Validate · 1.5m</h3>
+    <div class="beat-meta">Função: validar mechanism com testemunho + stat. 3 testemunhos. Survivor contrast (vs mortality beat 2 ou 3).</div>
+    <p><strong>Técnica psicológica:</strong> social proof + survivor bias. Pessoa que sobreviveu é mais convincente que pessoa que curou (porque "no cure" é aceito).</p>
+    <div class="verbatim">"Patricia R., 67 years, Tampa, FL. 8 years on Lisinopril. After 6 weeks: 120/80. She cried in her doctor's office. I was completely wrong about the supplements my daughter kept trying to give me."</div>
+    <p class="muted">Cross-vertical: Patricia 67 (Cardio) · Lisa 39 (Linfozen) · Jessica 51 (Linfaflow) · Karen 52 RN (Linfozen skeptic MD converted).</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#C73EAB">
+    <div class="beat-num">6</div>
+    <h3>ACTION · Ritual · 1m</h3>
+    <div class="beat-meta">Função: ritualizar uso. 3-3-2 cadence. "X seconds. Y minutes. Z times a day." Commitment action.</div>
+    <p><strong>Técnica psicológica:</strong> implementation intention (Gollwitzer). Específico + situational = 2-3× mais adherence que vago.</p>
+    <div class="verbatim">"Two capsules. Before coffee. Before breakfast. 30 seconds. That's the whole ritual. 100% compatible with Losartan, Lisinopril, and Amlodipine. Always talk to your doctor before changing your routine."</div>
+    <p class="muted">SlimSoda: "One scoop. One glass. Three seconds." · Cardio: "Two capsules. Before coffee. 30 seconds." · Linfozen: "Ten seconds. Every morning. In water. Before coffee." · Linfaflow: "4 drops under tongue. 30 seconds hold. 4-stage: Break/Sweep/Activate/Purify."</p>
+  </div>
+
+  <div class="beat-card" style="--beat-color:#ff8a3d">
+    <div class="beat-num">7</div>
+    <h3>CLOSE · Path 1/2 · 30s</h3>
+    <div class="beat-meta">Função: fechar com decisão binária. Path 1 = loss frame. Path 2 = gain frame + Most Popular.</div>
+    <p><strong>Técnica psicológica:</strong> binary choice (Kahneman) + loss aversion. 70%+ do tráfego vai pro Path 2 (Most Popular badge).</p>
+    <div class="verbatim">"Path 1: I'm already on medication. Single bottle $49, start with 30-day supply. Path 2: I'm done waiting for the pill to work. 6 bottles $294, 90-day protocol with empty-bottle money-back guarantee. Most Popular."</div>
+    <p class="muted">Cross-vertical: ver <a href="../path-decision-variants/index.html" style="color:var(--accent)">path-decision-variants</a> para 5 frameworks diferentes (Loss/Identity/Cost/Time/Emotion).</p>
+  </div>
+
+  <h2>📐 Como aplicar (workflow)</h2>
+  <ol>
+    <li><strong>Antes de escrever QUALQUER copy DR</strong>, abre esse diagrama</li>
+    <li><strong>Escolhe archetypal stories</strong> (<a href="../story-archetypal-library/index.html" style="color:var(--accent)">story-archetypal-library</a>) por beat</li>
+    <li><strong>Combina com Path 1/2 variants</strong> (<a href="../path-decision-variants/index.html" style="color:var(--accent)">path-decision-variants</a>) no close (beat 7)</li>
+    <li><strong>Mix urgency types</strong> (<a href="../urgency-7-types/index.html" style="color:var(--accent)">urgency-7-types</a>) por beat (especialmente beat 1 lead + beat 3 invalidate)</li>
+    <li><strong>Valida compliance</strong> (<a href="../urgency-compliance-guide/index.html" style="color:var(--accent)">urgency-compliance-guide</a>) por beat antes de ship</li>
+    <li><strong>Timing:</strong> 6-8 min total (3s + 30s + 1m + 2m + 1.5m + 1m + 30s). Respeitar.</li>
+  </ol>
+
+  <h2>🔗 Cross-project: como aplicar a QUALQUER copy DR</h2>
+  <ol>
+    <li><strong>Lead (beat 1)</strong> é universal — toda copy abre com hook. Mix 2-3 urgency types.</li>
+    <li><strong>Bridge (beat 2)</strong> é commitment — pedir tempo. "Stay for X min" / "I'm about to tell you".</li>
+    <li><strong>Invalidate (beat 3)</strong> é destruction — 4 invalidações ou 1 narrative arc (Maria 47 = 8 anos tentativas).</li>
+    <li><strong>Mechanism (beat 4)</strong> é reveal — 3-4 ingredientes named, sequence matters.</li>
+    <li><strong>Proof (beat 5)</strong> é validation — 3 testemunhos (survivor contrast) + 3 stats (canon).</li>
+    <li><strong>Action (beat 6)</strong> é ritual — 3-3-2 cadence + compatibility + compliance call.</li>
+    <li><strong>Close (beat 7)</strong> é decision — Path 1/2 binary choice + Most Popular badge + MBG.</li>
+  </ol>
+
+  <h2>🔗 Relacionado</h2>
+  <ul>
+    <li><a href="../black-gray-copy-stack/index.html" style="color:var(--accent)">black-gray-copy-stack/</a> — onde cada beat pode rodar (L1-L4)</li>
+    <li><a href="../story-archetypal-library/index.html" style="color:var(--accent)">story-archetypal-library/</a> — 15 archetypal stories que preenchem cada beat</li>
+    <li><a href="../path-decision-variants/index.html" style="color:var(--accent)">path-decision-variants/</a> — 5 frameworks de close (beat 7)</li>
+    <li><a href="../urgency-7-types/index.html" style="color:var(--accent)">urgency-7-types/</a> — 7 tipos de urgência por beat (especialmente beat 1)</li>
+  </ul>
+
+  <div class="footer">
+    Methodology · Story-Engine 7 Beats · cross-project durável · 24/ago/2026 · Diagrama visual SVG + 7 beat cards + workflow cross-vertical.
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urgency Compliance Guide · O que PASA / NÃO PASA no Meta 2026</title>
+<style>
+  :root{--bg:#0b0d10;--panel:#14181d;--panel-2:#1c2128;--border:#2a313b;--text:#e7eaf0;--muted:#9aa3b2;--green:#06a77d;--yellow:#ffd166;--red:#c0392b;--accent:#ff8a3d;--blue:#4ea1ff;--gold:#ffd166}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 24px 96px}
+  header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:28px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,138,61,0.12);color:var(--accent);border:1px solid rgba(255,138,61,0.3);margin-bottom:12px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-0.02em}
+  h1 .accent{color:var(--accent)}
+  h2{font-size:24px;margin:36px 0 14px;padding-top:14px;border-top:1px solid var(--border);letter-spacing:-0.01em;color:var(--gold)}
+  h3{font-size:17px;margin:22px 0 10px;color:var(--accent)}
+  p,li{color:var(--text);font-size:14.5px}
+  .muted{color:var(--muted);font-size:13px}
+  .lede{font-size:17px;color:#d3d8e0;max-width:820px}
+  .callout{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);padding:14px 18px;border-radius:8px;margin:18px 0}
+  .grid{background:var(--panel);border:1px solid var(--border);border-radius:8px;margin:20px 0;overflow:hidden}
+  .grid-row{display:grid;grid-template-columns:30px 2fr 1.4fr 2fr 1fr;gap:0;border-bottom:1px solid var(--border);align-items:start}
+  .grid-row:last-child{border-bottom:none}
+  .grid-row.head{background:var(--panel-2);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted)}
+  .grid-row .cell{padding:12px 14px;font-size:13.5px}
+  .grid-row.head .cell{padding:9px 14px}
+  .status{display:inline-block;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase}
+  .pass{background:rgba(6,167,125,0.18);color:var(--green);border:1px solid rgba(6,167,125,0.4)}
+  .border{background:rgba(255,209,102,0.18);color:var(--yellow);border:1px solid rgba(255,209,102,0.4)}
+  .flag{background:rgba(192,57,43,0.18);color:var(--red);border:1px solid rgba(192,57,43,0.4)}
+  .footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+  .back-link{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none;font-size:13px}
+  @media(max-width:720px){.grid-row{grid-template-columns:1fr}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="../../index.html">← Hub methodology</a>
+
+  <header>
+    <span class="badge">Methodology · Urgency Compliance Guide · cross-project durável · Meta 2026</span>
+    <h1>Urgency Compliance Guide <span class="accent">· Meta 2026</span></h1>
+    <p class="lede">Tabela operacional do que <strong style="color:var(--green)">PASSA</strong> / <strong style="color:var(--yellow)">BORDERLINE</strong> / <strong style="color:var(--red)">FLAG</strong> no Meta Ad Review 2026. Cada técnica de urgência/scarcity tem nota + rationale + workaround. Cross-project: vale pra QUALQUER copy DR que roda em Meta (qualquer vertical).</p>
+  </header>
+
+  <div class="callout">
+    <strong>🎯 Princípio central:</strong> Meta review 2026 está mais agressivo com health claims. <strong>3 categorias de flag:</strong> (1) False advertising (stat fabricada, capability claim falso) · (2) Health claims (cure / treat / prevent disease) · (3) Misleading (timer fake, count fake, scarcity fake). <strong>Workaround geral:</strong> use o FRAMEWORK, não a frase. "Updated 11 min ago" passa porque é social proof real, não é timer fake. "Sale ends in 23:47" passa SE tem timer JavaScript real contando regressivamente. "Limited time offer" vago passa, "Today only" + "Don't miss" sem timer real = ❌ flag.
+  </div>
+
+  <h2>📊 Tabela operacional (verde / amarelo / vermelho)</h2>
+
+  <div class="grid">
+    <div class="grid-row head">
+      <div class="cell">#</div>
+      <div class="cell">Técnica</div>
+      <div class="cell">Status</div>
+      <div class="cell">Exemplo / Workaround</div>
+      <div class="cell">Risco</div>
+    </div>
+
+    <!-- TIMER -->
+    <div class="grid-row">
+      <div class="cell">1</div>
+      <div class="cell">Timer countdown real (JavaScript)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">"Sale ends in 23:47" com timer real contando regressivamente. Cookie session. Quando expira, link real para nova offer.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">2</div>
+      <div class="cell">Timer countdown fake (estático)</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">"Sale ends in 23:47" sem timer real. Imagem estática. ❌ Meta flag = false advertising.</div>
+      <div class="cell">🔴 ALTO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">3</div>
+      <div class="cell">"Offer expires when this video is taken down"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Reason why real (Lipedema community REALMENTE reporta vídeos sendo removidos). Estrutura narrativa, não timer fake.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">4</div>
+      <div class="cell">"Sale ends tonight"</div>
+      <div class="cell"><span class="status border">BORDERLINE</span></div>
+      <div class="cell">Se "tonight" = data real e a offer expira, passa. Se é repetível toda noite, ❌ flag.</div>
+      <div class="cell">🟡 Médio</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">5</div>
+      <div class="cell">"Today only" + "Don't miss"</div>
+      <div class="cell"><span class="status border">BORDERLINE</span></div>
+      <div class="cell">"Today only" vago sem timer real = borderline. Adicione timer real ou troque para "Limited time".</div>
+      <div class="cell">🟡 Médio</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">6</div>
+      <div class="cell">"Limited time offer"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Vago, sem claim específico, sem countdown. Sem problema. Use como fallback quando timer real não é viável.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">7</div>
+      <div class="cell">"Limited inventory" (vago)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">"Limited inventory" vago passa. Sem problema.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">8</div>
+      <div class="cell">"Only 5 left!" (número específico sem inventário real)</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">Se inventário real = 5, OK. Se inventário = 500 mas você diz "Only 5 left" = ❌ false advertising.</div>
+      <div class="cell">🔴 ALTO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">9</div>
+      <div class="cell">"43,029 already tried" (stat real)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Customer count real ou public stat. Sem problema. Use sempre que tiver o número.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">10</div>
+      <div class="cell">"89% saw X in 14 days" (stat fabricada)</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">Se for stat fabricada (n=5, 5 amigos do founder) = ❌. Se for real trial (n=240 internal) = OK. SEMPRE disclose n.</div>
+      <div class="cell">🔴 ALTO</div>
+    </div>
+
+    <!-- HEALTH CLAIMS -->
+    <div class="grid-row">
+      <div class="cell">11</div>
+      <div class="cell">"Cure X" / "Treat X" / "Prevent X"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Disease claim = FDA/FTC violation. Use "may support" / "helps with" / "associated with".</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">12</div>
+      <div class="cell">"Reverses [disease]" / "Cures [disease]"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Mesmo em user agency Meta. FDA/BBB risk permanece. Use "researchers found" / "study confirms".</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">13</div>
+      <div class="cell">"FDA approved"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Suplementos não são "FDA approved". Use "FDA registered facility" / "manufactured in FDA-inspected facility".</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">14</div>
+      <div class="cell">"Doctor recommended"</div>
+      <div class="cell"><span class="status border">BORDERLINE</span></div>
+      <div class="cell">Se for doctor real específico + você tem aprovação = OK. Se for "doctors recommend" genérico = ❌ false advertising.</div>
+      <div class="cell">🟡 Médio</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">15</div>
+      <div class="cell">"100% effective" / "guaranteed to work"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Capability claim absoluto. Use "many report" / "in our trial" / "may work for you".</div>
+      <div class="cell">🔴 ALTO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">16</div>
+      <div class="cell">"Stop your medication"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Life-threatening advice. Sempre "100% compatible" + "talk to your doctor".</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">17</div>
+      <div class="cell">"100% compatible with all three medications"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Compatibility claim com nome de medicamentos = OK. Sempre acompanhe de "talk to your doctor".</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="grid-row">
+      <div class="cell">18</div>
+      <div class="cell">"Updated 11 minutes ago" / "X new in last hour"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Social proof real (última atualização do feed, real-time activity). Sem problema.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">19</div>
+      <div class="cell">"38,427 readers this week" (count real)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">View count real (Clarity ou similar). Sem problema.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">20</div>
+      <div class="cell">"1,247 comments" (count real)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Comment count real. Sem problema. Assegure que tem 1247 comments (não 47 com "1,247+" no HTML).</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">21</div>
+      <div class="cell">UGC-style comments (likes, replies, "X hours ago")</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Estrutura social proof. Compensated disclosure. Sem problemas. SEMPRE adicione "compensated" se for fake.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">22</div>
+      <div class="cell">"4,000 Americans full cognitive recovery" (fabricated stat)</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Fabricated stat + disease claim = FTC violation + Meta flag. MemoPryl já caiu nesse (Brain Honey scam network).</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+
+    <!-- AUTHORITY -->
+    <div class="grid-row">
+      <div class="cell">23</div>
+      <div class="cell">"Dr. [name real] recommends" (sem autorização)</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Right of publicity violation. EXCEÇÃO: Dr. Sanjay Gupta (Cardio Clear brand owner autorizado).</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">24</div>
+      <div class="cell">"[Universidade] researchers found"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Se paper real publicado = OK. Se "researchers found" sem paper = ❌ false advertising. Cite paper (NEJM 2024, n=257).</div>
+      <div class="cell">🟡 Baixo-Médio</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">25</div>
+      <div class="cell">Deepfake voz de celebridade real</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Right of publicity crime em CA/NY + Meta review 100% flag. Use silhueta/ilustração.</div>
+      <div class="cell">🔴 CRÍTICO</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">26</div>
+      <div class="cell">Avatar-médica warm sister-figura (Dr. Helena, Dra Sarah Chen)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Avatar fictícia/marca registrada. SEMPRE use silhueta/ilustração para foto, não foto real sem autorização.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">27</div>
+      <div class="cell">"Brand owner / formulator autorizado" (Dr. Sanjay, Markus Davenport)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Brand owner do produto = pode usar nome. Dr. Sanjay Gupta (Cardio Clear), Markus Davenport (MemoFlow) — autorizados.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+
+    <!-- STORYTELLING -->
+    <div class="grid-row">
+      <div class="cell">28</div>
+      <div class="cell">"Every time this video goes up, it gets taken down"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Reason why (escassez fabricada com base real). Estrutura narrativa, não claim falso.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">29</div>
+      <div class="cell">"Mr. Roberts, 64, didn't make it" (mortality archetypal)</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Personagem FALECIDO (não narradora). Não é claim pessoal identificável. Identity cost via widow.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">30</div>
+      <div class="cell">"Industry buried this for 90 years"</div>
+      <div class="cell"><span class="status pass">PASSA</span></div>
+      <div class="cell">Anti-establishment frame. Estabelecido. Funciona em cold traffic desperate.</div>
+      <div class="cell">🟢 Baixo</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">31</div>
+      <div class="cell">"Big pharma is killing you" / "white-coat drug dealers"</div>
+      <div class="cell"><span class="status border">BORDERLINE</span></div>
+      <div class="cell">Borderline. Funciona em black hat, mas pode ser flagged em cold traffic. Teste em volume baixo antes de escalar.</div>
+      <div class="cell">🟡 Médio</div>
+    </div>
+    <div class="grid-row">
+      <div class="cell">32</div>
+      <div class="cell">"You'll die if you don't act" / "Your BP will kill you"</div>
+      <div class="cell"><span class="status flag">FLAG</span></div>
+      <div class="cell">❌ NEVER. Death threat + disease claim. Use "Every day you wait, more X happens" (temporal anchor, não threat).</div>
+      <div class="cell">🔴 ALTO</div>
+    </div>
+  </div>
+
+  <h2>🎯 4 Red lines duras (cross-tabela)</h2>
+  <ol>
+    <li><strong>❌ Endossos fabricados</strong> — usar Dr. X real, celebridade real, sem autorização. EXCEÇÃO: Dr. Sanjay Gupta (Cardio Clear brand owner).</li>
+    <li><strong>❌ Depoimentos idênticos cross-landing</strong> — mesma foto + mesmo nome em 2+ LPs.</li>
+    <li><strong>❌ Capability claims falsos</strong> — "cures X", "cures lymphedema", "stops Alzheimer's", "stop your medication".</li>
+    <li><strong>❌ Fake medical authority</strong> — deepfake doctor, inventar MD endorsement.</li>
+  </ol>
+
+  <h2>📋 Workflow de validação pré-launch</h2>
+  <ol>
+    <li><strong>Lista todos os claims da copy</strong> (1 por linha)</li>
+    <li><strong>Para cada claim:</strong> passa / borderline / flag (tabela acima)</li>
+    <li><strong>Se flag:</strong> reescreve. Use o workaround.</li>
+    <li><strong>Se borderline:</strong> testa em volume baixo ($50/dia × 3 dias) antes de escalar. Se review flag, reescreve.</li>
+    <li><strong>Se passa:</strong> ship.</li>
+    <li><strong>Sempre inclui disclosure block</strong> ("dietary supplement / not intended to diagnose / talk to your doctor")</li>
+  </ol>
+
+  <h2>🔗 Cross-project: como aplicar a QUALQUER copy DR</h2>
+  <ol>
+    <li><strong>Antes de veicular QUALQUER copy</strong>, roda a tabela de compliance</li>
+    <li><strong>Marca cada claim</strong> como verde / amarelo / vermelho</li>
+    <li><strong>Substitui amarelos por workarounds</strong> da coluna "Exemplo"</li>
+    <li><strong>Corta vermelhos</strong> sem exceção</li>
+    <li><strong>Inclui disclosure block</strong> (varia por produto, mas sempre presente)</li>
+    <li><strong>Testa em volume baixo primeiro</strong> ($50/dia × 3 dias) antes de escalar P3</li>
+    <li><strong>Monitora Meta review</strong> (se review flag, reescreve imediatamente)</li>
+  </ol>
+
+  <h2>🔗 Relacionado</h2>
+  <ul>
+    <li><a href="../black-gray-copy-stack/index.html" style="color:var(--accent)">black-gray-copy-stack/</a> — onde cada técnica pode rodar (L1-L4)</li>
+    <li><a href="../urgency-7-types/index.html" style="color:var(--accent)">urgency-7-types/</a> — 7 tipos de urgência com compliance por tipo</li>
+    <li><a href="../story-archetypal-library/index.html" style="color:var(--accent)">story-archetypal-library/</a> — 15 stories + compliance check por story</li>
+  </ul>
+
+  <div class="footer">
+    Methodology · Urgency Compliance Guide · cross-project durável · Meta 2026 · 32 técnicas catalogadas (verde/amarelo/vermelho).
+  </div>
+</div>
+</body>
+</html>
