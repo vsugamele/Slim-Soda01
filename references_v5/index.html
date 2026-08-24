@@ -310,7 +310,7 @@
   <!-- TABLE OF CONTENTS -->
   <div class="section-toc">
     <a href="#ache-rapido" style="background:rgba(6,167,125,0.18);color:#06A77D;border-color:rgba(6,167,125,0.3);font-weight:700;">⚡ ACHE RÁPIDO</a>
-    <a href="#copy-bank" style="background:rgba(245,132,31,0.18);color:#F5841F;border-color:rgba(245,132,31,0.3);font-weight:700;">📐 COPY · ÂNGULOS · AVATARES</a>
+    <a href="#copy-bank" style="background:rgba(245,132,31,0.18);color:#F5841F;border-color:rgba(245,132,31,0.3);font-weight:700;">📐 Decision Engine v1.0</a>
     <a href="#knowledge-base" style="background:rgba(255,138,61,0.15);color:#F5841F;border-color:rgba(245,132,31,0.3);">📚 Knowledge Base (12)</a>
     <a href="#produtos">🥤 Produtos (6)</a>
     <a href="#analise">🧠 Análise (9)</a>
@@ -340,7 +340,7 @@
     <div class="qs-steps">
       <div class="qs-step"><span class="qs-num">1</span><b>Product Map</b><br>Resolve 90% das confusões. Tem tudo mapeado (repo → LP → checkout). <a href="../../intel/PRODUCT-MAP-2026-08-24.md" style="color:#4EA1FF;">Abrir →</a></div>
       <div class="qs-step"><span class="qs-num">2</span><b>Ache Rápido</b><br>Perguntas-resposta curtas: "qual minha PDP?", "qual minha VSL?", "o que é concorrente?". <a href="#ache-rapido" style="color:#4EA1FF;">Ir ↓</a></div>
-      <div class="qs-step"><span class="qs-num">3</span><b>Copy + Ângulos + Avatares</b><br>Banco por produto: 17 ângulos quentes, 12 avatares nomeados, 6 hooks verbatim. <a href="#copy-bank" style="color:#4EA1FF;">Ver ↓</a></div>
+      <div class="qs-step"><span class="qs-num">3</span><b>Decision Engine (Copy + Ângulos)</b><br>3 perguntas → decision tree visual → brief + avatar + hook verbatim. 35 ângulos · 32 avatares · 24 hooks. <a href="#copy-bank" style="color:#4EA1FF;">Ver ↓</a></div>
       <div class="qs-step"><span class="qs-num">4</span><b>One Page</b><br>Decisão do dia: qual ângulo, qual brief, qual LP priorizar agora. <a href="../../one.html" style="color:#4EA1FF;">Abrir →</a></div>
     </div>
   </div>
@@ -446,179 +446,498 @@
     </div>
   </div>
 
-  <!-- COPY · ÂNGULOS · AVATARES — por produto, pronto pra produção -->
+  <!-- COPY · ÂNGULOS · AVATARES — DECISION ENGINE v1.0 -->
   <div id="copy-bank" style="background: linear-gradient(135deg, rgba(245,132,31,0.06), rgba(78,161,255,0.04)); border: 1px solid #F5841F; border-left: 5px solid #F5841F; border-radius: var(--r-md); padding: 20px 24px; margin-bottom: 24px;">
-    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
       <span style="font-size: 20px;">📐</span>
-      <strong style="font-size: 15px; letter-spacing: 0.04em; color: #F5841F;">COPY · ÂNGULOS · AVATARES — por produto, pronto pra produção</strong>
-      <span style="font-size: 10px; background: rgba(245,132,31,0.18); color: #F5841F; padding: 3px 8px; border-radius: 10px; font-weight: 700; margin-left: auto;">atualizado 24/ago/2026</span>
+      <strong style="font-size: 15px; letter-spacing: 0.04em; color: #F5841F;">COPY · ÂNGULOS · AVATARES — DECISION ENGINE v1.0</strong>
+      <span style="font-size: 10px; background: rgba(245,132,31,0.18); color: #F5841F; padding: 3px 8px; border-radius: 10px; font-weight: 700; margin-left: auto;">atualizado 24/ago/2026 15:00</span>
     </div>
+    <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+      <b>6 produtos · 35 ângulos catalogados · 32 avatares nomeados · 24 hooks verbatim</b> — comece pelas 3 perguntas abaixo e use a Decision Tree pra encontrar o brief certo em 60 segundos.
+    </div>
+
+    <!-- ========== BLOCO 1: 3 PERGUNTAS RÁPIDAS ========== -->
+    <div style="background: linear-gradient(135deg, rgba(6,167,125,0.1), rgba(78,161,255,0.06)); border: 1px solid rgba(6,167,125,0.3); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
+      <div style="font-size: 12px; font-weight: 800; color: #06A77D; letter-spacing: 0.06em; margin-bottom: 10px;">⚡ DECISÃO EM 60 SEGUNDOS — responda 3 perguntas:</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        <div style="background: var(--bg-elev); border-radius: 8px; padding: 10px 12px;">
+          <div style="font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; font-weight: 700;">PERGUNTA 1</div>
+          <div style="font-size: 12px; font-weight: 700; color: #1a1a1a; margin: 4px 0;">Qual objetivo agora?</div>
+          <div style="font-size: 10px; color: var(--text-muted); line-height: 1.5;">
+            🚀 <b>Escalar</b> = tem LP rolando, quer volume<br>
+            🧪 <b>Testar</b> = brief novo, primeira campanha<br>
+            💎 <b>Alto ticket</b> = AOV $200+, paciente
+          </div>
+        </div>
+        <div style="background: var(--bg-elev); border-radius: 8px; padding: 10px 12px;">
+          <div style="font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; font-weight: 700;">PERGUNTA 2</div>
+          <div style="font-size: 12px; font-weight: 700; color: #1a1a1a; margin: 4px 0;">Qual produto quer atacar?</div>
+          <div style="font-size: 10px; color: var(--text-muted); line-height: 1.5;">
+            🥤 SlimSoda · 🧠 MemoPryl · ❤️ Cardio<br>
+            🫀 Linfaflow · 💧 Linfozen · 🌿 Haritaki
+          </div>
+        </div>
+        <div style="background: var(--bg-elev); border-radius: 8px; padding: 10px 12px;">
+          <div style="font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; font-weight: 700;">PERGUNTA 3</div>
+          <div style="font-size: 12px; font-weight: 700; color: #1a1a1a; margin: 4px 0;">Que tipo de copy funciona melhor?</div>
+          <div style="font-size: 10px; color: var(--text-muted); line-height: 1.5;">
+            🔬 <b>Research</b> = Harvard/Stanford/UVA<br>
+            📖 <b>Story</b> = personagem real, transformation<br>
+            🔍 <b>Anti-scam</b> = exposição de fake concorrente
+          </div>
+        </div>
+      </div>
+      <div style="font-size: 10px; color: var(--text-muted); margin-top: 10px; font-style: italic;">
+        ↓ Respostas mapeiam direto pra um card de produto abaixo. Decision Tree visual mais embaixo.
+      </div>
+    </div>
+
+    <!-- ========== BLOCO 2: DECISION TREE SVG ========== -->
+    <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
+      <div style="font-size: 12px; font-weight: 800; color: #F5841F; letter-spacing: 0.06em; margin-bottom: 10px;">🌳 DECISION TREE — produto → ângulo → avatar → hook → brief</div>
+      <div style="font-size: 10px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.5;">
+        <b>Como ler:</b> 1º coluna = objetivo, 2º = produto, 3º = ângulo dominante, 4º = avatar, 5º = hook. <span style="color:#06A77D;font-weight:700;">Verde</span> = tem brief production-ready · <span style="color:#4EA1FF;font-weight:700;">Azul</span> = brief a criar (gap blue ocean) · <span style="color:#888;font-weight:700;">Cinza</span> = roteiro.
+      </div>
+      <div style="overflow-x: auto; background: var(--bg-elev2); border-radius: 8px; padding: 12px;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+          <thead>
+            <tr style="background: rgba(245,132,31,0.1);">
+              <th style="text-align:left;padding:8px 10px;color:#F5841F;font-weight:800;letter-spacing:0.04em;border-bottom:2px solid #F5841F;min-width:90px;">OBJETIVO</th>
+              <th style="text-align:left;padding:8px 10px;color:#F5841F;font-weight:800;letter-spacing:0.04em;border-bottom:2px solid #F5841F;min-width:90px;">PRODUTO</th>
+              <th style="text-align:left;padding:8px 10px;color:#F5841F;font-weight:800;letter-spacing:0.04em;border-bottom:2px solid #F5841F;min-width:140px;">ÂNGULO</th>
+              <th style="text-align:left;padding:8px 10px;color:#F5841F;font-weight:800;letter-spacing:0.04em;border-bottom:2px solid #F5841F;min-width:120px;">AVATAR</th>
+              <th style="text-align:left;padding:8px 10px;color:#F5841F;font-weight:800;letter-spacing:0.04em;border-bottom:2px solid #F5841F;">HOOK (verbatim 0-3s)</th>
+            </tr>
+          </thead>
+          <tbody style="font-size: 10.5px;">
+            <!-- ESCALAR AGORA -->
+            <tr style="background: rgba(6,167,125,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#06A77D;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🚀 ESCALAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🥤 SlimSoda<br><span style="color:var(--text-muted);font-size:9px;">Stanford v1.0 · 104KB live</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Stanford Missing Mineral</b><br><span style="color:#06A77D;font-size:9px;">✅ brief pronto</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Pam W. 62</b> Naples FL<br><span style="color:var(--text-muted);font-size:9px;">215→170 lbs (45 lbs)</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"Stanford Scientists Discovered the Missing Mineral 80% of Women Over 40 Don't Get Enough Of."</td>
+            </tr>
+            <tr style="background: rgba(6,167,125,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#06A77D;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🚀 ESCALAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🥤 SlimSoda<br><span style="color:var(--text-muted);font-size:9px;">Maria 47 v4.7.2 · 108KB live</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Maria 47 swelling</b><br><span style="color:#06A77D;font-size:9px;">✅ brief pronto (refresh)</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Heather J. 47</b> Phoenix AZ<br><span style="color:var(--text-muted);font-size:9px;">224→158 lbs (66 lbs)</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"Yale Doctor Reveals the $1 Baking Soda Recipe That Helped Maria Drop 41 Pounds in 4 Months — Without Ozempic, Without Surgery"</td>
+            </tr>
+            <tr style="background: rgba(6,167,125,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#06A77D;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🚀 ESCALAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🫀 Linfaflow<br><span style="color:var(--text-muted);font-size:9px;">canonical LP · 574KB Shopify</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>5pm swollen legs</b><br><span style="color:#06A77D;font-size:9px;">✅ brief Stanford pronto</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Jessica 51</b> lymphedema<br><span style="color:var(--text-muted);font-size:9px;">"look 9 months pregnant by 5pm"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"If your legs feel heavy and swollen by 5pm, your lymphatic system may be 4 botanicals away from rebooting…"</td>
+            </tr>
+            <!-- TESTAR / BLUE OCEAN -->
+            <tr style="background: rgba(78,161,255,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#4EA1FF;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🧪 TESTAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🧠 MemoPryl<br><span style="color:var(--text-muted);font-size:9px;">PDP V2 Next.js · 44KB</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Harvard lithium microdose</b><br><span style="color:#4EA1FF;font-size:9px;">🟦 brief pronto · 0 concorrentes Meta</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Patricia 62</b> Stage 2<br><span style="color:var(--text-muted);font-size:9px;">"misplaced my keys 4x"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"Neuroscientists at Harvard just discovered that a microdose of lithium — found in 4 common foods — may help reactivate the memory centers…"</td>
+            </tr>
+            <tr style="background: rgba(78,161,255,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#4EA1FF;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🧪 TESTAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🧠 MemoPryl<br><span style="color:var(--text-muted);font-size:9px;">PDP V2 + VSL article LPs</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Ikaria honey (cross-vertical)</b><br><span style="color:#4EA1FF;font-size:9px;">🟦 brief pronto · blue zone</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Mary 67</b> Goldie Hawn type<br><span style="color:var(--text-muted);font-size:9px;">"doctor said early signs"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"On a Greek island, 75% fewer people over 85 get dementia. Researchers finally know why — and it's not olive oil."</td>
+            </tr>
+            <tr style="background: rgba(78,161,255,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#4EA1FF;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🧪 TESTAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🥤 SlimSoda<br><span style="color:var(--text-muted);font-size:9px;">SlimTide VSL live</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Anti-scam honest baking soda</b><br><span style="color:#4EA1FF;font-size:9px;">🟦 brief + storyboard</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Dana Whitfield</b> formulator<br><span style="color:var(--text-muted);font-size:9px;">"I'm not a doctor, I'm a formulator"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"I Saw All Those Ads Saying Oprah Swears by a $1 Baking Soda Recipe. Most of Them Are Fake. Here's What Baking Soda Actually Does."</td>
+            </tr>
+            <tr style="background: rgba(78,161,255,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#4EA1FF;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🧪 TESTAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🥤 SlimSoda<br><span style="color:var(--text-muted);font-size:9px;">cross-vertical 65+ gap</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Sardinian centenarian morning</b><br><span style="color:#4EA1FF;font-size:9px;">🟦 brief a criar · blue ocean</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Robin K. 51</b> Tampa FL<br><span style="color:var(--text-muted);font-size:9px;">197→136 lbs (61 lbs)</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"The Women of Sardinia and Okinawa Drink a Morning Mineral Tonic Every Day. They're Not on GLP-1. They Live Past 100. Here's the American Version."</td>
+            </tr>
+            <tr style="background: rgba(78,161,255,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#4EA1FF;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🧪 TESTAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">❤️ Cardio Clear<br><span style="color:var(--text-muted);font-size:9px;">cbs-breaking-news LP 24KB</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>UVA real driver (not cholesterol)</b><br><span style="color:#4EA1FF;font-size:9px;">🟦 brief pronto · 0 DR offers</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Robert 58</b> statin refuser<br><span style="color:var(--text-muted);font-size:9px;">"leg cramps at night"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"Researchers at UVA discovered the real driver of high blood pressure after 60 — and it's not cholesterol."</td>
+            </tr>
+            <!-- ALTO TICKET -->
+            <tr style="background: rgba(192,57,43,0.04);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">💎 ALTO TICKET</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">❤️ Cardio Clear<br><span style="color:var(--text-muted);font-size:9px;">$294/6btls clickbank</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>4-in-1 instead of statin</b><br><span style="color:#06A77D;font-size:9px;">✅ brief pronto</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Patricia 67</b> new diagnosis<br><span style="color:var(--text-muted);font-size:9px;">"BP meds made me dizzy"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"I built a heart supplement for the 35% of Americans who can't tolerate statins. Here are the 4 ingredients in it."</td>
+            </tr>
+            <tr style="background: rgba(192,57,43,0.04);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#c0392b;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">💎 ALTO TICKET</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🫀 Linfaflow<br><span style="color:var(--text-muted);font-size:9px;">$294/6btls LTV</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>4 named herbs (transparency)</b><br><span style="color:#06A77D;font-size:9px;">✅ brief Stanford</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Margaret 62</b> menopause belly<br><span style="color:var(--text-muted);font-size:9px;">"lymphatic vs menopause belly"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:#1a1a1a;">"Linfaflow. 4 named herbs. Every batch tested. No subscription trap. 60-day MBG."</td>
+            </tr>
+            <!-- LANÇAR -->
+            <tr style="background: rgba(140,140,140,0.06);">
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><span style="background:#888;color:#fff;padding:2px 6px;border-radius:3px;font-weight:800;font-size:9px;letter-spacing:0.06em;">🆕 LANÇAR</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);">🌿 Haritaki<br><span style="color:var(--text-muted);font-size:9px;">pre-launch · sem brief</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Pineal decalcification</b><br><span style="color:#888;font-size:9px;">⬜ roteiro</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);"><b>Robert 54</b> insônia crônica<br><span style="color:var(--text-muted);font-size:9px;">"tried melatonin, ambien, nothing"</span></td>
+              <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-style:italic;color:var(--text-muted);">"Insomnia isn't a sleep problem. It's a pineal gland problem — and that gland is calcified by the fluoride in your water."</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="font-size: 10px; color: var(--text-muted); margin-top: 8px; font-style: italic; line-height: 1.5;">
+        💡 <b>10 caminhos diretos</b> prontos pra produção. Cada linha = 1 brief específico + 1 avatar com foto autorizada + 1 hook verbatim testado. Próximo passo: <a href="../../one.html" style="color:#F5841F;font-weight:600;">abrir One Page →</a> pra ver pixel + budget + cap por linha.
+      </div>
+    </div>
+
+    <!-- ========== BLOCO 3: POR OBJETIVO (3 buckets) ========== -->
+    <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 16px;">
+      <div style="font-size: 12px; font-weight: 800; color: #F5841F; letter-spacing: 0.06em; margin-bottom: 10px;">🎯 POR OBJETIVO — qual copy usar primeiro?</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+        <!-- ESCALAR -->
+        <div style="background: linear-gradient(135deg, rgba(6,167,125,0.1), rgba(6,167,125,0.02)); border: 1px solid rgba(6,167,125,0.3); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; font-weight: 800; color: #06A77D; margin-bottom: 6px;">🚀 ESCALAR AGORA (LP já roda)</div>
+          <div style="font-size: 10px; line-height: 1.55; color: var(--text-muted);">
+            <b>1.</b> Stanford Missing Mineral · Pam W. 62 → 45 lbs<br>
+            <b>2.</b> Maria 47 swelling · Heather J. 47 → 66 lbs<br>
+            <b>3.</b> 5pm swollen legs · Jessica 51 lymphedema<br>
+            <b>4.</b> UVA real driver · Robert 58 statin refuser<br>
+            <b>5.</b> 4-in-1 instead of statin · Patricia 67 new dx<br>
+            <span style="color:#06A77D;font-weight:700;">📊 LPs rolando · 5 checkouts ativos</span>
+          </div>
+        </div>
+        <!-- TESTAR -->
+        <div style="background: linear-gradient(135deg, rgba(78,161,255,0.1), rgba(78,161,255,0.02)); border: 1px solid rgba(78,161,255,0.3); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; font-weight: 800; color: #4EA1FF; margin-bottom: 6px;">🧪 TESTAR BLUE OCEAN (0-1 DR offer)</div>
+          <div style="font-size: 10px; line-height: 1.55; color: var(--text-muted);">
+            <b>1.</b> Harvard lithium microdose · Patricia 62<br>
+            <b>2.</b> Ikaria honey · Mary 67 cross-vertical<br>
+            <b>3.</b> Anti-scam honest baking soda · Dana Whitfield<br>
+            <b>4.</b> Sardinian centenarian morning · Robin K. 51<br>
+            <b>5.</b> Cortisol + memory · Linda 64 proxy-buy<br>
+            <span style="color:#4EA1FF;font-weight:700;">📊 5 briefs blue ocean · gap real</span>
+          </div>
+        </div>
+        <!-- LANÇAR -->
+        <div style="background: linear-gradient(135deg, rgba(140,140,140,0.1), rgba(140,140,140,0.02)); border: 1px solid rgba(140,140,140,0.3); border-radius: 8px; padding: 12px;">
+          <div style="font-size: 11px; font-weight: 800; color: #888; margin-bottom: 6px;">🆕 LANÇAR / ROTEIRO (pre-build)</div>
+          <div style="font-size: 10px; line-height: 1.55; color: var(--text-muted);">
+            <b>1.</b> Haritaki pineal decalcification · Robert 54<br>
+            <b>2.</b> Memory + vision stack · couple 60-75<br>
+            <b>3.</b> South Beach GLP-1 refatorado · brief a criar<br>
+            <b>4.</b> Heavy metal chelation (MemoPryl V2)<br>
+            <b>5.</b> Linfozen lipedema · Lisa 39 (brief 9 ângulos)<br>
+            <span style="color:#888;font-weight:700;">📊 Briefs em construção</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== BLOCO 4: 6 CARDS DE PRODUTO EXPANDIDOS ========== -->
+    <div style="font-size: 12px; font-weight: 800; color: #F5841F; letter-spacing: 0.06em; margin-bottom: 10px; margin-top: 4px;">📦 DETALHE POR PRODUTO — ângulos + avatares + hooks (6 cards)</div>
     <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-      <!-- SLIMSODA -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+
+      <!-- SLIMSODA EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #06A77D; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">🥤</span>
           <strong style="font-size: 14px; color: #06A77D;">SlimSoda</strong>
-          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">2 Tubs B1G1 $29.99</span>
+          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">2 Tubs B1G1 $29.99 · pixel 1619587959397761</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>7 ângulos (3 production + 4 a criar):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">anti-scam honest baking soda</span>
-          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Stanford missing mineral</span>
-          <span style="background: rgba(245,132,31,0.15); color: #F5841F; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Maria 47 swelling</span>
+          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Stanford Missing Mineral</span>
+          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Maria 47 swelling</span>
+          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Anti-scam honest</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Sardinian centenarian</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 No-subscription hero</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Between-meal hunger</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Proxy-buy daughter 45-65</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Top avatares:</b></div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <b>Pam W. 62</b> Naples FL · 215→170 lbs (45 lbs) · "photo on fridge" <i>hook 1</i><br>
-          <b>Robin K. 51</b> Tampa FL · 197→136 lbs (61 lbs) · personal trainer <i>hook 2</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>6 avatares (foto vendor autorizada):</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Pam W. 62</b> Naples FL · 215→170 lbs (45 lbs) · "photo on fridge" <i>(H1)</i><br>
+          <b>• Robin K. 51</b> Tampa FL · 197→136 lbs (61 lbs) · personal trainer hired her <i>(H2)</i><br>
+          <b>• Janet M. 63</b> Boise ID · 188→142 lbs (46 lbs) · "couldn't tie shoes" <i>(H3)</i><br>
+          <b>• Heather J. 47</b> Phoenix AZ · 224→158 lbs (66 lbs) · "husband didn't recognize at wedding" <i>(H2)</i><br>
+          <b>• Maria 47</b> Ohio · 215→174 lbs (41 lbs) · "daughter asked if I was sick" <i>(H2)</i><br>
+          <b>• Dana Whitfield</b> (formulator) · 50s · "I'm not a doctor, I'm a formulator" <i>(H3)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i>"The $1 ingredient hiding in your kitchen is what researchers say reboots your fullness hormones…"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>4 hooks verbatim:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(245,132,31,0.06); border-left: 2px solid #F5841F; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"The $1 ingredient hiding in your kitchen is what researchers say reboots your fullness hormones…"</i></div>
+          <div style="background: rgba(245,132,31,0.06); border-left: 2px solid #F5841F; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"Yale Doctor Reveals the $1 Baking Soda Recipe That Helped Maria Drop 41 Pounds in 4 Months — Without Ozempic, Without Surgery"</i></div>
+          <div style="background: rgba(245,132,31,0.06); border-left: 2px solid #F5841F; padding: 4px 8px; margin-bottom: 4px;"><b>H3:</b> <i>"I Saw All Those Ads Saying Oprah Swears by a $1 Baking Soda Recipe. Most of Them Are Fake. Here's What Baking Soda Actually Does."</i></div>
+          <div style="background: rgba(245,132,31,0.06); border-left: 2px solid #F5841F; padding: 4px 8px;"><b>H4:</b> <i>"Stanford Scientists Discovered the Missing Mineral 80% of Women Over 40 Don't Get Enough Of."</i></div>
+        </div>
+        <!-- Risk + Ações -->
+        <div style="font-size: 10px; color: #c0392b; margin-bottom: 8px; padding: 4px 8px; background: rgba(192,57,43,0.05); border-radius: 4px;">
+          ⚠️ <b>Risk:</b> cluster scam-flagged (MalwareTips 24/ago). Yale/Jastreboff framing = REFRESH. Use Stanford/Dana Whitfield/Sardinian.
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="../../briefs/brief-slimsoda-anti-scam-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Brief anti-scam</a>
-          <a href="../../intel/spy-2026-08-24/slimsoda-master.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy</a>
-          <a href="by-product/slimsoda/lps/advertorial-stanford/" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Stanford v1.0</a>
+          <a href="../../briefs/brief-slimsoda-anti-scam-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.18); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief anti-scam</a>
+          <a href="../../briefs/brief-slimsoda-stanford-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(6,167,125,0.18); color: #06A77D; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief Stanford</a>
+          <a href="../../intel/spy-2026-08-24/slimsoda-master.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy 25KB</a>
+          <a href="by-product/slimsoda/lps/advertorial-stanford/" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP Stanford</a>
         </div>
       </div>
 
-      <!-- MEMOPRYL -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <!-- MEMOPRYL EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #E09A22; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">🧠</span>
           <strong style="font-size: 14px; color: #E09A22;">MemoPryl</strong>
-          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">6btls $59 B2G1</span>
+          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">6btls $59 B2G1 · pixel próprio</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>7 ângulos (3 production + 4 a criar):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(224,154,34,0.15); color: #E09A22; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Harvard lithium microdose</span>
-          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Sardinian centenarian</span>
-          <span style="background: rgba(192,57,43,0.12); color: #c0392b; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Bill Gates honey hook</span>
+          <span style="background: rgba(224,154,34,0.18); color: #E09A22; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Harvard lithium microdose</span>
+          <span style="background: rgba(224,154,34,0.18); color: #E09A22; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Ikaria honey (cross-vertical)</span>
+          <span style="background: rgba(224,154,34,0.18); color: #E09A22; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Anti-scam memory (transplant)</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Cortisol + memory (Yale 2022)</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Memory + vision stack</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Bill Gates honey hook</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Sardinian centenarian</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Top avatares:</b></div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <b>Patricia 62</b> Stage 2 forgetfulness · "misplaced my keys 4x" <i>hook 1</i><br>
-          <b>Mary 67</b> Goldie Hawn type · "doctor said early signs" <i>hook 2</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>6 avatares (de VSL transcripts + spy):</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Patricia 62</b> Stage 2 forgetfulness · "misplaced my keys 4x" <i>(H1)</i><br>
+          <b>• Mary 67</b> Goldie Hawn type · "doctor said early signs" <i>(H2)</i><br>
+          <b>• Linda 64</b> (proxy-buy) · "mother forgot my name" <i>(H4)</i><br>
+          <b>• Margaret 67</b> (formulator's sister) · "started forgetting words" <i>(H3)</i><br>
+          <b>• Sarah 67</b> (AD 19) · "truque com mel" Brazilian <i>(H2)</i><br>
+          <b>• Barbara 71</b> (widow) · "husband was first to notice" <i>(H3)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i>"Neuroscientists at Harvard just discovered that a microdose of lithium — found in 4 common foods — may help reactivate the memory centers…"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>4 hooks verbatim:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(224,154,34,0.06); border-left: 2px solid #E09A22; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"Neuroscientists at Harvard just discovered that a microdose of lithium — found in 4 common foods — may help reactivate the memory centers…"</i></div>
+          <div style="background: rgba(224,154,34,0.06); border-left: 2px solid #E09A22; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"On a Greek island, 75% fewer people over 85 get dementia. Researchers finally know why — and it's not olive oil."</i></div>
+          <div style="background: rgba(224,154,34,0.06); border-left: 2px solid #E09A22; padding: 4px 8px; margin-bottom: 4px;"><b>H3:</b> <i>"I saw all those ads claiming Bill Gates swears by a memory supplement. Most of them are fake. Here's what your brain actually needs."</i></div>
+          <div style="background: rgba(224,154,34,0.06); border-left: 2px solid #E09A22; padding: 4px 8px;"><b>H4:</b> <i>"What if your memory loss at 65 isn't aging — it's cortisol you never dealt with? New research from Yale says the 2 are connected."</i></div>
+        </div>
+        <!-- Risk -->
+        <div style="font-size: 10px; color: #c0392b; margin-bottom: 8px; padding: 4px 8px; background: rgba(192,57,43,0.05); border-radius: 4px;">
+          ⚠️ <b>Risk:</b> BBB/Forbes/Snopes cluster MemoPryl deepfake. NÃO usar Goldie Hawn/Chuck Norris/Bill Gates como endossante. Adaptar pra "famoso médico"/silhueta.
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="../../briefs/brief-memopryl-lithium-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Brief lithium</a>
-          <a href="../../intel/memopryl/vsl-transcripts/INDEX.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ 15 VSL ads</a>
+          <a href="../../briefs/brief-memopryl-lithium-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(224,154,34,0.18); color: #E09A22; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief lithium</a>
+          <a href="../../intel/memopryl/vsl-transcripts/INDEX.md" style="font-size: 10px; padding: 3px 8px; background: rgba(78,161,255,0.18); color: #4EA1FF; border-radius: 4px; text-decoration: none; font-weight: 700;">→ 15 VSL ads bank</a>
+          <a href="../../intel/spy-2026-08-24/memopryl-master.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy 33KB</a>
           <a href="by-product/memopryl/lps/pdp/" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ PDP V2</a>
         </div>
       </div>
 
-      <!-- CARDIO CLEAR -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <!-- CARDIO CLEAR EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #c0392b; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">❤️</span>
           <strong style="font-size: 14px; color: #c0392b;">Cardio Clear</strong>
-          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">3btls</span>
+          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">3btls $59 / 6btls $294 CB</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>6 ângulos (3 production + 3 a criar):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(192,57,43,0.12); color: #c0392b; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">UVA real driver (not cholesterol)</span>
-          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">4-in-1 instead of statin</span>
-          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Dr. Sanjay Gupta autorizado</span>
+          <span style="background: rgba(192,57,43,0.18); color: #c0392b; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ UVA real driver</span>
+          <span style="background: rgba(192,57,43,0.18); color: #c0392b; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ 4-in-1 instead of statin</span>
+          <span style="background: rgba(192,57,43,0.18); color: #c0392b; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Dr. Sanjay Gupta autorizado</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Statin-free 35% cant tolerate</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Post-event (mini-stroke)</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Daughter proxy-buy 45-55</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Top avatares:</b></div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <b>Dr. Sanjay Gupta</b> (brand owner autorizado) · CNN chief medical correspondent<br>
-          <b>Robert 58</b> statin refuser · "leg cramps at night" <i>hook 2</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>5 avatares + 1 doctor brand owner:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Dr. Sanjay Gupta</b> brand owner autorizado · CNN chief medical correspondent<br>
+          <b>• Robert 58</b> statin refuser · "leg cramps at night" <i>(H3)</i><br>
+          <b>• Patricia 67</b> new diagnosis · "BP meds made me dizzy" <i>(H5)</i><br>
+          <b>• James 64</b> (proxy) · "father had stroke at 70" <i>(H3)</i><br>
+          <b>• Linda 55</b> (daughter) · "buying for mom, BP meds expensive" <i>(H6)</i><br>
+          <b>• Frank 61</b> post-event · "mini-stroke warning" <i>(H5)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i>"If you're over 50 and taking statins, the real reason your heart's still struggling may not be what your doctor told you…"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>4 hooks verbatim:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(192,57,43,0.06); border-left: 2px solid #c0392b; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"If you're over 50 and taking statins, the real reason your heart's still struggling may not be what your doctor told you…"</i></div>
+          <div style="background: rgba(192,57,43,0.06); border-left: 2px solid #c0392b; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"Researchers at UVA discovered the real driver of high blood pressure after 60 — and it's not cholesterol."</i></div>
+          <div style="background: rgba(192,57,43,0.06); border-left: 2px solid #c0392b; padding: 4px 8px; margin-bottom: 4px;"><b>H3:</b> <i>"I built a heart supplement for the 35% of Americans who can't tolerate statins. Here are the 4 ingredients in it."</i></div>
+          <div style="background: rgba(192,57,43,0.06); border-left: 2px solid #c0392b; padding: 4px 8px;"><b>H4:</b> <i>"If your leg cramps at night wake you up, your statin might be the reason. Here's what 27 years of cardiology practice taught me to do instead."</i></div>
+        </div>
+        <!-- Risk -->
+        <div style="font-size: 10px; color: #06A77D; margin-bottom: 8px; padding: 4px 8px; background: rgba(6,167,125,0.05); border-radius: 4px;">
+          ✅ <b>Edge:</b> Dr. Sanjay Gupta = brand owner (autorizado) · cross-vertical 60-75 sub-servido · alto ticket $294 cross-sell Linfaflow
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="../../briefs/brief-cardioclear-uva-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Brief UVA</a>
-          <a href="by-product/cardio-clear/index.html" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP</a>
-          <a href="../../intel/spy-2026-08-22/MASTER.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy</a>
+          <a href="../../briefs/brief-cardioclear-uva-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(192,57,43,0.18); color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief UVA</a>
+          <a href="by-product/cardio-clear/index.html" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP cbs-breaking-news</a>
+          <a href="../../intel/spy-2026-08-22/cardio-clear.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy 33KB</a>
+          <a href="../../intel/_cardio_audio/_BRIEFINGS_CARDIOCLEAR.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ 61KB briefings</a>
         </div>
       </div>
 
-      <!-- LINFAFLOW -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <!-- LINFAFLOW EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #4EA1FF; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">🫀</span>
           <strong style="font-size: 14px; color: #4EA1FF;">Linfaflow</strong>
-          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">4 botanicals</span>
+          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">4 botanicals · $294 LTV</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>6 ângulos (3 production + 3 a criar):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">5pm swollen legs (Jessica Taylor)</span>
-          <span style="background: rgba(245,132,31,0.15); color: #F5841F; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">4 named herbs</span>
-          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Stanford lymphatic memory</span>
+          <span style="background: rgba(78,161,255,0.18); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ 5pm swollen legs (Jessica)</span>
+          <span style="background: rgba(78,161,255,0.18); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ 4 named herbs (transparency)</span>
+          <span style="background: rgba(78,161,255,0.18); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Stanford lymphatic memory</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Lymphatic vs menopause belly</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Anti-subscription hero (Lumivyx)</span>
+          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">🟦 Man 50+ clean (Lymph Phoria soft)</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Top avatares:</b></div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <b>Jessica 51</b> lymphedema · "look 9 months pregnant by 5pm" <i>hook 1</i><br>
-          <b>Cynthia 45</b> desk job · "ankles disappear" <i>hook 2</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>6 avatares (cross-cluster spy):</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Jessica 51</b> lymphedema · "look 9 months pregnant by 5pm" <i>(H1)</i><br>
+          <b>• Cynthia 45</b> desk job · "ankles disappear by 4pm" <i>(H2)</i><br>
+          <b>• Margaret 62</b> menopause · "lymphatic vs menopause belly" <i>(H5)</i><br>
+          <b>• Mary 33</b> post-pregnancy · "puffy 8 months after baby" <i>(H2)</i><br>
+          <b>• Barbara 70</b> retired · "feet too swollen for church shoes" <i>(H1)</i><br>
+          <b>• Male 55</b> (cluster validado) · "belt 2 holes tighter" <i>(H6)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i>"If your legs feel heavy and swollen by 5pm, your lymphatic system may be 4 botanicals away from rebooting…"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>4 hooks verbatim:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(78,161,255,0.06); border-left: 2px solid #4EA1FF; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"If your legs feel heavy and swollen by 5pm, your lymphatic system may be 4 botanicals away from rebooting…"</i></div>
+          <div style="background: rgba(78,161,255,0.06); border-left: 2px solid #4EA1FF; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"5 drops in my morning water. Week 2: my socks stopped leaving marks."</i></div>
+          <div style="background: rgba(78,161,255,0.06); border-left: 2px solid #4EA1FF; padding: 4px 8px; margin-bottom: 4px;"><b>H3:</b> <i>"Linfaflow. 4 named herbs. Every batch tested. No subscription trap. 60-day MBG."</i></div>
+          <div style="background: rgba(78,161,255,0.06); border-left: 2px solid #4EA1FF; padding: 4px 8px;"><b>H4:</b> <i>"A pharmacist explains what most doctors miss about lymphatic flow"</i></div>
+        </div>
+        <!-- Edge -->
+        <div style="font-size: 10px; color: #06A77D; margin-bottom: 8px; padding: 4px 8px; background: rgba(6,167,125,0.05); border-radius: 4px;">
+          ✅ <b>Edge:</b> subscription transparency attack vs Lymphoria (32 BBB complaints) · 60-day MBG · 4 named herbs vs proprietary blend
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="../../briefs/brief-linfaflow-stanford-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Brief Stanford</a>
-          <a href="by-product/linfaflow/index.html" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP</a>
-          <a href="../../intel/spy-2026-08-24/linfaflow-master.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy</a>
+          <a href="../../briefs/brief-linfaflow-stanford-2026-08-23.md" style="font-size: 10px; padding: 3px 8px; background: rgba(78,161,255,0.18); color: #4EA1FF; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief Stanford</a>
+          <a href="by-product/linfaflow/index.html" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP canonical</a>
+          <a href="../../intel/spy-2026-08-24/linfaflow-master.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ Spy 20KB</a>
+          <a href="../../intel/spy-2026-08-24/linfaflow-ads-verbatim.md" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ 8 ads verbatim</a>
         </div>
       </div>
 
-      <!-- LINFOZEN -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <!-- LINFOZEN EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #06A77D; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">💧</span>
           <strong style="font-size: 14px; color: #06A77D;">Linfozen</strong>
           <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">Fibrotic solvent · NOVO</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>5 ângulos (brief 9 ângulos existe):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(6,167,125,0.15); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Fibrotic Solvent Ritual</span>
-          <span style="background: rgba(245,132,31,0.15); color: #F5841F; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Painful fat won't go away</span>
-          <span style="background: rgba(78,161,255,0.15); color: #4EA1FF; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">Lipedema misdiagnosed</span>
+          <span style="background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Fibrotic Solvent Ritual</span>
+          <span style="background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Painful fat won't go away</span>
+          <span style="background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Lipedema misdiagnosed</span>
+          <span style="background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Cottage cheese (post-pregnancy)</span>
+          <span style="background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">✅ Stubborn saddlebags 50+</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Top avatares:</b></div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <b>Lisa 39</b> lipedema stage 2 · "doctors said eat less" <i>hook 1</i><br>
-          <b>Maria 47</b> painful fat · "diet + gym did nothing" <i>hook 2</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>6 avatares (fibrotic sub-cluster):</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Lisa 39</b> lipedema stage 2 · "doctors said eat less" <i>(H1)</i><br>
+          <b>• Maria 47</b> painful fat · "diet + gym did nothing" <i>(H2)</i><br>
+          <b>• Sarah 42</b> post-pregnancy · "cottage cheese won't go away" <i>(H3)</i><br>
+          <b>• Jennifer 55</b> menopause · "arms and thighs won't respond" <i>(H5)</i><br>
+          <b>• Diane 48</b> fibrotic · "painful to touch" <i>(H2)</i><br>
+          <b>• Karen 52</b> after 40 · "stubborn saddlebags" <i>(H5)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i>"The painful, dimpled fat that won't respond to diet or gym isn't stubborn — it's a different tissue. 4 herbs dissolve it…"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>3 hooks verbatim:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(6,167,125,0.06); border-left: 2px solid #06A77D; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"The painful, dimpled fat that won't respond to diet or gym isn't stubborn — it's a different tissue. 4 herbs dissolve it…"</i></div>
+          <div style="background: rgba(6,167,125,0.06); border-left: 2px solid #06A77D; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"Doctors told me to eat less. 4 different nutritionists. 2 personal trainers. Nothing worked because it wasn't fat — it was fibrosis."</i></div>
+          <div style="background: rgba(6,167,125,0.06); border-left: 2px solid #06A77D; padding: 4px 8px;"><b>H3:</b> <i>"4 drops in your morning water. 30 seconds. 90 days. Watch the painful dimples smooth out."</i></div>
+        </div>
+        <!-- Edge -->
+        <div style="font-size: 10px; color: #06A77D; margin-bottom: 8px; padding: 4px 8px; background: rgba(6,167,125,0.05); border-radius: 4px;">
+          ✅ <b>Edge:</b> cluster sub-servido · lipedema (1 em 10 women, sub-diagnosticado) · cross-sell Linfaflow
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="by-product/linfozen/copy/briefing-linfozen/index.html" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Brief 9 ângulos</a>
+          <a href="by-product/linfozen/copy/briefing-linfozen/index.html" style="font-size: 10px; padding: 3px 8px; background: rgba(6,167,125,0.18); color: #06A77D; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Brief 9 ângulos</a>
           <a href="by-product/linfozen/index.html" style="font-size: 10px; padding: 3px 8px; background: var(--bg-elev2); color: var(--text-muted); border-radius: 4px; text-decoration: none;">→ LP</a>
         </div>
       </div>
 
-      <!-- HARITAKI -->
-      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px;">
-        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+      <!-- HARITAKI EXPANDIDO -->
+      <div style="background: var(--bg-elev); border: 1px solid var(--border); border-left: 4px solid #888; border-radius: 10px; padding: 14px 16px;">
+        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 10px;">
           <span style="font-size: 18px;">🌿</span>
           <strong style="font-size: 14px; color: #888;">Haritaki</strong>
-          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">lançamento</span>
+          <span style="font-size: 10px; color: var(--text-muted); margin-left: auto;">lançamento · roteiro</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">📐 <b>Ângulos quentes:</b></div>
+        <!-- Ângulos -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">📐 <b>3 ângulos prioritários (brief a criar):</b></div>
         <div style="display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 10px;">
-          <span style="background: rgba(140,140,140,0.15); color: #888; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">brief em branco</span>
+          <span style="background: rgba(140,140,140,0.18); color: #888; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">⬜ Pineal decalcification (fluoride)</span>
+          <span style="background: rgba(140,140,140,0.18); color: #888; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">⬜ Charaka Samhita 600 BCE (5.000y)</span>
+          <span style="background: rgba(140,140,140,0.18); color: #888; padding: 3px 8px; border-radius: 12px; font-size: 10px; font-weight: 700;">⬜ Dreams + intuition restored</span>
         </div>
-        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 6px;">👤 <b>Avatar:</b> TBD (a definir)</div>
-        <div style="font-size: 11px; line-height: 1.5; margin-bottom: 10px;">
-          <i style="color: var(--text-muted);">Brief não escrito ainda. Use decision tree no One Page pra escolher ângulo.</i>
+        <!-- Avatares -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">👤 <b>6 avatares (TBD spy intel):</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <b>• Robert 54</b> insônia crônica · "tried melatonin, ambien, nothing" <i>(H1)</i><br>
+          <b>• Mary 49</b> memory + sleep · "brain fog + can't sleep" <i>(H1)</i><br>
+          <b>• Linda 62</b> espiritual · "meditation won't get me deep" <i>(H3)</i><br>
+          <b>• Patricia 67</b> pineal · "third eye feels blocked" <i>(H2)</i><br>
+          <b>• Brian 45</b> productivity · "afternoon crash, can't focus" <i>(H3)</i><br>
+          <b>• Diane 38</b> wellness · "want better dreams" <i>(H3)</i>
         </div>
-        <div style="font-size: 11px; background: rgba(245,132,31,0.08); border-left: 3px solid #F5841F; padding: 8px 10px; border-radius: 4px; margin-bottom: 8px;">
-          🪝 <i style="color: var(--text-muted);">"Brief em construção — peça um novo pelo One Page"</i>
+        <!-- Hooks -->
+        <div style="font-size: 11px; color: var(--text-muted); margin-bottom: 5px;">🪝 <b>3 hooks propostos:</b></div>
+        <div style="font-size: 10.5px; line-height: 1.55; margin-bottom: 10px;">
+          <div style="background: rgba(140,140,140,0.06); border-left: 2px solid #888; padding: 4px 8px; margin-bottom: 4px;"><b>H1:</b> <i>"Insomnia isn't a sleep problem. It's a pineal gland problem — and that gland is calcified by the fluoride in your water."</i></div>
+          <div style="background: rgba(140,140,140,0.06); border-left: 2px solid #888; padding: 4px 8px; margin-bottom: 4px;"><b>H2:</b> <i>"Tried melatonin? Ambien? What if your pineal gland can't produce melatonin because it's calcified? 3 ancient herbs decalcify it."</i></div>
+          <div style="background: rgba(140,140,140,0.06); border-left: 2px solid #888; padding: 4px 8px;"><b>H3:</b> <i>"What if your afternoon brain fog isn't coffee withdrawal? What if it's 50 years of fluoride buildup in your pineal?"</i></div>
+        </div>
+        <!-- Edge -->
+        <div style="font-size: 10px; color: #4EA1FF; margin-bottom: 8px; padding: 4px 8px; background: rgba(78,161,255,0.05); border-radius: 4px;">
+          🆕 <b>Próximo:</b> brief PT-BR + LP Stanford v1.0 style + checkout vendor. Peça spy intel + avatar validado.
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          <a href="../../one.html#decision" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.12); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 600;">→ Decision Tree</a>
+          <a href="by-product/outros/haritaki/index.html" style="font-size: 10px; padding: 3px 8px; background: rgba(140,140,140,0.18); color: #888; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Spy intel + roadmap</a>
+          <a href="../../one.html" style="font-size: 10px; padding: 3px 8px; background: rgba(245,132,31,0.18); color: #F5841F; border-radius: 4px; text-decoration: none; font-weight: 700;">→ Pedir brief novo</a>
         </div>
       </div>
     </div>
+
+    <!-- ========== BLOCO 5: CROSS-VERTICAL OPPORTUNITIES ========== -->
+    <div style="margin-top: 16px; background: linear-gradient(135deg, rgba(78,161,255,0.08), rgba(192,57,43,0.04)); border: 1px solid rgba(78,161,255,0.3); border-radius: 10px; padding: 14px 18px;">
+      <div style="font-size: 12px; font-weight: 800; color: #4EA1FF; letter-spacing: 0.06em; margin-bottom: 10px;">🔁 CROSS-VERTICAL — ângulos que funcionam em 2+ produtos</div>
+      <div style="font-size: 11px; color: var(--text-muted); line-height: 1.55; margin-bottom: 10px;">
+        <b>1. Sardinian / Okinawan centenarian (blue zone):</b> SlimSoda 65+ (gap) + MemoPryl 60+ (cognição) + Linfaflow 60+ (anti-aging) · mesmo avatar 65+ sub-servido em 3 verticais<br>
+        <b>2. Anti-scam honest (transplant cross-vertical):</b> SlimSoda Dana Whitfield ← → MemoPryl anti-Bill Gates ← → Cardio Clear anti-cardiologist-deepfake · mesma estrutura 50+ cética<br>
+        <b>3. Stanford/Harvard/UVA research authority:</b> SlimSoda Stanford Missing Mineral · MemoPryl Harvard Lithium · Cardio Clear UVA Real Driver · Linfaflow Stanford Lymphatic Memory · 4 verticais, mesmo framework "X university found Y"<br>
+        <b>4. No subscription / honest pricing:</b> SlimSoda (selling point) + Linfaflow (transparency attack vs Lymphoria BBB) + Cardio Clear (vs recurring statin push)<br>
+        <b>5. Proxy-buy daughter 45-55 → mom 75+:</b> cross-vertical forte em todos verticais (SlimSoda Maria 47, MemoPryl Linda 64, Cardio Clear Linda 55, Linfaflow post-pregnancy Mary 33)
+      </div>
+    </div>
+
     <div style="margin-top: 14px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <span>📊 <b>Total:</b> 6 produtos · 17 ângulos quentes catalogados · 12 avatares nomeados · 6 hooks verbatim</span>
-      <a href="../../intel/spy-2026-08-24/" style="color: #F5841F; font-weight: 600; text-decoration: none;">→ Ver spy completo (3 produtos)</a>
+      <span>📊 <b>Total Decision Engine v1.0:</b> 6 produtos · 35 ângulos catalogados (3-7 cada) · 32 avatares nomeados (5-6 cada) · 24 hooks verbatim (3-4 cada) · 10 caminhos diretos produção</span>
+      <a href="../../intel/spy-2026-08-24/" style="color: #F5841F; font-weight: 600; text-decoration: none; margin-left: auto;">→ Spy completo (3 produtos)</a>
+      <a href="../../one.html" style="color: #06A77D; font-weight: 600; text-decoration: none;">→ One Page</a>
     </div>
   </div>
 
