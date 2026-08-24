@@ -75,7 +75,8 @@
 | **Stanford v1.0** | `references_v5/by-product/slimsoda/lps/advertorial-stanford/` | Live, 4-ingredient formula | **SEU** (atualizei 23-24/ago) |
 | **Maria 47 v4.7.2** | `references_v5/by-product/slimsoda/lps/advertorial-maria47-v3/` | Live, 3-ingredient method (swelling angle) | **SEU** (atualizei 23/ago) |
 | **Article-LP (Yale listicle)** | `references_v5/by-product/slimsoda/lps/article-lp/` | Live, 17KB | **SEU** (legacy) |
-| **SlimTide VSL (Oprah)** | `references_v5/by-product/slimsoda/lps/vsl/index.html` | Live, 14KB, Oprah modeled | **NÃO É SEU** — modelado do concorrente Oprah Drop 43 lbs |
+| **SlimTide VSL (Yale+Oprah copy)** | `references_v5/by-product/slimsoda/lps/vsl/index.html` | Live, 14KB | **SEU** — roda Vturb account `40842bbe-...` (seu). Copy é Oprah/Yale mas player embedado é seu OID |
+| **SlimTide VSL (3rd path, mesma)** | `slimtide-vsl/index.html` (root) | Live | **SEU** — mesma VSL, path duplicado |
 | **SlimTide VSL (5 variants)** | `references_v5/by-product/slimsoda/lps/_cloned/` | Live | **SEU** — 5 variants (01-original-recipe, 02-reader-warning, 03-two-column, 04-exclusive-report, 05-closet-quiet-weight) |
 | **PDP v3** | `slimsoda-pdp/` (root) + `references_v5/.../slimsoda-pdp/` (copy) | Live, 107KB | **SEU** mas **BYPASSED** (CTAs Stanford + Maria 47 vão direto pro checkout agora) |
 | **Buy Page (Shopzenvy Lite)** | `buy-page/` | Live, com tracking | **SEU** |
