@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DR Hub v26 — Smart HUB (SlimSoda · Linfaflow · Linfozen · Cardio Clear · MemoPryl)</title>
+  <title>DR Hub v28 — Smart HUB (SlimSoda · Linfaflow · Linfozen · Cardio Clear · MemoPryl)</title>
   <meta name="description" content="DR Reference Hub: 6 produtos, 10+ methodology pages, live tracking, competitive spy, decision engine, search, theme.">
   <link rel="stylesheet" href="../js/hub.css">
   <style>
@@ -125,6 +125,38 @@
     /* Tabelas 13-14px (era 10-11) — override específico */
     .ache-rapido-section table { font-size: 13px !important; }
     .ache-rapido-section table th, .ache-rapido-section table td { padding: 9px 12px !important; }
+    /* === HUB v28 UPGRADE STYLES === */
+    /* Mobile drawer nav (≤1279px) */
+    #mobile-nav-toggle { display: none; position: fixed; left: 16px; bottom: 80px; z-index: 8500; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #F5841F, #ff8a3d); color: #fff; border: none; font-size: 22px; cursor: pointer; box-shadow: 0 8px 24px rgba(245,132,31,0.4); align-items: center; justify-content: center; }
+    @media (max-width: 1279px) { #mobile-nav-toggle { display: flex; } #sidebar-nav { display: none; } }
+    #mobile-nav-drawer { display: none; position: fixed; inset: 0; z-index: 8600; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+    #mobile-nav-drawer.show { display: block; }
+    #mobile-nav-drawer .drawer { position: absolute; left: 0; top: 0; bottom: 0; width: 240px; background: rgba(28,28,30,0.98); padding: 18px; overflow-y: auto; }
+    #mobile-nav-drawer .drawer a { display: block; padding: 10px 12px; color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 600; border-radius: 6px; }
+    #mobile-nav-drawer .drawer a:hover { background: rgba(245,132,31,0.15); color: #F5841F; }
+    #mobile-nav-drawer .drawer .nav-label { font-size: 9px; font-weight: 800; letter-spacing: 0.1em; color: var(--text-faint); text-transform: uppercase; padding: 6px 12px 8px; border-bottom: 1px solid var(--border); margin-bottom: 8px; }
+    /* Theme toggle (light/dark) */
+    .theme-toggle { font-size: 16px; }
+    body.theme-light { --bg-elev: #fafafa; --bg-elev2: #f0f0f0; --text-muted: #555; --text-faint: #999; --border: rgba(0,0,0,0.1); }
+    body.theme-light .global-header { background: #ffffff; border-bottom: 1px solid #e0e0e0; }
+    body.theme-light .card { background: #ffffff; border: 1px solid #e0e0e0; }
+    body.theme-light .stat { background: linear-gradient(135deg, rgba(255,138,61,0.08), rgba(6,167,125,0.04)); }
+    /* Diagram SVG container */
+    .diagram-svg { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin: 12px 0; overflow-x: auto; }
+    .diagram-svg svg { max-width: 100%; height: auto; }
+    /* Quick start reopen button */
+    #qs-reopen { position: fixed; right: 24px; bottom: 88px; z-index: 7000; width: 40px; height: 40px; border-radius: 50%; background: rgba(78,161,255,0.15); color: #4EA1FF; border: 1px solid #4EA1FF; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    #qs-reopen:hover { background: rgba(78,161,255,0.25); }
+    /* Focus rings (a11y) */
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid #F5841F; outline-offset: 2px; }
+    /* Print stylesheet */
+    @media print {
+      .global-header, .global-search, .theme-toggle, #pin-logout, #back-to-top, #sidebar-nav, #mobile-nav-toggle, #mobile-nav-drawer, #qs-reopen, #quick-start, .hover-arrow, .decision-item input { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .section { break-inside: avoid; }
+      a { color: #000 !important; text-decoration: underline; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 10px; color: #666; }
+    }
   </style>
 </head>
 <body>
@@ -173,8 +205,10 @@
   function tryPin() {
     var v = (input.value || '').trim();
     if (v === CORRECT) {
-      try { sessionStorage.setItem('dr_hub_unlocked', '1'); } catch(e) {}
+      // Salva com timestamp (TTL 7d) em localStorage
+      try { localStorage.setItem('dr_hub_unlocked', String(Date.now())); } catch(e) {}
       gate.classList.add('unlocked');
+      document.body.classList.add('unlocked');
       err.textContent = '';
     } else {
       input.classList.add('error');
@@ -188,9 +222,11 @@
   input.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryPin(); });
   input.addEventListener('input', function(){ if (input.value.length === 4) tryPin(); });
 
-  // Se já unlockado, não trava scroll
+  // Se já unlockado (localStorage 7d), não trava scroll
   if (gate.classList.contains('unlocked')) { document.documentElement.style.overflow = ''; }
   else { document.documentElement.style.overflow = 'hidden'; }
+  // Remove do sessionStorage (legado) — só localStorage agora
+  try { sessionStorage.removeItem('dr_hub_unlocked'); } catch(e) {}
 })();
 </script>
 
@@ -417,10 +453,62 @@
         <span style="background: rgba(192,57,43,0.15); color: #c0392b; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; margin-left: 4px;">AFETA: Linfaflow + Linfozen (todas as LPs)</span>
       </li>
     </ul>
-    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+    <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; margin-bottom: 14px;">
       <a href="../../intel/spy-2026-08-24/slimsoda-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy SlimSoda</a>
       <a href="../../intel/spy-2026-08-24/memopryl-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy MemoPryl</a>
       <a href="../../intel/spy-2026-08-24/linfaflow-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy Linfaflow</a>
+    </div>
+    <!-- Diagrama SVG: flow chart das 4 red lines -->
+    <div class="diagram-svg" aria-label="Diagrama visual das 4 compliance red lines">
+      <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">📊 FLOW · Compliance Red Lines → LPs Afetadas</div>
+      <svg viewBox="0 0 760 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="compliance-diagram-title">
+        <title id="compliance-diagram-title">Diagrama das 4 compliance red lines e quais LPs afetam</title>
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+            <path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/>
+          </marker>
+        </defs>
+        <!-- Red lines (left) -->
+        <g font-family="system-ui, sans-serif" font-size="10" font-weight="700">
+          <rect x="10" y="14" width="180" height="32" rx="6" fill="#c0392b" opacity="0.12" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="20" y="34" fill="#c0392b">UK ASA: food noise + GLP-1</text>
+          <rect x="10" y="60" width="180" height="32" rx="6" fill="#c0392b" opacity="0.12" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="20" y="80" fill="#c0392b">MalwareTips cluster scam</text>
+          <rect x="10" y="106" width="180" height="32" rx="6" fill="#E09A22" opacity="0.12" stroke="#E09A22" stroke-width="1.5"/>
+          <text x="20" y="126" fill="#E09A22">FTC v. Prevagen 8 phrases</text>
+          <rect x="10" y="152" width="180" height="32" rx="6" fill="#c0392b" opacity="0.12" stroke="#c0392b" stroke-width="1.5"/>
+          <text x="20" y="172" fill="#c0392b">Meta Personal Attributes</text>
+        </g>
+        <!-- Arrows -->
+        <g stroke="#c0392b" stroke-width="1.5" fill="none" marker-end="url(#arr)">
+          <path d="M 195 30 Q 280 30 350 50"/>
+          <path d="M 195 76 Q 280 76 350 88"/>
+          <path d="M 195 122 Q 280 122 350 126"/>
+          <path d="M 195 168 Q 280 168 350 164"/>
+        </g>
+        <!-- LPs (right) -->
+        <g font-family="system-ui, sans-serif" font-size="10" font-weight="700">
+          <rect x="360" y="34" width="160" height="32" rx="6" fill="#06A77D" opacity="0.1" stroke="#06A77D" stroke-width="1.5"/>
+          <text x="370" y="54" fill="#06A77D">Stanford v1.0</text>
+          <rect x="560" y="34" width="180" height="32" rx="6" fill="#888" opacity="0.08" stroke="#888" stroke-width="1"/>
+          <text x="570" y="54" fill="#555">refresh URGENT 30 min</text>
+
+          <rect x="360" y="72" width="160" height="32" rx="6" fill="#06A77D" opacity="0.1" stroke="#06A77D" stroke-width="1.5"/>
+          <text x="370" y="92" fill="#06A77D">Maria 47 v4.7.2</text>
+          <rect x="560" y="72" width="180" height="32" rx="6" fill="#888" opacity="0.08" stroke="#888" stroke-width="1"/>
+          <text x="570" y="92" fill="#555">refresh URGENT 20 min</text>
+
+          <rect x="360" y="110" width="160" height="32" rx="6" fill="#06A77D" opacity="0.1" stroke="#06A77D" stroke-width="1.5"/>
+          <text x="370" y="130" fill="#06A77D">MemoPryl PDP V2</text>
+          <rect x="560" y="110" width="180" height="32" rx="6" fill="#888" opacity="0.08" stroke="#888" stroke-width="1"/>
+          <text x="570" y="130" fill="#555">audit 5 funis 60 min</text>
+
+          <rect x="360" y="148" width="160" height="32" rx="6" fill="#06A77D" opacity="0.1" stroke="#06A77D" stroke-width="1.5"/>
+          <text x="370" y="168" fill="#06A77D">Linfaflow + Linfozen</text>
+          <rect x="560" y="148" width="180" height="32" rx="6" fill="#888" opacity="0.08" stroke="#888" stroke-width="1"/>
+          <text x="570" y="168" fill="#555">grep "you have" 15 min</text>
+        </g>
+      </svg>
     </div>
   </div>
 
@@ -971,15 +1059,15 @@
 </div>
 
 <footer class="global-footer">
-  <p>DR Hub v27 · 48 páginas · auto-decision engine · theme dark/light · global search · PIN 9628 · health check live</p>
-  <p style="margin-top:8px; font-size:11px;">Slim-Soda01 · <a href="https://github.com/vsugamele/Slim-Soda01">github</a> · atualizado <span data-last-updated>2026-08-24</span> · PIN <a href="#" id="logout-footer">🔓 logout</a></p>
+  <p>DR Hub v28 · 48 páginas · auto-decision engine · theme dark/light · global search · PIN 9628 (7d TTL) · health check live via /api/health · diagrama SVG · print stylesheet · a11y</p>
+  <p style="margin-top:8px; font-size:11px;">Slim-Soda01 · <a href="https://github.com/vsugamele/Slim-Soda01">github</a> · atualizado <span data-last-updated>2026-08-24</span> · PIN <a href="#" id="logout-footer">🔓 logout</a> · <a href="../../docs/RUNBOOK.md">📋 Runbook</a></p>
 </footer>
 
 <!-- Back to top -->
 <button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
 
 <script>
-// === HUB v27 UPGRADE JS ===
+// === HUB v28 UPGRADE JS ===
 
 // 1. Back to top
 (function(){
@@ -991,15 +1079,34 @@
   btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
 
-// 2. PIN logout (header + footer)
+// 2. PIN logout (header + footer) — agora usa localStorage com TTL 7d
 (function(){
+  var PIN_KEY = 'dr_hub_unlocked';
+  var PIN_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
   function logout() {
-    try { sessionStorage.removeItem('dr_hub_unlocked'); } catch(e) {}
+    try { localStorage.removeItem(PIN_KEY); } catch(e) {}
     location.reload();
+  }
+  function isUnlocked() {
+    try {
+      var v = localStorage.getItem(PIN_KEY);
+      if (!v) return false;
+      var ts = parseInt(v, 10);
+      if (Date.now() - ts > PIN_TTL) { localStorage.removeItem(PIN_KEY); return false; }
+      return true;
+    } catch(e) { return false; }
+  }
+  // Mark body se já desbloqueado
+  if (isUnlocked()) {
+    document.body.classList.add('unlocked');
   }
   document.getElementById('pin-logout').addEventListener('click', logout);
   var lof = document.getElementById('logout-footer');
   if (lof) lof.addEventListener('click', function(e){ e.preventDefault(); logout(); });
+  // Modifica o PIN gate pra salvar com timestamp
+  window._savePinUnlock = function() {
+    try { localStorage.setItem(PIN_KEY, String(Date.now())); } catch(e) {}
+  };
 })();
 
 // 3. Quick start banner (show 1ª vez / após 7 dias)
@@ -1017,38 +1124,47 @@
   });
 })();
 
-// 4. Health check live (HEAD requests via no-cors fetch)
+// 4. Health check live via /api/health (server-side, sem CORS issue)
 (function(){
-  var targets = {
-    'vercel':         { url: 'https://slim-soda01.vercel.app/references_v5/?v=hc', label: 'Hub 200' },
-    'pixel-stanford': { url: 'https://www.facebook.com/tr?id=1619587959397761', label: 'Pixel OK' },
-    'pixel-maria':    { url: 'https://www.facebook.com/tr?id=2211508706308536', label: 'Pixel OK' },
-    'ck-slim':        { url: 'https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&affid=aff_6821377', label: 'SlimSoda' },
-    'ck-memo':        { url: 'https://memopryl.com/cc2/pay/checkout.php?package=6b19&affid=aff_6821377', label: 'MemoPryl' },
-    'ck-cardio':      { url: 'https://usecardioclear.com/cc2/pay/checkout.php?package=3bottles&affid=aff_6821377', label: 'Cardio' }
-  };
-  function setStatus(key, ok, label) {
+  // Adicionar ck-slim-v2 ao health check table (não tinha)
+  var extras = [
+    { key: 'ck-slim-v2', label: 'SlimSoda v2' }
+  ];
+  // Mapear targets → chaves do /api/health
+  function setStatus(key, ok, ms, label) {
     var dot = document.querySelector('.health-dot[data-target="' + key + '"]');
     var name = document.querySelector('[data-name="' + key + '"]');
     if (!dot || !name) return;
     dot.classList.remove('checking');
     if (ok === null) { dot.classList.add('warn'); name.textContent = '⚠️ sem CORS'; }
-    else if (ok) { dot.classList.add('ok'); name.textContent = '✅ ' + label; }
-    else { dot.classList.add('err'); name.textContent = '❌ erro'; }
+    else if (ok) { dot.classList.add('ok'); name.textContent = '✅ ' + label + ' (' + ms + 'ms)'; }
+    else { dot.classList.add('err'); name.textContent = '❌ erro (' + ms + 'ms)'; }
   }
-  Object.keys(targets).forEach(function(key){
-    var t = targets[key];
-    fetch(t.url, { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' })
-      .then(function(r){ setStatus(key, true, t.label); })
-      .catch(function(){ setStatus(key, false, t.label); });
-    // timeout fallback (8s)
-    setTimeout(function(){
-      var dot = document.querySelector('.health-dot[data-target="' + key + '"]');
-      if (dot && dot.classList.contains('checking')) {
-        setStatus(key, null, 'timeout');
-      }
-    }, 8000);
-  });
+  fetch('/api/health', { cache: 'no-cache' })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (!data.checks) { throw new Error('bad response'); }
+      data.checks.forEach(function(c){
+        setStatus(c.key, c.ok, c.ms, c.label);
+      });
+    })
+    .catch(function(e){
+      // Fallback: no-cors fetch
+      console.warn('Health check server failed, fallback no-cors:', e);
+      var targets = {
+        'vercel': 'https://slim-soda01.vercel.app/references_v5/?v=hc',
+        'pixel-stanford': 'https://www.facebook.com/tr/?id=1619587959397761',
+        'pixel-maria': 'https://www.facebook.com/tr/?id=2211508706308536',
+        'ck-slim': 'https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&affid=aff_6821377',
+        'ck-memo': 'https://memopryl.com/cc2/pay/checkout.php?package=6b19&affid=aff_6821377',
+        'ck-cardio': 'https://usecardioclear.com/cc2/pay/checkout.php?package=3bottles&affid=aff_6821377'
+      };
+      Object.keys(targets).forEach(function(k){
+        fetch(targets[k], { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' })
+          .then(function(){ setStatus(k, true, 0, 'no-cors'); })
+          .catch(function(){ setStatus(k, false, 0, 'no-cors'); });
+      });
+    });
 })();
 
 // 5. Sidebar nav — scroll spy
@@ -1130,9 +1246,9 @@
   });
 })();
 
-// 8. Mark body as unlocked (so PIN logout button appears)
+// 8. Mark body as unlocked (legacy sessionStorage cleanup, só localStorage agora)
 (function(){
-  try { if (sessionStorage.getItem('dr_hub_unlocked') === '1') document.body.classList.add('unlocked'); } catch(e) {}
+  // (vazio — tratado em #2 acima)
 })();
 
 // 9. Injetar hover-arrow em todos os cards clicáveis
@@ -1165,6 +1281,72 @@
     span.textContent = m.txt;
     var name = el.querySelector('.name');
     if (name) name.appendChild(span);
+  });
+})();
+
+// 11. Mobile drawer nav (≤1279px)
+(function(){
+  if (document.getElementById('mobile-nav-toggle')) return; // já existe
+  var btn = document.createElement('button');
+  btn.id = 'mobile-nav-toggle';
+  btn.setAttribute('aria-label', 'Abrir menu de navegação');
+  btn.innerHTML = '☰';
+  document.body.appendChild(btn);
+
+  var drawer = document.createElement('div');
+  drawer.id = 'mobile-nav-drawer';
+  drawer.innerHTML = '<div class="drawer"><span class="nav-label">Navegar</span>' +
+    '<a href="#ache-rapido">⚡ Ache rápido</a>' +
+    '<a href="#compliance">🚨 Compliance</a>' +
+    '<a href="#knowledge-base">📚 Knowledge</a>' +
+    '<a href="#produtos">🥤 Produtos</a>' +
+    '<a href="#analise">🧠 Análise</a>' +
+    '<a href="#methodology">🔬 Method</a>' +
+    '<a href="#tracking">📊 Tracking</a>' +
+    '<a href="#spy">📡 Spy</a>' +
+    '<a href="#briefs-ready">📝 Briefs</a>' +
+    '<a href="#pages">📄 Pages</a></div>';
+  document.body.appendChild(drawer);
+
+  btn.addEventListener('click', function(){ drawer.classList.add('show'); });
+  drawer.addEventListener('click', function(e){
+    if (e.target === drawer) drawer.classList.remove('show');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ drawer.classList.remove('show'); });
+  });
+})();
+
+// 12. Quick start reopen button (sempre visível após fechar)
+(function(){
+  if (document.getElementById('qs-reopen')) return;
+  var reopen = document.createElement('button');
+  reopen.id = 'qs-reopen';
+  reopen.setAttribute('aria-label', 'Reabrir quick start');
+  reopen.title = 'Reabrir quick start';
+  reopen.innerHTML = '?';
+  document.body.appendChild(reopen);
+  reopen.addEventListener('click', function(){
+    var qs = document.getElementById('quick-start');
+    if (qs) {
+      qs.classList.add('show');
+      qs.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+})();
+
+// 13. Theme toggle funcional (light/dark)
+(function(){
+  var btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+  var saved = null;
+  try { saved = localStorage.getItem('dr_hub_theme'); } catch(e) {}
+  if (saved === 'light') { document.body.classList.add('theme-light'); btn.textContent = '🌙'; }
+  btn.addEventListener('click', function(){
+    document.body.classList.toggle('theme-light');
+    var isLight = document.body.classList.contains('theme-light');
+    btn.textContent = isLight ? '🌙' : '☀️';
+    try { localStorage.setItem('dr_hub_theme', isLight ? 'light' : 'dark'); } catch(e) {}
   });
 })();
 </script>

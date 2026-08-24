@@ -68,3 +68,11 @@ buy-page/*.log
 
 .vercel
 .env*
+
+# Docs (runbook, setup guides)
+!/docs/
+!/docs/**
+
+# Archived assets (moved-out LPs, VSLs, experiments)
+!/_archived/
+!/_archived/**
