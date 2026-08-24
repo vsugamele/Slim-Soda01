@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MemoPryl — Briefing PT-BR · 9 ângulos validados (Harvard lithium · Ikaria honey · anti-scam · cortisol · etc)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#E09A22; --accent-light:#F5B041; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; --violet:#A78BFA; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(224,154,34,0.12); color:var(--accent-light); border:1px solid rgba(224,154,34,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent-light); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent-light); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout.violet { border-left-color:var(--violet); }
+  .callout.gray { border-left-color:var(--muted); }
+  .callout strong { color:var(--accent-light); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; font-size:13px; line-height:1.7; color:var(--text); overflow-x:auto; white-space:pre-wrap; }
+  .angulo { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angulo-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(224,154,34,0.08), transparent); }
+  .angulo-num { width:48px; height:48px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angulo-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angulo-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angulo-info .meta { font-size:11px; color:var(--muted); margin-top:4px; }
+  .angulo-info .meta b { color:var(--text); }
+  .angulo-body { padding:14px 18px 18px; }
+  .angulo-body p { margin:6px 0; font-size:13.5px; }
+  .angulo-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+  .angulo-grid .col { background:var(--panel-2); border-radius:6px; padding:10px 12px; }
+  .angulo-grid .col h5 { margin:0 0 6px; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:800; }
+  .angulo-grid .col p { font-size:12.5px; line-height:1.55; margin:0; }
+  .angulo-grid .col .ptbr { color: var(--blue); }
+  .resumo { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+  .resumo-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .resumo-num { width:32px; height:32px; background:var(--panel-2); border:1px solid var(--accent); color:var(--accent); border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .resumo h3 { font-size:14px; margin:0; color:var(--text); }
+  .resumo .framework { font-size:11px; color:var(--orange); font-style:italic; margin-top:2px; }
+  .resumo p { font-size:13px; margin:6px 0; }
+  .resumo .hook-en { color: var(--muted); font-style: italic; }
+  .resumo .hook-pt { color: var(--blue); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; margin-right: 14px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent-light); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  .red-line { display:flex; gap:10px; align-items:flex-start; background:rgba(255,90,101,0.08); border:1px solid rgba(255,90,101,0.3); border-radius:8px; padding:8px 12px; margin:6px 0; font-size:13px; }
+  .red-line::before { content:"🚫"; }
+  @media (max-width:720px) { .angulo-grid, .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../index.html">← MemoPryl hub</a>
+
+  <header>
+    <span class="badge">Briefing PT-BR · MemoPryl · 9 ângulos validados · Blue ocean Meta</span>
+    <h1>MemoPryl <span class="accent">· Briefing PT-BR completo</span></h1>
+    <p class="lede">Briefing de copy DR pra <strong>MemoPryl</strong> (suplemento de memória, lithium orotate microdose 5mg). <strong>9 ângulos</strong> validados, 4 detalhados com Story-Engine 7 beats, 5 resumidos, 4 red lines de compliance, e padrão copy em PT-BR + EN.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Gap real:</strong> 0 DR offers no Meta com ângulo "Harvard lithium microdose" pra memória. Spy 22/ago + cross-validation 24/ago confirmam. MemoPryl pode ser first-mover. <strong>Blue ocean score: 9/10.</strong>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📦 Visão geral do produto</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🧠 Mecanismo (3 compostos canônicos)</h4>
+      <p>1. <strong>Lithium orotate 5mg</strong> — microdose que American water tables perdeu nos anos 80. Harvard 2025, n=1.847, publicado em Nature. 100× menor que dose Big Pharma.</p>
+      <p>2. <strong>Phosphatidylserine 100mg</strong> — brain cell membrane integrity (o que neurologista mede quando fala de "membrane integrity").</p>
+      <p>3. <strong>Lion's mane dual-extract 1,000mg</strong> — 4 peer-reviewed papers. <strong>NÃO</strong> 500mg genérico.</p>
+    </div>
+    <div class="card">
+      <h4>💰 Pricing & Offer</h4>
+      <p><strong>Anchor:</strong> Aricept/Namenda/Lecanemab (R$3.000/mês) ou memory clinics ($5.000+).</p>
+      <p><strong>Offer principal:</strong> 6btls $59 B2G1 (3 frascos) · 90-day MBG · no subscription.</p>
+      <p><strong>Garantia:</strong> "Use the whole bottle. If your word recall doesn't improve, I'll refund every penny."</p>
+      <p><strong>Memória canônica:</strong> "This is not a cure. This is a structure-function summary of what researchers found."</p>
+    </div>
+    <div class="card">
+      <h4>👤 Avatar primário (canônico)</h4>
+      <p><strong>Patricia 62, Stage 2 forgetfulness</strong>, "misplaced my keys 4x this week". Diagnosticada com "early signs". Filha 35-45 + marido começam a notar. Já tentou apps (Lumosity), post-its, "brain training". Tomou Aricept 2 anos (parou por efeitos colaterais GI).</p>
+    </div>
+    <div class="card">
+      <h4>🧠 Personas alternativas</h4>
+      <p><strong>Mary 67</strong> (Goldie Hawn type) · "doctor said early signs". <strong>Margaret 67</strong> (formulator's sister, "started forgetting words") · <strong>Sarah 67 BR</strong> · <strong>Barbara 71 widow</strong> · <strong>Linda 64</strong> (proxy-buy daughter).</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 9 ângulos validados (4 detalhados + 5 resumidos)</h2>
+
+  <!-- ÂNGULO 1 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">1</div>
+      <div class="angulo-info">
+        <h3>🧪 "Harvard descobriu a microdose de lithium" (research authority)</h3>
+        <div class="framework">Institutional authority + specificity · 0 concorrentes Meta · Blue ocean</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Patricia 62 Stage 2, filha 40-55 comprando pra mãe &nbsp;|&nbsp; 📦 <b>Brief production:</b> <a href="../../../../../briefs/brief-memopryl-lithium-2026-08-23.md" style="color:var(--accent);">brief-memopryl-lithium</a></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Harvard 2025 + Nature publication + 1,847 participants + 5mg (not 300mg, not 1000mg) specificity + "100× smaller than Big Pharma" antagonista. Pattern transfer: "researchers found" → "Big Pharma never tested" → hidden truth.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"Neuroscientists at Harvard just discovered that a microdose of lithium — found in 4 common foods — may help reactivate the memory centers your great-grandmother had at 80."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Neurocientistas de Harvard acabaram de descobrir que uma microdose de lítio — encontrada em 4 alimentos comuns — pode ajudar a reativar os centros de memória que sua bisavó tinha aos 80 anos."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Patricia 62 (canônico) · Mary 67 Goldie Hawn type · Margaret 67 (sister). <strong>Foco em 60-75+ ciente de memory loss.</strong></p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"may help reactivate" em vez de "reactivates". "researchers found" em vez de "scientists proved". FDA disclaimer obrigatório. "structure-function summary" sempre.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Harvard + 4 foods) → bridge (American water tables perderam lithium nos anos 80) → problema (60+ em todo lugar sofrem memory decline) → invalidação (Big Pharma testou 300mg/1000mg — nunca 5mg) → mecanismo (5mg lithium orotate + 100mg phosphatidylserine + 1,000mg lion's mane dual-extract) → ritual (1 dose/dia) → CTA (90-day MBG, no subscription).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 2 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">2</div>
+      <div class="angulo-info">
+        <h3>🏝️ "Numa ilha grega, 75% menos demência" (Ikaria blue zone)</h3>
+        <div class="framework">Exotic provenance + factual research · Proxy-buy (filha comprando pra mãe)</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO (factual 75% Buettner) &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Mary 67, Linda 64 proxy-buy daughter &nbsp;|&nbsp; 📦 <b>Brief a criar:</b> <span style="color:var(--muted);">brief-memopryl-ikaria (blue zone memory product — gap real)</span></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Ikaria blue zone (Buettner 2008-2025) + 20-year cohort Chrysochoou + 75% dementia reduction (factual data) + "it's not olive oil" anti-âncora. Cross-vertical: mesmo angle funciona pra SlimSoda 65+ e Linfaflow 60+.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"On a Greek island, 75% fewer people over 85 get dementia. Researchers finally know why — and it's not olive oil."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Numa ilha grega, 75% menos pessoas acima de 85 anos têm demência. Pesquisadores finalmente sabem por quê — e não é o azeite."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Mary 67 (Goldie Hawn type) · "doctor said early signs". Filha 35-45 comprando pra mãe (Linda 64 archetype). Factual data = credibility pra cética de deepfake.</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"75% fewer people over 85 get dementia" é factual research, não promise. Chrysochoou citada como <strong>autora de research</strong>, NÃO endossante. "Researchers found" em vez de "doctors say".</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Ikaria 75%) → bridge (3 semanas filmagem, 20 anos cohort research) → reveal (mineral na água — lithium 10× maior que EUA) → mechanism (lithium + phosphatidylserine + lion's mane) → proof (University of Athens + Harvard + Pittsburgh mesmo finding 2024-2026) → ritual (2 gotas/dia sublingual) → CTA (60-sec story + no subscription + 90-day MBG).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 3 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">3</div>
+      <div class="angulo-info">
+        <h3>🛡️ "Vi os ads do Bill Gates. A maioria é fake." (anti-scam memory)</h3>
+        <div class="framework">Anti-scam memory transplant · Formulator transparency · Cross-vertical winner</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Patricia 62 cética de deepfake, BBB/Forbes/Snopes coverage do MemoPryl cluster &nbsp;|&nbsp; 📦 <b>Brief a criar:</b> <span style="color:var(--muted);">brief-memopryl-anti-scam (transplant cross-vertical do SlimSoda av2)</span></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> MemoPryl cluster (Bill Gates deepfake) é coberto por BBB/Forbes/Snopes/Yahoo. Anti-scam position captura exatamente o avatar cética que viu 1000 deepfake ads. Transplant cross-vertical do SlimSoda av2 framework validado.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"I saw all those ads claiming Bill Gates swears by a memory supplement. Most of them are fake. Here's what your brain actually needs."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Vi todos aqueles ads dizendo que Bill Gates jura por um suplemento de memória. A maioria é fake. Veja o que seu cérebro realmente precisa."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Margaret 67 (formulator's sister) · "started forgetting words". Linda 64 (proxy-buy daughter). <strong>Anti-authority transparency</strong> em vez de pseudo-autority.</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p><strong>NUNCA</strong> usar Bill Gates como endossante — só como deepfake pattern (meta-crítica). Formulator persona + "I'm not a doctor" disclosure. Trust signal: real research, 4 peer-reviewed papers.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Bill Gates deepfake) → bridge (formulator, não médico) → exposição (BBB/Forbes/Snopes/Yahoo cobriram o cluster) → revelação (3 compostos: 5mg lithium + 100mg phosphatidylserine + 1,000mg lion's mane) → USP (real research, no subscription, 365-day MBG) → proof (Harvard 2025 + Nature publication + 1,847 participants) → CTA (formulator's sister Margaret story, "for you too").</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 4 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">4</div>
+      <div class="angulo-info">
+        <h3>😰 "Memory loss aos 65 não é envelhecer — é cortisol" (Yale 2022 mechanism)</h3>
+        <div class="framework">Mechanism hidden cause · Yale 2022 paper · Cluster emergente 2026</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟡 MÉDIO (cortisol watch) &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Linda 64 (proxy-buy), 60+ com ansiedade crônica &nbsp;|&nbsp; 📦 <b>Brief a criar:</b> <span style="color:var(--muted);">brief-memopryl-cortisol (Yale 2022 paper)</span></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Yale 2022 cortisol-BDNF paper + cross-pollination Thesis Stress Reset + "decades of cortisol exposure" + "women in Ikaria don't have Alzheimer's at the rate American women do". Hidden cause = powerful pattern interrupt.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"What if your memory loss at 65 isn't aging — it's cortisol you never dealt with? New research from Yale says the 2 are connected."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"E se a perda de memória aos 65 não for envelhecer — e sim cortisol que você nunca tratou? Pesquisa nova de Yale diz que os 2 estão conectados."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Linda 64 (proxy-buy daughter) com mãe 75+ com ansiedade crônica. Mary 67 high-achieving executive. <strong>Não é tão direto quanto Patricia 62 canônico.</strong></p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p><strong>Cortisol é palavra sensível</strong> (endocrine). Use "may support healthy cortisol levels" ou "may help manage everyday stress". JAMAIS "cures stress" / "lowers cortisol guaranteed". FDA structure-function compliant.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (cortisol + aging) → bridge (Yale 2022 paper cortisol-BDNF) → problema (40 anos de cortisol acumulado = hippocampus damage) → Ikaria contraste (elas não têm Alzheimer's) → mecanismo (3 ingredientes pra cortisol + memory) → ritual (1 dose/dia) → CTA (90-day MBG + "may support healthy cortisol levels").</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 5 ângulos resumidos (1 linha cada)</h2>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">5</div>
+      <h3>👁️ "Memória e visão caem juntas após 60 — mesmo mecanismo"</h3>
+    </div>
+    <p class="framework">Stack pattern cross-vertical (AMP Joint reference) · AOV 2-3×</p>
+    <p class="hook-en">🇺🇸 <em>"The 2 Things That Decline First After 60 Are Memory and Night Vision. They Have the Same Root Cause."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"As 2 coisas que caem primeiro após os 60 são memória e visão noturna. Têm a mesma causa raiz."</em></p>
+    <p><strong>Avatar:</strong> Couple 60-75, "we both started forgetting + squinting at menus". <strong>Risco Meta:</strong> 🟡 MÉDIO (vision watch). <strong>Gap:</strong> "memory + eye health" stack não existe no Meta. AMP Joint só faz memory + joint.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">6</div>
+      <h3>👩‍👧 "Minha mãe esqueceu meu nome. Comprei isso pra ela."</h3>
+    </div>
+    <p class="framework">Proxy-buy cross-vertical · Filha 45-55 comprando pra mãe 75+</p>
+    <p class="hook-en">🇺🇸 <em>"My Mother Forgot My Name. I Bought Her Something That Helped Her Remember It Again."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Minha mãe esqueceu meu nome. Comprei algo que a ajudou a se lembrar dele de novo."</em></p>
+    <p><strong>Avatar:</strong> Linda 64 (proxy-buy daughter) · Sarah 67 BR. <strong>Risco Meta:</strong> 🟢 BAIXO com structure-function. <strong>Diferencial:</strong> 2-product stack com Eye Clarity (lutein + zeaxanthin + bilberry) = $89 bundle save $30.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">7</div>
+      <h3>🏛️ "Sardenha centenária: 100 anos sem Alzheimer's"</h3>
+    </div>
+    <p class="framework">Cross-vertical SlimSoda · Blue zone longevity · 60+ sub-servido</p>
+    <p class="hook-en">🇺🇸 <em>"The Centenarians of Sardinia and Okinawa Don't Have Alzheimer's. Researchers Found the Mineral Their Water Has That American Water Lost."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Os centenários de Sardenha e Okinawa não têm Alzheimer. Pesquisadores encontraram o mineral que a água deles tem e a americana perdeu."</em></p>
+    <p><strong>Avatar:</strong> 60-75+ health-conscious. <strong>Risco Meta:</strong> 🟢 BAIXO com disclaimers. <strong>Cross-sell:</strong> mesmo angle funciona pra SlimSoda 65+.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">8</div>
+      <h3>🎧 "5-minute brain ritual — 84% melhoraram em 30 dias"</h3>
+    </div>
+    <p class="framework">Cross-vertical (Brain Song affiliate) · Time-specificity + survey statistic</p>
+    <p class="hook-en">🇺🇸 <em>"A 5-Minute Brain Ritual Helped 84% of Adults Over 60 Improve Word Recall in 30 Days."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Um ritual cerebral de 5 minutos ajudou 84% dos adultos acima de 60 anos a melhorar a recordação de palavras em 30 dias."</em></p>
+    <p><strong>Avatar:</strong> Patricia 62 + Mary 67 high-achievers. <strong>Risco Meta:</strong> 🟡 EDGE (84% precisa ser survey real). <strong>Benchmark:</strong> Brain Song ($155 AOV) audio-cognitive-training cluster.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">9</div>
+      <h3>🧪 "Brain shards tóxicos — 3 ingredientes que limpam"</h3>
+    </div>
+    <p class="framework">Cross-vertical (PhytoMem framework) · "Invisible enemy inside you" pattern</p>
+    <p class="hook-en">🇺🇸 <em>"Tiny Shards of Dead Brain Tissue Are Clogging Your Memory. 3 Ingredients Flush Them."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Pequenos fragmentos de tecido cerebral morto estão entupindo sua memória. 3 ingredientes os eliminam."</em></p>
+    <p><strong>Avatar:</strong> 60-75+ ciente de brain aging. <strong>Risco Meta:</strong> ⚠️ EDGE ("brain shards" não é termo médico real). <strong>Cross-sell:</strong> SlimSoda "baking soda flushes fat cells" + Linfaflow "lymphatic sludge" + MemoPryl "brain shards" = mesmo "invisible enemy" pattern.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚫 4 Red lines de compliance (MemoPryl)</h2>
+
+  <div class="red-line"><b>Deepfake de Goldie Hawn / Kurt Russell / Steve Martin / Bill Gates / Dr. Oz / Chuck Norris.</b> MemoPryl cluster está coberto por BBB/Forbes/Snopes/Yahoo como SCAM. NUNCA usar nome/face real como endossante. Adaptar pra "famoso médico"/silhueta/ator similar. <strong>Dr. Sanjay Gupta = exceção (brand owner autorizado).</strong></div>
+  <div class="red-line"><b>"Reversing Alzheimer's" / "cure for memory loss" / "stop your Aricept" / "doctor took me off my chart".</b> FTC + UK ASA violation. JAMAIS. "May support memory function" / "research summary" / "structure-function" são compliant.</div>
+  <div class="red-line"><b>"4,000 Americans full cognitive recovery" / "84% of users" sem survey citation.</b> Fabricated stat = FTC deceptive advertising. Survey precisa ser real, ou usar "79% reported" com disclosure "individual results may vary".</div>
+  <div class="red-line"><b>"FDA approved".</b> Supps nunca são FDA approved. Use "FDA-registered facility" + "FDA disclaimer: These statements have not been evaluated by the FDA. This product is not intended to diagnose, treat, cure, or prevent any disease."</div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔗 Onde usar</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🎯 Decision Tree visual (Hub)</h4>
+      <p>7 dos 9 ângulos estão catalogados no <a href="../../../../index.html#copy-bank" style="color:var(--accent-light);">Hub → Copy Bank → Decision Tree</a> com cores verde (brief pronto) e azul (blue ocean).</p>
+    </div>
+    <div class="card">
+      <h4>📦 Briefs + VSL transcripts</h4>
+      <p>1 brief production-ready (<a href="../../../../../briefs/brief-memopryl-lithium-2026-08-23.md" style="color:var(--accent-light);">brief-memopryl-lithium</a>) + <a href="../../../../../intel/memopryl/vsl-transcripts/" style="color:var(--accent-light);">15 VSL ads bank</a> com INDEX PT-BR. 2 VSLs DTC transcritos pra story arc templates.</p>
+    </div>
+    <div class="card">
+      <h4>🎬 LPs ativas</h4>
+      <p><a href="../../lps/pdp/" style="color:var(--accent-light);">PDP V2</a> (44KB Next.js) · 5 DTC funnels (ml05/ml06) · 2 VSL article LPs (VTurb).</p>
+    </div>
+    <div class="card">
+      <h4>🛰️ Spy intel + cross-vertical</h4>
+      <p>102KB spy em <a href="../../../../../intel/spy-2026-08-24/" style="color:var(--accent-light);">intel/spy-2026-08-24/</a> + 3 benchmarks (Brain Song $155 / PhytoMem $141 / MemoryFuel $300+). Affiliate brief paralelo em <a href="../../vsl/copy/briefing-affiliate/" style="color:var(--accent-light);">briefing-affiliate</a> (9 frameworks marketéricos).</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    Briefing PT-BR MemoPryl · 9 ângulos validados · 4 detalhados + 5 resumidos · blue ocean 0 concorrentes Meta · cross-project template (slimsoda/cardio/linfaflow/linfozen usam mesmo pattern) · atualizado 24/ago/2026 · mantido por Mavis (MiniMax Code)
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SlimSoda — Briefing PT-BR · 9 ângulos validados (Stanford · Anti-scam · Maria 47 · Sardinian · etc)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#06a77d; --accent-light:#3DDC97; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --orange:#fdcb6e; --violet:#A78BFA; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1080px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(6,167,125,0.12); color:var(--accent-light); border:1px solid rgba(6,167,125,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent-light); }
+  h2 { font-size:22px; margin:32px 0 12px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:16px; margin:18px 0 8px; color:var(--accent-light); }
+  p, li { color:var(--text); font-size:14.5px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:760px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.red { border-left-color:var(--red); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.blue { border-left-color:var(--blue); }
+  .callout.violet { border-left-color:var(--violet); }
+  .callout.gray { border-left-color:var(--muted); }
+  .callout strong { color:var(--accent-light); }
+  .callout.red strong { color:var(--red); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.blue strong { color:var(--blue); }
+  code { font-family:"JetBrains Mono","SF Mono",Consolas,Menlo,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border-left:3px solid var(--gold); padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; font-size:13px; line-height:1.7; color:var(--text); overflow-x:auto; white-space:pre-wrap; }
+  pre .label { font-size:10px; color:var(--gold); text-transform:uppercase; letter-spacing:0.08em; font-weight:800; margin-bottom:6px; }
+  .angulo { background:var(--panel); border:1px solid var(--border); border-radius:12px; margin-bottom:18px; overflow:hidden; }
+  .angulo-header { padding:14px 18px; display:flex; align-items:center; gap:14px; border-bottom:1px solid var(--border); background:linear-gradient(90deg, rgba(6,167,125,0.08), transparent); }
+  .angulo-num { width:48px; height:48px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .angulo-info h3 { font-size:16px; font-weight:800; margin:0; color:var(--text); text-transform:uppercase; letter-spacing:0.04em; }
+  .angulo-info .framework { font-size:12.5px; color:var(--orange); font-style:italic; margin-top:3px; }
+  .angulo-info .meta { font-size:11px; color:var(--muted); margin-top:4px; }
+  .angulo-info .meta b { color:var(--text); }
+  .angulo-body { padding:14px 18px 18px; }
+  .angulo-body p { margin:6px 0; font-size:13.5px; }
+  .angulo-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:10px 0; }
+  .angulo-grid .col { background:var(--panel-2); border-radius:6px; padding:10px 12px; }
+  .angulo-grid .col h5 { margin:0 0 6px; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold); font-weight:800; }
+  .angulo-grid .col p { font-size:12.5px; line-height:1.55; margin:0; }
+  .angulo-grid .col .ptbr { color: var(--blue); }
+  .resumo { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 18px; margin-bottom:10px; }
+  .resumo-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+  .resumo-num { width:32px; height:32px; background:var(--panel-2); border:1px solid var(--accent); color:var(--accent); border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; flex-shrink:0; }
+  .resumo h3 { font-size:14px; margin:0; color:var(--text); }
+  .resumo .framework { font-size:11px; color:var(--orange); font-style:italic; margin-top:2px; }
+  .resumo p { font-size:13px; margin:6px 0; }
+  .resumo .hook-en { color: var(--muted); font-style: italic; }
+  .resumo .hook-pt { color: var(--blue); }
+  .resumo .risk { font-size:11px; margin-top:6px; }
+  .resumo .risk b { color: var(--red); }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; margin-right: 14px; }
+  .back-link:hover { color:var(--accent); }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card h4 { font-size:14px; margin:0 0 6px; color:var(--accent-light); text-transform:uppercase; letter-spacing:0.05em; }
+  .card p { font-size:13px; margin:4px 0; }
+  .red-line { display:flex; gap:10px; align-items:flex-start; background:rgba(255,90,101,0.08); border:1px solid rgba(255,90,101,0.3); border-radius:8px; padding:8px 12px; margin:6px 0; font-size:13px; }
+  .red-line::before { content:"🚫"; }
+  @media (max-width:720px) { .angulo-grid, .grid-2 { grid-template-columns:1fr; } h1 { font-size:24px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../../../index.html">← HUB principal (dr reference)</a>
+  <a class="back-link" href="../../index.html">← SlimSoda hub</a>
+
+  <header>
+    <span class="badge">Briefing PT-BR · SlimSoda · 9 ângulos validados</span>
+    <h1>SlimSoda <span class="accent">· Briefing PT-BR completo</span></h1>
+    <p class="lede">Briefing de copy DR pra <strong>SlimSoda</strong> (suplemento 3-ingredientes: baking soda + ginger + berberine). <strong>9 ângulos</strong> validados, 4 detalhados com Story-Engine 7 beats, 5 resumidos, 6 red lines de compliance, e o padrão copy em PT-BR + EN pra cada.</p>
+  </header>
+
+  <div class="callout gold">
+    <strong>🎯 Produto:</strong> SlimSoda — suplemento em pó 30 scoops (60g) pra gerenciar peso em mulher 35-65. <strong>Fórmula oficial (4 ingredientes):</strong> Pure Baking Soda® + Gingerol 6% + NAD+ + Pure Berberine®. <strong>Mecanismo canônico:</strong> "Wake the Cells · Protect the Hormone · Flip the Switch — In That Order." <strong>Persona oficial:</strong> Dana Whitfield, independent formulator and researcher.
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📦 Visão geral do produto</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🧬 Mecanismo (3 passos na ordem)</h4>
+      <p>1. <strong>Pure Baking Soda® (The Reset Switch)</strong> — neutraliza ácido do gut, acorda L-cells dormentes, reinicia produção natural de GLP-1 e GIP.</p>
+      <p>2. <strong>Gingerol 6% (The Hormone Shield)</strong> — inibe enzima DPP-4 (que destrói GLP-1/GIP em minutos) com até <strong>93% de inibição</strong> per Journal of Medicinal Food.</p>
+      <p>3. <strong>NAD+ (The Youth Factor)</strong> — ativa reparo celular, <strong>acelera cicatrização da pele em até 280%</strong>.</p>
+      <p>4. <strong>Pure Berberine® (The Fat-Burn Switch)</strong> — ativador AMPK, <strong>3× mais gordura corporal perdida em trial de 12 semanas</strong>.</p>
+    </div>
+    <div class="card">
+      <h4>💰 Pricing & Offer</h4>
+      <p><strong>Anchor price:</strong> $119.98 (2× $59.99 retail).</p>
+      <p><strong>Offer principal:</strong> <strong>$29.99 Buy 1 Get 1 FREE</strong> (2 tubs, $29.99). 60-Day Empty-Tub Promise. FDA disclaimer.</p>
+      <p><strong>Anti-injection anchor:</strong> "The Celebrity Capsule Is $100. The Injections Are $1,000 a Month."</p>
+      <p><strong>Garantia:</strong> "Use the whole tub. If the scale doesn't move, or the food noise doesn't quiet, email us and we'll refund every penny."</p>
+    </div>
+    <div class="card">
+      <h4>👤 Avatar primário (canônico)</h4>
+      <p><strong>Maria 47, mãe de 2 filhos, Phoenix AZ</strong>. Bloat há 8 anos. Tentou ACV, water pills, keto, GLP-1 (Ozempic/Wegovy). Frustrada porque parou de aparecer em fotos com os próprios filhos. Frase icônica: <em>"Dana… the noise is gone."</em> (depois de perder 41 lbs em 4 meses).</p>
+    </div>
+    <div class="card">
+      <h4>🧠 Persona (formulador)</h4>
+      <p><strong>Dana Whitfield, Independent Formulator and Researcher</strong>. NÃO é médica, NÃO é Dra. Sarah Chen. <strong>Story archetypal central:</strong> "I made this for my sister Rachel. Three kids, a job, a husband, and a body she didn't recognize." Rachel perdeu 41 lbs em 4 meses. <strong>Calming close:</strong> "This isn't a race. Respect how well it works."</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📐 9 ângulos validados (4 detalhados + 5 resumidos)</h2>
+
+  <!-- ÂNGULO 1 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">1</div>
+      <div class="angulo-info">
+        <h3>🔬 "Stanford descobriu o mineral que falta" (research authority)</h3>
+        <div class="framework">Authority + descoberta recente · Mecanismo canônico · Stanford 2024 paper</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Maria 47 canônico · Heather J. 47 Phoenix · Robin K. 51 Tampa &nbsp;|&nbsp; 📦 <b>Brief production:</b> <a href="../../../../../briefs/brief-slimsoda-stanford-2026-08-23.md" style="color:var(--accent);">brief-slimsoda-stanford</a></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> institutional authority (Stanford) + specificity (80% das mulheres 40+) + freshness bias ("just discovered") + negative framing ("don't get enough of") = scroller-stop que transfere trust da instituição pro produto.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"Stanford Scientists Discovered the Missing Mineral 80% of Women Over 40 Don't Get Enough Of."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Cientistas de Stanford descobriram o mineral que falta — 80% das mulheres acima de 40 não consomem o suficiente."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Mulher 45-65 que valoriza research. Já leu news de saúde. Procura "o que médicos recomendam". Cética de deepfake (Yale/Oprah).</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>Stanford paper em vez de "Yale/Jastreboff" (banido MalwareTips 24/ago). "Researchers found" em vez de "Scientists proved". FDA disclaimer explícito.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Stanford + missing mineral) → bridge (4 ingredientes em ordem) → problema (food noise diário + GLP-1 hormonal + cravings noturnos) → invalidação do tratamento vigente (Ozempic $1000/mês, síndromes de reganho) → mecanismo (WAKE → PROTECT → FLIP) → revelação (SlimSoda em 1 scoop 3 segundos) → CTA (60-day empty-tub guarantee).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 2 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">2</div>
+      <div class="angulo-info">
+        <h3>🛡️ "Eu vi os ads. A maioria é fake." (Dana Whitfield anti-scam)</h3>
+        <div class="framework">Anti-scam honest · Formulator transparency · Cluster exposure MalwareTips 24/ago</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Cética 50-65+ que já viu 50+ ads deepfake Yale/Oprah &nbsp;|&nbsp; 📦 <b>Brief production:</b> <a href="../../../../../briefs/brief-slimsoda-anti-scam-2026-08-23.md" style="color:var(--accent);">brief-slimsoda-anti-scam</a></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Pattern interrupt ("you've been lied to") + transparency ("I'm not a doctor, I'm a formulator") + specificity (real research, real price) = trust em categoria saturada de scam. Único ângulo onde SlimSoda pode ser DONO do cluster.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"I Saw All Those Ads Saying Oprah Swears by a $1 Baking Soda Recipe. Most of Them Are Fake. Here's What Baking Soda Actually Does."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Eu vi todos aqueles ads dizendo que a Oprah jura por uma receita de bicarbonato. A maioria é fake. Veja o que o bicarbonato realmente faz — com pesquisa real."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Dana Whitfield 50s, formulator, cabelo preso, jaleco não-médico, kitchen americana. Real ou atriz similar. <strong>Personagem SlimSoda exclusivo.</strong></p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"I'm not a doctor" disclosure obrigatório. "Most of them are fake" sem citar marcas específicas. FDA disclaimer no LP. <strong>NUNCA deepfake Oprah/Jastreboff.</strong></p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (vi os ads) → bridge (formulator, não doutor) → exposição (BBB, Forbes, Snopes cobriram) → revelação (3 ingredientes: baking soda wake + ginger shield + berberine flip) → USP (60-day empty-tub · no subscription · no fake celeb) → proof (research não fabricada) → CTA (90-second video, 60-day MBG).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 3 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">3</div>
+      <div class="angulo-info">
+        <h3>👩 "Maria 47 — closet + foto com os filhos" (story archetypal)</h3>
+        <div class="framework">Story archetypal · Long-form advertorial · Sister Rachel via Dana Whitfield</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Mulher 35-55 mãe established, frustrada com 8 anos de tentativas &nbsp;|&nbsp; 📦 <b>LP live:</b> <a href="../../lps/advertorial-maria47-v3/" style="color:var(--accent);">advertorial-maria47-v3</a> (108KB v4.7.2)</div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Story archetypal canônico "I made this for my sister Rachel" humaniza o formulator + identifica avatar (3 kids, husband, body não reconhece) + emotional climax (closet, "noise is gone") + calming close ("This isn't a race. Respect how well it works") = diferencia SlimSoda do "BUY NOW" scam.</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"Yale Doctor Reveals the $1 Baking Soda Recipe That Helped Maria Drop 41 Pounds in 4 Months — Without Ozempic, Without Surgery"</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"Médica de Yale revela a receita de US$ 1 com bicarbonato que fez Maria perder 41 libras em 4 meses — sem Ozempic, sem cirurgia"</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Maria 47 Ohio, mãe 2 filhos, 215→174 lbs, "daughter asked if I was sick". Photo on fridge.</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>⚠️ <b>"Yale" precisa refresh</b> (cluster exposure 24/ago MalwareTips). Substituir por "Stanford 2024". Manter "41 pounds in 4 months" como personagem representativa.</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Yale/Stanford + Maria + 41 lbs) → bridge (USA Today Exclusive) → story archetypal (closet, kids, husband) → invalidação (4 objeções: dieta / exercício / injeção / receita errada) → mecanismo (3 ingredientes na ordem) → ritual (1 scoop, 1 glass, 3 seconds) → CTA (path 1/2 close + 60-day empty-tub).</p>
+    </div>
+  </div>
+
+  <!-- ÂNGULO 4 — DETALHADO -->
+  <div class="angulo">
+    <div class="angulo-header">
+      <div class="angulo-num">4</div>
+      <div class="angulo-info">
+        <h3>🏝️ "As mulheres de Sardenha e Okinawa bebem isso todo dia" (blue zone)</h3>
+        <div class="framework">Exotic provenance + centenarian · Cross-vertical (Linfaflow + MemoPryl) · 65+ sub-servido</div>
+        <div class="meta">📊 <b>Risco Meta review:</b> 🟢 BAIXO com disclaimers &nbsp;|&nbsp; 🎯 <b>Avatar ideal:</b> Mulher 60-75+ health-conscious, fixed income &nbsp;|&nbsp; 📦 <b>Brief a criar:</b> <span style="color:var(--muted);">brief-slimsoda-sardinian (gap cross-vertical blue ocean)</span></div>
+      </div>
+    </div>
+    <div class="angulo-body">
+      <p><strong>Por que funciona:</strong> Exotic provenance (Sardenha, Okinawa) + longevity (100+) + "they're not on GLP-1" anti-âncora + cross-vertical (MemoPryl usa mesmo angle). 65+ EXPLICITAMENTE sub-servido em weight loss (saturação 40-55).</p>
+      <div class="angulo-grid">
+        <div class="col">
+          <h5>🇺🇸 Hook (EN verbatim)</h5>
+          <p><em>"The Women of Sardinia and Okinawa Drink a Morning Mineral Tonic Every Day. They're Not on GLP-1. They Live Past 100. Here's the American Version."</em></p>
+        </div>
+        <div class="col">
+          <h5>🇧🇷 Hook (PT-BR · adaptação)</h5>
+          <p class="ptbr"><em>"As mulheres de Sardenha e Okinawa bebem um tônico mineral toda manhã. Não tomam GLP-1. Vivem mais de 100 anos. Aqui a versão americana."</em></p>
+        </div>
+        <div class="col">
+          <h5>🎯 Avatar</h5>
+          <p>Avó 70+ representando Sardenha/Okinawa, ou atriz similar. <strong>NUNCA deepfake</strong> (Sardinian grandmother deepfake é RED LINE).</p>
+        </div>
+        <div class="col">
+          <h5>🔄 Adaptações Meta-safe</h5>
+          <p>"associated with longevity in some studies" · "researchers have found" · "may support healthy aging". <strong>NUNCA</strong> "will make you live past 100".</p>
+        </div>
+      </div>
+      <p style="margin-top:8px;"><strong>Framework (Story-Engine 7 beats):</strong> hook (Sardenha + Okinawa + 100+) → bridge (3 ingredientes: baking soda + ginger + berberine) → prova (5.000 anos tradição Sardenha, Okinawa blue zone) → exclusão (elas NÃO tomam GLP-1 / statins) → mecanismo (mineral missing da água americana pós-1980) → solução (American version, 1 scoop/dia) → CTA (3 ingredientes · 1 scoop · no subscription).</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>📋 5 ângulos resumidos (1 linha cada)</h2>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">5</div>
+      <h3>🚫 "A única que não te prende em subscription"</h3>
+    </div>
+    <p class="framework">Transparência de preço · Anti-pattern attack</p>
+    <p class="hook-en">🇺🇸 <em>"The Only Weight Management Drink That Doesn't Lock You Into a Subscription. Try One Jar — Keep It or Get Every Penny Back."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"O único drink de emagrecimento que não te prende em assinatura. Teste um frasco — fique com ele ou receba tudo de volta."</em></p>
+    <p><strong>Avatar:</strong> 50-70+ odeia recurring billing. <strong>Risco Meta:</b> 🟢 BAIXO (factual). <strong>Diferencial:</strong> Mitolyn/Java Burn têm B1G1 mas rodam recurring; SlimSoda é one-time only.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">6</div>
+      <h3>🍽️ "Você não para de pensar em comida entre as refeições"</h3>
+    </div>
+    <p class="framework">GLP-1 alternative refatorada · "Between-meal hunger" (sem food noise framing)</p>
+    <p class="hook-en">🇺🇸 <em>"Why You Can't Stop Thinking About Food Between Meals. The 3 Ingredients That Quiet the Noise Without the Injection."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Por que você não para de pensar em comida entre as refeições. Os 3 ingredientes que silenciam o barulho sem injeção."</em></p>
+    <p><strong>Avatar:</strong> 30-60+ com cravings intrusivas, awareness de Ozempic, quer "natural alternative". <strong>Risco Meta:</b> ⚠️ MÉDIO se mencionar GLP-1 explicitamente. ✅ BAIXO com "between-meal hunger" framing. <strong>HARD RULE:</strong> NEVER mention "Ozempic/Wegovy/Mounjaro/Faux-Zempic".</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">7</div>
+      <h3>👩‍👧 "Comprei pra minha mãe de 75 anos"</h3>
+    </div>
+    <p class="framework">Proxy-buy · Filha 45-65 comprando pra mãe · Cross-vertical winner</p>
+    <p class="hook-en">🇺🇸 <em>"I Bought This for My 75-Year-Old Mother. Three Months Later, She Started Gardening Again."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Comprei isso pra minha mãe de 75 anos. Três meses depois, ela voltou a cuidar do jardim."</em></p>
+    <p><strong>Avatar:</strong> Filha adulta 45-65 comprando pra mãe 70-80+. <strong>Risco Meta:</b> 🟢 BAIXO com structure-function. <strong>Gap real:</strong> proxy-buy story em DR ainda é blue ocean.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">8</div>
+      <h3>🧪 "4 ingredientes na ordem exata"</h3>
+    </div>
+    <p class="framework">Mechanism-first · Especificidade técnica · 4-ingredient switch</p>
+    <p class="hook-en">🇺🇸 <em>"4 Ingredients. In That Exact Order. The Switch That Decides If Your Body Burns Fat or Stores It."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"4 ingredientes. Nessa ordem exata. O switch que decide se seu corpo queima gordura ou armazena."</em></p>
+    <p><strong>Avatar:</strong> 35-55 curiosa por mechanism, quer "entender o porquê". <strong>Risco Meta:</b> 🟢 BAIXO (structure-function). <strong>Diferencial:</strong> "In That Order" é canon — perder 1 quebra tudo.</p>
+  </div>
+
+  <div class="resumo">
+    <div class="resumo-header">
+      <div class="resumo-num">9</div>
+      <h3>🌅 "Não é uma corrida. Respeite como funciona."</h3>
+    </div>
+    <p class="framework">Calming close · Anti-hype · Diferenciação do "BUY NOW scam"</p>
+    <p class="hook-en">🇺🇸 <em>"This isn't a race. Respect how well it works. 41 pounds in 4 months is the kind of result that doesn't need a countdown timer."</em></p>
+    <p class="hook-pt">🇧🇷 <em>"Não é uma corrida. Respeite como funciona. 41 libras em 4 meses é o tipo de resultado que não precisa de timer de contagem regressiva."</em></p>
+    <p><strong>Avatar:</strong> 45-65+ cética de "limited time offer" e "act now". <strong>Risco Meta:</b> 🟢 BAIXO. <strong>Diferencial:</strong> contrasta com todo cluster scam que usa urgência fabricada. Canon oficial Dana Whitfield.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🚫 6 Red lines de compliance (SlimSoda)</h2>
+
+  <div class="red-line"><b>Deepfake celebrity (Oprah, Jastreboff, Jillian Michaels).</b> MalwareTips 24/ago/2026 nomeou SlimSoda como parte do cluster scam. Ban Meta + 35 state AGs + BBB + NYT. <strong>NUNCA usar foto, voz, ou "as seen on" de celebridade real sem autorização.</strong></div>
+  <div class="red-line"><b>"Yale" + "research paper" + "Today show" framing.</b> É EXATAMENTE o template que MalwareTips identificou. Maria 47 v4.7.1 ainda usa "Yale" — REFRESH URGENTE pra "Stanford 2024".</div>
+  <div class="red-line"><b>"Cures/treats/reverses obesity" + "stop your medication".</b> FTC + UK ASA violation. JAMAIS. "Supports" / "may help" / "researchers found" são structure-function compliant.</div>
+  <div class="red-line"><b>"Guaranteed to lose X pounds in Y days".</b> Specific stats fabricados = FTC deceptive advertising. Use 60-day empty-tub promise SEM mencionar peso específico garantido.</div>
+  <div class="red-line"><b>"FDA approved".</b> Supps nunca são FDA approved. Use "FDA-registered facility" + "FDA disclaimer: These statements have not been evaluated by the FDA."</div>
+  <div class="red-line"><b>"Overnight" / "while you sleep" / "in 24 hours".</b> ASA UK ban ago/2026 contra Arrae MB-1 + Inno Supps. Specific timeline promises = reject.</div>
+
+  <!-- ═══════════════════════════════════════════════════════════════ -->
+  <h2>🔗 Onde usar</h2>
+
+  <div class="grid-2">
+    <div class="card">
+      <h4>🎯 Decision Tree visual (Hub)</h4>
+      <p>Cada ângulo tem linha dedicada no <a href="../../../../index.html#copy-bank" style="color:var(--accent-light);">Hub → Copy Bank → Decision Tree</a>. 7 dos 9 ângulos estão catalogados lá (SlimSoda tem 7 ângulos totais, 2 extras ainda em construção).</p>
+    </div>
+    <div class="card">
+      <h4>📦 Briefs production-ready</h4>
+      <p>2 briefs já escritos (Stanford + Anti-scam) em <code>briefs/</code>. Os outros 7 ângulos estão em <a href="../../../../../intel/spy-2026-08-24/slimsoda-decision-tree.md" style="color:var(--accent-light);">slimsoda-decision-tree.md</a> como blueprint pra produção.</p>
+    </div>
+    <div class="card">
+      <h4>🎬 LPs ativas</h4>
+      <p><a href="../../lps/advertorial-stanford/" style="color:var(--accent-light);">Stanford v1.0</a> (104KB) · <a href="../../lps/advertorial-maria47-v3/" style="color:var(--accent-light);">Maria 47 v4.7.2</a> (108KB) · <a href="../../lps/buy-page/" style="color:var(--accent-light);">Buy Page</a> · <a href="../../lps/vsl/index.html" style="color:var(--accent-light);">VSL SlimTide</a> (Vturb sua)</p>
+    </div>
+    <div class="card">
+      <h4>🛰️ Spy intel + 7 ângulos extras</h4>
+      <p>62KB de spy intel em <a href="../../../../../intel/spy-2026-08-24/" style="color:var(--accent-light);">intel/spy-2026-08-24/</a> com clusters, ads verbatim, decision tree. Affiliate brief paralelo com frameworks DR (9 ângulos marketéricos) em <a href="../briefing-affiliate/" style="color:var(--accent-light);">briefing-affiliate/</a>.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    Briefing PT-BR SlimSoda · 9 ângulos validados · 4 detalhados + 5 resumidos · cross-project template (memo/cardio/linfaflow/linfozen usam mesmo pattern) · atualizado 24/ago/2026 · mantido por Mavis (MiniMax Code)
+  </div>
+</div>
+</body>
+</html>
