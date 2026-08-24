@@ -194,21 +194,39 @@
 <script>
 (function(){
   var CORRECT = '9628';
+  var PIN_KEY = 'dr_hub_unlocked';
+  var PIN_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
   var gate = document.getElementById('pin-gate');
   var input = document.getElementById('pin-input');
   var btn = document.getElementById('pin-btn');
   var err = document.getElementById('pin-err');
 
-  // Check sessionStorage (sessão, não persiste entre fechamentos)
-  try { if (sessionStorage.getItem('dr_hub_unlocked') === '1') { gate.classList.add('unlocked'); document.documentElement.style.overflow = ''; } } catch(e) {}
+  // Check localStorage (TTL 7d) — se válido, já unlockado
+  try {
+    var stored = localStorage.getItem(PIN_KEY);
+    if (stored) {
+      var ts = parseInt(stored, 10);
+      if (ts && (Date.now() - ts) <= PIN_TTL) {
+        gate.classList.add('unlocked');
+        document.documentElement.style.overflow = '';
+        document.body.classList.add('unlocked');
+      } else {
+        // Expirou — limpa
+        localStorage.removeItem(PIN_KEY);
+      }
+    }
+  } catch(e) {}
+  // Limpa sessionStorage legado
+  try { sessionStorage.removeItem(PIN_KEY); } catch(e) {}
 
   function tryPin() {
     var v = (input.value || '').trim();
     if (v === CORRECT) {
       // Salva com timestamp (TTL 7d) em localStorage
-      try { localStorage.setItem('dr_hub_unlocked', String(Date.now())); } catch(e) {}
+      try { localStorage.setItem(PIN_KEY, String(Date.now())); } catch(e) {}
       gate.classList.add('unlocked');
       document.body.classList.add('unlocked');
+      document.documentElement.style.overflow = '';
       err.textContent = '';
     } else {
       input.classList.add('error');
@@ -222,11 +240,9 @@
   input.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryPin(); });
   input.addEventListener('input', function(){ if (input.value.length === 4) tryPin(); });
 
-  // Se já unlockado (localStorage 7d), não trava scroll
+  // Se já unlockado, garante que scroll tá liberado
   if (gate.classList.contains('unlocked')) { document.documentElement.style.overflow = ''; }
   else { document.documentElement.style.overflow = 'hidden'; }
-  // Remove do sessionStorage (legado) — só localStorage agora
-  try { sessionStorage.removeItem('dr_hub_unlocked'); } catch(e) {}
 })();
 </script>
 
@@ -362,13 +378,11 @@
       <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;">
         <div style="font-size: 11px; font-weight: 800; color: #06A77D; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">❓ "Minha VSL?"</div>
         <div style="font-size: 12px; line-height: 1.55; color: #1a1a1a;">
-          <b>Suas 5 VSLs</b> (variants da Quiet Weight) estão em <a href="by-product/slimsoda/lps/_cloned/05-closet-quiet-weight.html" style="color:#F5841F;font-weight:700;">_cloned/</a>:<br>
-          ✅ <a href="by-product/slimsoda/lps/_cloned/01-original-recipe-healthy-digest.html" style="color:#F5841F;font-weight:700;">01-original-recipe</a> (1.9MB)<br>
-          ✅ <a href="by-product/slimsoda/lps/_cloned/02-reader-warning-healthy-digest.html" style="color:#F5841F;font-weight:700;">02-reader-warning</a> (2.1MB)<br>
-          ✅ <a href="by-product/slimsoda/lps/_cloned/03-two-column-reset-magazine.html" style="color:#F5841F;font-weight:700;">03-two-column</a> (2.0MB)<br>
-          ✅ <a href="by-product/slimsoda/lps/_cloned/04-exclusive-report-reset-magazine.html" style="color:#F5841F;font-weight:700;">04-exclusive-report</a> (2.1MB)<br>
-          ✅ <a href="by-product/slimsoda/lps/_cloned/05-closet-quiet-weight.html" style="color:#F5841F;font-weight:700;">05-closet-quiet-weight</a> (78KB, a melhor)<br>
-          📺 Conta Vturb: <code style="font-size:9px;">converteai.net/40842bbe-...</code>
+          <b>Suas VSLs</b> rodam na conta Vturb <code style="font-size:10px;background:rgba(6,167,125,0.12);padding:1px 4px;border-radius:3px;">40842bbe-...</code>:<br>
+          ✅ <a href="by-product/slimsoda/lps/vsl/index.html" style="color:#F5841F;font-weight:700;">vsl/index.html</a> (SlimTide, Yale+Oprah copy, <b>VSL principal</b>)<br>
+          ✅ <a href="slimtide-vsl/index.html" style="color:#F5841F;font-weight:700;">slimtide-vsl/</a> (mesma VSL, 2º path)<br>
+          ✅ <a href="by-product/slimsoda/lps/_cloned/05-closet-quiet-weight.html" style="color:#F5841F;font-weight:700;">_cloned/05-closet-quiet-weight</a> (Quiet Weight)<br>
+          📺 Conta Vturb: <code style="font-size:9px;">converteai.net/40842bbe-bbd8-4eb5-aac6-ee6da1d154b6</code>
         </div>
       </div>
       <div style="background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px;">
