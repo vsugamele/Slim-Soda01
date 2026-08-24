@@ -31,6 +31,71 @@
 </head>
 <body>
 
+<!-- PIN GATE 9628 — protege o Hub de acesso público -->
+<style>
+  #pin-gate { position: fixed; inset: 0; z-index: 99999; background: linear-gradient(135deg, #0a0a0a, #1a1a1a); display: flex; align-items: center; justify-content: center; font-family: var(--font-sans, system-ui); }
+  #pin-gate.unlocked { display: none; }
+  .pin-card { background: rgba(28,28,30,0.95); border: 1px solid rgba(255,138,61,0.3); border-radius: 18px; padding: 36px 32px; max-width: 380px; width: calc(100% - 32px); text-align: center; box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,138,61,0.1); }
+  .pin-card .lock { font-size: 42px; margin-bottom: 12px; }
+  .pin-card h1 { color: #fff; font-size: 22px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .pin-card p { color: rgba(255,255,255,0.6); font-size: 13px; margin: 0 0 22px; line-height: 1.5; }
+  .pin-input { width: 100%; padding: 14px 18px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; color: #fff; font-size: 22px; font-weight: 700; letter-spacing: 0.3em; text-align: center; font-family: var(--font-mono, monospace); outline: none; transition: all 0.15s; }
+  .pin-input:focus { border-color: #F5841F; background: rgba(0,0,0,0.6); box-shadow: 0 0 0 3px rgba(245,132,31,0.15); }
+  .pin-input.error { border-color: #c0392b; animation: pin-shake 0.4s; }
+  @keyframes pin-shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+  .pin-btn { width: 100%; margin-top: 12px; padding: 12px; background: linear-gradient(135deg, #F5841F, #ff8a3d); border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 800; letter-spacing: 0.05em; cursor: pointer; text-transform: uppercase; }
+  .pin-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(245,132,31,0.3); }
+  .pin-btn:active { transform: translateY(0); }
+  .pin-err { color: #ff6b5b; font-size: 12px; margin-top: 8px; min-height: 16px; font-weight: 600; }
+  .pin-meta { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); font-size: 11px; }
+  @media (max-width: 600px) { .pin-card { padding: 28px 22px; } .pin-card h1 { font-size: 19px; } .pin-input { font-size: 20px; padding: 12px 14px; } }
+</style>
+<div id="pin-gate">
+  <div class="pin-card">
+    <div class="lock">🔒</div>
+    <h1>DR Hub · Acesso restrito</h1>
+    <p>Digite o PIN de 4 dígitos para acessar o Hub operacional.</p>
+    <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="4" class="pin-input" id="pin-input" placeholder="••••" autocomplete="off" autofocus>
+    <button class="pin-btn" id="pin-btn">Entrar</button>
+    <div class="pin-err" id="pin-err"></div>
+    <div class="pin-meta">DR Hub v26 · Slim-Soda01 · 24/ago/2026</div>
+  </div>
+</div>
+<script>
+(function(){
+  var CORRECT = '9628';
+  var gate = document.getElementById('pin-gate');
+  var input = document.getElementById('pin-input');
+  var btn = document.getElementById('pin-btn');
+  var err = document.getElementById('pin-err');
+
+  // Check sessionStorage (sessão, não persiste entre fechamentos)
+  try { if (sessionStorage.getItem('dr_hub_unlocked') === '1') { gate.classList.add('unlocked'); document.documentElement.style.overflow = ''; } } catch(e) {}
+
+  function tryPin() {
+    var v = (input.value || '').trim();
+    if (v === CORRECT) {
+      try { sessionStorage.setItem('dr_hub_unlocked', '1'); } catch(e) {}
+      gate.classList.add('unlocked');
+      err.textContent = '';
+    } else {
+      input.classList.add('error');
+      err.textContent = 'PIN incorreto. Tente novamente.';
+      input.value = '';
+      setTimeout(function(){ input.classList.remove('error'); input.focus(); }, 500);
+    }
+  }
+
+  btn.addEventListener('click', tryPin);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryPin(); });
+  input.addEventListener('input', function(){ if (input.value.length === 4) tryPin(); });
+
+  // Se já unlockado, não trava scroll
+  if (gate.classList.contains('unlocked')) { document.documentElement.style.overflow = ''; }
+  else { document.documentElement.style.overflow = 'hidden'; }
+})();
+</script>
+
 <header class="global-header">
   <a class="global-logo" href="index.html"><span class="accent">DR</span> Hub v26</a>
   <nav class="global-nav">
