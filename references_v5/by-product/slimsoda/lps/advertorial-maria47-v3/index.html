@@ -489,6 +489,17 @@
     .compare, .before-after, .path-grid { grid-template-columns: 1fr; }
     .ssq-q { font-size: 19px; }
     .ssq-card { padding: 22px 18px 18px; }
+    .pull { font-size: 18px; padding: 18px 20px; }
+    .callout-warn, .callout-win { padding: 16px 18px; }
+    .callout-warn p, .callout-win p { font-size: 15px; }
+    .fig { margin: 20px 0 22px; }
+    .cta { font-size: 16px; padding: 18px 20px; }
+    .cta::after { width: 16px !important; height: 16px !important; margin-left: 8px !important; }
+    .ssq-cta { font-size: 16px; padding: 14px 18px; }
+    .sc-cta { font-size: 14px; padding: 12px 16px; }
+    .sc-text { font-size: 13px; }
+    .sc-kicker { font-size: 10px; }
+    .limiter { font-size: 10px; padding: 5px 10px; }
   }
 </style>
 <!-- Microsoft Clarity -->
@@ -587,9 +598,11 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
   v4.7 (20/08/2026) : MECHANICAL CONVERSION TRIGGERS
                    · Sticky CTA bar (fixed bottom, dark bg + green border) appears after 30% scroll:
                      "30 seconds a day · 90-day money-back · $27.49" + dismissible close button
-                     + fbq StickyCtaClick custom event. v4.7.1: CTA goes to /slimsoda-pdp/ (not
-                     direct checkout) — the user has already scrolled 30%+ so they don't need the
-                     quiz. PDP is the natural intermediate step. utm_medium=stickybar.
+                     + fbq StickyCtaClick custom event.
+                   v4.7.2 (23/08/2026) : All CTAs → direct checkout (skip PDP)
+                     Quiz final CTA + sticky CTA both go to slimsodapowder.com checkout
+                     (eliminates 1 click in funnel). Same checkout URL as v4.7.1 main CTAs.
+                     utm_medium=stickybar / quiz preserved for attribution.
                    · Exit-intent popup STILL skipped (contradicts "permission to leave" P.S.)
                    · Objections block: added 5th objection (doctor/labs): "My doctor ran labs
                      and said everything is fine. Why am I still bloated?" → answers with
@@ -1276,7 +1289,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
         <span>Most of this batch has been reserved</span>
       </div>
       <p style="font-size:11px;color:#888;font-style:italic;margin:6px 0 0;line-height:1.4">Real for this production run. It resets when the next batch opens. <strong>No fake countdown timers. No "5 left in stock" theater.</strong> If you are ready, you are ready. If not, the article is still there.</p>
-      <a class="ssq-cta" id="ssqFinal" href="/slimsoda-pdp/?&affid=aff_6821377&utm_source=advertorial&utm_medium=quiz&utm_campaign=maria47v3">Start with the 3-Ingredient Morning Method →</a>
+      <a class="ssq-cta" id="ssqFinal" href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377&utm_source=advertorial&utm_medium=quiz&utm_campaign=maria47v3">Start with the 3-Ingredient Morning Method →</a>
       <p class="ssq-ship">90-day empty-bottle guarantee · No subscription · Free shipping USA</p>
     </div>
   </div>
@@ -1310,7 +1323,7 @@ src="https://www.facebook.com/tr?id=2211508706308536&ev=PageView&noscript=1"
     <p class="sc-kicker">The 3-Ingredient Morning Method</p>
     <p class="sc-line">30 seconds a day &middot; 90-day money-back &middot; $27.49</p>
   </div>
-  <a class="sc-cta" href="/slimsoda-pdp/?&affid=aff_6821377&utm_source=advertorial&utm_medium=stickybar&utm_campaign=maria47v3" id="scCta">See If Available</a>
+  <a class="sc-cta" href="https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377&utm_source=advertorial&utm_medium=stickybar&utm_campaign=maria47v3" id="scCta">See If Available</a>
 </div>
 
 <script>
