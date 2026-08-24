@@ -27,6 +27,104 @@
     .section-toc { display: flex; gap: var(--sp-2); flex-wrap: wrap; margin-bottom: var(--sp-4); }
     .section-toc a { padding: 4px 10px; background: var(--bg-elev2); border: 1px solid var(--border); border-radius: var(--r-full); font-size: 12px; color: var(--text-muted); text-decoration: none; }
     .section-toc a:hover { border-color: var(--c-accent); color: var(--c-accent); }
+
+    /* === HUB v27 UPGRADE STYLES === */
+    /* Back to top */
+    #back-to-top { position: fixed; right: 24px; bottom: 24px; width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #F5841F, #ff8a3d); color: #fff; border: none; font-size: 20px; cursor: pointer; z-index: 9000; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 8px 24px rgba(245,132,31,0.3); display: flex; align-items: center; justify-content: center; }
+    #back-to-top.show { opacity: 1; pointer-events: auto; }
+    #back-to-top:hover { transform: translateY(-3px); }
+    /* PIN logout button (header) */
+    #pin-logout { display: none; align-items: center; gap: 4px; padding: 5px 10px; background: rgba(192,57,43,0.1); color: #c0392b; border: 1px solid #c0392b; border-radius: 6px; font-size: 11px; font-weight: 700; cursor: pointer; letter-spacing: 0.04em; }
+    #pin-logout:hover { background: rgba(192,57,43,0.2); }
+    body.unlocked #pin-logout { display: inline-flex; }
+    /* Hover lift nos cards KB */
+    .card { transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important; cursor: pointer; position: relative; }
+    a.card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: var(--c-accent) !important; }
+    .card .hover-arrow { position: absolute; top: 12px; right: 12px; opacity: 0; transition: opacity 0.18s; font-size: 14px; color: var(--c-accent); }
+    a.card:hover .hover-arrow { opacity: 1; }
+    /* Search highlight */
+    .search-highlight { background: rgba(245,132,31,0.35); color: #1a1a1a; padding: 0 2px; border-radius: 2px; font-weight: 700; }
+    /* Freshness badges (em cards KB) */
+    .fresh-badge { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.06em; padding: 2px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+    .fresh-badge.fresh { background: rgba(6,167,125,0.15); color: #06A77D; }
+    .fresh-badge.stale { background: rgba(140,140,140,0.15); color: #888; }
+    .fresh-badge.urgent { background: rgba(192,57,43,0.15); color: #c0392b; }
+    /* SLA badges (decisões pendentes) */
+    .sla-badge { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 3px; margin-left: 6px; text-transform: uppercase; }
+    .sla-urgent { background: rgba(192,57,43,0.18); color: #c0392b; }
+    .sla-high { background: rgba(245,132,31,0.18); color: #E09A22; }
+    .sla-normal { background: rgba(78,161,255,0.18); color: #4EA1FF; }
+    .sla-low { background: rgba(140,140,140,0.18); color: #888; }
+    /* Checkbox de decisão concluída */
+    .decision-item { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; transition: opacity 0.2s; }
+    .decision-item.done { opacity: 0.45; }
+    .decision-item.done .decision-text { text-decoration: line-through; }
+    .decision-item input[type="checkbox"] { margin-top: 4px; width: 16px; height: 16px; cursor: pointer; accent-color: #06A77D; flex-shrink: 0; }
+    .decision-text { flex: 1; }
+    .decision-owner { display: inline-block; font-size: 10px; background: rgba(78,161,255,0.12); color: #4EA1FF; padding: 1px 6px; border-radius: 3px; margin-left: 6px; font-weight: 700; }
+    /* Fade-in animation */
+    @media (prefers-reduced-motion: no-preference) {
+      .section, .panel, .ache-rapido-section, #pin-gate { animation: fadeIn 0.35s ease-out backwards; }
+      .section:nth-child(1) { animation-delay: 0.05s; }
+      .section:nth-child(2) { animation-delay: 0.1s; }
+      .section:nth-child(3) { animation-delay: 0.15s; }
+      .section:nth-child(4) { animation-delay: 0.2s; }
+      .section:nth-child(5) { animation-delay: 0.25s; }
+      .section:nth-child(6) { animation-delay: 0.3s; }
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    /* Sidebar floating nav (desktop only) */
+    #sidebar-nav { display: none; position: fixed; left: 16px; top: 50%; transform: translateY(-50%); z-index: 8000; background: rgba(28,28,30,0.92); backdrop-filter: blur(10px); border: 1px solid var(--border); border-radius: 12px; padding: 10px 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    @media (min-width: 1280px) { #sidebar-nav { display: block; } }
+    #sidebar-nav a { display: block; padding: 6px 10px; font-size: 11px; color: var(--text-muted); text-decoration: none; border-radius: 6px; margin-bottom: 2px; font-weight: 600; letter-spacing: 0.03em; transition: all 0.15s; }
+    #sidebar-nav a:hover { background: rgba(245,132,31,0.15); color: #F5841F; }
+    #sidebar-nav a.active { background: rgba(245,132,31,0.2); color: #F5841F; }
+    #sidebar-nav .nav-label { display: block; padding: 4px 10px 8px; font-size: 9px; font-weight: 800; letter-spacing: 0.1em; color: var(--text-faint); text-transform: uppercase; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+    /* Breadcrumb (header) */
+    .breadcrumb { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; color: var(--text-muted); margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--border); }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--c-accent); }
+    .breadcrumb .crumb-sep { color: var(--text-faint); }
+    /* Quick start banner (first-visit) */
+    #quick-start { display: none; position: relative; background: linear-gradient(135deg, rgba(78,161,255,0.1), rgba(245,132,31,0.08)); border: 1px solid rgba(78,161,255,0.3); border-radius: 12px; padding: 22px 24px; margin-bottom: 24px; }
+    #quick-start.show { display: block; }
+    #quick-start .close-qs { position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 18px; color: var(--text-muted); cursor: pointer; padding: 4px 8px; }
+    #quick-start h3 { margin: 0 0 8px; font-size: 16px; color: #1a1a1a; }
+    #quick-start p { margin: 0 0 14px; color: #1a1a1a; font-size: 13px; }
+    #quick-start .qs-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    @media (max-width: 700px) { #quick-start .qs-steps { grid-template-columns: repeat(2, 1fr); } }
+    #quick-start .qs-step { background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.8); border-radius: 8px; padding: 10px 12px; font-size: 12px; line-height: 1.4; }
+    #quick-start .qs-step .qs-num { display: inline-block; width: 22px; height: 22px; background: #4EA1FF; color: #fff; border-radius: 50%; text-align: center; line-height: 22px; font-weight: 800; font-size: 12px; margin-right: 6px; }
+    /* Health check live table */
+    #health-check { background: var(--bg-elev); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 16px; }
+    .health-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 12px; }
+    .health-row + .health-row { border-top: 1px solid var(--border); }
+    .health-row .label { color: var(--text-muted); }
+    .health-row .indicator { display: inline-flex; align-items: center; gap: 6px; font-weight: 700; font-size: 11px; }
+    .health-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .health-dot.ok { background: #06A77D; box-shadow: 0 0 6px rgba(6,167,125,0.5); }
+    .health-dot.warn { background: #E09A22; box-shadow: 0 0 6px rgba(224,154,34,0.5); }
+    .health-dot.err { background: #c0392b; box-shadow: 0 0 6px rgba(192,57,43,0.5); }
+    .health-dot.checking { background: #4EA1FF; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    /* Tipografia unificada */
+    h1, h2, h3 { font-family: var(--font-serif, 'Playfair Display', Georgia, serif); letter-spacing: -0.015em; }
+    h1 { font-weight: 800; }
+    h2 { font-weight: 700; }
+    h3 { font-weight: 700; }
+    body, p, li, td, th, span, button, input, a { font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Inter', system-ui, sans-serif); }
+    code, .pin-input { font-family: var(--font-mono, 'JetBrains Mono', Consolas, monospace); }
+    /* Tablet breakpoint */
+    @media (min-width: 601px) and (max-width: 1024px) {
+      .hero h1 { font-size: 36px; }
+      .hero .lede { font-size: 16px; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+      .grid-2 { grid-template-columns: repeat(2, 1fr) !important; }
+      .section-title { font-size: 22px !important; }
+    }
+    /* Tabelas 13-14px (era 10-11) — override específico */
+    .ache-rapido-section table { font-size: 13px !important; }
+    .ache-rapido-section table th, .ache-rapido-section table td { padding: 9px 12px !important; }
   </style>
 </head>
 <body>
@@ -97,7 +195,7 @@
 </script>
 
 <header class="global-header">
-  <a class="global-logo" href="index.html"><span class="accent">DR</span> Hub v26</a>
+  <a class="global-logo" href="index.html"><span class="accent">DR</span> Hub v27</a>
   <nav class="global-nav">
     <a href="index.html" class="active">HUB</a>
     <a href="one.html">One Page</a>
@@ -106,12 +204,34 @@
     <a href="p1p2/index.html">P1P2</a>
     <a href="methodology/competitive-spy/index.html">Spy</a>
   </nav>
+  <span class="breadcrumb" aria-label="Você está em">
+    <a href="../../index.html">Slim-Soda01</a>
+    <span class="crumb-sep">/</span>
+    <a href="index.html">references_v5</a>
+    <span class="crumb-sep">/</span>
+    <span style="color: var(--c-accent); font-weight: 700;">Hub v27</span>
+  </span>
   <div class="global-search">
     <input type="text" placeholder="Buscar 50 páginas... (slimsoda, memopryl, cortex, brief...)">
     <div class="search-results"></div>
   </div>
   <button class="theme-toggle" aria-label="Toggle theme">☀️</button>
+  <button id="pin-logout" title="Bloquear Hub de novo">🔒 Bloquear</button>
 </header>
+
+<!-- Sidebar flutuante (desktop ≥1280px) -->
+<aside id="sidebar-nav" aria-label="Navegação rápida">
+  <span class="nav-label">Navegar</span>
+  <a href="#ache-rapido" data-section="ache-rapido">⚡ Ache rápido</a>
+  <a href="#knowledge-base" data-section="knowledge-base">📚 Knowledge</a>
+  <a href="#produtos" data-section="produtos">🥤 Produtos</a>
+  <a href="#analise" data-section="analise">🧠 Análise</a>
+  <a href="#methodology" data-section="methodology">🔬 Method</a>
+  <a href="#tracking" data-section="tracking">📊 Tracking</a>
+  <a href="#spy" data-section="spy">📡 Spy</a>
+  <a href="#briefs-ready" data-section="briefs-ready">📝 Briefs</a>
+  <a href="#pages" data-section="pages">📄 Pages</a>
+</aside>
 
 <div class="wrap">
 
@@ -136,17 +256,16 @@
 
   <!-- TABLE OF CONTENTS -->
   <div class="section-toc">
+    <a href="#ache-rapido" style="background:rgba(6,167,125,0.18);color:#06A77D;border-color:rgba(6,167,125,0.3);font-weight:700;">⚡ ACHE RÁPIDO</a>
+    <a href="#compliance" style="background:rgba(192,57,43,0.15);color:#c0392b;border-color:rgba(192,57,43,0.3);">🚨 Compliance</a>
+    <a href="#knowledge-base" style="background:rgba(255,138,61,0.15);color:#F5841F;border-color:rgba(245,132,31,0.3);">📚 Knowledge Base (12)</a>
     <a href="#produtos">🥤 Produtos (6)</a>
-    <a href="#analise">🧠 Análise criativa</a>
-    <a href="#briefs-ready">📝 Briefs (2 prontos)</a>
-    <a href="#methodology">🔬 Methodology (12)</a>
-    <a href="#tracking">📊 Tracking Live</a>
-    <a href="#p1p2">🧪 P1P2 Test Planner</a>
-    <a href="#spy">📡 Spy intel</a>
-    <a href="#briefs">📝 Briefs validados</a>
-    <a href="#pages">📄 Pages operacionais</a>
-    <a href="#ache-rapido" style="background:rgba(6,167,125,0.18);color:#06A77D;border-color:rgba(6,167,125,0.3);font-weight:700;">⚡ ACHE RÁPIDO (5 checkouts + 7 repos)</a>
-    <a href="#knowledge-base" style="background:rgba(255,138,61,0.15);color:#F5841F;border-color:rgba(245,132,31,0.3);">📍 Knowledge Base (12 clickable)</a>
+    <a href="#analise">🧠 Análise (9)</a>
+    <a href="#methodology">🔬 Method (12)</a>
+    <a href="#tracking">📊 Tracking</a>
+    <a href="#spy">📡 Spy</a>
+    <a href="#briefs-ready">📝 Briefs (5)</a>
+    <a href="#pages">📄 Pages</a>
   </div>
 
   <!-- TOP COMMAND BAR -->
@@ -160,12 +279,36 @@
     <a class="btn btn-ghost" href="../../REPOS.md" style="font-size: 12px;">📂 Repos</a>
   </div>
 
+  <!-- QUICK START — só aparece 1ª vez (ou se user pedir) -->
+  <div id="quick-start">
+    <button class="close-qs" id="close-qs" aria-label="Fechar quick start">✕</button>
+    <h3>👋 Primeira vez aqui? Siga em 4 passos:</h3>
+    <p>Esse Hub concentra <b>todos os seus ativos DR</b> (LPs, checkouts, VSLs, briefs, spy) num só lugar. Se tiver perdido, comece por:</p>
+    <div class="qs-steps">
+      <div class="qs-step"><span class="qs-num">1</span><b>Product Map</b><br>Resolve 90% das confusões. Tem tudo mapeado (repo → LP → checkout). <a href="../../intel/PRODUCT-MAP-2026-08-24.md" style="color:#4EA1FF;">Abrir →</a></div>
+      <div class="qs-step"><span class="qs-num">2</span><b>Ache Rápido</b><br>Perguntas-resposta curtas: "qual minha PDP?", "qual minha VSL?", "o que é concorrente?". <a href="#ache-rapido" style="color:#4EA1FF;">Ir ↓</a></div>
+      <div class="qs-step"><span class="qs-num">3</span><b>Compliance Watchlist</b><br>4 red lines críticas de 24/ago/2026 que afetam Stanford v1.0 e Maria 47 v4.7.2. <a href="#compliance" style="color:#4EA1FF;">Ver ↓</a></div>
+      <div class="qs-step"><span class="qs-num">4</span><b>One Page</b><br>Decisão do dia: qual ângulo, qual brief, qual LP priorizar agora. <a href="../../one.html" style="color:#4EA1FF;">Abrir →</a></div>
+    </div>
+  </div>
+
   <!-- ACHE RÁPIDO — 4 respostas diretas + 5 checkouts + 7 repos confirmados -->
-  <div id="ache-rapido" style="background: linear-gradient(135deg, rgba(78,161,255,0.06), rgba(6,167,125,0.06)); border: 1px solid var(--c-slim); border-left: 5px solid var(--c-slim); border-radius: var(--r-md); padding: 20px 24px; margin-bottom: 24px;">
+  <div id="ache-rapido" class="ache-rapido-section" style="background: linear-gradient(135deg, rgba(78,161,255,0.06), rgba(6,167,125,0.06)); border: 1px solid var(--c-slim); border-left: 5px solid var(--c-slim); border-radius: var(--r-md); padding: 20px 24px; margin-bottom: 24px;">
     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
       <span style="font-size: 20px;">⚡</span>
       <strong style="font-size: 15px; letter-spacing: 0.04em; color: #06A77D;">ACHE RÁPIDO · 4 dúvidas frequentes resolvidas em 30s</strong>
       <span style="font-size: 10px; background: rgba(6,167,125,0.18); color: #06A77D; padding: 3px 8px; border-radius: 10px; font-weight: 700; margin-left: auto;">atualizado 24/ago/2026</span>
+    </div>
+
+    <!-- HEALTH CHECK LIVE (Pixel + Vercel + 4 checkouts) -->
+    <div id="health-check" style="margin-bottom: 18px;">
+      <div style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">📡 Health Check Live · checa a cada refresh</div>
+      <div class="health-row"><span class="label">Vercel Hub <code style="font-size:10px;">slim-soda01.vercel.app</code></span><span class="indicator"><span class="health-dot checking" data-target="vercel"></span><span data-name="vercel">checando…</span></span></div>
+      <div class="health-row"><span class="label">Meta Pixel <code style="font-size:10px;">1619587959397761</code> (Stanford + buy-page)</span><span class="indicator"><span class="health-dot checking" data-target="pixel-stanford"></span><span data-name="pixel-stanford">checando…</span></span></div>
+      <div class="health-row"><span class="label">Meta Pixel <code style="font-size:10px;">2211508706308536</code> (Maria 47)</span><span class="indicator"><span class="health-dot checking" data-target="pixel-maria"></span><span data-name="pixel-maria">checando…</span></span></div>
+      <div class="health-row"><span class="label">SlimSoda checkout <code style="font-size:10px;">slimsodapowder.com</code></span><span class="indicator"><span class="health-dot checking" data-target="ck-slim"></span><span data-name="ck-slim">checando…</span></span></div>
+      <div class="health-row"><span class="label">MemoPryl checkout <code style="font-size:10px;">memopryl.com</code></span><span class="indicator"><span class="health-dot checking" data-target="ck-memo"></span><span data-name="ck-memo">checando…</span></span></div>
+      <div class="health-row"><span class="label">Cardio Clear checkout <code style="font-size:10px;">usecardioclear.com</code></span><span class="indicator"><span class="health-dot checking" data-target="ck-cardio"></span><span data-name="ck-cardio">checando…</span></span></div>
     </div>
 
     <!-- 4 respostas diretas -->
@@ -251,21 +394,33 @@
   </div>
 
   <!-- COMPLIANCE + DECISÕES PENDENTES — callout crítico (acima do Knowledge Base) -->
-  <div style="background: linear-gradient(135deg, rgba(192,57,43,0.08), rgba(245,132,31,0.06)); border: 1px solid #c0392b; border-left: 4px solid #c0392b; border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 24px;">
+  <div id="compliance" style="background: linear-gradient(135deg, rgba(192,57,43,0.08), rgba(245,132,31,0.06)); border: 1px solid #c0392b; border-left: 4px solid #c0392b; border-radius: var(--r-md); padding: 18px 22px; margin-bottom: 24px;">
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
       <span style="font-size: 18px;">🚨</span>
       <strong style="font-size: 14px; letter-spacing: 0.05em; color: #c0392b;">COMPLIANCE WATCHLIST · 24/AGO/2026</strong>
     </div>
-    <ul style="margin: 0 0 8px 24px; padding: 0; font-size: 13px; line-height: 1.6; color: #1a1a1a;">
-      <li><b>UK ASA Ago/2026</b> baniu 5 marcas por <b>"food noise" + "boost GLP-1"</b> combinado. <b>Stanford v1.0 tem esse combo</b> — refresh urgente.</li>
-      <li><b>MalwareTips 24/ago/2026</b> nomeou SlimSoda no cluster scam (Ignitra→EvoSlim→SlimSoda→SodaSlim→AlkaLean). <b>Maria 47 v4.7.2 (Yale + Jastreboff + Today)</b> no padrão — refresh urgente.</li>
-      <li><b>FTC v. Prevagen</b> (MemoPryl precedent): <b>8 phrases banned</b>. Neuriva pagou <b>$8M</b> por usar "clinically shown" — só "clinically tested" allowed.</li>
-      <li><b>Meta Jul/2026</b>: NUNCA "you have [condition]" (Personal Attributes ban) — sempre "if you experience occasional water retention".</li>
+    <ul style="margin: 0 0 8px 24px; padding: 0; font-size: 13px; line-height: 1.7; color: #1a1a1a;">
+      <li>
+        <b>UK ASA Ago/2026</b> baniu 5 marcas por <b>"food noise" + "boost GLP-1"</b> combinado.
+        <span style="background: rgba(192,57,43,0.15); color: #c0392b; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; margin-left: 4px;">AFETA: Stanford v1.0</span>
+      </li>
+      <li>
+        <b>MalwareTips 24/ago/2026</b> nomeou SlimSoda no cluster scam (Ignitra→EvoSlim→SlimSoda→SodaSlim→AlkaLean).
+        <span style="background: rgba(192,57,43,0.15); color: #c0392b; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; margin-left: 4px;">AFETA: Maria 47 v4.7.2 + 2 SlimTide VSL paths</span>
+      </li>
+      <li>
+        <b>FTC v. Prevagen</b> (MemoPryl precedent): <b>8 phrases banned</b>. Neuriva pagou <b>$8M</b> por usar "clinically shown" — só "clinically tested" allowed.
+        <span style="background: rgba(245,132,31,0.15); color: #E09A22; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; margin-left: 4px;">AFETA: MemoPryl PDP V2 + 5 funis</span>
+      </li>
+      <li>
+        <b>Meta Jul/2026</b>: NUNCA "you have [condition]" (Personal Attributes ban) — sempre "if you experience occasional water retention".
+        <span style="background: rgba(192,57,43,0.15); color: #c0392b; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; margin-left: 4px;">AFETA: Linfaflow + Linfozen (todas as LPs)</span>
+      </li>
     </ul>
     <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
-      <a href="../../intel/spy-2026-08-24/slimsoda-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy SlimSoda (compliance details)</a>
-      <a href="../../intel/spy-2026-08-24/memopryl-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy MemoPryl (compliance details)</a>
-      <a href="../../intel/spy-2026-08-24/linfaflow-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy Linfaflow (compliance details)</a>
+      <a href="../../intel/spy-2026-08-24/slimsoda-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy SlimSoda</a>
+      <a href="../../intel/spy-2026-08-24/memopryl-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy MemoPryl</a>
+      <a href="../../intel/spy-2026-08-24/linfaflow-master.md" style="font-size: 12px; padding: 6px 12px; background: rgba(192,57,43,0.1); border: 1px solid #c0392b; color: #c0392b; border-radius: 4px; text-decoration: none; font-weight: 600;">📋 Spy Linfaflow</a>
     </div>
   </div>
 
@@ -279,7 +434,7 @@
     </div>
 
     <div class="grid grid-3" style="margin-top: 16px;">
-      <a href="../../intel/PRODUCT-MAP-2026-08-24.md" class="card method-card" style="text-decoration:none;color:inherit;background:rgba(255,138,61,0.12);">
+      <a href="../../intel/PRODUCT-MAP-2026-08-24.md" class="card method-card" data-freshness="today" style="text-decoration:none;color:inherit;background:rgba(255,138,61,0.12);">
         <div class="icon">📍</div>
         <div>
           <div class="name">Product Map · TUDO mapeado</div>
@@ -287,7 +442,7 @@
         </div>
       </a>
 
-      <a href="../../one.html" class="card method-card" style="text-decoration:none;color:inherit;background:rgba(245,132,31,0.08);">
+      <a href="../../one.html" class="card method-card" data-freshness="today" style="text-decoration:none;color:inherit;background:rgba(245,132,31,0.08);">
         <div class="icon">🎯</div>
         <div>
           <div class="name">One Page · Decisão do dia</div>
@@ -295,7 +450,7 @@
         </div>
       </a>
 
-      <a href="../../intel/spy-2026-08-24/slimsoda-master.md" class="card method-card" style="text-decoration:none;color:inherit;background:rgba(192,57,43,0.06);">
+      <a href="../../intel/spy-2026-08-24/slimsoda-master.md" class="card method-card" data-freshness="today" style="text-decoration:none;color:inherit;background:rgba(192,57,43,0.06);">
         <div class="icon">🛰️</div>
         <div>
           <div class="name">Spy 24/ago · 3 produtos</div>
@@ -303,7 +458,7 @@
         </div>
       </a>
 
-      <a href="../../analise-criativos/" class="card method-card" style="text-decoration:none;color:inherit;">
+      <a href="../../analise-criativos/" class="card method-card" data-freshness="recent" style="text-decoration:none;color:inherit;">
         <div class="icon">🧠</div>
         <div>
           <div class="name">Análise Criativa · 9 ads</div>
@@ -374,14 +529,50 @@
     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 10px;">
       <span style="font-size: 18px;">⏳</span>
       <strong style="font-size: 14px; letter-spacing: 0.05em; color: #E09A22;">DECISÕES PENDENTES · Compliance urgente</strong>
+      <span id="decision-counter" style="margin-left:auto; font-size: 11px; background: rgba(224,154,34,0.18); color: #E09A22; padding: 3px 8px; border-radius: 3px; font-weight: 700;">0/0 feitas</span>
     </div>
-    <ul style="margin: 0 0 8px 24px; padding: 0; font-size: 13px; line-height: 1.6; color: #1a1a1a;">
-      <li><b>Refresh Stanford v1.0</b> (commit 547ff4f) — remover "food noise" + "GLP-1" combinado, rebrand "Cleveland + natural mineral". <b>30 min</b>.</li>
-      <li><b>Refresh Maria 47 v4.7.2</b> (commit f2f8757) — remover "Yale + Jastreboff + Today" framing, rebrand sem Yale. <b>20 min</b>.</li>
-      <li><b>Retire SlimTide VSL (Oprah)</b> (3 paths) — mover pra <code>_archived/</code> ou deletar. <b>5 min</b>.</li>
-      <li><b>Trocar link VSL no one.html + Hub</b> de <code>/vsl/</code> (Oprah) → <code>/_cloned/</code> (suas 5 VSLs). <b>5 min</b>.</li>
-      <li><b>Comprimir 2 imagens Stanford</b> (hero-kitchen-woman 6.7MB + three-ingredients-flat-lay 7.3MB) → Vercel Hobby 1GB limit. <b>10 min</b>.</li>
-    </ul>
+    <div style="margin: 0; padding: 0; font-size: 13px; line-height: 1.7; color: #1a1a1a;">
+      <div class="decision-item">
+        <input type="checkbox" data-decision="stanford-refresh" id="d-stanford">
+        <div class="decision-text">
+          <label for="d-stanford"><b>Refresh Stanford v1.0</b> (commit 547ff4f) — remover "food noise" + "GLP-1" combinado, rebrand "Cleveland + natural mineral". <b>~30 min</b>.</label>
+          <span class="sla-badge sla-urgent">URGENT</span>
+          <span class="decision-owner">👤 Você</span>
+        </div>
+      </div>
+      <div class="decision-item">
+        <input type="checkbox" data-decision="maria47-refresh" id="d-maria47">
+        <div class="decision-text">
+          <label for="d-maria47"><b>Refresh Maria 47 v4.7.2</b> (commit f2f8757) — remover "Yale + Jastreboff + Today" framing, rebrand sem Yale. <b>~20 min</b>.</label>
+          <span class="sla-badge sla-urgent">URGENT</span>
+          <span class="decision-owner">👤 Você</span>
+        </div>
+      </div>
+      <div class="decision-item">
+        <input type="checkbox" data-decision="slimtide-archive" id="d-slimtide">
+        <div class="decision-text">
+          <label for="d-slimtide"><b>Arquivar SlimTide VSL</b> (3 paths: <code>vsl/</code>, <code>slimtide-vsl/</code>, <code>references_v5/.../vsl/</code>) — mover pra <code>_archived/</code> ou deletar. <b>~5 min</b>.</label>
+          <span class="sla-badge sla-high">HIGH</span>
+          <span class="decision-owner">👤 Mavis (automático)</span>
+        </div>
+      </div>
+      <div class="decision-item">
+        <input type="checkbox" data-decision="vsl-link" id="d-vsllink">
+        <div class="decision-text">
+          <label for="d-vsllink"><b>Trocar link VSL no one.html + Hub</b> de <code>/vsl/</code> (Oprah) → <code>/_cloned/</code> (suas 5 VSLs). <b>~5 min</b>.</label>
+          <span class="sla-badge sla-high">HIGH</span>
+          <span class="decision-owner">👤 Mavis (automático)</span>
+        </div>
+      </div>
+      <div class="decision-item">
+        <input type="checkbox" data-decision="img-compress" id="d-imgcomp">
+        <div class="decision-text">
+          <label for="d-imgcomp"><b>Comprimir 2 imagens Stanford</b> (hero-kitchen-woman 6.7MB + three-ingredients-flat-lay 7.3MB) → Vercel Hobby 1GB limit. <b>~10 min</b>.</label>
+          <span class="sla-badge sla-normal">NORMAL</span>
+          <span class="decision-owner">👤 Mavis (automático)</span>
+        </div>
+      </div>
+    </div>
     <p style="margin: 8px 0 0; font-size: 12px; color: #888;">Tempo total estimado: <b>~70 min</b> pra compliance-safe + 1 LP live. Próximo brief: Brief Harvard lithium (MemoPryl priority #2 blue ocean) ou Brief Sardinian centenarian (SlimSoda priority cross-vertical).</p>
   </div>
 
@@ -780,9 +971,203 @@
 </div>
 
 <footer class="global-footer">
-  <p>DR Hub v26 · 48 páginas · auto-decision engine · theme dark/light · global search</p>
-  <p style="margin-top:8px; font-size:11px;">Slim-Soda01 · <a href="https://github.com/vsugamele/Slim-Soda01">github</a> · atualizado <span data-last-updated>2026-08-19</span></p>
+  <p>DR Hub v27 · 48 páginas · auto-decision engine · theme dark/light · global search · PIN 9628 · health check live</p>
+  <p style="margin-top:8px; font-size:11px;">Slim-Soda01 · <a href="https://github.com/vsugamele/Slim-Soda01">github</a> · atualizado <span data-last-updated>2026-08-24</span> · PIN <a href="#" id="logout-footer">🔓 logout</a></p>
 </footer>
+
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<script>
+// === HUB v27 UPGRADE JS ===
+
+// 1. Back to top
+(function(){
+  var btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 600) btn.classList.add('show');
+    else btn.classList.remove('show');
+  });
+  btn.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+
+// 2. PIN logout (header + footer)
+(function(){
+  function logout() {
+    try { sessionStorage.removeItem('dr_hub_unlocked'); } catch(e) {}
+    location.reload();
+  }
+  document.getElementById('pin-logout').addEventListener('click', logout);
+  var lof = document.getElementById('logout-footer');
+  if (lof) lof.addEventListener('click', function(e){ e.preventDefault(); logout(); });
+})();
+
+// 3. Quick start banner (show 1ª vez / após 7 dias)
+(function(){
+  var qs = document.getElementById('quick-start');
+  var closed = null;
+  try { closed = localStorage.getItem('dr_hub_qs_closed'); } catch(e) {}
+  var sevenDays = 7*24*60*60*1000;
+  if (!closed || (Date.now() - parseInt(closed)) > sevenDays) {
+    qs.classList.add('show');
+  }
+  document.getElementById('close-qs').addEventListener('click', function(){
+    qs.classList.remove('show');
+    try { localStorage.setItem('dr_hub_qs_closed', String(Date.now())); } catch(e) {}
+  });
+})();
+
+// 4. Health check live (HEAD requests via no-cors fetch)
+(function(){
+  var targets = {
+    'vercel':         { url: 'https://slim-soda01.vercel.app/references_v5/?v=hc', label: 'Hub 200' },
+    'pixel-stanford': { url: 'https://www.facebook.com/tr?id=1619587959397761', label: 'Pixel OK' },
+    'pixel-maria':    { url: 'https://www.facebook.com/tr?id=2211508706308536', label: 'Pixel OK' },
+    'ck-slim':        { url: 'https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&affid=aff_6821377', label: 'SlimSoda' },
+    'ck-memo':        { url: 'https://memopryl.com/cc2/pay/checkout.php?package=6b19&affid=aff_6821377', label: 'MemoPryl' },
+    'ck-cardio':      { url: 'https://usecardioclear.com/cc2/pay/checkout.php?package=3bottles&affid=aff_6821377', label: 'Cardio' }
+  };
+  function setStatus(key, ok, label) {
+    var dot = document.querySelector('.health-dot[data-target="' + key + '"]');
+    var name = document.querySelector('[data-name="' + key + '"]');
+    if (!dot || !name) return;
+    dot.classList.remove('checking');
+    if (ok === null) { dot.classList.add('warn'); name.textContent = '⚠️ sem CORS'; }
+    else if (ok) { dot.classList.add('ok'); name.textContent = '✅ ' + label; }
+    else { dot.classList.add('err'); name.textContent = '❌ erro'; }
+  }
+  Object.keys(targets).forEach(function(key){
+    var t = targets[key];
+    fetch(t.url, { method: 'HEAD', mode: 'no-cors', cache: 'no-cache' })
+      .then(function(r){ setStatus(key, true, t.label); })
+      .catch(function(){ setStatus(key, false, t.label); });
+    // timeout fallback (8s)
+    setTimeout(function(){
+      var dot = document.querySelector('.health-dot[data-target="' + key + '"]');
+      if (dot && dot.classList.contains('checking')) {
+        setStatus(key, null, 'timeout');
+      }
+    }, 8000);
+  });
+})();
+
+// 5. Sidebar nav — scroll spy
+(function(){
+  var sections = ['ache-rapido','knowledge-base','produtos','analise','methodology','tracking','spy','briefs-ready','pages'];
+  var links = document.querySelectorAll('#sidebar-nav a');
+  function update() {
+    var fromTop = window.scrollY + 200;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      var el = document.getElementById(sections[i]);
+      if (el && el.offsetTop <= fromTop) current = sections[i];
+    }
+    links.forEach(function(a){
+      if (a.getAttribute('data-section') === current) a.classList.add('active');
+      else a.classList.remove('active');
+    });
+  }
+  window.addEventListener('scroll', update);
+  update();
+})();
+
+// 6. Decision checkbox (persist in localStorage)
+(function(){
+  var decisions = document.querySelectorAll('.decision-item input[type="checkbox"]');
+  decisions.forEach(function(cb){
+    var id = cb.getAttribute('data-decision');
+    try { if (localStorage.getItem('dr_decision_' + id) === '1') { cb.checked = true; cb.closest('.decision-item').classList.add('done'); } } catch(e) {}
+    cb.addEventListener('change', function(){
+      var item = cb.closest('.decision-item');
+      if (cb.checked) { item.classList.add('done'); try { localStorage.setItem('dr_decision_' + id, '1'); } catch(e) {} }
+      else { item.classList.remove('done'); try { localStorage.removeItem('dr_decision_' + id); } catch(e) {} }
+      updateDecisionCounter();
+    });
+  });
+  function updateDecisionCounter() {
+    var all = document.querySelectorAll('.decision-item');
+    var done = document.querySelectorAll('.decision-item.done');
+    var cnt = document.getElementById('decision-counter');
+    if (cnt) cnt.textContent = done.length + '/' + all.length + ' feitas';
+  }
+  updateDecisionCounter();
+})();
+
+// 7. Search highlight (override default hub search to highlight matches in page)
+(function(){
+  var input = document.querySelector('.global-search input');
+  if (!input) return;
+  // remove old listener marker
+  var origHandler = input.onkeyup;
+  input.addEventListener('input', function(){
+    var q = input.value.trim().toLowerCase();
+    // remove old highlights
+    document.querySelectorAll('.search-highlight').forEach(function(el){
+      var parent = el.parentNode;
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+      parent.normalize();
+    });
+    if (q.length < 3) return;
+    // find text nodes and wrap
+    var walker = document.createTreeWalker(document.querySelector('.wrap'), NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    var n; while ((n = walker.nextNode())) {
+      if (n.nodeValue && n.nodeValue.toLowerCase().indexOf(q) >= 0 && n.parentNode.tagName !== 'SCRIPT' && n.parentNode.tagName !== 'STYLE') {
+        nodes.push(n);
+      }
+    }
+    nodes.slice(0, 30).forEach(function(node){
+      var txt = node.nodeValue;
+      var idx = txt.toLowerCase().indexOf(q);
+      var span = document.createElement('span');
+      span.className = 'search-highlight';
+      span.textContent = txt.substr(idx, q.length);
+      var after = document.createTextNode(txt.substr(idx + q.length));
+      node.nodeValue = txt.substr(0, idx);
+      node.parentNode.insertBefore(span, node.nextSibling);
+      node.parentNode.insertBefore(after, span.nextSibling);
+    });
+  });
+})();
+
+// 8. Mark body as unlocked (so PIN logout button appears)
+(function(){
+  try { if (sessionStorage.getItem('dr_hub_unlocked') === '1') document.body.classList.add('unlocked'); } catch(e) {}
+})();
+
+// 9. Injetar hover-arrow em todos os cards clicáveis
+(function(){
+  document.querySelectorAll('a.card').forEach(function(card){
+    if (!card.querySelector('.hover-arrow')) {
+      var arr = document.createElement('span');
+      arr.className = 'hover-arrow';
+      arr.textContent = '→';
+      card.appendChild(arr);
+    }
+  });
+})();
+
+// 10. Freshness badge automático nos cards KB (baseado em data-freshness)
+(function(){
+  var map = {
+    'fresh': { txt: '🟢 fresh', cls: 'fresh' },
+    'today': { txt: '🟢 hoje', cls: 'fresh' },
+    'recent': { txt: '🟡 2-3d', cls: 'fresh' },
+    'week': { txt: '🟡 5d', cls: 'stale' },
+    'stale': { txt: '🔴 stale', cls: 'stale' }
+  };
+  document.querySelectorAll('[data-freshness]').forEach(function(el){
+    var key = el.getAttribute('data-freshness');
+    var m = map[key];
+    if (!m) return;
+    var span = document.createElement('span');
+    span.className = 'fresh-badge ' + m.cls;
+    span.textContent = m.txt;
+    var name = el.querySelector('.name');
+    if (name) name.appendChild(span);
+  });
+})();
+</script>
 
 <script src="../js/hub.js"></script>
 </body>
