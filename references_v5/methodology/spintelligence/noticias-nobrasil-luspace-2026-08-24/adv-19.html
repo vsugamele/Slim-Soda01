@@ -1,0 +1,967 @@
+<!DOCTYPE html><html lang="en"><head>
+    <script async="" src="https://www.clarity.ms/tag/y0w7mm9wdp"></script><script defer="" src="js/tag.js" data-tag-id="925-f5993d5ff7d445e0b3ae349d34828c8f" data-event-host="api.raads-hub.com" data-plat-params="subid,subid2,subid3,subid4,subid5"></script>
+    <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "y0w7mm9wdp");
+</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts - Inter for body, Merriweather for headings -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --header-bg: #ffffff;
+            --page-bg: #ffffff; 
+            --white: #ffffff;
+            --black: #000000;
+            --dark-gray: #333333;
+            --light-gray-text: #666666;
+            --hover: #cc0000;
+            --accent: #FFDE00; /* ABC Yellow */
+            --accent-dark: #e6c700;
+            --bg: #ffffff;
+            --border: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--page-bg);
+            color: var(--dark-gray);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        /* --- Header --- */
+        header.site-header {
+            background: var(--header-bg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            position: relative;
+            border-bottom: 1px solid #e5e5e5;
+            width: 100%;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .header-logo-icon {
+            width: 22px;
+            height: 22px;
+            background-color: #d92525;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .header-logo-text {
+            font-size: 18px;
+            font-weight: 800;
+            color: #111111;
+            letter-spacing: -0.3px;
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-nav a {
+            color: #222222;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .header-nav a:hover {
+            color: #d92525;
+        }
+
+        .header-nav .dot {
+            color: #888888;
+            font-size: 8px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            color: #666666;
+        }
+
+        .header-actions a {
+            color: #666666;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .header-actions a:hover {
+            color: #111111;
+        }
+
+        .header-actions .sep {
+            color: #cccccc;
+        }
+
+        .header-search-btn {
+            background: none;
+            border: none;
+            padding: 0;
+            margin-left: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #555555;
+        }
+
+        .header-search-btn svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 850px) {
+            .header-nav {
+                display: none;
+            }
+        }
+
+        /* --- Main Content & Layout --- */
+        .wrapper {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .main {
+            flex: 1;
+            min-width: 0;
+            order: 1;
+            background: var(--bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: clamp(28px, 5vw, 42px);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--black);
+            margin: 0 0 15px;
+        }
+
+        h1 .red {
+            color: #FF8C00;
+        }
+
+        .subtitle {
+            font-size: 19px;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .author-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .author-info strong {
+            font-weight: 700;
+            line-height: 1.4;
+            color: var(--black);
+        }
+
+        #dynamic-date {
+            font-size: 13px;
+            color: var(--light-gray-text);
+            line-height: 1.4;
+        }
+
+        .video {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            margin: 0 auto 12px;
+            max-width: 720px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .1);
+        }
+
+        .video img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .sound-note {
+            text-align: center;
+            font-size: 15px;
+            color: var(--dark-gray);
+            margin: 8px auto 25px;
+            max-width: 720px;
+            line-height: 1.5;
+        }
+
+        .copy p {
+            margin-bottom: 18px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--dark-gray);
+        }
+
+        .copy ul {
+            list-style: disc;
+            margin-left: 25px;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .copy ul li {
+            margin-bottom: 8px;
+            font-size: 17px;
+            line-height: 1.5;
+        }
+
+        /* --- Journalist Highlight Box --- */
+        .journalist-box {
+            background: #f4f6f9;
+            border-left: 4px solid #1a365d;
+            border-radius: 8px;
+            padding: 22px 24px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .journalist-box p {
+            margin-bottom: 14px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: var(--dark-gray);
+        }
+
+        .journalist-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 320px;
+            flex-shrink: 0;
+            order: 3;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+
+        .sponsored-card {
+            background: #ffffff;
+            border: 1px solid #e2e2e2;
+            border-radius: 8px;
+            padding: 20px 18px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .sponsored-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .sponsored-title {
+            font-size: 16px;
+            font-weight: 800;
+            font-style: italic;
+            color: #222222;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .sponsored-by {
+            font-size: 12px;
+            font-style: italic;
+            color: #888888;
+        }
+
+        .sponsored-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sponsored-item {
+            border-bottom: 1px solid #ebebeb;
+            padding: 16px 0;
+        }
+
+        .sponsored-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .sponsored-item:first-child {
+            padding-top: 4px;
+        }
+
+        .sponsored-link {
+            display: flex;
+            gap: 14px;
+            text-decoration: none;
+            align-items: flex-start;
+        }
+
+        .sponsored-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 3px;
+            flex-shrink: 0;
+        }
+
+        .sponsored-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sponsored-text {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.35;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            transition: color 0.2s ease;
+        }
+
+        .sponsored-link:hover .sponsored-text {
+            color: #d92525;
+        }
+
+        .sponsored-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: #aaaaaa;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quiz-box {
+            background: var(--bg);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            order: 4;
+            margin-top: 20px;
+        }
+
+        .quiz-box h2 {
+            font-family: 'Merriweather', Georgia, serif;
+            font-size: 20px;
+            color: var(--black);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .quiz-option {
+            display: block;
+            background: var(--accent);
+            color: var(--black);
+            text-align: center;
+            padding: 14px;
+            border-radius: 999px;
+            margin: 10px 0;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease;
+            font-size: 17px;
+        }
+
+        .quiz-option:hover {
+            background: var(--accent-dark);
+            color: var(--black);
+        }
+
+        /* --- Comments Section --- */
+        .comments-section {
+            max-width: 720px;
+            margin: 40px auto;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            order: 2;
+            width: 100%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .comments-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .comments-header h3 {
+            font-family: 'Merriweather', Georgia, serif;
+            margin: 0;
+            font-size: 20px;
+            color: var(--black);
+            font-weight: 700;
+        }
+
+        .comments-header span {
+            font-size: 14px;
+            color: var(--light-gray-text);
+            cursor: pointer;
+        }
+
+        .comment {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .comment img,
+        .reply img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .comment-body {
+            background: #f0f2f5;
+            border-radius: 10px;
+            padding: 12px 16px;
+            flex: 1;
+        }
+
+        .comment-body h4 {
+            margin: 0 0 5px;
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .comment-body p {
+            margin: 0 0 8px;
+            font-size: 16px;
+            color: var(--dark-gray);
+            line-height: 1.5;
+        }
+
+        .comment-actions {
+            font-size: 13px;
+            color: var(--light-gray-text);
+        }
+
+        .comment-actions span {
+            margin-right: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .comment-actions span:hover {
+            color: var(--accent);
+        }
+
+        .reply {
+            display: flex;
+            gap: 12px;
+            margin: 12px 0 20px 55px;
+        }
+
+        /* --- CTA Button & Section --- */
+        .cta-section {
+            background: var(--bg);
+            border: none;
+            border-radius: 14px;
+            padding: 30px 25px;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 720px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--black);
+            font-weight: 700;
+            padding: 16px 36px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 4px 0 var(--accent-dark);
+            transition: filter .2s ease, background .2s ease;
+        }
+
+        .btn:hover {
+            filter: brightness(1.05);
+            background: var(--accent-dark);
+        }
+
+        /* --- Scientific References Section --- */
+        .references-section {
+            max-width: 800px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+            font-size: 11px;
+            color: #777777;
+            line-height: 1.6;
+        }
+
+        .references-section h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: #444444;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .references-section ol {
+            padding-left: 18px;
+            margin: 0;
+        }
+
+        .references-section li {
+            margin-bottom: 6px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 25px 10px 40px;
+            line-height: 1.8;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        footer a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+
+        .footer-disclaimer {
+            max-width: 800px;
+            margin: 40px auto 20px;
+            text-align: center;
+            color: var(--light-gray-text);
+            font-size: 10px;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        /* --- Responsive Layout --- */
+        @media (max-width: 900px) {
+            .wrapper {
+                flex-direction: column;
+                align-items: center;
+                padding: 0 12px;
+                margin-top: 20px;
+            }
+
+            .main,
+            .comments-section,
+            .sidebar {
+                width: 100%;
+                max-width: 720px;
+            }
+
+            .sidebar {
+                order: 4;
+            }
+
+            .quiz-box {
+                order: 5;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body { font-size: 17px; }
+            h1 { font-size: 30px !important; line-height: 1.35; }
+            .subtitle { font-size: 18px; }
+            .journalist-box {
+                padding: 16px 18px;
+                margin: 20px 0;
+            }
+            .journalist-box p {
+                font-size: 16px;
+            }
+            .main { padding: 18px 15px; }
+            .comments-section { padding: 15px; }
+            
+            .reply {
+                margin: 12px 0 15px 20px;
+                gap: 8px;
+            }
+
+            .comment img,
+            .reply img {
+                width: 36px;
+                height: 36px;
+            }
+
+            .comment-body {
+                padding: 10px 12px;
+            }
+
+            .comment-body h4 {
+                font-size: 15px;
+            }
+
+            .comment-body p {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .btn { padding: 14px 20px; font-size: 16px; width: 100%; text-align: center; }
+            .cta-section { padding: 20px 15px; }
+            .reply { margin-left: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <a href="#" class="header-logo">
+            <span class="header-logo-icon">+</span>
+            <span class="header-logo-text">SAÚDE</span>
+        </a>
+
+        <nav class="header-nav">
+            <a href="#">NOTÍCIAS</a>
+            <span class="dot">•</span>
+            <a href="#">SAÚDE</a>
+            <span class="dot">•</span>
+            <a href="#">MEMÓRIA</a>
+            <span class="dot">•</span>
+            <a href="#">BELEZA</a>
+            <span class="dot">•</span>
+            <a href="#">ALIMENTAÇÃO</a>
+            <span class="dot">•</span>
+            <a href="#">VIDA</a>
+        </nav>
+
+        <div class="header-actions">
+            <a href="#">ADVERTORIAL</a>
+            <span class="sep">|</span>
+            <a href="#">CONTATO</a>
+            <button class="header-search-btn" aria-label="Search">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <main class="main">
+            <h1>Ela pensou que estava se perdendo — então este <span class="red">truque de 10 segundos com mel</span> a trouxe de volta à realidade.</h1>
+            <div class="subtitle">Sem jogos mentais. Sem palavras cruzadas. Sem truques de memorização intermináveis. Apenas um único passo de 10 segundos adicionado à sua rotina matinal – e seu cérebro volta a funcionar a todo vapor, recuperando uma clareza mental excepcional.</div>
+            
+            <div class="author-line">
+                <div class="author-info">
+                    <strong>Por Anna Michael, jornalista da área médica</strong>
+                    <span id="dynamic-date">Atualizado em: 17 de agosto de 2026</span>
+                </div>
+            </div>
+
+            <div class="video">
+                <a href="https://mdt.noticias-nobrasil.com/preclick" aria-label="Watch the 10-second Himalayan Honey Trick video">
+                    <img src="images/thumb_honey.webp" alt="Himalayan Honey Trick Investigative Video" loading="eager" width="720" height="405">
+                </a>
+            </div>
+            <div class="sound-note"><em>"Este ritual matinal simples me ajudou a recuperar minha memória afiada e meu foco mental – e, pela primeira vez em anos, não tenho mais medo de esquecer o nome dos meus entes queridos ou de perder minha independência."</em></div>
+
+            <div class="copy">
+                <p>Quando Sarah, de 67 anos, entrou em contato conosco pela primeira vez, ela admitiu algo que a maioria das pessoas tem medo de dizer em voz alta: "Eu sentia que estava perdendo minha identidade e morria de medo de me tornar um fardo para minha família". Abaixo está sua história pessoal, em suas próprias palavras:</p>
+
+                <p>"Há seis meses, eu perdia minhas chaves com frequência, entrava em cômodos sem me lembrar por quê e vivia em um estado <strong>constante de confusão mental.</strong> Eu já tinha tentado de tudo."</p>
+
+                <p>Aplicativos de treinamento cerebral, tratamentos médicos caros, inúmeros post-its espalhados pela casa, técnicas complexas de memorização.</p>
+
+                <p>Nada parecia funcionar.</p>
+
+                <p>Por fim, fiquei tão frustrado e <strong>assustado </strong> que me <strong>convenci </strong> de que isso era simplesmente o processo normal de envelhecimento. Talvez minha mente estivesse destinada a <strong>se deteriorar</strong> aos 67 anos.</p>
+
+                <p><strong>No entanto, eu estava enganada.</strong> E o mesmo se aplica a quase tudo o que lhe disseram sobre o declínio cognitivo relacionado à idade.</p>
+
+                <p>Aproximadamente um mês depois de praticamente ter desistido, conheci um médico especialista em Alzheimer em um simpósio médico. Ele apresentou uma abordagem completamente diferente para a saúde cognitiva: um <strong>ritual matinal simples de 10 segundos </strong> usando enzimas naturais exclusivas <strong>encontradas no mel puro</strong>, , projetado para ativar uma substância "turbinadora" recém-descoberta que ajuda naturalmente a restaurar e reverter a perda de memória.</p>
+
+                <!-- ESPAÇO PARA A IMAGEM -->
+                <p style="text-align:center; margin:25px 0;">
+                    <a href="https://mdt.noticias-nobrasil.com/preclick">
+                        <img src="images/imagem-memory.webp" alt="Morning Ritual" style="max-width:100%; height:auto; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                </p>
+
+                <p>Dois passos. <strong>Só isso:</strong></p>
+
+                <ul>
+                    <li><strong>Passo 1:</strong> Tome seu café, chá ou água favoritos pela manhã.</li>
+                    <li><strong>Passo 2:</strong> <strong>Siga</strong> exatamente o que é mostrado no <strong>breve</strong> vídeo abaixo.</li>
+                </ul>
+
+                <p>Para ser sincera, quase desisti. Depois de tantas tentativas frustradas e lapsos de memória alarmantes, não tinha motivos para acreditar que desta vez seria diferente.</p>
+
+                <p>Contudo, em poucos dias, a <strong>densa névoa mental dissipou-se</strong> completamente. Conseguia lembrar-me de nomes <strong>imediatamente , </strong>acompanhar <strong>as minhas tarefas diárias sem esforço e sentir uma</strong>  <strong>onda de energia mental</strong> que não experimentava há décadas.</p>
+
+                <p>Se alguém me dissesse há um ano que <strong>adicionar um simples ritual de 10 segundos à minha rotina matinal</strong> poderia finalmente me ajudar a reverter minha perda de memória, eu teria rido.</p>
+                
+                <!-- TRANSIÇÃO DA JORNALISTA COM GANCHO DE CELEBRIDADES E BIG PHARMA (EM DESTAQUE) -->
+                <div class="journalist-box">
+                    <p><strong>Nota editorial:</strong> A história de Sarah está longe de ser um caso isolado. Nos últimos meses, essa mesma descoberta matinal foi  <strong>discretamente noticiada por grandes redes de televisão e até compartilhada por celebridades de renome que vivenciaram os resultados</strong> em primeira mão. No entanto, poucas horas após a transmissão, forte pressão legal de poderosos conglomerados farmacêuticos obrigou os veículos de comunicação a removerem as reportagens da internet e retirarem as imagens da programação.</p>
+
+                    <p>Felizmente, os pesquisadores independentes responsáveis ​​por essa descoberta conseguiram obter o relatório completo e sem censura em um servidor privado. <strong>Abaixo, você encontra uma breve apresentação em vídeo</strong> que detalha a ciência por trás do ritual do mel de 10 segundos e como você pode usá-lo em casa a partir de hoje:</p>
+                </div>
+                
+                <p style="text-align:center;margin:30px 0;">
+                    <a href="https://mdt.noticias-nobrasil.com/preclick/">
+                        <img src="images/Adv Clarify.gif" alt="Watch the Honey Trick Video" style="max-width:260px;width:100%;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.08);">
+                    </a>
+                </p>
+            </div>
+
+            <section class="cta-section">
+                <a href="https://mdt.noticias-nobrasil.com/preclick" class="btn">ASSISTA AO VÍDEO COMPLETO AGORA</a>
+                <p style="color:var(--dark-gray);font-size:14px;line-height:1.6;margin:16px 0 0;">Observação: o vídeo ainda está online neste momento, mas pode ser removido novamente devido a restrições de conteúdo.</p>
+            </section>
+
+            <section class="comments-section">
+                <div class="comments-header"><h3>Comentários</h3><span>Mais relevantes ▼</span></div>
+                
+                <div class="comment">
+                    <img src="images/men3.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Frank R.</h4>
+                        <p>Sinceramente, achei que estava me perdendo. Os últimos anos foram aterrorizantes... esquecendo onde estacionei o carro, tendo lapsos de memória no meio de conversas com meus próprios filhos. Meu médico insistia que "é apenas o envelhecimento normal", mas não me parecia normal. Quando assisti a este vídeo, cheguei a chorar porque FINALMENTE alguém explicou o que estava acontecendo com meu cérebro. Estou praticando o Truque do Mel há cerca de uma semana e juro, é como se uma névoa estivesse se dissipando. Esta manhã, lembrei do nome da professora do meu neto sem nem tentar. Não me sentia tão lúcida há anos.</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 2m</div>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/idosa1.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Lisa G.</h4>
+                        <p>Frank, ler seu comentário me emocionou muito porque sei exatamente o que você está passando. Fui professora por 32 anos e, no final, não conseguia me lembrar de conversas que tinha tido com alunos naquela mesma manhã. Era humilhante e assustador. Comecei a escrever este livro há umas três semanas e ontem li um inteiro e realmente me lembrei do que li! Não consigo descrever o que isso significa para mim. Te envio muita esperança. 🙏</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 5m</div>
+                    </div>
+                </div>
+                
+                <div class="comment">
+                    <img src="images/women2.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Elaine S.</h4>
+                        <p>Meu marido e eu gastamos MUITO dinheiro com remédios, jogos mentais, você escolhe. Nada funcionou. Estávamos ficando muito desanimados. Mas este vídeo foi diferente porque realmente explicou a ciência por trás do PORQUÊ de nossos cérebros ficarem confusos, em vez de apenas tentar nos vender algo. Decidimos experimentar o Truque do Mel juntos e, honestamente? Em apenas alguns dias, ambos nos sentimos mais alertas. Agora faz parte do nosso ritual matinal, logo depois de fazermos o café. Deu-nos esperança novamente.</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 6m</div>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/women3.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Patricia M.</h4>
+                        <p>Elaine, estamos fazendo exatamente a mesma coisa! Meu marido estava cético no começo (ele é cético em relação a tudo), mas até ELE admite que se sente diferente. Eu costumava ter post-its por TODA parte da casa porque não conseguia me lembrar de nada. Semana passada, percebi que não escrevi um único lembrete. Pode parecer pouco, mas é uma GRANDE diferença para mim!</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 9m</div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="images/homem1.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>George L.</h4>
+                        <p>Eu costumava ser o cara que lembrava o aniversário de todo mundo, contava piadas de 20 anos atrás, nunca esquecia um rosto. Aí tudo começou a... desaparecer. Era como me ver sumir em câmera lenta. Estou praticando o Truque do Mel há umas duas semanas e finalmente me sinto EU MESMO de novo. Consigo ter conversas inteiras sem perder o fio da meada no meio. </p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 11m</div>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/homem2.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Antônio T.</h4>
+                        <p>George, seu comentário me tocou muito. Essa sensação de "desligar" é muito real. Tenho praticado o Truque do Mel todas as manhãs e estou realmente CONCENTRADO pela primeira vez em muito tempo. Pequenas coisas como lembrar onde coloquei meus óculos ou o que planejei para o jantar... parece bobagem, mas essas pequenas vitórias significam tudo quando você está passando por dificuldades. Continue assim!</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 13m</div>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <img src="images/men7.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>David K.</h4>
+                        <p>Sou operário da construção civil. Trabalho nessa área há 35 anos, acordo cedo, é trabalho braçal e muito estressante. Recentemente, comecei a esquecer o nome dos meus colegas... caras com quem trabalho há ANOS. Isso me assustou demais, para ser sincero. Minha esposa encontrou este vídeo e me fez assistir. Comecei o Truque do Mel naquela mesma noite. Já faz uns 10 dias e me sinto muito mais lúcido pela manhã, e mais calmo também. Minha esposa me disse ontem: "Você parece você mesmo de novo", e eu quase desabei em lágrimas. Eu não tinha me dado conta de como ela estava preocupada comigo.</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 15m</div>
+                    </div>
+                </div>
+                
+                <div class="comment">
+                    <img src="images/women1.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>Betty L.</h4>
+                        <p>Quase não assisti a este vídeo porque estou MUITO cansada de clickbait e curas milagrosas falsas. Mas algo na forma como foi apresentado me pareceu diferente... mais calmo, mais científico, realmente respeitoso com a minha inteligência. Estou feliz por ter dado uma chance. Estou usando o Truque do Mel há 10 dias e esta semana não perdi minhas chaves NENHUMA VEZ. Pode não parecer muito, mas quando você luta contra a névoa mental há anos, essas pequenas vitórias parecem enormes. Estou começando a me sentir esperançosa novamente e não achava que isso fosse possível.</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 18m</div>
+                    </div>
+                </div>
+                <div class="reply">
+                    <img src="images/men1.webp" alt="user">
+                    <div class="comment-body">
+                        <h4>John R.</h4>
+                        <p>Betty, eu me senti exatamente assim! Estava muito cética no começo. Mas você tem razão, são essas pequenas mudanças que fazem a diferença. Lembrar de coisas simples, acordar com a cabeça clara em vez daquela sensação de névoa... realmente faz diferença. Que bom que você tentou. Mantenha-nos informados sobre o seu progresso!</p>
+                        <div class="comment-actions"><span>Curtir</span><span>Responder</span>· 20m</div>
+                    </div>
+                </div>
+                
+                <p style="font-size:13px; font-style:italic; color:var(--light-gray-text); text-align:center; margin-top:10px;">Esta publicação não está mais recebendo comentários.</p>
+            </section>
+        
+            <div class="quiz-box">
+                <h2>Com o que você tem mais dificuldade?</h2>
+                <a href="https://mdt.noticias-nobrasil.com/preclick" class="quiz-option">Esquecimento</a>
+                <a href="https://mdt.noticias-nobrasil.com/preclick" class="quiz-option">Névoa mental</a>
+                <a href="https://mdt.noticias-nobrasil.com/preclick" class="quiz-option">Perda de foco</a>
+                <a href="https://mdt.noticias-nobrasil.com/preclick" class="quiz-option">Todas as opções acima</a>
+            </div>
+        
+        </main>
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sponsored-card">
+                <div class="sponsored-header">
+                    <span class="sponsored-title">PRINCIPAIS NOTÍCIAS</span>
+                    <span class="sponsored-by"></span>
+                </div>
+                <ul class="sponsored-list">
+                    <li class="sponsored-item">
+                        <a href="https://mdt.noticias-nobrasil.com/preclick" class="sponsored-link">
+                            <img src="images/honey1.png" alt="Cardiologists" class="sponsored-img">
+                            <div class="sponsored-content">
+                                <div class="sponsored-text">O truque do mel promove foco e memória naturais.</div>
+                                <div class="sponsored-tag"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sponsored-item">
+                        <a href="https://mdt.noticias-nobrasil.com/preclick/" class="sponsored-link">
+                            <img src="images/honey2.png" alt="Baking Soda" class="sponsored-img">
+                            <div class="sponsored-content">
+                                <div class="sponsored-text">Pesquisadores revelam como enzimas do mel podem ajudar a eliminar toxinas do cérebro.</div>
+                                <div class="sponsored-tag"></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="sponsored-item">
+                        <a href="https://mdt.noticias-nobrasil.com/preclick" class="sponsored-link">
+                            <img src="images/happy.png" alt="Ally For Women" class="sponsored-img">
+                            <div class="sponsored-content">
+                                <div class="sponsored-text">Reportagem exclusiva: o truque do mel está ajudando milhares de pessoas a recuperar a clareza mental naturalmente.</div>
+                                <div class="sponsored-tag"></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- SCIENTIFIC REFERENCES SECTION -->
+    <section class="references-section">
+        <h4>Referências e estudos científicos </h4>
+        <ol>
+            <li>Rahman, MM, et al. (2014). "Mel e memória: uma revisão dos efeitos do mel na cognição e neuroproteção." Medicina Oxidativa e Longevidade Celular .</em>.</li>
+            <li>Chepulis, LM, et al. (2008). "Os efeitos do mel na memória e na aprendizagem espacial em ratos." Fisiologia e Comportamento </li>
+            <li>Eteraf-Oskouei, T., & Najafi, M. (2013). "Usos tradicionais e modernos do mel natural em doenças humanas: uma revisão." Iranian Journal of Basic Medical Sciences </li>
+            <li>Akanmu, MA, et al. (2011). "Efeitos neuroprotetores e de aprimoramento da memória de componentes naturais do mel cru." Pesquisa Neuroquímica ,</li>
+        </ol>
+    </section>
+
+    <section class="footer-disclaimer">
+        <p>Os depoimentos compartilhados refletem experiências pessoais; os resultados podem variar. O conteúdo deste site tem caráter meramente informativo.</p>
+    </section>
+
+    <footer>
+        © 2026 USLife — TODOS OS DIREITOS RESERVADOS
+        <br>
+        <a href="https://uslifejournal.site/privacy-policy/">POLÍTICA DE PRIVACIDADE</a> •
+        <a href="https://uslifejournal.site.site/terms">TERMOS DE USO</a>
+    </footer>
+
+    <script>
+      function getYesterdayDateString() {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return yesterday.toLocaleDateString('en-US', options);
+      }
+
+      const dateElement = document.getElementById('dynamic-date');
+      if (dateElement) {
+        dateElement.textContent = 'Updated: ' + getYesterdayDateString();
+      }
+    </script>
+
+
+</body></html>
