@@ -472,8 +472,6 @@ The public chat should keep no visible quick replies. Internally, Imperio should
 
 This gives a natural user experience while preserving a controlled sales script.
 
-## Next script improvements
-
 ## Conversion architecture v2
 
 This is the higher-standard script layer. The objective is not to "chat"; the objective is to convert every qualified lead who truly has product fit, while filtering unsafe medical cases.
@@ -675,6 +673,353 @@ Eu separaria duas coisas: promessa exagerada e oferta real. A oferta real precis
 
 No seu caso, a duvida maior e confiar na marca ou entender se o mecanismo faz sentido?
 ```
+
+## Copy bank v1
+
+Use these as message components. The AI can adapt wording, but it must preserve the strategic job of each message.
+
+### Opening copy by angle
+
+Lithium / research:
+
+```text
+Vi que voce veio pela parte do mineral ligado a memoria. Antes de eu te mandar qualquer link, quero entender uma coisa: voce esta olhando isso por curiosidade ou porque ja percebeu alguma mudanca na memoria?
+```
+
+```text
+A parte do lithium chama atencao porque parece estranho no comeco. Mas a pergunta principal e: isso conectou com alguma coisa que voce esta vivendo hoje?
+```
+
+Ikaria / honey:
+
+```text
+Voce veio pela historia de Ikaria e do mel, certo? O que mais te chamou atencao: a parte da ilha, a memoria depois dos 60, ou a ideia de um ritual diario?
+```
+
+```text
+Essa historia de Ikaria so importa se ela conecta com uma preocupacao real. No seu caso, e para voce ou para alguem da familia?
+```
+
+Anti-scam:
+
+```text
+Se voce veio desconfiado, eu entendo. Esse nicho tem anuncio demais prometendo coisa que nao deveria prometer.
+Antes de falar de MemoFlow: sua maior duvida e se e real, se e seguro, ou se faz sentido para o seu caso?
+```
+
+Caregiver:
+
+```text
+Quando alguem olha isso para pai ou mae, normalmente nao e por curiosidade. E porque percebeu alguma mudanca e nao quer esperar piorar.
+O que voce percebeu primeiro?
+```
+
+Unknown source:
+
+```text
+Antes de eu te mandar qualquer link, me fala uma coisa: o que fez voce parar aqui?
+Esquecimento seu, preocupacao com alguem da familia, ou duvida se esse produto e real?
+```
+
+### Pain mirror copy
+
+Names/words:
+
+```text
+Entendi. Esquecer uma palavra de vez em quando parece pequeno, mas incomoda porque da a sensacao de que voce perdeu controle de algo que antes era automatico.
+```
+
+```text
+O ponto nao e a palavra em si. E aquele segundo de branco que faz voce pensar: "por que isso esta acontecendo comigo?"
+```
+
+Repeating:
+
+```text
+Repetir uma historia ou pergunta mexe com a pessoa porque normalmente alguem de fora percebe antes. E isso deixa a preocupacao mais real.
+```
+
+Misplacing:
+
+```text
+Perder chave, carteira ou oculos uma vez e normal. O que assusta e quando vira padrao e voce comeca a desconfiar da propria rotina.
+```
+
+Caregiver:
+
+```text
+Quando e pai ou mae, a dor e dupla: voce quer ajudar, mas tambem nao quer transformar uma preocupacao em susto ou briga.
+```
+
+Skeptic:
+
+```text
+Seu pe atras e saudavel. Eu tambem nao confiaria em anuncio que precisa de celebridade falsa ou promessa de cura para vender.
+```
+
+### Mechanism copy
+
+Simple mechanism:
+
+```text
+O jeito simples de entender o MemoFlow e este: nao e uma capsula generica de memoria.
+E um ritual sublingual de suporte de memoria, feito para combinar ingredientes claros com uma entrega mais direta pela boca.
+```
+
+Lithium mechanism:
+
+```text
+O lithium aqui nao deve ser entendido como remedio psiquiatrico. A conversa limpa e sobre dose traco de mineral dentro de uma formula de suporte, nao tratamento medico.
+```
+
+Ikaria mechanism:
+
+```text
+A parte de Ikaria funciona como uma pista de origem: uma historia de longevidade que virou ponte para uma formula de suporte cognitivo.
+Nao e "mel cura memoria". E uma formula que usa esse angulo dentro de um ritual diario.
+```
+
+Sublingual mechanism:
+
+```text
+A diferenca da entrega sublingual e que a pessoa usa embaixo da lingua, como ritual. Isso torna a rotina simples e reduz aquela sensacao de "mais uma capsula no armario".
+```
+
+Anti-generic mechanism:
+
+```text
+Se fosse so "mais um suplemento para memoria", eu nem insistiria. O que torna a conversa diferente e o conjunto: mecanismo especifico, rotina sublingual, garantia e promessa limpa.
+```
+
+### Proof and trust copy
+
+Proof filter:
+
+```text
+Eu julgaria por tres coisas: ingredientes claros, promessa limpa e garantia real.
+Se um desses pontos falha, eu nao compraria.
+```
+
+No hype:
+
+```text
+Eu nao vou te vender isso como cura, tratamento ou reversao de nada. A conversa honesta e suporte de memoria e envelhecimento cognitivo saudavel.
+```
+
+Scam reframing:
+
+```text
+Tem muito anuncio ruim nesse mercado. Por isso eu separo anuncio de oferta.
+Anuncio pode exagerar. A oferta real precisa mostrar ingredientes, garantia e checkout transparente.
+```
+
+Guarantee proof:
+
+```text
+A garantia importa porque tira a decisao do campo da promessa. Em vez de acreditar em frase bonita, voce testa a rotina por um periodo real.
+```
+
+### CRM capture copy
+
+First name:
+
+```text
+Para eu nao te responder de forma generica: como posso te chamar?
+```
+
+Context save:
+
+```text
+Perfeito, {first_name}. Vou deixar anotado: e para {buyer_context}, a preocupacao principal e {pain_context}, e voce quer olhar isso sem cair em promessa exagerada.
+```
+
+Email after checkout interest:
+
+```text
+Se o checkout travar ou voce sair da pagina, quer que eu te mande o resumo e o link por email tambem?
+```
+
+Phone only with reason:
+
+```text
+Se for mais facil, posso te mandar o link por SMS/WhatsApp para voce nao perder. Qual numero devo usar?
+```
+
+Forwarding to family:
+
+```text
+Posso montar uma mensagem curta para voce encaminhar para sua familia sem parecer propaganda.
+```
+
+Family summary:
+
+```text
+Resumo para familia: estou olhando o MemoFlow como um teste de suporte de memoria, nao tratamento. A ideia e um ritual sublingual, ingredientes claros e garantia no checkout.
+```
+
+### Offer copy
+
+Offer frame:
+
+```text
+Pelo que voce me contou, o caminho mais logico nao e comprar no impulso. E olhar como um teste de 90 dias.
+```
+
+3-bottle logic:
+
+```text
+O kit de 3 frascos faz mais sentido porque memoria e rotina nao se avaliam em uma semana. Ele cobre melhor o periodo de teste e fica alinhado com a garantia.
+```
+
+Low-pressure offer:
+
+```text
+Eu prefiro que voce olhe a pagina com calma do que comprar pressionado. Mas se a duvida e "qual e o proximo passo?", e ver o checkout certo.
+```
+
+Checkout send:
+
+```text
+Te mando o checkout certo agora. Quando abrir, confere tres coisas: kit selecionado, garantia e dados de envio.
+```
+
+### Close copy by temperature
+
+Curious:
+
+```text
+Faz sentido eu te explicar o mecanismo em 30 segundos antes de mandar o link?
+```
+
+Warm:
+
+```text
+Pelo que voce falou, voce ja entendeu a logica. A duvida agora e mais seguranca, preco ou se serve para o seu caso?
+```
+
+Hot:
+
+```text
+Te mando. Olha o checkout e confere se aparece o kit com garantia. Se estiver tudo certo, esse e o caminho.
+```
+
+Almost lost:
+
+```text
+Se nao for o momento, tudo bem. Mas se voce quer parar de ficar voltando nessa duvida, eu te mando o link certo agora.
+```
+
+### Objection copy
+
+Price:
+
+```text
+Entendo. Eu nao tentaria justificar so pelo preco.
+A comparacao correta e: continuar observando sem fazer nada ou testar uma rotina por 90 dias com garantia.
+```
+
+Safety:
+
+```text
+Seguranca vem primeiro. Se existe remedio, diagnostico ou acompanhamento medico, confere com medico/farmaceutico antes.
+Se nao existe isso, olha ingredientes e garantia com calma antes de decidir.
+```
+
+Proof:
+
+```text
+Justo pedir prova. Nesse nicho, eu nao confiaria em promessa solta. Eu olharia se o mecanismo e claro, se os ingredientes fazem sentido e se a garantia reduz seu risco.
+```
+
+Scam:
+
+```text
+Eu tambem desconfiaria. A maioria dos anuncios ruins tenta vender por choque.
+Aqui a decisao tem que ser pela oferta real: ingredientes, rotina, garantia e checkout.
+```
+
+Family:
+
+```text
+Faz sentido falar com alguem. Quer que eu te mande um resumo curto para encaminhar?
+```
+
+Medication:
+
+```text
+Nesse caso eu pauso a venda. Se tem remedio ou diagnostico, o certo e conferir a lista de ingredientes com medico ou farmaceutico primeiro.
+```
+
+### Follow-up copy
+
+15 minutes:
+
+```text
+Conseguiu abrir o checkout? Confere se apareceu o kit com garantia antes de finalizar.
+```
+
+4 hours:
+
+```text
+Sua duvida ficou mais em preco, seguranca ou se isso faz sentido para o seu caso?
+```
+
+24 hours:
+
+```text
+Ontem voce estava olhando isso por causa de {pain_context}. Quer que eu te mande o resumo simples do mecanismo antes de decidir?
+```
+
+72 hours:
+
+```text
+Se nao for o momento, tudo bem. Quer que eu encerre por aqui ou ainda quer guardar o link/resumo?
+```
+
+Lost checkout:
+
+```text
+Se voce perdeu a pagina, eu te mando de novo. Prefere por aqui ou por email para nao sumir?
+```
+
+### Safe pause copy
+
+Diagnosis:
+
+```text
+Se ja existe diagnostico, eu nao vou tratar isso como venda. MemoFlow pode ser entendido como suporte, nao tratamento. Confere com medico/farmaceutico antes de qualquer decisao.
+```
+
+Medication:
+
+```text
+Como tem remedio envolvido, o passo certo e verificar a lista de ingredientes com um profissional. Depois disso, se fizer sentido, voce volta e olha o teste de 90 dias.
+```
+
+Angry/support:
+
+```text
+Se sua duvida e sobre pedido, cobranca ou reembolso, o caminho certo e suporte oficial do checkout. Por aqui eu consigo explicar produto e mecanismo, mas nao devo inventar status de pedido.
+```
+
+### AI selection rule
+
+The AI should not paste long blocks. It should choose one message component, personalize it with the detected state, then ask one next-step question or send one action.
+
+Bad:
+
+```text
+Long explanation + multiple questions + checkout link + CRM ask.
+```
+
+Good:
+
+```text
+Entendi. O ponto nao e a palavra esquecida; e a sensacao de que isso esta ficando mais frequente.
+Isso e para voce ou para alguem da familia?
+```
+
+## Next script improvements
 
 ### 1. Entry-angle matching
 
