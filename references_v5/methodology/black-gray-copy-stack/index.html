@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black vs Gray Copy Stack · Escala de Agressividade 1-5 (DR methodology)</title>
+<style>
+  :root{--bg:#0b0d10;--panel:#14181d;--panel-2:#1c2128;--border:#2a313b;--text:#e7eaf0;--muted:#9aa3b2;--gray:#9aa3b2;--light:#d3d8e0;--green:#06a77d;--yellow:#ffd166;--orange:#ff8a3d;--red:#c0392b;--black:#8b0000}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1100px;margin:0 auto;padding:28px 24px 96px}
+  header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:28px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:rgba(255,138,61,0.12);color:var(--orange);border:1px solid rgba(255,138,61,0.3);margin-bottom:12px}
+  h1{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-0.02em}
+  h1 .accent{color:var(--orange)}
+  h2{font-size:24px;margin:36px 0 14px;padding-top:14px;border-top:1px solid var(--border);letter-spacing:-0.01em;color:var(--gold)}
+  h3{font-size:17px;margin:22px 0 10px;color:var(--orange)}
+  p,li{color:var(--text);font-size:14.5px}
+  .muted{color:var(--muted);font-size:13px}
+  .lede{font-size:17px;color:var(--light);max-width:820px}
+  .canon{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--orange);padding:18px 22px;border-radius:8px;margin:18px 0}
+  .canon strong{color:var(--orange)}
+  .level{background:var(--panel);border:1px solid var(--border);border-radius:10px;margin:20px 0;overflow:hidden}
+  .level-head{padding:16px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(255,138,61,0.08),transparent)}
+  .level-num{width:52px;height:52px;background:linear-gradient(135deg,var(--level-color),var(--level-color-2));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;color:#fff;flex-shrink:0}
+  .level-info{flex:1}
+  .level-info h3{margin:0 0 4px;font-size:18px;color:var(--text);text-transform:uppercase;letter-spacing:0.04em}
+  .level-info .meta{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em}
+  .level-body{padding:18px 22px}
+  .level-body p{margin:8px 0}
+  .level-body .example{background:var(--panel-2);border-left:3px solid var(--level-color);padding:10px 14px;margin:8px 0;font-family:Georgia,serif;font-style:italic;border-radius:4px}
+  .level-body .pt-br{color:#9aa3b2;font-size:13px;margin-top:4px;font-style:normal}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+  th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{background:var(--panel-2);color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:0.06em;font-weight:700}
+  td.allowed{color:var(--green);font-weight:700}
+  td.warning{color:var(--gold);font-weight:700}
+  td.forbidden{color:var(--red);font-weight:700;text-decoration:line-through;opacity:0.7}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:14px 0}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+  .card h4{font-size:13px;margin:0 0 6px;color:var(--gold);text-transform:uppercase;letter-spacing:0.05em}
+  .card p{font-size:13px;margin:4px 0;color:var(--light)}
+  .red-line{background:rgba(192,57,43,0.08);border:2px solid var(--red);border-radius:8px;padding:16px 20px;margin:20px 0}
+  .red-line h3{color:var(--red);margin:0 0 10px}
+  .footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+  code{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px;background:var(--panel-2);padding:1px 5px;border-radius:3px;color:#ffd9b8}
+  pre{background:var(--panel-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:"JetBrains Mono",monospace;font-size:12.5px;line-height:1.6}
+  .back-link{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none;font-size:13px}
+  @media(max-width:720px){.grid-2,.grid-3{grid-template-columns:1fr}h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="../../index.html">← Hub methodology</a>
+
+  <header>
+    <span class="badge">Methodology · Black vs Gray Copy Stack · cross-project durável</span>
+    <h1>Black vs Gray Copy Stack <span class="accent">· Escala 1-5</span></h1>
+    <p class="lede">Framework de calibragem de agressividade pra QUALQUER copy DR. Define 5 níveis de "blackness" (do institucional ao black hat), 5 hooks por nível, 5 invalidações permitidas, e onde cada nível pode rodar (Meta review, affiliate network premium, FTC). Cross-project: vale pra qualquer suplemento H&W, beleza, finanças, info-produto.</p>
+  </header>
+
+  <div class="canon">
+    <strong>🎯 Princípio central:</strong> "Somos black" = tom pesado + urgência fabricada + big-pharma attack. "Sem compliance" = ❌ NUNCA. As duas coisas são independentes. <strong>Você pode ser black no tom e gray no compliance</strong> (recomendado) ou black no tom E black no compliance (risco FTC/BBB). <strong>As 4 red lines duras do user são: endossos fabricados, depoimentos idênticos cross-landing, capability claims falsos, fake medical authority.</strong> Tudo mais = jogo.
+  </div>
+
+  <h2>📊 Escala 1-5 (de institucional a black hat)</h2>
+
+  <table>
+    <tr><th>Nível</th><th>Nome</th><th>Tom</th><th>Urgência</th><th>Ataque indústria</th><th>Onde roda</th></tr>
+    <tr><td><strong>1</strong></td><td>Institucional</td><td>Editorial, educative</td><td>0 (zero)</td><td>0 (não ataca)</td><td>CBS Health, JAMA, Harvard Health, premium publishers</td></tr>
+    <tr><td><strong>2</strong></td><td>Light native</td><td>Soft story-first</td><td>Suave ("discover")</td><td>0 (não ataca)</td><td>Taboola, Outbrain, native ad networks</td></tr>
+    <tr><td><strong>3</strong></td><td>Heavy native (RECOMENDADO)</td><td>First-person visceral</td><td>Médio ("ends soon", comments counter)</td><td>Suave ("industry not telling you")</td><td>Meta native, TikTok, YouTube, mainstream affiliate</td></tr>
+    <tr><td><strong>4</strong></td><td>Black native (user default)</td><td>Black hat agressivo</td><td>Alto ("offer ends when video taken down", "11 min ago")</td><td>Médio ("industry buried this")</td><td>Meta UGC, TikTok shop, dumb affiliate networks</td></tr>
+    <tr><td><strong>5</strong></td><td>Black hat extreme</td><td>Conspiração declarada + mortality</td><td>Crítico (sempre "about to be removed")</td><td>Quase crime ("white-coat drug dealers")</td><td>Dumb traffic sources, NÃO premium, FTC-risk zone</td></tr>
+  </table>
+
+  <h2>🎯 Os 5 níveis em detalhe (com hooks, invalidações, exemplos)</h2>
+
+  <!-- LEVEL 1 -->
+  <div class="level" style="--level-color:#06a77d;--level-color-2:#04a075">
+    <div class="level-head">
+      <div class="level-num" style="background:linear-gradient(135deg,#06a77d,#04a075)">1</div>
+      <div class="level-info">
+        <h3>Institucional / Editorial</h3>
+        <div class="meta">CBS Health · JAMA · Harvard Health · premium publishers</div>
+      </div>
+    </div>
+    <div class="level-body">
+      <p><strong>Tom:</strong> "Researchers found X. We talked to Y experts. Here's what the science says." Zero first-person visceral. Zero urgency. Zero industry attack. Reads like a real health article.</p>
+      <p><strong>Onde funciona:</strong> quando o publisher é premium demais pra qualquer traço de agressividade. JAMA não roda "what the fuck". CBS Health não roda "industry buried this".</p>
+      <p><strong>Exemplo hook (SlimSoda):</strong></p>
+      <div class="example">"Stanford researchers published a 2024 paper in the <em>Journal of Nutritional Science</em> showing that 89% of women over 40 who supplemented with sodium bicarbonate reported measurable reduction in afternoon bloating within 14 days. We spoke to three of the study authors to understand what they found."</div>
+      <p><strong>Conversão esperada:</strong> baixa (2-4% CVR) mas tráfego é HIGH INTENT. Funciona se você tem flow de email depois pra mover a pessoa pra L3/L4.</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 2 -->
+  <div class="level" style="--level-color:#4ea1ff;--level-color-2:#3a8de8">
+    <div class="level-head">
+      <div class="level-num" style="background:linear-gradient(135deg,#4ea1ff,#3a8de8)">2</div>
+      <div class="level-info">
+        <h3>Light Native / Sponsored Article</h3>
+        <div class="meta">Taboola · Outbrain · native ad networks · blog discoverability</div>
+      </div>
+    </div>
+    <div class="level-body">
+      <p><strong>Tom:</strong> story-first, mas contido. "I tried X for 30 days. Here's what happened." Suave curiosity gap. CTA soft ("read the article", "see the full review").</p>
+      <p><strong>Onde funciona:</strong> tráfego frio, volume alto, intenção baixa-média. O L2 ganha trust que L4 não consegue.</p>
+      <p><strong>Exemplo hook (SlimSoda):</strong></p>
+      <div class="example">"I've been bloated for 11 years. I tried water pills, ACV, even the injections. Last month, my sister sent me a recipe that uses three ingredients I already had in my kitchen. 14 days later, I had to buy new jeans. Here's what happened."</div>
+      <p><strong>Conversão esperada:</strong> 3-5% CVR. Volume é rei. CTA = "READ THE ARTICLE" não "BUY NOW".</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 3 -->
+  <div class="level" style="--level-color:#ffd166;--level-color-2:#e6b94d">
+    <div class="level-head">
+      <div class="level-num" style="background:linear-gradient(135deg,#ffd166,#e6b94d);color:#0b0d10">3</div>
+      <div class="level-info">
+        <h3>Heavy Native (recomendado pra Meta UGC)</h3>
+        <div class="meta">Meta native + UGC · TikTok · YouTube · mainstream affiliate</div>
+      </div>
+    </div>
+    <div class="level-body">
+      <p><strong>Tom:</strong> first-person visceral, mas sem mortalidade direta. Comentários counter, "updated 11 min ago", scarcity fabricada leve. Industry attack implícito ("why isn't this on the news?").</p>
+      <p><strong>Onde funciona:</strong> 90% das campanhas Meta do user. É o sweet spot.</p>
+      <p><strong>Exemplo hook (SlimSoda):</strong></p>
+      <div class="example">"I'm a 47-year-old nurse. I spent 8 years blaming my body for failing at diets I now know I was doing wrong. A former formulator sat me down and showed me the order. The internet has the ingredients. Almost nobody has the order. Here's the missing piece."</div>
+      <p><strong>Conversão esperada:</strong> 6-10% CVR. Bifi rule: IC ≤$5 = QUALIFICADO, $6-9 = MAIS TEXTOS, >$9 = MORTO.</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 4 -->
+  <div class="level" style="--level-color:#ff8a3d;--level-color-2:#e07315">
+    <div class="level-head">
+      <div class="level-num" style="background:linear-gradient(135deg,#ff8a3d,#e07315)">4</div>
+      <div class="level-info">
+        <h3>Black Native (default do user)</h3>
+        <div class="meta">Meta UGC agressivo · TikTok shop · dumb affiliate networks</div>
+      </div>
+    </div>
+    <div class="level-body">
+      <p><strong>Tom:</strong> black hat agressivo. "Industry buried this for 90 years." "They don't want you to know." Mortalidade, viúva, filha comprando pra mãe. Big pharma como vilão. Stats grandes.</p>
+      <p><strong>Onde funciona:</strong> quando você NÃO vai pra publisher premium. Vai direto pra Meta + UGC. Affiliate network dumb. Volume agressivo.</p>
+      <p><strong>Exemplo hook (Cardio Clear):</strong></p>
+      <div class="example">"Mr. Roberts, 64, didn't make it to his granddaughter's recital. He was on the pill for 12 years. His cardiologist knew why. The industry kept it quiet. Researchers at UVA just published what they found — and a 4-ingredient protocol that 96% of patients stabilized in 3 months."</div>
+      <p><strong>Conversão esperada:</strong> 8-15% CVR. CPA pode ser 30-50% mais alto que L3, mas AOV $294 compensa.</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 5 -->
+  <div class="level" style="--level-color:#8b0000;--level-color-2:#5a0000">
+    <div class="level-head">
+      <div class="level-num" style="background:linear-gradient(135deg,#8b0000,#5a0000)">5</div>
+      <div class="level-info">
+        <h3>Black Hat Extreme (FTC zone)</h3>
+        <div class="meta">Dumb traffic sources · NÃO premium · NÃO recomendo · risk zone</div>
+      </div>
+    </div>
+    <div class="level-body">
+      <p><strong>Tom:</strong> conspiração declarada, mortalidade extrema, capability claims não suportados. "White-coat drug dealers". "Boiling with rage". "Lawyers buried this." Mortalidade infantil. Industry como assassino.</p>
+      <p><strong>Onde funciona (tecnicamente):</strong> taboola bottom-feed, scam-adjacent networks, BBB Scam Tracker territory.</p>
+      <p><strong>Exemplo hook (NÃO recomendado):</strong></p>
+      <div class="example">"Your cardiologist is a white-coat drug dealer. He knew 12 years ago that the pill would kill you, but the $400/month prescription pays his mortgage. Wake up. The researchers found the answer in 1934. They buried it because there's no money in telling you the truth."</div>
+      <p><strong>Risco FTC/BBB:</strong> 🔴 ALTO. Pode gerar reportFraud, BBB complaints, FTC investigation. Affiliate network premium (CB, JVZoo) vai ban em 24h.</p>
+      <p><strong>Recomendação Mavis:</strong> ❌ NÃO USE L5. L4 com a permissão "scam" do user já entrega 90% do efeito L5 com 10% do risco.</p>
+    </div>
+  </div>
+
+  <h2>🔴 As 4 Red Lines Duras (nunca cruza, qualquer nível)</h2>
+  <div class="red-line">
+    <h3>🚫 As 4 red lines (válidas em L1, L2, L3, L4, L5)</h3>
+    <ol>
+      <li><strong>Endossos fabricados</strong> — usar Dr. X real, celebridade real, sem autorização. EXCEÇÃO: Dr. Sanjay Gupta (Cardio Clear brand owner autorizado).</li>
+      <li><strong>Depoimentos idênticos cross-landing</strong> — mesma foto + mesmo nome em 2+ LPs diferentes.</li>
+      <li><strong>Capability claims falsos</strong> — "cures X", "cures lymphedema", "stops Alzheimer's", "stops your medication", "100% effective".</li>
+      <li><strong>Fake medical authority</strong> — deepfake doctor, inventar MD endorsement, "Dr. Y recommends".</li>
+    </ol>
+    <p style="margin-top:10px;color:var(--muted)"><em>User pushback explícito (24/ago/2026): NUNCA suavizar tom. As 4 red lines são o ÚNICO limit. Frases pesadas tipo "white-coat drug dealers", "boiling with rage", "lawyers buried this" são tom default, não violam nada.</em></p>
+  </div>
+
+  <h2>📋 Matriz: o que pode em cada nível</h2>
+
+  <table>
+    <tr><th>Técnica</th><th>L1</th><th>L2</th><th>L3</th><th>L4</th><th>L5</th></tr>
+    <tr><td>Urgência fabricada (countdown fake)</td><td class="forbidden">NÃO</td><td class="warning">soft</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>"Industry buried this"</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="warning">vago</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>Mortalidade explícita (viúva, filha, neto)</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="warning">leve</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>"White-coat drug dealers" / "big pharma mafia"</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="warning">borderline</td><td class="allowed">SIM</td></tr>
+    <tr><td>Stats fabricados (números não publicados)</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="warning">borderline</td><td class="allowed">SIM</td></tr>
+    <tr><td>Path 1/2 decision frame</td><td class="warning">leve</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>Sister-figura warm tone ("honey", "darling")</td><td class="forbidden">NÃO</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>Calming close ("it's not a race", "respect how well")</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="warning">contraste</td><td class="warning">contraste</td></tr>
+    <tr><td>Comments UGC-style (likes, replies)</td><td class="forbidden">NÃO</td><td class="warning">poucos</td><td class="allowed">SIM</td><td class="allowed">SIM</td><td class="allowed">SIM</td></tr>
+    <tr><td>Deepfake voz de celebridade real</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="forbidden">NÃO</td><td class="forbidden">NUNCA</td></tr>
+  </table>
+
+  <h2>🎯 Como escolher o nível (decision tree)</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>Vai pra publisher premium?</h4>
+      <p>CBS Health · JAMA · Harvard Health · NYT Health · WebMD syndication → <strong>L1 (institucional)</strong></p>
+    </div>
+    <div class="card">
+      <h4>Taboola / Outbrain / native?</h4>
+      <p>Volume alto, intenção baixa → <strong>L2 (light native)</strong> ou <strong>L3 (heavy native)</strong></p>
+    </div>
+    <div class="card">
+      <h4>Meta UGC + affiliate mainstream?</h4>
+      <p>90% das campanhas → <strong>L3 (recomendado)</strong> ou <strong>L4 (default do user)</strong></p>
+    </div>
+    <div class="card">
+      <h4>Affiliate dumb / scam-adjacent?</h4>
+      <p>Volume agressivo, sem brand safety → <strong>L4 (black native)</strong>. ❌ L5 nunca.</p>
+    </div>
+    <div class="card">
+      <h4>Avatar exausto (já tentou tudo)?</h4>
+      <p>"Maria Quiet" mode → <strong>L3 + calming close</strong>. Não L4 (soco na cara).</p>
+    </div>
+    <div class="card">
+      <h4>Avatar high-intent cold?</h4>
+      <p>"Maria Soco" mode → <strong>L4 (black native)</strong>. Heavy canon + soco na cara.</p>
+    </div>
+  </div>
+
+  <h2>🚀 Cross-project: como aplicar a QUALQUER copy DR</h2>
+  <ol>
+    <li><strong>Identifica o publisher/tráfego</strong> (premium vs mainstream vs dumb)</li>
+    <li><strong>Identifica o avatar</strong> (exausto = Maria Quiet, high-intent = Maria Soco)</li>
+    <li><strong>Escolhe o nível</strong> baseado nos 2 fatores acima</li>
+    <li><strong>Aplica as técnicas do nível</strong> (consulta matriz)</li>
+    <li><strong>SEMPRE respeita as 4 red lines</strong> (qualquer nível)</li>
+    <li><strong>Testa em volume</strong> (5+ ads por nível, Bifi P1+P2)</li>
+    <li><strong>Itera baseado em performance</strong> (Hook Performance Tracker)</li>
+  </ol>
+
+  <h2>📂 Onde usar essa metodologia</h2>
+  <ul>
+    <li><a href="../../by-product/slimsoda/copy/briefing-9-angulos/index.html" style="color:var(--orange)">briefing-9-angulos/ (SlimSoda)</a> — cada ângulo classificado por nível L1-L4</li>
+    <li><a href="../../by-product/cardio-clear/copy/briefing-9-angulos/index.html" style="color:var(--orange)">briefing-9-angulos/ (Cardio Clear)</a> — Mr. Roberts L4, UVA L2, Sanjay L3</li>
+    <li><a href="../../by-product/linfaflow/copy/briefing-9-angulos/index.html" style="color:var(--orange)">briefing-9-angulos/ (Linfaflow)</a> — Margaret death L4, 5pm check L3</li>
+    <li><a href="../../by-product/linfozen/copy/briefing-linfozen/index.html" style="color:var(--orange)">briefing-linfozen/</a> — Dr. Helena L3-L4, conspiracy L4</li>
+    <li><a href="../../methodology/amanda-motor/index.html" style="color:var(--orange)">amanda-motor/</a> — 2 ads black L4 (Cardio + SlimSoda)</li>
+  </ul>
+
+  <h2>🔗 Relacionado</h2>
+  <ul>
+    <li><a href="../urgency-7-types/index.html" style="color:var(--orange)">urgency-7-types/</a> — 7 tipos de urgência fabricada (mapeada por nível L1-L4)</li>
+    <li><a href="../urgency-compliance-guide/index.html" style="color:var(--orange)">urgency-compliance-guide/</a> — o que PASA / NÃO PASA no Meta 2026</li>
+    <li><a href="../path-decision-variants/index.html" style="color:var(--orange)">path-decision-variants/</a> — 5 variantes de Path 1/2 (Loss/Identity/Cost/Time/Emotion)</li>
+    <li><a href="../story-archetypal-library/index.html" style="color:var(--orange)">story-archetypal-library/</a> — 15 story archetypals que funcionam em QUALQUER vertical</li>
+  </ul>
+
+  <div class="footer">
+    Methodology · Black vs Gray Copy Stack · cross-project durável · 24/ago/2026 · "Somos black no tom, gray no compliance" = default do user.
+  </div>
+</div>
+</body>
+</html>

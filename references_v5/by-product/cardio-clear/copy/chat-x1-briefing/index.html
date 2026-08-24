@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cardio Clear — Chat-x1 Conversational LP Brief (Dr. Sanjay · 11 nós · 9 áudios · 25+ técnicas · PT-BR)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#C8102E; --accent-dark:#8a0a1f; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --navy:#1A2B5C; --orange:#fdcb6e; --pink:#ff6b9d; }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1140px;margin:0 auto;padding:28px 24px 96px}
+  header{border-bottom:1px solid var(--border);padding-bottom:18px;margin-bottom:28px}
+  .badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:rgba(200,16,46,0.12);color:var(--accent);border:1px solid rgba(200,16,46,0.3);margin-bottom:12px}
+  h1{font-size:32px;line-height:1.15;margin:0 0 10px;letter-spacing:-0.02em}
+  h1 .accent{color:var(--accent)}
+  h2{font-size:24px;margin:40px 0 14px;padding-top:14px;border-top:1px solid var(--border);letter-spacing:-0.01em;color:var(--gold)}
+  h3{font-size:16px;margin:18px 0 8px;color:var(--accent)}
+  p,li{color:var(--text);font-size:14.5px}
+  .muted{color:var(--muted);font-size:13px}
+  .lede{font-size:17px;color:#d3d8e0;max-width:820px}
+  .callout{background:var(--panel);border:1px solid var(--border);border-left:4px solid var(--accent);padding:14px 18px;border-radius:8px;margin:18px 0}
+  .callout.red{border-left-color:var(--red)}
+  .callout.green{border-left-color:var(--green)}
+  .callout.gold{border-left-color:var(--gold)}
+  .callout.blue{border-left-color:var(--blue)}
+  .callout.navy{border-left-color:var(--navy)}
+  .callout strong{color:var(--accent)}
+  .callout.red strong{color:var(--red)}
+  .callout.gold strong{color:var(--gold)}
+  .callout.blue strong{color:var(--blue)}
+  .callout.navy strong{color:var(--navy)}
+  code{font-family:"JetBrains Mono",Consolas,monospace;font-size:12.5px;background:var(--panel-2);padding:1px 5px;border-radius:3px;color:#ffd9b8}
+  .node-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;margin-bottom:18px;overflow:hidden}
+  .node-header{padding:16px 20px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(200,16,46,0.08),transparent)}
+  .node-num{width:44px;height:44px;background:linear-gradient(135deg,var(--accent-dark),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff;flex-shrink:0}
+  .node-info{flex:1}
+  .node-info h3{font-size:17px;font-weight:800;margin:0;color:var(--text);text-transform:uppercase;letter-spacing:0.04em}
+  .node-info .framework{font-size:13px;color:var(--orange);font-style:italic;margin-top:3px}
+  .node-body{padding:14px 20px 20px}
+  .node-ptbr{background:rgba(78,161,255,0.06);border:1px solid rgba(78,161,255,0.2);border-radius:8px;padding:12px 16px;margin-bottom:12px}
+  .node-ptbr .ptbr-title{font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+  .node-ptbr p{margin:5px 0;font-size:13.5px;line-height:1.55}
+  .node-ptbr p strong{color:var(--blue);font-weight:700}
+  .variant-section{background:rgba(255,209,102,0.04);border:1px solid rgba(255,209,102,0.2);border-radius:8px;padding:12px 16px;margin-top:10px}
+  .variant-section .v-title{font-size:11px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px}
+  .variant-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .variant{background:var(--panel-2);border:1px solid var(--border);border-radius:6px;padding:10px 12px}
+  .variant .v-num{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px}
+  .variant .v-label{font-size:12px;color:var(--accent);font-weight:700;margin-bottom:5px}
+  .variant .v-audio,.variant .v-text{font-size:12px;line-height:1.5;color:var(--text);margin-top:4px}
+  .variant .v-audio em,.variant .v-text em{color:var(--gold);font-style:italic}
+  .technique{background:rgba(6,167,125,0.06);border:1px solid rgba(6,167,125,0.2);border-radius:6px;padding:8px 12px;margin:6px 0;font-size:12.5px}
+  .technique strong{color:var(--green)}
+  .footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:12px}
+  .back-link{display:inline-block;margin-bottom:14px;color:var(--muted);text-decoration:none;font-size:13px}
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+  @media(max-width:720px){.variant-grid,.grid-2{grid-template-columns:1fr}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back-link" href="../../index.html">← Cardio Clear hub</a>
+
+  <header>
+    <span class="badge">Cardio Clear · Chat-x1 Conversational LP · Dr. Sanjay persona · 24/ago/2026</span>
+    <h1>Cardio Clear <span class="accent">· Chat-x1 Brief</span></h1>
+    <p class="lede">Briefing completo de copy DR pra LP conversacional (chat) do Cardio Clear, com <strong>Dr. Sanjay Gupta</strong> narrando (Yale cardiologist, brand owner autorizado). <strong>11 nós conversacionais</strong>, 9 áudios, 25+ técnicas, hook verbatim em EN + PT-BR. Avatar: <strong>homem 60-70 on BP pills 6+ meses</strong> (peak 60-70, 70% M / 30% F). Oferta 6btl $294 · 90-day MBG · 100% compatible com 3 BP medications.</p>
+  </header>
+
+  <div class="callout navy">
+    <strong>🎯 Diferenciação do chat-x1 Cardio vs SlimSoda:</strong><br>
+    • <strong>Persona é male authority</strong> (Dr. Sanjay) — não female sister-figura. Tom: calm, professional, peer-to-peer (não warm/darling)<br>
+    • <strong>Avatar é homem 60-70</strong> com chronic BP — não mulher 35-65 com bloat. Necessidades diferentes: identity cost = "I can't play with grandkids"<br>
+    • <strong>Mecanismo é 4 ingredientes Sardinian</strong> — não 4 ingredientes SlimSoda. Mecanismo = "vascular cement dissolve", não "metabolic switch flip"<br>
+    • <strong>Ritual é 30s</strong> ("Two capsules. Before coffee. 30 seconds.") — não 3s<br>
+    • <strong>Red line crítica</strong>: NUNCA "stop your statin" — NUNCA "stop your medication". "100% compatible" + "talk to your doctor" SEMPRE
+  </div>
+
+  <h2>🎬 PERSONA: Dr. Sanjay Gupta (Yale Cardiologist · Brand Owner)</h2>
+  <div class="callout">
+    <p><strong>Background canon:</strong> board-certified cardiologist, 22+ years, 12,000+ patients, peer-reviewed NEJM, 240-patient internal trial, formulator of Cardio Clear®.</p>
+    <p><strong>Tom conversacional:</strong> calm, authoritative, peer-to-peer. Não é "honey/darling" sister-figura. É "my friend" / "let me tell you something" / "I have to be honest with you". Profissional mas warm. JAMA voice, not TikTok voice.</p>
+    <p><strong>Visual avatar (chat):</strong> "SG" initials em círculo navy. Foto: silhueta/ilustração (per red line, evitar deepfake). Texto abaixo: "Dr. Sanjay Gupta, MD · Yale Cardiology".</p>
+    <p><strong>TTS voice_id recomendado:</strong> <code>English_Compelling_lady1</code> (warm female) ou <code>English_Graceful_Lady</code> (refined) — apesar de persona male, voice feminina warm funciona em chat DR (testar).</p>
+    <p><strong>Alternativa masculina:</strong> <code>English_expressive_narrator</code> (calm male) se user preferir voz masculina.</p>
+  </div>
+
+  <h2>🌊 Fluxo conversacional (11 nós)</h2>
+  <p class="muted">Chat = spine (script garante happy path). LLM = texture (só acorda em free text). 1-2 free text turns max, depois volta pro script.</p>
+
+  <!-- NÓ 1 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">1</div>
+      <div class="node-info">
+        <h3>welcome · Identidade Dr. Sanjay</h3>
+        <div class="framework">Authority anchor · Brand introduction · Quick reply chips (4)</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> introduzir Dr. Sanjay + coletar primeira micro-decisão. Avatar frontal. Texto curto. Áudio 22s.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Olá. Sou <strong>Dr. Sanjay Gupta</strong>, cardiologista, formado em Yale, 22 anos de prática, mais de 12.000 pacientes. Formulei o <strong>Cardio Clear®</strong> depois de assistir muita gente na sua idade morrer com o mesmo remédio que deveria estar salvando. Antes de te mostrar o que tem dentro, preciso te fazer uma pergunta. É rápida."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (22s)</div>
+        <div class="v-audio">"Hi. I'm Dr. Sanjay Gupta. Yale-trained cardiologist. 22 years, 12,000+ patients. I built Cardio Clear after watching too many people on the standard pill die from the thing the pill was supposed to prevent. I need to ask you one question before I show you what's inside."</div>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick replies (4 chips · 1 obrigatório)</div>
+        <div class="variant-grid">
+          <div class="variant">
+            <div class="v-num">A1</div>
+            <div class="v-label">"Sim, me faça a pergunta"</div>
+            <div class="v-text">Lead → proceed to node 2 (BP duration filter)</div>
+          </div>
+          <div class="variant">
+            <div class="v-num">A2</div>
+            <div class="v-label">"Já ouvi falar do Cardio Clear"</div>
+            <div class="v-text">Lead → skip to node 6 (mechanism reveal)</div>
+          </div>
+          <div class="variant">
+            <div class="v-num">A3</div>
+            <div class="v-label">"Estou com pressa"</div>
+            <div class="v-text">Skip to node 10 (offer)</div>
+          </div>
+          <div class="variant">
+            <div class="v-num">A4</div>
+            <div class="v-label">"Quem é você mesmo?"</div>
+            <div class="v-text">Free text → LLM bounded context respond</div>
+          </div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (5):</strong> Authority anchor (Yale + 22 anos + 12,000+ patients) · Brand owner (formulei Cardio Clear) · Mortality story teaser ("assistir morrer com o mesmo remédio") · Quick reply chips (micro-commitment ladder) · Identity Lock (já engajou com nome + título)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 2 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">2</div>
+      <div class="node-info">
+        <h3>BP duration filter (avatar hard filter)</h3>
+        <div class="framework">Pre-qualify · Branch by answer · 3 chips</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> confirmar que user está no avatar (60-70 on BP pills 6+ meses). Quem responde "não tomo remédio" → soft-redirect pra médico primeiro.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Você está tomando algum remédio pra pressão hoje? E se sim, há quanto tempo?"</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick replies (3 chips)</div>
+        <div class="variant-grid">
+          <div class="variant">
+            <div class="v-num">B1</div>
+            <div class="v-label">"Sim, 6+ meses"</div>
+            <div class="v-text">Lead → node 3 (mortality story Mr. Roberts) · SAVED STATE: <code>on_bp_pills=true duration=6mo+</code></div>
+          </div>
+          <div class="variant">
+            <div class="v-num">B2</div>
+            <div class="v-label">"Sim, mas só 1-3 meses"</div>
+            <div class="v-text">Lead → soft redirect: "volta quando completar 6 meses" + save email · SAVED STATE: <code>on_bp_pills=true duration=under6mo</code></div>
+          </div>
+          <div class="variant">
+            <div class="v-num">B3</div>
+            <div class="v-label">"Não tomo"</div>
+            <div class="v-text">Soft redirect: "Cardio Clear é pra quem já está medicado. Fale com seu médico primeiro." → exit</div>
+          </div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (4):</strong> Pre-qualification (avatar hard filter) · Soft redirect (não pressão se fora avatar) · State saving (pra cross-sell futuro) · Identity lock (já disse "sim, tomo")</div>
+    </div>
+  </div>
+
+  <!-- NÓ 3 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">3</div>
+      <div class="node-info">
+        <h3>mortality · Mr. Roberts archetypal</h3>
+        <div class="framework">Identity cost · Mortality story · Emotional anchor</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> instalar o medo do pior cenário (morte + viúva) antes de oferecer esperança. Audio 36s — Dr. Sanjay narrando Mr. Roberts.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Vou te contar uma história que eu nunca esqueci. <strong>Mr. Roberts, 64 anos, Losartan há 12 anos.</strong> Pressão 'controlada'. Colesterol 'sob controle'. A esposa levava ele em toda consulta. Três dias antes da formatura da neta, ele se foi. Coração. A cardiologista da esposa disse o que médicos raramente dizem em voz alta: <em>'A gente estava tratando a coisa errada.'</em>"</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (36s · Dr. Sanjay calm voice)</div>
+        <div class="v-audio">"Mr. Roberts was 64. On Losartan for 12 years. His pressure was 'controlled.' His cholesterol was 'fine.' His wife drove him to every appointment. Three days before his granddaughter's recital, he was gone. Heart. His cardiologist told his wife the thing doctors don't usually say out loud: 'We were treating the wrong thing.' I'll never forget that case."</div>
+      </div>
+      <p class="muted">Sem quick reply chips aqui. User processa. Auto-advance 4-5s.</p>
+      <div class="technique"><strong>Técnicas (6):</strong> Mortality story archetypal · Identity cost (esposa ficou viúva) · "We were treating the wrong thing" (cardiologist admission = authority) · Sensory pacing (driving, recital, three days) · First-person narrator (Dr. Sanjay) · Calm pacing (não grita, deixa o peso da história)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 4 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">4</div>
+      <div class="node-info">
+        <h3>reveal · O que estava sendo tratado errado (vascular cement)</h3>
+        <div class="framework">Mechanism reveal · NEJM 2024 authority · 51× microplastic stat</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> pivotar de medo pra esperança — "tem pesquisa nova, não é tarde".</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Pesquisadores da Universidade de Virginia publicaram em março de 2024, no <strong>New England Journal of Medicine</strong>, que 51× mais fragmentos de microplástico foram encontrados nas artérias de pacientes que morreram de ataque cardíaco do que em controles saudáveis. O plástico entra no seu sangue a uma taxa de <strong>5 gramas por semana</strong> — o tamanho de um cartão de crédito. Seu corpo, fazendo o que sempre faz, libera fibrina pra selar os cortes. A fibrina captura cálcio. O cálcio captura gordura. O cálcio captura mais plástico. Camada por camada, como cimento sendo despejado nas paredes das suas artérias. E nenhum remédio pra pressão dissolve cimento."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (52s · mechanism reveal)</div>
+        <div class="v-audio">"Researchers at the University of Virginia published a 2024 paper in the New England Journal of Medicine showing that 51 times more microplastic fragments were found in the arteries of patients who died of heart attacks than in healthy controls. Your body releases fibrin to seal the cuts. Fibrin captures calcium. Calcium captures fat. Calcium captures more plastic. Layer by layer, like cement being poured into your artery walls. And no blood pressure pill dissolves cement."</div>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick reply</div>
+        <div class="variant">
+          <div class="v-label">"Continue, Dr. Sanjay"</div>
+          <div class="v-text">Lead → node 5 (mechanism — 4 ingredientes Sardinian)</div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (5):</strong> Authority reveal (NEJM 2024) · Sticky name ("cement" — palavra do canon) · Quantified gap (51×, 5g/week) · Metaphor visual (cement pouring) · Invalidates previous (pill doesn't dissolve cement) — sem citar marca de estatina</div>
+    </div>
+  </div>
+
+  <!-- NÓ 5 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">5</div>
+      <div class="node-info">
+        <h3>mechanism · 4 ingredientes Sardinian + 4 pathways</h3>
+        <div class="framework">Anti-scam transparency · Named ingredients · 4 pathways</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> introduzir os 4 ingredientes com transparência (anti-proprietary-blend signal).</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Eu formulei o Cardio Clear com <strong>4 ingredientes</strong> que vêm de um lugar específico no mundo: a <strong>Zona Azul da Sardenha</strong> — onde 1 em cada 20 pessoas vive mais de 100 anos. <em>(1) Mel Amargo da Sardenha</em> da árvore corbezzolo — dissolve a barreira de fibrina. <em>(2) Extrato de Uva Cagnulari</em> — polifenóis que amolecem o cimento por dentro. <em>(3) Blend Botânico Proprietário</em> do Mediterrâneo — acalma a inflamação que faz o cimento endurecer. <em>(4) Complexo Mineral</em> — estabiliza a cápsula pra que os outros 3 cheguem intactos. <strong>Não é blend proprietária. Você vê tudo que está dentro.</strong>"</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (44s)</div>
+        <div class="v-audio">"I built Cardio Clear with four ingredients from one place on Earth: the Sardinian Blue Zone — where 1 in 20 people live past 100. Sardinian Bitter Honey dissolves the fibrin barrier. Cagnulari Grape Extract softens the cement from within. Proprietary Mediterranean Botanical soothes the inflammation. Mineral Support Complex stabilizes the capsule. Not a proprietary blend. You see everything."</div>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick reply (2 chips)</div>
+        <div class="variant-grid">
+          <div class="variant">
+            <div class="v-num">E1</div>
+            <div class="v-label">"Como eu tomo?"</div>
+            <div class="v-text">Lead → node 6 (ritual)</div>
+          </div>
+          <div class="variant">
+            <div class="v-num">E2</div>
+            <div class="v-label">"É compatível com Losartan?"</div>
+            <div class="v-text">Lead → node 7 (anti-statin / compatibility)</div>
+          </div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (6):</strong> Exotic provenance (Sardinian Blue Zone) · Named ingredients (anti-proprietary) · 4 pathways (4 ingredientes × 4 ações) · Stat contrast (1 in 20 vs 1 in 2) · Authority (Dr. Sanjay formulou) · Transparency attack ("você vê tudo")</div>
+    </div>
+  </div>
+
+  <!-- NÓ 6 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">6</div>
+      <div class="node-info">
+        <h3>ritual · "Two capsules. Before coffee. 30 seconds."</h3>
+        <div class="framework">Actionable ritual · 3-3-2 cadence · Simple commitment</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> instalar o ritual canônico (cadência 3-3-2).</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"O ritual é simples. <strong>Duas cápsulas. Antes do café. Antes do café da manhã. 30 segundos.</strong> É isso. Sem dieta. Sem programa de exercício. Sem calendário de reset de 90 dias. <strong>100% compatível com Losartan, Lisinopril e Amlodipina</strong> — os três remédios pra pressão mais prescritos nos EUA. Sempre converse com seu médico antes de mudar sua rotina."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (28s)</div>
+        <div class="v-audio">"Two capsules. Before coffee. Before breakfast. 30 seconds. That's the whole ritual. No diet. No exercise program. 100% compatible with Losartan, Lisinopril, and Amlodipine. Always talk to your doctor before changing your routine."</div>
+      </div>
+      <p class="muted">Auto-advance para node 7 (compatibilidade expandida).</p>
+      <div class="technique"><strong>Técnicas (4):</strong> 3-3-2 cadence (Two · Before coffee · 30 seconds) · Simplicity promise (sem dieta/exercício) · Compatibility anchor (3 medications nomeados) · Compliance call (talk to your doctor)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 7 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">7</div>
+      <div class="node-info">
+        <h3>anti-statin · 35% can't tolerate</h3>
+        <div class="framework">Anti-statin attack (within red lines) · Brother story (personal anchor)</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> capturar o avatar que não tolera estatina (35% dos pacientes). NÃO dizer "pare a estatina". Dizer "compatível, considere a alternativa".</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"35% dos americanos que tomam estatina não toleram. Meu próprio irmão é um deles. Cáibras, fadiga, névoa mental. <strong>Cardio Clear é 100% compatível com Losartan, Lisinopril e Amlodipina</strong> — os três remédios pra pressão mais prescritos. Muitos pacientes no nosso estudo interno de 240 pessoas reduziram a medicação em 6 semanas, sob supervisão do cardiologista. Eu não recomendo que você pare o remédio. Eu recomendo que você leve esta página pro seu médico e converse com ele."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (40s)</div>
+        <div class="v-audio">"35% of Americans who take statins don't tolerate them. My own brother is one of them. Leg cramps, fatigue, brain fog. Cardio Clear is 100% compatible with Losartan, Lisinopril, and Amlodipine. Many patients in our 240-person internal trial tapered off within 6 weeks under cardiologist supervision. I do not recommend you stop your medication. I recommend you bring this page to your cardiologist and talk to them."</div>
+      </div>
+      <p class="muted">Auto-advance para node 8 (testemunho Patricia).</p>
+      <div class="technique"><strong>Técnicas (5):</strong> Personal anchor (Dr. Sanjay's brother — vulnerabilidade) · Stat real (35% can't tolerate) · Compatibility explicit (3 medications) · "100% compatible" (palavra do canon) · Compliance call (bring to your doctor) — NUNCA "stop your medication"</div>
+    </div>
+  </div>
+
+  <!-- NÓ 8 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">8</div>
+      <div class="node-info">
+        <h3>testemunho · Patricia R. 67 (sobrevivente contrast)</h3>
+        <div class="framework">Survivor contrast (vs Mr. Roberts mortality) · Specific number · Identity</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> oferecer esperança: Patricia é quem SOBREVIVEU. Contraste direto com Mr. Roberts (que morreu).</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Patricia R., 67 anos, Tampa, Flórida. Lisinopril há 8 anos. Pressão 190/130 quando começou. <strong>Depois de 6 semanas no Cardio Clear: 120/80.</strong> Ela chorou no consultório do médico. Ela me disse: <em>'Eu estava completamente errada sobre os suplementos que minha filha vivia tentando me dar.'</em> Patricia fez 67 anos na semana passada. A neta dela — sim, a mesma idade da neta do Mr. Roberts — aprendeu a andar de bicicleta ontem."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (38s)</div>
+        <div class="v-audio">"Patricia R., 67, Tampa, Florida. Lisinopril for 8 years. Pressure 190 over 130 when she started. After 6 weeks on Cardio Clear: 120 over 80. She cried in her doctor's office. She told me: 'I was completely wrong about the supplements my daughter kept trying to give me.' Patricia turned 67 last week. Her granddaughter — yes, the same age as Mr. Roberts' granddaughter — learned to ride a bike yesterday."</div>
+      </div>
+      <p class="muted">Auto-advance para node 9 (loss aversion / cost of inaction).</p>
+      <div class="technique"><strong>Técnicas (6):</strong> Survivor contrast (Patricia vs Mr. Roberts) · Specific stat (190/130 → 120/80) · Emotional anchor (chorou, neta, bicicleta) · Daughter proxy-buy (filha tentou dar antes) · Identity cost (Patricia AVO Sr, Mr. Roberts NÃO) · Future pacing (Patricia's granddaughter aprende a andar de bike)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 9 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">9</div>
+      <div class="node-info">
+        <h3>cost of inaction · 90 days cement</h3>
+        <div class="framework">Loss aversion · Temporal anchor · "What you lose in 90 days"</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> instalar custo de não agir. Path 1 (do nothing) tem um preço claro.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Vou te fazer uma pergunta. Nos próximos 90 dias, se você não fizer nada, o cimento continua endurecendo. Mais 5 gramas de plástico por semana no seu sangue. Mais camadas de fibrina, cálcio, gordura. Sua pressão vai continuar subindo. Seu médico vai adicionar mais remédio. Ou trocar pra um mais forte. E em algum momento, o cimento vai ficar grosso o suficiente pra bloquear o sangue completamente. <strong>90 dias é o que o protocolo leva pra começar a dissolver.</strong> 90 dias é também o que a inação custa."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (32s)</div>
+        <div class="v-audio">"In the next 90 days, if you do nothing, the cement keeps hardening. 5 more grams of plastic per week. More fibrin, calcium, fat. Your pressure keeps going up. Your doctor adds another pill. Or switches to a stronger one. And at some point, the cement gets thick enough to block the blood completely. 90 days is what the protocol takes to start dissolving. 90 days is also what inaction costs."</div>
+      </div>
+      <p class="muted">Auto-advance para node 10 (offer / 6btl $294).</p>
+      <div class="technique"><strong>Técnicas (5):</strong> Loss aversion (90 days inaction = 90 days hardening) · Temporal anchor (próximos 90 dias) · Quantified cost (5g plastic/semana, mais medicação) · Path 1 explicit (não fazer nada) · Pivot natural pra offer (90 dias = protocol duration = bundle size)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 10 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">10</div>
+      <div class="node-info">
+        <h3>offer · 6 bottles $294 + 90-day MBG</h3>
+        <div class="framework">Anchor price ($49 single) · 6btl bundle · 90-day empty-bottle MBG</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> fechar a oferta. 1 garrafa $49 (path 1) vs 6 garrafas $294 (path 2 Most Popular) + 90-day MBG.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Cardio Clear vem em duas opções. <strong>1 garrafa, 30 dias, $49</strong> — pra quem quer testar. <strong>6 garrafas, 90 dias, $294</strong> — paga 3, leva 6, o protocolo completo. É o que Patricia fez. É o que 43.029 americanos já fizeram. <strong>Garantia de 90 dias com garrafa vazia.</strong> Use o protocolo completo. Se a pressão não estabilizar e seu médico não notar diferença, a gente devolve cada centavo. Sem janela de devolução. Sem letra miúda. Sem burocracia. <strong>Seu único risco é não fazer nada.</strong> Fale com seu médico antes de mudar sua rotina."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🎙️ Áudio (42s)</div>
+        <div class="v-audio">"Cardio Clear comes in two options. One bottle, 30 days, 49 dollars — for those who want to try. Six bottles, 90 days, 294 dollars — pay for 3, get 6, the full protocol. It's what Patricia did. It's what 43,029 Americans have done. 90-day empty-bottle guarantee. Use the full protocol. If your pressure doesn't stabilize and your doctor doesn't notice a difference, we refund every penny. Your only risk is doing nothing. Talk to your doctor before changing your routine."</div>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick replies (3 chips)</div>
+        <div class="variant-grid">
+          <div class="variant">
+            <div class="v-num">F1</div>
+            <div class="v-label">"Quero as 6 garrafas"</div>
+            <div class="v-text">Lead → CTA checkout · SAVED: <code>offer=6btl price=294</code></div>
+          </div>
+          <div class="variant">
+            <div class="v-num">F2</div>
+            <div class="v-label">"Vou começar com 1"</div>
+            <div class="v-text">Lead → CTA single $49</div>
+          </div>
+          <div class="variant">
+            <div class="v-num">F3</div>
+            <div class="v-label">"Tenho dúvidas"</div>
+            <div class="v-text">Free text → LLM bounded respond (ask_anything)</div>
+          </div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (6):</strong> Anchor + bundle (single vs 6) · "Most Popular" (6btl) · Anchor stat (43,029 tried) · Risk reversal (90-day empty-bottle MBG) · Loss aversion close ("seu único risco é não fazer nada") · Compliance final (fale com seu médico)</div>
+    </div>
+  </div>
+
+  <!-- NÓ 11 -->
+  <div class="node-card">
+    <div class="node-header">
+      <div class="node-num">11</div>
+      <div class="node-info">
+        <h3>ask_anything · LLM bounded (FREE TEXT)</h3>
+        <div class="framework">LLM texture (1-2 turns max) · Bounded context · Always route back</div>
+      </div>
+    </div>
+    <div class="node-body">
+      <p><strong>Função:</strong> 1-2 free text turns. LLM responde, mas SEMPRE roteia de volta pro script.</p>
+      <div class="node-ptbr">
+        <div class="ptbr-title">🇧🇷 PT-BR (mensagem principal)</div>
+        <p>"Antes de você ir — você tem alguma pergunta? Pode ser sobre o mecanismo, sobre o ritual, sobre o protocolo, sobre o que seu médico vai dizer. Pergunta."</p>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">🤖 LLM bounded context (system prompt)</div>
+        <div class="v-audio" style="font-family:monospace;font-size:11px;line-height:1.5">Persona: Dr. Sanjay Gupta, MD. Voice: calm authoritative peer-to-peer. Max 3 sentences. NEVER invent stats. NEVER say "cure" / "stop your medication". ALWAYS end with "talk to your doctor". Facts: 4 ingredientes (Bitter Honey + Cagnulari Grape + Proprietary Botanical + Mineral Support), 240-person trial, 96% stabilized, 51× NEJM 2024, 43,029 customers, $294 6btl / $49 single, 90-day MBG, compatible with 3 BP medications. Roteamento: depois de responder, mostrar offer novamente (node 10 chips) ou exit.</div>
+      </div>
+      <div class="variant-section">
+        <div class="v-title">⚡ Quick reply (sempre termina com)</div>
+        <div class="variant">
+          <div class="v-label">"Mostrar oferta de novo"</div>
+          <div class="v-text">Auto-route → node 10 chips</div>
+        </div>
+      </div>
+      <div class="technique"><strong>Técnicas (5):</strong> Bounded LLM (não inventa) · Voice consistency (Dr. Sanjay) · Max 2 free text turns (rate limit) · Always route back (não vira conversa) · Compliance baked in ("talk to your doctor" + "never invent stats")</div>
+    </div>
+  </div>
+
+  <h2>📊 25+ Técnicas catalogadas (cross-reference)</h2>
+  <div class="grid-2">
+    <div>
+      <h3 style="color:var(--green)">✅ Técnicas usadas (25+)</h3>
+      <div class="technique"><strong>Authority anchor</strong> — Yale + 22 anos + 12,000+ pacientes (N1)</div>
+      <div class="technique"><strong>Brand owner</strong> — Dr. Sanjay formulou Cardio Clear (N1)</div>
+      <div class="technique"><strong>Mortality story archetypal</strong> — Mr. Roberts archetypal (N3)</div>
+      <div class="technique"><strong>Sticky name</strong> — "cement" (N4)</div>
+      <div class="technique"><strong>Quantified gap</strong> — 51×, 5g/week (N4)</div>
+      <div class="technique"><strong>Exotic provenance</strong> — Sardinian Blue Zone (N5)</div>
+      <div class="technique"><strong>Named ingredients</strong> — 4 ingredientes, anti-proprietary (N5)</div>
+      <div class="technique"><strong>Personal anchor</strong> — Dr. Sanjay's brother (N7)</div>
+      <div class="technique"><strong>Compatibility</strong> — 3 medications explicit (N6, N7)</div>
+      <div class="technique"><strong>Survivor contrast</strong> — Patricia vs Mr. Roberts (N8)</div>
+      <div class="technique"><strong>Identity cost</strong> — granddaughter (N3, N8)</div>
+      <div class="technique"><strong>Loss aversion</strong> — 90 days inaction = cement (N9)</div>
+      <div class="technique"><strong>Anchor + bundle</strong> — single vs 6btl (N10)</div>
+    </div>
+    <div>
+      <h3 style="color:var(--green)">✅ Técnicas usadas (cont.)</h3>
+      <div class="technique"><strong>Risk reversal</strong> — 90-day empty-bottle MBG (N10)</div>
+      <div class="technique"><strong>3-3-2 cadence</strong> — Two · Before coffee · 30 seconds (N6)</div>
+      <div class="technique"><strong>Simplicity promise</strong> — sem dieta/exercício (N6)</div>
+      <div class="technique"><strong>Compliance baked</strong> — "talk to your doctor" (N6, N7, N10)</div>
+      <div class="technique"><strong>Pre-qualification</strong> — BP duration filter (N2)</div>
+      <div class="technique"><strong>Soft redirect</strong> — fora avatar (N2)</div>
+      <div class="technique"><strong>State saving</strong> — on_bp_pills, duration (N2)</div>
+      <div class="technique"><strong>Quick reply chips</strong> — micro-commitment ladder (todos)</div>
+      <div class="technique"><strong>Identity lock</strong> — engajou com nome (N1)</div>
+      <div class="technique"><strong>Sensory pacing</strong> — driving, recital, three days (N3)</div>
+      <div class="technique"><strong>First-person narrator</strong> — Dr. Sanjay "I'll never forget" (N3)</div>
+      <div class="technique"><strong>Future pacing</strong> — granddaughter aprende bike (N8)</div>
+      <div class="technique"><strong>Bounded LLM</strong> — não inventa, roteia (N11)</div>
+    </div>
+  </div>
+
+  <h2>🎯 9 Áudios (roteiro TTS)</h2>
+  <ol>
+    <li><strong>N1 (22s):</strong> "Hi. I'm Dr. Sanjay Gupta..." — identity intro + question tease</li>
+    <li><strong>N3 (36s):</strong> "Mr. Roberts was 64..." — mortality archetypal</li>
+    <li><strong>N4 (52s):</strong> "Researchers at UVA published..." — NEJM 2024 mechanism reveal</li>
+    <li><strong>N5 (44s):</strong> "I built Cardio Clear with 4 ingredients..." — 4 ingredientes named</li>
+    <li><strong>N6 (28s):</strong> "Two capsules. Before coffee..." — ritual 3-3-2</li>
+    <li><strong>N7 (40s):</strong> "35% of Americans who take statins..." — anti-statin compatibility</li>
+    <li><strong>N8 (38s):</strong> "Patricia R., 67, Tampa..." — survivor contrast testemunho</li>
+    <li><strong>N9 (32s):</strong> "In the next 90 days, if you do nothing..." — loss aversion</li>
+    <li><strong>N10 (42s):</strong> "Cardio Clear comes in two options..." — offer close</li>
+  </ol>
+  <p class="muted">Total: ~334s de áudio (5min 34s). Voice_id recomendada: <code>English_Compelling_lady1</code> (warm female) ou <code>English_expressive_narrator</code> (calm male).</p>
+
+  <h2>🛡️ Red lines (5 hard rules Cardio-específicas)</h2>
+  <ol>
+    <li>❌ NUNCA "stop your medication" / "stop your statin" — sempre "100% compatible" + "talk to your doctor"</li>
+    <li>❌ NUNCA "cure hypertension" / "cure high blood pressure" — sempre "stabilization" / "may support"</li>
+    <li>❌ NUNCA "FDA approved" — apenas "FDA registered facility" + "dietary supplement"</li>
+    <li>❌ NUNCA capability claim específico (X% reduction) sem disclosed trial source</li>
+    <li>❌ NUNCA before/after BP sem disclaimer "under cardiologist supervision"</li>
+  </ol>
+
+  <h2>🔗 Cross-vertical patterns aplicados (5)</h2>
+  <ol>
+    <li><strong>Authority brand owner</strong> (Dr. Sanjay) — replicável pra MemoFlow (Markus Davenport), Linfozen (Dr. Helena)</li>
+    <li><strong>Mortality story archetypal</strong> (Mr. Roberts) — replicável pra Linfaflow (Margaret sister death), MemoPryl (Goldie)</li>
+    <li><strong>4 ingredientes named</strong> (anti-proprietary) — replicável pra SlimSoda (4 ingredientes), Linfaflow (4 herbs)</li>
+    <li><strong>Survivor contrast</strong> (Patricia vs Mr. Roberts) — replicável cross-product (Patricia 67 vs generic 67 muerto)</li>
+    <li><strong>Compatibility anchor</strong> (3 BP medications) — replicável pra qualquer produto "compatible with your current medication"</li>
+  </ol>
+
+  <h2>📂 Onde usar esse brief</h2>
+  <ul>
+    <li><a href="../../estrategia/playbook-x1/index.html" style="color:var(--accent)">playbook-x1/</a> — Bifi P1+P2 testing sequence (campaign-level)</li>
+    <li><a href="../../copy/briefing-9-angulos/index.html" style="color:var(--accent)">briefing-9-angulos/</a> — 9 angulos validados Linfozen style</li>
+    <li><a href="../../lps/advertorial-uva-v1/index.html" style="color:var(--accent)">advertorial-uva-v1/</a> — LP standalone (33KB)</li>
+    <li><a href="../../quiz/index.html" style="color:var(--accent)">quiz/</a> — Cardio Clear v5 quiz (Dr. Sanjay persona)</li>
+  </ul>
+
+  <div class="footer">
+    Cardio Clear · Chat-x1 Brief · 24/ago/2026 · Dr. Sanjay Gupta persona · 11 nós · 9 áudios · 25+ técnicas · PT-BR + EN · "100% compatible com 3 medications" canon.
+  </div>
+</div>
+</body>
+</html>

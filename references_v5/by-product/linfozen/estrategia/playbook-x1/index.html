@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbook Linfozen X1 — Primary Test Sequence (Bifi methodology)</title>
+<style>
+  :root { --bg:#0b0d10; --panel:#14181d; --panel-2:#1c2128; --border:#2a313b; --text:#e7eaf0; --muted:#9aa3b2; --accent:#FF6B6B; --gold:#ffd166; --green:#06a77d; --red:#c0392b; --blue:#4ea1ff; --magenta:#C73EAB; --purple:#7c3aed; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:1100px; margin:0 auto; padding:28px 24px 96px; }
+  header { border-bottom:1px solid var(--border); padding-bottom:18px; margin-bottom:28px; }
+  .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; background:rgba(255,107,107,0.12); color:var(--accent); border:1px solid rgba(255,107,107,0.3); margin-bottom:12px; }
+  h1 { font-size:32px; line-height:1.15; margin:0 0 10px; letter-spacing:-0.02em; }
+  h1 .accent { color:var(--accent); }
+  h2 { font-size:22px; margin:36px 0 14px; padding-top:12px; border-top:1px solid var(--border); letter-spacing:-0.01em; color:var(--gold); }
+  h3 { font-size:17px; margin:22px 0 10px; color:var(--accent); }
+  h4 { font-size:14px; margin:18px 0 8px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  p, li { color:var(--text); }
+  .muted { color:var(--muted); font-size:13px; }
+  .lede { font-size:17px; color:#d3d8e0; max-width:780px; }
+  .callout { background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--accent); padding:14px 18px; border-radius:8px; margin:18px 0; }
+  .callout.green { border-left-color:var(--green); }
+  .callout.gold { border-left-color:var(--gold); }
+  .callout.magenta { border-left-color:var(--magenta); }
+  .callout strong { color:var(--accent); }
+  .callout.green strong { color:var(--green); }
+  .callout.gold strong { color:var(--gold); }
+  .callout.magenta strong { color:var(--magenta); }
+  .pill { display:inline-block; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; }
+  .pill-p1 { background:rgba(255,138,61,0.15); color:#ff8a3d; }
+  .pill-p2 { background:rgba(78,161,255,0.15); color:var(--blue); }
+  .pill-p3 { background:rgba(6,167,125,0.15); color:var(--green); }
+  .pill-p4 { background:rgba(192,57,43,0.15); color:var(--red); }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px; font-size:14px; }
+  th, td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); vertical-align:top; }
+  th { background:var(--panel-2); color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; }
+  code { font-family:"JetBrains Mono",Consolas,monospace; font-size:12.5px; background:var(--panel-2); padding:1px 6px; border-radius:4px; color:#ffd9b8; }
+  pre { background:var(--panel-2); border:1px solid var(--border); border-radius:8px; padding:14px 16px; overflow-x:auto; font-family:"JetBrains Mono",monospace; font-size:12.5px; line-height:1.6; }
+  .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin:14px 0 18px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px 16px; }
+  .card .label { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.06em; }
+  .card .value { font-size:18px; font-weight:800; margin-top:4px; color:var(--gold); }
+  .num-big { font-size:32px; font-weight:800; letter-spacing:-0.02em; color:var(--gold); }
+  .flow { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:18px 0 14px; }
+  .flow .step { font-size:11.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; border:1.5px solid var(--border); background:var(--panel); padding:7px 11px; border-radius:4px; }
+  .flow .step.hot { background:var(--accent); color:#0b0d10; border-color:var(--accent); }
+  .flow .arrow { color:var(--accent); font-weight:800; }
+  .concept { background:var(--panel); border:1px solid var(--border); border-radius:10px; margin:16px 0; overflow:hidden; }
+  .concept-head { padding:14px 18px; border-bottom:1px solid var(--border); background:linear-gradient(90deg,rgba(255,107,107,0.08),transparent); display:flex; align-items:center; gap:14px; }
+  .concept-num { width:42px; height:42px; background:linear-gradient(135deg,var(--accent),var(--magenta)); border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:18px; color:#fff; flex-shrink:0; }
+  .concept-info h3 { margin:0; font-size:17px; color:var(--text); }
+  .concept-info .meta { font-size:12px; color:var(--muted); margin-top:3px; }
+  .concept-body { padding:14px 18px; }
+  .concept-body .hook { background:var(--panel-2); border-left:3px solid var(--accent); padding:10px 14px; margin:8px 0; font-family:Georgia,serif; font-style:italic; border-radius:4px; font-size:14px; }
+  .footer { margin-top:48px; padding-top:18px; border-top:1px solid var(--border); color:var(--muted); font-size:12px; }
+  .back-link { display:inline-block; margin-bottom:14px; color:var(--muted); text-decoration:none; font-size:13px; }
+  @media (max-width:720px) { .grid-2, .grid-3 { grid-template-columns:1fr; } h1 { font-size:26px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back-link" href="../../index.html">← Linfozen hub</a>
+
+  <header>
+    <span class="badge">Playbook · Linfozen X1 · Bifi methodology aplicado · 24/ago/2026</span>
+    <h1>Linfozen X1 — Primary Test Sequence 🧪</h1>
+    <p class="lede">Sequência concreta de teste primário do <strong>Linfozen</strong> (suplemento botânico pra lipedema), baseada na metodologia <strong>P1 → P2 → P3 → P4</strong> do @gbifi. Cada fase tem budget, tempo, métrica de corte e output. CPA estimado: <strong>$80</strong>. Ticket: <strong>$59 single / $147 3-bottle / $267 6-bottle</strong>. AOV blend: <strong>$147</strong>.</p>
+    <p class="muted">Aplicação: <strong>X1 = Phase 1 sequence</strong> (primary text + image testing). Próximas: <strong>X2 = Phase 2 (escala CBO bidcap)</strong>, <strong>X3 = Phase 3 (otimização/variação)</strong>, <strong>X4 = Phase 4 (cemitério)</strong>.</p>
+  </header>
+
+  <div class="callout">
+    <strong>🎯 Por que Linfozen é o teste mais importante AGORA:</strong><br>
+    • <strong>Blue ocean absoluto</strong> (~10-50 ads ativos vs SlimSoda 1.100+ = 20-100× menos concorrência)<br>
+    • <strong>Avatar desesperado</strong> (mulher 35-65, lipedema não diagnosticado, médica disse "obesidade" — high intent)<br>
+    • <strong>AOV intermediário</strong> $147 (entre SlimSoda $30 e Cardio $294) — fit pra cross-sell<br>
+    • <strong>Brief 9-ângulos produção-ready</strong> + canon 3 ingredientes (Brazilian Pineapple + Dandelion + Cleavers)<br>
+    • <strong>LP standalone</strong> (advertorial-lipedema-v1) já no ar — falta playbook de teste
+  </div>
+
+  <h2>📋 Ficha técnica (P1 + P2 = $1,000 budget · 5 dias)</h2>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="label">P1 · Primary Text</div>
+      <div class="value">ABO 1-5-3</div>
+      <p>5 concepts × 3 textos = 15 ads · $40/conjunto · 2 dias · <strong>$400 total</strong></p>
+    </div>
+    <div class="card">
+      <div class="label">P2 · Imagem / Adformat</div>
+      <div class="value">ABO 1-5-10</div>
+      <p>5 conjuntos × 10 adformats = 50 ads · $40/conjunto · 3 dias · <strong>$600 total</strong></p>
+    </div>
+    <div class="card">
+      <div class="label">CPA Target</div>
+      <div class="value">$80</div>
+      <p>AOV $147 → ROAS alvo 1.8x em P1, 2.5x em P3 escala</p>
+    </div>
+  </div>
+
+  <div class="flow">
+    <div class="step">COLD TRAFFIC</div>
+    <div class="arrow">→</div>
+    <div class="step hot">P1 TEXTO</div>
+    <div class="arrow">→</div>
+    <div class="step">P2 IMAGEM</div>
+    <div class="arrow">→</div>
+    <div class="step">P3 ESCALA CBO</div>
+    <div class="arrow">→</div>
+    <div class="step">P4 CEMITÉRIO</div>
+  </div>
+
+  <h2>🧪 5 Concepts (P1 — testa o ÂNGULO via primary text)</h2>
+  <p class="muted">Cada concept é um ângulo de copy diferente. Imagem genérica (bottle illustration + leg silhouette) em todos. 3 textos por concept (15 ads total). O concept vencedor avança pra P2.</p>
+
+  <div class="concept">
+    <div class="concept-head">
+      <div class="concept-num">C1</div>
+      <div class="concept-info">
+        <h3>"40 anos estudando saúde — controla lipedema em 17 segundos" (B2H2 · L3-L4)</h3>
+        <div class="meta">Avatar-médica warm · 40 anos autoridade · especificidade temporal (17s) · promessa específica</div>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p><strong>Por que testar:</strong> ângulo mais validado do brief Linfozen (B2H2 spy). Sister-figura médica. Funciona em cold + warm traffic.</p>
+      <div class="hook">"I have spent forty years studying health, and I will tell you one thing: lipedema can be easily controlled if you follow what I'm going to tell you in the next 17 seconds."</div>
+      <p><strong>Variação PT-BR:</strong> "Passei quarenta anos estudando saúde, e vou te dizer uma coisa: lipedema pode ser facilmente controlado se você fizer o que vou te mostrar nos próximos dezessete segundos."</p>
+      <p><strong>Meta-safe:</strong> "easily controlled" → "many women report improvement with".</p>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-head">
+      <div class="concept-num">C2</div>
+      <div class="concept-info">
+        <h3>"Se sua perna mudou em 4 horas — talvez não seja gordura" (B2H3 · L3)</h3>
+        <div class="meta">3 exemplos visuais · invalidação Ozempic · provocação direta · "honey, darling" sister-figura</div>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p><strong>Por que testar:</strong> pattern "3 exemplos visuais + invalidação 3 soluções comuns" funciona porque o avatar se reconhece na primeira imagem. "Ozempic" como bode expiatório ressoa com frustração médica.</p>
+      <div class="hook">"If your leg looks like this. Or this. Or this. Dieting is not for you. Exercising and walking aren't for you either... And definitely not Ozempic, honey. So pay attention to this video, because today I am going to help you get rid of lipedema myself."</div>
+      <p><strong>Meta-safe:</strong> "get rid of lipedema" → "find a different path to managing lipedema". Manter provocação, suavizar claim.</p>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-head">
+      <div class="concept-num">C3</div>
+      <div class="concept-info">
+        <h3>"A verdade que a indústria de lipoaspiração não quer que você saiba" (B3H1 · L4)</h3>
+        <div class="meta">Conspiração declarada · anti-establishment · reason why oculto (vídeo vai ser tirado)</div>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p><strong>Por que testar:</strong> "indústria perdendo bilhões" = reason why oculto + escassez fabricada com base real (Lipedema community REALMENTE reporta que vídeos sum). Funciona em cold traffic desperate.</p>
+      <div class="hook">"Every time this video goes up, it gets taken down. Because the liposuction industry, the weight-loss pen pharmaceutical companies, and the expensive drainage clinics are making billions off your lipedema."</div>
+      <p><strong>Meta-safe:</strong> "making billions off your lipedema" → "make their money treating symptoms, not causes". Manter estrutura, suavizar claim financeiro.</p>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-head">
+      <div class="concept-num">C4</div>
+      <div class="concept-info">
+        <h3>"Lipoaspiração de $20K volta em 2 anos. 90 dias com 3 ingredientes não." (L4)</h3>
+        <div class="meta">Comparação direta · money anchor $20K · permanência vs temporário</div>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p><strong>Por que testar:</strong> ancoragem de preço alta ($20K) vs preço real ($147) cria perceived value absurdo. Comparação de "volta" (lipo) vs "permanente" (enzima dissolve) ataca fraqueza real do concorrente.</p>
+      <div class="hook">"Twenty-thousand-dollar liposuction, where the fat just comes back. It's wrong. It's expensive. And it doesn't solve the problem. Three ingredients. Costs less than a cup of coffee."</div>
+      <p><strong>Meta-safe:</strong> $20K anchor é stat público (ASPS 2024 average). Mantém.</p>
+    </div>
+  </div>
+
+  <div class="concept">
+    <div class="concept-head">
+      <div class="concept-num">C5</div>
+      <div class="concept-info">
+        <h3>"Comprei pra minha mãe. Stage 3 virou Stage 2 em 4 meses." (L3 · proxy-buy)</h3>
+        <div class="meta">Filha comprando pra mãe · 4 meses transformation · sister-empathy</div>
+      </div>
+    </div>
+    <div class="concept-body">
+      <p><strong>Por que testar:</strong> ângulo proxy-buy é cross-vertical winner (SlimSoda Pam 62, Cardio Linda 55, MemoPryl Linda 64). No Linfozen funciona porque a filha 35-50 é quem Google "mom lipedema help" às 2am.</p>
+      <div class="hook">"I'm 38. My mom is 67. She's had lipedema since before I was born. She has spent $14,000 on liposuction. She has spent $300 a week on drainage. Last month I sent her a bottle. Today she sent me a photo of her legs. They're different. They're not cured. But they're different."</div>
+      <p><strong>Meta-safe:</strong> "they're different" (factual). Não claim "cured".</p>
+    </div>
+  </div>
+
+  <h2>🖼️ 10 Adformats (P2 — testa a IMAGEM com texto vencedor da P1)</h2>
+  <p class="muted">Pega o concept vencedor (1-2 dos 5) e testa 10 visuais diferentes. Cada adformat é uma execução visual diferente da mesma copy.</p>
+
+  <table>
+    <tr><th>#</th><th>Adformat</th><th>Descrição</th><th>Spec</th></tr>
+    <tr><td>A1</td><td>Split clutter vs simple</td><td>Esquerda: perna com cellulite. Direita: perna smooth. Frase: "Your morning has enough steps."</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A2</td><td>MORNING ROUTINE EXPLAINED</td><td>Newspaper 3-col. Headline editorial + bottle close-up + leg stage 1/2/3</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A3</td><td>SPONSORED WELLNESS ARTICLE</td><td>Drop cap + pull-quote + bottle illustration + "READ THE ARTICLE →"</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A4</td><td>MORNING WELLNESS REPORT</td><td>Magazine wrapper. Headline: "Why 20M American Women Have Lipedema — And What To Do About It"</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A5</td><td>THE LIPEDEMA JOURNAL</td><td>Match com editorial wrapper da LP. Visual: 3 leg illustrations Stage 1/2/3</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A6</td><td>UGC video (Dr. Helena warm)</td><td>30s vertical talking-head. Sister-figura, calm. "Honey, listen to me..."</td><td>9:16</td></tr>
+    <tr><td>A7</td><td>UGC before/after (real woman)</td><td>Real photo (compensated disclosure). Day 1 / Day 90. Real legs, not stock.</td><td>9:16 + 1:1</td></tr>
+    <tr><td>A8</td><td>Carousel 5 cards</td><td>5 cards: Stage 1 → 2 → 3 → 4 → testimonial. Cada card 1 fact.</td><td>1:1</td></tr>
+    <tr><td>A9</td><td>Lifestyle premium</td><td>Mulher 50+ em robe de seda, legging, segurando chá. Calm, premium feel.</td><td>1:1 + 4:5</td></tr>
+    <tr><td>A10</td><td>Price-anchored</td><td>$20K lipo big crossed out vs $147 3btl small. "1% the cost. Same outcome."</td><td>1:1 + 4:5</td></tr>
+  </table>
+
+  <h2>📏 Régua de corte (Bifi rule)</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h4>P1 corte (dia 2)</h4>
+      <p>CTR &lt; 0.8% = kill concept (mesmo texto, não funciona)</p>
+      <p>Custo/page view &gt; $5 = kill concept</p>
+      <p>IC (custo por InitiateCheckout) &gt; $40 = kill concept</p>
+    </div>
+    <div class="card">
+      <h4>P2 corte (dia 3)</h4>
+      <p>0 compras em 3 dias = kill adformat (mesmo copy, não funciona visual)</p>
+      <p>ROAS &lt; 0.5 = kill adformat</p>
+      <p>CPA &gt; $200 (2.5× alvo) = kill adformat</p>
+    </div>
+    <div class="card">
+      <h4>IC Bifi rule (qualquer fase)</h4>
+      <p><strong style="color:var(--green)">IC ≤ $5</strong> = QUALIFICADO (promover pra P3)</p>
+      <p><strong style="color:var(--gold)">IC $6-9</strong> = MAIS TEXTOS (produzir + texto com mesmo ângulo)</p>
+      <p><strong style="color:var(--red)">IC &gt; $9 ou 0 IC</strong> = MORTO (kill, próximo concept)</p>
+    </div>
+    <div class="card">
+      <h4>Decisão fim do dia 3 (P2)</h4>
+      <p>≥15 vendas = VAI PRA P3 ESCALA (CBO bidcap)</p>
+      <p>10-15 vendas = REFINAR (duplica winners, deixa +3 dias)</p>
+      <p>&lt;10 vendas = VOLTA PRA P1 (troca primary text)</p>
+    </div>
+  </div>
+
+  <h2>🚀 P3 — Escala (CBO bidcap 1-100-1) · orçamento $1,500/mês</h2>
+  <div class="callout green">
+    <strong>Setup P3:</strong> 1 campanha · 1 conjunto por concept vencedor (1-3 conjuntos) · Verba: 10× CPA = $800/conjunto · Bid inicial: 83% CPA = $66<br>
+    <strong>Escada do lance (a cada 2-3 dias):</strong> $24 → $28 → $33 → $38.50 → ... (sobe 17%) — quando para de gastar é o teto mecânico<br>
+    <strong>Teto da conta:</strong> 10 ângulos (acima disso pausa os 2 mais fracos ou abre conta nova)<br>
+    <strong>NUNCA mexer em verba E lance no mesmo dia</strong> (não dá pra saber qual causou a mudança)
+  </div>
+
+  <h2>⚰️ P4 — Cemitério (CBO cost cap 1-1-10)</h2>
+  <div class="callout">
+    <strong>Setup P4:</strong> 1 campanha · 1 conjunto · até 10 ads winners antigos · $500/dia · cost cap = último CPA validado · NUNCA mexer<br>
+    <strong>Critério de retorno pra P3:</strong> 3 dias seguidos dentro do CPA → volta pra P3 em conjunto novo<br>
+    <strong>Só pra quem JÁ escalou + $0 há 7+ dias.</strong> Não é pra ad que nunca performou.
+  </div>
+
+  <h2>🛡️ Red lines Linfozen-específicas</h2>
+  <ul>
+    <li>❌ NUNCA "cure for lipedema" — FAQ #1 da LP já tem: "There is no cure. Linfozen is a dietary supplement."</li>
+    <li>❌ NUNCA "stop your Ozempic" — FAQ #3: "do not stop a prescribed medication without medical supervision"</li>
+    <li>❌ NUNCA "replace your drainage sessions" — FAQ #4: "Many women reduced MLD frequency over time — but always under supervision"</li>
+    <li>❌ NUNCA before/after AI-gerado sem compensated disclosure (real photos only)</li>
+    <li>❌ NUNCA usar foto real de "paciente" sem consent (compensated disclosure + signed release)</li>
+    <li>❌ NUNCA "FDA approved" (apenas "FDA registered facility")</li>
+    <li>✅ SEMPRE "consult a vascular medicine specialist" + "talk to your doctor"</li>
+    <li>✅ "Dr. Helena Cardoso" como silhueta/ilustração (não foto real) — avatar-médica warm sister-figura</li>
+    <li>✅ Brazilian Pineapple bromelain é compound real (NIH published) — pode citar como research</li>
+  </ul>
+
+  <h2>🔗 Cross-vertical aplicável (Linfozen patterns replicáveis)</h2>
+  <ul>
+    <li><strong>"If your X looks like this..."</strong> → pattern C2 (B2H3) é replicável pra Cardio (BP cuff 170/120/80), MemoPryl (memory quiz), Linfaflow (leg 5pm check)</li>
+    <li><strong>"Industry buried this"</strong> → pattern C3 (B3H1) é replicável pra Cardio ("industry kept quiet"), MemoPryl ("pharma $100B"), SlimSoda ("Big Soda lobbied it out")</li>
+    <li><strong>"$20K vs $X"</strong> → pattern C4 (money anchor) é replicável pra Linfaflow ($30K vein procedure vs $147 6btl), MemoPryl ($300 celeb capsule vs $59 3btl)</li>
+    <li><strong>Proxy-buy daughter 38 → mom 67</strong> → pattern C5 é replicável cross-vertical (SlimSoda Pam 62, Cardio Linda 55, MemoPryl Linda 64)</li>
+    <li><strong>"Ten seconds. Every morning."</strong> → ritual 3-second cadence replicável pra Cardio ("30 sec before coffee"), MemoPryl ("2 drops under tongue"), SlimSoda ("3 seconds in water")</li>
+  </ul>
+
+  <h2>📂 Próximas estruturas (Linfozen backlog)</h2>
+  <ul>
+    <li>✅ LP standalone (advertorial-lipedema-v1) — 34KB · production-ready</li>
+    <li>✅ Playbook X1 (este) — production-ready</li>
+    <li>❌ Chat-x1-briefing (Dr. Helena sister-figura conversacional)</li>
+    <li>❌ 5 criativos nativos (A1-A5 do P2) — trio fixo bottle + leg illustration + compression stocking</li>
+    <li>❌ Quiz v6 adaptado (Dr. Helena persona + Brazilian Pineapple mechanism)</li>
+    <li>❌ VSL script (Filemon E3 12 blocos adaptado pra Linfozen)</li>
+  </ul>
+
+  <div class="footer">
+    Linfozen X1 · 24/ago/2026 · $1,000 budget · 5 dias · 5 concepts × 3 texts + 10 adformats · CPA target $80 · AOV blend $147 · blue ocean absoluto.
+  </div>
+</div>
+</body>
+</html>
