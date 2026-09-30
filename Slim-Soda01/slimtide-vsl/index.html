@@ -4,6 +4,33 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <meta name="imp-pixel-id" content="1619587959397761"/>
+<meta name="imp-project-id" content="slimsoda"/>
+<script>
+// Império: projeto dos eventos + repasse da origem do clique (UTM, fbclid, anúncio) ao checkout,
+// sem mexer em hid/affid/package. A H&W devolve esses campos no webhook do pedido.
+(function(){
+  var meta = document.querySelector('meta[name="imp-project-id"]');
+  window.impProjectId = meta ? meta.getAttribute("content") : null;
+  var CHECKOUT_PARAMS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","utm_id","fbclid","ad_id","adset","adset_id","campaign_id","placement","sub1","sub2","sub3","sub4","sub5"];
+  var pageParams = new URLSearchParams(window.location.search);
+  function stored(k){ try { return localStorage.getItem("imp_"+k); } catch(e){ return null; } }
+  CHECKOUT_PARAMS.forEach(function(k){ var v = pageParams.get(k); if(v){ try { localStorage.setItem("imp_"+k, v); } catch(e){} } });
+  window.impCheckoutUrl = function(base){
+    try {
+      var u = new URL(base, window.location.href);
+      CHECKOUT_PARAMS.forEach(function(k){
+        if(u.searchParams.get(k)) return;
+        var v = pageParams.get(k) || stored(k);
+        if(v) u.searchParams.set(k, v);
+      });
+      return u.toString();
+    } catch(e){ return base; }
+  };
+  document.addEventListener("DOMContentLoaded", function(){
+    document.querySelectorAll('a[href*="checkout.php"]').forEach(function(a){ a.href = window.impCheckoutUrl(a.getAttribute("href")); });
+  });
+})();
+</script>
 <title>SlimSoda — TODAY/NBC News (Oprah Drop 43 lbs)</title>
 <script>
 (function(){
@@ -51,17 +78,8 @@
   }
 
   if(Object.keys(utms).length > 0 || linkId){
-    sbPost("imphq_clicks", {
-      id: crypto.randomUUID(),
-      link_id: linkId,
-      utm_source: utms.utm_source || null,
-      utm_medium: utms.utm_medium || null,
-      utm_campaign: utms.utm_campaign || null,
-      utm_content: utms.utm_content || null,
-      utm_term: utms.utm_term || null,
-      referrer: document.referrer || null,
-      page_url: window.location.href,
-      user_agent: navigator.userAgent
+    trackEvent("Click", {
+      link_id: linkId
     });
   }
 
@@ -83,6 +101,7 @@
       utm_campaign: utms.utm_campaign || null,
       utm_content: utms.utm_content || null,
       utm_term: utms.utm_term || null,
+      project_id: window.impProjectId || null,
       user_agent: navigator.userAgent
     });
   }
@@ -607,14 +626,7 @@
   var BASE_CHECKOUT = "https://cc.slimsodapowder.com/v2/checkout.php?&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMzk5MDY3Mg%3D%3D&affid=aff_6821377";
 
   function buildCheckoutUrl(){
-    var utms = (window.imptrack && window.imptrack.getUtms) ? window.imptrack.getUtms() : {};
-    var url = BASE_CHECKOUT;
-    var parts = [];
-    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(function(k){
-      if(utms[k]) parts.push(k + "=" + encodeURIComponent(utms[k]));
-    });
-    if(parts.length) url += (url.indexOf("?") >= 0 ? "&" : "?") + parts.join("&");
-    return url;
+    return window.impCheckoutUrl ? window.impCheckoutUrl(BASE_CHECKOUT) : BASE_CHECKOUT;
   }
 
   // Populate the href dynamically (so UTMs from current visit flow through)

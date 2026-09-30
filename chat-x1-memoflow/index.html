@@ -6,6 +6,33 @@
   <title>Talk to Mira - MemoFlow</title>
   <base href="/chat-x1-memoflow/">
   <meta name="imp-pixel-id" content="2211508706308536">
+  <meta name="imp-project-id" content="memoflow"/>
+  <script>
+  // Império: projeto dos eventos + repasse da origem do clique (UTM, fbclid, anúncio) ao checkout,
+  // sem mexer em hid/affid/package. A H&W devolve esses campos no webhook do pedido.
+  (function(){
+    var meta = document.querySelector('meta[name="imp-project-id"]');
+    window.impProjectId = meta ? meta.getAttribute("content") : null;
+    var CHECKOUT_PARAMS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","utm_id","fbclid","ad_id","adset","adset_id","campaign_id","placement","sub1","sub2","sub3","sub4","sub5"];
+    var pageParams = new URLSearchParams(window.location.search);
+    function stored(k){ try { return localStorage.getItem("imp_"+k); } catch(e){ return null; } }
+    CHECKOUT_PARAMS.forEach(function(k){ var v = pageParams.get(k); if(v){ try { localStorage.setItem("imp_"+k, v); } catch(e){} } });
+    window.impCheckoutUrl = function(base){
+      try {
+        var u = new URL(base, window.location.href);
+        CHECKOUT_PARAMS.forEach(function(k){
+          if(u.searchParams.get(k)) return;
+          var v = pageParams.get(k) || stored(k);
+          if(v) u.searchParams.set(k, v);
+        });
+        return u.toString();
+      } catch(e){ return base; }
+    };
+    document.addEventListener("DOMContentLoaded", function(){
+      document.querySelectorAll('a[href*="checkout.php"]').forEach(function(a){ a.href = window.impCheckoutUrl(a.getAttribute("href")); });
+    });
+  })();
+  </script>
   <meta name="robots" content="noindex,nofollow">
   <script>
 (function(){
@@ -26,7 +53,7 @@
   if(!localStorage.getItem("imp_landing")) localStorage.setItem("imp_landing", window.location.href);
   function genEventId(){ return crypto.randomUUID(); }
   function sbPost(table, data, opts){ opts = opts || {}; return fetch(SB_URL + "/rest/v1/" + table, { method: "POST", headers: { "Content-Type": "application/json", "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Prefer": "return=minimal" }, body: JSON.stringify(data), keepalive: !!opts.keepalive }).catch(function(){}); }
-  function basePayload(extra){ return Object.assign({ visitor_id: visitorId, session_id: sessionId, page_url: window.location.href, referrer: document.referrer || null, utm_source: attrs.utm_source || null, utm_medium: attrs.utm_medium || null, utm_campaign: attrs.utm_campaign || null, utm_content: attrs.utm_content || null, utm_term: attrs.utm_term || null, user_agent: navigator.userAgent }, extra || {}); }
+  function basePayload(extra){ return Object.assign({ visitor_id: visitorId, session_id: sessionId, page_url: window.location.href, referrer: document.referrer || null, utm_source: attrs.utm_source || null, utm_medium: attrs.utm_medium || null, utm_campaign: attrs.utm_campaign || null, utm_content: attrs.utm_content || null, utm_term: attrs.utm_term || null, project_id: window.impProjectId || null, user_agent: navigator.userAgent }, extra || {}); }
   function trackEvent(eventName, eventData, eventId, opts){
     var eid = eventId || genEventId();
     var payload = Object.assign({ product_id: PRODUCT.id, product_name: PRODUCT.name, project: PRODUCT.project, funnel: PRODUCT.funnel, creative_id: attrs.creative_id || null, xcod: attrs.xcod || null }, eventData || {});
@@ -39,7 +66,7 @@
     if(!pixelId || !eventId) return;
     try { fetch("/api/track-capi", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ pixel_id: pixelId, event_name: eventName, event_id: eventId, event_data: Object.assign({ content_ids: [PRODUCT.id], content_name: PRODUCT.name, content_type: "product", value: PRODUCT.value, currency: PRODUCT.currency }, eventData || {}), event_source_url: window.location.href, external_id: visitorId }), keepalive: true }).catch(function(){}); } catch(e){}
   }
-  if(Object.keys(attrs).length){ sbPost("imphq_clicks", basePayload({ id: crypto.randomUUID(), link_id: params.get("imp_link_id") || null, fbclid: attrs.fbclid || null, gclid: attrs.gclid || null, gbraid: attrs.gbraid || null, wbraid: attrs.wbraid || null, coupon: attrs.coupon || null })); }
+  if(Object.keys(attrs).length){ trackEvent("Click", { link_id: params.get("imp_link_id") || null, fbclid: attrs.fbclid || null, gclid: attrs.gclid || null, gbraid: attrs.gbraid || null, wbraid: attrs.wbraid || null, coupon: attrs.coupon || null }); }
   var pixelId = document.querySelector('meta[name="imp-pixel-id"]');
   pixelId = pixelId ? pixelId.getAttribute("content") : null;
   if(pixelId){ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js"); fbq("init", pixelId); var pv = genEventId(); fbq("track", "PageView", {}, { eventID: pv }); sendCapi("PageView", { source: "chat-x1-memoflow" }, pv); }
@@ -105,7 +132,7 @@
   <script>
 const DEFAULT_CHECKOUT = "https://memopryl.com/cc2/pay/checkout.php?package=3bottles&campaignkey=pg-cyb";
 const params = new URLSearchParams(window.location.search);
-const CHECKOUT_URL = params.get("checkout_url") || localStorage.getItem("imp_checkout_url") || DEFAULT_CHECKOUT;
+const CHECKOUT_URL = window.impCheckoutUrl ? window.impCheckoutUrl(params.get("checkout_url") || localStorage.getItem("imp_checkout_url") || DEFAULT_CHECKOUT) : params.get("checkout_url") || localStorage.getItem("imp_checkout_url") || DEFAULT_CHECKOUT;
 if(params.get("checkout_url")) localStorage.setItem("imp_checkout_url", params.get("checkout_url"));
 window.CHAT_LLM_ENDPOINT = window.CHAT_LLM_ENDPOINT || "/api/chat-llm-memoflow";
 const $messages = document.getElementById("messages");

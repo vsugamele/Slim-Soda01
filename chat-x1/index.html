@@ -8,6 +8,33 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23479C1A'/%3E%3Ctext x='50' y='75' font-size='70' font-weight='900' text-anchor='middle' fill='white' font-family='Arial,sans-serif'%3ES%3C/text%3E%3C/svg%3E">
 
   <meta name="imp-pixel-id" content="1619587959397761"/>
+  <meta name="imp-project-id" content="slimsoda"/>
+  <script>
+  // Império: projeto dos eventos + repasse da origem do clique (UTM, fbclid, anúncio) ao checkout,
+  // sem mexer em hid/affid/package. A H&W devolve esses campos no webhook do pedido.
+  (function(){
+    var meta = document.querySelector('meta[name="imp-project-id"]');
+    window.impProjectId = meta ? meta.getAttribute("content") : null;
+    var CHECKOUT_PARAMS = ["utm_source","utm_medium","utm_campaign","utm_content","utm_term","utm_id","fbclid","ad_id","adset","adset_id","campaign_id","placement","sub1","sub2","sub3","sub4","sub5"];
+    var pageParams = new URLSearchParams(window.location.search);
+    function stored(k){ try { return localStorage.getItem("imp_"+k); } catch(e){ return null; } }
+    CHECKOUT_PARAMS.forEach(function(k){ var v = pageParams.get(k); if(v){ try { localStorage.setItem("imp_"+k, v); } catch(e){} } });
+    window.impCheckoutUrl = function(base){
+      try {
+        var u = new URL(base, window.location.href);
+        CHECKOUT_PARAMS.forEach(function(k){
+          if(u.searchParams.get(k)) return;
+          var v = pageParams.get(k) || stored(k);
+          if(v) u.searchParams.set(k, v);
+        });
+        return u.toString();
+      } catch(e){ return base; }
+    };
+    document.addEventListener("DOMContentLoaded", function(){
+      document.querySelectorAll('a[href*="checkout.php"]').forEach(function(a){ a.href = window.impCheckoutUrl(a.getAttribute("href")); });
+    });
+  })();
+  </script>
   <script>
 (function(){
   var SB_URL = "https://tkbivipqiewkfnhktmqq.supabase.co";
@@ -79,16 +106,8 @@
   }
 
   if(Object.keys(utms).length > 0 || linkId){
-    sbPost("imphq_clicks", {
-      id: crypto.randomUUID(),
-      visitor_id: visitorId,
-      session_id: sessionId,
+    trackEvent("Click", {
       link_id: linkId,
-      utm_source: utms.utm_source || null,
-      utm_medium: utms.utm_medium || null,
-      utm_campaign: utms.utm_campaign || null,
-      utm_content: utms.utm_content || null,
-      utm_term: utms.utm_term || null,
       utm_id: utms.utm_id || null,
       fbclid: fbclid,
       fbc: fbc,
@@ -99,10 +118,7 @@
       nbt: utms.nbt || null,
       nb_placement: utms.nb_placement || null,
       nb_expid_meta: utms.nb_expid_meta || null,
-      coupon: coupon,
-      referrer: document.referrer || null,
-      page_url: window.location.href,
-      user_agent: navigator.userAgent
+      coupon: coupon
     });
   }
 
@@ -141,6 +157,7 @@
       utm_campaign: utms.utm_campaign || null,
       utm_content: utms.utm_content || null,
       utm_term: utms.utm_term || null,
+      project_id: window.impProjectId || null,
       user_agent: navigator.userAgent
     }, opts);
   }
@@ -754,7 +771,7 @@
    Scripted core with LLM intervention hook (chatLlm stub)
    ============================================================ */
 
-const CHECKOUT_URL = "https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377";
+const CHECKOUT_URL = window.impCheckoutUrl ? window.impCheckoutUrl("https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377") : "https://slimsodapowder.com/cc2/dtc/pay/checkout.php?package=3bottles&hid=b2lkPW9mZl81MDU4NzI1JmFpZD1hZmZfNjgyMTM3NyZ1aWQ9YmxfMDM4MDIyMg%3D%3D&affid=aff_6821377";
 
 const state = {
   age: null,
